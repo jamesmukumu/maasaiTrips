@@ -1,0 +1,62 @@
+<mat-card>
+<mat-list>
+<mat-list-item>
+<img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
+</mat-list-item>
+<mat-list-item>
+<p>Masaai Mara Trips</p>
+</mat-list-item>
+<mat-list-item>
+<p>All About Masai Mara</p>
+</mat-list-item>
+<mat-list-item>
+<p>Accomodations</p>
+</mat-list-item>
+<mat-list-item>
+<p>Masaai Mara Safari's</p>
+</mat-list-item>
+<mat-list-item>
+
+<button mat-flat-button>
+Travel to Mara
+<mat-icon class="suff-icon">mood</mat-icon>
+</button>
+</mat-list-item>
+<mat-list-item>
+<mat-icon class="icon">dark_mode</mat-icon>
+</mat-list-item>
+</mat-list>
+
+
+
+
+
+</mat-card> 
+
+
+
+
+
+
+<mat-drawer-container hasBackdrop="true">
+    <mat-drawer #drawer mode="over" [opened]="false">
+        <ul>
+            <li>Masaai Mara Trips</li>
+            <li>All About Masai Mara</li>
+            <li>Accommodations</li>
+            <li>Masaai Mara Safari's</li>
+            <li>
+                <button>Travel to Mara</button>
+            </li>
+        </ul>
+        
+    </mat-drawer>
+    
+<div>
+    <mat-icon class="harmburg" (click)="drawer.toggle()">menu</mat-icon>
+    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
+    <mat-icon class="dark">dark_mode</mat-icon>
+</div>
+
+
+    </mat-drawer-container>

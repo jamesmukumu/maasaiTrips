@@ -1,0 +1,23 @@
+<mat-card>
+    <h1>Overview of Masai Mara Experiences</h1>
+    <mat-card class="card-display">
+      <div *ngFor="let overviews of ReviewOverviews">
+        <img src="{{ overviews.ImagePath }}" alt="">
+        <h2>{{ overviews.Title }}</h2>
+        <p>{{ overviews.Description }}</p>
+      </div>
+    </mat-card>
+
+<h1>Featured Destinations in Masai Mara</h1>
+<mat-card class="card-destinations">
+    <div *ngFor="let dest of destinations">
+      <img src="{{ dest.ImagePath }}" alt="">
+      <h2>{{ dest.Destination_Title }}</h2>
+      <p>{{ dest.Destination_Description }}</p>
+      <strong>Amenities:</strong><span>{{dest.Amenities}}</span>
+    </div>
+  </mat-card>
+
+
+  </mat-card>
+  

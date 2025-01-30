@@ -1,0 +1,60 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+mat-card{
+width: 100%;
+background-color: rgb(237,241,245);
+}
+body{
+background-color: rgb(237,241,245);
+}
+.card-display{
+display: grid;
+grid-template-rows: repeat(1fr,1);
+grid-template-columns: repeat(4,1fr);
+}
+
+.card-destinations{
+  
+display: grid;
+grid-template-rows: 1fr;
+grid-template-columns: repeat(4,1fr);
+}
+.card-destinations div{
+
+margin-left: 20px;
+margin-right: 20px;
+}
+mat-card img{
+height: 200px;
+width: 100%;
+}
+.card-display div p {
+line-height: 1.85;
+}
+.card-display div{
+margin-left: 10px;
+margin-right: 10px;
+}
+mat-card h1{
+text-align: center;
+}
+
+
+@media(max-width:900px){
+.card-display{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+}
+.card-destinations{
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+flex-direction: column;
+}
+
+}

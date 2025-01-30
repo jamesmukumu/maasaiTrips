@@ -1,0 +1,126 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+.about-mara-depth p,strong,h3,span,b,ul,li,h2{
+color: white;
+letter-spacing: 1.55px;
+line-height: 1.5;
+}
+.explores mat-card{
+margin-left: 15.55px;
+}
+.about-mara-depth span {
+max-lines: 4;
+}
+.explores{
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+.explores p {
+font-weight: bolder;
+}
+.explores button{
+background-color: #fca608;
+color: white;
+}
+h1{
+text-align: center;
+}
+.explores img{
+width: 100%;
+}
+li{
+padding-top: 22px;
+}
+.about-mara-depth{
+    margin-top: 10px;
+min-width: 100%;
+max-width: 100vw;
+background: #232526;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+}
+.about-mara-depth mat-card{
+    background: #232526;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+display: flex;
+flex-direction: row;
+}
+.about-mara-depth mat-card mat-card-content{
+
+margin-left: 15.00px;
+}
+.about-mara-depth h3{
+text-align: center;
+}
+.about-mara-depth img{
+width: 550px;
+
+}
+mat-card-header{
+max-width: 100%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-image: url(https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg);
+}
+
+.about-mara h1{
+text-align: center;
+}
+.about-mara p {
+    letter-spacing: 1.15px;
+    font-size: 14.5px;
+
+}
+.about-mara-depth mat-card mat-card-content{
+
+    margin-left: 0.00px;
+    }
+.about-mara{
+background-color: rgb(255,255,255);
+text-align: left;
+align-items: center;
+}
+.bg-home{
+background-image: url(https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg);
+
+}
+
+
+
+@media(max-width:900px){
+mat-card mat-card-header img{
+width: 100%;
+}
+.about-mara-depth img{
+width: 100%;
+}
+.explores{
+flex-direction: column;
+flex-wrap: wrap;
+}
+.explores mat-card{
+margin-top: 15.555px
+};
+.explores mat-card  button{
+    width: 30px;
+}
+.about-mara-depth mat-card{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+}
+}

@@ -1,0 +1,84 @@
+<header></header>
+<mat-card>
+<mat-card-header>
+<img src="https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg" alt="">
+</mat-card-header>
+<div #animatedElement class="about-mara" [@fadeSlider]="animationState">
+<h1>About Masaai Mara</h1>
+<p>
+The Masai Mara is located in southwestern Kenya in Narok County,and has become one of Africa's most popular wildlife reserves. It is a vast expanse of savannah wilderness that forms the northern continuation of the Serengeti National Park in Tanzania. Covering approximately 1,510 square kilometers (580 square miles), the Masai Mara is famous for its wildlife, including the Big Five- lions, elephants, leopards, buffaloes, and rhinos.
+</p>
+<p>
+One of the most spectacular natural events in the world, the Great Wild Migration, occurs annually between July and October. During this period, over 1.5 million wildebeest, zebras, and gazelles migrate from the Serengeti to the Masai Mara in search of fresh grazing, crossing the Mara River, where crocodiles and predators lie in wait
+</p>
+<p>
+The reserve is named after the indigenous Maasai people who inhabit the area and the Mara River that runs through it. The name Mara in Masai mean spotted as the nature of the acacia trees in the savannah. The landscape is characterized by rolling grasslands, acacia trees, and the meandering Mara and Talek rivers, providing a stunning backdrop for the wildlife.
+</p>
+<p>
+The Masai Mara is also home to over 450 bird species, making it a paradise for bird watchers. Visitors can experience game drives, hot air balloon safaris, and cultural visits to Maasai villages at affordable charges, offering a deep connection to both the wildlife and the local culture.
+</p>
+</div>
+<div class="bouncer-overview" #bouncerCheck [@bouncer]="animationBouncer">
+<overview></overview>
+</div>
+<div class="about-mara-depth">
+<h3>Key information About Masaai mara</h3>
+<mat-card>
+<mat-card-content>
+<img src="../../../assets/MasaiMara_Map.png" alt="">
+<h2>Best Time to travel to Masaai Mara</h2>
+<p>
+The best time to visit the Masai Mara is during the dry season, from June to October, when wildlife is most abundant, and the Great Migration takes place. However, the reserve offers spectacular experiences year-round
+</p>
+</mat-card-content>
+
+
+<mat-card-content>
+<b>Travel tips for Masaai Mara</b>
+<ul>
+<li>
+<strong>Visa's</strong>: <span>Kenya has introduced a transit visa allowing travellers with long layovers to visit some of the tourist attractions like the Mara.</span>
+</li>
+<li>
+<strong>Vaccinations</strong>: <span> Check with your healthcare provider for recommended vaccinations.</span>
+</li>
+<li>
+<strong>Packing List</strong>: <span>Pack light, breathable clothing, comfortable shoes, a hat, sunscreen, and insect repellent.</span>
+</li>
+<li>
+    <strong>Currency</strong>: <span>The local currency is the Kenyan Shilling (KES), but none resident travellers pay in foreign currencies like the USD OR EUROS.</span>
+    </li>
+</ul>
+
+</mat-card-content>
+</mat-card>
+</div>
+<h1>Explore More of the Masaai Mara</h1>
+<div class="explores" #explores  [@explores]="exploreCheckerState">
+<mat-card>
+<img src="../../../assets/hotair.webp" alt="">
+<p>Ultimate hot air balloon experience in Masaai Mara Kenya</p>
+<button mat-raised-button style="width: fit-content;">Read more</button>
+</mat-card>
+<mat-card>
+    <img src="../../../assets/rhino.webp" alt="">
+    <p>Masaai Mara Luxury Safari.Visiting Masaai mara outside Migration Season </p>
+    <button mat-raised-button style="width: fit-content;">Read more</button>
+    </mat-card>
+    <div>
+        <img src="../../../assets/elphant.webp" alt="">
+        <p>The famous Masaai mar.Here is my first Experience at Masaai Mara</p>
+        <button mat-raised-button>Read more</button>
+        </div>
+        <mat-card>
+            <img src="../../../assets/wildeebeest.webp" alt="">
+            <p>2025 Kenya Safari's.List of the top 2025 Kenyan Itenaries</p>
+            <button mat-raised-button style="width: fit-content;">Read more</button>
+            </mat-card>
+</div>
+<frequent-quest></frequent-quest>
+<footer></footer>
+
+
+
+</mat-card>
