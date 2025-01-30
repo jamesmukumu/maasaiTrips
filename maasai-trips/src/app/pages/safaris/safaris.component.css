@@ -1,0 +1,99 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+html,body{
+margin: 0px;
+padding: 0px;
+}
+mat-card-header button{
+text-align: center;
+background-color: #fca608;
+    color: white;
+    gap: 20px;
+    cursor: pointer;
+}
+.grid-see div button{
+    width: fit-content;
+    background-color: #fca608;
+    color: white;
+}
+.safaris-main{
+max-width: 100vw;
+min-width: 100%;
+display: flex;
+flex-direction: row;
+}
+.cont{
+min-width: 100vw;
+max-width: 100%;
+}
+span,p{
+max-lines: 3;
+}
+.safaris-main mat-card{
+width: 50%;
+height: fit-content;
+
+}
+.grid-see{
+width: 100%;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+grid-template-rows: 1fr;
+}
+.grid-see div{
+margin: 5.5px;
+}
+.safaris{
+background-image: url(https://www.masaimaratrips.com/images/ma.jpeg);
+background-position: center;
+overflow: hidden;
+background-repeat: no-repeat;
+min-height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+background-size: cover;
+}
+
+mat-card-content mat-icon{
+color: rgb(21, 181, 21);
+}
+.safaris h1{
+    letter-spacing: 1.55px;
+font-size: 25.55px;
+color: white;
+}
+.grid-see img{
+width: 100%;
+}
+ mat-card-header,mat-card-content{
+display: block;
+}
+
+
+
+@media(max-width:900px){
+.safaris-main{
+flex-direction: column;
+flex-wrap: wrap;
+max-height: 100%;
+}
+.safaris{
+min-height: 75vh;
+}
+.safaris-main mat-card{
+
+width: 100%;
+margin-top: 10px;
+} 
+.grid-see{
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+}
+}
