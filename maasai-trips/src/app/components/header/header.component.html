@@ -36,24 +36,26 @@ Travel to Mara
 
 
 
+<p-sidebar [(visible)]="seeDrawer">
+    <mat-list>
+        <mat-list-item>
+            <span matListItemTitle>Masaai Mara Trips</span>
+        </mat-list-item>
+        <mat-list-item>All About Masai Mara</mat-list-item>
+        <mat-list-item>Accommodations</mat-list-item>
+        <mat-list-item>Masaai Mara Safari's</mat-list-item>
+        <mat-list-item>
+            <button mat-flat-button>Travel to Mara</button>
+        </mat-list-item>
+    </mat-list>
+</p-sidebar>
 
-
-<mat-drawer-container hasBackdrop="true">
+<mat-drawer-container>
     <mat-drawer #drawer mode="over" [opened]="false">
-        <ul>
-            <li>Masaai Mara Trips</li>
-            <li>All About Masai Mara</li>
-            <li>Accommodations</li>
-            <li>Masaai Mara Safari's</li>
-            <li>
-                <button>Travel to Mara</button>
-            </li>
-        </ul>
-        
-    </mat-drawer>
+      </mat-drawer>
     
 <div>
-    <mat-icon class="harmburg" (click)="drawer.toggle()">menu</mat-icon>
+    <mat-icon class="harmburg" (click)="toggle()">menu</mat-icon>
     <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
     <mat-icon class="dark">dark_mode</mat-icon>
 </div>

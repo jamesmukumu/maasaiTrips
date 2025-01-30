@@ -1,4 +1,4 @@
-import { Component,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
+import { Component,ViewChild,AfterViewInit,ElementRef,inject,OnInit } from '@angular/core';
 import { trigger,keyframes,style,transition,animate } from '@angular/animations';
 interface Safaris {
   SafariTitle: string;
@@ -6,7 +6,8 @@ interface Safaris {
   Thumbnail: string;
   Inclusivities: string[];
 }
-
+import { QuotationsComponent } from '../../components/quotations/quotations.component';
+import {MatDialog} from '@angular/material/dialog'
 @Component({
   selector: 'app-safaris',
   templateUrl: './safaris.component.html',
@@ -29,7 +30,15 @@ interface Safaris {
 export class SafarisComponent implements AfterViewInit{
 @ViewChild("bg") bgRef!:ElementRef
 bgState:string = 'clear'
+readonly dialog = inject(MatDialog)
 
+
+ngOnInit(){
+this.requestQuote()
+}
+requestQuote(){
+this.dialog.open(QuotationsComponent)
+}
 
 bgBounce(){
 var observer = new IntersectionObserver((entries)=>{

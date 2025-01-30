@@ -15,7 +15,10 @@ background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, F
 
 
 }
-
+mat-list-item button{
+    background-color: #fca608;
+    color: white;
+}
 
 mat-drawer-container{
 display: none;
@@ -50,9 +53,10 @@ color: white;
     mat-card{
     display: none;
     }
-    mat-drawer{
-        width: max-content;
+    p-sidebar{
+        background-color: white;
     }
+   
 mat-drawer-container{
 display: block;
 max-width: 100%;
