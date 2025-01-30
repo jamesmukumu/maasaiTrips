@@ -18,12 +18,13 @@ import {MatIconModule} from "@angular/material/icon";
 import { HomeComponent } from './pages/home/home.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { FrequentQuestComponent } from './components/frequent-quest/frequent-quest.component';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import { SafarisComponent } from './pages/safaris/safaris.component'
   
 
 
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -35,7 +36,14 @@ import { FooterComponent } from './components/footer/footer.component'
   
  MatSidenavModule,
     RouterModule.forRoot([
-      
+      {
+      component:HomeComponent,
+      path:""
+      },
+      {
+      path:"safaris",
+component:SafarisComponent
+      }
     ]),
     MatExpansionModule,
     MatCardModule

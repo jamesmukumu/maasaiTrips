@@ -1,6 +1,6 @@
 import { Component,ViewChild,AfterViewInit } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,11 @@ seeDrawer:boolean = false
 toggle(){
 this.seeDrawer = true
 }
-
-
-
+home(){
+this.route.navigate(["/"])
+}
+navigate(){
+this.route.navigate(["/safaris"])
+}
+constructor(private route:Router){}
 }
