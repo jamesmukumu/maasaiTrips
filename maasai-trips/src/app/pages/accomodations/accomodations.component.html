@@ -1,0 +1,23 @@
+<header></header>
+<mat-card>
+<h1>Accommodation in Masai Mara</h1>
+<p>
+Accommodation in the Masai Mara caters to a wide range of preferences, from luxurious lodges to authentic budget tented camps, all offering an immersive experience in the heart of Africa's wilderness. Whether you're seeking high-end comfort or a more rustic adventure, the options are designed to blend seamlessly with the natural surroundings, ensuring guests are never far from the wildlife and scenic beauty that make the Masai Mara so famous.
+</p>
+
+<mat-card-content [@bounceLeft]="contentState" #content>
+<div *ngFor="let accomodation of allAccomodations">
+<img [src]="accomodation.HotelImagePath" alt="">
+<p>{{accomodation.HotelName}}</p>
+<mat-divider></mat-divider>
+<mat-card-footer class="align-hor">
+    <mat-icon style="color: rgb(228,106,118);">room</mat-icon>
+<b>Masaai Mara</b>
+</mat-card-footer>
+</div>
+
+</mat-card-content>
+
+
+<footer></footer>
+</mat-card>
