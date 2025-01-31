@@ -25,10 +25,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SafarisComponent } from './pages/safaris/safaris.component';
 import { QuotationsComponent } from './components/quotations/quotations.component'
 import { FormsModule } from '@angular/forms';
+import { AccomodationsComponent } from './pages/accomodations/accomodations.component';
 
 
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -51,6 +52,10 @@ import { FormsModule } from '@angular/forms';
       {
       path:"safaris",
 component:SafarisComponent
+      },
+      {
+      component:AccomodationsComponent,
+      path:"accomodations"
       }
     ]),
     MatExpansionModule,

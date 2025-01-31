@@ -19,5 +19,8 @@ this.route.navigate(["/"])
 navigate(){
 this.route.navigate(["/safaris"])
 }
+accomodations(){
+this.route.navigate(["/accomodations"])
+}
 constructor(private route:Router){}
 }

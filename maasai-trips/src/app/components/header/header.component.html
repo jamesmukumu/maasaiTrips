@@ -9,7 +9,7 @@
 <mat-list-item>
 <p>All About Masai Mara</p>
 </mat-list-item>
-<mat-list-item>
+<mat-list-item (click)="accomodations()">
 <p>Accomodations</p>
 </mat-list-item>
 <mat-list-item (click)="navigate()">
@@ -42,10 +42,10 @@ Travel to Mara
             <span matListItemTitle>Masaai Mara Trips</span>
         </mat-list-item>
         <mat-list-item>All About Masai Mara</mat-list-item>
-        <mat-list-item>Accommodations</mat-list-item>
-        <mat-list-item>Masaai Mara Safari's</mat-list-item>
+        <mat-list-item (click)="accomodations()">Accommodations</mat-list-item>
+        <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
         <mat-list-item>
-            <button mat-flat-button>Travel to Mara</button>
+            <button mat-flat-button (click)="navigate()">Travel to Mara</button>
         </mat-list-item>
     </mat-list>
 </p-sidebar>
