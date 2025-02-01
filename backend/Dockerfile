@@ -1,11 +1,11 @@
-FROM node:18.20.5
+FROM node:20.11.1
 
-WORKDIR /main
+WORKDIR /app
 
-COPY . .
+COPY  . .
 
 RUN npm install
 
 EXPOSE 4500
 
-CMD [ "node",'app.js' ]
+CMD [ "node","app.js"]
