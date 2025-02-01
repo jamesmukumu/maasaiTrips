@@ -1,0 +1,70 @@
+<div class="container">
+<header></header>
+<mat-card *ngIf="!fetchingHotel">
+<div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+<h1>{{hotelData.hotelName}}</h1>
+
+
+<p-galleria [value]="hotelData.hotelPhotos" [showIndicators]="true" 
+[autoPlay]="true"
+[circular]="true" 
+[showThumbnails]="true"
+[changeItemOnIndicatorHover]="true" 
+ 
+[containerStyle]="{ 'max-width': '100%' }">
+
+<ng-template pTemplate="item" let-item>
+    <img [src]="item"  />
+</ng-template>
+<ng-template pTemplate="thumbnail" let-item>
+    <img [src]="item" />
+</ng-template>
+</p-galleria>
+
+<mat-card-content> 
+<h4>{{hotelData.hotelName}}</h4>
+<mat-icon style="color: rgb(228,106,118);">place</mat-icon>
+<b>Maasai Mara</b> 
+<p>{{hotelData.hotelAbout.intro}}</p>
+<strong>{{hotelData.hotelAbout.introAccessibility}}</strong>
+<strong class="strong-2">{{hotelData.hotelAbout.accessibility}}</strong>
+<div>
+<strong>{{hotelData.hotelAbout.staycationIntro}}</strong>
+<strong class="strong-2">{{hotelData.hotelAbout.stayCation}}</strong>
+<mat-list>
+<mat-list-item *ngFor="let features of hotelData.hotelAbout.roomsFeatures">
+<span matListItemTitle>{{features}}</span>
+<mat-icon style="color: green;" matListItemIcon>check</mat-icon>
+</mat-list-item>
+</mat-list>
+</div>
+<strong>{{hotelData.hotelAbout.CulinaryAndBarIntro}}</strong>
+<strong class="strong-2">{{hotelData.hotelAbout.CulinaryExp}}</strong>
+<div>
+<strong>{{hotelData.hotelAbout.CulinaryAndBarIntro}}</strong>
+<strong class="strong-2">{{hotelData.hotelAbout.CulinaryExp}}</strong>
+<div>
+<strong>{{hotelData.hotelAbout.ExtraFacilitiesIntro}}</strong>
+<strong class="strong-2">{{hotelData.hotelAbout.ExtraFacilitiesDesc}}</strong>
+</div>
+<div>
+    <strong>{{hotelData.hotelAbout.ActivitiesIntro}}</strong>
+    <strong class="strong-2">{{hotelData.hotelAbout.Activities}}</strong>
+    </div>
+</div>
+</mat-card-content>
+</div>
+
+
+
+<div  >
+<h1>Here is how to locate {{hotelData.hotelName}}</h1>
+<google-map class="map" width="100%" mapId="21e602fe038c55d3" [center]="{lat: hotelData.latitude, lng: hotelData.longitude}" [zoom]="10">
+</google-map>
+</div>
+</mat-card>
+<p-progressBar mode="indeterminate" [style]="{ height: '6px' }" *ngIf="fetchingHotel"/>
+<patners #part [@bounceTop]="initialPatner" ></patners>
+
+<footer></footer>
+</div>
