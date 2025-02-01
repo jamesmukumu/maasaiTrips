@@ -1,13 +1,14 @@
 import { Component,ViewChild,AfterViewInit,ElementRef } from '@angular/core';
 import { trigger,transition,keyframes,style,animate } from '@angular/animations';
-
+import { Router } from '@angular/router';
 interface accomodation {
   HotelName: string;
   HotelImagePath: string;
   HotelUniquePath: string;
+  HotelID?:string
 }
 
-@Component({
+@Component({ 
   selector: 'app-accomodations',
   templateUrl: './accomodations.component.html',
   styleUrl: './accomodations.component.css',
@@ -33,40 +34,48 @@ interface accomodation {
 export class AccomodationsComponent implements AfterViewInit{
 @ViewChild("content") contentAnimate!:ElementRef
 contentState:string = 'out'
-
+goHotel(id?:string){
+this.router.navigate([`/hotel/${id}`])
+}
   allAccomodations: accomodation[] = [
     {
       HotelName: 'Mara Sweet Acacia lodge',
+      HotelID:"679d2596e6a80748e9857d6c",
       HotelImagePath:
         '../../../assets/Accomodations/xMara,P20Maisha,P20Camp_120241011084806.webp.pagespeed.ic.pFB2QS8hXz.webp',
       HotelUniquePath: 'Mara Lounge',
     },
     {
       HotelName: 'Zebra plains mara camp',
+      HotelID:'679d2ce2e6a80748e9857d6e',
       HotelImagePath:
         '../../../assets/Accomodations/xZebra,P20Plains,P20Mara,P20Camp_120241007163955.webp.pagespeed.ic.FsBOBodvI7.webp',
       HotelUniquePath: 'Zebra plains mara camp',
     },
     {
       HotelName: 'Karen Blixen Camp maasai mara',
+      HotelID:"679d3158e6a80748e9857d70",
       HotelImagePath:
         '../../../assets/Accomodations/xKaren,P20Blixen,P20Camp,P20Masai,P20Mara_120241008142708.webp.pagespeed.ic.1XuDhxMzqT.webp',
       HotelUniquePath: 'Karen Blixen',
     },
     {
       HotelName: 'Mara Serena Safari Lounge',
+      HotelID:'679d34e3e6a80748e9857d72',
       HotelImagePath:
         '../../../assets/Accomodations/xMara,P20Serena,P20Safari,P20Lodge_120241008170448.webp.pagespeed.ic.yRSZHceTCR.webp',
       HotelUniquePath: 'Mara Serena safari Lounge',
     },
     {
       HotelName: 'Bella Camp Mara',
+      HotelID:"679dbec310c815c1d9c29ab4",
       HotelImagePath:
         '../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp',
       HotelUniquePath: 'Bella Camp mara',
     },
     {
       HotelName: 'Enkorok Mara Ltd Camp',
+     
       HotelImagePath:
         '../../../assets/Accomodations/xEnkorok,P20Mara,P20Camp,P20Ltd_120241009150305.webp.pagespeed.ic.P_KMHYCw1n.webp',
       HotelUniquePath: 'Enkorok',
@@ -84,7 +93,7 @@ contentState:string = 'out'
       HotelUniquePath: 'Mara maisha camp',
     },
   ];
-
+constructor(private router:Router){}
 ngAfterViewInit(){
 this.checkViewContent()
 }

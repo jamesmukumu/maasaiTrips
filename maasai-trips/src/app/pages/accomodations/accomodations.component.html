@@ -6,7 +6,7 @@ Accommodation in the Masai Mara caters to a wide range of preferences, from luxu
 </p>
 
 <mat-card-content [@bounceLeft]="contentState" #content>
-<div *ngFor="let accomodation of allAccomodations">
+<div *ngFor="let accomodation of allAccomodations" (click)="goHotel(accomodation.HotelID)">
 <img [src]="accomodation.HotelImagePath" alt="">
 <p>{{accomodation.HotelName}}</p>
 <mat-divider></mat-divider>

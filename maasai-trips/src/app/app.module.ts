@@ -26,29 +26,43 @@ import { SafarisComponent } from './pages/safaris/safaris.component';
 import { QuotationsComponent } from './components/quotations/quotations.component'
 import { FormsModule } from '@angular/forms';
 import { AccomodationsComponent } from './pages/accomodations/accomodations.component';
-
-
+import { HotelsComponent } from './pages/hotels/hotels.component';
+import {GalleriaModule} from 'primeng/galleria'
+import { AgmCoreModule } from '@agm/core';
+import { GoogleMapsModule } from '@angular/google-maps';
+import {ProgressBarModule} from "primeng/progressbar";
+import { PatnersComponent } from './components/patners/patners.component'
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent],
   imports: [
     BrowserModule,  
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatIconModule,
+    
+    MatIconModule,      
     MatDatepickerModule,
     MatDialogModule,
     MatListModule,
+    GoogleMapsModule,
     MatDividerModule,
     MatButtonModule,
     FormsModule,
   SidebarModule,
- MatSidenavModule,
+ MatSidenavModule,   
+ GalleriaModule,  
+
+ProgressBarModule,
  MatInputModule,
     RouterModule.forRoot([
+      {
+        component:HotelsComponent,
+        path:"hotel/:hotelId"
+      },
       {
       component:HomeComponent,
       path:""
       },
+      
       {
       path:"safaris",
 component:SafarisComponent
