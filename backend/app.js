@@ -5,7 +5,7 @@ var bodyParser = require("body-parser")
 var cors = require("cors")
 mongoConnection()
  
-//
+
 app.use(bodyParser())
 app.use(cors())
 app.use(require("./router/router"))

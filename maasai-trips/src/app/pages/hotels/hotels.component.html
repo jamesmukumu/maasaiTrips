@@ -64,7 +64,7 @@
 </div>
 </mat-card>
 <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" *ngIf="fetchingHotel"/>
-<patners #part [@bounceTop]="initialPatner" ></patners>
+<patners #part [@bounceTop]="initialPatner" *ngIf="!fetchingHotel" ></patners>
 
 <footer></footer>
 </div>

@@ -40,28 +40,28 @@ this.router.navigate([`/hotel/${id}`])
   allAccomodations: accomodation[] = [
     {
       HotelName: 'Mara Sweet Acacia lodge',
-      HotelID:"679d2596e6a80748e9857d6c",
+      HotelID:"679e7ed6840994da370c2584",
       HotelImagePath:
         '../../../assets/Accomodations/xMara,P20Maisha,P20Camp_120241011084806.webp.pagespeed.ic.pFB2QS8hXz.webp',
       HotelUniquePath: 'Mara Lounge',
     },
     {
       HotelName: 'Zebra plains mara camp',
-      HotelID:'679d2ce2e6a80748e9857d6e',
+      HotelID:'679e841a840994da370c258d',
       HotelImagePath:
         '../../../assets/Accomodations/xZebra,P20Plains,P20Mara,P20Camp_120241007163955.webp.pagespeed.ic.FsBOBodvI7.webp',
       HotelUniquePath: 'Zebra plains mara camp',
     },
     {
       HotelName: 'Karen Blixen Camp maasai mara',
-      HotelID:"679d3158e6a80748e9857d70",
+      HotelID:"679e824e840994da370c258a",
       HotelImagePath:
         '../../../assets/Accomodations/xKaren,P20Blixen,P20Camp,P20Masai,P20Mara_120241008142708.webp.pagespeed.ic.1XuDhxMzqT.webp',
       HotelUniquePath: 'Karen Blixen',
     },
     {
       HotelName: 'Mara Serena Safari Lounge',
-      HotelID:'679d34e3e6a80748e9857d72',
+      HotelID:'679e80ba840994da370c2587',
       HotelImagePath:
         '../../../assets/Accomodations/xMara,P20Serena,P20Safari,P20Lodge_120241008170448.webp.pagespeed.ic.yRSZHceTCR.webp',
       HotelUniquePath: 'Mara Serena safari Lounge',
