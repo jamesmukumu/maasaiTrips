@@ -10,7 +10,7 @@ export class HotelServiceService {
 
   async fetchHotel(hotelId:string){
 try{
-  var resp = await axios.get("http://localhost:4500/filter/hotel",{
+  var resp = await axios.get("https://maasaitrips-1.onrender.com/filter/hotel",{
   params:{
     "hotelID":hotelId
   }
