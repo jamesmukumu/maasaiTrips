@@ -79,9 +79,11 @@ this.router.navigate([`/hotel/${id}`])
       HotelImagePath:
         '../../../assets/Accomodations/xEnkorok,P20Mara,P20Camp,P20Ltd_120241009150305.webp.pagespeed.ic.P_KMHYCw1n.webp',
       HotelUniquePath: 'Enkorok',
+      HotelID:"679f5db26cf088bd78debe9b"
     },
     {
       HotelName: 'Ashnil Mara Camp',
+      HotelID:"679f5b826cf088bd78debe98",
       HotelImagePath:
         '../../../assets/Accomodations/xAshnil,P20Mara,P20Camp_120241009151206.webp.pagespeed.ic.-jTKOPl0RR.webp',
       HotelUniquePath: 'Ashnil Mara Camp',
@@ -89,8 +91,9 @@ this.router.navigate([`/hotel/${id}`])
     {
       HotelName: 'Mara Maisha Camp',
       HotelImagePath:
-        '../../../assets/Accomodations/xMara,P20Maisha,P20Camp_120241011084806.webp.pagespeed.ic.pFB2QS8hXz.webp',
+        '../../../assets/Accomodations/mara',
       HotelUniquePath: 'Mara maisha camp',
+      HotelID:"679f58a56cf088bd78debe95"
     },
   ];
 constructor(private router:Router){}
