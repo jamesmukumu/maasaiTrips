@@ -120,6 +120,10 @@ margin-left:0px
 .explores mat-card  button{
     width: 30px;
 }
+.about-mara h1,p{
+padding-top: 2.00px;
+padding-bottom: 2.00px;
+}
 .about-mara-depth mat-card{
 display: flex;
 flex-direction: column;

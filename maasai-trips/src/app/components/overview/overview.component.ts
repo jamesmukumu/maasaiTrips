@@ -41,12 +41,7 @@ ImagePath:"https://www.masaimaratrips.com/assets/images/system/Saruni-Mara.jpg?v
     Destination_Description:"Nestled in a forest along the Saripango River,Kichwa Tembo Tented Camp offers a blend of classic safari Elegance and Modern Comfort,The camp provides and intimate and immersive wildlife experience in the heart of the Masaai Mara",
     ImagePath:"https://www.masaimaratrips.com/assets/images/system/angama-mara.png?v41.1.1"
     },
-    {
-      Amenities:"Private Decks,Infinity Pool,Wellness Center and spa",
-      Destination_Title:'Angama Mara',
-      Destination_Description:"Nestled in a forest along the Saripango River,Kichwa Tembo Tented Camp offers a blend of classic safari Elegance and Modern Comfort,The camp provides and intimate and immersive wildlife experience in the heart of the Masaai Mara",
-      ImagePath:"https://www.masaimaratrips.com/assets/images/system/angama-mara.png?v41.1.1"
-      }, 
+   
 
 ]
 
