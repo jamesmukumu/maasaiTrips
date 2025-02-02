@@ -91,7 +91,7 @@ this.router.navigate([`/hotel/${id}`])
     {
       HotelName: 'Mara Maisha Camp',
       HotelImagePath:
-        '../../../assets/Accomodations/mara',
+        '../../../assets/Accomodations/xMara,P20Maisha,P20Camp_120241011084806.webp.pagespeed.ic.pFB2QS8hXz.webp',
       HotelUniquePath: 'Mara maisha camp',
       HotelID:"679f58a56cf088bd78debe95"
     },
