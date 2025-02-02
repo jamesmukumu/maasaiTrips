@@ -28,6 +28,7 @@ font-weight: bolder;
 .explores button{
 background-color: #fca608;
 color: white;
+width: max-content;
 }
 h1{
 text-align: center;
@@ -113,8 +114,9 @@ flex-direction: column;
 flex-wrap: wrap;
 }
 .explores mat-card{
-margin-top: 15.555px
-};
+margin-top: 5.555px;
+margin-left:0px
+}
 .explores mat-card  button{
     width: 30px;
 }

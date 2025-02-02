@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {MatCardModule} from '@angular/material/card'
+import { ScrollTopModule } from 'primeng/scrolltop';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatSidenavModule} from "@angular/material/sidenav"
 import { IiComponent } from './components/ii/ii.component';
@@ -47,6 +48,7 @@ import { PatnersComponent } from './components/patners/patners.component'
     MatDividerModule,
     MatButtonModule,
     FormsModule,
+    ScrollTopModule,
   SidebarModule,
  MatSidenavModule,   
  GalleriaModule,  

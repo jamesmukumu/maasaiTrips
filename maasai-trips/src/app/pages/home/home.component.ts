@@ -7,11 +7,15 @@ import { trigger, style, animate, transition,state,keyframes } from '@angular/an
   animations: [
     trigger('bouncer', [
       transition('hide => see', [
-        style({ opacity: 0, transform: 'scale(1)' }),
-        animate('1200ms', keyframes([
-          style({ opacity: 0, transform: 'scale(0.5)', offset: 0 }), 
-          style({ opacity: 0.5, transform: 'scale(0.8)', offset: 0.3 }), 
-          style({ opacity: 1, transform: 'scale(1)', offset: 1 }), 
+        animate('1.55s', keyframes([
+          style({ opacity: 0, transform: 'translateX(-250px)', offset: 0, easing: 'ease-in' }),
+          style({ opacity: 1, transform: 'translateX(0)', offset: 0.38, easing: 'ease-out' }),
+          style({ transform: 'translateX(-68px)', offset: 0.55, easing: 'ease-in' }),
+          style({ transform: 'translateX(0)', offset: 0.72, easing: 'ease-out' }),
+          style({ transform: 'translateX(-28px)', offset: 0.81, easing: 'ease-in' }),
+          style({ transform: 'translateX(0)', offset: 0.90, easing: 'ease-out' }),
+          style({ transform: 'translateX(-8px)', offset: 0.95, easing: 'ease-in' }),
+          style({ transform: 'translateX(0)', offset: 1, easing: 'ease-out' })
         ]))
       ])
     ]),

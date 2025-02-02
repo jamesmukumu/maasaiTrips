@@ -42,7 +42,7 @@ this.router.navigate([`/hotel/${id}`])
       HotelName: 'Mara Sweet Acacia lodge',
       HotelID:"679e7ed6840994da370c2584",
       HotelImagePath:
-        '../../../assets/Accomodations/xMara,P20Maisha,P20Camp_120241011084806.webp.pagespeed.ic.pFB2QS8hXz.webp',
+        '../../../assets/Accomodations/xMara,P20Sweet,P20Acacia,P20Lodge_120241007140154.webp.pagespeed.ic.LdRrmuQram.webp',
       HotelUniquePath: 'Mara Lounge',
     },
     {
