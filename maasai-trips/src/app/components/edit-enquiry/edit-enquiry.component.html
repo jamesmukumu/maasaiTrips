@@ -1,0 +1,96 @@
+<mat-dialog-content>
+    <h1>Edit this inquiry</h1>
+  
+        <form>
+            <div class="formA">
+            <mat-form-field>
+            <mat-label>Enter Your First Name</mat-label>
+            <input type="text" required name="firstName" matInput [(ngModel)]="firstName" #FirstName="ngModel">
+            <mat-hint>Example John</mat-hint>
+            <mat-error *ngIf="FirstName.invalid && FirstName.touched">
+              This field must be filled  
+            </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+            <mat-label>Enter your last name</mat-label>
+            <input type="text" required [(ngModel)]="secondName" #lastName="ngModel" name="lastName" matInput>
+            <mat-hint>Example Doe</mat-hint>
+            <mat-error *ngIf="lastName.invalid && lastName.touched">
+              Please provide Second Name
+            </mat-error>
+    
+             </mat-form-field>
+             <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input required type="email" name="email" matInput [(ngModel)]="email" #Email="ngModel">
+          <mat-error *ngIf="Email.invalid && Email.touched">
+            Email ought be provided
+          </mat-error>  
+          </mat-form-field>
+            <mat-form-field>
+                <mat-label>Enter your phone number</mat-label>
+                <input [(ngModel)]="phoneNumber" required #phone="ngModel" type="text" name="phoneNumber" maxlength="12" matInput>
+                <mat-error *ngIf="phone.invalid && phone.touched">
+                  phone number ought be provided
+                </mat-error> 
+    
+    
+            </mat-form-field>
+            </div>
+            
+            
+            <div class="formB">
+           
+                <mat-form-field>
+                    <mat-label>Enter a date range</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input matStartDate placeholder="Start date" (dateChange)="seeStartDate($event)">
+                      <input matEndDate placeholder="End date" (dateChange)="endDateFormat($event)">
+                    </mat-date-range-input>
+                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+         
+            <mat-form-field>
+            <mat-label>Number of Adults</mat-label>
+            <input type="number" matInput name="adults" [(ngModel)]="adultsCount">
+            <mat-hint>Example:2</mat-hint>
+            </mat-form-field>
+            
+            <mat-form-field>
+            <mat-label>Number of Children</mat-label>
+            <input type="number" matInput name="children" [(ngModel)]="childrenCount">
+            <mat-hint>Example:5</mat-hint>
+            </mat-form-field>
+    
+    
+            <mat-form-field>
+            <mat-label>Provide children age`s comma separated</mat-label>
+            <input type="text" matInput name="ages" [(ngModel)]="kidsAges">
+            <mat-hint>Example:5,6,7,8</mat-hint>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Number of rooms</mat-label>
+                <input type="number" matInput name="rooms" [(ngModel)]="roomsCount" >
+                <mat-hint>Example 3</mat-hint>
+                </mat-form-field>
+    
+                <mat-form-field>
+                <mat-label>Enter your travel Details</mat-label>
+                 <textarea matInput name="desp" [(ngModel)]="travelDescription"  cols="1" rows="1"></textarea>
+                  <mat-hint>Example pertinent issues </mat-hint>
+    
+                </mat-form-field>
+            
+            </div>
+            
+                
+            </form>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions>
+    <button mat-flat-button (click)="updateEnquiry()" *ngIf="!processingQuote">Edit</button>
+    <button mat-flat-button *ngIf="processingQuote">Updating....</button>
+    </mat-dialog-actions>
