@@ -1,0 +1,76 @@
+<mat-card>
+    <mat-list>
+    <mat-list-item >
+    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
+    </mat-list-item>
+    <mat-list-item >
+    <p>Masaai Mara Trips</p>
+    </mat-list-item>
+    <mat-list-item>
+    <p>All About Masai Mara</p>
+    </mat-list-item>
+    <mat-list-item >
+    <p>Accomodations</p>
+    </mat-list-item>
+    <mat-list-item >
+    <p>Masaai Mara Safari's</p>
+    </mat-list-item>  
+    <mat-list-item >
+
+        <mat-icon  matTooltip="Show more actions" style="color: white;" [mat-menu-trigger-for]="menu">account_circle</mat-icon>
+      
+         <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                 <mat-icon>person</mat-icon>
+                <span (click)="signIn()">Sign In</span>
+              </button>
+              <button mat-menu-item >
+                <mat-icon>person</mat-icon>
+                <span (click)="signUp()">Sign Up</span>
+              </button>
+
+         </mat-menu>
+
+
+
+    </mat-list-item>
+    <mat-list-item>
+    <mat-icon class="icon">dark_mode</mat-icon>
+    </mat-list-item>
+    </mat-list>
+    
+    
+    
+    
+    
+    </mat-card> 
+    
+    
+    
+    
+    <p-sidebar >
+        <mat-list>
+            <mat-list-item >
+                <span matListItemTitle>Masaai Mara Trips</span>
+            </mat-list-item>
+            <mat-list-item >All About Masai Mara</mat-list-item>
+            <mat-list-item >Accommodations</mat-list-item>
+            <mat-list-item >Masaai Mara Safari's</mat-list-item>
+            <mat-list-item>
+                <button mat-flat-button >Travel to Mara</button>
+            </mat-list-item>
+        </mat-list>
+    </p-sidebar>
+    
+    <mat-drawer-container>
+        <mat-drawer #drawer mode="over" [opened]="false">
+          </mat-drawer>
+          
+    <div>
+        <mat-icon class="harmburg" >menu</mat-icon>
+        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
+        <mat-icon class="dark">dark_mode</mat-icon>
+    </div>
+    
+    
+        </mat-drawer-container>

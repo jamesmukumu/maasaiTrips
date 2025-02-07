@@ -1,0 +1,89 @@
+<header-add></header-add>
+<div>
+<mat-card>
+<form>
+<h3>Create a new Account</h3>
+<mat-form-field appearance="outline">
+<mat-label>Enter Your UserName</mat-label>
+<input type="text" required name="userName" #username="ngModel" [(ngModel)]="userName" matInput>
+<mat-error *ngIf="username.invalid && username.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your Email Address</mat-label>
+<input type="email" required name="Email" #email="ngModel" [(ngModel)]="Email" matInput>
+<mat-error *ngIf="email.invalid && email.touched">
+Provide this field as needed
+</mat-error>
+
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter your phone Number</mat-label>
+<input type="text" required name="phoneNumber" #phone="ngModel" [(ngModel)]="phoneNumber" matInput>
+<mat-error *ngIf="phone.invalid && phone.touched">
+Provide this field as needed
+</mat-error>
+
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your password</mat-label>
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<input #pass="ngModel" (change)="checkerPassMatch($event)" minlength="6" required [type]="seePassword ? 'text':'password'" name="password" [(ngModel)]="password" matInput>
+<mat-error *ngIf="pass.invalid && pass.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<mat-label>Re-Type your password</mat-label>
+<input (change)="checkerPassMatch($event)" minlength="6" [type]="seePassword ? 'text':'password'" required name="confirmPassword" [(ngModel)]="confirmPassword" matInput>
+</mat-form-field>
+<div
+id="g_id_onload"
+data-client_id="56995972649-r58h6hevtt4itu94dgmqq7tfp0s9vmnr.apps.googleusercontent.com"
+data-context="signin"
+data-ux_mode="popup"
+data-callback="handleCredentialResponse"
+data-auto_prompt="false"
+></div>
+
+<div
+class="g_id_signin"
+data-type="standard"
+data-shape="pill"
+data-theme="filled_blue"
+data-text="continue_with"
+data-size="large"
+data-logo_alignment="left"
+></div>
+<mat-error *ngIf="mismatchWarn">
+    Mismatch between passwords
+    </mat-error>
+<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign in</span></p>
+
+<button mat-flat-button *ngIf="!processingRequest && !mismatchWarn" (click)="reg()">Sign In</button>
+<p-button label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+</form>
+
+
+ 
+</mat-card>
+<mat-card style="background-color: rgb(241,245,249);">
+<img src="../../../../assets/undraw_access-account_aydp.svg" alt="">
+
+</mat-card>
+
+    <p-toast/>
+
+
+
+</div>
+<footer></footer>

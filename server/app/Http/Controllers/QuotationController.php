@@ -152,7 +152,7 @@ try{
         $quotation -> adultsCount = $validatedRequest["adultsCount"];
         $quotation -> childrenCount = $validatedRequest["childrenCount"];
         $quotation -> travelDescription = $validatedRequest["travelDescription"];
-        $quotation -> kidsAges = $validatedRequest["kidsAges"];
+        $quotation -> kidsAges = $request["kidsAges"];
         
         
         $quotation ->save();

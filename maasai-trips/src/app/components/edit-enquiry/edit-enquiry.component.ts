@@ -74,6 +74,7 @@ this.store.subscribe((data:any)=>{
   console.log(data)
 var {enquiry} = data
 var unmarhsalledEnquiry = JSON.parse(enquiry)
+console.log(unmarhsalledEnquiry)
 this.firstName = unmarhsalledEnquiry.firstName
 this.secondName = unmarhsalledEnquiry.lastName
 this.roomsCount = unmarhsalledEnquiry.roomsCount
@@ -83,6 +84,8 @@ this.travelDescription = unmarhsalledEnquiry.travelDescription
 this.phoneNumber = unmarhsalledEnquiry.phoneNumber.toString()
 this.childrenCount = unmarhsalledEnquiry.childrenCount
 this.kidsAges = unmarhsalledEnquiry.kidsAges
+this.startDate = unmarhsalledEnquiry.startStayDate
+this.endDate = unmarhsalledEnquiry.endStayDate
 })
 }
 

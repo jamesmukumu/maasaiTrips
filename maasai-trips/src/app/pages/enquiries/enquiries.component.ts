@@ -23,7 +23,7 @@ export class EnquiriesComponent implements OnInit {
 constructor(private quotations:QuotationsService,private store:Store){}
 processingFetchRequest:boolean = false
 tabularData:any
-displayedColumns:string[] = ["firstname","email","phoneNumber","adults","childrenCount","kidsAges","rooms","startDate",'endDate','travelDescription',"action2",'action']
+displayedColumns:string[] = ["firstname","email","phoneNumber","adults","childrenCount","kidsAges","rooms","startDate",'endDate','travelDescription','action']
 
 
 

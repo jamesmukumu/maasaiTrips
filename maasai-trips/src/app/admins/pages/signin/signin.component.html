@@ -1,0 +1,50 @@
+<header-add></header-add>
+
+<div>
+<mat-card>
+<form>
+<h1>Sign in to your account</h1>
+<h3>Do not have an account yet? <span  (click)="signUp()" style="cursor: pointer;color: blue;">Sign up</span></h3>
+<mat-form-field appearance="outline">
+<mat-label>Enter Your UserName/Email</mat-label>
+<input type="text" required name="userName" #username="ngModel" [(ngModel)]="credential" matInput>
+<mat-error *ngIf="username.invalid && username.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your password</mat-label>
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<input #pass="ngModel" minlength="6" required [type]="seePassword ? 'text':'password'" name="password" [(ngModel)]="password" matInput>
+<mat-error *ngIf="pass.invalid && pass.touched">
+Provide password as needed
+</mat-error>
+</mat-form-field>
+
+
+
+
+<span style="color: #08088b;cursor: pointer;">Forgot password?</span>
+
+
+<button mat-flat-button *ngIf="!processingRequest" (click)="login()">Sign In</button>
+<p-button label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+</form>
+
+
+ 
+</mat-card>
+<mat-card>
+<img src="../../../../assets/undraw_access-account_aydp.svg" alt="">
+
+</mat-card>
+
+    
+<p-toast/>
+
+
+</div>
