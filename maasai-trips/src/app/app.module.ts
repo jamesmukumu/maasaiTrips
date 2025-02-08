@@ -52,6 +52,8 @@ import { SigninComponent } from './admins/pages/signin/signin.component';
 import { HeaderAddComponent } from './admins/components/header-add/header-add.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
+import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
+import { RequestResetComponent } from './components/request-reset/request-reset.component';
 
 
 
@@ -70,7 +72,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,

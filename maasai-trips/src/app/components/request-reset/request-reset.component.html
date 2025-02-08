@@ -1,0 +1,17 @@
+<mat-card>
+<mat-form-field appearance="outline">
+<mat-label>Enter your Email</mat-label>
+<input [(ngModel)]="email" required minlength="6" #mail="ngModel" type="text" matInput >
+<mat-hint>Example:johndoegmail.com</mat-hint>
+<mat-error *ngIf="mail.invalid">
+Email is required as needed
+</mat-error>
+
+</mat-form-field> 
+
+<mat-card-footer>
+<button style="background-color: rgb(242,159,8);color: white;" mat-flat-button>Request</button>
+<button mat-dialog-close style="background-color: red;color: white;" mat-flat-button>Cancel</button>
+</mat-card-footer>
+
+</mat-card> 

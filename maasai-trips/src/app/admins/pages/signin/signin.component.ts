@@ -3,6 +3,9 @@ import { AdminService } from '../../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import {MatDialog} from "@angular/material/dialog"
+import { RequestResetComponent } from '../../../components/request-reset/request-reset.component';
+
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -11,12 +14,19 @@ import { MessageService } from 'primeng/api';
 })
 export class SigninComponent {
   readonly snack = inject(MatSnackBar)
+  readonly dialog = inject(MatDialog)
   processingRequest = false
   credential = ''
   password = ''
   seePassword:boolean = false
   constructor(private admin:AdminService,private router:Router,private msg:MessageService){}
 
+
+  popRequest(){
+   this.dialog.open(RequestResetComponent,{
+    disableClose:true
+   })
+  }
 login(){
   this.processingRequest = true
 this.admin.login(this.credential,this.password).then((data)=>{

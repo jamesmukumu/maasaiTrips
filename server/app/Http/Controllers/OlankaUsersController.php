@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPassword;
 use App\Mail\SignMail;
 use App\Models\OlankaUsers;
 use Dotenv\Exception\ValidationException;
@@ -90,6 +91,73 @@ return response()->json([
 
 
 
+public function RequestResetLink(Request $request){
+try{
+    $validatedRequest = $request -> validate([
+        "Email" =>"required"
+        ]);
+        $user = new OlankaUsers();
+        if(!$user->where("Email",$validatedRequest["Email"])->exists()){
+        return response()->json([
+        "message"=>"Email Non existent"
+        ]);
+        }else{
+        $userDB = $user->where("Email",$validatedRequest["Email"])->first();
+        $token = JWTAuth::fromUser($userDB);
+
+        Mail::to($validatedRequest["Email"])->send(new ResetPassword($userDB,$token));
+        return response()->json([
+        "message"=>"Reset link sent",
+        "token"=>$token
+        ]);
+        }
+
+}catch(\Exception $err){
+die($err->getMessage());
+}catch(ValidationException $err1){
+return response()->json([
+"message"=>"Validation Error"
+]);   
+}
+
+
+}  
+
+
+
+public function actualizeVerify(Request $request){
+try{
+$validatedRequest = $request ->validate([
+"password"=>"required|min:6",
+"confirmPassword"=>"required|min:6"
+]);
+if($validatedRequest["password"] != $validatedRequest["confirmPassword"]){
+return response()->json([
+"message"=>"Provide matching passwords"
+]);
+}
+$tokenHeader = $request->header("Authorization");
+$token = substr($tokenHeader,7);
+$payload = JWTAuth::setToken($token)->getPayload();
+$claimsToken = $payload->toArray();
+$userID = $claimsToken["sub"];
+$user = new OlankaUsers();
+$matchingUser = $user->find($userID);
+$matchingUser["password"] = Hash::make($validatedRequest["password"]);
+$matchingUser ->save();
+return response()->json([
+"message"=>"Password updated successfully"
+]);
+}catch(\Exception $err){
+return response()->json([
+"message"=>$err->getMessage()
+]);
+}catch(ValidationException $err){
+return response()->json([
+"message"=>"Validation has failed"
+]);
+}
+}
 public function verifyEmail(Request $request){
 try{
 $tokenHeader = $request->header("Authorization");
@@ -108,7 +176,7 @@ return "Updated successfully";
 
 }catch(Exception $err){
 return response()->json([
-"message"=>"Something when wrong"
+"message"=>"Something went wrong"
 ]);
 }catch(JWTException $errJwt){
 return response()->json([

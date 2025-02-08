@@ -2,7 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../services/admin.service';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';  
 @Component({
   selector: 'app-verify-email',
   templateUrl: './verify-email.component.html',
