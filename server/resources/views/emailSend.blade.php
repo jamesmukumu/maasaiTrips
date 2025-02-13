@@ -6,7 +6,7 @@
   <meta name="x-apple-disable-message-reformatting">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta content="telephone=no" name="format-detection">
-  <title>Reset Password</title><!--[if (mso 16)]>
+  <title>Email Send</title><!--[if (mso 16)]>
     <style type="text/css">
     a {text-decoration: none;}
     </style>
@@ -120,10 +120,11 @@ a[x-apple-data-detectors],
                   <td align="center" valign="top" style="padding:0;Margin:0;width:580px">
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td align="center" style="padding:0;Margin:0;padding-bottom:40px"><h1 class="es-m-txt-c" style="Margin:0;font-family:Oswald, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:28px;font-style:normal;font-weight:bold;line-height:33.6px;color:#262626">Password reset request for {{$userInfo ->userName}} </h1></td>
+                      <td align="center" style="padding:0;Margin:0;padding-bottom:40px"><h1>{{$subject}}</h1></td>
+
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626">Your Password request has been received and is valid for <span style="color: red">5 MINUTES ONLY</span> </p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626">{!! $msg !!}</p></td>
                      </tr>
                      <tr style="border-collapse:collapse">
                       <td align="center" class="es-m-txt-c" style="padding:0;Margin:0;padding-bottom:40px;padding-top:40px"><!--[if mso]><a href="https://viewstripo.email/" target="_blank" hidden>
@@ -132,7 +133,7 @@ a[x-apple-data-detectors],
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#ffffff; font-family:Oswald, sans-serif; font-size:12px; font-weight:700; line-height:12px;  mso-text-raise:1px'>CONFIRM ACCOUNT</center>
 	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#1B2A2F;background:#d9ec22;border-width:0px;display:inline-block;border-radius:21px;width:auto;mso-hide:all"><a href="http://localhost:4200/reset/password/{{$tokenString}}" target="_blank" class="es-button" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:12px;padding:10px 20px 10px 20px;display:inline-block;background:#d9ec22;border-radius:21px;font-family:Oswald, sans-serif;font-weight:bold;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #d9ec22">Reset Password</a></span><!--<![endif]--></td>
+<![endif]--><!--[if !mso]><!-- -->
                      </tr>
                      <tr style="border-collapse:collapse">
                       <td align="left" style="padding:0;Margin:0;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626">If this was not you,ignore this email or contact us for help:</p></td>
@@ -205,7 +206,7 @@ a[x-apple-data-detectors],
                   <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td align="center" class="made_with" style="padding:0;Margin:0;font-size:0"><a target="_blank" href="https://viewstripo.email/?utm_source=templates&utm_medium=email&utm_campaign=fashion_6&utm_content=welcome" style="mso-line-height-rule:exactly;text-decoration:underline;color:#EF0D33;font-size:14px"><img src="https://ekfxwcc.stripocdn.email/content/guids/CABINET_9df86e5b6c53dd0319931e2447ed854b/images/64951510234941531.png" alt="" width="125" style="display:block;font-size:14px;border:0;outline:none;text-decoration:none"></a></td>
+
                      </tr>
                    </table></td>
                  </tr>

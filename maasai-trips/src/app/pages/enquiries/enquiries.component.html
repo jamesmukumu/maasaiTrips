@@ -1,5 +1,5 @@
-<header></header>
-<mat-card>
+
+<mat-card *ngIf="!processingFetchRequest">
 <mat-card-content>
     <table mat-table [dataSource]="tabularData" class="mat-elevation-z8" *ngIf="!processingFetchRequest">
 
@@ -77,12 +77,60 @@
       </table>
 </mat-card-content>
 
-<p-progressBar mode="indeterminate" [style]="{ height: '6px' }" *ngIf="processingFetchRequest"></p-progressBar>
-
 
 </mat-card>
-<footer></footer>
 
+
+<div class="spin" *ngIf="processingFetchRequest">
+  <p-progressSpinner/>
+</div>
+
+<style>
+.progress {
+   width: 129.6px;
+   height: 21.6px;
+   background: linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0),
+        linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0),
+        linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0)
+        #dbdcef;
+   background-size: calc(100%/6 + 1px) 200%;
+   background-repeat: no-repeat;
+   animation: progress-qh65fe 2s infinite;
+}
+
+@keyframes progress-qh65fe {
+   0% {
+      background-position: 0% 100%, 20%   0%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   16.67% {
+      background-position: 0%   0%, 20%   0%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   33.33% {
+      background-position: 0%   0%, 20% 100%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   50% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   66.67% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80% 100%, 100%   0%;
+   }
+
+   83.33% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80%   0%, 100%   0%;
+   }
+
+   100% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80%   0%, 100% 100%;
+   }
+}
+</style>
 
 
 

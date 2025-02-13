@@ -35,6 +35,35 @@ return resp.data
 console.error(err)
 }
 }
+async completeReset(Token:string,password:string,completePass:string){
+try{
+var resp = await axios.put("http://localhost:8000/api/reset/password",{
+"password":password,
+"confirmPassword":completePass,
+},
+{
+headers:{
+"Authorization":"Bearer"+" "+Token
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+
+}
+async requestResets(Email:string){
+try{
+var resp = await axios.post("http://localhost:8000/api/request/reset",{
+"Email":Email
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+
+
+}
 async login(credential:string,password:string){
 try{
 var resp = await axios.post("http://localhost:8000/api/login/user",{

@@ -20,7 +20,7 @@ $token = substr($tokenHeader,7);
 if($token == '' || $tokenHeader == ''){
 return response()->json([
 "message"=>"Missing token header"
-]);
+],401);
 }
 try{
 $payload = JWTAuth::setToken($token)->getPayload();

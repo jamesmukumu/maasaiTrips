@@ -6,10 +6,13 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {ToastModule} from "primeng/toast"
+import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import {MatDatepickerModule} from '@angular/material/datepicker'
+import { MatSelectModule } from '@angular/material/select';
 import {MatMenuModule} from "@angular/material/menu"
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
@@ -54,8 +57,12 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 import { ResetPasswordComponent } from './pages/reset-password/reset-password.component';
 import { RequestResetComponent } from './components/request-reset/request-reset.component';
-
-
+import { DashboardComponent } from './admins/pages/dashboard/dashboard.component';
+import { EmailsSendComponent } from './admins/components/emails-send/emails-send.component';
+import { FileUploadModule } from 'primeng/fileupload';
+import { NewEmailComponent } from './admins/components/email/new-email/new-email.component';
+import {MatChipsModule} from "@angular/material/chips";
+import { BulkMailsComponent } from './admins/components/email/bulk-mails/bulk-mails.component'
 
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer
@@ -72,17 +79,22 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatChipsModule,
+    EditorModule,
+    HttpClientModule,
     MatSnackBarModule,
     MatIconModule,      
     ButtonModule,
+    MatSelectModule,
     MatDatepickerModule,
     MatTableModule,
     MatDialogModule,
+    FileUploadModule,
     MatListModule,
     GoogleMapsModule,
     AccordionModule,
@@ -111,6 +123,15 @@ MatTooltipModule,
       {
       component:VerifyEmailComponent,
       path:"verify/email/:token"
+      },
+      {
+component:DashboardComponent,
+path:"dashboard"
+      },
+
+      {
+      component:ResetPasswordComponent,
+      path:"reset/password/:token"
       },
       {
       component:HomeComponent,

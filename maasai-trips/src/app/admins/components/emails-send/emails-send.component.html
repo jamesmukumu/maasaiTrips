@@ -1,0 +1,71 @@
+<mat-card>
+<h1>Send Email</h1>
+<form>
+<mat-form-field >
+<mat-label>Send to</mat-label>
+<input required type="email" matInput name="mailTo" [(ngModel)]="targetMail">
+<mat-hint>Example johnDoe&#64;gmail.com</mat-hint>
+</mat-form-field>
+
+
+
+<mat-form-field>
+    <mat-label>CC</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter CC Emails">
+      <mat-chip-row *ngFor="let choosenCC of ccCopies">
+        {{choosenCC}}
+        <button matChipRemove (click)="removeCC(choosenCC)">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+    </mat-chip-grid>
+    
+    <input 
+      [matChipInputFor]="chipGrid"
+      [matChipInputAddOnBlur]="true"
+      (matChipInputTokenEnd)="addCC($event)"
+      placeholder="Add CC"
+    />
+    <mat-hint>Example:abcd&#64;gmail.com</mat-hint>
+  </mat-form-field>
+  
+    
+    <mat-form-field>
+        <mat-label>Subject</mat-label>
+        <input [(ngModel)]="subjectEmail" required type="email" matInput name="mailTo">
+        <mat-hint>Example:Reservation Request</mat-hint>
+        </mat-form-field>
+
+        <div>
+        <mat-label>Enter message</mat-label>
+        <p-editor (onTextChange)="captureMessage($event)" required [style]="{height:'fit-content'}" placeholder="Enter your message here" [(ngModel)]="message"/>
+      </div>
+
+      <input #fileInput type="file" style="display: none;" >
+      
+      <div class="card flex justify-content-center">
+        
+        <p-fileUpload 
+            name="demo[]" 
+      
+             (onUpload)="choosenFile($event)"
+             (onSelect)="choosenFile($event)"
+             
+            [multiple]="true">
+                <ng-template pTemplate="content">
+                    <ul >
+                    
+                    </ul>
+                </ng-template>
+        </p-fileUpload>
+    </div>
+    
+</form>
+
+<mat-card-actions>
+<button mat-flat-button *ngIf="!processingEmail" (click)="sendingEmail()">Send</button>
+<p-button label="Sending" *ngIf="processingEmail" loading/>
+
+</mat-card-actions>
+<p-toast/>
+</mat-card>

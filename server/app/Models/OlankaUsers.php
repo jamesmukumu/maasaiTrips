@@ -12,8 +12,7 @@ class OlankaUsers extends Model implements JWTSubject
 
     protected $fillable = ["userName", "password", "Email", "phoneNumber"];
 
-    public function getJWTIdentifier()
-    {
+    public function getJWTIdentifier(){
         return $this->getKey();
     }
 

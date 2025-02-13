@@ -103,12 +103,13 @@ try{
         ]);
         }else{
         $userDB = $user->where("Email",$validatedRequest["Email"])->first();
+        JWTAuth::factory()->setTTl(5);
         $token = JWTAuth::fromUser($userDB);
 
         Mail::to($validatedRequest["Email"])->send(new ResetPassword($userDB,$token));
         return response()->json([
         "message"=>"Reset link sent",
-        "token"=>$token
+      
         ]);
         }
 

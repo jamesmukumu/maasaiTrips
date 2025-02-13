@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import {MatDialog} from "@angular/material/dialog"
 import { RequestResetComponent } from '../../../components/request-reset/request-reset.component';
+import Cookie from "js-cookie"
+
+
+
 
 @Component({
   selector: 'app-signin',
@@ -30,7 +34,7 @@ export class SigninComponent {
 login(){
   this.processingRequest = true
 this.admin.login(this.credential,this.password).then((data)=>{
-var {message} = data
+var {message,token} = data
 switch(message){
   case "Credentials mismatch":
 this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
@@ -41,8 +45,9 @@ this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
   this.msg.add({severity:"error",life:10000,detail:"User does not have an account"})
   this.processingRequest= false
   break;
-
-  // handle login to redirect
+case "Successful Login":
+Cookie.set("grant_token",token,{expires:60/56400})
+this.router.navigate(["/dashboard"])
   }
 })
 }

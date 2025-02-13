@@ -10,8 +10,10 @@ Email is required as needed
 </mat-form-field> 
 
 <mat-card-footer>
-<button style="background-color: rgb(242,159,8);color: white;" mat-flat-button>Request</button>
-<button mat-dialog-close style="background-color: red;color: white;" mat-flat-button>Cancel</button>
-</mat-card-footer>
+<button (click)="processRequest()" *ngIf="!processingRequest" style="background-color: rgb(242,159,8);color: white;" mat-flat-button>Request</button>
+<button *ngIf="!processingRequest"  mat-dialog-close style="background-color: red;color: white;" mat-flat-button>Cancel</button>
+<p-button *ngIf="processingRequest" loading="true" label="Processing Request"/>
 
+</mat-card-footer>
+<p-toast/>
 </mat-card> 
