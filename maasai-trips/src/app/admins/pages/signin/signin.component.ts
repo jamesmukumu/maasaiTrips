@@ -46,7 +46,7 @@ this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
   this.processingRequest= false
   break;
 case "Successful Login":
-Cookie.set("grant_token",token,{expires:60/56400})
+Cookie.set("grant_token",token,{expires:1/24})
 this.router.navigate(["/dashboard"])
   }
 })

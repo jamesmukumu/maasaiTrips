@@ -24,7 +24,7 @@
                       <mat-icon style="background-color: white;">email</mat-icon>
                       <span style="color: black;">Send mail</span>
                     </button>
-                    <button mat-menu-item >
+                    <button mat-menu-item (click)="chooserEmail(3)" >
                       <mat-icon>email</mat-icon>
                       <span style="color: black;">Send Bulk</span>
                     </button>
@@ -143,7 +143,8 @@
 <div *ngSwitchCase="1" >
 
 <new-email *ngIf="emailChoosen==2"></new-email>
-<bulk-mails *ngIf="emailChoosen==1"></bulk-mails>
+<emails-send *ngIf="emailChoosen==1"></emails-send>
+<bulk-mails *ngIf="emailChoosen==3"></bulk-mails>
  </div>
           
 

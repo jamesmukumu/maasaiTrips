@@ -1,67 +1,98 @@
-<mat-card>
-<h2>Add new email </h2>
-<form>
-<div class="form-a">
-
-<mat-form-field>
-<mat-label>Enter your Full name</mat-label>
-<mat-icon matIconPrefix>person</mat-icon>
-<input type="text" matInput name="fullName" [(ngModel)]="fullName" required>
-</mat-form-field>
-<mat-form-field>
-    <mat-label>Choose option</mat-label>
-    <mat-select>
-    <mat-option *ngFor="let opts of bulkOptions "[value]="opts">
-    {{opts}}
-    </mat-option>
-    </mat-select>
-    </mat-form-field>
-
-<mat-form-field>
-<mat-label>Enter your phone Number</mat-label>
-<mat-icon matIconPrefix>call</mat-icon>
-<input type="number" min="10" maxlength="12" matInput name="phoneNumber" [(ngModel)]="fullName" required>
-</mat-form-field>
+<h1>Send Bulk Mails</h1>
 
 
-<mat-form-field>
-<mat-label>Enter id number</mat-label>
-<mat-icon matIconPrefix>remember_me</mat-icon>
-<input type="number" matInput name="phoneNumber" [(ngModel)]="fullName" required>
-</mat-form-field>
+<div class="table-form" *ngIf="!processingTable">
 
-<mat-form-field>
-<mat-label>Enter description</mat-label>
-<textarea name="desc" id="" matInput cols="3" rows="3"></textarea>
-</mat-form-field>
+  <mat-card-header>
+    <button mat-flat-button (click)="openBulk()">
+    Add new Mail
+    </button> 
+    <button mat-flat-button>
+    Send Mails
+    </button>
+  
+    </mat-card-header>
+<mat-form-field >
+  <mat-label>Search any email</mat-label>
+  <input type="text" matInput (keyup)="applyFilter($event)" #inputSelect>
+  <mat-hint>Example:johndoegmail.com</mat-hint>
+  </mat-form-field>
 </div>
-
-
-<div class="form-b">
-    <mat-form-field>
-    <mat-label>Enter email address</mat-label>
-      <input type="email" name="mail" matInput required>
-    </mat-form-field>
-    <mat-form-field>
-    <mat-label>Choose identification method</mat-label>
-     <mat-select>
-     <mat-option value="idNumber">ID Number </mat-option>
-     <mat-option value="passportNumber">Passport Number </mat-option>
-     </mat-select>
-    </mat-form-field>
-    
-    
  
+
+<table mat-table [dataSource]="dataSource" *ngIf="!processingTable">
+
+
+  <ng-container matColumnDef="choosen">
+    <th mat-header-cell *matHeaderCellDef>Selected</th>
+    <td mat-cell *matCellDef="let element"> 
+    <mat-checkbox></mat-checkbox>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="fullname">
+    <th mat-header-cell *matHeaderCellDef>FullName</th>
+    <td mat-cell *matCellDef="let element"> {{element.fullname}} </td>
+  </ng-container>
+
+  
+  <ng-container matColumnDef="category">
+    <th mat-header-cell *matHeaderCellDef>Category</th>
+    <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email</th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="identificationNumber">
+    <th mat-header-cell *matHeaderCellDef>Identification Number</th>
+    <td mat-cell *matCellDef="let element"> {{element.identificationNumber}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="country">
+    <th mat-header-cell *matHeaderCellDef>Country</th>
+    <td mat-cell *matCellDef="let element"> {{element.country}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+    <button mat-icon-button matTooltip="actions" [mat-menu-trigger-for]="menu">
+    <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu>
+     <button mat-menu-item>
+      <mat-icon>edit</mat-icon>
+      <span>Edit</span>
+     </button>
+     <button mat-menu-item>
+      <mat-icon style="color: red;">delete</mat-icon>
+      <span>Delete</span>
+     </button>
+
+    </mat-menu>
+
     
-    
- 
-    </div>
+    </td>
+  </ng-container>
 
-</form>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter </td>
+  </tr>
+</table>
+
+<mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+               showFirstLastButtons
+               aria-label="Select page of periodic elements">
+</mat-paginator>
 
 
 
-
-
-
-</mat-card>
+<div class="spin">
+ <p-progressSpinner *ngIf="processingTable"/>
+</div>

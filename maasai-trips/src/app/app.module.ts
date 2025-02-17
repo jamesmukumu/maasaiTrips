@@ -11,6 +11,7 @@ import {MatCardModule} from '@angular/material/card'
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatSelectModule } from '@angular/material/select';
 import {MatMenuModule} from "@angular/material/menu"
@@ -36,6 +37,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SafarisComponent } from './pages/safaris/safaris.component';
 import { QuotationsComponent } from './components/quotations/quotations.component'
 import { FormsModule } from '@angular/forms';
+import {MatCheckboxModule} from "@angular/material/checkbox"
 import { AccomodationsComponent } from './pages/accomodations/accomodations.component';
 import { HotelsComponent } from './pages/hotels/hotels.component';
 import {GalleriaModule} from 'primeng/galleria'
@@ -62,7 +64,8 @@ import { EmailsSendComponent } from './admins/components/emails-send/emails-send
 import { FileUploadModule } from 'primeng/fileupload';
 import { NewEmailComponent } from './admins/components/email/new-email/new-email.component';
 import {MatChipsModule} from "@angular/material/chips";
-import { BulkMailsComponent } from './admins/components/email/bulk-mails/bulk-mails.component'
+import { BulkMailsComponent } from './admins/components/email/bulk-mails/bulk-mails.component';
+import { NewBulkAddComponent } from './admins/components/email/new-bulk-add/new-bulk-add.component'
 
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer
@@ -79,7 +82,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -93,6 +96,7 @@ const reducers:ActionReducerMap<any> = {
     MatSelectModule,
     MatDatepickerModule,
     MatTableModule,
+    MatCheckboxModule,
     MatDialogModule,
     FileUploadModule,
     MatListModule,
@@ -107,6 +111,7 @@ const reducers:ActionReducerMap<any> = {
   SidebarModule,
  MatSidenavModule,   
  MatMenuModule,
+ MatPaginatorModule,
  GalleriaModule,
  DropdownModule,
  StoreModule.forRoot(reducers,{metaReducers}) , 

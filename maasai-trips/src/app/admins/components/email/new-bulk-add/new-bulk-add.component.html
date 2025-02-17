@@ -1,0 +1,70 @@
+<mat-card>
+    <h2>Add new email </h2>
+    <form>
+    <div class="form-a">
+    
+    <mat-form-field>
+    <mat-label>Enter your Full name</mat-label>
+    <mat-icon matIconPrefix>person</mat-icon>
+    <input type="text" matInput name="fullName"  required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Choose option</mat-label>
+        <mat-select>
+        <mat-option *ngFor="let opts of bulkOptions "[value]="opts">
+        {{opts}}
+        </mat-option>
+        </mat-select>
+        </mat-form-field>
+    
+    <mat-form-field>
+    <mat-label>Enter your phone Number</mat-label>
+    <mat-icon matIconPrefix>call</mat-icon>
+    <input type="number" min="10" maxlength="12" matInput name="phoneNumber" required>
+    </mat-form-field>
+    
+    
+    <mat-form-field>
+    <mat-label>Enter id number</mat-label>
+    <mat-icon matIconPrefix>remember_me</mat-icon>
+    <input type="number" matInput name="phoneNumber"  required>
+    </mat-form-field>
+    
+    <mat-form-field>
+    <mat-label>Enter description</mat-label>
+    <textarea name="desc" id="" matInput cols="3" rows="3"></textarea>
+    </mat-form-field>
+    </div>
+    
+    
+    <div class="form-b">
+        <mat-form-field>
+        <mat-label>Enter email address</mat-label>
+          <input type="email" name="mail" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-label>Choose identification method</mat-label>
+         <mat-select>
+         <mat-option value="idNumber">ID Number </mat-option>
+         <mat-option value="passportNumber">Passport Number </mat-option>
+         </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field>
+          <mat-label>Choose country</mat-label>
+           <mat-select>
+           <mat-option *ngFor="let country of countryCodes" [value]="country.name">
+             {{country.name}}
+             <img [src]="formatFlag(country.code)"  width="20" height="15" style="margin-right: 8px;">
+           </mat-option>
+           </mat-select>
+          </mat-form-field>
+    
+     
+     
+        
+        
+     
+        </div>
+    </form>
+    </mat-card>

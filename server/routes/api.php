@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\BulkMailControllers;
 use App\Http\Controllers\OlankaUsersController;
 use App\Http\Controllers\QuotationController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,9 @@ Route::put("/verify/email",[OlankaUsersController::class,"verifyEmail"]);
 Route::put("/reset/password",[OlankaUsersController::class,"actualizeVerify"])->middleware(Verify::class);
 Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
 
+
+Route::get("/fetch/bulk/emails",[BulkMailControllers::class,"fetchBulkMails"]);
+Route::post("/send/bulk/mails",[BulkMailControllers::class,"sendMailsBulk"]);
 
 
 

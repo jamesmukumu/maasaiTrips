@@ -12,6 +12,46 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class MailerController extends Controller{
+
+    public function attachFile(Request $request,$mailSub,$mailMess)
+    {
+        try {
+           
+  
+            $filePath = null;
+            $ccEmails = [];
+            $attachments = $request->file('attachment');
+    
+                if (!is_array($attachments)) {
+                    $attachments = [$attachments]; 
+                }
+    
+                foreach ($attachments as $file) {
+                    $filePath = $file->store(''); 
+                   $mail = new MailerSend(
+                        $mailSub,
+                        $mailMess,
+                        $filePath
+                    );
+    
+                 Mail::to("jamesmukumu03@gmail.com")->send($mail);
+                $filePath = null;
+                }
+         
+    } catch (ValidationException $errValidate) {
+            Log::error('Validation error: ' . $errValidate->getMessage());
+            return response()->json([
+                "message" => "Validation error: " . $errValidate->getMessage()
+            ], 422);
+    
+        } catch (\Exception $err) {
+            Log::error('Error sending email: ' . $err->getMessage());
+            return response()->json([
+                "message" => "Error sending email: " . $err->getMessage()
+            ], 500);
+        }
+    }
+
     public function sendMail(Request $request)
     {
         try {

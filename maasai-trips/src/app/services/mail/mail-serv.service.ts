@@ -20,6 +20,22 @@ ccs?:string
 })
 export class MailServService {
 constructor() { }
+
+async fetchBulks(url:string){
+var token = Cookies.get("grant_token")
+
+try{
+var resp = await axios.get(url,{
+headers:{
+"Authorization":token
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+}
+
 async saveEmail(Mail:Mail){
 var token = Cookies.get("grant_token") 
 try{
@@ -38,7 +54,8 @@ formData.append("ccs",Mail.ccs??"");
 
 var resp = await axios.post("http://localhost:8000/api/send/email",formData,{
 headers:{
-"Content-Type":"multipart/form-data"
+"Content-Type":"multipart/form-data",
+"Authorization":`Bearer ${token}`
 }
 })
 return resp.data
@@ -54,7 +71,7 @@ try{
 var token = Cookies.get("grant_token") ?? ''
 var resp = await axios.post("http://localhost:8000/api/save/email/template",Temp,{
 headers:{
-"Authorization":"Bearer"+" "+token
+"Authorization":`Bearer ${token}`
 }
 })
 return resp.data
