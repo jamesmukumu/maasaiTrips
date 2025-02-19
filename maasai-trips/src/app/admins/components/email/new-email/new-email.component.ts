@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { MailServService,MailTemplate } from '../../../../services/mail/mail-serv.service';
 
+import { VideoHandler, ImageHandler, Options } from 'ngx-quill-upload';
 @Component({
   selector: 'new-email',
   templateUrl: './new-email.component.html',
@@ -9,12 +10,17 @@ import { MailServService,MailTemplate } from '../../../../services/mail/mail-ser
   providers:[MessageService]
 })
 export class NewEmailComponent {
+
+
+  
+  
 constructor(private msg:MessageService,private mailer:MailServService){}
 processingRequest = false
 subject = ''
 message = ''
 captureMessage(event:any){
 var {htmlValue} = event
+console.log(htmlValue)
 this.message = htmlValue
 }
 

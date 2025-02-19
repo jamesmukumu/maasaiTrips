@@ -3,15 +3,38 @@
 
 <div class="table-form" *ngIf="!processingTable">
 
-  <mat-card-header>
-    <button mat-flat-button (click)="openBulk()">
+  <mat-card-header  *ngIf="!sendingMails">
+    <button mat-flat-button (click)="openBulk()" >
     Add new Mail
     </button> 
-    <button mat-flat-button>
+
+    <button mat-flat-button (click)="sendBulks()" >
     Send Mails
     </button>
-  
-    </mat-card-header>
+    <p-fileUpload 
+    name="demo[]" 
+    url="https://www.primefaces.org/cdn/api/upload.php" 
+    (onUpload)="choosenFile($event)"
+    (onSelect)="choosenFile($event)"
+    [multiple]="true" 
+   maxFileSize="1000000">
+        <ng-template pTemplate="content">
+            <ul >
+            
+            </ul>
+        </ng-template>
+</p-fileUpload>
+</mat-card-header>
+<p-button loading  label="Sending mails" *ngIf="sendingMails"></p-button>
+<mat-form-field *ngIf="!processingTable" appearance="outline">
+<mat-label>Choose Subject</mat-label> 
+<mat-select >
+<mat-option *ngFor="let temps of emailTemplates" [value]="temps.id" (onSelectionChange)="log($event)">
+{{temps.subject}}  
+</mat-option> 
+</mat-select>
+</mat-form-field>
+
 <mat-form-field >
   <mat-label>Search any email</mat-label>
   <input type="text" matInput (keyup)="applyFilter($event)" #inputSelect>
@@ -21,12 +44,19 @@
  
 
 <table mat-table [dataSource]="dataSource" *ngIf="!processingTable">
-
-
+  <ng-container matColumnDef="chooseAll">
+    <th mat-header-cell *matHeaderCellDef>
+      <mat-checkbox (change)="someEvent($event)"></mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let element"> 
+  
+    </td>
+  </ng-container>
+ 
   <ng-container matColumnDef="choosen">
     <th mat-header-cell *matHeaderCellDef>Selected</th>
     <td mat-cell *matCellDef="let element"> 
-    <mat-checkbox></mat-checkbox>
+    <mat-checkbox [checked]="chooseAll" (change)="checkSingle($event,element.email)"></mat-checkbox>
     </td>
   </ng-container>
   <ng-container matColumnDef="fullname">
@@ -64,11 +94,11 @@
     <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu>
-     <button mat-menu-item>
+     <button mat-menu-item (click)="popUpdate(element)">
       <mat-icon>edit</mat-icon>
       <span>Edit</span>
      </button>
-     <button mat-menu-item>
+     <button mat-menu-item (click)="popDelete(element)">
       <mat-icon style="color: red;">delete</mat-icon>
       <span>Delete</span>
      </button>
@@ -91,7 +121,7 @@
                aria-label="Select page of periodic elements">
 </mat-paginator>
 
-
+<p-toast/>
 
 <div class="spin">
  <p-progressSpinner *ngIf="processingTable"/>

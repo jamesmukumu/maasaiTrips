@@ -15,11 +15,126 @@ subject:string
 attachment:any
 ccs?:string
 }
+
+export interface Bulk{
+emailTemplate:number
+destinations:string
+attachments?:any
+}
+export interface BulkMailUser{
+fullname:string
+category:string
+identificationNumber:string
+phoneNumber:string
+description?:string
+email:string
+identificationMethod:string
+country?:string
+}
+
+
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class MailServService {
+async previewLive(contentBody:string){
+try{
+var refinedBody = contentBody.replace(/<a\s+(?:[^>]*?\s+)?href=(["'])(https:\/\/res\.cloudinary\.com[^"']+)\1[^>]*>(.*?)<\/a>/gi, '<img src="$2" alt="$3" />')
+var resp = await axios.post("http://localhost:8000/api/live/preview",{
+"content":refinedBody
+})
+return resp.data
+}catch(err){
+console.log(err)
+}
+}
+
+
 constructor() { }
+async deleteBulk(id:any){
+try{
+var token = Cookies.get("grant_token")
+var resp = await axios.delete("http://localhost:8000/api/delete/bulks",{
+headers:{
+  "Authorization":`Bearer ${token}`
+},
+params:{
+"queryid":id
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+
+}
+
+
+
+async updateBulkMail(bulk:BulkMailUser,mailerID:number){
+try{
+var token = Cookies.get("grant_token")
+var resp = await axios.patch("http://localhost:8000/api/update/bulk/users",bulk,{
+headers:{
+"Authorization":`Bearer ${token}`
+},
+params:{
+"bulkQuery":mailerID
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+}
+
+
+
+
+async SaveBulkUser(Payload:BulkMailUser){
+var token = Cookies.get("grant_token")
+try{
+var resp = await axios.post("http://localhost:8000/api/save/email/bulk",Payload,{
+headers:{
+"Authorization":`Bearer ${token}`
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+
+}
+
+
+
+async sendBulks(bulks:Bulk){
+try{
+var token = Cookies.get("grant_token")
+var formData = new FormData()
+formData.append("emailTemplate",`${bulks.emailTemplate}`)
+formData.append("destinations",bulks.destinations)
+formData.append("attachment",bulks.attachments)
+if(bulks.attachments ){
+for(let file of bulks.attachments){
+formData.append("attachment",file)
+}
+}
+var resp = await axios.post("http://localhost:8000/api/send/bulk/mails",formData,{
+headers:{
+  "Authorization":"Bearer"+" "+token,
+  "Content-Type":"multipart/form-data"
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+
+}
+
 
 async fetchBulks(url:string){
 var token = Cookies.get("grant_token")
@@ -27,7 +142,7 @@ var token = Cookies.get("grant_token")
 try{
 var resp = await axios.get(url,{
 headers:{
-"Authorization":token
+"Authorization":`Bearer ${token}`
 }
 })
 return resp.data

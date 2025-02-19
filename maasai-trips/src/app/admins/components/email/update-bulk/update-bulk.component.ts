@@ -1,59 +1,67 @@
-import { Component } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { Component,OnInit,inject } from '@angular/core';
 import { MailServService,BulkMailUser } from '../../../../services/mail/mail-serv.service';
+import { MessageService } from 'primeng/api';
+import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
-  selector: 'app-new-bulk-add',
-  templateUrl: './new-bulk-add.component.html',
-  styleUrl: './new-bulk-add.component.css',
+  selector: 'update-bulk',
+  templateUrl: './update-bulk.component.html',
+  styleUrl: './update-bulk.component.css',
   providers:[MessageService]
 })
-export class NewBulkAddComponent {
-processing = false
-fullName:string = ''
-phoneNumber:number  = 0
-idNumber:number = 0
-description:string = ''
-emailAddress:string = ''
-bulkOptions:string[] = ["Hotel","client","Client local","Administrator"]
-baseFlag = "https://flagcdn.com/16x12/"
-
-country:string = ''
-identificationMethod = ''
-category = ''
-
-
-
-async saveMail(){
-try{
-this.processing = true
-var payload:BulkMailUser = {
-fullname:this.fullName,
-category:this.category,
-identificationMethod:this.identificationMethod,
-identificationNumber:this.idNumber.toString(),
-description:this.description,
-email:this.emailAddress,
-country:this.country,
-phoneNumber:this.phoneNumber.toString(),
-}
-var resp = await this.mail.SaveBulkUser(payload);
-var {message} = resp
-if(message == 'Bulk mail saved'){
-  this.processing = false
-this.msg.add({severity:"success",detail:"Added",life:11000})
-}else{
-  this.processing = false
-  this.msg.add({severity:"error",detail:message,life:11000})
-}
-}catch(err){
-console.error(err)
-}
-
-}
+export class UpdateBulkComponent implements OnInit {
+  readonly dialog = inject(MatDialog)
+  processing = false
+  fullName:string = ''
+  phoneNumber:number  = 0
+  idNumber:number = 0
+  description:string = ''
+  emailAddress:string = ''
+  bulkOptions:string[] = ["Hotel","client","Client local","Administrator"]
+  baseFlag = "https://flagcdn.com/16x12/"
+  idUser:any
+  country:string = ''
+  identificationMethod = ''
+  category = ''
 
 
+async updateMail(){
+    try{
+    this.processing = true
+    var payload:BulkMailUser = {
+    fullname:this.fullName,
+    category:this.category,
+    identificationMethod:this.identificationMethod,
+    identificationNumber:this.idNumber.toString(),
+    description:this.description,
+    email:this.emailAddress,
+    country:this.country,
+    phoneNumber:this.phoneNumber.toString(),
+    }
+    var resp = await this.mail.updateBulkMail(payload,this.idUser);
 
-countryCodes = [
+    var {message} = resp
+  
+    if(message == 'Update Saved Successfully'){
+      this.processing = false
+    this.msg.add({severity:"success",detail:"Updated",life:11000})
+    
+    
+    }else{
+      this.processing = false
+      this.msg.add({severity:"error",detail:message,life:11000})
+      this.dialog.closeAll()
+    }
+    }catch(err){
+    console.error(err)
+    }
+    
+    }
+
+
+
+
+  countryCodes = [
     {
       "name": "Afghanistan",
       "code": "AF",
@@ -1507,11 +1515,37 @@ countryCodes = [
       "flagEmoji": "🇿🇼"
     }
   ]
-  constructor(private mail:MailServService,private msg:MessageService){}
+  constructor(private mail:MailServService,private msg:MessageService,private store:Store){}
+  
+
+
+
+  ngOnInit(){
+  this.store.subscribe((data:any)=>{
+var {bulks} = data
+
+var updateData = JSON.parse(bulks)
+var {fullname,category,phoneNumber,email,identificationNumber,description,id} = updateData
+this.fullName = fullname
+this.idUser = id
+this.category = category
+this.phoneNumber = phoneNumber
+this.emailAddress = email
+this.idNumber = identificationNumber
+this.description = description
+
+
+  })
+  }
+  
+  
+  
+  
+  
   formatFlag(flagEmoji:string){
     var newFlag = flagEmoji.toLowerCase()
     var flag = this.baseFlag+newFlag+".png"
-    console.log(flag)
+   
     return flag
     }
 }

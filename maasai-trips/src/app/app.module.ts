@@ -4,10 +4,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AppComponent } from './app.component';
+
 import { RouterModule } from '@angular/router';
 import {ToastModule} from "primeng/toast"
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
+import {ClipboardModule} from '@angular/cdk/clipboard';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { HttpClientModule } from '@angular/common/http';
 import { ScrollTopModule } from 'primeng/scrolltop';
@@ -67,13 +69,23 @@ import {MatChipsModule} from "@angular/material/chips";
 import { BulkMailsComponent } from './admins/components/email/bulk-mails/bulk-mails.component';
 import { NewBulkAddComponent } from './admins/components/email/new-bulk-add/new-bulk-add.component'
 
+import {bulkReducer } from './redux/reducers/bulk.reducer';
+import { UpdateBulkComponent } from './admins/components/email/update-bulk/update-bulk.component';
+import { DeleteBulkComponent } from './admins/components/email/delete-bulk/delete-bulk.component';
+import { NewsLetterComponent } from './admins/components/email/news-letter/news-letter.component'
+
+
+
+
+
 const reducers:ActionReducerMap<any> = {
-  enquiry:enquiryReducer
+  enquiry:enquiryReducer,
+  bulks:bulkReducer
   }
   export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
     return (state, action) => {
       if (typeof window !== 'undefined') {
-        return localStorageSync({ keys: ['enquiry'], rehydrate: true })(reducer)(state, action);
+        return localStorageSync({ keys: ['enquiry','bulks'], rehydrate: true })(reducer)(state, action);
       }
       return reducer(state, action);
     };
@@ -82,7 +94,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -112,6 +124,7 @@ const reducers:ActionReducerMap<any> = {
  MatSidenavModule,   
  MatMenuModule,
  MatPaginatorModule,
+ ClipboardModule,
  GalleriaModule,
  DropdownModule,
  StoreModule.forRoot(reducers,{metaReducers}) , 

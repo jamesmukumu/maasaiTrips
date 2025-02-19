@@ -28,6 +28,10 @@
                       <mat-icon>email</mat-icon>
                       <span style="color: black;">Send Bulk</span>
                     </button>
+                    <button mat-menu-item (click)="chooserEmail(4)">
+                      <mat-icon style="background-color: white;">newspaper</mat-icon>
+                      <span style="color: black;">Create Newsletter</span>
+                    </button>
                     <button mat-menu-item>
                       <mat-icon>queue</mat-icon>
                       <span style="color: black;">Show Queue</span>
@@ -145,6 +149,7 @@
 <new-email *ngIf="emailChoosen==2"></new-email>
 <emails-send *ngIf="emailChoosen==1"></emails-send>
 <bulk-mails *ngIf="emailChoosen==3"></bulk-mails>
+<news-letter *ngIf="emailChoosen==4"></news-letter>
  </div>
           
 

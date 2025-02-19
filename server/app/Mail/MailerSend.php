@@ -10,7 +10,8 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Queue\SerializesModels;
 
-class MailerSend extends Mailable{
+class MailerSend extends Mailable
+{
     use Queueable, SerializesModels;
 
     public $subject;
@@ -20,7 +21,7 @@ class MailerSend extends Mailable{
     public function __construct($subject, $msg, $attachmentPath)
     {
         $this->subject = $subject;
-        $this->msg= $msg;
+        $this->msg = $msg;
         $this->attachmentPath = $attachmentPath;
     }
 
@@ -28,14 +29,20 @@ class MailerSend extends Mailable{
     {
         return $this->subject($this->subject)
                     ->view('emailSend');
-              
     }
 
-    public function attachments(): array{
+    public function attachments(): array
+    {
         $attachments = [];
-        if ($this->attachmentPath) {
+    
+        if (is_array($this->attachmentPath)) {
+            foreach ($this->attachmentPath as $path) {
+                $attachments[] = Attachment::fromStorage($path);
+            }
+        } elseif ($this->attachmentPath) {
             $attachments[] = Attachment::fromStorage($this->attachmentPath);
         }
+    
         return $attachments;
     }
 }

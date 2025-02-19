@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table -> string("subject");
-            $table -> string("mailMessage");
+            $table -> longText("mailMessage");
             $table -> string('attachments')->nullable(true);
             $table -> foreignId("olanka_users_id")->constrained()->onDelete("cascade");
         });

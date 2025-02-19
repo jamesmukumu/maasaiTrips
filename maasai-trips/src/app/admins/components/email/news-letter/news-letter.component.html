@@ -1,0 +1,45 @@
+<mat-card>
+    <h1>Create Newsletter</h1>
+    <form>
+    <mat-form-field >
+    <mat-label>NewsLetter Title</mat-label>
+    <input  required   required type="text" matInput name="mailTo">
+    <mat-hint>August NewsLetter</mat-hint>
+    <mat-error >
+    Provide the subject field as required
+    </mat-error>
+    </mat-form-field>
+    <div>
+<mat-label></mat-label>
+<p-editor required (onTextChange)="captureMessage($event)" [style]="{height:'100%'}" placeholder="Enter your message here" />
+</div>
+    
+          <input #fileInput type="file" style="display: none;" >
+          
+          <div class="card flex justify-content-center">
+            
+            <p-fileUpload 
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                
+                [multiple]="true" 
+                accept="image/*" 
+                maxFileSize="1000000">
+                    <ng-template pTemplate="content">
+                        <ul >
+                        
+                        </ul>
+                    </ng-template>
+            </p-fileUpload>
+        </div>
+        
+    </form>
+    
+    <mat-card-actions>
+    <button mat-flat-button >Create</button>
+    <button mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
+    </mat-card-actions>
+    <p-toast/>
+    </mat-card>
+
+   

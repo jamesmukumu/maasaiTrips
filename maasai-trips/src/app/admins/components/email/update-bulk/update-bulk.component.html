@@ -1,5 +1,5 @@
 <mat-card>
-    <h2>Add new email </h2>
+    <h2>Edit this bulk</h2>
     <form>
     <div class="form-a">
     
@@ -20,14 +20,14 @@
     <mat-form-field>
     <mat-label>Enter your phone Number</mat-label>
     <mat-icon matIconPrefix>call</mat-icon>
-    <input type="number" min="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
+    <input type="text" min="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
     </mat-form-field>
     
     
     <mat-form-field>
     <mat-label>Enter id number</mat-label>
     <mat-icon matIconPrefix>remember_me</mat-icon>
-    <input type="number" matInput name="phoneNumber" [(ngModel)]="idNumber"  required>
+    <input type="text" matInput name="phoneNumber" [(ngModel)]="idNumber"  required>
     </mat-form-field>
     
     <mat-form-field>
@@ -36,7 +36,7 @@
     </mat-form-field>
     </div>
     
-    
+     
     <div class="form-b">
         <mat-form-field>
         <mat-label>Enter email address</mat-label>
@@ -59,14 +59,8 @@
            </mat-option>
            </mat-select>
           </mat-form-field>
-    
-     
-     
-        
-        
-     
         </div>
-        <button mat-flat-button (click)="saveMail()" *ngIf="!processing">Add</button>
+        <button mat-flat-button *ngIf="!processing" (click)="updateMail()" >Update</button>
         <p-button label="Saving..." loading *ngIf="processing"></p-button>
     </form>
     </mat-card>
