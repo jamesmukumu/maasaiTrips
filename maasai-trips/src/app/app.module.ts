@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AppComponent } from './app.component';
-
+import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import {ToastModule} from "primeng/toast"
 import { EditorModule } from 'primeng/editor';
@@ -16,6 +16,7 @@ import { ScrollTopModule } from 'primeng/scrolltop';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import { MatSelectModule } from '@angular/material/select';
+import { DialogModule } from 'primeng/dialog';
 import {MatMenuModule} from "@angular/material/menu"
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
@@ -103,6 +104,7 @@ const reducers:ActionReducerMap<any> = {
     EditorModule,
     HttpClientModule,
     MatSnackBarModule,
+    MatBadgeModule,
     MatIconModule,      
     ButtonModule,
     MatSelectModule,
@@ -112,6 +114,7 @@ const reducers:ActionReducerMap<any> = {
     MatDialogModule,
     FileUploadModule,
     MatListModule,
+    DialogModule,
     GoogleMapsModule,
     AccordionModule,
     MatDividerModule,

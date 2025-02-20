@@ -3,15 +3,15 @@
     <form>
     <mat-form-field >
     <mat-label>NewsLetter Title</mat-label>
-    <input  required   required type="text" matInput name="mailTo">
+    <input #title="ngModel"  required  [(ngModel)]="titleNewsLetter"  required type="text" matInput name="mailTo">
     <mat-hint>August NewsLetter</mat-hint>
-    <mat-error >
-    Provide the subject field as required
+    <mat-error *ngIf="title.touched && title.invalid" >
+    Provide the title field as required
     </mat-error>
     </mat-form-field>
     <div>
 <mat-label></mat-label>
-<p-editor required (onTextChange)="captureMessage($event)" [style]="{height:'100%'}" placeholder="Enter your message here" />
+<p-editor required (onTextChange)="captureMessage($event)" [style]="{height:'fit-content'}" placeholder="Enter your message here" />
 </div>
     
           <input #fileInput type="file" style="display: none;" >
@@ -20,9 +20,11 @@
             
             <p-fileUpload 
                 name="demo[]" 
-                url="https://www.primefaces.org/cdn/api/upload.php" 
-                
-                [multiple]="true" 
+               
+                (onUpload)="choosenFile($event)"
+                (onSelect)="choosenFile($event)"
+                (onClear)="choosen==false"
+                 
                 accept="image/*" 
                 maxFileSize="1000000">
                     <ng-template pTemplate="content">
@@ -36,10 +38,33 @@
     </form>
     
     <mat-card-actions>
-    <button mat-flat-button >Create</button>
-    <button mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
-    </mat-card-actions>
+    <button *ngIf="!uploadingCloud || !savingsNewsletter" mat-flat-button (click)="savingNewsletter()"  >Create</button>
+    <button *ngIf="!uploadingCloud || !savingsNewsletter" mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
+    <button  mat-flat-button style="margin-left: 20px;" *ngIf="choosen" (click)="uploadCloudinry()">Upload image</button>   
+      <p-button *ngIf="uploadingCloud || savingsNewsletter" loading>Processing....</p-button>
+</mat-card-actions>
     <p-toast/>
     </mat-card>
+
+
+
+
+
+
+<p-dialog [(visible)]="popDialog" header="Copy to url">
+   
+<form>
+<mat-form-field>
+
+<mat-label>Content url</mat-label>
+<mat-icon matSuffix matTooltip="Copy Cloud url" [cdkCopyToClipboard]="cloudUrl">content_copy</mat-icon>
+<input type="text" matInput name="url" disabled [(ngModel)]="cloudUrl">
+</mat-form-field>
+
+</form>
+
+
+</p-dialog>
+
 
    

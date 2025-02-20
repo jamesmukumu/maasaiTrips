@@ -115,13 +115,6 @@ class MailerController extends Controller
 
 
 
-
-
-
-
-
-
-
     public function saveEmailTemplate(Request $request)
     {
         try {
@@ -166,6 +159,48 @@ class MailerController extends Controller
             ], 200);
         }
     }
+
+
+public function updateEmailTemplate(Request $request){
+try{
+$validatedRequest = $request ->validate([
+        "mailMessage"=>"nullable",
+        "subject"=>"nullable",
+        "id"=>"integer|required"
+        ]);
+        $mailID = $request->query("id");
+        EmailTemplates::where("id",$mailID)->update($validatedRequest);
+        
+        return response()->json([
+        "message"=>"Template Updated"
+        ],200);
+}catch(\Exception $err){
+return response()->json([
+"message"=>$err->getMessage()
+],500);
+}
+}
+
+
+public function deleteTemplateMail(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|integer"
+]);
+$mailID = $request->query('id');
+EmailTemplates::where("id",$mailID)->delete();
+return response()->json([
+"message"=>"Deleted"
+]);        
+}catch(\Exception $err){
+return response()->json([
+"message"=>$err->getMessage()
+],500);
+}
+
+
+
+}
 
 
 

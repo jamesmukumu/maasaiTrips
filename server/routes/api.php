@@ -20,15 +20,10 @@ Route::get("/fetch/bulk/emails",[BulkMailControllers::class,"fetchBulkMails"]);
 Route::post("/send/bulk/mails",[BulkMailControllers::class,"sendMailsBulk"]);
 Route::patch("/update/bulk/users",[BulkMailControllers::class,"updateMailer"]);
 Route::delete("/delete/bulks",[BulkMailControllers::class,"removeFromBulks"]);
-
-
-
-
-
+Route::post("/propagate/newsletters",[NewsLettersController::class,"sendNewsLetters"]);
+Route::put("/update/mail/template",[MailerController::class,'updateEmailTemplate']);
+Route::delete("/delete/email/template",[MailerController::class,"deleteTemplateMail"]);
 });
-
-
-
 
 
 Route::post("/save/quote",[QuotationController::class,"saveQuotations"]);
@@ -47,5 +42,5 @@ Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
 Route::post("/send/newsletter",[NewsLettersController::class,"sendNewsLetter"]);
 Route::post("/save/news/letter",[NewsLettersController::class,"saveNewsLetter"]);
 Route::post("/live/preview",[NewsLettersController::class,"openLive"]);
-
+Route::post("/save/to/cloud",[NewsLettersController::class,"uploadtoCloudinary"]);
 

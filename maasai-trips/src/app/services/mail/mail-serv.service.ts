@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-
-
 export interface MailTemplate{
 subject:string
 mailMessage:string
@@ -31,7 +29,10 @@ email:string
 identificationMethod:string
 country?:string
 }
-
+export interface newsLetter{
+Title:string
+content:string
+}
 
 
 
@@ -39,12 +40,61 @@ country?:string
   providedIn: 'root'
 })
 export class MailServService {
-async previewLive(contentBody:string){
+async saveNewsLetter(payload:newsLetter){
+try {
+var token = Cookies.get("grant_token")
+var resp = await axios.post("http://localhost:8000/api/save/news/letter",payload,{
+headers:{
+"Authorization":`Bearer ${token}`
+}
+})
+return resp.data
+}catch (error) {
+console.error(error)
+}
+
+
+}
+
+
+
+
+
+
+
+async uploadImage(file:any){
 try{
-var refinedBody = contentBody.replace(/<a\s+(?:[^>]*?\s+)?href=(["'])(https:\/\/res\.cloudinary\.com[^"']+)\1[^>]*>(.*?)<\/a>/gi, '<img src="$2" alt="$3" />')
+var token = Cookies.get("grant_token")
+var formData = new FormData()
+formData.append("imageCld",file)
+var resp = await axios.post("http://localhost:8000/api/save/to/cloud",formData,{
+headers:{
+"Authorization":`Bearer ${token}`,
+"Content-Type":"multipart/form-data"
+}
+})
+return resp.data
+}catch(err){
+console.error(err)
+}
+}
+
+
+
+async previewLive(contentBody:string){
+var token = Cookies.get("grant_token")
+try{
+var refinedBody = contentBody.replace(/<a\s+(?:[^>]*?\s+)?href=(["'])(http:\/\/res\.cloudinary\.com[^"']+)\1[^>]*>(.*?)<\/a>/gi, '<img src="$2" alt="$3" />')
 var resp = await axios.post("http://localhost:8000/api/live/preview",{
 "content":refinedBody
-})
+},
+{
+headers:{
+"Authorization":`Bearer ${token}`
+}
+}
+
+)
 return resp.data
 }catch(err){
 console.log(err)
@@ -109,6 +159,30 @@ console.error(err)
 }
 
 
+
+
+
+async sendBulksNewsletters(idNews:number,dest:any){
+  try{
+  var token = Cookies.get("grant_token")
+  var formData = new FormData()
+  formData.append("newsLetterTemplate",`${idNews}`)
+  formData.append("destinations",dest)
+
+  
+  var resp = await axios.post("http://localhost:8000/api/propagate/newsletters",formData,{
+  headers:{
+    "Authorization":"Bearer"+" "+token,
+    "Content-Type":"multipart/form-data"
+  }
+  })
+  return resp.data
+  }catch(err){
+  console.error(err)
+  }
+  
+  }
+  
 
 async sendBulks(bulks:Bulk){
 try{

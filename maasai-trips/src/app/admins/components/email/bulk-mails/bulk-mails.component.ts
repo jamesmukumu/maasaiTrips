@@ -24,12 +24,15 @@ dataSource:any
 displayedColumns:string[] = ['chooseAll',"choosen","fullname","category","identificationNumber","email","country","action"]
 processingTable = false
 emailTemplates:any[] = []
+newsLetterTemplates:any[] = []
 targetEmails:any
 allEmails:any[] = []
 choosenDefaults:any = []
 attachments:any
 sendingMails = false
 subjectID = 0
+mailType =''
+newsleteterid:number = 0
 
 constructor(private mailer:MailServService,private msg:MessageService,private store:Store){}
 log(event:any){
@@ -41,6 +44,8 @@ checkSingle(event:any,email:string){
 var {checked} = event
 if(checked){
 this.choosenDefaults = [...this.choosenDefaults,email]
+}else{
+  this.choosenDefaults.pop(email)
 }
 }  
 choosenFile(event:any){
@@ -84,7 +89,28 @@ console.error(err)
 
 
 
-
+async sendBulksNewsTemplates(){
+  this.sendingMails = true
+  try{
+  var payload:Bulk = {
+  emailTemplate:this.subjectID,
+  destinations:this.choosenDefaults.join(),
+  attachments:this.attachments
+  }
+  var resp = await this.mailer.sendBulksNewsletters(this.newsleteterid,this.choosenDefaults)
+  var {message} = resp
+  if(message=='Emails propagated'){
+  this.msg.add({severity:"success",detail:"Emails Propagated",life:10000})
+  this.sendingMails = false
+  }else{
+  this.msg.add({severity:"error",detail:'Error sending mail',life:10000})
+  this.sendingMails = false
+  }
+  }catch(err){
+  console.error(err)
+  }
+  }
+  
 openBulk(){
   this.dialog.open(NewBulkAddComponent)
   }
@@ -102,10 +128,11 @@ this.dataSource.filter = filterValue.trim().toLowerCase();
 fetchBulkMails(){
 this.processingTable = true
 this.mailer.fetchBulks("http://localhost:8000/api/fetch/bulk/emails").then((dataa)=>{
-var {message,data,currentPage,nextPage,emailTemps} = dataa
+var {message,data,currentPage,nextPage,emailTemps,newsLetters} = dataa
 this.dataSource = new MatTableDataSource(data)
 this.dataSource.paginator = this.paginator
 this.emailTemplates = emailTemps
+this.newsLetterTemplates =  newsLetters
 this.processingTable = false
 for(let mailData of data){
 var {email} = mailData

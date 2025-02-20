@@ -8,10 +8,14 @@
     Add new Mail
     </button> 
 
-    <button mat-flat-button (click)="sendBulks()" >
-    Send Mails
-    </button>
+    <button mat-flat-button  *ngIf="mailType=='ordinary mail'" (click)="sendBulks()" [matBadge]="choosenDefaults.length" >
+    Send Mails 
+    </button> 
+    <button mat-flat-button *ngIf="mailType=='newsletter'" [matBadge]="choosenDefaults.length" (click)="sendBulksNewsTemplates()" >
+      Send Newsletter
+      </button>
     <p-fileUpload 
+    *ngIf="mailType == 'ordinary mail'"
     name="demo[]" 
     url="https://www.primefaces.org/cdn/api/upload.php" 
     (onUpload)="choosenFile($event)"
@@ -25,15 +29,32 @@
         </ng-template>
 </p-fileUpload>
 </mat-card-header>
+
+<mat-form-field>
+<mat-label>Choose mail type</mat-label>
+<mat-select [(value)]="mailType">
+<mat-option value="ordinary mail">Text Mail</mat-option>
+<mat-option value="newsletter">Newsletter</mat-option>
+</mat-select>
+
+</mat-form-field>
 <p-button loading  label="Sending mails" *ngIf="sendingMails"></p-button>
-<mat-form-field *ngIf="!processingTable" appearance="outline">
+<mat-form-field *ngIf="!processingTable && mailType=='ordinary mail'" appearance="outline">
 <mat-label>Choose Subject</mat-label> 
-<mat-select >
+<mat-select required >
 <mat-option *ngFor="let temps of emailTemplates" [value]="temps.id" (onSelectionChange)="log($event)">
 {{temps.subject}}  
-</mat-option> 
+</mat-option>  
 </mat-select>
 </mat-form-field>
+<mat-form-field *ngIf="!processingTable && mailType=='newsletter'" appearance="outline">
+  <mat-label>Choose Newsletter</mat-label> 
+  <mat-select required  [(value)]="newsleteterid">
+  <mat-option *ngFor="let letter of newsLetterTemplates" [value]="letter.id" (onSelectionChange)="log($event)">
+  {{letter.Title}}   
+  </mat-option> 
+  </mat-select>
+  </mat-form-field>
 
 <mat-form-field >
   <mat-label>Search any email</mat-label>

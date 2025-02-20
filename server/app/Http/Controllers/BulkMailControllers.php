@@ -12,7 +12,7 @@ use Log;
 use Mail;
 use App\Http\Controllers\MailerController;
 use Tymon\JWTAuth\Facades\JWTAuth;
-
+use App\Models\NewsLetters;
 
 interface BulkMailsInterface{
 public function verifyToken(Request $request);
@@ -42,10 +42,12 @@ return response()->json([
 
 public function sendMailsBulk(Request $request){
 try{
+$this->verifyToken($request); 
 $validatedRequest = $request->validate([
 "emailTemplate"=>"required|integer",
 "destinations"=>"required|min:1"
 ]);
+
 $emailTemplates = EmailTemplates::select("mailMessage","subject")->find($validatedRequest['emailTemplate']);
 $mailMessage = $emailTemplates['mailMessage'];
 $mailSubject = $emailTemplates['subject'];
@@ -70,14 +72,10 @@ attachmentPath:""
 );
 Mail::to($dest)->send($mailer);
 }
-
-    
 return response()->json([
-    "message"=>"Emails propgated"
-    ]);
+"message"=>"Emails propagated"
+]);
 }
-
-
 
 }catch(\Illuminate\Validation\ValidationException $errValidate){
 Log::error($errValidate->getMessage());
@@ -200,11 +198,13 @@ $payload = JWTAuth::setToken($token)->getPayload();
 $claimsToken = $payload->toArray();
 $id = $claimsToken["sub"];
 $userData =  EmailTemplates::where("olanka_users_id",$id)->select("subject","id")->get();
+$newsLetters = Newsletters::where("olanka_users_id",$id)->select("Title","id")->get();
 $bulks = new BulkMails();
 $results = $bulks->select("id","fullname","category","identificationNumber","phoneNumber","email","country")->orderBy("created_at")->paginate(100);
 return response()->json([
 "message"=>"Fetched",
 "count"=>$results->total(),
+"newsLetters"=>$newsLetters,
 "emailTemps"=>$userData, 
 "data"=>$results->items(),
 "nextPage"=> $results->nextPageUrl(),
