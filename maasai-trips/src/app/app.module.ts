@@ -78,7 +78,7 @@ import { QueueComponent } from './admins/components/email/queue/queue.component'
 import { ManageMailsComponent } from './admins/components/email/manage-mails/manage-mails.component';
 import { ManageNewslettersComponent } from './admins/components/email/manage-newsletters/manage-newsletters.component';
 import { PreviewComponent } from './admins/components/email/preview/preview.component'
-import { TieredMenuModule } from 'primeng/tieredmenu';
+import {MatTreeModule} from "@angular/material/tree"
 
 
 
@@ -112,8 +112,8 @@ const reducers:ActionReducerMap<any> = {
     MatIconModule,      
     ButtonModule,
     MatSelectModule,
-    TieredMenuModule,
     MatDatepickerModule,
+    MatTreeModule,
     MatTableModule,
     MatCheckboxModule,
     MatDialogModule,

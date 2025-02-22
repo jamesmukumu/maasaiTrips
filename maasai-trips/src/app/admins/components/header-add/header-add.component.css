@@ -12,10 +12,11 @@
     
     
     }
-    mat-list-item button{
-        background-color: white;
-        color: white;
-    }
+  mat-list-item button{
+    width: fit-content;
+    background-color: #fca608;
+    color: white;
+  }
     
     mat-drawer-container{
     display: none;

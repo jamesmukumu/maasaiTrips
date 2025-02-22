@@ -51,14 +51,85 @@
     <p-sidebar [(visible)]="openSideDrawer">
         <mat-list>
             <mat-list-item >
-                <span matListItemTitle>Masaai Mara Trips</span>
+                <span matListItemTitle>Home</span>
             </mat-list-item>
-            <mat-list-item >All About Masai Mara</mat-list-item>
-            <mat-list-item >Accommodations</mat-list-item>
-            <mat-list-item >Masaai Mara Safari's</mat-list-item>
+          
+                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+             
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                      <button mat-icon-button disabled></button>
+                      
+                     <p style="color: black;" >
+                      {{node.Tree_Name}}
+                     </p>
+                    </mat-tree-node>
+                
+                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                      </button>
+                      {{node.Tree_Name}}
+                    </mat-tree-node>
+                  </mat-tree>
+
+
+                  <mat-tree [dataSource]="dataSourceHotels" [treeControl]="treeControl">
+             
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                      <button mat-icon-button disabled></button>
+                      
+                     <p style="color: black;" >
+                      {{node.Tree_Name}}
+                     </p>
+                    </mat-tree-node>
+                
+                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                      </button>
+                      {{node.Tree_Name}}
+                    </mat-tree-node>
+                  </mat-tree>
+
+                  
+                  <mat-tree [dataSource]="dataSourcePackages" [treeControl]="treeControl">
+             
+                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+                      <button mat-icon-button disabled></button>
+                      
+                     <p style="color: black;" >
+                      {{node.Tree_Name}}
+                     </p>
+                    </mat-tree-node>
+                
+                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
+                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
+                        <mat-icon class="mat-icon-rtl-mirror">
+                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                        </mat-icon>
+                      </button>
+                      {{node.Tree_Name}}
+                    </mat-tree-node>
+                  </mat-tree>
+       
+            
+            
             <mat-list-item>
-                <button mat-flat-button >Travel to Mara</button>
+              <span matListItemTitle>Enquiries</span>
             </mat-list-item>
+            <mat-list-item>
+                <span matListItemTitle>Destinations</span>
+              </mat-list-item>
+              <mat-list-item>
+                <span matListItemTitle>Blogs</span>
+              </mat-list-item>
+            <mat-list-item>
+                <button mat-flat-button (click)="home()" >Travel to Mara</button>
+            </mat-list-item> 
         </mat-list>
     </p-sidebar>
     

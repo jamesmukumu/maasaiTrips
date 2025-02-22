@@ -1,22 +1,174 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FlatTreeControl } from '@angular/cdk/tree';
+import {
+  MatTreeFlatDataSource,
+  MatTreeFlattener,
+} from '@angular/material/tree';
+interface MainCategory {
+  Tree_Name: string;
+  identifierName?: string;
+  Tree_Children?: MainCategory[];
+}
+
+interface FlatNode {
+  expandable: boolean;
+  Tree_Name: string;
+  identifierName?: string;
+  level: number;
+}
 @Component({
   selector: 'header-add',
   templateUrl: './header-add.component.html',
-  styleUrl: './header-add.component.css'
+  styleUrl: './header-add.component.css',
 })
 export class HeaderAddComponent {
-openSideDrawer = false
-constructor(private router:Router){}
-signIn(){
-this.router.navigate(["/login"])
+  openSideDrawer = false;
+home(){
+  this.router.navigate(["/"])
 }
-signUp(){
-this.router.navigate(["/register"])
-}
+  signIn() {
+    this.router.navigate(['/login']);
+  }
+  signUp() {
+    this.router.navigate(['/register']);
+  }
 
-opener(){
-this.openSideDrawer = true
-}
+  opener() {
+    this.openSideDrawer = true;
+  }
+  private _transformer = (node: MainCategory, level: number): FlatNode => {
+    return {
+      expandable: !!node.Tree_Children && node.Tree_Children.length > 0,
+      Tree_Name: node.Tree_Name,
+      identifierName: node.identifierName,
+      level: level,
+    };
+  };
 
+  treeControl = new FlatTreeControl<FlatNode>(
+    (node) => node.level,
+    (node) => node.expandable
+  );
+
+  treeFlattener = new MatTreeFlattener(
+    this._transformer,
+    (node) => node.level,
+    (node) => node.expandable,
+    (node) => node.Tree_Children
+  );
+
+  dataSource: any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  );
+  dataSourceHotels:any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  )
+  dataSourcePackages:any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  )
+  dataSourceBlogs:any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  )
+
+  packagesCategories:MainCategory[] = [
+    {
+      Tree_Name: 'Packages',
+      identifierName: 'Packages',
+      Tree_Children: [
+        {
+          Tree_Name: 'All Packages',
+          identifierName: 'All Packages',
+        },
+        {
+          Tree_Name: 'Add New Package',
+          identifierName: 'Add New Package',
+        },
+        {
+          Tree_Name: 'Package Categories',
+          identifierName: 'Package Categories',
+        },
+        {
+          Tree_Name: 'New Hotel Rooms',
+          identifierName: 'New Hotel Rooms',
+        },
+      
+      
+      ],
+    },
+  
+  ]
+hotelCategories:MainCategory[] = [
+  {
+    Tree_Name: 'Hotels',
+    identifierName: 'Mail',
+    Tree_Children: [
+      {
+        Tree_Name: 'Add Hotel',
+        identifierName: 'Add Hotel',
+      },
+      {
+        Tree_Name: 'Add Rooms',
+        identifierName: 'Add Rooms',
+      },
+      {
+        Tree_Name: 'My Hotels',
+        identifierName: 'My Hotels',
+      },
+      {
+        Tree_Name: 'New Hotel Rooms',
+        identifierName: 'New Hotel Rooms',
+      },
+    
+    
+    ],
+  },
+
+]
+  categories: MainCategory[] = [
+    {
+      Tree_Name: 'Emails',
+      identifierName: 'Mail',
+      Tree_Children: [
+        {
+          Tree_Name: 'Create Email',
+          identifierName: 'Create Email',
+        },
+        {
+          Tree_Name: 'Send Email',
+          identifierName: 'Send Email',
+        },
+        {
+          Tree_Name: 'Send Bulk',
+          identifierName: 'Send Bulk',
+        },
+        {
+          Tree_Name: 'Create Newsletter',
+          identifierName: 'Create Newsletter',
+        },
+        {
+          Tree_Name: 'Show queue',
+          identifierName: 'Show Queue',
+        },
+        {
+          Tree_Name: 'Manage Mails',
+          identifierName: 'Manage Mails',
+        },
+        {
+          Tree_Name: 'Manage newsletter',
+          identifierName: 'Manage newsletters',
+        },
+      ],
+    },
+  ];
+  constructor(private router: Router) {
+    this.dataSource.data = this.categories;
+    this.dataSourceHotels.data = this.hotelCategories
+    this.dataSourcePackages.data = this.packagesCategories
+  }
+  hasChild = (_: number, node: FlatNode) => node.expandable;
 }
