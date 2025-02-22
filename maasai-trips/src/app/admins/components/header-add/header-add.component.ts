@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Output,EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
@@ -17,15 +17,34 @@ interface FlatNode {
   identifierName?: string;
   level: number;
 }
+
+interface CurrentSelection{
+Name:string
+hasNode:boolean
+activeNode?:string
+}
 @Component({
   selector: 'header-add',
   templateUrl: './header-add.component.html',
   styleUrl: './header-add.component.css',
 })
 export class HeaderAddComponent {
+@Output() choosenEmitter  = new EventEmitter<CurrentSelection>()
+
   openSideDrawer = false;
 home(){
   this.router.navigate(["/"])
+}
+
+
+mobileEmitter(name:string,nodeHas:boolean,activeNode?:string){
+var chooser:CurrentSelection = {
+Name:name,
+hasNode:nodeHas,
+activeNode:activeNode
+}
+this.choosenEmitter.emit(chooser)
+this.openSideDrawer = false
 }
   signIn() {
     this.router.navigate(['/login']);
@@ -159,7 +178,7 @@ hotelCategories:MainCategory[] = [
           identifierName: 'Manage Mails',
         },
         {
-          Tree_Name: 'Manage newsletter',
+          Tree_Name: 'Manage newsletters',
           identifierName: 'Manage newsletters',
         },
       ],

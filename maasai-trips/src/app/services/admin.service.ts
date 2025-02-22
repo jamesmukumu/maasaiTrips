@@ -15,7 +15,7 @@ export class AdminService {
   async Register(Reg: Register) {
     try {
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/register/user',
+        'http://localhost:8000/api/register/user',
         Reg
       );
       return resp.data;
@@ -26,7 +26,7 @@ export class AdminService {
   async verifyEmail(tokenString: string) {
     try {
       var resp = await axios.put(
-        'https://maasaitrips-2.onrender.com/api/verify/email',
+        'http://localhost:8000/api/verify/email',
         {},
         {
           headers: {
@@ -42,7 +42,7 @@ export class AdminService {
   async completeReset(Token: string, password: string, completePass: string) {
     try {
       var resp = await axios.put(
-        'https://maasaitrips-2.onrender.com/api/reset/password',
+        'http://localhost:8000/api/reset/password',
         {
           password: password,
           confirmPassword: completePass,
@@ -60,12 +60,9 @@ export class AdminService {
   }
   async requestResets(Email: string) {
     try {
-      var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/request/reset',
-        {
-          Email: Email,
-        }
-      );
+      var resp = await axios.post('http://localhost:8000/api/request/reset', {
+        Email: Email,
+      });
       return resp.data;
     } catch (err) {
       console.error(err);
@@ -73,13 +70,10 @@ export class AdminService {
   }
   async login(credential: string, password: string) {
     try {
-      var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/login/user',
-        {
-          credential: credential,
-          password: password,
-        }
-      );
+      var resp = await axios.post('http://localhost:8000/api/login/user', {
+        credential: credential,
+        password: password,
+      });
       return resp.data;
     } catch (err) {
       console.error(err);

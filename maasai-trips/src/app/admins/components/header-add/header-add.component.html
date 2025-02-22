@@ -50,7 +50,7 @@
     
     <p-sidebar [(visible)]="openSideDrawer">
         <mat-list>
-            <mat-list-item >
+            <mat-list-item (click)="mobileEmitter('Home',false)" >
                 <span matListItemTitle>Home</span>
             </mat-list-item>
           
@@ -59,7 +59,7 @@
                     <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
                       <button mat-icon-button disabled></button>
                       
-                     <p style="color: black;" >
+                     <p style="color: black;"  (click)="mobileEmitter('Email',true,node.Tree_Name)">
                       {{node.Tree_Name}}
                      </p>
                     </mat-tree-node>

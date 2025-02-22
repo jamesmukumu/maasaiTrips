@@ -166,7 +166,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   fetchBulkMails() {
     this.processingTable = true;
     this.mailer
-      .fetchBulks('https://maasaitrips-2.onrender.com/api/fetch/bulk/emails')
+      .fetchBulks('http://localhost:8000/api/fetch/bulk/emails')
       .then((dataa) => {
         var { message, data, currentPage, nextPage, emailTemps, newsLetters } =
           dataa;
