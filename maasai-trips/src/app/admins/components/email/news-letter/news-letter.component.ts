@@ -47,8 +47,8 @@ horizontalPosition:"left",
 verticalPosition:"top"
 })
 this.snack.open("Copied","Success",{
-  horizontalPosition:"left",
-  verticalPosition:"top"
+  horizontalPosition:"center",
+  verticalPosition:"bottom"
   })
   this.clip.copy(String(this.previewContent))
 window.open("https://codebeautify.org/htmlviewer#","_blank")
@@ -58,7 +58,6 @@ window.open("https://codebeautify.org/htmlviewer#","_blank")
 
 async uploadCloudinry(){
 this.uploadingCloud = true
-
 try{
 var resp = await this.mailer.uploadImage(this.ImageFile)
 var {message,url} = resp
@@ -66,9 +65,10 @@ this.cloudUrl = url
 if(message == 'Success'){
 
 this.uploadingCloud = false
+this.choosen = false
 this.snack.open("Uploaded","SUCCESS",{
-horizontalPosition:"left",
-verticalPosition:"top"
+horizontalPosition:"center",
+verticalPosition:"bottom"
 })
 this.popDialog = true
 }else{

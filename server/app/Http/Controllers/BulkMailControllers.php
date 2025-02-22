@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\MailerSend;
 use App\Models\BulkMails;
 use App\Models\EmailTemplates;
+use App\Models\MailStatus;
 use App\Models\OlankaUsers;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
@@ -39,7 +40,6 @@ return response()->json([
 }
 }
 
-
 public function sendMailsBulk(Request $request){
 try{
 $this->verifyToken($request); 
@@ -47,7 +47,6 @@ $validatedRequest = $request->validate([
 "emailTemplate"=>"required|integer",
 "destinations"=>"required|min:1"
 ]);
-
 $emailTemplates = EmailTemplates::select("mailMessage","subject")->find($validatedRequest['emailTemplate']);
 $mailMessage = $emailTemplates['mailMessage'];
 $mailSubject = $emailTemplates['subject'];
@@ -56,15 +55,43 @@ if($request->hasFile("attachment")){
 $targetMails = explode(",",$validatedRequest["destinations"]);
 foreach($targetMails as $dest){
 $mailerCont -> attachFile($request,$mailSubject,$mailMessage,$dest);
+$bulkMailerLoad = BulkMails::where("email", $dest)->first();
+if (!$bulkMailerLoad) {
+return response()->json([
+"message" => "Email target not found in BulkMails"
+], 404);
+}
 
+$userID = $this->verifyToken($request);
+$idBulk = $bulkMailerLoad->id;
+$mailerSaverLoad = [
+"status" => "delivered", 
+"olanka_users_id" => $userID,
+"bulk_mails_id" => $idBulk
+];
+MailStatus::create($mailerSaverLoad);
 }
 return response()->json([
 "message"=>"Sent"
 ]);
 }else{
 $mailsTarget = explode(",",$validatedRequest["destinations"]);
-
 foreach($mailsTarget as $dest){
+
+    $bulkMailerLoad = BulkMails::where("email", $dest)->first();
+if (!$bulkMailerLoad) {
+return response()->json([
+"message" => "Email target not found in BulkMails"
+], 404);
+}
+$userID = $this->verifyToken($request);
+$idBulk = $bulkMailerLoad->id;
+$mailerSaverLoad = [
+"status" => "delivered", 
+"olanka_users_id" => $userID,
+"bulk_mails_id" => $idBulk
+];
+$mailStatus = MailStatus::create($mailerSaverLoad);
 $mailer = new MailerSend(
 subject: $mailSubject,
 msg: $mailMessage,
@@ -219,6 +246,33 @@ return response()->json([
 }
 
 }
+
+
+
+
+
+
+public function fetchMailStatus(Request $request){
+try{
+$olankaID =  $this->verifyToken($request);
+
+$mailData = MailStatus::where("olanka_users_id",$olankaID)->with(['bulkUserRelation'])->orderBy("created_at")->get();
+return response()->json([
+"message"=>"Status fetched",
+"data"=>$mailData
+]);
+}catch(\Exception $err){
+return response()->json([
+"message"=>$err->getMessage()
+],500);
+}catch(ValidationException $errValidate){
+return response()->json([
+"message"=>$errValidate->getMessage()
+]);
+}
+}
+
+
 
 
 

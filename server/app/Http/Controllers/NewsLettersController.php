@@ -9,6 +9,8 @@ use Mail;
 use Log;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\Newsletters;
+use App\Models\BulkMails;
+use App\Models\MailStatus;
  
 interface Newsletter{
 public function verifyTok(Request $request);
@@ -60,9 +62,23 @@ try{
      $mailerCont = new NewsLettersMailer($contentNewsletter);
     $mailsTarget = explode(",",$validatedRequest["destinations"]);
     foreach($mailsTarget as $dest){
-   
-    Mail::to($dest)->send($mailerCont);
-    }
+   Mail::to($dest)->send($mailerCont);
+ $bulkMailerLoad = BulkMails::where("email", $dest)->first();
+if (!$bulkMailerLoad) {
+return response()->json([
+"message" => "Email target not found in BulkMails"
+], 404);
+}
+
+$userID = $this->verifyTok($request);
+$idBulk = $bulkMailerLoad->id;
+$mailerSaverLoad = [
+"status" => "delivered", 
+"olanka_users_id" => $userID,
+"bulk_mails_id" => $idBulk
+];
+MailStatus::create($mailerSaverLoad);
+}
     return response()->json([
     "message"=>"Emails propagated"
     ]);
@@ -126,7 +142,65 @@ return response()->json([
 return response()->json([
 "message"=>$err->getMessage()
 ],400);
-}
+}}
 
-}
+
+public function updateNewsLetterTemplate(Request $request){
+    try{
+    $validatedRequest = $request ->validate([
+            "Title"=>"nullable",
+            "content"=>"nullable",
+            "id"=>"integer|required|exists:news_letters,id"
+            ]);
+            $newsLetterID = $request->query("id");
+            Newsletters::where("id",$newsLetterID)->update($validatedRequest);
+            
+            return response()->json([
+            "message"=>"Template Updated" 
+            ],200);
+    }catch(\Exception $err){
+    return response()->json([
+    "message"=>$err->getMessage()
+    ],500);
+    }
+    }
+    
+    public function fetchMyTemplates(Request $request){
+    try{
+    $olankaid = $this->verifyTok($request);
+    $data = Newsletters::where("olanka_users_id",$olankaid)->get();
+    if(count($data)> 0 ){
+    return response()->json([
+            "message"=>"Fetched",
+            "data"=>$data
+            ]);
+    }else{
+    return response()->json([
+    "message"=>"You have no templates saved"
+    ]);
+    }
+    }catch(\Exception $err){
+    return response()->json([
+    "message"=>$err->getMessage()
+    ]);
+    }
+    }
+    public function deleteNewsLetterTemplateMail(Request $request){
+    try{
+    $validatedRequest = $request->validate([
+    "id"=>"required|integer|exists:news_letters,id"
+    ]);
+    $newsletterid = $request->query('id');
+    Newsletters::where("id",$newsletterid)->delete();
+    return response()->json([
+    "message"=>"Deleted"
+    ]);        
+    }catch(\Exception $err){
+    return response()->json([
+    "message"=>$err->getMessage()
+    ],500);
+    }
+    }
+    
+
 }

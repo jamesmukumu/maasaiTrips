@@ -48,7 +48,7 @@
     
     
     
-    <p-sidebar >
+    <p-sidebar [(visible)]="openSideDrawer">
         <mat-list>
             <mat-list-item >
                 <span matListItemTitle>Masaai Mara Trips</span>
@@ -67,7 +67,7 @@
           </mat-drawer>
           
     <div>
-        <mat-icon class="harmburg" >menu</mat-icon>
+        <mat-icon class="harmburg" (click)="opener()">menu</mat-icon>
         <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
         <mat-icon class="dark">dark_mode</mat-icon>
     </div>

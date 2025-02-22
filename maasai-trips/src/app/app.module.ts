@@ -73,8 +73,12 @@ import { NewBulkAddComponent } from './admins/components/email/new-bulk-add/new-
 import {bulkReducer } from './redux/reducers/bulk.reducer';
 import { UpdateBulkComponent } from './admins/components/email/update-bulk/update-bulk.component';
 import { DeleteBulkComponent } from './admins/components/email/delete-bulk/delete-bulk.component';
-import { NewsLetterComponent } from './admins/components/email/news-letter/news-letter.component'
-
+import { NewsLetterComponent } from './admins/components/email/news-letter/news-letter.component';
+import { QueueComponent } from './admins/components/email/queue/queue.component';
+import { ManageMailsComponent } from './admins/components/email/manage-mails/manage-mails.component';
+import { ManageNewslettersComponent } from './admins/components/email/manage-newsletters/manage-newsletters.component';
+import { PreviewComponent } from './admins/components/email/preview/preview.component'
+import { TieredMenuModule } from 'primeng/tieredmenu';
 
 
 
@@ -95,7 +99,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -108,6 +112,7 @@ const reducers:ActionReducerMap<any> = {
     MatIconModule,      
     ButtonModule,
     MatSelectModule,
+    TieredMenuModule,
     MatDatepickerModule,
     MatTableModule,
     MatCheckboxModule,

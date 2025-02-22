@@ -23,13 +23,32 @@ Route::delete("/delete/bulks",[BulkMailControllers::class,"removeFromBulks"]);
 Route::post("/propagate/newsletters",[NewsLettersController::class,"sendNewsLetters"]);
 Route::put("/update/mail/template",[MailerController::class,'updateEmailTemplate']);
 Route::delete("/delete/email/template",[MailerController::class,"deleteTemplateMail"]);
+Route::post("/send/newsletter",[NewsLettersController::class,"sendNewsLetter"]);
+Route::post("/save/news/letter",[NewsLettersController::class,"saveNewsLetter"]);
+Route::post("/live/preview",[NewsLettersController::class,"openLive"]);
+Route::post("/save/to/cloud",[NewsLettersController::class,"uploadtoCloudinary"]);
+Route::get("/fetch/mail/status",[BulkMailControllers::class,"fetchMailStatus"]);
+Route::get("/fetch/email/templates",[MailerController::class,"fetchMyTemplates"]);
+Route::put("/update/news/letter",[NewsLettersController::class,'updateNewsLetterTemplate']);
+Route::get("/fetch/my/newsletters",[NewsLettersController::class,'fetchMyTemplates']);
+Route::delete("/delete/news/letter",[NewsLettersController::class,'deleteNewsLetterTemplateMail']);
+
+
+
+
+
+
+
+Route::get("/fetch/enquiries",[QuotationController::class,"fetchAllEnquiries"]);
+Route::put("/update/enquiry",[QuotationController::class,"updateEnquiry"]);
+Route::delete("/delete/enquiry",[QuotationController::class,"deleteEnquiry"]);
+
+
+
 });
 
 
 Route::post("/save/quote",[QuotationController::class,"saveQuotations"]);
-Route::get("/fetch/enquiries",[QuotationController::class,"fetchAllEnquiries"]);
-Route::put("/update/enquiry",[QuotationController::class,"updateEnquiry"]);
-Route::delete("/delete/enquiry",[QuotationController::class,"deleteEnquiry"]);
 
 
 //User Routes here
@@ -38,9 +57,4 @@ Route::post("/login/user",[OlankaUsersController::class,"handleLogin"]);
 Route::put("/verify/email",[OlankaUsersController::class,"verifyEmail"]);
 Route::put("/reset/password",[OlankaUsersController::class,"actualizeVerify"])->middleware(Verify::class);
 Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
-
-Route::post("/send/newsletter",[NewsLettersController::class,"sendNewsLetter"]);
-Route::post("/save/news/letter",[NewsLettersController::class,"saveNewsLetter"]);
-Route::post("/live/preview",[NewsLettersController::class,"openLive"]);
-Route::post("/save/to/cloud",[NewsLettersController::class,"uploadtoCloudinary"]);
 

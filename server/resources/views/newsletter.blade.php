@@ -12,8 +12,8 @@
  <meta name="x-apple-disable-message-reformatting" />
  <link href="https://fonts.googleapis.com/css?family=Lato:ital,wght@0,400;0,400;0,700" rel="stylesheet" />
  <link href="https://fonts.googleapis.com/css?family=Kalnia:ital,wght@0,400;0,500;0,600" rel="stylesheet" />
- <title>Untitled</title>
- <!-- Made with Postcards Email Builder by Designmodo -->
+ <title>Newsletter</title>
+
  <style>
  html, body { margin: 0 !important; padding: 0 !important; min-height: 100% !important; width: 100% !important; -webkit-font-smoothing: antialiased; }
          * { -ms-text-size-adjust: 100%; }
@@ -169,22 +169,7 @@
  <style>
  @font-face { font-family: 'Lato'; font-style: normal; font-weight: 700; src: url('https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwaPHw.woff') format('woff'), url('https://fonts.gstatic.com/s/lato/v24/S6u9w4BMUTPHh6UVSwaPGQ.woff2') format('woff2'); } @font-face { font-family: 'Lato'; font-style: normal; font-weight: 400; src: url('https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxAwWA.woff') format('woff'), url('https://fonts.gstatic.com/s/lato/v24/S6uyw4BMUTPHjxAwXg.woff2') format('woff2'); } @font-face { font-family: 'Kalnia'; font-style: normal; font-weight: 500; src: url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW9QllxYEtA.woff') format('woff'), url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW9QllxYEtY.woff2') format('woff2'); } @font-face { font-family: 'Kalnia'; font-style: normal; font-weight: 400; src: url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW9illxYEtA.woff') format('woff'), url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW9illxYEtY.woff2') format('woff2'); } @font-face { font-family: 'Kalnia'; font-style: normal; font-weight: 600; src: url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW-8kVxYEtA.woff') format('woff'), url('https://fonts.gstatic.com/s/kalnia/v2/11hqGpPCwUbbYwZZP0RBuDY62BQZhjvOytM_sLzi-TFWAW-8kVxYEtY.woff2') format('woff2'); }
  </style>
- <!--<![endif]-->
- <!--[if mso]>
-    <style type="text/css">
-        .pc-font-alt {
-            font-family: Arial, Helvetica, sans-serif !important;
-        }
-    </style>
-    <![endif]-->
- <!--[if gte mso 9]>
-    <xml>
-        <o:OfficeDocumentSettings>
-            <o:AllowPNG/>
-            <o:PixelsPerInch>96</o:PixelsPerInch>
-        </o:OfficeDocumentSettings>
-    </xml>
-    <![endif]-->
+
 </head>
 
 <body class="body pc-font-alt" style="width: 100% !important; min-height: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.5; font-weight: normal; color: #2D3A41; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-variant-ligatures: normal; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; background-color: #eeede6;" bgcolor="#eeede6">
@@ -200,24 +185,7 @@
           <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
            <tr>
             <td class="pc-w620-spacing-0-0-0-0" width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
-             <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
-              <tr>
-               <td valign="top" class="pc-w620-padding-7-20-7-20" style="padding: 7px 40px 7px 40px; height: unset; background-color: #211c1c;" bgcolor="#211c1c">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                 <tr>
-                  <td valign="top" align="left">
-                   <div class="pc-font-alt" style="text-decoration: none;">
-                    <div style="font-size: 15px;line-height: 21px;text-align:center;text-align-last:center;color:#ffffff;font-style:normal;font-weight:400;letter-spacing:-0.2px;">
-                     <div><span style="font-family: 'Lato', Arial, Helvetica, sans-serif;">Embark on a wholesome travel experience with </span>
-                     </div>
-                    </div>
-                   </div>
-                  </td>
-                 </tr>
-                </table>
-               </td>
-              </tr>
-             </table>
+          
             </td>
            </tr>
           </table>
@@ -350,7 +318,7 @@
                  <tr>
                   <td align="center" valign="top" style="padding: 0px 0px 30px 0px;">
                    <a class="pc-font-alt" href="https://postcards.email/" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
-                    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" class="pc-w620-width-100pc pc-w620-height-auto" width="600" height="225" alt="Valentine's Day" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 600px; height: auto; max-width: 100%; border: 0;" />
+                    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" class="pc-w620-width-240 pc-w620-height-auto pc-w620-align-center" width="300" height="112" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 300px; height: auto; max-width: 100%; border: 0;" />
                    </a>
                   </td>
                  </tr>
@@ -648,7 +616,7 @@
                          <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                            <td align="center" valign="top" style="line-height: 1;">
-                            <a class="pc-font-alt" href="https://postcards.email/" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
+                            <a class="pc-font-alt" href="https://x.com/olankasafaris" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
                              <img src="https://cloudfilesdm.com/postcards/129f1efbdcc2b8a92522deb753d39818.png" class="pc-w620-width-26 pc-w620-height-auto" width="20" height="20" style="display: block; border: 0; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 20px; height: 20px;" alt="" />
                             </a>
                            </td>
@@ -665,7 +633,7 @@
                          <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                            <td align="center" valign="top" style="line-height: 1;">
-                            <a class="pc-font-alt" href="https://postcards.email/" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
+                            <a class="pc-font-alt" href="https://www.youtube.com/channel/UCMyrlU8eb3ToAbmOV-dPTMA" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
                              <img src="https://cloudfilesdm.com/postcards/2ca29f881c783dca674123d5bf9a1fee.png" class="pc-w620-width-30 pc-w620-height-auto" width="20" height="20" style="display: block; border: 0; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 20px; height: 20px;" alt="" />
                             </a>
                            </td>
@@ -682,7 +650,7 @@
                          <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                            <td align="center" valign="top" style="line-height: 1;">
-                            <a class="pc-font-alt" href="https://postcards.email/" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
+                            <a class="pc-font-alt" href="https://x.com/olankasafaris" target="_blank" style="text-decoration: none; display: inline-block; vertical-align: top;">
                              <img src="https://cloudfilesdm.com/postcards/33a2b1f5571e1cb91d22dd0c9a26a85a.png" class="pc-w620-width-26 pc-w620-height-auto" width="20" height="20" style="display: block; border: 0; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 20px; height: 20px;" alt="" />
                             </a>
                            </td>

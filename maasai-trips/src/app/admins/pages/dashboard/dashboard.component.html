@@ -32,13 +32,17 @@
                       <mat-icon style="background-color: white;">newspaper</mat-icon>
                       <span style="color: black;">Create Newsletter</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="chooserEmail(5)">
                       <mat-icon>queue</mat-icon>
                       <span style="color: black;">Show Queue</span>
                     </button>
-                    <button mat-menu-item>
+                    <button mat-menu-item (click)="chooserEmail(6)">
                         <mat-icon>manage_accounts</mat-icon>
                         <span style="color: black;">Manage Mails</span>
+                      </button>
+                      <button mat-menu-item (click)="chooserEmail(7)">
+                        <mat-icon>manage_accounts</mat-icon>
+                        <span style="color: black;">Manage Newsletters</span>
                       </button>
                   </mat-menu>
         <mat-list-item  [mat-menu-trigger-for]="menu">
@@ -150,6 +154,9 @@
 <emails-send *ngIf="emailChoosen==1"></emails-send>
 <bulk-mails *ngIf="emailChoosen==3"></bulk-mails>
 <news-letter *ngIf="emailChoosen==4"></news-letter>
+<queue *ngIf="emailChoosen==5"></queue>
+<manage-mails *ngIf="emailChoosen==6"></manage-mails>
+<manage-newsletters *ngIf="emailChoosen==7"></manage-newsletters>
  </div>
           
 

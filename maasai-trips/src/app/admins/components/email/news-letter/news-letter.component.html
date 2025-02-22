@@ -26,7 +26,7 @@
                 (onClear)="choosen==false"
                  
                 accept="image/*" 
-                maxFileSize="1000000">
+                maxFileSize="1000000000000">
                     <ng-template pTemplate="content">
                         <ul >
                         
@@ -38,10 +38,10 @@
     </form>
     
     <mat-card-actions>
-    <button *ngIf="!uploadingCloud || !savingsNewsletter" mat-flat-button (click)="savingNewsletter()"  >Create</button>
-    <button *ngIf="!uploadingCloud || !savingsNewsletter" mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
+    <button *ngIf="!uploadingCloud && !savingsNewsletter" mat-flat-button (click)="savingNewsletter()"  >Create</button>
+    <button *ngIf="!uploadingCloud && !savingsNewsletter" mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
     <button  mat-flat-button style="margin-left: 20px;" *ngIf="choosen" (click)="uploadCloudinry()">Upload image</button>   
-      <p-button *ngIf="uploadingCloud || savingsNewsletter" loading>Processing....</p-button>
+    <p-button *ngIf="uploadingCloud || savingsNewsletter" loading>Processing....</p-button>
 </mat-card-actions>
     <p-toast/>
     </mat-card>

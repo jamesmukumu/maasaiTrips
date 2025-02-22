@@ -56,7 +56,40 @@ console.error(error)
 
 }
 
+async updateNewsletterTemplate(mailer:newsLetter,id:number){
+  try{
+  var token = Cookies.get("grant_token")
+  var resp = await axios.put("http://localhost:8000/api/update/news/letter",mailer,{
+  headers:{
+  "Authorization":`Bearer ${token}`
+  },
+  params:{
+  "id":id
+  }
+  })
+  return resp.data
+  }catch(err){
+  return err
+  }
+  }
+  
 
+async updateMailTemplate(mailer:MailTemplate,id:number){
+try{
+var token = Cookies.get("grant_token")
+var resp = await axios.put("http://localhost:8000/api/update/mail/template",mailer,{
+headers:{
+"Authorization":`Bearer ${token}`
+},
+params:{
+"id":id
+}
+})
+return resp.data
+}catch(err){
+return err
+}
+}
 
 
 
@@ -80,6 +113,20 @@ console.error(err)
 }
 
 
+
+async fetchNewsLetters(){
+try{
+var token = Cookies.get("grant_token")
+var resp = await axios.get("http://localhost:8000/api/fetch/my/newsletters",{
+headers:{
+  "Authorization":`Bearer ${token}`
+}
+})
+return resp.data
+}catch(err){
+return err
+}
+}
 
 async previewLive(contentBody:string){
 var token = Cookies.get("grant_token")
@@ -154,10 +201,75 @@ headers:{
 return resp.data
 }catch(err){
 console.error(err)
+}}
+
+
+async deleteTemplateNewsLetter(id:number){
+  try{
+  var token = Cookies.get("grant_token")
+  var resp = await axios.delete("http://localhost:8000/api/delete/news/letter",{
+  headers:{
+  "Authorization":`Bearer ${token}`
+  },
+  params:{
+  "id":id
+  }
+  })
+  return resp.data
+  }catch(err){
+  return err
+  }
+  
+  }
+async deleteTemplate(id:number){
+try{
+var token = Cookies.get("grant_token")
+var resp = await axios.delete("http://localhost:8000/api/delete/email/template",{
+headers:{
+"Authorization":`Bearer ${token}`
+},
+params:{
+"id":id
+}
+})
+return resp.data
+}catch(err){
+return err
 }
 
 }
 
+async fetchEmailTemplates(){
+  try{
+  var token = Cookies.get("grant_token")
+  var response = await axios.get("http://localhost:8000/api/fetch/email/templates",{
+  headers:{
+    "Authorization":`Bearer ${token}`
+  }
+  })
+  return response.data
+  }catch(err){
+  return err
+  }
+  
+  
+  }
+
+async fetchStatus(){
+try{
+var token = Cookies.get("grant_token")
+var response = await axios.get("http://localhost:8000/api/fetch/mail/status",{
+headers:{
+  "Authorization":`Bearer ${token}`
+}
+})
+return response.data
+}catch(err){
+return err
+}
+
+
+}
 
 
 

@@ -1,0 +1,112 @@
+<h1>My Email Templates</h1>
+
+<table mat-table [dataSource]="dataSource" *ngIf="!processing">
+    
+   
+    <ng-container matColumnDef="createdon">
+      <th mat-header-cell *matHeaderCellDef>Created On</th>
+      <td mat-cell *matCellDef="let element"> 
+         {{timeFormater(element.created_at)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="subject">
+      <th mat-header-cell *matHeaderCellDef>Subject</th>
+      <td mat-cell *matCellDef="let element"> {{element.subject}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="message">
+      <th mat-header-cell *matHeaderCellDef>Message</th>
+      <td mat-cell *matCellDef="let element" > <p [innerHTML]="element.mailMessage">{{element.mailMessage}}</p></td>
+    </ng-container>
+  
+    <ng-container matColumnDef="attachments">
+        <th mat-header-cell *matHeaderCellDef>Attachments</th>
+        <td mat-cell *matCellDef="let element">Null</td>
+      </ng-container>
+    
+ 
+<ng-container matColumnDef="actions" >
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+      <button mat-icon-button matTooltip="actions" [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+      </button>
+      
+      <mat-menu #menu>
+        <button mat-menu-item >
+            <mat-icon (click)="popUpdate(element.subject,element.id,element.mailMessage)" >edit</mat-icon>
+            <span>Edit</span>
+           </button>
+       <button mat-menu-item >
+        <mat-icon style="color: red;" (click)="popDelete(element.id,element.subject)">delete</mat-icon>
+        <span>Delete</span>
+       </button>
+     
+  
+      </mat-menu>
+  
+      
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter </td>
+    </tr>
+  </table>
+  
+  <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+
+
+  <div class="spin">
+    <p-progressSpinner *ngIf="processing"/>
+   </div>
+
+
+
+
+
+
+   <p-dialog header="Delete Email Template" [modal]="true" [(visible)]="deleting" [style]="{ width: '25rem' }">
+    <span class="p-text-secondary block mb-5">Confirm deletion of email {{subject}}</span>
+  
+    <mat-card-actions align="start">
+    <mat-icon (click)="delete()" matTooltip="Delete" style="color: green; margin-right: 20px;cursor: pointer;">done</mat-icon>
+    <mat-icon matTooltip="Cancel" style="color: red;cursor: pointer;">clear</mat-icon>
+    </mat-card-actions>
+</p-dialog>   
+ 
+
+
+
+
+
+<p-dialog  header="Edit Template" [modal]="true" maximizable="true" [(visible)]="updating" [style]="{ width: '25rem' }">
+
+
+<div class="editor">
+  <mat-form-field>
+    <mat-label>Enter new Subject</mat-label>
+    <input type="text" required #sub="ngModel" matInput name="sub" [(ngModel)]="subj">
+  <mat-error *ngIf="sub.invalid && sub.touched">
+    Provide Subject
+  </mat-error> 
+  </mat-form-field> 
+    
+    <mat-label>Enter message</mat-label>
+    <p-editor  (onTextChange)="logger($event)" required [style]="{height:'fit-content'}" placeholder="Enter your message here" />
+    </div>
+<mat-card-actions>
+<button mat-flat-button (click)="updatingMailer()">Update</button>
+</mat-card-actions>
+
+  
+
+</p-dialog>
