@@ -8,6 +8,7 @@ use App\Models\EmailTemplates;
 use App\Models\MailStatus;
 use App\Models\OlankaUsers;
 use Dotenv\Exception\ValidationException;
+
 use Illuminate\Http\Request;
 use Log;
 use Mail;
@@ -20,6 +21,26 @@ public function verifyToken(Request $request);
 }
 
 class BulkMailControllers extends Controller implements BulkMailsInterface{
+    
+public function fetchMailStatus(Request $request){
+    try{
+    $olankaID =  $this->verifyToken($request);
+    
+    $mailData = MailStatus::where("olanka_users_id",$olankaID)->with(['bulkUserRelation'])->orderBy("created_at")->get();
+    return response()->json([
+    "message"=>"Status fetched",
+    "data"=>$mailData
+    ]);
+    }catch(\Exception $err){
+    return response()->json([
+    "message"=>$err->getMessage()
+    ],500);
+    }catch(ValidationException $errValidate){
+    return response()->json([
+    "message"=>$errValidate->getMessage()
+    ]);
+    }
+    }
 public function verifyToken(Request $request){
 try{
 $tokenHeader = $request->header("Authorization");
@@ -251,28 +272,42 @@ return response()->json([
 
 
 
+public function saveFromCsv(Request $request){
+    try {
+        $validation = $request->validate([
+            "bulk_csv" => "required"
+        ]);
 
-public function fetchMailStatus(Request $request){
-try{
-$olankaID =  $this->verifyToken($request);
+        $csvFile = $request->file("bulk_csv");
+        $contentsFile = fopen($csvFile->getRealPath(), "r");
 
-$mailData = MailStatus::where("olanka_users_id",$olankaID)->with(['bulkUserRelation'])->orderBy("created_at")->get();
-return response()->json([
-"message"=>"Status fetched",
-"data"=>$mailData
-]);
-}catch(\Exception $err){
-return response()->json([
-"message"=>$err->getMessage()
-],500);
-}catch(ValidationException $errValidate){
+        $datacont = [];
+        $headers = fgetcsv($contentsFile, 1000, ","); 
+
+        while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+            $datacont[] = array_combine($headers, $data); 
+        }
+
+        fclose($contentsFile);
+     
+        BulkMails::insert($datacont);
+    
+
+        return response()->json([
+            "message" => "Data Saved",
+            "data" => $datacont
+        ]);
+
+    } catch (\Exception $err) {
+        return response()->json([
+            "message" => "Something went wrong"
+        ], 500);
+    }catch(ValidationException $errValidate){
 return response()->json([
 "message"=>$errValidate->getMessage()
-]);
+],500);
 }
 }
-
-
 
 
 

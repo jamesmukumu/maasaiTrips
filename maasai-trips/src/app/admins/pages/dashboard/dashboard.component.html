@@ -7,7 +7,7 @@
             <div  (click)="changeActive(0)" [classList]="activeIndex==0 ? 'activeList':''">
                 <mat-list-item  >
                     <span matListItemTitle>Home</span>
-                    <mat-icon matListItemIcon>home</mat-icon>
+                    <mat-icon  style="color: white;" matListItemIcon>home</mat-icon>
                     </mat-list-item>
             </div>
 
@@ -47,7 +47,7 @@
                   </mat-menu>
         <mat-list-item  [mat-menu-trigger-for]="menu">
         <span matListItemTitle>Emails</span>
-        <mat-icon matListItemIcon>email</mat-icon>
+        <mat-icon style="color: white;" matListItemIcon>email</mat-icon>
         </mat-list-item>
         </div>
         
@@ -79,7 +79,7 @@
 
            <mat-list-item  (click)="changeActive(2)" >
             <span matListItemTitle>Hotels</span>
-            <mat-icon matListItemIcon>hotel</mat-icon>
+            <mat-icon  style="color: white;" matListItemIcon>hotel</mat-icon>
             </mat-list-item>
        </div>
         <mat-divider style="background-color: white;"></mat-divider>
@@ -104,7 +104,7 @@
       <div [classList]="activeIndex== 3 ? 'activeList':''" [mat-menu-trigger-for]="packageMenu">
         <mat-list-item  (click)="changeActive(3)" >
             <span matListItemTitle>Packages</span>
-            <mat-icon matListItemIcon>inventory</mat-icon>
+            <mat-icon   style="color: white;" matListItemIcon>inventory</mat-icon>
             </mat-list-item>
       </div>
         
@@ -112,28 +112,28 @@
       <div [classList]="activeIndex== 4 ? 'activeList':''">
         <mat-list-item  (click)="changeActive(4)" >
             <span matListItemTitle>Enquiries</span>
-            <mat-icon matListItemIcon>help_center</mat-icon>
+            <mat-icon  style="color: white;" matListItemIcon>help_center</mat-icon>
             </mat-list-item>
       </div>
       <mat-divider style="background-color: white;"></mat-divider>
       <div [classList]="activeIndex== 5 ? 'activeList':''">
         <mat-list-item  (click)="changeActive(5)" >
             <span matListItemTitle>Destination</span>
-            <mat-icon matListItemIcon>near_me</mat-icon>
+            <mat-icon  style="color: white;" matListItemIcon>near_me</mat-icon>
             </mat-list-item>
       </div>
       <mat-divider style="background-color: white;"></mat-divider>
       <div [classList]="activeIndex== 6 ? 'activeList':''">
         <mat-list-item  (click)="changeActive(6)" >
             <span matListItemTitle>Blogs</span>
-            <mat-icon matListItemIcon>edit_note</mat-icon>
+            <mat-icon  style="color: white;" matListItemIcon>edit_note</mat-icon>
             </mat-list-item>
       </div>   
       <mat-divider style="background-color: white;"></mat-divider>
       <div [classList]="activeIndex== 6 ? 'activeList':''">
         <mat-list-item  (click)="changeActive(6)" >
             <span matListItemTitle>Account</span>
-            <mat-icon matListItemIcon>account_circle</mat-icon>
+            <mat-icon  style="color: white;" matListItemIcon>account_circle</mat-icon>
             <p matCardAvatar>sk</p>
             </mat-list-item>
       </div> 

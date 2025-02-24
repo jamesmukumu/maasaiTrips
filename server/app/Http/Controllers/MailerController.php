@@ -16,29 +16,32 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 
 
-interface MailerInterface{
-public function verifyTok(Request $request);
+interface MailerInterface
+{
+    public function verifyTok(Request $request);
 }
 
 
-class MailerController extends Controller implements MailerInterface{
-    public function verifyTok(Request $request){
+class MailerController extends Controller implements MailerInterface
+{
+    public function verifyTok(Request $request)
+    {
         try {
             $tokenHeader = $request->header("Authorization");
             if (!$tokenHeader || strlen($tokenHeader) < 8) {
                 throw new \Exception("Missing or invalid Token header");
             }
-    
+
             $token = substr($tokenHeader, 7);
             $payload = JWTAuth::setToken($token)->getPayload();
-            return $payload['sub']; 
-            
+            return $payload['sub'];
+
         } catch (\Exception $err) {
             Log::error($err->getMessage());
-            throw new \Exception($err->getMessage()); 
+            throw new \Exception($err->getMessage());
         }
     }
-    
+
 
 
 
@@ -83,37 +86,38 @@ class MailerController extends Controller implements MailerInterface{
 
 
 
-public function sendMail(Request $request) {
-try {
-$validatedRequest = $request->validate([
-"subject" => "required|min:6",
-"message" => "required",
-"emailTarget" => "required|email",
-"attachment" => "nullable|file",
-"ccs" => "nullable|string"
-]);
-$userID = $this->verifyTok($request);
-$bulkMailerLoad = BulkMails::where("email", $validatedRequest["emailTarget"])->first();
-if (!$bulkMailerLoad) {
-return response()->json([
-"message" => "Email target not found in BulkMails"
-], 404);
-}
-$idBulk = $bulkMailerLoad->id;
+    public function sendMail(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "subject" => "required|min:6",
+                "message" => "required",
+                "emailTarget" => "required|email",
+                "attachment" => "nullable|file",
+                "ccs" => "nullable|string"
+            ]);
+            $userID = $this->verifyTok($request);
+            $bulkMailerLoad = BulkMails::where("email", $validatedRequest["emailTarget"])->first();
+            if (!$bulkMailerLoad) {
+                return response()->json([
+                    "message" => "Email target not found in BulkMails"
+                ], 404);
+            }
+            $idBulk = $bulkMailerLoad->id;
             $mailerSaverLoad = [
-                "status" => "pending", 
+                "status" => "pending",
                 "olanka_users_id" => $userID,
                 "bulk_mails_id" => $idBulk
             ];
-    
+
             $mailStatus = MailStatus::create($mailerSaverLoad);
-    
+
             $filePaths = [];
             $ccEmails = [];
             if (!empty($validatedRequest["ccs"])) {
                 $ccEmails = array_filter(explode(",", $validatedRequest["ccs"]));
             }
-    
+
             if ($request->hasFile("attachment")) {
                 $attachments = $request->file("attachment");
                 if (!is_array($attachments)) {
@@ -123,23 +127,23 @@ $idBulk = $bulkMailerLoad->id;
                     $filePaths[] = $file->store('private');
                 }
             }
-    
+
             $mail = new MailerSend(
                 $validatedRequest["subject"],
                 $validatedRequest["message"],
                 $filePaths
             );
-    
+
             $mailObject = Mail::to($validatedRequest["emailTarget"]);
-    
+
             if (!empty($ccEmails)) {
                 $mailObject->cc($ccEmails);
             }
-    
+
             try {
                 $mailObject->send($mail);
-                $mailStatus->update(["status" => "delivered"]); 
-                 foreach ($ccEmails as $cc) {
+                $mailStatus->update(["status" => "delivered"]);
+                foreach ($ccEmails as $cc) {
                     $ccBulkMailerLoad = BulkMails::where("email", $cc)->first();
                     if ($ccBulkMailerLoad) {
                         MailStatus::create([
@@ -149,17 +153,17 @@ $idBulk = $bulkMailerLoad->id;
                         ]);
                     }
                 }
-    
+
                 EmailSaver::dispatch($mailStatus);
-    
+
                 return response()->json([
                     "message" => "Email sent"
                 ], 200);
             } catch (\Exception $sendError) {
                 Log::error('Error sending email: ' . $sendError->getMessage());
-    
-                $mailStatus->update(["status" => "failed"]); 
-    
+
+                $mailStatus->update(["status" => "failed"]);
+
                 return response()->json([
                     "message" => "Failed to send email: " . $sendError->getMessage()
                 ], 500);
@@ -176,7 +180,7 @@ $idBulk = $bulkMailerLoad->id;
             ], 500);
         }
     }
-    
+
 
 
 
@@ -229,62 +233,70 @@ $idBulk = $bulkMailerLoad->id;
     }
 
 
-public function updateEmailTemplate(Request $request){
-try{
-$validatedRequest = $request ->validate([
-        "mailMessage"=>"nullable",
-        "subject"=>"nullable",
-        "id"=>"integer|required"
-        ]);
-        $mailID = $request->query("id");
-        EmailTemplates::where("id",$mailID)->update($validatedRequest);
-        
-        return response()->json([
-        "message"=>"Template Updated"
-        ],200);
-}catch(\Exception $err){
-return response()->json([
-"message"=>$err->getMessage()
-],500);
-}
-}
+    public function updateEmailTemplate(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "mailMessage" => "nullable",
+                "subject" => "nullable",
+                "id" => "integer|required"
+            ]);
+            $mailID = $request->query("id");
+            EmailTemplates::where("id", $mailID)->update($validatedRequest);
 
-public function fetchMyTemplates(Request $request){
-try{
-$olankaid = $this->verifyTok($request);
-$data = EmailTemplates::where("olanka_users_id",$olankaid)->get();
-if(count($data)> 0 ){
-return response()->json([
-        "message"=>"Fetched",
-        "data"=>$data
-        ]);
-}else{
-return response()->json([
-"message"=>"You have no templates saved"
-]);
-}
-}catch(\Exception $err){
-return response()->json([
-"message"=>$err->getMessage()
-]);
-}
-}
-public function deleteTemplateMail(Request $request){
-try{
-$validatedRequest = $request->validate([
-"id"=>"required|integer"
-]);
-$mailID = $request->query('id');
-EmailTemplates::where("id",$mailID)->delete();
-return response()->json([
-"message"=>"Deleted"
-]);        
-}catch(\Exception $err){
-return response()->json([
-"message"=>$err->getMessage()
-],500);
-}
-}
+            return response()->json([
+                "message" => "Template Updated"
+            ], 200);
+        } catch (\Exception $err) {
+            return response()->json([
+                "message" => $err->getMessage()
+            ], 500);
+        }
+    }
+
+    public function fetchMyTemplates(Request $request)
+    {
+        try {
+            $olankaid = $this->verifyTok($request);
+            $data = EmailTemplates::where("olanka_users_id", $olankaid)->get();
+            if (count($data) > 0) {
+                return response()->json([
+                    "message" => "Fetched",
+                    "data" => $data
+                ]);
+            } else {
+                return response()->json([
+                    "message" => "You have no templates saved"
+                ]);
+            }
+        } catch (\Exception $err) {
+            return response()->json([
+                "message" => $err->getMessage()
+            ]);
+        }
+    }
+    public function deleteTemplateMail(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "id" => "required|integer"
+            ]);
+            $mailID = $request->query('id');
+            EmailTemplates::where("id", $mailID)->delete();
+            return response()->json([
+                "message" => "Deleted"
+            ]);
+        } catch (\Exception $err) {
+            return response()->json([
+                "message" => $err->getMessage()
+            ], 500);
+        }
+    }
+
+
+
+
+
 
 
 

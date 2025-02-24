@@ -76,10 +76,10 @@ trigger.openMenu()
 
 
 ngOnInit(){
-// var token = Cookies.get("grant_token")
-// if(token == undefined || token == ''){
-// this.router.navigate(["/login"])
-// }
+var token = Cookies.get("grant_token")
+if(token == undefined || token == ''){
+this.router.navigate(["/login"])
+}
 }
 
 

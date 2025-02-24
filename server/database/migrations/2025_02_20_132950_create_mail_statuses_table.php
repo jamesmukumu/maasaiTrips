@@ -13,7 +13,7 @@ return new class extends Migration
             $table->timestamps();
             $table->enum("status",["delivered","pending","failed","cancelled"]);
             $table -> foreignId("olanka_users_id")->constrained()->onDelete('cascade');
-            $table ->foreignId('bulk_mails_id')->constrained();
+            $table ->foreignId('bulk_mails_id')->constrained()->onDelete('cascade');
 });
     }
     public function down(): void

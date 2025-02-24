@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewsletterAlerts;
 use Cloudinary\Cloudinary;
 use Illuminate\Http\Request;
 use App\Mail\NewsLettersMailer;
@@ -15,6 +16,11 @@ use App\Models\MailStatus;
 interface Newsletter{
 public function verifyTok(Request $request);
 }
+// classes for newsletter template one
+
+
+
+
 
 class NewsLettersController extends Controller implements Newsletter{
     public function verifyTok(Request $request){
@@ -49,6 +55,7 @@ echo "Sent";
 echo $err->getMessage();
 }
 }
+
 
 
 public function sendNewsLetters(Request $request){
