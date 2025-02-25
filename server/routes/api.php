@@ -84,4 +84,8 @@ Route::delete("/delete/news/alert",[NewsLetterAlert::class,"deleteNewsLetterTemp
 // promotional newsletters
 Route::post("/dummy/promote",[PromotionalControllers::class,'sendNewsLetterPromotional']);
 Route::post("/save/promotional/newsletters",[PromotionalControllers::class,'savePromotionalNewsletters']);
+Route::post("/propagate/promotional/newsletters",[PromotionalControllers::class,"sendNewsLettersPromotional"]);
+Route::get("/fetch/promotional/newsletter",[PromotionalControllers::class,"fetchMyTemplates"]);
+Route::delete("/delete/promotional/newsletter",[PromotionalControllers::class,"deleteNewsLetterTemplateMail"]);
+Route::put("/update/promotional/newsletter",[PromotionalControllers::class,"UpdatePromotionalNewsletters"]);
 

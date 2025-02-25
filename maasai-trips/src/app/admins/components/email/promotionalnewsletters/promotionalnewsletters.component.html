@@ -1,0 +1,71 @@
+<mat-card>
+  <form>
+    <div class="destinations">
+      <div *ngFor="let dest of Destinations; let i = index">
+        <mat-form-field>
+          <mat-label>Enter Title Destination {{ i + 1 }}</mat-label>
+          <input type="text" name="destinationOneTitle" matInput />
+        </mat-form-field>
+        <div>
+          <p-editor
+            placeholder="Description {{ i + 1 }}"
+            [style]="{ height: 'fit-content' }"
+          />
+        </div>
+        <mat-form-field>
+          <mat-label>Enter Price Destination {{ i + 1 }}</mat-label>
+          <input type="number" matInput name="destinationPrice" />
+        </mat-form-field>
+        <div>
+          <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            [multiple]="true"
+            accept="image/*"
+            maxFileSize="1000000000"
+          >
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+      </div>
+      <mat-card-actions align="start">
+        <button mat-flat-button (click)="addDestinations()">
+          Add Another Destination
+        </button>
+        <button mat-flat-button (click)="popDestintions()">
+          Remove Destination
+        </button>
+      </mat-card-actions>
+    </div>
+
+    <div>
+      <p-editor placeholder="Enter Description" [style]="{ height: '100px' }" />
+    </div>
+    <mat-form-field>
+      <mat-label>Enter Hot Discount</mat-label>
+      <input type="number" matInput name="hotDiscount" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter Special Deal </mat-label>
+      <input type="text" matInput name="hotDiscount" />
+      <mat-hint> DEAL OF THE MONTH ANGAMA MARA </mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter Special Deal Description </mat-label>
+      <input type="text" matInput name="hotDiscount" />
+      <mat-hint> Describe special deal</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Enter Special Deal Discount </mat-label>
+      <input type="number" matInput name="hotDiscount" />
+    </mat-form-field>
+    <mat-card-actions align="start">
+      <button mat-flat-button>Create</button>
+      <button mat-flat-button>Preview</button>
+    </mat-card-actions>
+  </form>
+</mat-card>

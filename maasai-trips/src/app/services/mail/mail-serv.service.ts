@@ -123,7 +123,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'http://localhost:8000/api/fetch/my/newsletters',
+        'http://localhost:8000/api/fetch/my/alert/news/alerts',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -298,7 +298,7 @@ export class MailServService {
       formData.append('destinations', dest);
 
       var resp = await axios.post(
-        'http://localhost:8000/api/propagate/newsletters',
+        'http://localhost:8000/api/send/alerts/newsletter',
         formData,
         {
           headers: {

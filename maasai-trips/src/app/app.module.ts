@@ -78,7 +78,9 @@ import { QueueComponent } from './admins/components/email/queue/queue.component'
 import { ManageMailsComponent } from './admins/components/email/manage-mails/manage-mails.component';
 import { ManageNewslettersComponent } from './admins/components/email/manage-newsletters/manage-newsletters.component';
 import { PreviewComponent } from './admins/components/email/preview/preview.component'
-import {MatTreeModule} from "@angular/material/tree"
+import {MatTreeModule} from "@angular/material/tree";
+import { AlertNewsComponent } from './admins/components/email/alert-news/alert-news.component';
+import { PromotionalnewslettersComponent } from './admins/components/email/promotionalnewsletters/promotionalnewsletters.component'
 
 
 
@@ -99,7 +101,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,

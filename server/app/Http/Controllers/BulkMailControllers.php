@@ -15,6 +15,7 @@ use Mail;
 use App\Http\Controllers\MailerController;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\NewsLetters;
+use App\Models\NewsletterAlerts;
 
 interface BulkMailsInterface{
 public function verifyToken(Request $request);
@@ -247,12 +248,14 @@ $claimsToken = $payload->toArray();
 $id = $claimsToken["sub"];
 $userData =  EmailTemplates::where("olanka_users_id",$id)->select("subject","id")->get();
 $newsLetters = Newsletters::where("olanka_users_id",$id)->select("Title","id")->get();
+$alertNewsLetters =  NewsletterAlerts::where("olanka_users_id",$id)->select("Title","id")->get();
+
 $bulks = new BulkMails();
 $results = $bulks->select("id","fullname","category","identificationNumber","phoneNumber","email","country")->orderBy("created_at")->paginate(100);
 return response()->json([
 "message"=>"Fetched",
 "count"=>$results->total(),
-"newsLetters"=>$newsLetters,
+"alertnewsLetters"=>$alertNewsLetters,
 "emailTemps"=>$userData, 
 "data"=>$results->items(),
 "nextPage"=> $results->nextPageUrl(),

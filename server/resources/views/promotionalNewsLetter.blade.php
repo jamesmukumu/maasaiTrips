@@ -169,27 +169,7 @@
                        <tr>
                         <!--[if !gte mso 9]><!-- -->
                         <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="padding: 32px 0px 32px 0px; background-image: url('https://cloudfilesdm.com/postcards/image-17403985232020.jpg'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
-                         <!--<![endif]-->
-                         <!--[if gte mso 9]>
-                <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="background-image: url('https://cloudfilesdm.com/postcards/image-17403985232020.jpg'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
-            <![endif]-->
-                         <!--[if gte mso 9]>
-                <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 536px;">
-                    <v:fill src="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" color="#1b1b1b" type="frame" size="1,1" aspect="atleast" origin="-0.5,-0.5" position="-0.5,-0.5"/>
-                    <v:textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">
-                        <div style="font-size: 0; line-height: 0;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" align="center">
-                                <tr>
-                                    <td style="font-size: 14px; line-height: 1.5;" valign="top">
-                                        <p style="margin:0;mso-hide:all"><o:p xmlns:o="urn:schemas-microsoft-com:office:office">&nbsp;</o:p></p>
-                                        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
-                                            <tr>
-                                                <td colspan="3" height="32" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td width="0" valign="top" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                                <td valign="top" align="left">
-                <![endif]-->
+                        
                          <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
                            <td align="left" valign="top">
@@ -394,7 +374,7 @@
                                                      <tr>
                                                       <td valign="top" class="pc-w620-textAlign-center" align="center">
                                                        <div class="pc-font-alt pc-w620-textAlign-center pc-w620-fontSize-36px" style="line-height: 100%; letter-spacing: -3px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 56px; font-weight: 500; color: #cc7f38; text-align: center; text-align-last: center;">
-                                                        <div><span>80%</span>
+                                                        <div><span>{{$promotionalContent->hotDiscount}}%</span>
                                                         </div>
                                                        </div>
                                                       </td>
@@ -441,22 +421,7 @@
                            </td>
                           </tr>
                          </table>
-                         <!--[if gte mso 9]>
-                                                </td>
-                                                <td width="0" style="line-height: 1px; font-size: 1px;" valign="top">&nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3" height="32" style="line-height: 1px; font-size: 1px;">&nbsp;</td>
-                                            </tr>
-                                        </table>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <p style="margin:0;mso-hide:all"><o:p xmlns:o="urn:schemas-microsoft-com:office:office">&nbsp;</o:p></p>
-                    </v:textbox>
-                </v:rect>
-                <![endif]-->
+                        
                         </td>
                        </tr>
                       </table>
@@ -473,7 +438,7 @@
                     <tr>
                      <td valign="top" align="center">
                       <div class="pc-font-alt pc-w620-fontSize-16px pc-w620-lineHeight-150pc" style="line-height: 160%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: center; text-align-last: center;">
-                       <div><span>Take a trip to the tropics, where it’s never cold and the weather is comfortable year-round. South Africa shares a border with both the Caribbean and Pacific Oceans, which help create distinct climate regions and patterns like rainy and dry seasons. </span>
+                       <div><span>{{$promotionalContent->hotOffer}}</span>
                        </div>
                       </div>
                      </td>
@@ -485,28 +450,13 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                  <tr>
                   <th valign="top" class="pc-w620-spacing-0-0-0-0" align="center" style="padding: 0px 0px 40px 0px; text-align: center; font-weight: normal; line-height: 1;">
-                   <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="center" style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 15px 18px 16px 18px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-17403985239112.png" style="border: 0; width: 24px; height: 24px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="24" height="24"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 17px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $1,424</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                   <!--[if !mso]><!-- -->
+               
                    <a class="pc-w620-padding-12-16-12-16" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 15px 18px 16px 18px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 17px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                    <img src="https://cloudfilesdm.com/postcards/image-17403985239112.png" width="24" height="24" alt="" style="width: 24px; height: 24px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $1,424</span>
+                    <img src="https://cloudfilesdm.com/postcards/image-17403985239112.png" width="24" height="24" alt="" style="width: 24px; height: 24px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From &#36;{{$promotionalContent->hotOfferDiscount}}</span>
                     </span>
                     </span>
                    </a>
-                   <!--<![endif]-->
+                
                   </th>
                  </tr>
                 </table>
@@ -593,483 +543,84 @@
                        <tr>
                         <td align="left" valign="middle">
                          <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                          @foreach ($placesVisit as  $places)
+                            <tr>
+                            <td align="left" valign="top" style="line-height: 1;">
+                             <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                              
                              <tr>
-                              <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
-                               <img src="https://cloudfilesdm.com/postcards/image-17403985245776.jpg" width="260" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td valign="top" style="padding: 0px 0px 8px 0px;">
-                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                                <tr>
-                                 <td valign="top" align="left">
-                                  <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
-                                   <div><span>Paris</span>
-                                   </div>
-                                  </div>
-                                 </td>
-                                </tr>
-                               </table>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
-                             <tr>
-                              <td valign="top" align="left">
-                               <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                                <div><span>Wake up to a view of the Eiffel<br/>Tower in Paris</span>
-                                </div>
-                               </div>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                               <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-17403985250127.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $424</span></span></a>
+                               <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
+                                <img src={{$places["destinationImage"]}} width="260" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
+                               </td>
+                              </tr>
+                             </table>
                             </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                               <!--[if !mso]><!-- -->
-                               <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                                <img src="https://cloudfilesdm.com/postcards/image-17403985250127.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $424</span>
-                                </span>
-                                </span>
-                               </a>
-                               <!--<![endif]-->
-                              </th>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
+                           </tr>
+                           <tr>
+                            <td align="left" valign="top" style="line-height: 1;">
+                             <tapromotionalContentble width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
+ 
+                                
+                              <tr>
+                               <td valign="top" style="padding: 0px 0px 8px 0px;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
+                                 <tr>
+                                  <td valign="top" align="left">
+                                   <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
+                                    <div><span>{{$places["destinationTitle"]}}</span>
+                                    </div>
+                                   </div>
+                                  </td>
+                                 </tr>
+                                </table>
+                               </td>
+                              </tr>
+                             </tapromotionalContentble>
+                            </td>
+                           </tr>
+                           <tr>
+                            <td align="left" valign="top" style="line-height: 1;">
+                             <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
+                              <tr>
+                               <td valign="top" align="left">
+                                <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
+                                 <div><span>{{$places["destinationDescription"]}}</span>
+                                 </div>
+                                </div>
+                               </td>
+                              </tr>
+                             </table>
+                            </td>
+                           </tr>
+                           <tr>
+                            <td align="left" valign="top" style="line-height: 1;">
+                             <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                              <tr>
+                               <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
+                           
+                                <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
+                                 <img src="https://cloudfilesdm.com/postcards/image-17403985250127.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From ${{$places["destinationPrice"]}}</span>
+                                 </span>
+                                 </span>
+                                </a>
+                            
+                               </th>
+                              </tr>
+                             </table>
+                            </td>
+                           </tr>
+                          
+                          @endforeach
+                          
+                           
                          </table>
                         </td>
                        </tr>
                       </table>
                      </td>
-                     <td class="pc-grid-td-last pc-w620-itemsSpacings-0-32" align="left" valign="top" style="width: 50%; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 8px;">
-                      <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                       <tr>
-                        <td align="left" valign="middle">
-                         <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
-                               <img src="https://cloudfilesdm.com/postcards/image-17403985253418.jpg" width="260" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td valign="top" style="padding: 0px 0px 8px 0px;">
-                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                                <tr>
-                                 <td valign="top" align="left">
-                                  <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
-                                   <div><span>Sausalito</span>
-                                   </div>
-                                  </div>
-                                 </td>
-                                </tr>
-                               </table>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
-                             <tr>
-                              <td valign="top" align="left">
-                               <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                                <div><span>Watch sea lions play from a tugboat in Sausalito</span>
-                                </div>
-                               </div>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                               <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-17403985258049.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $948</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                               <!--[if !mso]><!-- -->
-                               <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                                <img src="https://cloudfilesdm.com/postcards/image-17403985258049.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $948</span>
-                                </span>
-                                </span>
-                               </a>
-                               <!--<![endif]-->
-                              </th>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                         </table>
-                        </td>
-                       </tr>
-                      </table>
-                     </td>
-                    </tr>
-                   </table>
-                  </td>
-                 </tr>
-                </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                 <tr>
-                  <td style="padding: 0px 0px 32px 0px;">
-                   <table class="pc-width-fill pc-w620-gridCollapsed-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                    <tr class="pc-grid-tr-first pc-grid-tr-last">
-                     <td class="pc-grid-td-first pc-grid-td-last pc-w620-itemsSpacings-0-0" align="left" valign="top" style="width: 50%; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
-                      <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                       <tr>
-                        <td align="left" valign="middle">
-                         <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
-                               <img src="https://cloudfilesdm.com/postcards/image-174039852610510.png" width="536" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td valign="top" style="padding: 0px 0px 8px 0px;">
-                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                                <tr>
-                                 <td valign="top" align="left">
-                                  <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
-                                   <div><span>Bali</span>
-                                   </div>
-                                  </div>
-                                 </td>
-                                </tr>
-                               </table>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
-                             <tr>
-                              <td valign="top" align="left">
-                               <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                                <div><span>Slumber on a luxury yacht in Bali. which help create distinct climate regions and patterns like rainy and dry seasons.</span>
-                                </div>
-                               </div>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                               <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-174039852670311.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $1,418</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                               <!--[if !mso]><!-- -->
-                               <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                                <img src="https://cloudfilesdm.com/postcards/image-174039852670311.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $1,418</span>
-                                </span>
-                                </span>
-                               </a>
-                               <!--<![endif]-->
-                              </th>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                         </table>
-                        </td>
-                       </tr>
-                      </table>
-                     </td>
-                    </tr>
-                   </table>
-                  </td>
-                 </tr>
-                </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                 <tr>
-                  <td class="pc-w620-spacing-0-0-32-0" style="padding: 0px 0px 62px 0px;">
-                   <table class="pc-width-fill pc-w620-gridCollapsed-1" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                    <tr class="pc-grid-tr-first pc-grid-tr-last">
-                     <td class="pc-grid-td-first pc-w620-itemsSpacings-0-32" align="left" valign="top" style="width: 50%; padding-top: 0px; padding-right: 8px; padding-bottom: 0px; padding-left: 0px;">
-                      <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                       <tr>
-                        <td align="left" valign="middle">
-                         <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
-                               <img src="https://cloudfilesdm.com/postcards/image-174039852700312.jpg" width="260" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td valign="top" style="padding: 0px 0px 8px 0px;">
-                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                                <tr>
-                                 <td valign="top" align="left">
-                                  <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
-                                   <div><span>London</span>
-                                   </div>
-                                  </div>
-                                 </td>
-                                </tr>
-                               </table>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
-                             <tr>
-                              <td valign="top" align="left">
-                               <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                                <div><span>Unwind on a quiet houseboat in London</span>
-                                </div>
-                               </div>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                               <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-174039852743513.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $912</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                               <!--[if !mso]><!-- -->
-                               <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                                <img src="https://cloudfilesdm.com/postcards/image-174039852743513.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $912</span>
-                                </span>
-                                </span>
-                               </a>
-                               <!--<![endif]-->
-                              </th>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                         </table>
-                        </td>
-                       </tr>
-                      </table>
-                     </td>
-                     <td class="pc-grid-td-last pc-w620-itemsSpacings-0-32" align="left" valign="top" style="width: 50%; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 8px;">
-                      <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                       <tr>
-                        <td align="left" valign="middle">
-                         <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
-                               <img src="https://cloudfilesdm.com/postcards/image-174039852773614.jpg" width="260" height="auto" alt="" style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width: 100%; height: auto; border: 0;" />
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" align="left" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <td valign="top" style="padding: 0px 0px 8px 0px;">
-                               <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                                <tr>
-                                 <td valign="top" align="left">
-                                  <div class="pc-font-alt" style="line-height: 21px; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 500; color: #333333; text-align: left; text-align-last: left;">
-                                   <div><span>Amsterdam</span>
-                                   </div>
-                                  </div>
-                                 </td>
-                                </tr>
-                               </table>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left">
-                             <tr>
-                              <td valign="top" align="left">
-                               <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                                <div><span>Live the houseboat life in Amsterdam.</span>
-                                </div>
-                               </div>
-                              </td>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                          <tr>
-                           <td align="left" valign="top" style="line-height: 1;">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                             <tr>
-                              <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                               <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-174039852820515.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $742</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                               <!--[if !mso]><!-- -->
-                               <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                                <img src="https://cloudfilesdm.com/postcards/image-174039852820515.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $742</span>
-                                </span>
-                                </span>
-                               </a>
-                               <!--<![endif]-->
-                              </th>
-                             </tr>
-                            </table>
-                           </td>
-                          </tr>
-                         </table>
-                        </td>
-                       </tr>
-                      </table>
-                     </td>
-                    </tr>
-                   </table>
-                  </td>
-                 </tr>
-                </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                 <tr>
-                  <td class="pc-w620-spacing-0-0-32-0" valign="top" style="padding: 0px 0px 40px 0px;">
-                   <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                    <tr>
-                     <td valign="top" style="line-height: 1px; font-size: 1px; border-bottom: 1px solid #c0c1a2;">&nbsp;</td>
-                    </tr>
-                   </table>
-                  </td>
-                 </tr>
-                </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-                 <tr>
-                  <td align="1" valign="top" style="padding: 0px 0px 8px 0px;">
-                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%" align="1">
-                    <tr>
-                     <td valign="top" align="left">
-                      <div class="pc-font-alt" style="line-height: 24px; letter-spacing: 3px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                       <div><span>SPECIAL DEAL</span>
-                       </div>
-                      </div>
-                     </td>
+                   
+                     
+                 
                     </tr>
                    </table>
                   </td>
@@ -1082,7 +633,7 @@
                     <tr>
                      <td valign="top" align="left">
                       <div class="pc-font-alt pc-w620-fontSize-32px" style="line-height: 110%; letter-spacing: -1px; font-family: 'Josefin Sans', Arial, Helvetica, sans-serif; font-size: 56px; font-weight: 500; color: #083b3d; text-align: left; text-align-last: left;">
-                       <div><span>Grilled party sliders</span>
+                       <div><span>{{$promotionalContent->specialDeal}}</span>
                        </div>
                       </div>
                      </td>
@@ -1098,7 +649,7 @@
                     <tr>
                      <td valign="top" class="pc-w620-padding-0-0-0-0" align="left">
                       <div class="pc-font-alt" style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; color: #083b3d; text-align: left; text-align-last: left;">
-                       <div><span>Gathering the whole family to celebrate? Whip up these simple and crowd-pleasing sliders.</span>
+                       <div><span>{{$promotionalContent->specialDealDescription}}</span>
                        </div>
                       </div>
                      </td>
@@ -1110,28 +661,13 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                  <tr>
                   <th valign="top" class="pc-w620-spacing-0-0-0-0" align="left" style="padding: 10px 0px 0px 0px; text-align: left; font-weight: normal; line-height: 1;">
-                   <!--[if mso]>
-        <table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-            <tr>
-                <td valign="middle" align="center" style="border-radius: 8px; background-color: #cc8038; text-align:center; color: #ffffff; padding: 9px 12px 9px 12px;" bgcolor="#cc8038">
-                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation">
-                        <tr>
-                            <td style="font-size: 0; padding-right: 6px;" valign="middle"><img src="https://cloudfilesdm.com/postcards/image-174039852850616.png" style="border: 0; width: 20px; height: 20px; line-height: 100%; -ms-interpolation-mode: bicubic;" alt="" width="20" height="20"/></td>                            <td valign="middle">
-                                <a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; text-align: center; color: #ffffff;" href="https://designmodo.com/postcards" target="_blank"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $298/person</span></span></a>
-                            </td>
-                                                    </tr>
-                    </table>
-                                </td>
-            </tr>
-        </table>
-        <![endif]-->
-                   <!--[if !mso]><!-- -->
+                  
                    <a class="pc-w620-padding-10-12-10-12" style="display: inline-block; box-sizing: border-box; border-radius: 8px; background-color: #cc8038; padding: 9px 12px 9px 12px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 500; font-size: 14px; line-height: 24px; letter-spacing: -0.2px; color: #ffffff; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;" href="https://designmodo.com/postcards" target="_blank">
-                    <img src="https://cloudfilesdm.com/postcards/image-174039852850616.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $298/person</span>
+                    <img src="https://cloudfilesdm.com/postcards/image-174039852850616.png" width="20" height="20" alt="" style="width: 20px; height: 20px; margin-bottom: 1px; margin-right: 6px; mso-para-margin-right: 6px; display: inline-block; border: 0; vertical-align: middle; line-height: 100%; -ms-interpolation-mode: bicubic;" /><span style="display: inline-block; vertical-align: middle;"><span style="display: block;"><span style="letter-spacing: 0px;" data-letter-spacing-original="0">From $ {{$promotionalContent->specialDiscountPrice}}/person</span>
                     </span>
                     </span>
                    </a>
-                   <!--<![endif]-->
+              
                   </th>
                  </tr>
                 </table>

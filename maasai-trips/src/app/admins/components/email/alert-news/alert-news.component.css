@@ -1,0 +1,23 @@
+*{
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+mat-card form{
+display: flex;
+flex-direction: column;
+}
+
+.spin{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+
+    mat-card-actions button{
+        background-color: rgb(252,166,8);
+color: white;
+margin-left: 20px;
+    }

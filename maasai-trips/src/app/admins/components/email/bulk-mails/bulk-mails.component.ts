@@ -168,12 +168,12 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     this.mailer
       .fetchBulks('http://localhost:8000/api/fetch/bulk/emails')
       .then((dataa) => {
-        var { message, data, currentPage, nextPage, emailTemps, newsLetters } =
+        var { message, data, currentPage, nextPage, emailTemps, alertnewsLetters } =
           dataa;
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.emailTemplates = emailTemps;
-        this.newsLetterTemplates = newsLetters;
+        this.newsLetterTemplates = alertnewsLetters;
         this.processingTable = false;
         for (let mailData of data) {
           var { email } = mailData;

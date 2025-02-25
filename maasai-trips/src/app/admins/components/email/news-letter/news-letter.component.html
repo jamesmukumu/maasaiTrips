@@ -1,70 +1,11 @@
 <mat-card>
-    <h1>Create Newsletter</h1>
-    <form>
-    <mat-form-field >
-    <mat-label>NewsLetter Title</mat-label>
-    <input #title="ngModel"  required  [(ngModel)]="titleNewsLetter"  required type="text" matInput name="mailTo">
-    <mat-hint>August NewsLetter</mat-hint>
-    <mat-error *ngIf="title.touched && title.invalid" >
-    Provide the title field as required
-    </mat-error>
-    </mat-form-field>
-    <div>
-<mat-label></mat-label>
-<p-editor required (onTextChange)="captureMessage($event)" [style]="{height:'fit-content'}" placeholder="Enter your message here" />
-</div>
-    
-          <input #fileInput type="file" style="display: none;" >
-          
-          <div class="card flex justify-content-center">
-            
-            <p-fileUpload 
-                name="demo[]" 
-               
-                (onUpload)="choosenFile($event)"
-                (onSelect)="choosenFile($event)"
-                (onClear)="choosen==false"
-                 
-                accept="image/*" 
-                maxFileSize="1000000000000">
-                    <ng-template pTemplate="content">
-                        <ul >
-                        
-                        </ul>
-                    </ng-template>
-            </p-fileUpload>
-        </div>
-        
-    </form>
-    
-    <mat-card-actions>
-    <button *ngIf="!uploadingCloud && !savingsNewsletter" mat-flat-button (click)="savingNewsletter()"  >Create</button>
-    <button *ngIf="!uploadingCloud && !savingsNewsletter" mat-flat-button style="margin-left: 20px;" (click)="preview()">Live Preview</button>
-    <button  mat-flat-button style="margin-left: 20px;" *ngIf="choosen" (click)="uploadCloudinry()">Upload image</button>   
-    <p-button *ngIf="uploadingCloud || savingsNewsletter" loading>Processing....</p-button>
-</mat-card-actions>
-    <p-toast/>
-    </mat-card>
+  <h1>Create Newsletter</h1>
+  <mat-checkbox  [checked]="alertsNewsLetter" (change)="checkerAlerts($event)" >Alerts newsletter</mat-checkbox>
+  <mat-checkbox [checked]="promotionalNewsLetter" (change)="checker($event)" >Promotional newsletter</mat-checkbox>
 
+  <p-toast />
 
-
-
-
-
-<p-dialog [(visible)]="popDialog" header="Copy to url">
-   
-<form>
-<mat-form-field>
-
-<mat-label>Content url</mat-label>
-<mat-icon matSuffix matTooltip="Copy Cloud url" [cdkCopyToClipboard]="cloudUrl">content_copy</mat-icon>
-<input type="text" matInput name="url" disabled [(ngModel)]="cloudUrl">
-</mat-form-field>
-
-</form>
-
-
-</p-dialog>
-
-
-   
+  <alert-news *ngIf="alertsNewsLetter"></alert-news>
+  <promotionalnewsletters *ngIf="promotionalNewsLetter"></promotionalnewsletters>
+</mat-card>
+ 

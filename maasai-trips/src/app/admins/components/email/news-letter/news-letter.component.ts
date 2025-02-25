@@ -21,6 +21,8 @@ readonly dialog = inject(MatDialog)
 
 constructor(private clip:Clipboard,private msg:MessageService,private mailer:MailServService){}   
 message:string = ''
+alertsNewsLetter = false
+promotionalNewsLetter = false
 savingsNewsletter = false
 titleNewsLetter:string = ''
 previewContent:any
@@ -29,6 +31,26 @@ ImageFile:any
 choosen = false
 uploadingCloud = false
 cloudUrl = ''
+
+checker(event:any){
+var {checked} = event
+if(checked){
+this.alertsNewsLetter = false
+this.promotionalNewsLetter = true
+}else{
+this.promotionalNewsLetter = false
+}
+}
+checkerAlerts(event:any){
+  var {checked} = event
+  if(checked){
+    this.promotionalNewsLetter = false
+  this.alertsNewsLetter = true
+  
+  }else{
+  this.alertsNewsLetter = false
+  }
+  }
 choosenFile(event:any){
 var {currentFiles} = event
 console.log(currentFiles)

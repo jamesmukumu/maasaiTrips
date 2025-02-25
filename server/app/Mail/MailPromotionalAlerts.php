@@ -13,17 +13,14 @@ class MailPromotionalAlerts extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
-    {
-        //
+  public $promotionalContent;
+  public $placesVisit;
+    public function __construct($contentPromotional,$places){
+    $this->promotionalContent = $contentPromotional;
+    $this->placesVisit = $places;
     }
 
-    /**
-     * Get the message envelope.
-     */
+   
     public function envelope(): Envelope
     {
         return new Envelope(
