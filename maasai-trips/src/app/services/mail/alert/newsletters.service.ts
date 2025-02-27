@@ -22,7 +22,7 @@ export interface alertNewsLetters {
   providedIn: 'root',
 })
 export class NewslettersService {
-  baseUrl = 'http://localhost:8000/api';
+  baseUrl = 'https://maasaitrips-2.onrender.com/api';
   constructor() {}
 
   async saveAlertsTemplate(AlertNewsLetter: alertNewsLetters) {
@@ -131,16 +131,19 @@ export class NewslettersService {
     }
   }
 
-
   async previewAlertsEditorMode(AlertNewsLetter: alertNewsLetters) {
     try {
       var token = Cookies.get('grant_token');
-    
-var resp = await axios.post(`${this.baseUrl}/preview/edit-mode/alerts`, AlertNewsLetter, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+
+      var resp = await axios.post(
+        `${this.baseUrl}/preview/edit-mode/alerts`,
+        AlertNewsLetter,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return resp.data;
     } catch (err) {
       return err;

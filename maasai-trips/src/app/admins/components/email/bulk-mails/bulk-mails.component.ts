@@ -43,8 +43,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   displayedColumnsSmallScreen: string[] = [
     'chooseAll',
     'choosen',
- 
- 
+
     'email',
 
     'action',
@@ -58,10 +57,10 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   attachments: any;
   sendingMails = false;
   subjectID = 0;
-  csvFile:any
+  csvFile: any;
   mailType = '';
   newsleteterid: number = 0;
-  savingCsv = false
+  savingCsv = false;
 
   constructor(
     private mailer: MailServService,
@@ -90,7 +89,6 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   choosenCsvFile(event: any) {
     var { currentFiles } = event;
     this.csvFile = currentFiles[0];
-   
   }
   popDelete(deleteData: any) {
     this.dialog.open(DeleteBulkComponent);
@@ -133,21 +131,24 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     }
   }
 
-
-  async saveBulksCsv(){
-  try{
-  this.savingCsv = true
-var {message} = await this.mailer.uploadCsv(this.csvFile)
-if(message == "Data Saved"){
-this.msg.add({severity:"success",detail:"Uploaded",life:11000})
-this.savingCsv = false
-}else{
-this.msg.add({severity:"error",detail:"Something went wrong",life:11000})
-this.savingCsv = false
-}
-}catch(err){
-console.error(err)
-}
+  async saveBulksCsv() {
+    try {
+      this.savingCsv = true;
+      var { message } = await this.mailer.uploadCsv(this.csvFile);
+      if (message == 'Data Saved') {
+        this.msg.add({ severity: 'success', detail: 'Uploaded', life: 11000 });
+        this.savingCsv = false;
+      } else {
+        this.msg.add({
+          severity: 'error',
+          detail: 'Something went wrong',
+          life: 11000,
+        });
+        this.savingCsv = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
   async sendBulksNewsTemplates() {
     this.sendingMails = true;
@@ -198,10 +199,16 @@ console.error(err)
   fetchBulkMails() {
     this.processingTable = true;
     this.mailer
-      .fetchBulks('http://localhost:8000/api/fetch/bulk/emails')
+      .fetchBulks('https://maasaitrips-2.onrender.com/api/fetch/bulk/emails')
       .then((dataa) => {
-        var { message, data, currentPage, nextPage, emailTemps, alertnewsLetters } =
-          dataa;
+        var {
+          message,
+          data,
+          currentPage,
+          nextPage,
+          emailTemps,
+          alertnewsLetters,
+        } = dataa;
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.emailTemplates = emailTemps;
