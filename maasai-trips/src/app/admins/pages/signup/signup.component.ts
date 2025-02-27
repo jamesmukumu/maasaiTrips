@@ -3,6 +3,7 @@ import { AdminService,Register } from '../../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import Cookies from 'js-cookie';
 
 
 @Component({
@@ -33,11 +34,13 @@ phoneNumber:this.phoneNumber
 
 this.admin.Register(payload).then((data)=>{
 
-var {message} = data
+var {message,token} = data
 switch(message){
 case "User Saved":
 this.msg.add({life:10000,severity:"success",summary:"Success",detail:"User added"})
 this.processingRequest= false
+Cookies.set("grant_token",token,{expires:1/24})
+this.router.navigate(["/dashboard"])
 break;
 case "Duplicacy Detected":
 this.processingRequest = false

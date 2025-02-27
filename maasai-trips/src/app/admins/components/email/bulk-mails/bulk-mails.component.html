@@ -9,6 +9,7 @@
     </button> 
 
     <p-fileUpload 
+    class="upload"
 
     name="demo[]" 
     url="https://www.primefaces.org/cdn/api/upload.php" 
@@ -17,7 +18,7 @@ accept=".csv"
 (onSelect)="choosenCsvFile($event)"
 (onUpload)="saveBulksCsv()"
    chooseLabel="Choose csv file"
-   [style]="{'background-color':'green','margin-left':'30px'}"
+   [style]="{'background-color':'green'}"
    maxFileSize="1000000">
      
 </p-fileUpload>

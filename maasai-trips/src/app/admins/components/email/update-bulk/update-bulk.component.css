@@ -3,6 +3,7 @@
     padding: 0px;
     box-sizing: border-box;
     }
+    
     h1{
     text-align: center;
     }
@@ -16,11 +17,13 @@
         background-color: rgb(252,166,8);
         color: white;
         margin-left: 30%;
+        width: fit-content;
     }
     mat-card-header button{
     background-color: rgb(252,166,8);
     color: white;
     margin-left: 20px;
+    width: fit-content;
     }
     .table-form{
     width: 100%;
@@ -49,7 +52,10 @@
     
 
     @media(max-width:900px){
-
+mat-card,form{
+    min-width: 100vw;
+    max-width: 100%;
+}
     form{
     width: 100%;
     display: flex;
@@ -57,5 +63,8 @@
     }
     form button{
     margin-left: 0;
+    }
+    mat-form-field{
+        width: 90%;
     }
     }

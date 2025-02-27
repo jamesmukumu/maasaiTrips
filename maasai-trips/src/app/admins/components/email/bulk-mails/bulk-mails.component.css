@@ -41,7 +41,9 @@ margin-left: 20px;
 .table-visible-small{
     display: none;
 }
-
+.upload{
+margin-left: 20px;
+}
 
 
 @media(max-width:900px){
@@ -51,5 +53,24 @@ margin-left: 20px;
     .table-visible-small{
         display: contents;
     }
+    div{
+        display: flex;
+        flex-direction: column;
+        margin-left: 0px;
+        }
+        mat-card-header{
+        display: flex;
+        flex-direction: column;
+        }
+        mat-card-header button{
+            background-color: rgb(252,166,8);
+            color: white;
+            width: fit-content;
+            margin-top: 10px;
+            }
+            .upload{
+                margin-top: 20px;
+                }
+                
     
 }
