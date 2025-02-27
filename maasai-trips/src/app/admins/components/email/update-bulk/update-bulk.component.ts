@@ -43,9 +43,10 @@ async updateMail(){
     var {message} = resp
   
     if(message == 'Update Saved Successfully'){
-      this.processing = false
-    this.msg.add({severity:"success",detail:"Updated",life:11000})
-    
+      
+this.msg.add({severity:"success",detail:"Updated",life:11000})
+    this.processing = false
+    window.location.reload()
     
     }else{
       this.processing = false

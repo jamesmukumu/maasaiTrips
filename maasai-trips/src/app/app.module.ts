@@ -69,7 +69,7 @@ import { NewEmailComponent } from './admins/components/email/new-email/new-email
 import {MatChipsModule} from "@angular/material/chips";
 import { BulkMailsComponent } from './admins/components/email/bulk-mails/bulk-mails.component';
 import { NewBulkAddComponent } from './admins/components/email/new-bulk-add/new-bulk-add.component'
-
+import { previewReducer } from './redux/reducers/preview.reducer';
 import {bulkReducer } from './redux/reducers/bulk.reducer';
 import { UpdateBulkComponent } from './admins/components/email/update-bulk/update-bulk.component';
 import { DeleteBulkComponent } from './admins/components/email/delete-bulk/delete-bulk.component';
@@ -80,19 +80,22 @@ import { ManageNewslettersComponent } from './admins/components/email/manage-new
 import { PreviewComponent } from './admins/components/email/preview/preview.component'
 import {MatTreeModule} from "@angular/material/tree";
 import { AlertNewsComponent } from './admins/components/email/alert-news/alert-news.component';
-import { PromotionalnewslettersComponent } from './admins/components/email/promotionalnewsletters/promotionalnewsletters.component'
+import { PromotionalnewslettersComponent } from './admins/components/email/promotionalnewsletters/promotionalnewsletters.component';
+import { PreviewAllComponent } from './pages/preview-all/preview-all.component';
+import { UpdateAlertNewsLettersComponent } from './admins/components/email/dialog/update-alert-news-letters/update-alert-news-letters.component'
 
 
 
 
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
-  bulks:bulkReducer
+  bulks:bulkReducer,
+  preview:previewReducer
   }
   export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
     return (state, action) => {
       if (typeof window !== 'undefined') {
-        return localStorageSync({ keys: ['enquiry','bulks'], rehydrate: true })(reducer)(state, action);
+        return localStorageSync({ keys: ['enquiry','bulks',"preview"], rehydrate: true })(reducer)(state, action);
       }
       return reducer(state, action);
     };
@@ -101,7 +104,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -151,6 +154,10 @@ MatTooltipModule,
       {
       component:VerifyEmailComponent,
       path:"verify/email/:token"
+      },
+      {
+        component:PreviewAllComponent,
+        path:"preview"
       },
       {
 component:DashboardComponent,

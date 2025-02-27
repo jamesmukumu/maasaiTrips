@@ -185,9 +185,7 @@ class NewsLetterAlert extends Controller implements NewsAlertInterface
 
 
 
-
-    public function updateNewsLetterAlerts(Request $request)
-    {
+    public function updateNewsLetterAlerts(Request $request) {
         try {
             $validatedRequest = $request->validate([
                 "Title" => "nullable",
@@ -199,43 +197,39 @@ class NewsLetterAlert extends Controller implements NewsAlertInterface
                 "FinalContentThree" => "nullable",
                 "TitleFour" => "nullable",
                 "FinalContentFour" => "nullable",
-                "imageOne" => "nullable",
-                "imageTwo" => "nullable",
-                "imageThree" => "nullable",
-                "imageFour" => "nullable",
-
+                "imageOne" => "nullable|file",
+                "imageTwo" => "nullable|file",
+                "imageThree" => "nullable|file",
+                "imageFour" => "nullable|file",
             ]);
+    
             $cld = new Cloudinary();
-            if ($request->hasFile("imageOne")) {
-                $imageMetaData = $cld->uploadApi()->upload($request->file("imageOne")->getRealPath());
-                $validatedRequest["imageOne"] = $imageMetaData["url"];
-            } else if ($request->hasFile("imageTwo")) {
-                $imageMetaData = $cld->uploadApi()->upload($request->file("imageTwo")->getRealPath());
-                $validatedRequest["imageTwo"] = $imageMetaData["url"];
-            } else if ($request->hasFile("imageThree")) {
-                $imageMetaData = $cld->uploadApi()->upload($request->file("imageThree")->getRealPath());
-                $validatedRequest["imageThree"] = $imageMetaData["url"];
-            } else if ($request->hasFile("imageFour")) {
-                $imageMetaData = $cld->uploadApi()->upload($request->file("imageFour")->getRealPath());
-                $validatedRequest["imageFour"] = $imageMetaData["url"];
+            $imageFields = ["imageOne", "imageTwo", "imageThree", "imageFour"];
+    
+            foreach ($imageFields as $imageField) {
+                if ($request->hasFile($imageField)) {
+                    $imageMetaData = $cld->uploadApi()->upload($request->file($imageField)->getRealPath());
+                    $validatedRequest[$imageField] = $imageMetaData["url"];
+                }
             }
+    
             $newsLetterID = $request->query("id");
-            if (!NewsletterAlerts::find($newsLetterID)) {
-                return response()->json([
-                    "message" => "Newsletter non existent"
-                ]);
+            $newsletter = NewsletterAlerts::find($newsLetterID);
+    
+            if (!$newsletter) {
+                return response()->json(["message" => "Newsletter non existent"], 404);
             }
-            NewsletterAlerts::where("id", $newsLetterID)->update($validatedRequest);
-
-            return response()->json([
-                "message" => "Template Updated"
-            ], 200);
+            $newsletter->update($validatedRequest);
+            return response()->json(["message" => "Template Updated"], 200);
         } catch (\Exception $err) {
-            return response()->json([
-                "message" => $err->getMessage()
-            ], 500);
+            return response()->json(["message" => $err->getMessage()], 200);
         }
     }
+    
+
+
+
+
 
         public function fetchMyTemplates(Request $request){
         try{
@@ -260,7 +254,7 @@ class NewsLetterAlert extends Controller implements NewsAlertInterface
         public function deleteNewsLetterTemplateMail(Request $request){
         try{
         $validatedRequest = $request->validate([
-        "id"=>"required|integer|exists:news_letters,id"
+        "id"=>"required|integer|exists:newsletter_alerts,id"
         ]);
         $newsletterid = $request->query('id');
         NewsletterAlerts::where("id",$newsletterid)->delete();
@@ -275,5 +269,168 @@ class NewsLetterAlert extends Controller implements NewsAlertInterface
         }
 
 
+public function previewAlerts(Request $request){
+try{
+    
+    $validatedRequest = $request->validate([
+      
+        "TitleOne" => "nullable",
+        "FinalContentOne" => "nullable",
+        "TitleTwo" => "nullable",
+        "FinalContentTwo" => "nullable",
+        "TitleThree" => "nullable",
+        "FinalContentThree" => "nullable",
+        "TitleFour" => "nullable",
+        "FinalContentFour" => "nullable",
+        "imageOne" => "nullable|file",
+        "imageTwo" => "nullable|file",
+        "imageThree" => "nullable|file",
+        "imageFour" => "nullable|file"
+    ]);
 
+    $cld = new Cloudinary();
+    if($request->hasFile("imageOne")){
+        $imageOneUrl = $cld->uploadApi()->upload($request->file("imageOne")->getRealPath());
+
+    }else if($request->hasFile("imageTwo")){
+        $imageTwoUrl = $cld->uploadApi()->upload($request->file("imageTwo")->getRealPath());
+    }else if($request->hasFile("imageThree")){
+        $imageThreeUrl = $cld->uploadApi()->upload($request->file("imageThree")->getRealPath());
+    }else if($request->hasFile("imageFour")){
+    $imageFourUrl = $cld->uploadApi()->upload($request->file("imageFour")->getRealPath());
+    }
+  
+    $newsLetterSave = [
+        
+        "TitleOne" => $validatedRequest["TitleOne"] ?? null,
+        "imageOne" => $imageOneUrl["url"] ?? null,
+        "FinalContentOne" => $validatedRequest["FinalContentOne"] ?? null,
+    
+
+
+
+      "TitleTwo" => $validatedRequest["TitleTwo"] ?? null,
+        "imageTwo" => $imageTwoUrl["url"] ?? null,
+        "FinalContentTwo" => $validatedRequest["FinalContentTwo"] ?? null,
+
+        "TitleThree" => $validatedRequest["TitleThree"] ?? null,
+        "imageThree" => $imageThreeUrl["url"] ?? null,
+        "FinalContentThree" => $validatedRequest["FinalContentThree"] ?? null,
+
+        "TitleFour" => $validatedRequest["TitleFour"] ?? null,
+        "imageFour" => $imageFourUrl["url"] ?? null,
+        "FinalContentFour" => $validatedRequest["FinalContentFour"] ?? null,
+    ];
+
+    
+    $pageNewsLetter = new PageOneNewsletter(
+        $newsLetterSave["TitleOne"],
+        $newsLetterSave["imageOne"],
+        $newsLetterSave["FinalContentOne"]
+    );
+    $pageNewsLetterTwo = new PageOneNewsletter(
+        $newsLetterSave["TitleTwo"],
+        $newsLetterSave["imageTwo"],
+        $newsLetterSave["FinalContentTwo"]
+    );
+    $pageNewsLetterThree = new PageOneNewsletter(
+        $newsLetterSave["TitleThree"],
+        $newsLetterSave["imageThree"],
+        $newsLetterSave["FinalContentThree"]
+    );
+    $pageNewsLetterFour = new PageOneNewsletter(
+        $newsLetterSave["TitleFour"],
+        $newsLetterSave["imageFour"],
+        $newsLetterSave["FinalContentFour"]
+    );
+    return view("newsletterTemplate1",["contentPageOne" => $pageNewsLetter, "contentPageTwo" => $pageNewsLetterTwo, "contentPageThree" => $pageNewsLetterThree, "contentPageFour" => $pageNewsLetterFour]);
+
+}catch(\Exception $err){
+echo $err->getMessage();
+}
+
+
+
+}
+
+
+
+
+
+
+public function previewAlertsReady(Request $request){
+    try{
+        
+        $validatedRequest = $request->validate([
+          
+            "TitleOne" => "required",
+            "FinalContentOne" => "required",
+            "TitleTwo" => "required",
+            "FinalContentTwo" => "required",
+            "TitleThree" => "required",
+            "FinalContentThree" => "required",
+            "TitleFour" => "required",
+            "FinalContentFour" => "required",
+            "imageOne" => "required",
+            "imageTwo" => "required",
+            "imageThree" => "required",
+            "imageFour" => "required"
+        ]);
+    
+    
+    
+       
+     $newsLetterSave = [
+            
+            "TitleOne" => $validatedRequest["TitleOne"] ?? null,
+            "imageOne" => $validatedRequest["imageOne"] ?? null,
+            "FinalContentOne" => $validatedRequest["FinalContentOne"] ?? null,
+        
+    
+    
+    
+          "TitleTwo" => $validatedRequest["TitleTwo"] ?? null,
+            "imageTwo" => $validatedRequest["imageTwo"]  ?? null,
+            "FinalContentTwo" => $validatedRequest["FinalContentTwo"] ?? null,
+    
+            "TitleThree" => $validatedRequest["TitleThree"] ?? null,
+            "imageThree" => $validatedRequest["imageThree"]  ?? null,
+            "FinalContentThree" => $validatedRequest["FinalContentThree"] ?? null,
+    
+            "TitleFour" => $validatedRequest["TitleFour"] ?? null,
+            "imageFour" => $validatedRequest["imageFour"]  ?? null,
+            "FinalContentFour" => $validatedRequest["FinalContentFour"] ?? null,
+        ];
+    
+        
+        $pageNewsLetter = new PageOneNewsletter(
+            $newsLetterSave["TitleOne"],
+            $newsLetterSave["imageOne"],
+            $newsLetterSave["FinalContentOne"]
+        );
+        $pageNewsLetterTwo = new PageOneNewsletter(
+            $newsLetterSave["TitleTwo"],
+            $newsLetterSave["imageTwo"],
+            $newsLetterSave["FinalContentTwo"]
+        );
+        $pageNewsLetterThree = new PageOneNewsletter(
+            $newsLetterSave["TitleThree"],
+            $newsLetterSave["imageThree"],
+            $newsLetterSave["FinalContentThree"]
+        );
+        $pageNewsLetterFour = new PageOneNewsletter(
+            $newsLetterSave["TitleFour"],
+            $newsLetterSave["imageFour"],
+            $newsLetterSave["FinalContentFour"]
+        );
+        return view("newsletterTemplate1",["contentPageOne" => $pageNewsLetter, "contentPageTwo" => $pageNewsLetterTwo, "contentPageThree" => $pageNewsLetterThree, "contentPageFour" => $pageNewsLetterFour]);
+    
+    }catch(\Exception $err){
+    echo $err->getMessage();
+    }
+    
+    
+    
+    }
+    
 }

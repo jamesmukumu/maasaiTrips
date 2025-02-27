@@ -38,6 +38,18 @@ display: flex;
 flex-direction: column;
 margin-left: 20px;
 }
+.table-visible-small{
+    display: none;
+}
 
 
 
+@media(max-width:900px){
+    .table-visible{
+        display: none;
+    }
+    .table-visible-small{
+        display: contents;
+    }
+    
+}

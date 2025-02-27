@@ -298,7 +298,7 @@ public function saveFromCsv(Request $request){
 
         return response()->json([
             "message" => "Data Saved",
-            "data" => $datacont
+        
         ]);
 
     } catch (\Exception $err) {

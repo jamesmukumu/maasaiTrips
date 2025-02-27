@@ -49,7 +49,13 @@ Route::put("/update/enquiry",[QuotationController::class,"updateEnquiry"]);
 Route::delete("/delete/enquiry",[QuotationController::class,"deleteEnquiry"]);
 
 
-
+// alert news letters
+Route::post("/send/alerts/newsletter",[NewsLetterAlert::class,"sendNewsLetters"]);
+Route::post("/update/alerts/template",[NewsLetterAlert::class,'updateNewsLetterAlerts']);
+Route::get("/fetch/my/alert/news/alerts",[NewsLetterAlert::class,"fetchMyTemplates"]);
+Route::delete("/delete/news/alert",[NewsLetterAlert::class,"deleteNewsLetterTemplateMail"]);
+Route::post("/preview/alerts",[NewsLetterAlert::class,"previewAlerts"]);
+Route::post("/preview/edit-mode/alerts",[NewsLetterAlert::class,"previewAlertsReady"]);
 });
 
 
@@ -74,11 +80,6 @@ Route::post("/test/dummy",[NewsLettersController::class,"seeNewsLetter"]);
 
 
 
-// alert news letters
-Route::post("/send/alerts/newsletter",[NewsLetterAlert::class,"sendNewsLetters"]);
-Route::put("/update/alerts/template",[NewsLetterAlert::class,'updateNewsLetterAlerts']);
-Route::get("/fetch/my/alert/news/alerts",[NewsLetterAlert::class,"fetchMyTemplates"]);
-Route::delete("/delete/news/alert",[NewsLetterAlert::class,"deleteNewsLetterTemplateMail"]);
 
 
 // promotional newsletters

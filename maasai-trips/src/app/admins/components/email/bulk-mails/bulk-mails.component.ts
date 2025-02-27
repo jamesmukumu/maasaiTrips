@@ -40,6 +40,15 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     'country',
     'action',
   ];
+  displayedColumnsSmallScreen: string[] = [
+    'chooseAll',
+    'choosen',
+ 
+ 
+    'email',
+
+    'action',
+  ];
   processingTable = false;
   emailTemplates: any[] = [];
   newsLetterTemplates: any[] = [];
@@ -49,8 +58,10 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   attachments: any;
   sendingMails = false;
   subjectID = 0;
+  csvFile:any
   mailType = '';
   newsleteterid: number = 0;
+  savingCsv = false
 
   constructor(
     private mailer: MailServService,
@@ -76,6 +87,11 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     console.log(this.attachments);
   }
 
+  choosenCsvFile(event: any) {
+    var { currentFiles } = event;
+    this.csvFile = currentFiles[0];
+   
+  }
   popDelete(deleteData: any) {
     this.dialog.open(DeleteBulkComponent);
     var datatoUpdate = JSON.stringify(deleteData);
@@ -117,6 +133,22 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     }
   }
 
+
+  async saveBulksCsv(){
+  try{
+  this.savingCsv = true
+var {message} = await this.mailer.uploadCsv(this.csvFile)
+if(message == "Data Saved"){
+this.msg.add({severity:"success",detail:"Uploaded",life:11000})
+this.savingCsv = false
+}else{
+this.msg.add({severity:"error",detail:"Something went wrong",life:11000})
+this.savingCsv = false
+}
+}catch(err){
+console.error(err)
+}
+  }
   async sendBulksNewsTemplates() {
     this.sendingMails = true;
     try {

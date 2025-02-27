@@ -18,7 +18,7 @@
     
     <ng-container matColumnDef="Content">
       <th mat-header-cell *matHeaderCellDef>Content</th>
-      <td mat-cell *matCellDef="let element" ><button class="btn" mat-flat-button (click)="previewingActualize(element.content)">See</button></td>
+      <td mat-cell *matCellDef="let element" ><button class="btn" mat-flat-button (click)="previewDataOther(element)">See</button></td>
     </ng-container>
   
    
@@ -84,27 +84,110 @@
 
 
 <p-dialog  header="Edit Template" [modal]="true" maximizable="true" [(visible)]="updating" [style]="{ width: '25rem' }">
-
-
-<div class="editor">
-  <mat-form-field>
-    <mat-label>Enter new Subject</mat-label>
-    <input type="text" required #sub="ngModel" matInput name="sub" [(ngModel)]="subj">
-  <mat-error *ngIf="sub.invalid && sub.touched">
-    Provide Subject
-  </mat-error> 
-  </mat-form-field> 
+<form>
+      <mat-form-field appearance="outline" >
+        <mat-label>Enter Title</mat-label>
+        <input type="text" [(ngModel)]="title" required name="title" matInput />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Title for Entry 1</mat-label>
+        <input type="text"[(ngModel)]="titleEntry1"  name="title1" matInput />
+      </mat-form-field>
+      <p-editor (onTextChange)="captureValueOne($event)" placeholder="Content for entry one" [style]="{height:'100px'}"  />
+  
+      <div>
+        <p-fileUpload
+          name="demo[]"
+         
+      
+          accept="image/*"
+          (onSelect)="uploadImageOne($event)"
+          maxFileSize="1000000"
+        >
+          <ng-template pTemplate="content">
+            <ul></ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+  
+  
+      <mat-form-field appearance="outline">
+          <mat-label>Title for Entry 2</mat-label>
+          <input type="text" name="title2" matInput [(ngModel)]="titleEntry2" />
+        </mat-form-field>
+        <p-editor (onTextChange)="captureValueTwo($event)" placeholder="Content for entry two"  [style]="{height:'100px'}" />
     
-    <mat-label>Enter message</mat-label>
-    <p-editor  (onTextChange)="logger($event)" required [style]="{height:'fit-content'}" placeholder="Enter your message here" />
-    </div>
-<mat-card-actions>
-<button mat-flat-button (click)="updatingMailer()">Update</button>
-</mat-card-actions>
+        <div>
+          <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+           
+            (onSelect)="uploadImageTwo($event)"
+            
+            accept="image/*"
+            maxFileSize="1000000000"
+          >
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Title for Entry 3</mat-label>
+          <input type="text" [(ngModel)]="titleEntry3" name="title3" matInput />
+        </mat-form-field>
+        <p-editor (onTextChange)="captureValueThree($event)" placeholder="Content for entry three" [style]="{height:'100px'}"  />
+    
+        <div>
+          <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            (onSelect)="uploadImageThree($event)"
+            accept="image/*"
+            maxFileSize="1000000000"
+          >
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Title for Entry 4</mat-label>
+          <input [(ngModel)]="titleEntry4" type="text" name="title4" matInput />
+        </mat-form-field>
+        <p-editor (onTextChange)="captureValueFour($event)" placeholder="Content for entry four" [style]="{height:'100px'}"  />
+    
+        <div>
+          <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            [multiple]="true"
+            accept="image/*"
+            maxFileSize="1000000"
+            (onSelect)="uploadImageFour($event)"
+          > 
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+        <div>
+          <mat-card-actions>
+            <button mat-raised-button (click)="updatingMailer()" >Save</button>
+            <button mat-raised-button>Preview</button>
+          </mat-card-actions>
+        </div>
+    </form>
+    
+
 
   
 
-</p-dialog>
+ 
 
+</p-dialog>
+<p-toast/>
 
 <preview *ngIf="previewing" [previewContent]="previewData"></preview>

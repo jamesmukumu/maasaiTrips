@@ -217,6 +217,22 @@ export class MailServService {
     }
   }
 
+
+  async uploadCsv(csvFile:any){
+  try{
+var token = Cookies.get("grant_token")
+var formData = new FormData()
+formData.append("bulk_csv",csvFile)
+var resp = await axios.post("http://localhost:8000/api/save/bulk/from/csv",formData,{
+headers:{
+"Authorization":`Bearer ${token}`
+}
+})
+return resp.data
+}catch(err){
+return err
+}
+}
   async deleteTemplateNewsLetter(id: number) {
     try {
       var token = Cookies.get('grant_token');
