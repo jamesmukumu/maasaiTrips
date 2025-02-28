@@ -9,6 +9,7 @@ import {
   MailServService,
   Bulk,
 } from '../../../../services/mail/mail-serv.service';
+import { NewslettersService } from '../../../../services/mail/promotional/newsletters.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NewBulkAddComponent } from '../new-bulk-add/new-bulk-add.component';
@@ -50,9 +51,11 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   ];
   processingTable = false;
   emailTemplates: any[] = [];
+  promotionalTemplates: any[] = [];
   newsLetterTemplates: any[] = [];
   targetEmails: any;
   allEmails: any[] = [];
+  newsletterType: string = '';
   choosenDefaults: any = [];
   attachments: any;
   sendingMails = false;
@@ -65,6 +68,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   constructor(
     private mailer: MailServService,
     private msg: MessageService,
+    private news: NewslettersService,
     private store: Store
   ) {}
   log(event: any) {
@@ -183,6 +187,38 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  async sendPromotionalNewsTemplates() {
+    this.sendingMails = true;
+    try {
+      var payload: Bulk = {
+        emailTemplate: this.subjectID,
+        destinations: this.choosenDefaults.join(),
+        attachments: this.attachments,
+      };
+      var resp = await this.news.propagatePromotionalNewsletters(
+        this.newsleteterid,
+        this.choosenDefaults
+      );
+      var { message } = resp;
+      if (message == 'Emails propagated') {
+        this.msg.add({
+          severity: 'success 😁',
+          detail: 'Emails Propagated',
+          life: 10000,
+        });
+        this.sendingMails = false;
+      } else {
+        this.msg.add({
+          severity: 'error',
+          detail: 'Error sending mail',
+          life: 10000,
+        });
+        this.sendingMails = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
   openBulk() {
     this.dialog.open(NewBulkAddComponent);
   }
@@ -208,11 +244,13 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           nextPage,
           emailTemps,
           alertnewsLetters,
+          promotional,
         } = dataa;
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.paginator = this.paginator;
         this.emailTemplates = emailTemps;
         this.newsLetterTemplates = alertnewsLetters;
+        this.promotionalTemplates = promotional;
         this.processingTable = false;
         for (let mailData of data) {
           var { email } = mailData;

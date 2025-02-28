@@ -27,9 +27,12 @@ accept=".csv"
     <button mat-flat-button  *ngIf="mailType=='ordinary mail'" (click)="sendBulks()" [matBadge]="choosenDefaults.length" >
     Send Mails 
     </button> 
-    <button mat-flat-button *ngIf="mailType=='newsletter'" [matBadge]="choosenDefaults.length" (click)="sendBulksNewsTemplates()" >
+    <button mat-flat-button *ngIf="mailType=='newsletter' && newsletterType=='alerts'" [matBadge]="choosenDefaults.length" (click)="sendBulksNewsTemplates()" >
       Send Newsletter
       </button>
+      <button mat-flat-button *ngIf="mailType=='newsletter' && newsletterType=='promotional'" [matBadge]="choosenDefaults.length" (click)="sendPromotionalNewsTemplates()" >
+        Send Newsletter
+        </button>
     <p-fileUpload 
     *ngIf="mailType == 'ordinary mail'"
     name="demo[]" 
@@ -65,14 +68,32 @@ accept=".csv"
 </mat-option>  
 </mat-select>
 </mat-form-field>
-<mat-form-field *ngIf="!processingTable && mailType=='newsletter'" appearance="outline">
-  <mat-label>Choose Newsletter</mat-label> 
+
+<mat-form-field *ngIf="!processingTable && mailType=='newsletter'">
+<mat-label>Choose News letter type</mat-label>
+<mat-select [(value)]="newsletterType">
+<mat-option value="alerts">Alerts Newsletter</mat-option>
+<mat-option value="promotional">Promotional Newsletter</mat-option>
+</mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="!processingTable && newsletterType=='alerts'" appearance="outline">
+  <mat-label>Choose Alerts Newsletter</mat-label> 
   <mat-select required  [(value)]="newsleteterid">
   <mat-option *ngFor="let letter of newsLetterTemplates" [value]="letter.id" (onSelectionChange)="log($event)">
   {{letter.Title}}   
   </mat-option> 
   </mat-select>
   </mat-form-field>
+
+  <mat-form-field *ngIf="!processingTable && newsletterType=='promotional'" appearance="outline">
+    <mat-label>Choose Promotional Newsletter</mat-label> 
+    <mat-select required  [(value)]="newsleteterid">
+    <mat-option *ngFor="let letter of promotionalTemplates" [value]="letter.id" (onSelectionChange)="log($event)">
+    {{letter.Title}}   
+    </mat-option> 
+    </mat-select>
+    </mat-form-field>
 
 <mat-form-field >
   <mat-label>Search any email</mat-label>

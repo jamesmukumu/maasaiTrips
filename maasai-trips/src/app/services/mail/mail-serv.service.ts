@@ -331,7 +331,7 @@ export class MailServService {
       );
       return resp.data;
     } catch (err) {
-      console.error(err);
+      return err;
     }
   }
 

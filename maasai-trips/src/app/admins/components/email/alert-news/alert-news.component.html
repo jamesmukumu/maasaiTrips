@@ -90,8 +90,9 @@
       </div>
   </form>
   <mat-card-actions align="start">
-    <button mat-raised-button (click)="actualizeSaving()">Save</button>
-    <button mat-raised-button (click)="actualizePreview()">Preview</button>
+    <button  mat-raised-button (click)="actualizeSaving()" *ngIf="!saving">Save</button>
+    <button mat-raised-button (click)="actualizePreview()" *ngIf="!saving">Preview</button>
+    <p-button loading [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving...." *ngIf="saving"></p-button>
   </mat-card-actions>
 </mat-card>
 

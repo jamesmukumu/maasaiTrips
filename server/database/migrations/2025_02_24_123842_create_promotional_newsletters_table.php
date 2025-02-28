@@ -6,15 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-
-     */
-    public function up(): void
-    {
+   
+    public function up(): void{
         Schema::create('promotional_newsletters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table -> tinyInteger("hotDiscount");
+            $table -> string("slug")->unique(true);
+            $table ->string("Title")->unique(true);
             $table-> tinyText("hotOffer")->nullable(false);
             $table -> integer("hotOfferDiscount")->nullable(false);
             $table -> text("placesVisit")->nullable(false);
@@ -22,12 +21,7 @@ return new class extends Migration
             $table -> text("specialDealDescription")->nullable(false);
             $table -> integer("specialDiscountPrice")->nullable(false);
             $table -> foreignId("olanka_users_id")->constrained()->onDelete("cascade");
-
-
-
-
-
-        });
+});
     }
 
     /**

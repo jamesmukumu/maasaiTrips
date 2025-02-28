@@ -7,6 +7,7 @@ use App\Models\PromotionalNewsletters;
 use Cloudinary\Cloudinary;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\String\TruncateMode;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Log;
@@ -78,6 +79,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
             $validatedRequest = $request->validate([
                 "hotDiscount" => "required|integer",
                 "hotOffer" => "required",
+                "Title" => "required|unique:promotional_newsletters,Title",
                 "hotOfferDiscount" => "required|min:0",
                 "specialDeal" => "required",
                 "specialDealDescription" => "required",
@@ -88,7 +90,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
             $groupedDestinations = [];
 
             foreach ($request->all() as $key => $value) {
-                if ($request->hasFile($key) && preg_match('/^destination([A-Za-z]+)(One|Two)$/', $key, $matches)) {
+                if ($request->hasFile($key) && preg_match('/^destination([A-Za-z]+)(1|2|3|4|5|6)$/', $key, $matches)) {
                     $cld = new Cloudinary();
                     $fileUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
                     $value = $fileUrl["url"];
@@ -97,7 +99,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
                     $groupedDestinations[$suffix][$field] = $value;
                 }
 
-                if (preg_match('/^destination([A-Za-z]+)(One|Two)$/', $key, $matches)) {
+                if (preg_match('/^destination([A-Za-z]+)(1|2|3|4|5)$/', $key, $matches)) {
                     $field = $matches[1];
                     $suffix = $matches[2];
 
@@ -105,6 +107,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
                     $groupedDestinations[$suffix][$field] = $value;
                 }
             }
+
 
             $placeVisits = [];
             foreach ($groupedDestinations as $suffix => $data) {
@@ -116,6 +119,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
                 ];
             }
             $validatedRequest["placesVisit"] = json_encode($placeVisits);
+            $validatedRequest["slug"] = Str::slug($validatedRequest["Title"], "_");
 
             PromotionalNewsletters::create($validatedRequest);
             return response()->json([
@@ -270,6 +274,8 @@ class PromotionalControllers extends Controller implements PromotionalInterface
             ]);
         }
     }
+
+
     public function deleteNewsLetterTemplateMail(Request $request)
     {
         try {
@@ -295,4 +301,61 @@ class PromotionalControllers extends Controller implements PromotionalInterface
 
 
 
+
+
+    public function previewPromotional(Request $request)
+    {
+        try {
+
+            $validatedRequest = $request->validate([
+                "hotDiscount" => "nullable|integer",
+                "hotOffer" => "nullable",
+                "hotOfferDiscount" => "nullable",
+                "specialDeal" => "nullable",
+                "specialDealDescription" => "nullable",
+                "specialDiscountPrice" => "nullable"
+            ]);
+            $groupedDestinations = [];
+            foreach ($request->all() as $key => $value) {
+                if ($request->hasFile($key) && preg_match('/^destination([A-Za-z]+)(1|2|3|4|5|6)$/', $key, $matches)) {
+                    $cld = new Cloudinary();
+                    $fileUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+                    $value = $fileUrl["url"];
+                    $field = $matches[1];
+                    $suffix = $matches[2];
+                    $groupedDestinations[$suffix][$field] = $value;
+                }
+
+                if (preg_match('/^destination([A-Za-z]+)(1|2|3|4|5)$/', $key, $matches)) {
+                    $field = $matches[1];
+                    $suffix = $matches[2];
+
+
+                    $groupedDestinations[$suffix][$field] = $value;
+                }
+            }
+
+
+            $placeVisits = [];
+            foreach ($groupedDestinations as $suffix => $data) {
+                $placeVisits[] = [
+                    'destinationTitle' => $data['Title'] ?? null,
+                    'destinationDescription' => $data['Description'] ?? null,
+                    'destinationImage' => $data['Image'] ?? null,
+                    'destinationPrice' => $data['Price'] ?? null
+                ];
+                }
+              $promotionalContent = [$validatedRequest];
+              return view("promotionalNewsLetter", ["promotionalContent" => (object)$validatedRequest, "placesVisit" => $placeVisits]);
+
+           
+        } catch (\Exception $err) {
+         return response()->json([
+         "message"=>$err->getMessage()
+         ],500);
+
+        }
+
+
+    }
 }

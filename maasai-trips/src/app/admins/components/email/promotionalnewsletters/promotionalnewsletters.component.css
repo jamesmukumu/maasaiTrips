@@ -11,6 +11,9 @@ flex-direction: column;
 form mat-form-field{
 width: 97%;
 }
+form mat-form-field{
+margin-top: 20px;
+}
 .destinations div{
 width: 100%;
 display: flex;

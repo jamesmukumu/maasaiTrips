@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class AlertNewsComponent {
   readonly snack = inject(MatSnackBar);
   processing = false;
+  saving = false
   title: string = '';
   titleEntry1 = '';
   contentEntry1 = '';
@@ -32,6 +33,7 @@ export class AlertNewsComponent {
   htmlData: any;
 
   async actualizeSaving() {
+    this.saving = true
     try {
       var payload: alertNewsLetters = {
         Title: this.title,
@@ -49,16 +51,18 @@ export class AlertNewsComponent {
         FinalContentFour: this.contentEntry4,
       };
       var { message } = await this.alertsLetter.saveAlertsTemplate(payload);
-      if (message == 'NewsLetter Saved') {
+      if (message == 'NewsLetter Saved 😀') {
         this.snack.open(message, 'Success'.toUpperCase(), {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
         });
+        this.saving = true
       } else {
         this.snack.open('Something Went wrong', 'Success'.toUpperCase(), {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',
         });
+        this.saving = false
       }
     } catch (err) {
       console.error(err);

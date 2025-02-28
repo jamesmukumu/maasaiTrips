@@ -17,7 +17,7 @@ import Cookies from 'js-cookie';
   styleUrl: './signin.component.css',
   providers:[MessageService]
 })
-export class SigninComponent implements OnInit{
+export class SigninComponent  {
   readonly snack = inject(MatSnackBar)
   readonly dialog = inject(MatDialog)
   processingRequest = false
@@ -25,6 +25,15 @@ export class SigninComponent implements OnInit{
   password = ''
   seePassword:boolean = false
   constructor(private admin:AdminService,private router:Router,private msg:MessageService){}
+
+  ngOnInit(){
+    var token = Cookie.get("grant_token")
+    if(token){
+      this.router.navigate(["/dashboard"])
+    }else{
+      this.router.navigate(["/login"])
+    }
+  }
 
 
   popRequest(){
@@ -53,10 +62,6 @@ this.router.navigate(["/dashboard"])
 })
 }
 
-ngOnInit(){
-var token = Cookies.get("grant_token")
-if(token != "")this.router.navigate(["/dashboard"])
-}
 
 signUp(){
 this.router.navigate(["/register"])

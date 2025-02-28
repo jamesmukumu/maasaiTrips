@@ -8,6 +8,7 @@ use App\Models\EmailTemplates;
 use App\Models\MailStatus;
 use App\Models\OlankaUsers;
 use Dotenv\Exception\ValidationException;
+use App\Models\PromotionalNewsletters;
 
 use Illuminate\Http\Request;
 use Log;
@@ -249,14 +250,15 @@ $id = $claimsToken["sub"];
 $userData =  EmailTemplates::where("olanka_users_id",$id)->select("subject","id")->get();
 $newsLetters = Newsletters::where("olanka_users_id",$id)->select("Title","id")->get();
 $alertNewsLetters =  NewsletterAlerts::where("olanka_users_id",$id)->select("Title","id")->get();
-
+$promotionalNewsLetters = PromotionalNewsletters::where("olanka_users_id",$id)->select("Title","id")->get();
 $bulks = new BulkMails();
-$results = $bulks->select("id","fullname","category","identificationNumber","phoneNumber","email","country")->orderBy("created_at")->paginate(100);
+$results = $bulks->select("id","fullname","category","identificationNumber","phoneNumber","email","country")->orderBy("created_at")->paginate(1000);
 return response()->json([
 "message"=>"Fetched",
 "count"=>$results->total(),
 "alertnewsLetters"=>$alertNewsLetters,
 "emailTemps"=>$userData, 
+"promotional"=>$promotionalNewsLetters,
 "data"=>$results->items(),
 "nextPage"=> $results->nextPageUrl(),
 "currentPage"=>$results->currentPage()
