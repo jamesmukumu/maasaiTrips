@@ -22,7 +22,7 @@ export interface alertNewsLetters {
   providedIn: 'root',
 })
 export class NewslettersService {
-  baseUrl = 'https://maasaitrips-2.onrender.com/api';
+  baseUrl = 'http://localhost:8000/api';
   constructor() {}
 
   async saveAlertsTemplate(AlertNewsLetter: alertNewsLetters) {

@@ -23,6 +23,23 @@ mat-card mat-card-content{
 min-width: 100%;
 max-width: 100%;
 }
+mat-form-field{
+width: 100%;
+}
 mat-card mat-card-content table{
 width: 100%;
+}
+.main-table{
+display: block;
+}
+.small-table{
+    display: none;
+    }
+@media(max-width:900px){
+    .small-table{
+    display: block;
+    }
+    .main-table{
+        display: none;
+    }
 }

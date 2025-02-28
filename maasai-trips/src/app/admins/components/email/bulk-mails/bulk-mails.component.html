@@ -77,7 +77,7 @@ accept=".csv"
 </mat-select>
 </mat-form-field>
 
-<mat-form-field *ngIf="!processingTable && newsletterType=='alerts'" appearance="outline">
+<mat-form-field *ngIf="!processingTable && newsletterType=='alerts' && mailType=='newsletter'" appearance="outline">
   <mat-label>Choose Alerts Newsletter</mat-label> 
   <mat-select required  [(value)]="newsleteterid">
   <mat-option *ngFor="let letter of newsLetterTemplates" [value]="letter.id" (onSelectionChange)="log($event)">
@@ -86,7 +86,7 @@ accept=".csv"
   </mat-select>
   </mat-form-field>
 
-  <mat-form-field *ngIf="!processingTable && newsletterType=='promotional'" appearance="outline">
+  <mat-form-field *ngIf="!processingTable && newsletterType=='promotional' && mailType=='newsletter'" appearance="outline">
     <mat-label>Choose Promotional Newsletter</mat-label> 
     <mat-select required  [(value)]="newsleteterid">
     <mat-option *ngFor="let letter of promotionalTemplates" [value]="letter.id" (onSelectionChange)="log($event)">

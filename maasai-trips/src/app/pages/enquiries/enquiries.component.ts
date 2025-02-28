@@ -6,7 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EditEnquiryComponent } from '../../components/edit-enquiry/edit-enquiry.component';
 import { DeleteInquiryComponent } from '../../components/delete-inquiry/delete-inquiry.component';
-
+import { MatTableDataSource } from '@angular/material/table';
 
 
 
@@ -23,9 +23,12 @@ export class EnquiriesComponent implements OnInit {
 constructor(private quotations:QuotationsService,private store:Store){}
 processingFetchRequest:boolean = false
 tabularData:any
-displayedColumns:string[] = ["firstname","email","phoneNumber","adults","childrenCount","kidsAges","rooms","startDate",'endDate','travelDescription','action']
-
-
+displayedColumns:string[] = ["firstname","email","adults","childrenCount","kidsAges","rooms","startDate",'endDate','action']
+displayedColumnsMobile:string[] = ["firstname","startDate",'endDate','action']
+applyFilter(event: Event) {
+  const filterValue = (event.target as HTMLInputElement).value;
+  this.tabularData.filter = filterValue.trim().toLowerCase();
+}
 
 saveInfo(element:any){
 var elementString = JSON.stringify(element)
@@ -49,7 +52,7 @@ fetchingEnquiryData(){
 this.processingFetchRequest = true
 this.quotations.fetchQuotations().then((dataa)=>{
 var {data} = dataa
-this.tabularData = data
+this.tabularData = new MatTableDataSource(data)
 console.log(this.tabularData)
 this.processingFetchRequest = false
 })
