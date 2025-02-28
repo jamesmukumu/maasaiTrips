@@ -47,3 +47,26 @@
     
     
     
+
+
+    @media(max-width:900px){
+    form button{
+        margin: 0px;
+    }
+
+    form{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    mat-card-header button{
+        background-color: rgb(252,166,8);
+        color: white;
+        width: fit-content;
+        }
+        form button{
+            width: fit-content;
+        }
+    }

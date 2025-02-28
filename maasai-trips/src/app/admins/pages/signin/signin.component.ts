@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject,OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import {MatDialog} from "@angular/material/dialog"
 import { RequestResetComponent } from '../../../components/request-reset/request-reset.component';
 import Cookie from "js-cookie"
+import Cookies from 'js-cookie';
 
 
 
@@ -16,7 +17,7 @@ import Cookie from "js-cookie"
   styleUrl: './signin.component.css',
   providers:[MessageService]
 })
-export class SigninComponent {
+export class SigninComponent implements OnInit{
   readonly snack = inject(MatSnackBar)
   readonly dialog = inject(MatDialog)
   processingRequest = false
@@ -52,6 +53,10 @@ this.router.navigate(["/dashboard"])
 })
 }
 
+ngOnInit(){
+var token = Cookies.get("grant_token")
+if(token != "")this.router.navigate(["/dashboard"])
+}
 
 signUp(){
 this.router.navigate(["/register"])
