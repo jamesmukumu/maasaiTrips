@@ -16,7 +16,7 @@ export interface Promotional {
   providedIn: 'root',
 })
 export class NewslettersService {
-  baseUrl = 'http://localhost:8000/api';
+  baseUrl = 'https://maasaitrips-2.onrender.com/api';
 
   constructor() {}
   async saveNewsLetter(promotion: Promotional) {
@@ -105,7 +105,7 @@ export class NewslettersService {
       formData.append('destinations', dest);
 
       var resp = await axios.post(
-        'http://localhost:8000/api/propagate/promotional/newsletters',
+        'https://maasaitrips-2.onrender.com/api/propagate/promotional/newsletters',
         formData,
         {
           headers: {

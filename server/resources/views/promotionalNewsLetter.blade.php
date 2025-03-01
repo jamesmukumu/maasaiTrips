@@ -168,7 +168,7 @@
                       <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
                        <tr>
                         <!--[if !gte mso 9]><!-- -->
-                        <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="padding: 32px 0px 32px 0px; background-image: url('https://cloudfilesdm.com/postcards/image-17403985232020.jpg'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
+                        <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="padding: 32px 0px 32px 0px; background-image: url('https://res.cloudinary.com/dasrniwpk/image/upload/v1738351844/maasaiTrips/Mara_Sweet_Acacia_Lodge_320241007140154_f4if7s.webp'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
                         
                          <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>
@@ -827,12 +827,7 @@
          <td>
           <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
            <tr>
-            <td align="center" valign="top" style="padding-top: 20px; padding-bottom: 20px; vertical-align: top;">
-             <a href="https://postcards.email/?uid=Mjk0MDkz&type=footer" target="_blank" style="text-decoration: none; overflow: hidden; border-radius: 2px; display: inline-block;">
-              <img src="https://cloudfilesdm.com/postcards/promo-footer-dark.jpg" width="198" height="46" alt="Made with (o -) postcards" style="width: 198px; height: auto; margin: 0 auto; border: 0; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; vertical-align: top;">
-             </a>
-             <img src="https://api-postcards.designmodo.com/tracking/mail/promo?uid=Mjk0MDkz" width="1" height="1" alt="" style="display:none; width: 1px; height: 1px;">
-            </td>
+   
            </tr>
           </table>
          </td>
