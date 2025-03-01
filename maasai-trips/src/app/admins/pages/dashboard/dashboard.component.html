@@ -44,6 +44,10 @@
                         <mat-icon>manage_accounts</mat-icon>
                         <span style="color: black;">Manage Newsletters</span>
                       </button>
+                      <button mat-menu-item (click)="chooserEmail(8)">
+                        <mat-icon>manage_accounts</mat-icon>
+                        <span style="color: black;">Manage Promotional newsletters</span>
+                      </button>
                   </mat-menu>
         <mat-list-item  [mat-menu-trigger-for]="menu">
         <span matListItemTitle>Emails</span>
@@ -157,6 +161,7 @@
 <queue *ngIf="emailChoosen==5"></queue>
 <manage-mails *ngIf="emailChoosen==6"></manage-mails>
 <manage-newsletters *ngIf="emailChoosen==7"></manage-newsletters>
+<manage-promotionals *ngIf="emailChoosen==8"></manage-promotionals>
  </div>
           
 

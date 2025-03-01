@@ -58,7 +58,7 @@ export class NewslettersService {
     }
   }
 
-  async previewPromotionalNewsletter(promotion: Promotional) {
+  async previewPromotionalNewsletter(promotion: any) {
     try {
       var token = Cookies.get('grant_token');
       var formData = new FormData();
@@ -97,6 +97,44 @@ export class NewslettersService {
     }
   }
 
+  async previewPromotionalNewsletterEditor(promotion: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var formData = new FormData();
+      for (let i = 0; i < promotion.Destinations.length; i++) {
+        var keysPromotion = Object.keys(promotion.Destinations[i]);
+        var valuesPromotion: any = Object.values(promotion.Destinations[i]);
+        for (let j = 0; j < keysPromotion.length; j++) {
+          formData.append(keysPromotion[j], valuesPromotion[j]);
+        }
+      }
+      formData.append('hotDiscount', promotion.hotDiscount);
+      formData.append('hotOffer', promotion.hotOffer);
+      formData.append('hotOfferDiscount', `${promotion.hotOfferDiscount}`);
+      formData.append(
+        'specialDealDescription',
+        promotion.specialDealDescription
+      );
+      formData.append(
+        'specialDiscountPrice',
+        `${promotion.specialDealDiscount}`
+      );
+      formData.append('specialDeal', promotion.specialDeal);
+      formData.append('Title', promotion.Title);
+      var resp = await axios.post(
+        `${this.baseUrl}/preview/promotional/newsletter`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
   async propagatePromotionalNewsletters(idNews: number, dest: any) {
     try {
       var token = Cookies.get('grant_token');
@@ -115,6 +153,23 @@ export class NewslettersService {
         }
       );
       return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async fetchPromotionalNewsletters() {
+    try {
+      var token = Cookies.get('grant_token');
+      var response = await axios.get(
+        `${this.baseUrl}/fetch/promotional/newsletter`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
     } catch (err) {
       return err;
     }

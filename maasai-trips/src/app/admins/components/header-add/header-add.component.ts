@@ -181,6 +181,10 @@ hotelCategories:MainCategory[] = [
           Tree_Name: 'Manage newsletters',
           identifierName: 'Manage newsletters',
         },
+        {
+          Tree_Name: 'Manage Promotional newsletters',
+          identifierName: 'Manage Promotional newsletters',
+        },
       ],
     },
   ];

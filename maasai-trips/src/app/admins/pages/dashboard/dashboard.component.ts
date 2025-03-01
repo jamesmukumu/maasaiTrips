@@ -44,6 +44,10 @@ case "Manage Mails":
 this.activeIndex = 1
 this.emailChoosen =  6
 break
+case 'Manage Promotional newsletters':
+  this.activeIndex = 1
+  this.emailChoosen = 8
+  break
 case 'Manage newsletters':
   this.activeIndex = 1
 this.emailChoosen =  7
