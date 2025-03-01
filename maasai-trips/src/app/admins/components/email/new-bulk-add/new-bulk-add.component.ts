@@ -9,6 +9,7 @@ import { MailServService,BulkMailUser } from '../../../../services/mail/mail-ser
 })
 export class NewBulkAddComponent {
 processing = false
+see = true
 fullName:string = ''
 phoneNumber:number  = 0
 idNumber:number = 0

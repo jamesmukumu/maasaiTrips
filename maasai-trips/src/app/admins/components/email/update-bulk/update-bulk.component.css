@@ -55,16 +55,21 @@
 mat-card,form{
     min-width: 100vw;
     max-width: 100%;
+    height: max-content;
 }
     form{
     width: 100%;
     display: flex;
     flex-direction: column;
+    height: max-content;
     }
     form button{
     margin-left: 0;
     }
     mat-form-field{
         width: 90%;
+    }
+    button{
+        margin-top: 20px;
     }
     }

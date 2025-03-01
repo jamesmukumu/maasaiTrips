@@ -1,73 +1,75 @@
-<mat-card>
+
     <h2>Add new email </h2>
-    <form>
+
+   <form>
     <div class="form-a">
     
-    <mat-form-field>
-    <mat-label>Enter your Full name</mat-label>
-    <mat-icon matIconPrefix>person</mat-icon>
-    <input type="text" matInput name="fullName" [(ngModel)]="fullName"  required>
-    </mat-form-field>
-    <mat-form-field>
-        <mat-label>Choose option</mat-label>
-        <mat-select [(value)]="category">
-        <mat-option *ngFor="let opts of bulkOptions "[value]="opts">
-        {{opts}}
-        </mat-option>
-        </mat-select>
-        </mat-form-field>
-    
-    <mat-form-field>
-    <mat-label>Enter your phone Number</mat-label>
-    <mat-icon matIconPrefix>call</mat-icon>
-    <input type="number" min="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
-    </mat-form-field>
-    
-    
-    <mat-form-field>
-    <mat-label>Enter id number</mat-label>
-    <mat-icon matIconPrefix>remember_me</mat-icon>
-    <input type="number" matInput name="phoneNumber" [(ngModel)]="idNumber"  required>
-    </mat-form-field>
-    
-    <mat-form-field>
-    <mat-label>Enter description</mat-label>
-    <textarea name="desc" id="" matInput cols="1" rows="1" [(ngModel)]="description"></textarea>
-    </mat-form-field>
-    </div>
-    
-    
-    <div class="form-b">
-        <mat-form-field>
-        <mat-label>Enter email address</mat-label>
-          <input type="email" name="mail" matInput required [(ngModel)]="emailAddress">
-        </mat-form-field>
-        <mat-form-field>
-        <mat-label>Choose identification method</mat-label>
-         <mat-select [(value)]="identificationMethod">
-         <mat-option value="id">ID Number </mat-option>
-         <mat-option value="passport">Passport Number </mat-option>
-         </mat-select>
-        </mat-form-field>
-        
-        <mat-form-field>
-          <mat-label>Choose country</mat-label>
-           <mat-select [(value)]="country">
-           <mat-option *ngFor="let country of countryCodes" [value]="country.name">
-             {{country.name}}
-             <img [src]="formatFlag(country.code)"  width="20" height="15" style="margin-right: 8px;">
-           </mat-option>
+      <mat-form-field>
+      <mat-label>Enter your Full name</mat-label>
+      <mat-icon matIconPrefix>person</mat-icon>
+      <input type="text" matInput name="fullName" [(ngModel)]="fullName"  required>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label>Choose option</mat-label>
+          <mat-select [(value)]="category">
+          <mat-option *ngFor="let opts of bulkOptions "[value]="opts">
+          {{opts}}
+          </mat-option>
+          </mat-select>
+          </mat-form-field>
+      
+      <mat-form-field>
+      <mat-label>Enter your phone Number</mat-label>
+      <mat-icon matIconPrefix>call</mat-icon>
+      <input type="number" min="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
+      </mat-form-field>
+      
+      
+      <mat-form-field>
+      <mat-label>Enter id number</mat-label>
+      <mat-icon matIconPrefix>remember_me</mat-icon>
+      <input type="number" matInput name="phoneNumber" [(ngModel)]="idNumber"  required>
+      </mat-form-field>
+      
+      <mat-form-field>
+      <mat-label>Enter description</mat-label>
+      <textarea name="desc" id="" matInput cols="1" rows="1" [(ngModel)]="description"></textarea>
+      </mat-form-field>
+      </div>
+      
+      
+      <div class="form-b">
+          <mat-form-field>
+          <mat-label>Enter email address</mat-label>
+            <input type="email" name="mail" matInput required [(ngModel)]="emailAddress">
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label>Choose identification method</mat-label>
+           <mat-select [(value)]="identificationMethod">
+           <mat-option value="id">ID Number </mat-option>
+           <mat-option value="passport">Passport Number </mat-option>
            </mat-select>
           </mat-form-field>
-    
-     
-     
-        
-        
-     
-        </div>
+          
+          <mat-form-field>
+            <mat-label>Choose country</mat-label>
+             <mat-select [(value)]="country">
+             <mat-option *ngFor="let country of countryCodes" [value]="country.name">
+               {{country.name}}
+               <img [src]="formatFlag(country.code)"  width="20" height="15" style="margin-right: 8px;">
+             </mat-option>
+             </mat-select>
+            </mat-form-field>
+      
+       
+       
+          
+          
+       
+          </div>
+   </form>
         <button mat-flat-button (click)="saveMail()" *ngIf="!processing">Add</button>
         <p-button label="Saving..." loading *ngIf="processing"></p-button>
-    </form>
-    </mat-card>
+
+
     <p-toast/> 

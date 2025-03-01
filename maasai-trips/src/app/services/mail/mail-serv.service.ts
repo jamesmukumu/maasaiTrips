@@ -42,7 +42,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/save/news/letter',
+        'http://localhost:8000/api/save/news/letter',
         payload,
         {
           headers: {
@@ -60,7 +60,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        'https://maasaitrips-2.onrender.com/api/update/news/letter',
+        'http://localhost:8000/api/update/news/letter',
         mailer,
         {
           headers: {
@@ -81,7 +81,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        'https://maasaitrips-2.onrender.com/api/update/mail/template',
+        'http://localhost:8000/api/update/mail/template',
         mailer,
         {
           headers: {
@@ -104,7 +104,7 @@ export class MailServService {
       var formData = new FormData();
       formData.append('imageCld', file);
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/save/to/cloud',
+        'http://localhost:8000/api/save/to/cloud',
         formData,
         {
           headers: {
@@ -123,7 +123,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'https://maasaitrips-2.onrender.com/api/fetch/my/alert/news/alerts',
+        'http://localhost:8000/api/fetch/my/alert/news/alerts',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -144,7 +144,7 @@ export class MailServService {
         '<img src="$2" alt="$3" />'
       );
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/live/preview',
+        'http://localhost:8000/api/live/preview',
         {
           content: refinedBody,
         },
@@ -164,17 +164,14 @@ export class MailServService {
   async deleteBulk(id: any) {
     try {
       var token = Cookies.get('grant_token');
-      var resp = await axios.delete(
-        'https://maasaitrips-2.onrender.com/api/delete/bulks',
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          params: {
-            queryid: id,
-          },
-        }
-      );
+      var resp = await axios.delete('http://localhost:8000/api/delete/bulks', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          queryid: id,
+        },
+      });
       return resp.data;
     } catch (err) {
       console.error(err);
@@ -185,7 +182,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.patch(
-        'https://maasaitrips-2.onrender.com/api/update/bulk/users',
+        'http://localhost:8000/api/update/bulk/users',
         bulk,
         {
           headers: {
@@ -206,7 +203,7 @@ export class MailServService {
     var token = Cookies.get('grant_token');
     try {
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/save/email/bulk',
+        'http://localhost:8000/api/save/email/bulk',
         Payload,
         {
           headers: {
@@ -226,7 +223,7 @@ export class MailServService {
       var formData = new FormData();
       formData.append('bulk_csv', csvFile);
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/save/bulk/from/csv',
+        'http://localhost:8000/api/save/bulk/from/csv',
         formData,
         {
           headers: {
@@ -243,7 +240,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.delete(
-        'https://maasaitrips-2.onrender.com/api/delete/news/letter',
+        'http://localhost:8000/api/delete/news/letter',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -262,7 +259,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.delete(
-        'https://maasaitrips-2.onrender.com/api/delete/email/template',
+        'http://localhost:8000/api/delete/email/template',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -282,7 +279,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.get(
-        'https://maasaitrips-2.onrender.com/api/fetch/email/templates',
+        'http://localhost:8000/api/fetch/email/templates',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -299,7 +296,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.get(
-        'https://maasaitrips-2.onrender.com/api/fetch/mail/status',
+        'http://localhost:8000/api/fetch/mail/status',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -320,7 +317,7 @@ export class MailServService {
       formData.append('destinations', dest);
 
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/send/alerts/newsletter',
+        'http://localhost:8000/api/send/alerts/newsletter',
         formData,
         {
           headers: {
@@ -348,7 +345,7 @@ export class MailServService {
         }
       }
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/send/bulk/mails',
+        'http://localhost:8000/api/send/bulk/mails',
         formData,
         {
           headers: {
@@ -394,7 +391,7 @@ export class MailServService {
       formData.append('ccs', Mail.ccs ?? '');
 
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/send/email',
+        'http://localhost:8000/api/send/email',
         formData,
         {
           headers: {
@@ -413,7 +410,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token') ?? '';
       var resp = await axios.post(
-        'https://maasaitrips-2.onrender.com/api/save/email/template',
+        'http://localhost:8000/api/save/email/template',
         Temp,
         {
           headers: {
