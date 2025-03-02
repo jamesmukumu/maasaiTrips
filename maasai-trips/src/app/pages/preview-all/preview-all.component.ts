@@ -11,7 +11,7 @@ constructor(private store:Store,private sanitizer:DomSanitizer){}
 previewerData:SafeHtml = ''
 ngOnInit(){
 this.store.subscribe((data:any)=>{
-console.log(data)
+
 var {preview} = data
 
 this.previewerData = this.sanitizer.bypassSecurityTrustHtml(preview)

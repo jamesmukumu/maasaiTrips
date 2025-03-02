@@ -280,7 +280,7 @@ class PromotionalControllers extends Controller implements PromotionalInterface
     {
         try {
             $validatedRequest = $request->validate([
-                "id" => "required|integer|exists:news_letters,id"
+                "id" => "required|integer|exists:promotional_newsletters,id"
             ]);
             $newsletterid = $request->query('id');
             PromotionalNewsletters::where("id", $newsletterid)->delete();

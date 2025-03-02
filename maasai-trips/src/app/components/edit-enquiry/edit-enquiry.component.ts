@@ -71,10 +71,10 @@ this.processingQuote = false
 
 ngOnInit(){
 this.store.subscribe((data:any)=>{
-  console.log(data)
+ 
 var {enquiry} = data
 var unmarhsalledEnquiry = JSON.parse(enquiry)
-console.log(unmarhsalledEnquiry)
+
 this.firstName = unmarhsalledEnquiry.firstName
 this.secondName = unmarhsalledEnquiry.lastName
 this.roomsCount = unmarhsalledEnquiry.roomsCount

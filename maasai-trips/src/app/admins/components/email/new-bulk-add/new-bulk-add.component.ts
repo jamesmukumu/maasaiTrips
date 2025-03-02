@@ -1512,7 +1512,7 @@ countryCodes = [
   formatFlag(flagEmoji:string){
     var newFlag = flagEmoji.toLowerCase()
     var flag = this.baseFlag+newFlag+".png"
-    console.log(flag)
+   
     return flag
     }
 }

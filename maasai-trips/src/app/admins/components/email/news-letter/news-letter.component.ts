@@ -53,13 +53,13 @@ checkerAlerts(event:any){
   }
 choosenFile(event:any){
 var {currentFiles} = event
-console.log(currentFiles)
+
 this.ImageFile = currentFiles[0]
 this.choosen = true
 }
  captureMessage(event:any){
   var {htmlValue} = event
-  console.log(htmlValue)
+
   this.message = htmlValue
   }
 async preview(){

@@ -168,7 +168,7 @@
                       <table style="width: 100%;" border="0" cellpadding="0" cellspacing="0" role="presentation">
                        <tr>
                         <!--[if !gte mso 9]><!-- -->
-                        <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="padding: 32px 0px 32px 0px; background-image: url('https:filesdm.com/postcards/image-17403985232020.jpg'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
+                        <td class="pc-w620-radius-0-0-188-24 pc-w620-padding-20-0-20-0" align="left" valign="top" background="https://cloudfilesdm.com/postcards/image-17403985232020.jpg" style="padding: 32px 0px 32px 0px; background-image: url('https://cloudfilesdm.com/postcards/image-17403985232020.jpg'); background-size: cover; background-position: 50% 0; background-repeat: no-repeat; background-color: #1b1b1b; border-radius: 0px 0px 268px 24px;">
                         
                          <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                           <tr>

@@ -117,7 +117,7 @@ export class NewslettersService {
       );
       formData.append(
         'specialDiscountPrice',
-        `${promotion.specialDealDiscount}`
+        `${promotion.specialDiscountPrice}`
       );
       formData.append('specialDeal', promotion.specialDeal);
       formData.append('Title', promotion.Title);
@@ -170,6 +170,26 @@ export class NewslettersService {
         }
       );
       return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async deleteTemplateNewsLetter(id: number) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.delete(
+        `${this.baseUrl}/delete/promotional/newsletter`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return resp.data;
     } catch (err) {
       return err;
     }

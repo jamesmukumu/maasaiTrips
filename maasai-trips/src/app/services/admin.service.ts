@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 export interface Register {
   userName: string;
   password: string;
@@ -80,6 +81,10 @@ export class AdminService {
           password: password,
         }
       );
+
+      var { authorization } = resp.headers;
+
+      Cookies.set('grant_token', authorization, { expires: 1 / 24 });
       return resp.data;
     } catch (err) {
       console.error(err);

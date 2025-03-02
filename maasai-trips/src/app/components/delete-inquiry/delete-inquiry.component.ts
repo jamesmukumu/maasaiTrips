@@ -39,7 +39,7 @@ this.snack.open("Enquiry not found","Close",{
 
 ngOnInit(){
 this.store.subscribe((data:any)=>{
-console.log(data)
+
 var {enquiry} = data
 this.targetEmail = enquiry.email
 })

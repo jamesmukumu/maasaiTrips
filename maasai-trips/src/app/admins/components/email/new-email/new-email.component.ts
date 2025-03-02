@@ -20,7 +20,7 @@ subject = ''
 message = ''
 captureMessage(event:any){
 var {htmlValue} = event
-console.log(htmlValue)
+
 this.message = htmlValue
 }
 

@@ -75,47 +75,54 @@ export class ManagePromotionalsComponent implements OnInit {
     this.idSelected = id  
     this.subject = subject
   }
-  async previewDataOther(element:any){
-    try{
+  async previewDataOther(element: any) {
+    try {
+      var places = JSON.parse(element.placesVisit); 
+      element.Destinations = places; 
+  
+      var emptyDestination: any = [];
+  
     
-      var places = JSON.parse(element.placesVisit)
-      element.Destinations = places
-      var valuesDestination = Object.values(element.Destinations)
-     var keysDestinations = Object.keys(places)
-     var emptyDestination:any = []
-     console.log(element.Destinations)
-     console.log(keysDestinations)
-     for(let i = 0; i < element.Destinations.length;i++){
-    var destinationMap = {
-  [`${keysDestinations[i]}${i}`]:valuesDestination[i]
- 
-    }
-    emptyDestination = [...emptyDestination,destinationMap]
-     }
-console.log(emptyDestination)
-return
-
-      var refinedElement:Promotional = element
+      for (let i = 0; i < places.length; i++) {
+        let destination = places[i]; 
+  
+      
+        var destinationMap = {
+          [`destinationTitle${i + 1}`]: destination.destinationTitle,
+          [`destinationDescription${i + 1}`]: destination.destinationDescription,
+          [`destinationImage${i + 1}`]: destination.destinationImage,
+          [`destinationPrice${i + 1}`]: destination.destinationPrice,
+        };
+  
+        emptyDestination.push(destinationMap);
+      }
+  
+      
+      element.Destinations = emptyDestination
+  
+      var refinedElement: Promotional = element;
       console.log(refinedElement)
       
-      var data = await this.news.previewPromotionalNewsletterEditor(refinedElement)
+    
+      var data = await this.news.previewPromotionalNewsletterEditor(refinedElement);
   
-        this.store.dispatch(settoPreviews({previewData:data}))
-        return
-        const url = this.router.createUrlTree(['/preview'], { 
-          queryParams: { previewMode: 'AlertNewsLetters' } 
-        }).toString();
-        
-        window.open(url, '_blank');
-    }catch(err){
-console.error(err)
+      this.store.dispatch(settoPreviews({ previewData: data }));
+  
+      const url = this.router.createUrlTree(['/preview'], {
+        queryParams: { previewMode: 'AlertNewsLetters' }
+      }).toString();
+  
+      window.open(url, '_blank');
+    } catch (err) {
+      console.error(err);
     }
   }
+  
   async delete(){
   this.processing = true
   this.deleting = false
   try{
-  var {message} = await this.mail.deleteTemplate(this.idSelected)
+  var {message} = await this.news.deleteTemplateNewsLetter(this.idSelected)
   if(message == 'Deleted'){
   this.snack.open("Delete","success".toUpperCase(),{
   horizontalPosition:"center",
@@ -123,7 +130,7 @@ console.error(err)
   })
   this.FetchMails()
   }else{
-  this.msg.add({severity:"error",detail:"Somethin went wrong",life:10000})
+  this.msg.add({severity:"error",detail:"Something went wrong",life:10000})
   }
   }catch(err){
   console.error(err)

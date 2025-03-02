@@ -53,7 +53,7 @@ this.processingFetchRequest = true
 this.quotations.fetchQuotations().then((dataa)=>{
 var {data} = dataa
 this.tabularData = new MatTableDataSource(data)
-console.log(this.tabularData)
+
 this.processingFetchRequest = false
 })
 }

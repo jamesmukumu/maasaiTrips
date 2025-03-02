@@ -113,7 +113,7 @@ this.processing = true
     this.idSelected = id;
     this.messageEdit = initialMsg;
     var updateData = this.rawData.filter((dataFilter:any)=>dataFilter.id == id)[0]
-  console.log(updateData)
+
     var {Title,TitleOne,TitleTwo,TitleThree,TitleFour,FinalContentOne,FinalContentTwo,FinalContentThree,FinalContentFour} = updateData
   this.title = Title
   this.titleEntry1 = TitleOne
@@ -214,7 +214,7 @@ captureValueTwo(event:any){
   }
   
   async previewDataOther(element:any){
-    console.log(element)
+   
     var data = await this.news.previewAlertsEditorMode(element)
 
       this.store.dispatch(settoPreviews({previewData:data}))

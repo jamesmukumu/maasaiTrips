@@ -53,14 +53,14 @@ travelDescription:this.travelDescription,
 }
  
 var resp = await this.Quote.saveQuotation(payload)
-console.log(resp)
+
 var {message} = resp
 switch(message){
 case "Quotation added":
   this.processingQuote = false 
-  this.snack.open("Saved","Added",{
-    horizontalPosition:"left",
-    verticalPosition:"top"
+  this.snack.open("Saved","Added 😀",{
+    horizontalPosition:"center",
+    verticalPosition:"bottom"
   })
   break;
   case "Something Went wrong":

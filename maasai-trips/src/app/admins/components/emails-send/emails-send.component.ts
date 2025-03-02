@@ -24,7 +24,7 @@ constructor(private mailer:MailServService,private msg:MessageService){}
 choosenFile(event:any){
 var {currentFiles} = event
 this.attachments = currentFiles
-console.log(this.attachments)
+
 }
 captureMessage(event:any){
 var {htmlValue} = event

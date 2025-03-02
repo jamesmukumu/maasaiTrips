@@ -34,13 +34,11 @@ phoneNumber:this.phoneNumber
 
 this.admin.Register(payload).then((data)=>{
 
-var {message,token} = data
+var {message,Content} = data
 switch(message){
 case "User Saved":
-this.msg.add({life:10000,severity:"success",summary:"Success",detail:"User added"})
+this.msg.add({life:100000,severity:"success",summary:"Success",detail:Content})
 this.processingRequest= false
-Cookies.set("grant_token",token,{expires:1/24})
-this.router.navigate(["/dashboard"])
 break;
 case "Duplicacy Detected":
 this.processingRequest = false

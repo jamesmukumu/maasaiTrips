@@ -87,7 +87,6 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   choosenFile(event: any) {
     var { currentFiles } = event;
     this.attachments = currentFiles;
-    console.log(this.attachments);
   }
 
   choosenCsvFile(event: any) {

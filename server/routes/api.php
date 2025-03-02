@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Verify;
 use App\Http\Controllers\MailerController;
 use App\Http\Controllers\NewsLetterAlert;
+use App\Http\Middleware\EmailVerify;
 
 
 
@@ -64,7 +65,7 @@ Route::post("/save/quote",[QuotationController::class,"saveQuotations"]);
 
 //User Routes here
 Route::post("/register/user",[OlankaUsersController::class,"handleRegister"]);
-Route::post("/login/user",[OlankaUsersController::class,"handleLogin"]);
+Route::post("/login/user",[OlankaUsersController::class,"handleLogin"])->middleware(EmailVerify::class);
 Route::put("/verify/email",[OlankaUsersController::class,"verifyEmail"]);
 Route::put("/reset/password",[OlankaUsersController::class,"actualizeVerify"])->middleware(Verify::class);
 Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);

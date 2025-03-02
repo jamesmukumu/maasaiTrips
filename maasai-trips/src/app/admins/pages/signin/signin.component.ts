@@ -55,8 +55,12 @@ this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
   this.msg.add({severity:"error",life:10000,detail:"User does not have an account"})
   this.processingRequest= false
   break;
+  case 'Verification link approved and sent':
+    this.processingRequest = false
+    this.msg.add({severity:"success",life:10000,detail:"Email Verification sent to your address"})
+
+    break
 case "Successful Login":
-Cookie.set("grant_token",token,{expires:1/24})
 this.router.navigate(["/dashboard"])
   }
 })

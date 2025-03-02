@@ -14,7 +14,7 @@ emailChoosen:number = 1
 choosenActive:any
 
 triggerChoosen(event:any){
-console.log(event)
+
 var {activeNode,Name} = event
 if(Name == 'Home'){
 this.activeIndex = 0

@@ -15,6 +15,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 
 
 class OlankaUsersController extends Controller{
+
     public function handleRegister(Request $request){
       try {
           $validatedRequest = $request->validate([
@@ -41,7 +42,7 @@ class OlankaUsersController extends Controller{
               Mail::to($validatedRequest["Email"])->send(new SignMail($olankaUser,tokenString:$token));
               return response()->json([
                   "message" => "User Saved",
-                  "token" => $token
+                  "Content" => "Verification link sent to ".$validatedRequest["Email"]
               ], 200);
           }
       } catch (\Exception $e) {  
@@ -77,8 +78,7 @@ return response()->json([
 $token = JWTAuth::fromUser($matchingUser);
 return response()->json([
 "message"=>"Successful Login",
-"token" => $token
-]);
+])->header("Authorization",$token)->header("Access-Control-Expose-Headers","Authorization");
 }
 }else{
 return response()->json([
