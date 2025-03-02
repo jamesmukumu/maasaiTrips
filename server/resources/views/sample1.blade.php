@@ -143,7 +143,7 @@ a[x-apple-data-detectors],
 		<w:anchorlock></w:anchorlock>
 		<center style='color:#ffffff; font-family:Oswald, sans-serif; font-size:12px; font-weight:700; line-height:12px;  mso-text-raise:1px'>CONFIRM ACCOUNT</center>
 	</v:roundrect></a>
-<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#1B2A2F;background:#d9ec22;border-width:0px;display:inline-block;border-radius:21px;width:auto;mso-hide:all"><a href="http://localhost:4200/verify/email/{{$tokenString}}" target="_blank" class="es-button" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:12px;padding:10px 20px 10px 20px;display:inline-block;background:#d9ec22;border-radius:21px;font-family:Oswald, sans-serif;font-weight:bold;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #d9ec22">Verify Email</a></span><!--<![endif]--></td>
+<![endif]--><!--[if !mso]><!-- --><span class="msohide es-button-border" style="border-style:solid;border-color:#1B2A2F;background:#d9ec22;border-width:0px;display:inline-block;border-radius:21px;width:auto;mso-hide:all"><a href="https://maasai-trips.vercel.app/verify/email/{{$tokenString}}" target="_blank" class="es-button" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:12px;padding:10px 20px 10px 20px;display:inline-block;background:#d9ec22;border-radius:21px;font-family:Oswald, sans-serif;font-weight:bold;font-style:normal;line-height:14.4px;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #d9ec22">Verify Email</a></span><!--<![endif]--></td>
                      </tr>
                      <tr style="border-collapse:collapse">
                       <td align="left" style="padding:0;Margin:0;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626">If that doesn't work, copy and paste the following link in your browser:</p></td>
@@ -152,7 +152,7 @@ a[x-apple-data-detectors],
                       <td align="left" style="padding:0;Margin:0;padding-bottom:40px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626">If you have any questions, just reply to this email—we're always happy to help out.</p></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626"><strong>James Mukumu Developer</strong></p></td>
+                      <td align="left" style="padding:0;Margin:0;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'Open Sans', sans-serif;line-height:30px;letter-spacing:0;font-size:20px;color:#262626"><strong>James Mukumu Lead Developer</strong></p></td>
                      </tr>
                    </table></td>
                  </tr>

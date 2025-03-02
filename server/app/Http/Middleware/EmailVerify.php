@@ -21,7 +21,7 @@ class EmailVerify{
         if (!OlankaUsers::where("Email", $request["credential"])->exists()) {
             return response()->json([
                 "message" => "User does not have an account"
-            ], Response::HTTP_NOT_FOUND);
+            ]);
         }
         $matchingUser = OlankaUsers::where("Email", $request["credential"])->get();
         if (!$matchingUser[0]["emailVerified"]) {
