@@ -51,7 +51,7 @@ this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
   this.processingRequest= false
   break;
   case "User does not have an account":
-  this.processingRequest = false
+ 
   this.msg.add({severity:"error",life:10000,detail:"User does not have an account"})
   this.processingRequest= false
   break;

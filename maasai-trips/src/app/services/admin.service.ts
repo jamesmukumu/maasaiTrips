@@ -87,7 +87,7 @@ export class AdminService {
       Cookies.set('grant_token', authorization, { expires: 1 / 24 });
       return resp.data;
     } catch (err) {
-      console.error(err);
+      return err
     }
   }
 }
