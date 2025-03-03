@@ -50,7 +50,7 @@
 
 
 <p-sidebar [(visible)]="openSideDrawer">
-  <mat-list>
+  <mat-list >
     <mat-list-item (click)="mobileEmitter('Home', false)">
       <span matListItemTitle>Home</span>
     </mat-list-item>
@@ -185,7 +185,7 @@
   <mat-drawer #drawer mode="over" [opened]="false"> </mat-drawer>
 
   <div>
-    <mat-icon class="harmburg" (click)="opener()">menu</mat-icon>
+    <mat-icon class="harmburg"  *ngIf="showAdminControls" (click)="opener()">menu</mat-icon>
     <img
       src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"
       mat-card-md-image

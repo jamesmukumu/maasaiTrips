@@ -95,7 +95,7 @@ this.popDialog()
 break
 case "Logout":
 Cookies.remove("grant_token")
-this.router.navigate(["/dashboard"])
+this.router.navigate(["/login"])
 
 
 }

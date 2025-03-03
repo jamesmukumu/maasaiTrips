@@ -1,87 +1,82 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-
-.main{
-min-width: 100vw;
-max-width: 100%;
-min-height: 100%;
-display: flex;
-flex-direction: row;
+.main {
+  min-width: 100vw;
+  max-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 form {
-width: 100%;
+  width: 100%;
 }
-mat-form-field{
-width: 100%;
+mat-form-field {
+  width: 100%;
 }
-mat-card-actions button{
-    width: fit-content;
-    background-color: #fca608;
-    color: white;
-  }
-mat-card{
-background-color: rgb(41,43,44);
-width: 400px;
-max-height: 100%;
-min-height: 100vh;
+mat-card-actions button {
+  width: fit-content;
+  background-color: #fca608;
+  color: white;
+}
+mat-card {
+  background-color: rgb(41, 43, 44);
+  width: 400px;
+  max-height: 100%;
+  min-height: 100vh;
 }
 mat-list-item:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important; /* Optional: Slight background change */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ) !important; /* Optional: Slight background change */
 }
 
-.choosen{
-width: 100%;
+.choosen {
+  width: 100%;
 }
-.choosen div{
-width: 100%;
-margin: 10px;
+.choosen div {
+  width: 100%;
+  margin: 10px;
 
-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
-
-mat-icon{
-color: white;
-}
-.activeList{
-
-    border-right: orange solid;
-  
-    }
-    .activeListExpand{
-        display: flex;
-        flex-direction: row;
-        border-right: orange solid;
-      
-        }
-mat-list mat-list-item{
-margin-top: 10px;
-padding-top: 20px;
-}
-mat-menu span,mat-icon{
-color: white;
-}
-span{
-
-color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-@media(max-width:900px){
-.main mat-card{
-display: none;
+mat-icon {
+  color: white;
 }
+.activeList {
+  border-right: orange solid;
+}
+.activeListExpand {
+  display: flex;
+  flex-direction: row;
+  border-right: orange solid;
+}
+mat-list mat-list-item {
+  margin-top: 10px;
+  padding-top: 20px;
+}
+mat-menu span,
+mat-icon {
+  color: white;
+}
+span {
+  color: white;
+}
+
+@media (max-width: 900px) {
+  .main mat-card {
+    display: none;
+  }
+
+  .choosen div{
+margin: 0px;
+  }
 }
