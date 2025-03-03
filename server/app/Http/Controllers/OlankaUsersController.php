@@ -11,10 +11,34 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Log;
+
+
+interface VerifyUser{
+public function verifyUser(Request $request);
+
+}
 
 
 
-class OlankaUsersController extends Controller{
+class OlankaUsersController extends Controller implements VerifyUser{
+
+public function verifyUser(Request $request){
+try{
+    $authHeader = $request->header("Authorization");
+    $token = substr($authHeader,7);
+    if(!$token || !$authHeader){
+    throw new \Exception("Unauthorized",400);
+    }
+    $payload = JWTAuth::setToken($token)->getPayload();
+    return $payload["sub"];
+}catch(\Exception $err){
+Log::error($err->getMessage());
+throw new \Exception($err->getMessage(),500);
+}
+
+
+}
 
     public function handleRegister(Request $request){
       try {
@@ -185,5 +209,26 @@ return response()->json([
 ]);
 }
 }
+
+
+
+public function fetchUserProfile(Request $request){
+try{
+$userID = $this->verifyUser($request);
+$user =  OlankaUsers::select(["created_at","userName","Email","id","emailVerified","phoneNumber"])->find($userID);
+return response()->json([
+"data"=>$user,
+"message"=>"User Data fetched"
+]);
+}catch(\Exception $err){
+return response()->json([
+"message"=>$err->getMessage()
+],500);
+}
+}
+
+
+
+
 
 }

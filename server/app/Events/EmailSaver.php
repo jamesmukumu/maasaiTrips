@@ -20,7 +20,7 @@ class EmailSaver{
     }
 
     /**
-     * Get the channels the event should broadcast on.
+    
      *
      * @return array<int, \Illuminate\Broadcasting\Channel>
      */

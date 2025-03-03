@@ -9,7 +9,7 @@ use Illuminate\Queue\InteractsWithQueue;
 class Saver{
 public function __construct(){
     
-    }
+}
 
    
     public function handle(EmailSaver $event): void{

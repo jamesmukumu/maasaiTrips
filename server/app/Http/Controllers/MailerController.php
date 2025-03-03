@@ -101,7 +101,7 @@ class MailerController extends Controller implements MailerInterface
             if (!$bulkMailerLoad) {
                 return response()->json([
                     "message" => "Email target not found in BulkMails"
-                ], 404);
+                ]);
             }
             $idBulk = $bulkMailerLoad->id;
             $mailerSaverLoad = [

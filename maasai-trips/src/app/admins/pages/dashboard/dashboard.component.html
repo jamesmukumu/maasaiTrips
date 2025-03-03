@@ -1,185 +1,217 @@
-<header-add (choosenEmitter)="triggerChoosen($event)"></header-add>
-<div class="main">
-    <mat-card>
-        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"  alt="">
-        <mat-divider style="background-color: white;"></mat-divider>
-        <mat-list>
-            <div  (click)="changeActive(0)" [classList]="activeIndex==0 ? 'activeList':''">
-                <mat-list-item  >
-                    <span matListItemTitle>Home</span>
-                    <mat-icon  style="color: white;" matListItemIcon>home</mat-icon>
-                    </mat-list-item>
-            </div>
-
-
-        <mat-divider style="background-color: white;"></mat-divider>
-        
-        <div  (click)="changeActive(1)"  [classList]="activeIndex==1 ? 'activeListExpand':''">
-           <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="chooserEmail(2)">
-              <mat-icon style="background-color: white;">email</mat-icon>
-              <span style="color: black;">Create mail</span>
-            </button>
-                    <button mat-menu-item (click)="chooserEmail(1)">
-                      <mat-icon style="background-color: white;">email</mat-icon>
-                      <span style="color: black;">Send mail</span>
-                    </button>
-                    <button mat-menu-item (click)="chooserEmail(3)" >
-                      <mat-icon>email</mat-icon>
-                      <span style="color: black;">Send Bulk</span>
-                    </button>
-                    <button mat-menu-item (click)="chooserEmail(4)">
-                      <mat-icon style="background-color: white;">newspaper</mat-icon>
-                      <span style="color: black;">Create Newsletter</span>
-                    </button>
-                    <button mat-menu-item (click)="chooserEmail(5)">
-                      <mat-icon>queue</mat-icon>
-                      <span style="color: black;">Show Queue</span>
-                    </button>
-                    <button mat-menu-item (click)="chooserEmail(6)">
-                        <mat-icon>manage_accounts</mat-icon>
-                        <span style="color: black;">Manage Mails</span>
-                      </button>
-                      <button mat-menu-item (click)="chooserEmail(7)">
-                        <mat-icon>manage_accounts</mat-icon>
-                        <span style="color: black;">Manage Newsletters</span>
-                      </button>
-                      <button mat-menu-item (click)="chooserEmail(8)">
-                        <mat-icon>manage_accounts</mat-icon>
-                        <span style="color: black;">Manage Promotional newsletters</span>
-                      </button>
-                  </mat-menu>
-        <mat-list-item  [mat-menu-trigger-for]="menu">
-        <span matListItemTitle>Emails</span>
-        <mat-icon style="color: white;" matListItemIcon>email</mat-icon>
+<header-add [showAdminControls]="true" (choosenEmitter)="triggerChoosen($event)" (toogleNav)="triggerSideNav($event)"></header-add>
+<div class="main" >
+  <mat-card *ngIf="toogleSidenav">
+    <mat-list>
+      <div
+        (click)="changeActive(0)"
+        [classList]="activeIndex == 0 ? 'activeList' : ''"
+      >
+        <mat-list-item>
+          <span matListItemTitle>Home</span>
+          <mat-icon style="color: white" matListItemIcon>home</mat-icon>
         </mat-list-item>
-        </div>
-        
-        
-        <mat-divider style="background-color: white;"></mat-divider>
-        
-       <div [classList]="activeIndex==2  ? 'activeList':''" [mat-menu-trigger-for]="menuHotel">
+      </div>
 
-       <mat-menu #menuHotel>
-       <button mat-menu-item>
-        <mat-icon>add</mat-icon>
-        <span style="color: black;">Add Hotel</span>
-       </button>
+      <mat-divider style="background-color: white"></mat-divider>
 
-       <button mat-menu-item>
-        <mat-icon>hotel</mat-icon>
-        <span style="color: black;">My Hotel</span>
-       </button>
+      <div
+        (click)="changeActive(1)"
+        [classList]="activeIndex == 1 ? 'activeListExpand' : ''"
+      >
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="chooserEmail(2)">
+            <mat-icon style="background-color: white">email</mat-icon>
+            <span style="color: black">Create mail</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(1)">
+            <mat-icon style="background-color: white">email</mat-icon>
+            <span style="color: black">Send mail</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(3)">
+            <mat-icon>email</mat-icon>
+            <span style="color: black">Send Bulk</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(4)">
+            <mat-icon style="background-color: white">newspaper</mat-icon>
+            <span style="color: black">Create Newsletter</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(5)">
+            <mat-icon>queue</mat-icon>
+            <span style="color: black">Show Queue</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(6)">
+            <mat-icon>manage_accounts</mat-icon>
+            <span style="color: black">Manage Mails</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(7)">
+            <mat-icon>manage_accounts</mat-icon>
+            <span style="color: black">Manage Newsletters</span>
+          </button>
+          <button mat-menu-item (click)="chooserEmail(8)">
+            <mat-icon>manage_accounts</mat-icon>
+            <span style="color: black">Manage Promotional newsletters</span>
+          </button>
+        </mat-menu>
+        <mat-list-item [mat-menu-trigger-for]="menu">
+          <span matListItemTitle>Emails</span>
+          <mat-icon style="color: white" matListItemIcon>email</mat-icon>
+        </mat-list-item>
+      </div>
 
-       <button mat-menu-item>
-        <mat-icon>room_preferences</mat-icon>
-        <span style="color: black;">Rooms</span>
-       </button>
-       <button mat-menu-item>
-        <mat-icon>add</mat-icon>
-        <span style="color: black;">New Room</span>
-       </button>
-       </mat-menu>
+      <mat-divider style="background-color: white"></mat-divider>
 
-           <mat-list-item  (click)="changeActive(2)" >
-            <span matListItemTitle>Hotels</span>
-            <mat-icon  style="color: white;" matListItemIcon>hotel</mat-icon>
-            </mat-list-item>
-       </div>
-        <mat-divider style="background-color: white;"></mat-divider>
+      <div
+        [classList]="activeIndex == 2 ? 'activeList' : ''"
+        [mat-menu-trigger-for]="menuHotel"
+      >
+        <mat-menu #menuHotel>
+          <button mat-menu-item>
+            <mat-icon>add</mat-icon>
+            <span style="color: black">Add Hotel</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>hotel</mat-icon>
+            <span style="color: black">My Hotel</span>
+          </button>
+
+          <button mat-menu-item>
+            <mat-icon>room_preferences</mat-icon>
+            <span style="color: black">Rooms</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>add</mat-icon>
+            <span style="color: black">New Room</span>
+          </button>
+        </mat-menu>
+
+        <mat-list-item (click)="changeActive(2)">
+          <span matListItemTitle>Hotels</span>
+          <mat-icon style="color: white" matListItemIcon>hotel</mat-icon>
+        </mat-list-item>
+      </div>
+      <mat-divider style="background-color: white"></mat-divider>
       <mat-menu #packageMenu>
-       <button mat-menu-item>
-        <mat-icon>inventory</mat-icon>
-        <span style="color: black;">All Packages</span>
-       </button>
+        <button mat-menu-item>
+          <mat-icon>inventory</mat-icon>
+          <span style="color: black">All Packages</span>
+        </button>
 
-       <button mat-menu-item>
-        <mat-icon>inventory</mat-icon>
-        <span style="color: black;">New Package</span>
-       </button>
-       <button mat-menu-item>
-        <mat-icon>inventory</mat-icon>
-        <span style="color: black;">Package Categories</span>
-       </button>
-
+        <button mat-menu-item>
+          <mat-icon>inventory</mat-icon>
+          <span style="color: black">New Package</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>inventory</mat-icon>
+          <span style="color: black">Package Categories</span>
+        </button>
       </mat-menu>
 
-
-      <div [classList]="activeIndex== 3 ? 'activeList':''" [mat-menu-trigger-for]="packageMenu">
-        <mat-list-item  (click)="changeActive(3)" >
-            <span matListItemTitle>Packages</span>
-            <mat-icon   style="color: white;" matListItemIcon>inventory</mat-icon>
-            </mat-list-item>
+      <div
+        [classList]="activeIndex == 3 ? 'activeList' : ''"
+        [mat-menu-trigger-for]="packageMenu"
+      >
+        <mat-list-item (click)="changeActive(3)">
+          <span matListItemTitle>Packages</span>
+          <mat-icon style="color: white" matListItemIcon>inventory</mat-icon>
+        </mat-list-item>
       </div>
-        
-      <mat-divider style="background-color: white;"></mat-divider>
-      <div [classList]="activeIndex== 4 ? 'activeList':''">
-        <mat-list-item  (click)="changeActive(4)" >
-            <span matListItemTitle>Enquiries</span>
-            <mat-icon  style="color: white;" matListItemIcon>help_center</mat-icon>
-            </mat-list-item>
+
+      <mat-divider style="background-color: white"></mat-divider>
+      <div [classList]="activeIndex == 4 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(4)">
+          <span matListItemTitle>Enquiries</span>
+          <mat-icon style="color: white" matListItemIcon>help_center</mat-icon>
+        </mat-list-item>
       </div>
-      <mat-divider style="background-color: white;"></mat-divider>
-      <div [classList]="activeIndex== 5 ? 'activeList':''">
-        <mat-list-item  (click)="changeActive(5)" >
-            <span matListItemTitle>Destination</span>
-            <mat-icon  style="color: white;" matListItemIcon>near_me</mat-icon>
-            </mat-list-item>
+      <mat-divider style="background-color: white"></mat-divider>
+      <div [classList]="activeIndex == 5 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(5)">
+          <span matListItemTitle>Destination</span>
+          <mat-icon style="color: white" matListItemIcon>near_me</mat-icon>
+        </mat-list-item>
       </div>
-      <mat-divider style="background-color: white;"></mat-divider>
-      <div [classList]="activeIndex== 6 ? 'activeList':''">
-        <mat-list-item  (click)="changeActive(6)" >
-            <span matListItemTitle>Blogs</span>
-            <mat-icon  style="color: white;" matListItemIcon>edit_note</mat-icon>
-            </mat-list-item>
-      </div>   
-      <mat-divider style="background-color: white;"></mat-divider>
-      <div [classList]="activeIndex== 6 ? 'activeList':''">
-        <mat-list-item  (click)="changeActive(6)" >
-            <span matListItemTitle>Account</span>
-            <mat-icon  style="color: white;" matListItemIcon>account_circle</mat-icon>
-            <p matCardAvatar>sk</p>
-            </mat-list-item>
-      </div> 
+      <mat-divider style="background-color: white"></mat-divider>
+      <div [classList]="activeIndex == 6 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(6)">
+          <span matListItemTitle>Blogs</span>
+          <mat-icon style="color: white" matListItemIcon>edit_note</mat-icon>
+        </mat-list-item>
+      </div>
+      <mat-divider style="background-color: white"></mat-divider>
+      <div [classList]="activeIndex == 6 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(6)">
+          <span matListItemTitle>Account</span>
+          <mat-icon style="color: white" matListItemIcon
+            >account_circle</mat-icon
+          >
+          <p matCardAvatar>sk</p>
+        </mat-list-item>
+      </div>
+    </mat-list>
+  </mat-card>
 
-        </mat-list>
-        </mat-card>
+  <div [ngSwitch]="activeIndex" class="choosen">
+    <div *ngSwitchCase="0">
+      <enquiries></enquiries>
+    </div>
 
+    <div *ngSwitchCase="1">
+      <new-email *ngIf="emailChoosen == 2"></new-email>
+      <emails-send *ngIf="emailChoosen == 1"></emails-send>
+      <bulk-mails *ngIf="emailChoosen == 3"></bulk-mails>
+      <news-letter *ngIf="emailChoosen == 4"></news-letter>
+      <queue *ngIf="emailChoosen == 5"></queue>
+      <manage-mails *ngIf="emailChoosen == 6"></manage-mails>
+      <manage-newsletters *ngIf="emailChoosen == 7"></manage-newsletters>
+      <manage-promotionals *ngIf="emailChoosen == 8"></manage-promotionals>
+    </div>
 
-        <div [ngSwitch]="activeIndex" class="choosen">
-         <div  *ngSwitchCase="0">
-        <enquiries></enquiries>
-         </div>
+    <div *ngSwitchCase="2">
+      <p>2</p>
+    </div>
 
-
-<div *ngSwitchCase="1" >
-
-<new-email *ngIf="emailChoosen==2"></new-email>
-<emails-send *ngIf="emailChoosen==1"></emails-send>
-<bulk-mails *ngIf="emailChoosen==3"></bulk-mails>
-<news-letter *ngIf="emailChoosen==4"></news-letter>
-<queue *ngIf="emailChoosen==5"></queue>
-<manage-mails *ngIf="emailChoosen==6"></manage-mails>
-<manage-newsletters *ngIf="emailChoosen==7"></manage-newsletters>
-<manage-promotionals *ngIf="emailChoosen==8"></manage-promotionals>
- </div>
-          
-
-       <div *ngSwitchCase="2">
-        <p>2</p>
-       </div>
-           
-       <div *ngSwitchCase="3">
-       <p>3</p>
-       </div>
-
-        </div>
-
-
-
+    <div *ngSwitchCase="3">
+      <p>3</p>
+    </div>
+    <div *ngSwitchCase="6">
+    <admin-profile></admin-profile>
+    </div>
+  </div>
 </div>
 
 
 
 
 
+<p-dialog [(visible)]="editAdminInfo"  [style]="{ width: '50rem' }" 
+[breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+  header="Edit Your Profile"
+  [maximizable]="true" 
+[modal]="true">
+
+<form >
+<mat-form-field appearance="outline">
+<mat-label>Enter your fullname</mat-label>
+<input type="text" matInput name="fullname" [(ngModel)]="fullname">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Email</mat-label>
+<input type="email" matInput name="email" [(ngModel)]="email">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Phone number</mat-label>
+<input [(ngModel)]="phoneNumber" type="text" matInput name="phoneNumber">
+</mat-form-field>
+</form>
+<mat-card-actions>
+<button mat-flat-button >Edit</button>
+</mat-card-actions>
+
+
+
+
+
+
+
+</p-dialog>

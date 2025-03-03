@@ -1,0 +1,38 @@
+<mat-card *ngIf="!processing">
+  <h4>Profile Information</h4>
+  <mat-card-content>
+    <h3>
+      Full Name: <span>{{ adminData.userName }}</span>
+    </h3>
+  </mat-card-content>
+  <mat-card-content>
+    <h3>
+      Email: <span>{{ adminData.Email }}</span>
+    </h3>
+  </mat-card-content>
+  <mat-card-content>
+    <h3>
+      Phone Number: <span>{{ adminData.phoneNumber }}</span>
+    </h3>
+  </mat-card-content>
+ 
+  <mat-card-content>
+    <h3>
+      Created On: <span>{{ formatter(adminData.created_at) }}</span>
+    </h3>
+  </mat-card-content>
+  <mat-card-content>
+    <h3>
+      Email Verified: <button *ngIf="adminData.emailVerified" mat-flat-button style="background-color: green;color: white;">Yes</button> <button *ngIf="!adminData.emailVerified" mat-flat-button style="background-color: red;color: white;">No</button>
+    </h3>
+  </mat-card-content>
+  <mat-card-content>
+    <h3>
+      Delete Account: <span><mat-icon style="color: red;" matTooltip="Delete Account">delete</mat-icon></span>
+    </h3>
+  </mat-card-content>
+</mat-card>
+
+<div class="spin">
+  <p-progressSpinner *ngIf="processing" />
+</div>

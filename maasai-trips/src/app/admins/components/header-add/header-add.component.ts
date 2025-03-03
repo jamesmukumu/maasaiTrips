@@ -1,5 +1,9 @@
-import { Component,Output,EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnInit,inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../services/admin.service';
+import Cookies from 'js-cookie';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
   MatTreeFlatDataSource,
@@ -18,34 +22,71 @@ interface FlatNode {
   level: number;
 }
 
-interface CurrentSelection{
-Name:string
-hasNode:boolean
-activeNode?:string
+interface CurrentSelection {
+  Name: string;
+  hasNode: boolean;
+  activeNode?: string;
 }
 @Component({
   selector: 'header-add',
   templateUrl: './header-add.component.html',
   styleUrl: './header-add.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderAddComponent {
-@Output() choosenEmitter  = new EventEmitter<CurrentSelection>()
+  readonly snack = inject(MatSnackBar)
+  @Output() choosenEmitter = new EventEmitter<CurrentSelection>();
+  @Output() toogleNav = new EventEmitter<boolean>();
+  @Input() showAdminControls = false;
 
   openSideDrawer = false;
-home(){
-  this.router.navigate(["/"])
-}
+  sideNavOpener = false;
+  editAdminInfo = false;
+  processing = false
+  adminData: any;
+  fullname = ''
+  email = ''
+  phoneNumber = ''
+  home() {
+    this.router.navigate(['/']);
+  }
 
+ async popDialog(){
+try{
+  this.snack.open("Opening Editor...","Wait",{
+  horizontalPosition:"center",
+  verticalPosition:"bottom"
+  })
+this.processing = true
+var {data}= await this.admin.fetchAdminsProfile()
+this.editAdminInfo = true
+this.fullname = data.userName
+this.email = data.Email
+this.phoneNumber = data.phoneNumber
+}catch(err){
+console.error(err)
+}
+ 
 
-mobileEmitter(name:string,nodeHas:boolean,activeNode?:string){
-var chooser:CurrentSelection = {
-Name:name,
-hasNode:nodeHas,
-activeNode:activeNode
 }
-this.choosenEmitter.emit(chooser)
-this.openSideDrawer = false
-}
+  logoutUser() {
+    Cookies.remove('grant_token');
+    this.router.navigate(['/login']);
+  }
+  actualizeToggle() {
+    this.toogleNav.emit(!this.sideNavOpener);
+    this.sideNavOpener = !this.sideNavOpener;
+  }
+
+  mobileEmitter(name: string, nodeHas: boolean, activeNode?: string) {
+    var chooser: CurrentSelection = {
+      Name: name,
+      hasNode: nodeHas,
+      activeNode: activeNode,
+    };
+    this.choosenEmitter.emit(chooser);
+    this.openSideDrawer = false;
+  }
   signIn() {
     this.router.navigate(['/login']);
   }
@@ -81,20 +122,46 @@ this.openSideDrawer = false
     this.treeControl,
     this.treeFlattener
   );
-  dataSourceHotels:any = new MatTreeFlatDataSource(
-    this.treeControl,
-    this.treeFlattener
-  )
-  dataSourcePackages:any = new MatTreeFlatDataSource(
-    this.treeControl,
-    this.treeFlattener
-  )
-  dataSourceBlogs:any = new MatTreeFlatDataSource(
-    this.treeControl,
-    this.treeFlattener
-  )
 
-  packagesCategories:MainCategory[] = [
+
+  dataSourceAccounts: any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  );
+  dataSourceHotels: any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  );
+  dataSourcePackages: any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  );
+  dataSourceBlogs: any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  );
+  accountsCategories: MainCategory[] = [
+    {
+      Tree_Name: 'Accounts',
+      identifierName: 'accounts',
+      Tree_Children: [
+        {
+          Tree_Name: 'View Profile',
+          identifierName: 'View Profile',
+        },
+        {
+          Tree_Name: 'Edit Profile',
+          identifierName: 'Edit Profile',
+        },
+        {
+          Tree_Name: 'Logout',
+          identifierName: 'Logout',
+        }
+      ],
+    },
+  ];
+
+  packagesCategories: MainCategory[] = [
     {
       Tree_Name: 'Packages',
       identifierName: 'Packages',
@@ -115,39 +182,33 @@ this.openSideDrawer = false
           Tree_Name: 'New Hotel Rooms',
           identifierName: 'New Hotel Rooms',
         },
-      
-      
       ],
     },
-  
-  ]
-hotelCategories:MainCategory[] = [
-  {
-    Tree_Name: 'Hotels',
-    identifierName: 'Mail',
-    Tree_Children: [
-      {
-        Tree_Name: 'Add Hotel',
-        identifierName: 'Add Hotel',
-      },
-      {
-        Tree_Name: 'Add Rooms',
-        identifierName: 'Add Rooms',
-      },
-      {
-        Tree_Name: 'My Hotels',
-        identifierName: 'My Hotels',
-      },
-      {
-        Tree_Name: 'New Hotel Rooms',
-        identifierName: 'New Hotel Rooms',
-      },
-    
-    
-    ],
-  },
-
-]
+  ];
+  hotelCategories: MainCategory[] = [
+    {
+      Tree_Name: 'Hotels',
+      identifierName: 'Mail',
+      Tree_Children: [
+        {
+          Tree_Name: 'Add Hotel',
+          identifierName: 'Add Hotel',
+        },
+        {
+          Tree_Name: 'Add Rooms',
+          identifierName: 'Add Rooms',
+        },
+        {
+          Tree_Name: 'My Hotels',
+          identifierName: 'My Hotels',
+        },
+        {
+          Tree_Name: 'New Hotel Rooms',
+          identifierName: 'New Hotel Rooms',
+        },
+      ],
+    },
+  ];
   categories: MainCategory[] = [
     {
       Tree_Name: 'Emails',
@@ -188,10 +249,17 @@ hotelCategories:MainCategory[] = [
       ],
     },
   ];
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef,
+    private admin: AdminService
+  ) {
     this.dataSource.data = this.categories;
-    this.dataSourceHotels.data = this.hotelCategories
-    this.dataSourcePackages.data = this.packagesCategories
+    this.dataSourceHotels.data = this.hotelCategories;
+    this.dataSourcePackages.data = this.packagesCategories;
+    this.dataSourceAccounts.data = this.accountsCategories
   }
   hasChild = (_: number, node: FlatNode) => node.expandable;
+
+  
 }

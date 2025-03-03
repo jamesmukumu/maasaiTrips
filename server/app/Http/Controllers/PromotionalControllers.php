@@ -119,7 +119,8 @@ class PromotionalControllers extends Controller implements PromotionalInterface
                 ];
             }
             $validatedRequest["placesVisit"] = json_encode($placeVisits);
-            $validatedRequest["slug"] = Str::slug($validatedRequest["Title"], "_");
+           
+            $validatedRequest["promotional_newsletters_Slug"] = Str::slug($validatedRequest["Title"], "_");
 
             PromotionalNewsletters::create($validatedRequest);
             return response()->json([

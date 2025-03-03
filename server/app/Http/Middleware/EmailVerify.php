@@ -13,11 +13,10 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class EmailVerify{
     /**
 
-     *
+   
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
+    public function handle(Request $request, Closure $next): Response{
         if (!OlankaUsers::where("Email", $request["credential"])->exists()) {
             return response()->json([
                 "message" => "User does not have an account"
@@ -35,5 +34,6 @@ class EmailVerify{
         }
     }
 }
+
 
 

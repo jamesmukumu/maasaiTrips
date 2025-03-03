@@ -1,23 +1,55 @@
-import { Component,ViewChild,ElementRef,OnInit } from '@angular/core';
+import { Component,ViewChild,ElementRef,OnInit,inject } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import Cookies from 'js-cookie';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AdminService } from '../../../services/admin.service';
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit {
+  readonly snack = inject(MatSnackBar)
 @ViewChild(MatMenuTrigger)menuTrigger!:MatMenuTrigger
 emailChoosen:number = 1
 choosenActive:any
+processing = false
+adminData:any
+toogleSidenav = true
+editAdminInfo = false
+fullname = ''
+email = ''
+phoneNumber = ''
 
+triggerSideNav(event:any){
+this.toogleSidenav = event
+}
+async popDialog(){
+  try{
+    this.snack.open("Opening Editor...","Wait",{
+    horizontalPosition:"center",
+    verticalPosition:"bottom"
+    })
+  this.processing = true
+  var {data}= await this.admin.fetchAdminsProfile()
+  this.editAdminInfo = true
+  this.fullname = data.userName
+  this.email = data.Email
+  this.phoneNumber = data.phoneNumber
+  }catch(err){
+  console.error(err)
+  }
+   
+  
+  }
 triggerChoosen(event:any){
-
+console.log(event)
 var {activeNode,Name} = event
 if(Name == 'Home'){
 this.activeIndex = 0
+}else if(Name == 'Account'){
+  this.activeIndex = 6
 }
 switch(activeNode){
 case "Create Email":
@@ -53,8 +85,17 @@ case 'Manage newsletters':
 this.emailChoosen =  7
 break
 case "Home":
-  this.activeIndex = 0
-
+this.activeIndex = 0
+break;
+case "View Profile":
+this.activeIndex = 6
+break
+case "Edit Profile":
+this.popDialog()
+break
+case "Logout":
+Cookies.remove("grant_token")
+this.router.navigate(["/dashboard"])
 
 
 }
@@ -65,7 +106,7 @@ case "Home":
 
 
 
-constructor(private router:Router){}
+constructor(private router:Router,private admin:AdminService){}
 chooserEmail(choosenOptionEmail:number){
 this.emailChoosen = choosenOptionEmail
 }

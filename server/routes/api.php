@@ -41,6 +41,9 @@ Route::post("/save/alerts/newsLetter",[NewsLetterAlert::class,'saveNewsLetterAle
 
 
 
+// Protected user Routes
+Route::get("/fetch/user/profile",[OlankaUsersController::class,"fetchUserProfile"]);
+
 
 
 

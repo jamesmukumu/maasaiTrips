@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table -> tinyInteger("hotDiscount");
-            $table -> string("slug")->unique(true);
+            $table -> string("promotional_newsletters_Slug")->unique(true);
             $table ->string("Title")->unique(true);
             $table-> tinyText("hotOffer")->nullable(false);
             $table -> integer("hotOfferDiscount")->nullable(false);

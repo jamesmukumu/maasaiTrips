@@ -1,147 +1,231 @@
 <mat-card>
-    <mat-list>
-    <mat-list-item >
-    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
-    </mat-list-item>
-    <mat-list-item >
-    <p>Masaai Mara Trips</p>
+  <mat-list>
+    <mat-list-item *ngIf="showAdminControls">
+     <mat-icon (click)="actualizeToggle()" matTooltip="Toogle menu bar"
+     style="color: white">menu</mat-icon>
     </mat-list-item>
     <mat-list-item>
-    <p>All About Masai Mara</p>
-    </mat-list-item>
-    <mat-list-item >
-    <p>Accomodations</p>
-    </mat-list-item>
-    <mat-list-item >
-    <p>Masaai Mara Safari's</p>
-    </mat-list-item>  
-    <mat-list-item >
-
-        <mat-icon  matTooltip="Show more actions" style="color: white;" [mat-menu-trigger-for]="menu">account_circle</mat-icon>
-      
-         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-                 <mat-icon>person</mat-icon>
-                <span (click)="signIn()">Sign In</span>
-              </button>
-              <button mat-menu-item >
-                <mat-icon>person</mat-icon>
-                <span (click)="signUp()">Sign Up</span>
-              </button>
-
-         </mat-menu>
-
-
-
+      <p matListItemLine>Masaai Mara Trips</p>
     </mat-list-item>
     <mat-list-item>
-    <mat-icon class="icon">dark_mode</mat-icon>
+      <p matListItemLine>All About Masai Mara</p>
     </mat-list-item>
-    </mat-list>
-    
-    
-    
-    
-    
-    </mat-card> 
-    
-    
-    
-    
-    <p-sidebar [(visible)]="openSideDrawer">
-        <mat-list>
-            <mat-list-item (click)="mobileEmitter('Home',false)" >
-                <span matListItemTitle>Home</span>
-            </mat-list-item>
-          
-                <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-             
-                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                      <button mat-icon-button disabled></button>
-                      
-                     <p style="color: black;"  (click)="mobileEmitter('Email',true,node.Tree_Name)">
-                      {{node.Tree_Name}}
-                     </p>
-                    </mat-tree-node>
-                
-                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
-                        <mat-icon class="mat-icon-rtl-mirror">
-                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                      </button>
-                      {{node.Tree_Name}}
-                    </mat-tree-node>
-                  </mat-tree>
-
-
-                  <mat-tree [dataSource]="dataSourceHotels" [treeControl]="treeControl">
-             
-                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                      <button mat-icon-button disabled></button>
-                      
-                     <p style="color: black;" >
-                      {{node.Tree_Name}}
-                     </p>
-                    </mat-tree-node>
-                
-                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
-                        <mat-icon class="mat-icon-rtl-mirror">
-                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                      </button>
-                      {{node.Tree_Name}}
-                    </mat-tree-node>
-                  </mat-tree>
-
-                  
-                  <mat-tree [dataSource]="dataSourcePackages" [treeControl]="treeControl">
-             
-                    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
-                      <button mat-icon-button disabled></button>
-                      
-                     <p style="color: black;" >
-                      {{node.Tree_Name}}
-                     </p>
-                    </mat-tree-node>
-                
-                    <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding matTreeNodeToggle>
-                      <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.Tree_Name">
-                        <mat-icon class="mat-icon-rtl-mirror">
-                          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                        </mat-icon>
-                      </button>
-                      {{node.Tree_Name}}
-                    </mat-tree-node>
-                  </mat-tree>
+    <mat-list-item>
+      <p matListItemLine>Accomodations</p>
+    </mat-list-item>
+    <mat-list-item>
+      <p matListItemLine>Masaai Mara Safari's</p>
+    </mat-list-item>
+    <mat-list-item *ngIf="showAdminControls">
+      <mat-icon
+        matTooltip="Show more actions"
        
-            
-            
-            <mat-list-item>
-              <span matListItemTitle>Enquiries</span>
-            </mat-list-item>
-            <mat-list-item>
-                <span matListItemTitle>Destinations</span>
-              </mat-list-item>
-              <mat-list-item>
-                <span matListItemTitle>Blogs</span>
-              </mat-list-item>
-            <mat-list-item>
-                <button mat-flat-button (click)="home()" >Travel to Mara</button>
-            </mat-list-item> 
-        </mat-list>
-    </p-sidebar>
+        style="color: white"
+        [mat-menu-trigger-for]="menu"
+        >account_circle</mat-icon
+      >
+
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="mobileEmitter('Account',false)" >
+          <mat-icon>person</mat-icon>
+          <span >My Profile</span>
+        </button>
+        <button mat-menu-item (click)="popDialog()">
+          <mat-icon>edit</mat-icon>
+          <span (click)="signUp()">Edit Profile</span>
+        </button>
+        
+        <button mat-menu-item (click)="logoutUser()">
+          <mat-icon>logout</mat-icon>
+          <span >Logout Profile</span>
+        </button>
+      </mat-menu>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon class="icon">dark_mode</mat-icon>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+
+
+<p-sidebar [(visible)]="openSideDrawer">
+  <mat-list>
+    <mat-list-item (click)="mobileEmitter('Home', false)">
+      <span matListItemTitle>Home</span>
+    </mat-list-item>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p
+          style="color: black"
+          (click)="mobileEmitter('Email', true, node.Tree_Name)"
+        >
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-tree [dataSource]="dataSourceHotels" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-tree [dataSource]="dataSourcePackages" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-list-item>
+      <span matListItemTitle>Enquiries</span>
+    </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Destinations</span>
+    </mat-list-item>
+    <mat-list-item>
+      <span matListItemTitle>Blogs</span>
+    </mat-list-item>
+    <mat-list-item>
+      <button mat-flat-button (click)="home()">Travel to Mara</button>
+    </mat-list-item>
     
-    <mat-drawer-container>
-        <mat-drawer #drawer mode="over" [opened]="false">
-          </mat-drawer>
-          
-    <div>
-        <mat-icon class="harmburg" (click)="opener()">menu</mat-icon>
-        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
-        <mat-icon class="dark">dark_mode</mat-icon>
-    </div>
-    
-    
-        </mat-drawer-container>
+    <mat-tree [dataSource]="dataSourceAccounts" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black"   (click)="mobileEmitter('Account-Mini', true, node.Tree_Name)">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "account_circle" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+  </mat-list>
+</p-sidebar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" [opened]="false"> </mat-drawer>
+
+  <div>
+    <mat-icon class="harmburg" (click)="opener()">menu</mat-icon>
+    <img
+      src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"
+      mat-card-md-image
+      alt=""
+    />
+    <mat-icon class="dark">dark_mode</mat-icon>
+  </div>
+</mat-drawer-container>
+
+
+
+
+<p-dialog [(visible)]="editAdminInfo"  [style]="{ width: '50rem' }" 
+[breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+  header="Edit Your Profile"
+  [maximizable]="true" 
+[modal]="true">
+
+<form >
+<mat-form-field appearance="outline">
+<mat-label>Enter your fullname</mat-label>
+<input type="text" matInput name="fullname" [(ngModel)]="fullname">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Email</mat-label>
+<input type="email" matInput name="email" [(ngModel)]="email">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Phone number</mat-label>
+<input [(ngModel)]="phoneNumber" type="text" matInput name="phoneNumber">
+</mat-form-field>
+</form>
+<mat-card-actions>
+<button mat-flat-button >Edit</button>
+</mat-card-actions>
+
+
+
+
+
+
+
+</p-dialog>

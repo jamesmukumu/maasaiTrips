@@ -87,7 +87,24 @@ export class AdminService {
       Cookies.set('grant_token', authorization, { expires: 1 / 24 });
       return resp.data;
     } catch (err) {
-      return err
+      return err;
+    }
+  }
+
+  async fetchAdminsProfile() {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.get(
+        'https://maasaitrips-2.onrender.com/api/fetch/user/profile',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
     }
   }
 }

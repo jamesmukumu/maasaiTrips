@@ -6,6 +6,7 @@ use App\Mail\MailNewsLEtterAlerts;
 use Illuminate\Http\Request;
 use App\Models\NewsletterAlerts;
 use Cloudinary\Cloudinary;
+use Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Log;
 use Mail;
@@ -99,7 +100,8 @@ class NewsLetterAlert extends Controller implements NewsAlertInterface
                 "imageFour" => $imageFourUrl["url"],
                 "FinalContentFour" => $validatedRequest["FinalContentFour"],
             ];
-
+            $newsLetterSave["alert_newsletters_Slug"] =  Str::slug($validatedRequest["Title"]);
+           
             NewsletterAlerts::create($newsLetterSave);
             return response()->json([
                 "message" => "NewsLetter Saved"

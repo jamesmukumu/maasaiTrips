@@ -15,19 +15,16 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
            $table -> string("Title")->unique();
-           $table ->string("slug")->unique(true);
+           $table ->string("alert_newsletters_Slug")->unique(true);
            $table -> mediumText('TitleOne')->nullable(false);
            $table ->string("imageOne")->nullable(false);
            $table ->mediumText("FinalContentOne")->nullable(false);
            $table -> mediumText('TitleTwo')->nullable(false);
            $table ->string("imageTwo")->nullable(false);
            $table ->mediumText("FinalContentTwo")->nullable(false);
-
-
            $table -> mediumText('TitleThree')->nullable(false);
            $table ->string("imageThree")->nullable(false);
            $table ->mediumText("FinalContentThree")->nullable(false);
-
            $table -> mediumText('TitleFour')->nullable(false);
            $table ->string("imageFour")->nullable(false);
            $table ->mediumText("FinalContentFour")->nullable(false);
