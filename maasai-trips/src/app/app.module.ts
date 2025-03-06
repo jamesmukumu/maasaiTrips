@@ -84,7 +84,9 @@ import { PromotionalnewslettersComponent } from './admins/components/email/promo
 import { PreviewAllComponent } from './pages/preview-all/preview-all.component';
 import { UpdateAlertNewsLettersComponent } from './admins/components/email/dialog/update-alert-news-letters/update-alert-news-letters.component';
 import { ManagePromotionalsComponent } from './admins/components/email/manage-promotionals/manage-promotionals.component';
-import { AdminProfileComponent } from './admins/components/admin-profile/admin-profile.component'
+import { AdminProfileComponent } from './admins/components/admin-profile/admin-profile.component';
+import { CreateHotelsComponent } from './admins/components/hotels/create-hotels/create-hotels.component';
+import { ManageHotelsComponent } from './admins/components/hotels/manage-hotels/manage-hotels.component'
 
 
 
@@ -106,7 +108,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,

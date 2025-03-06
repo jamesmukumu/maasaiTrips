@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   readonly snack = inject(MatSnackBar)
 @ViewChild(MatMenuTrigger)menuTrigger!:MatMenuTrigger
 emailChoosen:number = 1
+hotelChoosen:number = 1
 choosenActive:any
 processing = false
 adminData:any
@@ -109,6 +110,10 @@ this.router.navigate(["/login"])
 constructor(private router:Router,private admin:AdminService){}
 chooserEmail(choosenOptionEmail:number){
 this.emailChoosen = choosenOptionEmail
+}
+
+chooserHotels(choosenHotelOpt:number){
+this.hotelChoosen = choosenHotelOpt
 }
 activeIndex = 0 
 changeActive(activeIndex:number){

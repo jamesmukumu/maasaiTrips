@@ -1,9 +1,12 @@
 <?php
 use App\Http\Controllers\BulkMailControllers;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\NewsLettersController;
 use App\Http\Controllers\OlankaUsersController;
 use App\Http\Controllers\PromotionalControllers;
 use App\Http\Controllers\QuotationController;
+use App\Http\Controllers\RoomsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Verify;
 use App\Http\Controllers\MailerController;
@@ -79,13 +82,6 @@ Route::post("/save/bulk/from/csv",[BulkMailControllers::class,"saveFromCsv"]);
 Route::post("/test/dummy",[NewsLettersController::class,"seeNewsLetter"]);
 
 
-
-
-
-
-
-
-
 // promotional newsletters
 Route::post("/dummy/promote",[PromotionalControllers::class,'sendNewsLetterPromotional']);
 Route::post("/save/promotional/newsletters",[PromotionalControllers::class,'savePromotionalNewsletters']);
@@ -94,3 +90,43 @@ Route::get("/fetch/promotional/newsletter",[PromotionalControllers::class,"fetch
 Route::delete("/delete/promotional/newsletter",[PromotionalControllers::class,"deleteNewsLetterTemplateMail"]);
 Route::post("/update/promotional/newsletter",[PromotionalControllers::class,"UpdatePromotionalNewsletters"]);
 Route::post("/preview/promotional/newsletter",[PromotionalControllers::class,"previewPromotional"]);
+
+
+
+
+
+
+// Hotels Api
+Route::post("/add/new/hotel",[HotelsController::class,"createHotel"]);
+Route::delete("/delete/hotel",[HotelsController::class,"deleteHotel"]);
+Route::post("/update/hotel",[HotelsController::class,"updateHotel"]);
+Route::put("/publish/hotel",[HotelsController::class,"publishHotel"]);
+Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
+Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
+
+
+
+
+// Rooms Api
+Route::post("/create/new/room",[RoomsController::class,"createRoom"]);
+
+
+
+
+
+
+
+// Destination Api here
+Route::post("/add/new/destination",[DestinationController::class,"createDestination"]);
+Route::get("/find/all/destinations",[DestinationController::class,"fetchDestinations"]);
+
+
+
+
+
+
+
+
+
+
+

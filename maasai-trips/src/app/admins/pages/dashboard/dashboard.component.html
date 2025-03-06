@@ -65,12 +65,12 @@
         [mat-menu-trigger-for]="menuHotel"
       >
         <mat-menu #menuHotel>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="chooserHotels(1)">
             <mat-icon>add</mat-icon>
             <span style="color: black">Add Hotel</span>
           </button>
 
-          <button mat-menu-item>
+          <button mat-menu-item (click)="chooserHotels(2)">
             <mat-icon>hotel</mat-icon>
             <span style="color: black">My Hotel</span>
           </button>
@@ -166,10 +166,12 @@
       <manage-newsletters *ngIf="emailChoosen == 7"></manage-newsletters>
       <manage-promotionals *ngIf="emailChoosen == 8"></manage-promotionals>
     </div>
-
+ 
     <div *ngSwitchCase="2">
-      <p>2</p>
-    </div>
+    <create-hotels *ngIf="hotelChoosen==1"></create-hotels>
+   <manage-hotels *ngIf="hotelChoosen==2"></manage-hotels>
+  
+  </div>
 
     <div *ngSwitchCase="3">
       <p>3</p>
