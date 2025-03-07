@@ -206,7 +206,7 @@ return response()->json([
 public function fetchMyHotels(Request $request){
 try{
 $userID = $this->verifyingToken($request);
-$hotels = HotelsModel::with(["rooms"])->orderBy("created_at")->paginate(100);
+$hotels = HotelsModel::with(["rooms","destination"])->orderBy("created_at")->paginate(100);
 return response()->json([
 "message"=>"Fetch Successful",
 "nextPage"=>$hotels->nextPageUrl(),
@@ -224,7 +224,16 @@ return response()->json([
 
 
 
+public function fetchAllHotels(){
+try{
+$allHotels = HotelsModel::all()->select(["id","hotelName"]);
+return $allHotels;
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
 
+
+}
 
 
 

@@ -88,9 +88,22 @@ break
 case "Home":
 this.activeIndex = 0
 break;
+case "Add Hotel":
+  this.activeIndex = 2
+  this.hotelChoosen = 1
+  break
+  case "Add Rooms":
+    this.activeIndex = 2
+  this.hotelChoosen = 3
+  break  
+  case 'My Hotels':
+    this.activeIndex = 2
+    this.hotelChoosen = 2
+    break
 case "View Profile":
 this.activeIndex = 6
 break
+
 case "Edit Profile":
 this.popDialog()
 break

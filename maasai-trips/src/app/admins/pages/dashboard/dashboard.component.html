@@ -75,11 +75,11 @@
             <span style="color: black">My Hotel</span>
           </button>
 
-          <button mat-menu-item>
+          <button mat-menu-item  >
             <mat-icon>room_preferences</mat-icon>
             <span style="color: black">Rooms</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="chooserHotels(3)">
             <mat-icon>add</mat-icon>
             <span style="color: black">New Room</span>
           </button>
@@ -170,6 +170,7 @@
     <div *ngSwitchCase="2">
     <create-hotels *ngIf="hotelChoosen==1"></create-hotels>
    <manage-hotels *ngIf="hotelChoosen==2"></manage-hotels>
+   <create-room *ngIf="hotelChoosen==3"></create-room>
   
   </div>
 

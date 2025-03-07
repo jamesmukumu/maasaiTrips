@@ -63,7 +63,12 @@ flex-direction: column;
 div mat-form-field{
 width: 100%;
 }
-
+.contact-information{
+    width: 100%;
+}
+.contact-information mat-form-field{
+width: 100%;
+}
 
 }
 

@@ -44,9 +44,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   displayedColumnsSmallScreen: string[] = [
     'chooseAll',
     'choosen',
-
     'email',
-
     'action',
   ];
   processingTable = false;
@@ -234,7 +232,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   fetchBulkMails() {
     this.processingTable = true;
     this.mailer
-      .fetchBulks('http://localhost:8000/api/fetch/bulk/emails')
+      .fetchBulks('https://maasaitrips-2.onrender.com/api/fetch/bulk/emails')
       .then((dataa) => {
         var {
           message,

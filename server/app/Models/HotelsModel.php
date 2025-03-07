@@ -12,4 +12,8 @@ class HotelsModel extends Model{
     public function rooms(){
     return $this->hasMany(Rooms::class,"hotels_models_id","id");
     }
+    public function destination(){
+        return $this->hasOne(Destinations::class, "id", "destinations_id");
+
+    }
 }
