@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 @ViewChild(MatMenuTrigger)menuTrigger!:MatMenuTrigger
 emailChoosen:number = 1
 hotelChoosen:number = 1
+destinationChoosen:number = 1
 choosenActive:any
 processing = false
 adminData:any
@@ -103,7 +104,14 @@ case "Add Hotel":
 case "View Profile":
 this.activeIndex = 6
 break
-
+case "Add Destination":
+this.activeIndex = 5
+this.destinationChoosen = 1
+break
+case "Manage My Destinations":
+  this.activeIndex = 5
+this.destinationChoosen = 2
+break
 case "Edit Profile":
 this.popDialog()
 break
@@ -124,7 +132,10 @@ constructor(private router:Router,private admin:AdminService){}
 chooserEmail(choosenOptionEmail:number){
 this.emailChoosen = choosenOptionEmail
 }
-
+chooserDestinations(int:number){
+this.activeIndex = 5
+this.destinationChoosen = int
+}
 chooserHotels(choosenHotelOpt:number){
 this.hotelChoosen = choosenHotelOpt
 }

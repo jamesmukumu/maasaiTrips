@@ -114,6 +114,8 @@
         <mat-list-item (click)="changeActive(3)">
           <span matListItemTitle>Packages</span>
           <mat-icon style="color: white" matListItemIcon>inventory</mat-icon>
+       
+        
         </mat-list-item>
       </div>
 
@@ -126,9 +128,22 @@
       </div>
       <mat-divider style="background-color: white"></mat-divider>
       <div [classList]="activeIndex == 5 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(5)">
+        <mat-list-item (click)="changeActive(5)" [mat-menu-trigger-for]="destinationsMenu">
           <span matListItemTitle>Destination</span>
           <mat-icon style="color: white" matListItemIcon>near_me</mat-icon>
+       
+          <mat-menu #destinationsMenu>
+            <button mat-menu-item (click)="chooserDestinations(1)">
+              <mat-icon>place</mat-icon>
+              <span style="color: black">Add Destination</span>
+            </button>
+    
+            <button mat-menu-item (click)="chooserDestinations(2)">
+              <mat-icon>place</mat-icon>
+              <span style="color: black">Manage My Destinations</span>
+            </button>
+          
+          </mat-menu>
         </mat-list-item>
       </div>
       <mat-divider style="background-color: white"></mat-divider>
@@ -174,8 +189,9 @@
   
   </div>
 
-    <div *ngSwitchCase="3">
-      <p>3</p>
+    <div *ngSwitchCase="5">
+    <add-destinations *ngIf="destinationChoosen== 1"></add-destinations>
+    <manage-destinations *ngIf="destinationChoosen==2"></manage-destinations>
     </div>
     <div *ngSwitchCase="6">
     <admin-profile></admin-profile>

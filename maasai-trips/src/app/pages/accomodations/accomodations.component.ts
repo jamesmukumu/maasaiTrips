@@ -32,8 +32,8 @@ interface accomodation {
   
 })
 export class AccomodationsComponent implements AfterViewInit{
-@ViewChild("content") contentAnimate!:ElementRef
-contentState:string = 'out'
+  @ViewChild("content") contentAnimate!:ElementRef
+  contentState:string = 'out'
 goHotel(id?:string){
 this.router.navigate([`/hotel/${id}`])
 }

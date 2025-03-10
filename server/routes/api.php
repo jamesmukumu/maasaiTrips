@@ -119,12 +119,12 @@ Route::post("/create/new/room",[RoomsController::class,"createRoom"]);
 // Destination Api here
 Route::post("/add/new/destination",[DestinationController::class,"createDestination"]);
 Route::get("/find/all/destinations",[DestinationController::class,"fetchDestinations"]);
-
-
-
-
-
-
+Route::get("/fetch/destinations",[DestinationController::class,"findAllDestinations"]);
+Route::get("/find/single/destination",[DestinationController::class,"findSingularDestination"]);
+Route::get("/fetch/my/destinations",[DestinationController::class,"myDestinations"]);
+Route::delete("/delete/destination",[DestinationController::class,'DeleteDestination']);
+Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
+Route::put("/unpublish/destination",[DestinationController::class,"UnpublishDestination"]);
 
 
 

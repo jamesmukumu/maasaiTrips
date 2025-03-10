@@ -95,7 +95,7 @@ export class AdminService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'http://localhost:8000/api/fetch/user/profile',
+        'https://maasaitrips-2.onrender.com/api/fetch/user/profile',
         {
           headers: {
             Authorization: `Bearer ${token}`,

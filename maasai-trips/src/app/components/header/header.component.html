@@ -1,24 +1,30 @@
 <mat-card>
-<mat-list>
+<mat-list >
 <mat-list-item (click)="home()">
 <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
 </mat-list-item>
 <mat-list-item (click)="home()">
-<p>Masaai Mara Trips</p>
+<p matListItemTitle> Trips</p>
 </mat-list-item>
 <mat-list-item>
-<p>All About Masai Mara</p>
+<p matListItemTitle>About us</p>
 </mat-list-item>
 <mat-list-item (click)="accomodations()">
-<p>Accomodations</p>
+<p matListItemTitle>Accomodations</p>
 </mat-list-item>
 <mat-list-item (click)="navigate()">
-<p>Masaai Mara Safari's</p>
+<p  matListItemTitle>Safari's</p>
+</mat-list-item>
+<mat-list-item>
+<p matListItemTitle>Destinations</p>
+</mat-list-item>
+<mat-list-item>
+<p matListItemTitle>Hotels</p>
 </mat-list-item>
 <mat-list-item (click)="navigate()">
 
 <button mat-flat-button (click)="home()">
-Travel to Mara
+Travel 
 <mat-icon class="suff-icon">mood</mat-icon>
 </button>
 </mat-list-item>

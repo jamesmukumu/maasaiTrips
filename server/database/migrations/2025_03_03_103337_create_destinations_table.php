@@ -11,13 +11,14 @@ return new class extends Migration{
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->boolean("published")->default(false);
             $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
             $table->string("destinationTitle")->nullable(false)->unique(true);
-            $table->tinyText("destinationThumbnail")->nullable(false);
-            $table->tinyText("destinationPhotos")->nullable(false);
-            $table->tinyText("destinationDescription")->nullable(false);
-            $table->tinyText("destinationAbout")->nullable(false);        
-});
+            $table->text("destinationThumbnail")->nullable(false);
+            $table->text("destinationPhotos")->nullable(false);
+            $table->text("destinationDescription")->nullable(false);
+            $table->text("destinationAbout")->nullable(false);        
+});         
     }
 
  

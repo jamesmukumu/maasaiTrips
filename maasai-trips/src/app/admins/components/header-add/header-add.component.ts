@@ -140,6 +140,27 @@ console.error(err)
     this.treeControl,
     this.treeFlattener
   );
+  dataSourceDestinations:any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  )
+
+  destinationsCategories: MainCategory[] = [
+    {
+      Tree_Name: 'Destinations',
+      identifierName: 'Destinations',
+      Tree_Children: [
+        {
+          Tree_Name: 'Add Destination',
+          identifierName: 'Add Destination',
+        },
+        {
+          Tree_Name: 'Manage My Destinations',
+          identifierName: 'Manage My Destinations',
+        }
+      ],
+    },
+  ];
   accountsCategories: MainCategory[] = [
     {
       Tree_Name: 'Accounts',
@@ -258,6 +279,7 @@ console.error(err)
     this.dataSourceHotels.data = this.hotelCategories;
     this.dataSourcePackages.data = this.packagesCategories;
     this.dataSourceAccounts.data = this.accountsCategories
+    this.dataSourceDestinations.data = this.destinationsCategories
   }
   hasChild = (_: number, node: FlatNode) => node.expandable;
 

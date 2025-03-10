@@ -1,0 +1,26 @@
+<header></header>
+
+<div class="main">
+    
+<h1>Explore our stunning Safari destinations in Kenya</h1>
+<p>
+Discover the wonders of Africa with Olanka Safaris. Our Safari destinations page offers an exciting glimpse into the diverse and breathtaking locales we proudly showcase. From the iconic savannahs of the Masai Mara, where the Big Five roam freely, to the pristine, sun-kissed beaches of Mombasa, each destination promises a unique and unforgettable adventure. Delve into the rich cultures, awe-inspiring landscapes, and unparalleled wildlife encounters that define each of our handpicked travel spots. Whether you seek thrilling safari experiences, serene coastal retreats, or hidden gems off the beaten path, Olanka Safaris curates the perfect itinerary tailored to your wanderlust. Start exploring now and let your journey of a lifetime begin!
+</p>
+    <mat-card *ngIf="!findingDestinations" >
+        <div (click)="goDestinations(dest.id)" *ngFor="let dest of destinations">
+        <img [src]="dest.destinationThumbnail" alt=""> 
+        <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
+        <mat-card-title>{{dest.destinationTitle}}</mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content [innerHTML]="dest.destinationDescription" class="truncate-text"></mat-card-content>
+        
+    </div>
+        
+        
+        
+        </mat-card>
+        <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" *ngIf="findingDestinations"/>
+        
+        
+<footer></footer>
+</div>

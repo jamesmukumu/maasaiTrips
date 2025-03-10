@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 100%;
+  min-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+p,
+b {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.strong-2 {
+  font-weight: lighter;
+  padding-left: 5px;
+  line-height: 1.55;
+}
+mat-card {
+  background-color: rgb(237, 241, 245);
+  max-width: 100%;
+  min-width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+mat-card div mat-card-header {
+  width: 100%;
+  margin-bottom: 15.55px;
+}
+
+
+mat-card div mat-card-header{
+    width: 100%;
+    margin-bottom: 15.55px;
+    }
+    mat-card div mat-card-header img{
+    width: 100%;
+    }
+    
+    mat-card div{
+    width: 100%;
+    
+    }
+    mat-card div img{
+    width: 100%;
+    }
+    
+    
+
+mat-card-content {
+  display: flex;
+  flex-direction: column; /* Ensures inner elements stack properly */
+  flex-grow: 1; /* Allows content to expand */
+}
+
+@media (max-width: 900px) {
+  .truncate-text {
+    margin-top: 10px;
+    height: max-content;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  img {
+    height: fit-content;
+  }
+  mat-card div {
+    margin-top: 10px;
+    height: max-content;
+    width: 100%;
+    max-width: 100vw;
+  }
+  h4 {
+    text-align: center;
+  }
+  mat-card-header {
+    margin-bottom: 15.55px;
+  }
+  mat-card {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}

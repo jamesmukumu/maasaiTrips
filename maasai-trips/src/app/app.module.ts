@@ -88,7 +88,11 @@ import { AdminProfileComponent } from './admins/components/admin-profile/admin-p
 import { CreateHotelsComponent } from './admins/components/hotels/create-hotels/create-hotels.component';
 import { ManageHotelsComponent } from './admins/components/hotels/manage-hotels/manage-hotels.component';
 import { CreateRoomComponent } from './admins/components/rooms/create-room/create-room.component';
-import { ManageRoomComponent } from './admins/components/rooms/manage-room/manage-room.component'
+import { ManageRoomComponent } from './admins/components/rooms/manage-room/manage-room.component';
+import { DestinationsComponent } from './pages/destinations/destinations.component';
+import { SingleDestinationComponent } from './pages/single-destination/single-destination.component';
+import { AddDestinationsComponent } from './admins/components/destinations/add-destinations/add-destinations.component';
+import { ManageDestinationsComponent } from './admins/components/destinations/manage-destinations/manage-destinations.component'
 
 
 
@@ -110,7 +114,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -162,12 +166,20 @@ MatTooltipModule,
       path:"verify/email/:token"
       },
       {
+        component:SingleDestinationComponent,
+        path:"destinations/:destinationsid"
+      },
+      {
         component:PreviewAllComponent,
         path:"preview"
       },
       {
 component:DashboardComponent,
 path:"dashboard"
+      },
+      {
+      component:DestinationsComponent,
+      path:"destinations"
       },
 
       {

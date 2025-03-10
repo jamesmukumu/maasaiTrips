@@ -184,4 +184,132 @@ export class HotelsService {
       return err;
     }
   }
+
+  async fetchDestinationsDisplay() {
+    try {
+      var resp = await axios.get(`${this.baseUrl}/fetch/destinations`);
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async fetchSingularDestinations(id: any) {
+    try {
+      var resp = await axios.get(`${this.baseUrl}/find/single/destination`, {
+        params: {
+          id: id,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async deleteDestination(id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.delete(`${this.baseUrl}/delete/destination`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id: id,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async publishDestination(id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.put(
+        `${this.baseUrl}/publish/destination`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async un_publishDestination(id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.put(
+        `${this.baseUrl}/unpublish/destination`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async fetchMyDestinations() {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.get(`${this.baseUrl}/fetch/my/destinations`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async saveDestination(destination: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var formData = new FormData();
+      for (let i = 0; i < destination.images.length; i++) {
+        var keysdestinations = Object.keys(destination.images[i]);
+        var valuesdestinations: any = Object.values(destination.images[i]);
+        for (let j = 0; j < keysdestinations.length; j++) {
+          formData.append(keysdestinations[j], valuesdestinations[j]);
+        }
+      }
+      formData.append('destinationTitle', destination.destinationTitle);
+      formData.append('destinationAbout', destination.destinationAbout);
+      formData.append(
+        'destinationDescription',
+        destination.destinationDescription
+      );
+      formData.append('thumbnail', destination.Thumbnail);
+      var resp = await axios.post(
+        `${this.baseUrl}/add/new/destination`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

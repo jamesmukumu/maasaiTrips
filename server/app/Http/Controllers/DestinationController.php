@@ -73,14 +73,119 @@ return $destinations;
 }catch(\Exception $err){
 Log::error($err->getMessage());
 }
-
-
 }
 
 
 
+public function findAllDestinations(){
+try{
+$destinations = Destinations::where("published",true)->select(["id","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->paginate(50);
+return response()->json([
+"destinations"=>$destinations->items(),
+"nextUrl"=>$destinations->nextPageUrl(),
+"previousPage"=>$destinations->previousPageUrl()
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
+}
+
+public function findSingularDestination(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|integer|exists:destinations,id"
+]);
+$id = $request->query("id");
+$destinationData =  Destinations::select(["id","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->find($id);
+return response()->json([
+"message"=>"Destination Fetched",
+"data"=>$destinationData
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something went wrong"
+]);
+
+}}
 
 
 
+public function myDestinations(Request $request){
+try{
+$olanka_id = $this->verifyToken($request);
+$destinations = Destinations::where("olanka_users_id",$olanka_id)->get();
+return response()->json([
+"message"=>"My destinations fetched",
+"data"=>$destinations
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something went wrong"
+],500);
+}
+}
+
+public function DeleteDestination(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|integer|exists:destinations,id"
+]);
+$id = $request->query("id");
+Destinations::where("id",$id)->delete();
+return response()->json([
+"message"=>"Deleted"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went wrong"
+],500);
+}
+}
+
+
+
+public function PublishDestination(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|integer|exists:destinations,id"
+]);
+$id = $request->query("id");
+Destinations::where("id",$id)->update([
+"published"=>true
+]);
+return response()->json([
+"message"=>"Updated"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went wrong"
+],500);
+}
+}
+
+
+public function UnpublishDestination(Request $request){
+    try{
+    $validatedRequest = $request->validate([
+    "id"=>"required|integer|exists:destinations,id"
+    ]);
+    $id = $request->query("id");
+    Destinations::where("id",$id)->update([
+    "published"=>false
+    ]);
+    return response()->json([
+    "message"=>"Updated"
+    ]);
+    }catch(\Exception $err){
+    Log::error($err->getMessage());
+    return response()->json([
+    "message"=>"Something Went wrong"
+    ],500);
+    }
+    }
 
 }

@@ -1,0 +1,151 @@
+<h3>Manage My Destinations</h3>
+
+<mat-form-field appearance="outline" >
+  <mat-label>Search any Destination</mat-label>
+  <input type="text" matInput  #inputSelect (keyup)="applyFilter($event)"  />
+  <mat-hint>Example:Nairobi</mat-hint>
+</mat-form-field>
+
+<table mat-table  class="large-table" *ngIf="!processing" [dataSource]="dataSource">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Destination Title</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.destinationTitle }}
+    </td>  
+  </ng-container>
+ 
+  <ng-container matColumnDef="published">
+    <th mat-header-cell *matHeaderCellDef>Published</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon *ngIf="element.published" style="color: green">done</mat-icon>
+      <mat-icon *ngIf="!element.published" style="color: red">close</mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        matTooltip="actions"
+        [mat-menu-trigger-for]="menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item  (click)="popUpdate(element.id)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="popDeleteDestination(element.id)" >
+          <mat-icon style="color: red">delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        <button mat-menu-item *ngIf="!element.published" (click)="popPublish(element.id)">
+          <mat-icon style="color: green">publish</mat-icon>
+          <span>Publish Destination</span>
+        </button>
+        <button mat-menu-item *ngIf="element.published" (click)="popUn_Publish(element.id)">
+            <mat-icon style="color: red">publish</mat-icon>
+            <span>Un-Publish Destination</span>
+          </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter</td>
+  </tr>
+</table>
+
+
+
+
+
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20, 50, 100]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
+
+<div class="spin" *ngIf="processing">
+  <p-progressSpinner  />
+</div>
+
+<p-dialog [modal]="true"  [maximizable]="true" [(visible)]="updateDestination">
+<add-destinations></add-destinations>
+</p-dialog>
+
+<p-dialog [modal]="true" header="Delete" [(visible)]="deleteDestination" >
+  <mat-card>
+    <mat-card-title
+      >Are you sure you wish to delete </mat-card-title
+    >
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        style="background-color: green"
+        (click)="actualizedeleteDestination()"
+      
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+
+
+
+
+
+<p-dialog [modal]="true" header="Publish Destination" [(visible)]="publishDestination" >
+    <mat-card>
+      <mat-card-title
+        >Are you sure you wish to Publish </mat-card-title
+      >
+      <mat-card-actions align="end">
+        <button
+          mat-icon-button
+          (click)="actualizepublishDestination()"
+          style="background-color: green"
+        
+        >
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button style="background-color: red">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </p-dialog>
+
+
+  
+<p-dialog [modal]="true" header="UnPublish Destination" [(visible)]="unpublishDestination" >
+  <mat-card>
+    <mat-card-title
+      >Are you sure you wish to Un- Publish </mat-card-title
+    >
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        (click)="actualizeUn_publishDestination()"
+        style="background-color: green"
+      
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
