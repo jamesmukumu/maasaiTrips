@@ -167,7 +167,7 @@ MatTooltipModule,
       },
       {
         component:SingleDestinationComponent,
-        path:"destinations/:destinationsid"
+        path:"destinations/:destinationTitle/:destinationsid"
       },
       {
         component:PreviewAllComponent,

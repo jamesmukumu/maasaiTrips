@@ -42,7 +42,13 @@
     
     </div>
     </mat-card>
-    <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" *ngIf="fetchingDestination"/>
+    <div [classList]="fetchingDestination ? 'spin':'no-spin'">
+        <p-progressBar
+        mode="indeterminate"
+        [style]="{ height: '6px' }"
+        *ngIf="fetchingDestination"
+      />
+      </div>
     <patners  *ngIf="!fetchingDestination" ></patners>
     <p-scrollTop/>
     <footer></footer>

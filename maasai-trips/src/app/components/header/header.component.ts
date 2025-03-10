@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+  goDest(){
+    this.route.navigate(["/destinations"])
+  }
 seeDrawer:boolean = false
 toggle(){
 this.seeDrawer = true

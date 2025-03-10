@@ -3,23 +3,21 @@
 <mat-list-item (click)="home()">
 <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
 </mat-list-item>
-<mat-list-item (click)="home()">
-<p matListItemTitle> Trips</p>
-</mat-list-item>
+
 <mat-list-item>
-<p matListItemTitle>About us</p>
+<span matListItemLine>About us</span>
 </mat-list-item>
 <mat-list-item (click)="accomodations()">
-<p matListItemTitle>Accomodations</p>
+<span matListItemLine>Accomodations</span>
 </mat-list-item>
 <mat-list-item (click)="navigate()">
-<p  matListItemTitle>Safari's</p>
+<span  matListItemLine>Safari's</span>
+</mat-list-item>
+<mat-list-item (click)="goDest()">
+<span matListItemLine>Destinations</span>
 </mat-list-item>
 <mat-list-item>
-<p matListItemTitle>Destinations</p>
-</mat-list-item>
-<mat-list-item>
-<p matListItemTitle>Hotels</p>
+<span matListItemLine>Hotels</span>
 </mat-list-item>
 <mat-list-item (click)="navigate()">
 
@@ -29,7 +27,7 @@ Travel
 </button>
 </mat-list-item>
 <mat-list-item>
-<mat-icon class="icon">dark_mode</mat-icon>
+<mat-icon class="icon" matTooltip="Toggle dark mode" style="color: white;" matListItemIcon>dark_mode</mat-icon>
 </mat-list-item>
 </mat-list>
 

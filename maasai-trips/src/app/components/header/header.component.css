@@ -5,6 +5,7 @@ padding: 0;
 box-sizing: border-box;
 }
 mat-card{
+    max-width: 100vw;
 width: 100%;
 background: #232526;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
@@ -28,10 +29,11 @@ img{
 height: max-content;
 }
 mat-card mat-list{
-width: 100%;
+max-width: 100vw;
 height: 75px;
 display: flex;
 flex-direction: row;
+flex-wrap: no-wrap;
 }
 .icon{
 color: white;
@@ -42,16 +44,11 @@ cursor: pointer;
     display: flex;
     align-items: center; 
 }
-p,strong,mat-card-title,mat-card-subtitle{
+p,strong,mat-card-title,mat-card-subtitle,span{
 color: white;
 }
 
-p[matListItemTitle] {
-    padding: 40px;
-    white-space: normal !important;
-    overflow: visible !important;
-    text-overflow: clip !important;
-  }
+
   
 
 @media(max-width:900px){

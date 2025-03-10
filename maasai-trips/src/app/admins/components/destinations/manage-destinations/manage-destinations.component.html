@@ -6,7 +6,7 @@
   <mat-hint>Example:Nairobi</mat-hint>
 </mat-form-field>
 
-<table mat-table  class="large-table" *ngIf="!processing" [dataSource]="dataSource">
+<table mat-table  *ngIf="!processing" [dataSource]="dataSource">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Destination Title</th>
     <td mat-cell *matCellDef="let element">

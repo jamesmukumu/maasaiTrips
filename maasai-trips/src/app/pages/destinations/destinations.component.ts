@@ -14,11 +14,11 @@ export class DestinationsComponent implements OnInit {
 destinations:any[] = []
 findingDestinations = false
 constructor(private hotel:HotelsService,private router:Router,private sanitizer:DomSanitizer){}
-goDestinations(id:any){  
-this.router.navigate([`/destinations/${id}`])
+goDestinations(id:any,title:any){  
+this.router.navigate([`/destinations/${title}/${id}`])
 }
-transformDescription(description: string): string {
-  return description ? description.replace(/\n/g, '<br>') : '';
+sanitize(data:SafeHtml|any){
+return this.sanitizer.bypassSecurityTrustHtml(data)
 }
 
 async fetchDestinations(){
