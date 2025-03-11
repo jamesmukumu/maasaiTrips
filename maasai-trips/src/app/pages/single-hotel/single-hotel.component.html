@@ -104,9 +104,9 @@
     </div>
 
 
- 
+   
 
 
-    <p-dialog [modal]="true"  [(visible)]="showRoom">
+    <p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
       <rooms [roomData]="roomData"></rooms>
-    </p-dialog>
+    </p-dialog>  

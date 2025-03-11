@@ -76,8 +76,8 @@
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.publishable">
-          <mat-icon style="color: green">publish</mat-icon>
+        <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
+          <mat-icon style="color: green" >publish</mat-icon>
           <span>Publish hotel</span>
         </button>
       </mat-menu>
@@ -144,8 +144,8 @@
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.publishable">
-          <mat-icon style="color: green">publish</mat-icon>
+        <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
+          <mat-icon style="color: green" >publish</mat-icon>
           <span>Publish hotel</span>
         </button>
       </mat-menu>
@@ -397,6 +397,29 @@
         mat-icon-button
         style="background-color: green"
         (click)="deleteHotelPermanently()"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+
+
+
+<p-dialog [modal]="true" header="Publish Hotel" [(visible)]="publishing">
+  <mat-card>
+    <mat-card-title
+      >Are you sure you wish to Publish {{ hotelNameDelete }}</mat-card-title
+    >
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        style="background-color: green"
+        (click)="completePublish()"
       >
         <mat-icon>check</mat-icon>
       </button>

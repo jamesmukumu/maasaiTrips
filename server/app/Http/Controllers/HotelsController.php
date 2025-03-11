@@ -161,7 +161,14 @@ $validatedRequest = $request->validate([
 "id"=>"required|integer|exists:hotels_models,id"
 ]);
 $hotelID = $request->query("id");
-$hotelData = HotelsModel::find($hotelID)->first();
+$hotelData = HotelsModel::with(["rooms"])->find($hotelID);
+if($hotelData->rooms->isEmpty()){
+return response()->json([
+"message"=>"Rejected",
+"Content"=>"Hotel Must have Rooms"
+]);
+}
+
 $hotelData["publishable"] = true;
 $hotelData->save();
 return response()->json([
@@ -235,7 +242,7 @@ Log::error($err->getMessage());
 public function fetchDisplayHotels(Request $request){
 try{
 
-$paginatedHotelsData = HotelsModel::select(["hotelDescription","id","hotelSlug","hotelThumbnail","hotelName"])->paginate(30);
+$paginatedHotelsData = HotelsModel::select(["hotelDescription","id","hotelSlug","hotelThumbnail","hotelName"])->where("publishable",true)->paginate(30);
 return response()->json([
 "message"=>"Hotels Fetched",
 "data"=>$paginatedHotelsData->items(),

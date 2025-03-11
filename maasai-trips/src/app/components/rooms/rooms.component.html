@@ -1,7 +1,7 @@
 
-<div class="container">
+
 <mat-card>
-    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" class="div-a">
+  <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
    
 <p-galleria  [showIndicators]="true" 
    
@@ -25,11 +25,12 @@
     
     
 <div class="div-b" >
-    <mat-card-content   [innerHTML]="formatDescription()">
+<h1>{{roomData.roomType}}</h1>
+
+  <mat-card-content   [innerHTML]="formatDescription()">
       
-    </mat-card-content>  
+  </mat-card-content>  
   </div>
     </mat-card>
    
 
-    </div>

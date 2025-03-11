@@ -60,7 +60,11 @@
   text-align: center;
   }
   @media (max-width: 930px) {
-  
+  table{
+  width: 100%;
+  min-width: 100vw;
+  max-width: 100%;
+  }
   
     .div-a {
       width: 100%;

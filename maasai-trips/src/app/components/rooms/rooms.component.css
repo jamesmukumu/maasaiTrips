@@ -1,43 +1,30 @@
-.container {
-    max-width: 100%;
-    min-width: 100vw;
-    min-height: 100vh;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  b{
- color: blue;
- text-decoration: underline;
- cursor: pointer;
-  }
-  .btn{
-    background-color: #fca608;
-    color: white;
-    width: max-content;
-  }
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+mat-card-content {
+  word-wrap: break-word; /* Break long words if necessary */
+  word-break: break-word; /* Ensures breaking in case of long words */
+  white-space: normal; /* Allows normal wrapping */
+}
+
+ 
   mat-card {
    
-    max-width: 100vw;
-    min-width: 100%;
+   width: 100%;
     height: max-content;
-    display: grid;
-    margin: 0px;
-    padding: 0px;
-    grid-template-columns: 2fr 1fr; 
-  align-items: start;
-  }
+    display: block;
   
-  .div-a {
-    width: 1000px;
-    
-    height: auto; 
-    min-height: unset; 
   
+   
   }
+  mat-card div{
+  min-width: 100%;
+  }
+ 
   .img-big{
-    height: max-content;
-    width: max-content;
+    width: 100%;
     }
   
   .img-thumbnail {

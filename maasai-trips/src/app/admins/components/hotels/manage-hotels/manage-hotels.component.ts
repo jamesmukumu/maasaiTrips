@@ -19,6 +19,7 @@ popEditor = false
 hotelNameDelete = ''
 idSelected:number = 0
 fetchingHotels = false
+publishing = false
 deleteHotel = false
 displayedColumns:string[] = ["hotelName","contactPerson","destination","phoneNumber","contactEmail","commission","maxRate","minRate","published","actions"]
 displayedColumnsSmall:string[] = ["hotelName","destination","published","actions"]
@@ -35,7 +36,11 @@ editHotel(element:any){
 this.idSelected = element.id
 this.popEditor = true
 }
-
+publishingHotel(element:any){
+  this.hotelNameDelete = element.hotelName
+  this.idSelected = element.id
+  this.publishing = true
+  }
 
 async fetchHotels(){
 try{
@@ -184,7 +189,28 @@ this.fetchingHotels = false
 }
 
 
+async completePublish(){
+this.fetchingHotels = true
+this.publishing = false
+try{
+var {message,Content} = await this.hotel.publishHotel(this.idSelected)
+if(message == 'Rejected'){
 
+this.snack.open(Content+" "+"❌","Add Rooms")
+this.fetchingHotels = false
+}else if(message == 'updated'){
+this.snack.open("Published 😃 ","success")
+this.fetchDestinations()
+}else{
+this.snack.open("Something Went Wrong 😞","Failed")
+this.fetchingHotels = false
+}
+}catch(err){
+console.log(err)
+this.fetchingHotels = true
+}
+
+}
 
 
 
