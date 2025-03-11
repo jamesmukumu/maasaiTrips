@@ -1,0 +1,35 @@
+
+<div class="container">
+<mat-card>
+    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" class="div-a">
+   
+<p-galleria  [showIndicators]="true" 
+   
+    [value]="formatPhotos()"
+    [circular]="true" 
+    [showThumbnails]="true"
+    [changeItemOnIndicatorHover]="true" 
+     
+    [containerStyle]="{ 'max-width': '100%', }">
+    
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item"  class="img-big" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <img [src]="item" class="img-thumbnail" />
+    </ng-template>
+    </p-galleria>
+    
+      
+  </div>
+    
+    
+<div class="div-b" >
+    <mat-card-content   [innerHTML]="formatDescription()">
+      
+    </mat-card-content>  
+  </div>
+    </mat-card>
+   
+
+    </div>

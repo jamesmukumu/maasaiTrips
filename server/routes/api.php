@@ -104,6 +104,9 @@ Route::put("/publish/hotel",[HotelsController::class,"publishHotel"]);
 Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
 Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
 Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
+Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels']);
+
+
 
 
 

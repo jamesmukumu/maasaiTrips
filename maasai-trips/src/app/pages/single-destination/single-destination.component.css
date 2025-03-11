@@ -9,30 +9,65 @@
 
 mat-card {
   background-color: rgb(237, 241, 245);
-  max-width: 100%;
-  min-width: 100vw;
+  max-width: 100vw;
+  min-width: 100%;
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Makes div-a larger than div-b */
-  gap: 20px;
-  align-items: start;
+  margin: 0px;
+  padding: 0px;
+  grid-template-columns: 2fr 1fr; 
+align-items: start;
 }
 
 .div-a {
-  width: 100%;
-}
+  width: 1000px;
 
+}
+.img-big{
+  height: 600px;
+  width: 800px;
+  }
 .div-b {
-  width: 100%;
+  background-color: black;
+  height: 100%;
+  width: 95%;
 }
-
-p-galleria img {
+.img-thumbnail {
   width: 100%;
-  height: auto; /* Ensures images scale properly */
-  max-height: 400px; /* Adjusts image height for larger screens */
+  height: 100px; 
+  max-height: 400px; 
   object-fit: cover;
 }
+.spin{
+  height: 100%;
+  }
+    .no-spin{
+    display: none;
+    }
+h1{
+text-align: center;
+}
+@media (max-width: 930px) {
 
-@media (max-width: 900px) {
+
+  .div-a {
+    width: 100%;
+  
+  }
+  .img-big{
+    height: fit-content;
+    width: 100%;
+    }
+  .div-b {
+    background-color: black;
+    height:fit-content;
+    width: 100%;
+  }
+  .img-thumbnail {
+    width: 100%;
+    height: 100px; 
+    max-height: 400px; 
+    object-fit: cover;
+  }
   mat-card {
     display: grid;
     grid-template-columns: 1fr;
@@ -48,12 +83,9 @@ p-galleria img {
     -webkit-box-orient: vertical;
   }
 
-  img {
-    height: fit-content;
-  }
-  .spin{
-    height: 100%;
-  }
+.spin{
+height: 100%;
+}
   .no-spin{
   display: none;
   }

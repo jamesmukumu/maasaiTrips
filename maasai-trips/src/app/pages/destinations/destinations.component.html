@@ -16,7 +16,7 @@
     begin!
   </p>
   <mat-card *ngIf="!findingDestinations">
-    <div (click)="goDestinations(dest.id,dest.destinationTitle)" *ngFor="let dest of destinations">
+    <div (click)="goDestinations(dest.destinationSlug,dest.destinationTitle)" *ngFor="let dest of destinations">
       <img [src]="dest.destinationThumbnail" alt="" />
       <span class="label">{{dest.destinationTitle}}</span>
       <mat-icon style="color: rgb(228, 106, 118)">place</mat-icon>

@@ -38,7 +38,8 @@ class DestinationController extends Controller implements DestinationsInterface{
         $validatedRequest = $request->validate([
         "destinationTitle"=>"required|unique:destinations,destinationTitle",
         "destinationAbout"=>"required",
-        "destinationDescription"=>"required"
+        "destinationDescription"=>"required",
+        
         ]);
          $destinationImages= [];
         $cld = new Cloudinary();
@@ -52,8 +53,9 @@ class DestinationController extends Controller implements DestinationsInterface{
         $validatedRequest["olanka_users_id"] = $user_id;
         $thumbnail= $cld->uploadApi()->upload($request->file("thumbnail")->getRealPath());
         $validatedRequest["destinationThumbnail"]  = $thumbnail["url"];
+        $slug = Str::slug($validatedRequest['destinationTitle'].uniqid(),"_");
+        $validatedRequest["destinationSlug"] = $slug; 
         Destinations::create($validatedRequest);
-        
         return response()->json([
         "message"=>"Destination Added"
         ],200);
@@ -79,7 +81,7 @@ Log::error($err->getMessage());
 
 public function findAllDestinations(){
 try{
-$destinations = Destinations::where("published",true)->select(["id","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->paginate(50);
+$destinations = Destinations::where("published",true)->select(["id","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription","destinationSlug"])->paginate(50);
 return response()->json([
 "destinations"=>$destinations->items(),
 "nextUrl"=>$destinations->nextPageUrl(),
@@ -93,10 +95,10 @@ Log::error($err->getMessage());
 public function findSingularDestination(Request $request){
 try{
 $validatedRequest = $request->validate([
-"id"=>"required|integer|exists:destinations,id"
+"slug"=>"required|exists:destinations,destinationSlug"
 ]);
-$id = $request->query("id");
-$destinationData =  Destinations::select(["id","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->find($id);
+$slug = $request->query("slug");
+$destinationData =  Destinations::select(["id","destinationSlug","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->with(["fetchHotels"])->where("destinationSlug",$slug)->get()->first();
 return response()->json([
 "message"=>"Destination Fetched",
 "data"=>$destinationData
@@ -106,7 +108,6 @@ Log::error($err->getMessage());
 return response()->json([
 "message"=>"Something went wrong"
 ]);
-
 }}
 
 

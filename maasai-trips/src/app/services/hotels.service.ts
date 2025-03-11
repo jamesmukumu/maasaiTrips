@@ -198,7 +198,7 @@ export class HotelsService {
     try {
       var resp = await axios.get(`${this.baseUrl}/find/single/destination`, {
         params: {
-          id: id,
+          slug: id,
         },
       });
       return resp.data;
@@ -307,6 +307,28 @@ export class HotelsService {
           },
         }
       );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async fetchHotelsDisplay(url: string) {
+    try {
+      var resp = await axios.get(url, {});
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async fetchSingularHotel(id: any) {
+    try {
+      var resp = await axios.get(`${this.baseUrl}/fetch/hotel`, {
+        params: {
+          slug: id,
+        },
+      });
       return resp.data;
     } catch (err) {
       return err;

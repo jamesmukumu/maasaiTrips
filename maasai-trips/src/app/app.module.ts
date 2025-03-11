@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import {ToastModule} from "primeng/toast"
+import { TableModule } from 'primeng/table';
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -25,6 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderComponent } from './components/header/header.component';
 import {ButtonModule} from "primeng/button"
+import { BreadcrumbModule } from 'angular-crumbs';
 import {MatExpansionModule} from '@angular/material/expansion'
 import { AccordionModule } from 'primeng/accordion';
 import {MatInputModule} from '@angular/material/input'
@@ -92,9 +94,13 @@ import { ManageRoomComponent } from './admins/components/rooms/manage-room/manag
 import { DestinationsComponent } from './pages/destinations/destinations.component';
 import { SingleDestinationComponent } from './pages/single-destination/single-destination.component';
 import { AddDestinationsComponent } from './admins/components/destinations/add-destinations/add-destinations.component';
-import { ManageDestinationsComponent } from './admins/components/destinations/manage-destinations/manage-destinations.component'
+import { ManageDestinationsComponent } from './admins/components/destinations/manage-destinations/manage-destinations.component';
+import { RelatedHotelsComponent } from './admins/components/destinations/related-hotels/related-hotels.component';
+import { HotelsDisplayComponent } from './pages/hotels-display/hotels-display.component'
 
-
+import { PaginatorModule } from 'primeng/paginator';
+import { SingleHotelComponent } from './pages/single-hotel/single-hotel.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
 
 
 const reducers:ActionReducerMap<any> = {
@@ -114,12 +120,13 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, ],
+  declarations: [AppComponent, IiComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatChipsModule,
+    BrowserAnimationsModule,    
+ MatChipsModule,
+ PaginatorModule,
     EditorModule,
     HttpClientModule,
     MatSnackBarModule,
@@ -127,6 +134,7 @@ const reducers:ActionReducerMap<any> = {
     MatIconModule,      
     ButtonModule,
     MatSelectModule,
+    TableModule,
     MatDatepickerModule,
     MatTreeModule,
     MatTableModule,
@@ -147,7 +155,7 @@ const reducers:ActionReducerMap<any> = {
  MatSidenavModule,   
  MatMenuModule,
  MatPaginatorModule,
- ClipboardModule,
+ ClipboardModule,   
  GalleriaModule,
  DropdownModule,
  StoreModule.forRoot(reducers,{metaReducers}) , 
@@ -156,11 +164,14 @@ MatTooltipModule,
  MatInputModule,
     RouterModule.forRoot([
 
-      
-      {
-        component:HotelsComponent,
-        path:"hotel/:hotelId"
-      },
+    {
+      component:HotelsDisplayComponent,
+      path:"hotels"
+     },
+     {
+      component:SingleHotelComponent,
+      path:"hotel/:hotelName/:hotelSlug"
+    }, 
       {
       component:VerifyEmailComponent,
       path:"verify/email/:token"
@@ -168,7 +179,7 @@ MatTooltipModule,
       {
         component:SingleDestinationComponent,
         path:"destinations/:destinationTitle/:destinationsid"
-      },
+      },  
       {
         component:PreviewAllComponent,
         path:"preview"

@@ -17,7 +17,8 @@ return new class extends Migration{
             $table->text("destinationThumbnail")->nullable(false);
             $table->text("destinationPhotos")->nullable(false);
             $table->text("destinationDescription")->nullable(false);
-            $table->text("destinationAbout")->nullable(false);        
+            $table->text("destinationAbout")->nullable(false);
+            $table->string("destinationSlug")->unique(true)->nullable(false);        
 });         
     }
 

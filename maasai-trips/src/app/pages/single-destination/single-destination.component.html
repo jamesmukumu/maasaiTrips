@@ -15,10 +15,10 @@
     [containerStyle]="{ 'max-width': '100%', }">
     
     <ng-template pTemplate="item" let-item>
-        <img [src]="item"   />
+        <img [src]="item"  class="img-big" />
     </ng-template>
     <ng-template pTemplate="thumbnail" let-item>
-        <img [src]="item"  />
+        <img [src]="item" class="img-thumbnail" />
     </ng-template>
     </p-galleria>
     
@@ -51,5 +51,6 @@
       </div>
     <patners  *ngIf="!fetchingDestination" ></patners>
     <p-scrollTop/>
+    <related-hotels *ngIf="!fetchingDestination" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
     <footer></footer>
     </div>

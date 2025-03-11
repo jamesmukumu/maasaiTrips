@@ -1,0 +1,112 @@
+<header></header>
+<div class="container">
+
+<mat-card *ngIf="!fetchingDestination ">
+    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" class="div-a">
+    <h1>{{destinationData.hotelName}}</h1>
+    
+    
+    <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
+    [autoPlay]="true"
+    [circular]="true" 
+    [showThumbnails]="true"
+    [changeItemOnIndicatorHover]="true" 
+     
+    [containerStyle]="{ 'max-width': '100%', }">
+    
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item"  class="img-big" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <img [src]="item" class="img-thumbnail" />
+    </ng-template>
+    </p-galleria>
+    
+
+    <h4>{{destinationData.hotelName}}</h4>
+    <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
+       <mat-card-content style="margin-top: 20px;" class="truncate-text" [innerHTML]="destinationDescription">
+
+       </mat-card-content>
+       <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="destinationAbout">
+
+       </mat-card-content>
+       <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="hotelMetaDescription">
+
+       </mat-card-content>
+      
+       <h1>Rooms:</h1>
+       <table mat-table *ngIf="!fetchingDestination" [dataSource]="dataSource" 
+       style="width: 100%; border-collapse: collapse;">
+       
+       <ng-container matColumnDef="roomType">
+         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;">
+           Room Type
+         </th>
+         <td mat-cell *matCellDef="let element" style="padding: 10px;">
+          <mat-list>
+           <mat-list-item>
+            <mat-icon matListItemIcon style="color: orangered;">play_arrow</mat-icon>
+            <b matListItemTitle>
+              {{ element.roomType }}
+            </b>
+           </mat-list-item>
+
+
+          </mat-list>
+         </td>  
+       </ng-container>
+       
+       <ng-container matColumnDef="maxOccupancy">
+         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;">
+           Maximum Occupancy
+         </th>
+         <td mat-cell *matCellDef="let element" style="padding: 10px;">
+        <div >
+        <mat-icon *ngFor="let person of generateMaxOccupancy(element.maximumRoomOccupancy)">person</mat-icon>  
+        </div>
+         </td>
+       </ng-container>
+     
+       <ng-container matColumnDef="more">
+         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;"></th>
+         <td mat-cell *matCellDef="let element" style="padding: 10px;">
+           <button (click)="popRoom(element)" style="background-color: #fca608;color:white;width:max-content" mat-flat-button>More</button>
+         </td>      
+       </ng-container>
+     
+       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       
+     </table>
+     
+  </div>
+    
+    
+    
+    <div class="div-b" >
+    <h1>Here is how to locate </h1>
+
+    
+    </div>
+    </mat-card>
+    <div [classList]="fetchingDestination ? 'spin':'no-spin'">
+        <p-progressBar
+        mode="indeterminate"
+        [style]="{ height: '6px' }"
+        *ngIf="fetchingDestination"
+      />
+      </div>
+
+    <p-scrollTop/>
+
+    <footer></footer>
+    </div>
+
+
+ 
+
+
+    <p-dialog [modal]="true"  [(visible)]="showRoom">
+      <rooms [roomData]="roomData"></rooms>
+    </p-dialog>

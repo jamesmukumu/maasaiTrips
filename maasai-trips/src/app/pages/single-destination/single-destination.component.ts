@@ -17,17 +17,24 @@ destinationData:any
 destinationPhoto:any 
 destinationDescription:SafeHtml = ''
 destinationAbout:SafeHtml = ''
+relatedHotels:any
+
 
 async fetchDestinations(){
 this.fetchingDestination = true
 try{
-var {data} = await this.hotel.fetchSingularDestinations(this.destinationsID)
-this.destinationData = data
-this.destinationPhoto = JSON.parse(data.destinationPhotos)
-this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.destinationDescription)
-this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.destinationAbout)
-this.fetchingDestination = false
+var {data,message,fetch_hotels} = await this.hotel.fetchSingularDestinations(this.destinationsID)
+if(message === 'Destination Fetched'){
+  this.destinationData = data
+  this.destinationPhoto = JSON.parse(data.destinationPhotos)
+  this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.destinationDescription)
+  this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.destinationAbout)
+  this.relatedHotels = data.fetch_hotels
+  console.log(this.relatedHotels)
+  this.fetchingDestination = false
+}
 }catch(err){
+
 console.error(err)
 }
 

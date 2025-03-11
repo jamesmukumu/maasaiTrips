@@ -1,0 +1,33 @@
+<header></header>
+
+<div class="main">
+  <h1>Book your accommodation with Maasai Safaris</h1>
+  <p>
+    Discover a curated selection of premium accommodations that cater to every taste and budget. From the serene beachfront resorts of Mombasa to the immersive wilderness lodges in Masai Mara, we offer a diverse range of stays that promise unparalleled hospitality and unforgettable experiences. Whether your working on luxury, midrange, budget travels or having a last minute booking, our team will help you.   
+</p>
+  <mat-card *ngIf="!findingDestinations">
+  <div (click)="goDestinations(dest.hotelSlug,dest.hotelName)" *ngFor="let dest of destinations">
+      <img [src]="dest.hotelThumbnail" alt="" />
+      <span class="label">{{dest.hotelName}}</span>
+    <h4>{{ dest.hotelName }}</h4>
+      <mat-divider></mat-divider>
+      <mat-card-content [innerHTML]="sanitize(dest.hotelDescription)"></mat-card-content>
+    
+    <button mat-flat-button>Request Quote</button>
+    </div>
+  </mat-card>
+  <div [classList]="findingDestinations ? 'spin':'no-spin'">
+    <p-progressBar
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+    *ngIf="findingDestinations"
+  />
+  </div>
+  <mat-paginator [length]="hotelCount"
+  pageSize="15"
+  #paginator
+  showFirstLastButtons
+  (page)="capturePage($event)"
+aria-label="Select page"></mat-paginator>
+  <footer></footer>
+</div>

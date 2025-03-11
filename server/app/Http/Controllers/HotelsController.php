@@ -181,10 +181,10 @@ return response()->json([
 public function fetchHotel(Request $request){
 try{
 $validatedRequest = $request->validate([
-"id"=>"required|integer|exists:hotels_models,id"
+"slug"=>"required|exists:hotels_models,hotelSlug"
 ]);
-$hotelID = $request->query("id");
-$hotelData = HotelsModel::with(["rooms"])->find($hotelID);
+$hotelSlug = $request->query("slug");
+$hotelData = HotelsModel::with(["rooms"])->where("hotelSlug",$hotelSlug)->get()->first();
 
 return response()->json([
 "message"=>"Hotel Fetched",
@@ -221,9 +221,6 @@ return response()->json([
 ],500);
 }
 }
-
-
-
 public function fetchAllHotels(){
 try{
 $allHotels = HotelsModel::all()->select(["id","hotelName"]);
@@ -231,10 +228,30 @@ return $allHotels;
 }catch(\Exception $err){
 Log::error($err->getMessage());
 }
+}
+
+
+
+public function fetchDisplayHotels(Request $request){
+try{
+
+$paginatedHotelsData = HotelsModel::select(["hotelDescription","id","hotelSlug","hotelThumbnail","hotelName"])->paginate(30);
+return response()->json([
+"message"=>"Hotels Fetched",
+"data"=>$paginatedHotelsData->items(),
+"nextUrl"=>$paginatedHotelsData->nextPageUrl(),
+"previousPage"=>$paginatedHotelsData->previousPageUrl()
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went wrong"
+]);
+}
+
 
 
 }
-
 
 
 
