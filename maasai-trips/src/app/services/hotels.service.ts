@@ -23,7 +23,7 @@ export interface Hotel {
 })
 export class HotelsService {
   constructor() {}
-  baseUrl = 'https://maasaitrips-2.onrender.com/api';
+  baseUrl = 'http://localhost:8000/api';
 
   async saveHotel(hotel: Hotel) {
     try {

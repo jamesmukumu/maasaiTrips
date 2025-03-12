@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 @ViewChild(MatMenuTrigger)menuTrigger!:MatMenuTrigger
 emailChoosen:number = 1
 hotelChoosen:number = 1
+packageChoosen = 1
 destinationChoosen:number = 1
 choosenActive:any
 processing = false
@@ -138,6 +139,9 @@ this.destinationChoosen = int
 }
 chooserHotels(choosenHotelOpt:number){
 this.hotelChoosen = choosenHotelOpt
+}
+chooserPackages(choosenPackage:number){
+this.packageChoosen = choosenPackage
 }
 activeIndex = 0 
 changeActive(activeIndex:number){

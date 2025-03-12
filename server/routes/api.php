@@ -4,6 +4,7 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\NewsLettersController;
 use App\Http\Controllers\OlankaUsersController;
+use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PromotionalControllers;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RoomsController;
@@ -131,5 +132,13 @@ Route::put("/unpublish/destination",[DestinationController::class,"UnpublishDest
 
 
 
-
+// Packages APis here
+Route::post("/create/new/package",[PackageController::class,"addPackage"]);
+Route::get("/fetch/my/packages",[PackageController::class,'fetchMyPackages']);
+Route::delete("/delete/package",[PackageController::class,'deletePackage']);
+Route::put("/publish/package",[PackageController::class,"PublishPackage"]);
+Route::put("/unpublish/package",[PackageController::class,"UnpublishPackage"]);
+Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);
+Route::post("/create/package/category",[PackageController::class,'addPackageCategory']);
+Route::get("/fetch/package/categories",[PackageController::class,'fetchPackageCategories']);
 

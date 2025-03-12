@@ -1,0 +1,241 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Cloudinary\Cloudinary;
+use Dotenv\Exception\ValidationException;
+use Illuminate\Support\Str;
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Log;
+use App\Models\Package;
+use App\Models\PackageCategories;
+
+interface PackageInterface
+{
+    public function verifyingToken(Request $request);
+}
+
+class PackageController extends Controller implements PackageInterface
+{
+    public function verifyingToken(Request $request)
+    {
+        try {
+            $tokenHeader = $request->header("Authorization");
+            $actualToken = substr($tokenHeader, 7);
+            if (!$tokenHeader || !$actualToken) {
+                throw new \Exception("Unauthorized", 401);
+            }
+            $payload = JWTAuth::setToken($actualToken)->getPayload();
+            return $payload["sub"];
+        } catch (\Exception $err) {
+            throw new \Exception($err->getMessage(), 500);
+        }
+    }
+
+public function addPackageCategory(Request $request){
+try{
+$validatedRequest = $request->validate([
+"title"=>"required|unique:package_categories,title"
+]);
+$user_id = $this->verifyingToken($request);
+$validatedRequest['olanka_users_id'] = $user_id;
+$validatedRequest['slug'] = Str::slug($validatedRequest['title']);
+PackageCategories::create($validatedRequest);
+return response()->json([
+"message"=>"Package categories saved"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something went wrong"
+],500);
+}
+}
+
+public function fetchPackageCategories(Request $request){
+try{
+$packageData = PackageCategories::all()->select(["id","title"]);
+return response()->json([
+"data"=>$packageData
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
+
+
+}
+
+    public function addPackage(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "packageTitle" => "required|unique:packages,packageTitle",
+                "imagePackage" => "required|file",
+                "packageOverview" => "required",
+                "packageAbout" => "required",
+                "startDate" => "required",
+                "endDate" => "required",
+                "packageCharge" => "required|integer",
+                "packageChargeCurrency" => "required|string",
+                "packageInclusives" => "required",
+                "budgetType" => "required",
+                "packageExclusives" => "required",
+                "mode_transport" => "required",
+                "packageSpecialNotes" => "nullable",
+                "destinations_id" => "required|integer|exists:destinations,id",
+                "package_categories_id" => "required|integer|exists:package_categories,id"
+
+            ]);
+            $cld = new Cloudinary();
+            $validatedRequest["olanka_users_id"] = $this->verifyingToken($request);
+            $imagePath = $cld->uploadApi()->upload($request->file("imagePackage")->getRealPath());
+            $validatedRequest['packageImage'] = $imagePath['url'];
+            $validatedRequest["packageSlug"] = Str::slug($validatedRequest['packageTitle'], "_");
+            $packageImages = [];
+
+            foreach ($request->all() as $key => $value) {
+                if ($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-6])$/", $key)) {
+                    $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+                    $packageImages[] = $imageUrl["url"];
+                }
+            }
+            $validatedRequest['packageImages'] = json_encode($packageImages);
+            Package::create($validatedRequest);
+            return response()->json([
+                "message" => "package Saved"
+            ]);
+        } catch (ValidationException $errValidation) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong",
+                "content" => $err->getMessage()
+            ], 422);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong",
+                "content" => $err->getMessage()
+            ], 422);
+        }
+    }
+
+
+
+
+
+    public function PublishPackage(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "id" => "required|integer|exists:packages,id"
+            ]);
+            $id = $request->query("id");
+            Package::where("id", $id)->update([
+                "published" => true
+            ]);
+            return response()->json([
+                "message" => "Updated"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went wrong"
+            ], 500);
+        }
+    }
+
+
+    public function UnpublishPackage(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "id" => "required|integer|exists:packages,id"
+            ]);
+            $id = $request->query("id");
+            Package::where("id", $id)->update([
+                "published" => false
+            ]);
+            return response()->json([
+                "message" => "Updated"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went wrong"
+            ], 500);
+        }
+    }
+
+
+    public function fetchMyPackages(Request $request)
+    {
+        try {
+            $olanka_users_id = $this->verifyingToken($request);
+            $packageData = Package::select(["packageCharge", "packageChargeCurrency", "endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
+            return response()->json([
+                "message" => "Packages Found",
+                "data" => $packageData->items(),
+                "previousUrl" => $packageData->previousPageUrl(),
+                "nextPageUrl" => $packageData->nextPageUrl()
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong"
+            ], 500);
+        }
+    }
+
+
+    public function deletePackage(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "id" => "required|integer|exists:packages,id"
+            ]);
+            $package_id = $request->query('id');
+            Package::where("id", $package_id)->delete();
+            return response()->json([
+                "message" => "Deleted"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something went wrong"
+            ]);
+        }
+    }
+
+
+
+
+
+
+    public function fetchDisplayPackages(Request $request)
+    {
+        try {
+
+            $paginatedPackage = Package::select(["packageTitle", "id", "packageSlug", "packageOverview"])->where("published", true)->paginate(30);
+            return response()->json([
+                "message" => "Packages Fetched",
+                "data" => $paginatedPackage->items(),
+                "nextUrl" => $paginatedPackage->nextPageUrl(),
+                "previousPage" => $paginatedPackage->previousPageUrl()
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went wrong"
+            ]);
+        }
+    }
+
+
+
+
+
+
+
+
+}

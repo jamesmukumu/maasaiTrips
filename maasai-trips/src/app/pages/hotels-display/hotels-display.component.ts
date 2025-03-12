@@ -41,7 +41,7 @@ export class HotelsDisplayComponent {
     this.findingDestinations = true;
     try {
       var { data } = await this.hotel.fetchHotelsDisplay(
-        `https://maasaitrips-2.onrender.com/api/fetch/display/hotels?page=${this.activePage}`
+        `http://localhost:8000/api/fetch/display/hotels?page=${this.activePage}`
       );
       this.destinations = data;
       this.hotelCount = data.length;

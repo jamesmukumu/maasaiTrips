@@ -50,7 +50,15 @@ export class HeaderAddComponent {
   home() {
     this.router.navigate(['/']);
   }
-
+  hotels() {
+    this.router.navigate(['/hotels']);
+  }
+  destinations(){
+  this.router.navigate(["/destinations"])
+  }
+  safaris(){
+  this.router.navigate(["/safaris"])
+  }
  async popDialog(){
 try{
   this.snack.open("Opening Editor...","Wait",{

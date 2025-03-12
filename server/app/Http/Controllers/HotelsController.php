@@ -254,11 +254,7 @@ Log::error($err->getMessage());
 return response()->json([
 "message"=>"Something Went wrong"
 ]);
-}
-
-
-
-}
+}}
 
 
 

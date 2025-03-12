@@ -4,16 +4,17 @@
      <mat-icon (click)="actualizeToggle()" matTooltip="Toogle menu bar"
      style="color: white">menu</mat-icon>
     </mat-list-item>
-    <mat-list-item>
+    <mat-list-item (click)="home()">
       <p matListItemLine>Masaai Mara Trips</p>
     </mat-list-item>
-    <mat-list-item>
-      <p matListItemLine>All About Masai Mara</p>
+  
+    <mat-list-item (click)="hotels()">
+      <p matListItemLine>Hotels</p>
     </mat-list-item>
-    <mat-list-item>
-      <p matListItemLine>Accomodations</p>
+    <mat-list-item (click)="destinations()">
+      <p matListItemLine>Destinations</p>
     </mat-list-item>
-    <mat-list-item>
+    <mat-list-item (click)="safaris()"> 
       <p matListItemLine>Masaai Mara Safari's</p>
     </mat-list-item>
     <mat-list-item *ngIf="showAdminControls">

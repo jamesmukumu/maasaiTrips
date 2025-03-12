@@ -90,21 +90,19 @@
           <mat-icon style="color: white" matListItemIcon>hotel</mat-icon>
         </mat-list-item>
       </div>
+
       <mat-divider style="background-color: white"></mat-divider>
       <mat-menu #packageMenu>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="chooserPackages(1)">
           <mat-icon>inventory</mat-icon>
-          <span style="color: black">All Packages</span>
+          <span style="color: black">Add Package</span>
         </button>
 
-        <button mat-menu-item>
+        <button mat-menu-item (click)="chooserPackages(2)">
           <mat-icon>inventory</mat-icon>
-          <span style="color: black">New Package</span>
+          <span style="color: black">Mange My Packages</span>
         </button>
-        <button mat-menu-item>
-          <mat-icon>inventory</mat-icon>
-          <span style="color: black">Package Categories</span>
-        </button>
+       
       </mat-menu>
 
       <div
@@ -119,14 +117,8 @@
         </mat-list-item>
       </div>
 
-      <mat-divider style="background-color: white"></mat-divider>
-      <div [classList]="activeIndex == 4 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(4)">
-          <span matListItemTitle>Enquiries</span>
-          <mat-icon style="color: white" matListItemIcon>help_center</mat-icon>
-        </mat-list-item>
-      </div>
-      <mat-divider style="background-color: white"></mat-divider>
+     
+    <mat-divider style="background-color: white"></mat-divider>
       <div [classList]="activeIndex == 5 ? 'activeList' : ''">
         <mat-list-item (click)="changeActive(5)" [mat-menu-trigger-for]="destinationsMenu">
           <span matListItemTitle>Destination</span>
@@ -147,13 +139,26 @@
         </mat-list-item>
       </div>
       <mat-divider style="background-color: white"></mat-divider>
-      <div [classList]="activeIndex == 6 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(6)">
+      <div [classList]="activeIndex == 7 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(7)" [mat-menu-trigger-for]="blogsMenu">
           <span matListItemTitle>Blogs</span>
-          <mat-icon style="color: white" matListItemIcon>edit_note</mat-icon>
+          <mat-icon style="color: white" matListItemIcon>feed</mat-icon>
+       
+          <mat-menu #blogsMenu>
+            <button mat-menu-item (click)="chooserDestinations(1)">
+              <mat-icon>rate_review</mat-icon>
+              <span style="color: black">Add Blogs</span>
+            </button>
+    
+            <button mat-menu-item (click)="chooserDestinations(2)">
+              <mat-icon>announcement</mat-icon>
+              <span style="color: black">Manage My Blogs</span>
+            </button>
+          </mat-menu>
         </mat-list-item>
       </div>
       <mat-divider style="background-color: white"></mat-divider>
+
       <div [classList]="activeIndex == 6 ? 'activeList' : ''">
         <mat-list-item (click)="changeActive(6)">
           <span matListItemTitle>Account</span>
@@ -193,6 +198,12 @@
     <add-destinations *ngIf="destinationChoosen== 1"></add-destinations>
     <manage-destinations *ngIf="destinationChoosen==2"></manage-destinations>
     </div>
+
+    <div *ngSwitchCase="3">
+     <add-package *ngIf="packageChoosen==1"></add-package>
+     <manage-packages *ngIf="packageChoosen==2"></manage-packages>
+      </div>
+
     <div *ngSwitchCase="6">
     <admin-profile></admin-profile>
     </div>
