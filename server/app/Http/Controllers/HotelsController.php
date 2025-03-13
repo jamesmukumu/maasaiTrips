@@ -37,6 +37,8 @@ public function createHotel(Request $request){
 try{
 $user_id = $this->verifyingToken($request);
 $validatedRequest = $request->validate([
+"latitude"=>"required",
+"longitude"=>"required",
 "destinations_id"=>"required|integer|exists:destinations,id",
 "hotelName"=>"required|unique:hotels_models,hotelName",
 "locationDescription"=>"required",
@@ -56,7 +58,7 @@ $validatedRequest["hotelSlug"] =  $slug;
 $hotelImages= [];
 $cld = new Cloudinary();
 foreach($request->all() as $key => $value){
-if($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-6])$/", $key)){
+if($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9])$/", $key)){
 
 $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
 $hotelImages[] = $imageUrl["url"];

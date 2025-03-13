@@ -1,0 +1,85 @@
+<header></header>
+
+<mat-card *ngIf="!fetching">
+<mat-card-header>
+<mat-card-title>{{packageData.packageTitle}}</mat-card-title>
+</mat-card-header>
+
+<div class="galleria">
+<div class="image-main">
+<img [src]="packageData.packageImage" alt="">
+</div>
+
+<div class="galleria-thumbnails" >
+  <img *ngFor="let imgs of formatPackageImages(packageData.packageImages)" [src]="imgs" alt="">
+</div>
+</div>
+
+
+<div class="package-overview">
+<strong>Package Overview</strong>
+<mat-card-content [innerHTML]="sanitize(packageData.packageOverview)"></mat-card-content>
+</div>
+
+<div class="package-about">
+<strong>More About this Package</strong>
+<mat-card-content [innerHTML]="sanitize(packageData.packageAbout)"></mat-card-content>
+</div>
+
+
+<div class="package-about">
+<h2>What you get</h2>
+<mat-list *ngFor="let inc of formatInclusives(packageData.packageInclusives)">
+<mat-list-item matListItemAvatar>
+<span matListItemTitle>{{inc}}</span>
+<mat-icon style="color: green;" matListItemIcon>check</mat-icon>
+</mat-list-item>
+</mat-list>
+</div>
+
+<div class="package-about">
+    <h2>What you do not get</h2>
+    <mat-list *ngFor="let excl of formatExclusives(packageData.packageExclusives)">
+    <mat-list-item matListItemAvatar>
+    <span matListItemTitle>{{excl}}</span>
+    <mat-icon style="color: red;" matListItemIcon>close</mat-icon>
+    </mat-list-item>
+    </mat-list>
+    </div>
+
+    <div class="package-about">
+        <strong>Special Notes</strong>
+        <mat-card-content [innerHTML]="sanitize(packageData.packageAbout)"></mat-card-content>
+        </div>
+
+
+<related-packages [packageData]="relatedPackage"></related-packages>
+
+
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div [classList]="fetching ? 'spin':'no-spin'">
+    <p-progressBar
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+    *ngIf="fetching"
+  />
+  </div>
+
+<footer></footer>

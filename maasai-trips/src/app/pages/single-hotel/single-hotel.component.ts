@@ -27,6 +27,11 @@ export class SingleHotelComponent {
   roomData:any
 
 
+  sanitize(data:SafeHtml|any){
+    return this.sanitizer.bypassSecurityTrustHtml(data)
+    }
+  
+
 
   popRoom(element:any){
     this.roomData = element

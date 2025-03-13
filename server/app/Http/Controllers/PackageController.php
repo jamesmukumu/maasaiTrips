@@ -33,38 +33,40 @@ class PackageController extends Controller implements PackageInterface
         }
     }
 
-public function addPackageCategory(Request $request){
-try{
-$validatedRequest = $request->validate([
-"title"=>"required|unique:package_categories,title"
-]);
-$user_id = $this->verifyingToken($request);
-$validatedRequest['olanka_users_id'] = $user_id;
-$validatedRequest['slug'] = Str::slug($validatedRequest['title']);
-PackageCategories::create($validatedRequest);
-return response()->json([
-"message"=>"Package categories saved"
-]);
-}catch(\Exception $err){
-Log::error($err->getMessage());
-return response()->json([
-"message"=>"Something went wrong"
-],500);
-}
-}
+    public function addPackageCategory(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "title" => "required|unique:package_categories,title"
+            ]);
+            $user_id = $this->verifyingToken($request);
+            $validatedRequest['olanka_users_id'] = $user_id;
+            $validatedRequest['slug'] = Str::slug($validatedRequest['title']);
+            PackageCategories::create($validatedRequest);
+            return response()->json([
+                "message" => "Package categories saved"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something went wrong"
+            ], 500);
+        }
+    }
 
-public function fetchPackageCategories(Request $request){
-try{
-$packageData = PackageCategories::all()->select(["id","title"]);
-return response()->json([
-"data"=>$packageData
-]);
-}catch(\Exception $err){
-Log::error($err->getMessage());
-}
+    public function fetchPackageCategories(Request $request)
+    {
+        try {
+            $packageData = PackageCategories::all()->select(["id", "title"]);
+            return response()->json([
+                "data" => $packageData
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+        }
 
 
-}
+    }
 
     public function addPackage(Request $request)
     {
@@ -216,7 +218,7 @@ Log::error($err->getMessage());
     {
         try {
 
-            $paginatedPackage = Package::select(["packageTitle", "id", "packageSlug", "packageOverview"])->where("published", true)->paginate(30);
+            $paginatedPackage = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("published", true)->paginate(30);
             return response()->json([
                 "message" => "Packages Fetched",
                 "data" => $paginatedPackage->items(),
@@ -232,6 +234,27 @@ Log::error($err->getMessage());
     }
 
 
+    public function findSingularPackage(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "packageSlug" => "required|exists:packages,packageSlug"
+            ]);
+            $slug = $request->query("packageSlug");
+            $matchingPackage = Package::where("packageSlug", $slug)->get()->first();
+            $relatedPackages = Package::where("package_categories_id",$matchingPackage['package_categories_id'])->where("id", "!=",$matchingPackage['id'])->get();
+              
+            return response()->json([
+                "data" => $matchingPackage,
+                "relatedPackages"=>$relatedPackages
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went wrong"
+            ]);
+        }
+    }
 
 
 

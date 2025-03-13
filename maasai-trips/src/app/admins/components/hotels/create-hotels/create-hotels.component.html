@@ -1,25 +1,23 @@
 <mat-card *ngIf="!fetchingDestinations">
-  <p-fileUpload 
-  class="upload"
-
-  name="demo[]" 
-  url="https://www.primefaces.org/cdn/api/upload.php" 
-mode="basic"
-accept=".csv"
-
-chooseLabel="Choose csv file"
- [style]="{'background-color':'green'}"
- maxFileSize="1000000">
-   
-</p-fileUpload>
-
-  <form >
+ 
+<form >
     <div class="infos">
       <h3>Basic Hotel Information</h3>
       <mat-form-field>
         <mat-label>Enter Hotel Name</mat-label>
-        <input type="text" name="hotel-name" [(ngModel)]="hotelName" matInput  />
+        <input type="text" name="hotel-name" required [(ngModel)]="hotelName" matInput  />
         <mat-hint>Example Kunste Hotel</mat-hint>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter Hotel Latitude</mat-label>
+        <input type="number" required name="hotel-lat" [(ngModel)]="hotelLatitude" matInput  />
+        <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"></a>Find Latitude</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Enter Hotel Longitude</mat-label>
+        <input type="number" name="hotel-long" required [(ngModel)]="hotelLongitude" matInput  />
+        <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop">Find Longitude</a></mat-hint>
       </mat-form-field>
       <mat-form-field>
       <mat-label>Choose Destination</mat-label>

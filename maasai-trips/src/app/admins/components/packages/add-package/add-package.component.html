@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="!fetchingDestinations">
   <p-fileUpload
     class="upload"
     name="demo[]"
@@ -29,6 +29,44 @@
           placeholder="Enter Package OverView:Example brief description about this package"
         />
       </div>
+      <mat-form-field>
+        <mat-label>Choose Destination</mat-label>
+        <mat-select required [(value)]="targetDestination"> 
+          <mat-option *ngFor="let destinaton of destinationsData" [value]="destinaton.id">
+            {{destinaton.destinationTitle}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Choose Package Category</mat-label>
+          <mat-select required [(value)]="targetCategory"> 
+            <mat-option *ngFor="let package of packageCategories" [value]="package.id">
+              {{package.title}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Choose Budget Type </mat-label>
+            <mat-select required [(value)]="choosenBudgetType"> 
+              <mat-option *ngFor="let budget of budgetTypes" [value]="budget">
+                {{budget}}
+              </mat-option>
+            </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Choose Mean of Transport</mat-label>
+              <mat-select required [(value)]="choosenMeans"> 
+                <mat-option *ngFor="let trans of transport" [value]="trans">
+                  {{trans}}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+
+
 
 
       <mat-form-field>
@@ -93,6 +131,15 @@
         (onTextChange)="captureAbout($event)"
           [style]="{ 'min-height': '50vh' }"
           placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
+        />
+      </div>
+
+      <div>
+        <label>Enter Package Special Notes</label>
+        <p-editor
+        (onTextChange)="captureSpecialNotes($event)"
+          [style]="{ 'min-height': '20vh' }"
+          placeholder="Enter Any Special Notes you wish to add."
         />
       </div>
 
@@ -175,6 +222,6 @@
   ></p-button>
 </mat-card>
 
-<!-- <div class="spinner">
+<div class="spinner" *ngIf="fetchingDestinations">
   <p-progressSpinner />
-</div> -->
+</div>

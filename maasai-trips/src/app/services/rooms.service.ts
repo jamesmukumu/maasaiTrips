@@ -21,7 +21,7 @@ export interface Room {
   providedIn: 'root',
 })
 export class RoomsService {
-  baseUrl = 'http://localhost:8000/api';
+  baseUrl = 'https://maasaitrips-2.onrender.com/api';
   constructor() {}
 
   async fetchHotels() {

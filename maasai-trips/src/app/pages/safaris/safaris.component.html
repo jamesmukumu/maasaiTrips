@@ -77,21 +77,29 @@
             
             </mat-list>
             
-            <div class="grid-see">
+            <div class="grid-see" *ngIf="!fetching">
           <div *ngFor="let saf of safaris" >
-            <img [src]="saf.Thumbnail" alt="">
-            <h2>{{saf.SafariTitle}}</h2>
+            <img [src]="saf.packageImage" alt="">
+            <h2>{{saf.PackageTitle}}</h2>
             <p>
-            Charges:USD <b>{{saf.Charges}} per Adult</b>
+            Charges:  <b>{{saf.packageCharge}} {{saf.packageChargeCurrency}} </b> per Adult
             </p>
             <h4>Perks and Benefits</h4>
-            <mat-list *ngFor="let perks of saf.Inclusivities">
+            <mat-list>
             <mat-list-item matListItemAvatar>
-            {{perks}}
+            <span matListItemTitle>{{saf.budgetType}}</span>
             <mat-icon matListItemIcon>check</mat-icon>
             </mat-list-item>
+            <mat-list-item matListItemAvatar>
+                <span matListItemTitle>{{saf.budgetType}}</span>
+                <mat-icon matListItemIcon>check</mat-icon>
+                </mat-list-item>
+                <mat-list-item matListItemAvatar>
+                    <span matListItemTitle> Safari in {{saf.mode_transport}}</span>
+                    <mat-icon matListItemIcon>check</mat-icon>
+                    </mat-list-item>
             </mat-list>
-            <button mat-flat-button>View more</button>
+            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>View more</button>
           </div>
             
         

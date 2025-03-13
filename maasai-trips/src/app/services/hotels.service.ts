@@ -15,6 +15,8 @@ export interface Hotel {
   contactEmail: string;
   contactPhoneNumber: string;
   contactPerson: string;
+  latitude: number;
+  longitude: number;
   images: any[];
 }
 
@@ -23,9 +25,9 @@ export interface Hotel {
 })
 export class HotelsService {
   constructor() {}
-  baseUrl = 'http://localhost:8000/api';
+  baseUrl = 'https://maasaitrips-2.onrender.com/api';
 
-  async saveHotel(hotel: Hotel) {
+  async saveHotel(hotel: any) {
     try {
       var token = Cookies.get('grant_token');
       var formData = new FormData();
@@ -44,6 +46,8 @@ export class HotelsService {
       formData.append('destinations_id', `${hotel.destinations_id}`);
       formData.append('maximumRate', `${hotel.maximumRate}`);
       formData.append('minimumRoomRate', `${hotel.minimumRoomRate}`);
+      formData.append('latitude', `${hotel.latitude}`);
+      formData.append('longitude', `${hotel.longitude}`);
       formData.append(
         'hotelCancellationPolicy',
         `${hotel.hotelCancellationPolicy}`

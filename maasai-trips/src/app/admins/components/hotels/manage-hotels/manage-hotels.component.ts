@@ -110,7 +110,7 @@ console.log(event)
 async updateHotel(){
 this.processing = true
 try{   
-var payload:Hotel = {
+var payload:any = {
   hotelName:this.hotelName,
   hotelCancellationPolicy:this.cancellationPolicy,
   hotelCommission:this.hotelCommission,

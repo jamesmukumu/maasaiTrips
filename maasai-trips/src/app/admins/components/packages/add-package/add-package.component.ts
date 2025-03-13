@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject,OnInit } from '@angular/core';
 import { PackagesService } from '../../../../services/packages.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {provideNativeDateAdapter} from '@angular/material/core';
@@ -10,28 +10,63 @@ import { Hotel,HotelsService } from '../../../../services/hotels.service';
   styleUrl: './add-package.component.css',
   providers:[provideNativeDateAdapter()]
 }) 
-export class AddPackageComponent  {
+export class AddPackageComponent implements OnInit {
 constructor(private packages:PackagesService,private hotels:HotelsService){}
 images:any[] = [
 {image1:null}
 ]
+targetDestination:any
+targetCategory:any
+choosenBudgetType:any
+choosenMeans:any
 destinationsData:any[] = []
+packageCategories:any[] = []
 Destinations:any
+budgetTypes = ["Mid Range Tour","Luxury Tour","Private Tour"]
+transport = ["Air","LandCruiser","Van","Jeep"]
 fetchingDestinations = false
+specialNotes = ''
+
 
 
 
 async fetchDestinations(){
     try{
-    this.fetchingDestinations = true
+   
     var data = await this.hotels.fetchDestinations()
-    this.destinationsData = data
-    this.fetchingDestinations = false
+  return data
     }catch(err){
     console.error(err)
     }
     }
     
+async fetchPackageCatagories(){
+try{
+var data = await this.packages.fetchPackageCategories()
+return data.data
+}catch(err){
+console.error(err)
+}
+
+}
+
+
+async ngOnInit(){
+try{
+this.fetchingDestinations = true
+var data= await Promise.all([
+this.fetchDestinations(),
+this.fetchPackageCatagories()
+])
+this.destinationsData = data[0]
+this.packageCategories = data[1]
+
+this.fetchingDestinations = false
+}catch(err){
+this.fetchingDestinations = false
+console.error(err)
+}
+}
 
 chooserFile(file:any,index:number){
     var {currentFiles} = file
@@ -91,10 +126,18 @@ captureAbout(event:any){
 var {htmlValue} = event
 this.packageAbout = htmlValue
 }
-    
+  
+
+captureSpecialNotes(event:any){
+    var {htmlValue} = event
+    this.specialNotes = htmlValue
+    }
 
 
 async  addPackages(){
+let incl = JSON.stringify(this.inclusions)
+let excl = JSON.stringify(this.exclusions)
+
 try{
 this.processing = true
 var payload = {
@@ -105,7 +148,17 @@ var payload = {
 "charges":this.packageCharge,
 "startDate":this.startDate,
 "endDate":this.endDate,
-"chargeCurrency":this.codeValues
+"chargeCurrency":this.codeValues,
+"images":this.images,
+"destinations_id":this.targetDestination,
+"package_categories_id":this.targetCategory,
+"mode_transport":this.choosenMeans,
+"budgetType":this.choosenBudgetType,
+"packageInclusives":incl,
+"packageExclusives":excl,
+"specialNotels":this.specialNotes
+
+
 }
 var {message,content} = await this.packages.addPackage(payload)
 if(message == 'package Saved'){

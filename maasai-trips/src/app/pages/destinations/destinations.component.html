@@ -2,20 +2,7 @@
 
 <div class="main">
   <h1>Explore our stunning Safari destinations in Kenya</h1>
-  <p>
-    Discover the wonders of Africa with Olanka Safaris. Our Safari destinations
-    page offers an exciting glimpse into the diverse and breathtaking locales we
-    proudly showcase. From the iconic savannahs of the Masai Mara, where the Big
-    Five roam freely, to the pristine, sun-kissed beaches of Mombasa, each
-    destination promises a unique and unforgettable adventure. Delve into the
-    rich cultures, awe-inspiring landscapes, and unparalleled wildlife
-    encounters that define each of our handpicked travel spots. Whether you seek
-    thrilling safari experiences, serene coastal retreats, or hidden gems off
-    the beaten path, Olanka Safaris curates the perfect itinerary tailored to
-    your wanderlust. Start exploring now and let your journey of a lifetime
-    begin!
-  </p>
-  <mat-card *ngIf="!findingDestinations">
+<mat-card *ngIf="!findingDestinations" @bounceLeft>
     <div (click)="goDestinations(dest.destinationSlug,dest.destinationTitle)" *ngFor="let dest of destinations">
       <img [src]="dest.destinationThumbnail" alt="" />
       <span class="label">{{dest.destinationTitle}}</span>
@@ -25,6 +12,9 @@
       <mat-card-content [innerHTML]="sanitize(dest.destinationDescription)"></mat-card-content>
     </div>
   </mat-card>
+
+
+  <p-scrollTop/>
   <div [classList]="findingDestinations ? 'spin':'no-spin'">
     <p-progressBar
     mode="indeterminate"

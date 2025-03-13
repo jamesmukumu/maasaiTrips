@@ -25,7 +25,7 @@
 
     <h4>{{destinationData.hotelName}}</h4>
     <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
-       <mat-card-content style="margin-top: 20px;" class="truncate-text" [innerHTML]="destinationDescription">
+       <mat-card-content style="margin-top: 20px;"  [innerHTML]="destinationDescription">
 
        </mat-card-content>
        <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="destinationAbout">
@@ -84,11 +84,24 @@
     
     
     
-    <div class="div-b" >
-    <h1>Here is how to locate </h1>
-
+  <div class="div-b">
+    <h1>Here is how to locate Us</h1>
+    <google-map 
+        class="map" 
+        width="100%" 
+        mapId="21e602fe038c55d3" 
+        [center]="{lat: +destinationData.latitude, lng: +destinationData.longitude}" 
+        [zoom]="10">
+        
     
-    </div>
+        <map-marker 
+            [position]="{lat: +destinationData.latitude, lng: +destinationData.longitude}" 
+            title="Destination">
+        </map-marker>
+
+    </google-map>
+</div>
+
     </mat-card>
     <div [classList]="fetchingDestination ? 'spin':'no-spin'">
         <p-progressBar

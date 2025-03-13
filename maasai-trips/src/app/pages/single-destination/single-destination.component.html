@@ -25,10 +25,10 @@
 
     <h4>{{destinationData.destinationTitle}}</h4>
     <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
-       <mat-card-content style="margin-top: 20px;" class="truncate-text" [innerHTML]="destinationDescription">
+       <mat-card-content style="margin-top: 20px;" [innerHTML]="destinationDescription">
 
        </mat-card-content>
-       <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="destinationAbout">
+       <mat-card-content style="margin-top: 20px;"  [innerHTML]="destinationAbout">
 
        </mat-card-content>
       
@@ -49,8 +49,9 @@
         *ngIf="fetchingDestination"
       />
       </div>
+      <related-hotels *ngIf="!fetchingDestination" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
     <patners  *ngIf="!fetchingDestination" ></patners>
     <p-scrollTop/>
-    <related-hotels *ngIf="!fetchingDestination" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
+  
     <footer></footer>
     </div>

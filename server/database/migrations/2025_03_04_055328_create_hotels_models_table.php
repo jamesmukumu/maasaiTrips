@@ -24,6 +24,8 @@ return new class extends Migration{
             $table->mediumInteger("maximumRate")->nullable(false);
             $table->mediumInteger("minimumRoomRate")->nullable(false);
             $table->text("imagesHotel");
+            $table->float("latitude")->nullable(false);
+            $table->float("longitude")->nullable(false);
             $table->mediumText("hotelCancellationPolicy")->nullable(false);
             $table->mediumText("hotelMetaDescription");
             $table ->foreignId("olanka_users_id")->constrained()->onDelete("cascade");

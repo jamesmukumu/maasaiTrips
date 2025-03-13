@@ -11,8 +11,8 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("roomType");
-            $table->string("bedBreakfast")->nullable(true);
+            $table->text("roomType");
+            $table->text("bedBreakfast")->nullable(true);
             $table->string("halfBoard")->nullable(true);
             $table->string("fullBoard");
             $table->string("allInclusive");
@@ -21,8 +21,8 @@ return new class extends Migration
             $table->float("sharingRoomRateChildParent")->nullable(false);
             $table->integer("roomCount")->nullable(false);
             $table->integer("maximumRoomOccupancy");
-            $table->tinyText("roomDescription");
-            $table->mediumText("roomImages");
+            $table->text("roomDescription");
+            $table->text("roomImages");
             $table->foreignId("hotels_models_id")->constrained()->onDelete("cascade");
             $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
              

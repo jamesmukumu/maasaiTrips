@@ -141,4 +141,8 @@ Route::put("/unpublish/package",[PackageController::class,"UnpublishPackage"]);
 Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);
 Route::post("/create/package/category",[PackageController::class,'addPackageCategory']);
 Route::get("/fetch/package/categories",[PackageController::class,'fetchPackageCategories']);
+Route::get("/fetch/singular/package",[PackageController::class,'findSingularPackage']);
+
+
+
 

@@ -54,7 +54,7 @@ class RoomsController extends Controller implements RoomsInterface{
         $roomsImages= [];
         $cld = new Cloudinary();
         foreach($request->all() as $key => $value){
-        if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-6])$/", $key)){
+        if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-9])$/", $key)){
         
         $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
         $roomsImages[] = $imageUrl["url"];

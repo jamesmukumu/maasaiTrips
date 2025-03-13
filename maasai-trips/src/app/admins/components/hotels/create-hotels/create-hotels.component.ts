@@ -17,6 +17,8 @@ locationDescription = ''
 hotelCommission = 0
 maximumRoomRate = 0
 minimumRoomRate = 0
+hotelLongitude = 0
+hotelLatitude = 0
 Thumbnail:any
 contactEmail = ''
 phoneNumber = ''
@@ -61,13 +63,15 @@ async saveHotel(){
 
 this.processing = true
 try{   
-var payload:Hotel = {
+var payload = {
   hotelName:this.hotelName,
   hotelCancellationPolicy:this.cancellationPolicy,
   hotelCommission:this.hotelCommission,
   hotelDescription:this.hotelDescription,
   hotelMetaDescription:this.hotelMetaDescription,
   thumbnail:this.Thumbnail,
+  latitude:this.hotelLatitude,
+  longitude:this.hotelLongitude,
   destinations_id:this.Destinations,
   images:this.images,
   maximumRate:this.maximumRoomRate,
@@ -77,6 +81,7 @@ var payload:Hotel = {
    contactPhoneNumber:this.contactPerson,
    locationDescription:this.locationDescription
 }
+
 var {message} = await this.hotels.saveHotel(payload)
 if(message == 'Hotel Saved'){
 this.snack.open("Hotel Saved 😀","success")

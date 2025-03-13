@@ -6,8 +6,13 @@ interface Safaris {
   Thumbnail: string;
   Inclusivities: string[];
 }
+import { PackagesService } from '../../services/packages.service';
 import { QuotationsComponent } from '../../components/quotations/quotations.component';
 import {MatDialog} from '@angular/material/dialog'
+import { Router } from '@angular/router';
+
+
+
 @Component({
   selector: 'app-safaris',
   templateUrl: './safaris.component.html',
@@ -30,15 +35,37 @@ import {MatDialog} from '@angular/material/dialog'
 export class SafarisComponent implements AfterViewInit{
 @ViewChild("bg") bgRef!:ElementRef
 bgState:string = 'clear'
+fetching = false
 readonly dialog = inject(MatDialog)
+constructor(private packages:PackagesService,private router:Router){}
+async fetchSafaris(){
+this.fetching = true
+try{ 
+var  {data} = await this.packages.fetchHotPackages()
+this.safaris = data
+this.fetching = false
+}catch(err){
+console.error(err)
+this.fetching = false
+}
 
-
-ngOnInit(){
+}
+async ngOnInit(){
+await this.fetchSafaris()
 this.requestQuote()
 }
 requestQuote(){
 this.dialog.open(QuotationsComponent)
 }
+goPackage(slug:any){
+this.router.navigate([`/safaris/${slug}`])
+}
+
+
+
+
+
+
 
 bgBounce(){
 var observer = new IntersectionObserver((entries)=>{
@@ -60,42 +87,5 @@ observer.observe(this.bgRef.nativeElement)
 ngAfterViewInit(){
 this.bgBounce()
 }
-  safaris: Safaris[] = [
-    {
-      SafariTitle: 'Masaai Mara 3 days budget',
-      Charges: 220,
-      Thumbnail: 'https://www.masaimaratrips.com/uploads/package/3-days-mas_20240926120700.jpg',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser'],
-    },
-    {
-      SafariTitle: 'Masaai Mara 3 days 2 nights Enkorok Mara Camp Safari',
-      Charges: 320,
-      Thumbnail: '../../../assets/enkorok.jpg',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser'],
-    },
-    {
-      SafariTitle: 'Masaai Mara 3 days 2 nights masaai mara group joining',
-      Charges: 248,
-      Thumbnail: '../../../assets/joining_grp.webp',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser',"shared tour"],
-    },
-    {
-      SafariTitle: 'Masaai Mara 4 days Private Safari Tour',
-      Charges: 580,
-      Thumbnail: '../../../assets/hilux_baloon.jpg',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser'],
-    },
-    {
-      SafariTitle: 'Masaai Mara 3 days  2 nights Neptune Mara Rianta Luxury Tented Safari',
-      Charges: 770,
-      Thumbnail: '../../../assets/neptune.jpg',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser'],
-    },
-    {
-      SafariTitle: 'Masaai Mara 3 days 2 nights  Sarova mara game Camp Safari',
-      Charges: 543,
-      Thumbnail: '../../../assets/sarova.jpg',
-      Inclusivities: ['Private Tour', 'Safari in a landCruiser'],
-    },
-  ];
+  safaris: any[] = [];
 }

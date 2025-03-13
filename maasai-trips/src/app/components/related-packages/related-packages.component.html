@@ -1,0 +1,16 @@
+<div class="main">
+    <h1>More Related Packages</h1>
+    <mat-card >
+      <div *ngFor="let package of packageData">
+        <img
+  [src]="package.packageImage" 
+          alt=""
+        />
+        <p>{{package.packageTitle}}</p>
+        <p>Charges:{{package.packageCharge}} {{package.packageChargeCurrency}}  per Adult</p>
+        <button mat-flat-button >See Package</button>
+      </div>
+      
+  </mat-card>
+  </div>
+  

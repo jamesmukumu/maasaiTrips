@@ -6,6 +6,16 @@
     display: flex;
     flex-direction: column;
   }
+
+ mat-card-content {
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    display: block;
+    max-height: none;
+    max-width: 100%;
+    text-overflow: unset;
+}
   b{
  color: blue;
  text-decoration: underline;
@@ -17,10 +27,11 @@
     width: max-content;
   }
   mat-card {
-    background-color: rgb(237, 241, 245);
+   
     max-width: 100vw;
     min-width: 100%;
     height: max-content;
+    margin-left: 2.2%;
     display: grid;
     margin: 0px;
     padding: 0px;
@@ -29,18 +40,21 @@
   }
   
   .div-a {
-    width: 1000px;
-    width: 1000px;
-    height: auto; /* Change from max-content to auto */
-    min-height: unset; /* Remove or adjust min-height */
+    max-width: 780px;
+     width: max-content;
+    height: auto; 
+    min-height: unset; 
   
   }
   .img-big{
-    height: 600px;
-    width: 800px;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 800px;
+   
     }
   .div-b {
-    background-color: black;
+    max-width: 400px;
     height: 100%;
     width: 95%;
   }
