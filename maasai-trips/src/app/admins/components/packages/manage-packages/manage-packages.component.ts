@@ -16,6 +16,7 @@ export class ManagePackagesComponent {
   readonly snack = inject(MatSnackBar)
 constructor(private destination:HotelsService,private packages:PackagesService){}
   displayedColumns:string[] = ["name","charge","startDate","endDate","published","actions"]
+  displayedColumnsSmall:string[] = ["name","charge","published","actions"]
   dataSource:any
   processing = false
   deleteDestination = false
@@ -23,6 +24,7 @@ constructor(private destination:HotelsService,private packages:PackagesService){
   publishDestination = false
   unpublishDestination = false
   idSelected:any
+  dataSourceSmall:any
   
 formatDate(dateTime:any){
 return new Date(dateTime).toDateString()
@@ -90,7 +92,9 @@ this.processing = true
 try{
 var {data,message} = await this.packages.fetchMyPackages()
 this.dataSource = new MatTableDataSource(data)
+this.dataSourceSmall = new MatTableDataSource(data)
 this.dataSource.paginator = this.paginator
+this.dataSourceSmall.paginator = this.paginator
 this.processing = false
 }catch(err){
 console.error(err)

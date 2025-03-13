@@ -3,30 +3,39 @@ import { Hotel, HotelsService } from '../../services/hotels.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { MatPaginator } from '@angular/material/paginator';
-import { trigger,transition,keyframes,style,animate } from '@angular/animations';
-
+import {
+  trigger,
+  transition,
+  keyframes,
+  style,
+  animate,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-hotels-display',
   templateUrl: './hotels-display.component.html',
   styleUrl: './hotels-display.component.css',
   animations: [
-    trigger("bounceLeft", [
-      transition("* =>*", [
+    trigger('bounceLeft', [
+      transition('* =>*', [
         style({
           opacity: 1,
-          transform: "translateY(-45px)",
+          transform: 'translateY(-45px)',
         }),
         animate(
-          "2s ease-in-out",
+          '2s ease-in-out',
           keyframes([
-            
-            style({ offset: 1, opacity: 1, transform: "translateY(0px)", easing: "ease-out" }),
+            style({
+              offset: 1,
+              opacity: 1,
+              transform: 'translateY(0px)',
+              easing: 'ease-out',
+            }),
           ])
         ),
       ]),
     ]),
-  ]
+  ],
 })
 export class HotelsDisplayComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;

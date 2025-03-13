@@ -195,21 +195,15 @@ console.error(err)
       Tree_Name: 'Packages',
       identifierName: 'Packages',
       Tree_Children: [
-        {
-          Tree_Name: 'All Packages',
-          identifierName: 'All Packages',
-        },
+       
         {
           Tree_Name: 'Add New Package',
           identifierName: 'Add New Package',
         },
+       
         {
-          Tree_Name: 'Package Categories',
-          identifierName: 'Package Categories',
-        },
-        {
-          Tree_Name: 'New Hotel Rooms',
-          identifierName: 'New Hotel Rooms',
+          Tree_Name: 'Manage My Packages',
+          identifierName: 'Manage My Packages',
         },
       ],
     },

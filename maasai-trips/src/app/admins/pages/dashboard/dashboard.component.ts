@@ -113,6 +113,14 @@ case "Manage My Destinations":
   this.activeIndex = 5
 this.destinationChoosen = 2
 break
+case "Add New Package":
+this.activeIndex = 3
+this.packageChoosen = 1
+break
+case 'Manage My Packages':
+  this.activeIndex = 3
+this.packageChoosen = 2
+break
 case "Edit Profile":
 this.popDialog()
 break

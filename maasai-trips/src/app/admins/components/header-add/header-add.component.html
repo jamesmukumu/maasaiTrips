@@ -90,7 +90,7 @@
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
         <button mat-icon-button disabled></button>
 
-        <p style="color: black"    (click)="mobileEmitter('Hotels', true, node.Tree_Name)">
+        <p style="color: black"    (click)="mobileEmitter('Hotels', true, node.Tree_Name)" >
           {{ node.Tree_Name }}
         </p>
       </mat-tree-node>
@@ -117,7 +117,7 @@
       <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
         <button mat-icon-button disabled></button>
 
-        <p style="color: black">
+        <p style="color: black" (click)="mobileEmitter('Packages', true, node.Tree_Name)">
           {{ node.Tree_Name }}
         </p>
       </mat-tree-node>
