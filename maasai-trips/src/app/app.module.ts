@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
 import {ToastModule} from "primeng/toast"
+import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
@@ -106,6 +107,7 @@ import { ManagePackagesComponent } from './admins/components/packages/manage-pac
 import { PackagesComponent } from './pages/packages/packages.component';
 import { SingularPackageComponent } from './pages/singular-package/singular-package.component';
 import { RelatedPackagesComponent } from './components/related-packages/related-packages.component';
+import { EditHotelsComponent } from './admins/components/hotels/edit-hotels/edit-hotels.component';
 
 
 const reducers:ActionReducerMap<any> = {
@@ -125,7 +127,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -136,7 +138,8 @@ const reducers:ActionReducerMap<any> = {
     HttpClientModule,
     MatSnackBarModule,
     MatBadgeModule,
-    MatIconModule,      
+    MatIconModule,  
+    CalendarModule,    
     ButtonModule,
     MatSelectModule,
     TableModule,

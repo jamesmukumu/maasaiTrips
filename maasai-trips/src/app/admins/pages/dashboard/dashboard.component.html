@@ -75,9 +75,9 @@
             <span style="color: black">My Hotel</span>
           </button>
 
-          <button mat-menu-item  >
+          <button mat-menu-item  (click)="chooserHotels(4)" >
             <mat-icon>room_preferences</mat-icon>
-            <span style="color: black">Rooms</span>
+            <span style="color: black">Manage Rooms</span>
           </button>
           <button mat-menu-item (click)="chooserHotels(3)">
             <mat-icon>add</mat-icon>
@@ -100,7 +100,7 @@
 
         <button mat-menu-item (click)="chooserPackages(2)">
           <mat-icon>inventory</mat-icon>
-          <span style="color: black">Mange My Packages</span>
+          <span style="color: black">My Packages</span>
         </button>
        
       </mat-menu>
@@ -191,6 +191,7 @@
     <create-hotels *ngIf="hotelChoosen==1"></create-hotels>
    <manage-hotels *ngIf="hotelChoosen==2"></manage-hotels>
    <create-room *ngIf="hotelChoosen==3"></create-room>
+   <manage-room *ngIf="hotelChoosen==4"></manage-room>
   
   </div>
 
@@ -218,7 +219,7 @@
 [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
   header="Edit Your Profile"
   [maximizable]="true" 
-[modal]="true">
+[modal]="true">   
 
 <form >
 <mat-form-field appearance="outline">

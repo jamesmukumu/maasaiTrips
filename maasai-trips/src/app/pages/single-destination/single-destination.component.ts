@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Hotel,HotelsService } from '../../services/hotels.service';
 import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
 
@@ -10,7 +10,7 @@ import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
   styleUrl: './single-destination.component.css'
 })
 export class SingleDestinationComponent {
-constructor(private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
+constructor(private route:Router,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
 destinationsID:any
 fetchingDestination = false
 destinationData:any
@@ -18,19 +18,24 @@ destinationPhoto:any
 destinationDescription:SafeHtml = ''
 destinationAbout:SafeHtml = ''
 relatedHotels:any
+safaris:any
 
+
+goPackage(slug: any) {
+  window.open(`/safaris/${slug}`, '_blank');
+}
 
 async fetchDestinations(){
 this.fetchingDestination = true
 try{
-var {data,message,fetch_hotels} = await this.hotel.fetchSingularDestinations(this.destinationsID)
+var {data,message} = await this.hotel.fetchSingularDestinations(this.destinationsID)
 if(message === 'Destination Fetched'){
   this.destinationData = data
   this.destinationPhoto = JSON.parse(data.destinationPhotos)
   this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.destinationDescription)
   this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.destinationAbout)
   this.relatedHotels = data.fetch_hotels
-  console.log(this.relatedHotels)
+   this.safaris = data.packages
   this.fetchingDestination = false
 }
 }catch(err){

@@ -11,4 +11,14 @@ class Destinations extends Model{
  public function fetchHotels(){
 return $this->hasMany(HotelsModel::class,"destinations_id","id")->select(["id","hotelName","hotelThumbnail","hotelSlug",'destinations_id']);
  }
+
+public function packages(){
+return $this->hasMany(Package::class,"destinations_id","id")->select(["id","packageSlug","packageChargeCurrency","budgetType","mode_transport","destinations_id","packageImage","packageCharge"]);
+}
+
+
+
+
+
+
 }

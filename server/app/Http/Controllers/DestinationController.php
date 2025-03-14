@@ -98,7 +98,7 @@ $validatedRequest = $request->validate([
 "slug"=>"required|exists:destinations,destinationSlug"
 ]);
 $slug = $request->query("slug");
-$destinationData =  Destinations::select(["id","destinationSlug","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->with(["fetchHotels"])->where("destinationSlug",$slug)->get()->first();
+$destinationData =  Destinations::with(["packages"])->select(["id","destinationSlug","destinationTitle","destinationThumbnail","destinationPhotos","destinationAbout","destinationDescription"])->with(["fetchHotels"])->where("destinationSlug",$slug)->get()->first();
 return response()->json([
 "message"=>"Destination Fetched",
 "data"=>$destinationData

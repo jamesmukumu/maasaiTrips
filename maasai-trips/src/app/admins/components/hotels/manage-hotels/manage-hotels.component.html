@@ -185,6 +185,10 @@
   <p-progressSpinner *ngIf="fetchingHotels" />
 </div>
 
+
+
+
+
 <p-dialog [modal]="true" [(visible)]="popEditor" [maximizable]="true">
   <mat-card *ngIf="!fetchingDestinations">
     <form>
@@ -200,22 +204,36 @@
           />
           <mat-hint>Example Kunste Hotel</mat-hint>
         </mat-form-field>
+
         <mat-form-field>
-          <mat-label>Choose Destination</mat-label>
-          <mat-select [(value)]="Destinations">
-            <mat-option
-              (onSelectionChange)="chooser($event)"
-              *ngFor="let destinaton of destinationsData"
-              [value]="destinaton.id"
-            >
-              {{ destinaton.destinationTitle }}
-            </mat-option>
-          </mat-select>
+          <mat-label>Enter Hotel Latitude</mat-label>
+          <input [(ngModel)]="latitude" type="number" required name="hotel-lat"  matInput  />
+          <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"></a>Find Latitude</mat-hint>
         </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Enter Hotel Longitude</mat-label>
+          <input [(ngModel)]="longitude" type="number" name="hotel-long" required matInput  />
+          <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop">Find Longitude</a></mat-hint>
+        </mat-form-field>
+
+
+        <div>
+        
+          <p-dropdown 
+          [options]="destinationsData" 
+          [(ngModel)]="Destinations"
+          [checkmark]="true" 
+          optionLabel="destinationTitle" 
+          [showClear]="true" 
+          [style]="{'width':'100%'}"
+          placeholder="Select a Destination" />
+        </div>
 
         <div>
           <label>Enter Hotel Description</label>
           <p-editor
+        [(ngModel)]="hotelDescription"
             [style]="{ height: '245px' }"
             (onTextChange)="captureDescriptionHotel($event)"
             placeholder="Enter Hotel Description.Example insights of the hotel"
@@ -353,16 +371,17 @@
           <mat-hint>Example:254759857031</mat-hint>
         </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Choose Contact Person</mat-label>
-          <mat-select [(value)]="contactPerson">
-            <mat-option
-              *ngFor="let contact of availableContactPerson"
-              [value]="contact"
-              >{{ contact }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
+        <div>
+          <p-dropdown 
+          [options]="availableContactPerson" 
+          [(ngModel)]="contactPerson"
+          [checkmark]="true" 
+        
+          [showClear]="true" 
+          [style]="{'width':'100%'}"
+          placeholder="Select a Contact Person" />
+         
+        </div>
       </div>
     </form>
     <button

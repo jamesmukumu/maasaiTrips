@@ -26,6 +26,7 @@ budgetTypes = ["Mid Range Tour","Luxury Tour","Private Tour"]
 transport = ["Air","LandCruiser","Van","Jeep"]
 fetchingDestinations = false
 specialNotes = ''
+newPackageCategory:string = ''
 
 
 
@@ -60,7 +61,7 @@ this.fetchPackageCatagories()
 ])
 this.destinationsData = data[0]
 this.packageCategories = data[1]
-
+this.addPackageCategory = true
 this.fetchingDestinations = false
 }catch(err){
 this.fetchingDestinations = false
@@ -104,6 +105,7 @@ startDate:string  = ""
 endDate:string = ""
 packageCharge = 0
 packagePhoto:any
+addPackageCategory = false
 captureOverview(event:any){
 var {htmlValue} = event
 this.packageOverview = htmlValue

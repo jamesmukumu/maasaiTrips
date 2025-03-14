@@ -1,0 +1,150 @@
+<mat-card *ngIf="!fetchingDestinations">
+ 
+    <form >
+        <div class="infos">
+          <h3>Basic Hotel Information</h3>
+          <mat-form-field>
+            <mat-label>Enter Hotel Name</mat-label>
+            <input type="text" name="hotel-name" required [(ngModel)]="hotelName" matInput  />
+            <mat-hint>Example Kunste Hotel</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Enter Hotel Latitude</mat-label>
+            <input type="number" required name="hotel-lat" [(ngModel)]="hotelLatitude" matInput  />
+            <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"></a>Find Latitude</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Enter Hotel Longitude</mat-label>
+            <input type="number" name="hotel-long" required [(ngModel)]="hotelLongitude" matInput  />
+            <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop">Find Longitude</a></mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+          <mat-label>Choose Destination</mat-label>
+          <mat-select [(value)]="Destinations"> 
+            <mat-option (onSelectionChange)="chooser($event)" *ngFor="let destinaton of destinationsData" [value]="destinaton.id">
+              {{destinaton.destinationTitle}}
+            </mat-option>
+          </mat-select>
+          </mat-form-field>
+    
+          <div>
+            <label>Enter Hotel Description</label>
+            <p-editor
+            [style]="{height:'245px'}"
+            (onTextChange)="captureDescriptionHotel($event)"
+              placeholder="Enter Hotel Description.Example insights of the hotel"
+            />
+          </div>
+    
+          <div>
+            <label>Enter Hotel Meta Description</label>
+            <p-editor placeholder="Enter Hotel Meta  Description" (onTextChange)="captureMetaDescriptionHotel($event)"   [style]="{height:'245px'}" />
+          </div>
+    
+          <div>
+            <label>Enter Cancellation Policy</label>
+            <p-editor     (onTextChange)="captureCancellationPolicyHotel($event)" placeholder="Enter Hotel Cancellation Policy"  [style]="{height:'245px'}"/>
+          </div>
+    
+          <div>
+            <label>Enter Location Description</label>
+            <p-editor placeholder="Enter Location Description"  (onTextChange)="captureLocationHotel($event)"    [style]="{height:'245px'}" />
+          </div>
+    
+          <mat-form-field>
+            <mat-label>Enter Hotel Commission</mat-label>
+            <input type="number" [(ngModel)]="hotelCommission" matInput name="hotel-commission" />
+            <mat-hint>Example 5%</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Enter Maximum Room Rate</mat-label>
+            <input type="number" [(ngModel)]="maximumRoomRate" matInput name="hotel-maximum-room-rate" />
+            <mat-hint>Example 30%</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Enter Minimum Room Rate</mat-label>
+            <input type="number" [(ngModel)]="minimumRoomRate" matInput name="hotel-minimum-room-rate" />
+            <mat-hint>Example 10%</mat-hint>
+          </mat-form-field>
+    
+          <div>
+            <label>Hotel Thumbnail Photo</label>
+            <p-fileUpload
+              name="demo[]"
+              url="https://www.primefaces.org/cdn/api/upload.php"
+              [multiple]="false"
+              accept="image/*"
+              maxFileSize="100000000000"
+              (onSelect)="captureThumbnail($event)"
+            >
+              <ng-template pTemplate="content">
+                <ul></ul>
+              </ng-template>
+            </p-fileUpload>
+          </div>
+    
+          <div class="hotel-photos">
+            <div *ngFor="let dest of images; let i = index">
+              <div>
+                <strong>Images {{i+1}}</strong>
+                <p-fileUpload
+                  name="demo[]"
+                  url="https://www.primefaces.org/cdn/api/upload.php"
+                  [multiple]="false"
+                  accept="image/*"
+                  (onSelect)="chooserFile($event,i)"
+                  maxFileSize="100000000000"
+                >
+                  <ng-template pTemplate="content">
+                    <ul></ul>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+            <mat-card-actions align="start">
+              <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+                Add Another Photo
+              </button>
+              <button mat-flat-button (click)=" popImage()">
+                Remove Photo
+              </button>
+            </mat-card-actions>
+          </div>
+        </div>
+    
+    
+    
+    
+    
+         <div class="contact-information">
+         <h3>Contact Information Hotel</h3>
+         <mat-form-field>
+         <mat-label>Enter Contact Email</mat-label>
+         <input type="email" [(ngModel)]="contactEmail" name="contact-Email" matInput>
+         <mat-hint>Example:tours&#64;gmail.com</mat-hint>
+         </mat-form-field>
+         <mat-form-field>
+        <mat-label>Enter Contact Phone Number</mat-label>
+        <input type="text" max="12" name="contact-Phone-Number" [(ngModel)]="phoneNumber" matInput>
+        <mat-hint>Example:254759857031</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field>
+        <mat-label>Choose Contact Person</mat-label>
+        <mat-select [(value)]="contactPerson">
+        <mat-option *ngFor="let contact of availableContactPerson" [value]="contact">{{contact}}</mat-option>
+       </mat-select>
+    
+        </mat-form-field>
+    </div>
+    </form>
+    <button *ngIf="!processing" (click)="saveHotel()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Create Hotel</button>
+    <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
+    </mat-card>
+    
+    <div class="spinner" *ngIf="fetchingDestinations">
+    <p-progressSpinner/>
+    </div>

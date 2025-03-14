@@ -74,6 +74,29 @@ class RoomsController extends Controller implements RoomsInterface{
         ],500);
         }
         }
+
+
+
+
+
+        public function fetchMyRooms(Request $request){
+        try{
+        $userID = $this->verifyToken($request);
+        $roomData = Rooms::with(["hotels"])->select(["id","sharingRoomRateChildParent","bedBreakfast","roomType","halfBoard","fullBoard","allInclusive","singleRoomRateChild","hotels_models_id","doubleRoomRateChild","roomCount","maximumRoomOccupancy"])->where("olanka_users_id",$userID)->get();
+        return response()->json([
+        "message"=>"Rooms Fetched",
+        "data"=>$roomData
+        ]);
+        }catch(\Exception $err){
+         Log::error($err->getMessage());
+         return response()->json([
+          "message"=>"Something Went TWrong"
+         ],500);
+        }
+
+
+
+        }
         
 
 

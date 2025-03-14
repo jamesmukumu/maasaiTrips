@@ -338,4 +338,18 @@ export class HotelsService {
       return err;
     }
   }
+
+  async findMyRooms() {
+    try {
+      let token = Cookies.get('grant_token');
+      var resp = await axios.get(`${this.baseUrl}/find/my/rooms`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

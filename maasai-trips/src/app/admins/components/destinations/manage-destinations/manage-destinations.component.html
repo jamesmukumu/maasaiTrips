@@ -33,7 +33,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu>
-        <button mat-menu-item  (click)="popUpdate(element.id)">
+        <button mat-menu-item  (click)="popUpdate(element.id,element)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
@@ -77,7 +77,94 @@
 </div>
 
 <p-dialog [modal]="true"  [maximizable]="true" [(visible)]="updateDestination">
-<add-destinations></add-destinations>
+  <mat-card >
+   
+  
+    <form >
+      <div class="infos">
+        <h3>Basic Destination Information</h3>
+        <mat-form-field>
+          <mat-label>Enter Destination Name</mat-label>
+          <input type="text" name="destination-name"  matInput [(ngModel)]="destinationTitle" />
+          <mat-hint>Example:Kiambu,Nairobi</mat-hint>
+        </mat-form-field>
+        
+  
+        <div>
+          <label>Enter Destination About</label>
+          <p-editor
+          [style]="{height:'245px'}"
+          (onTextChange)="captureDestinationAbout($event)"
+      placeholder="Enter Destination About.Example insights of the destination eg"
+          />
+        </div>
+  
+        <div>
+          <label>Enter Destination Description</label>
+          <p-editor placeholder="Enter Destination  Description" (onTextChange)="captureDestinationDescription($event)"   [style]="{height:'245px'}" />
+        </div>
+  
+  
+      
+  
+        <div>
+          <label>Destination Thumbnail Photo</label>
+          <p-fileUpload
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            [multiple]="false"
+            accept="image/*"
+            maxFileSize="100000000000"
+            (onSelect)="captureThumbnail($event)"
+          >
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+  
+        <div class="destination-photos">
+          <div *ngFor="let dest of images; let i = index">
+            <div>
+              <strong>Images {{i+1}}</strong>
+              <p-fileUpload
+                name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+                [multiple]="false"
+                accept="image/*"
+                (onSelect)="chooserFile($event,i)"
+                maxFileSize="100000000000"
+              >
+                <ng-template pTemplate="content">
+                  <ul></ul>
+                </ng-template>
+              </p-fileUpload>
+            </div>
+          </div>
+          <mat-card-actions align="start">
+            <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+              Add Another Photo
+            </button>
+            <button mat-flat-button (click)=" popImage()">
+              Remove Photo
+            </button>
+          </mat-card-actions>
+        </div>
+      </div>
+  
+  
+  </form>
+  <button *ngIf="!processing"  (click)="saveDestination()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Create Destination</button>
+  <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
+  </mat-card>
+  
+
+
+
+
+
+
+
 </p-dialog>
 
 <p-dialog [modal]="true" header="Delete" [(visible)]="deleteDestination" >

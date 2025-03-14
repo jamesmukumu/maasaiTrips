@@ -113,7 +113,7 @@ Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels'
 
 // Rooms Api
 Route::post("/create/new/room",[RoomsController::class,"createRoom"]);
-
+Route::get("/find/my/rooms",[RoomsController::class,"fetchMyRooms"]);
 
 
 

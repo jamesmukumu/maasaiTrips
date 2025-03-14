@@ -1,113 +1,179 @@
-import { Component,OnInit,ViewChild,inject } from '@angular/core';
-import { Hotel,HotelsService } from '../../../../services/hotels.service';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Hotel, HotelsService } from '../../../../services/hotels.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
-  selector: 'manage-destinations',  
+  selector: 'manage-destinations',
   templateUrl: './manage-destinations.component.html',
-  styleUrl: './manage-destinations.component.css'
+  styleUrl: './manage-destinations.component.css',
 })
 export class ManageDestinationsComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!:MatPaginator
-  readonly snack = inject(MatSnackBar)
-constructor(private destination:HotelsService){}
-  displayedColumns:string[] = ["name","published","actions"]
-  dataSource:any
-  processing = false
-  deleteDestination = false
-  updateDestination = false
-  publishDestination = false
-  unpublishDestination = false
-  idSelected:any
-  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  readonly snack = inject(MatSnackBar);
+
+  displayedColumns: string[] = ['name', 'published', 'actions'];
+  dataSource: any;
+  processing = false;
+  deleteDestination = false;
+  updateDestination = false;
+  publishDestination = false;
+  unpublishDestination = false;
+  destinationAbout: any;
+  idSelected: any;
+
+  constructor(private hotels: HotelsService) {}
+  destinationTitle: string = '';
+
+  destinationDescription: string = '';
+  Thumbnail: any;
+
+  captureDestinationAbout(event: any) {
+    var { htmlValue } = event;
+    this.destinationAbout = htmlValue;
+  }
+  captureDestinationDescription(event: any) {
+    var { htmlValue } = event;
+    this.destinationDescription = htmlValue;
+  }
+
+  captureThumbnail(event: any) {
+    var { currentFiles } = event;
+    this.Thumbnail = currentFiles[0];
+  }
+  chooserFile(file: any, index: number) {
+    var { currentFiles } = file;
+    this.images[index][`image${index + 1}`] = currentFiles[0];
+  }
+
+  async saveDestination() {
+    this.processing = true;
+    try {
+      var payload = {
+        destinationTitle: this.destinationTitle,
+        destinationAbout: this.destinationAbout,
+        destinationDescription: this.destinationDescription,
+        Thumbnail: this.Thumbnail,
+        images: this.images,
+      };
+      var { message } = await this.hotels.saveDestination(payload);
+      if (message == 'Destination Added') {
+        this.snack.open('Destination Added 😀', 'success');
+        this.processing = false;
+      } else {
+        this.snack.open(message, 'Failed');
+        this.processing = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  images: any[] = [{ image1: null }];
+  addImage() {
+    var index = this.images.length;
+    this.images.push({ [`image${index + 1}`]: null });
+  }
+  popImage() {
+    if (this.images.length <= 1) {
+      this.snack.open('Images cannot be less than 1', 'Add');
+      return;
+    }
+    this.images.pop();
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-  }    
-
-
-  async actualizedeleteDestination(){
-    this.publishDestination = false
-    this.processing = true
-   try{
-  var {message} = await this.destination.deleteDestination(this.idSelected)
-  if(message == 'Deleted'){
-  this.snack.open("Deleted 😀","Success")
-  this.fetchMyDestinations()
-  }else{
-  this.snack.open("Something went wrong","Failed")
-  this.processing = false
-  }
-   }catch(err){
-   console.error(err)
-  }
   }
 
-  async actualizeUn_publishDestination(){
-    this.unpublishDestination = false
-    this.processing = true
-   try{
-  var {message} = await this.destination.un_publishDestination(this.idSelected)
-  if(message == 'Updated'){
-  this.snack.open("Updated 😀","Success")
-  this.fetchMyDestinations()
-  }else{
-  this.snack.open("Something went wrong","Failed")
-  this.processing = false
-  }
-   }catch(err){
-   console.error(err)
-  }
+  async actualizedeleteDestination() {
+    this.publishDestination = false;
+    this.processing = true;
+    try {
+      var { message } = await this.hotels.deleteDestination(
+        this.idSelected
+      );
+      if (message == 'Deleted') {
+        this.snack.open('Deleted 😀', 'Success');
+        this.fetchMyDestinations();
+      } else {
+        this.snack.open('Something went wrong', 'Failed');
+        this.processing = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
 
-
-  async actualizepublishDestination(){
-    this.deleteDestination = false
-    this.processing = true
-   try{
-  var {message} = await this.destination.publishDestination(this.idSelected)
-  if(message == 'Updated'){
-  this.snack.open("Updated 😀","Success")
-  this.fetchMyDestinations()
-  }else{
-  this.snack.open("Something went wrong","Failed")
-  this.processing = false
+  async actualizeUn_publishDestination() {
+    this.unpublishDestination = false;
+    this.processing = true;
+    try {
+      var { message } = await this.hotels.un_publishDestination(
+        this.idSelected
+      );
+      if (message == 'Updated') {
+        this.snack.open('Updated 😀', 'Success');
+        this.fetchMyDestinations();
+      } else {
+        this.snack.open('Something went wrong', 'Failed');
+        this.processing = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
   }
-   }catch(err){
-   console.error(err)
-  }
-  }
-async fetchMyDestinations(){
-this.processing = true
-try{
-var {data,message} = await this.destination.fetchMyDestinations()
-this.dataSource = new MatTableDataSource(data)
-this.dataSource.paginator = this.paginator
-this.processing = false
-}catch(err){
-console.error(err)
-}
 
-}
-popUpdate(id:any){
-this.updateDestination = true
-}
-popDeleteDestination(id:any){
-this.idSelected = id
-this.deleteDestination = true
-
-}
-popPublish(id:any){
+  async actualizepublishDestination() {
+    this.deleteDestination = false;
+    this.processing = true;
+    try {
+      var { message } = await this.hotels.publishDestination(
+        this.idSelected
+      );
+      if (message == 'Updated') {
+        this.snack.open('Updated 😀', 'Success');
+        this.fetchMyDestinations();
+      } else {
+        this.snack.open('Something went wrong', 'Failed');
+        this.processing = false;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  async fetchMyDestinations() {
+    this.processing = true;
+    try {
+      var { data, message } = await this.hotels.fetchMyDestinations();
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.processing = false;
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  popUpdate(id: any, data: any) {
+  this.destinationTitle = data.destinationTitle
   this.idSelected = id
-this.publishDestination = true
-}
+  this.updateDestination = true;
+  }
+  popDeleteDestination(id: any) {
+    this.idSelected = id;
+    this.deleteDestination = true;
+  }
+  popPublish(id: any) {
+    this.idSelected = id;
+    this.publishDestination = true;
+  }
 
-popUn_Publish(id:any){
-  this.idSelected = id
-this.unpublishDestination = true
-}
-ngOnInit(){
-this.fetchMyDestinations()
-}
+  popUn_Publish(id: any) {
+    this.idSelected = id;
+    this.unpublishDestination = true;
+  }
+  ngOnInit() {
+    this.fetchMyDestinations();
+  }
 }

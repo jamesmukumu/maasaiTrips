@@ -12,10 +12,10 @@
     align-items: center;
     justify-content: center;
     }
-    form button{
+    .btn{
         background-color: rgb(252,166,8);
         color: white;
-        margin-left: 30%;
+   width: fit-content;
     }
     mat-card-header button{
     background-color: rgb(252,166,8);

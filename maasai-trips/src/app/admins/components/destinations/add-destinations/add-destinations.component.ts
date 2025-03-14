@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject,Input,OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Hotel,HotelsService } from '../../../../services/hotels.service';
 @Component({
@@ -6,7 +6,10 @@ import { Hotel,HotelsService } from '../../../../services/hotels.service';
   templateUrl: './add-destinations.component.html',
   styleUrl: './add-destinations.component.css'
 })
-export class AddDestinationsComponent {
+export class AddDestinationsComponent  {
+
+
+
 readonly snack = inject(MatSnackBar)
 
 
@@ -80,7 +83,7 @@ this.destinationDescription = htmlValue
     this.images.pop()
     }
     
-  
+ 
  
 
 

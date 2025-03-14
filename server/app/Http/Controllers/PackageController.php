@@ -174,7 +174,7 @@ class PackageController extends Controller implements PackageInterface
     {
         try {
             $olanka_users_id = $this->verifyingToken($request);
-            $packageData = Package::select(["packageCharge", "packageChargeCurrency", "endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
+            $packageData = Package::select(["packageCharge", "packageChargeCurrency" ,"packageInclusives","packageExclusives","endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
             return response()->json([
                 "message" => "Packages Found",
                 "data" => $packageData->items(),

@@ -1,1 +1,380 @@
-<p>manage-room works!</p>
+<h3>Manage My Rooms</h3>
+
+<mat-form-field appearance="outline" *ngIf="!fetchingHotels">
+  <mat-label>Search any Room</mat-label>
+  <input type="text" matInput (keyup)="applyFilter($event)" #inputSelect />
+  <mat-hint>Example:Deluxe,Presidential Suite</mat-hint>
+</mat-form-field>
+
+<table mat-table [dataSource]="hotelData" *ngIf="!fetchingHotels" class="large-table">
+  <ng-container matColumnDef="roomType">
+    <th mat-header-cell *matHeaderCellDef>Room Name</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.roomType }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="halfBoard">
+    <th mat-header-cell *matHeaderCellDef>Half Board</th>
+    <td mat-cell *matCellDef="let element">KES:{{ element.halfBoard }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fullBoard">
+    <th mat-header-cell *matHeaderCellDef>Full Board</th>
+    <td mat-cell *matCellDef="let element">KES:{{ element.fullBoard }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="allInclusive">
+    <th mat-header-cell *matHeaderCellDef>All Inclusive</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.allInclusive }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="roomCount">
+    <th mat-header-cell *matHeaderCellDef>Room Count</th>
+    <td mat-cell *matCellDef="let element">{{ element.roomCount}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="hotelName"> 
+    <th mat-header-cell *matHeaderCellDef>Hotel Name</th>
+    <td mat-cell *matCellDef="let element">{{ element.hotels.hotelName }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="singleRoomRateChild">
+    <th mat-header-cell *matHeaderCellDef>singleRR(Child)</th>
+    <td mat-cell *matCellDef="let element">{{ element.singleRoomRateChild }}%</td>
+  </ng-container>
+
+  <ng-container matColumnDef="doubleRoomRateChild">
+    <th mat-header-cell *matHeaderCellDef>doubleRR(Child)</th>
+    <td mat-cell *matCellDef="let element">{{ element.doubleRoomRateChild }} %</td>
+  </ng-container>
+
+  <ng-container matColumnDef="maximumRoomOccupancy">
+    <th mat-header-cell *matHeaderCellDef>Max Occupancy</th>
+    <td mat-cell *matCellDef="let element">{{ element.maximumRoomOccupancy }}%</td>
+  </ng-container>
+
+  <!-- <ng-container matColumnDef="published">
+    <th mat-header-cell *matHeaderCellDef>Published</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon *ngIf="element.publishable" style="color: green">done</mat-icon>
+      <mat-icon *ngIf="!element.publishable" style="color: red">close</mat-icon>
+    </td>
+  </ng-container> -->
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        matTooltip="actions"
+        [mat-menu-trigger-for]="menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="editHotel(element)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item (click)="deletingHotel(element)">
+          <mat-icon style="color: red">delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
+          <mat-icon style="color: green" >publish</mat-icon>
+          <span>Publish hotel</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+<table mat-table [dataSource]="hotelData" *ngIf="!fetchingHotels" class="small-table">
+    <ng-container matColumnDef="roomType">
+      <th mat-header-cell *matHeaderCellDef>Room Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.roomType }}
+      </td>
+    </ng-container>
+
+
+  
+  
+  
+    <ng-container matColumnDef="roomCount">
+      <th mat-header-cell *matHeaderCellDef>Room Count</th>
+      <td mat-cell *matCellDef="let element">{{ element.roomCount}}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="hotelName"> 
+      <th mat-header-cell *matHeaderCellDef>Hotel Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.hotels.hotelName }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="singleRoomRateChild">
+      <th mat-header-cell *matHeaderCellDef>singleRR(Child)</th>
+      <td mat-cell *matCellDef="let element">{{ element.singleRoomRateChild }}%</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="doubleRoomRateChild">
+      <th mat-header-cell *matHeaderCellDef>doubleRR(Child)</th>
+      <td mat-cell *matCellDef="let element">{{ element.doubleRoomRateChild }} %</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="maximumRoomOccupancy">
+      <th mat-header-cell *matHeaderCellDef>Max Occupancy</th>
+      <td mat-cell *matCellDef="let element">{{ element.maximumRoomOccupancy }}%</td>
+    </ng-container>
+  
+    <!-- <ng-container matColumnDef="published">
+      <th mat-header-cell *matHeaderCellDef>Published</th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon *ngIf="element.publishable" style="color: green">done</mat-icon>
+        <mat-icon *ngIf="!element.publishable" style="color: red">close</mat-icon>
+      </td>
+    </ng-container> -->
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          matTooltip="actions"
+          [mat-menu-trigger-for]="menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu>
+          <button mat-menu-item (click)="editHotel(element)">
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="deletingHotel(element)">
+            <mat-icon style="color: red">delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
+            <mat-icon style="color: green" >publish</mat-icon>
+            <span>Publish hotel</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumnsSmall"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsSmall"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter</td>
+    </tr>
+  </table>
+
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20, 50, 100]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
+
+<div class="spin">
+  <p-progressSpinner *ngIf="fetchingHotels" />
+</div>
+
+
+
+
+
+<p-dialog [modal]="true" [(visible)]="popEditor" [maximizable]="true">
+    <mat-card *ngIf="!fetchingDestinations">
+
+        <form >
+          <div class="infos">
+            <h3>Basic Room Information</h3>
+            <mat-form-field>
+              <mat-label>Enter Room Type</mat-label>
+              <input required type="text" name="hotel-name" [(ngModel)]="roomType" matInput  />
+              <mat-hint>Example:Presidential Suite</mat-hint>
+            </mat-form-field>
+            <div>
+           <p-dropdown 
+                [options]="hotelRelevantData" 
+                [(ngModel)]="idSelected"
+                [checkmark]="true" 
+                optionLabel="hotelName" 
+                [showClear]="true" 
+                [style]="{'width':'100%'}"
+                placeholder="Select a Hotel" />
+              </div>
+      
+            <div>
+              <label>Enter Room Description</label>
+              <p-editor
+              [style]="{height:'245px'}"
+              (onTextChange)="captureRoom($event)"
+              placeholder="Enter Room Description.Example insights of the room"
+              />
+            </div>
+      
+            <mat-form-field>
+            <mat-label>Bed and Breakfast</mat-label>
+            <input type="text" name="bed-breakfast" required matInput  [(ngModel)]="bedBreakfast">
+            <mat-hint>Separate Sing,Double and Triple,eg 5000,10000,25000</mat-hint>
+            </mat-form-field>
+    
+            <mat-form-field>
+            <mat-label>Half Board</mat-label>
+            <input type="text" name="half-board" required matInput  [(ngModel)]="halfBoard">
+            <mat-hint>Separate Sing,Double and Triple,eg 5000,10000,25000</mat-hint>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Full Board</mat-label>
+                <input type="text" name="full-board" required matInput [(ngModel)]="fullBoard">
+                <mat-hint>Separate Sing,Double and Triple,eg 5000,10000,25000</mat-hint>
+                </mat-form-field>
+    
+                <mat-form-field>
+                    <mat-label>All Inclusive</mat-label>
+                    <input type="text" name="all-inclusive" required matInput  [(ngModel)]="allInclusive">
+                    <mat-hint>Separate Sing,Double and Triple,eg 5000,10000,25000</mat-hint>
+                    </mat-form-field>
+      
+         
+      
+           <mat-form-field>
+              <mat-label>Single Room Rate Child</mat-label>
+              <input type="number" [(ngModel)]="singleRoomRateChild" matInput name="hotel-commission" />
+              <mat-hint>Example 5%</mat-hint>
+            </mat-form-field>
+      
+            <mat-form-field>
+              <mat-label>Double Room Rate Child</mat-label>
+              <input type="number" [(ngModel)]="doubleRoomRate" matInput name="hotel-maximum-room-rate" />
+              <mat-hint>Example 22%</mat-hint>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Sharing Room rate child</mat-label>
+                <input type="number" name="single-room-rate" required matInput [(ngModel)]="sharingRoomRate" >
+                 <mat-hint>22%</mat-hint>
+                </mat-form-field>
+      
+        
+    <div class="hotel-photos">
+              <div *ngFor="let dest of images; let i = index">
+                <div>
+                  <strong>Images {{i+1}}</strong>
+                  <p-fileUpload
+                    name="demo[]"
+                    url="https://www.primefaces.org/cdn/api/upload.php"
+                    [multiple]="false"
+                    accept="image/*"
+                    (onSelect)="chooserFile($event,i)"
+                    maxFileSize="100000000000"
+                  >
+                    <ng-template pTemplate="content">
+                      <ul></ul>
+                    </ng-template>
+                  </p-fileUpload>
+                </div>
+              </div>
+              <mat-card-actions align="start">
+                <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+                  Add Another Photo
+                </button>
+                <button mat-flat-button (click)=" popImage()">
+                  Remove Photo
+                </button>
+              </mat-card-actions>
+            </div>
+          </div>
+      
+      
+      
+      
+      
+           <div class="contact-information">
+           <h3>More Information About Room</h3>
+           <mat-form-field>
+           <mat-label>Room Count</mat-label>
+           <input type="number"required  [(ngModel)]="roomCount" name="contact-Email" matInput>
+           <mat-hint>Example 5:These Described number of rooms available</mat-hint>
+           </mat-form-field>
+           <mat-form-field>
+          <mat-label>Maximum Room Occupancy</mat-label>
+          <input type="number" name="maxOccupancy" required [(ngModel)]="maxOccupancy" matInput>
+          <mat-hint>Example:5</mat-hint>
+          </mat-form-field>
+      
+         
+      </div>
+      </form>
+      <button *ngIf="!processing" (click)="createRoom()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Create Room</button>
+      <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
+      </mat-card>
+      
+      <div class="spinner" *ngIf="fetchingDestinations">
+      <p-progressSpinner/>
+      </div>
+</p-dialog>
+
+
+
+
+<p-dialog [modal]="true" header="Delete Hotel" [(visible)]="deleteHotel">
+  <mat-card>
+    <mat-card-title
+      >Are you sure you wish to delete {{ hotelNameDelete }}</mat-card-title
+    >
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        style="background-color: green"
+        (click)="deleteHotelPermanently()"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+
+
+
+<p-dialog [modal]="true" header="Publish Hotel" [(visible)]="publishing">
+  <mat-card>
+    <mat-card-title
+      >Are you sure you wish to Publish {{ hotelNameDelete }}</mat-card-title
+    >
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        style="background-color: green"
+        (click)="completePublish()"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>

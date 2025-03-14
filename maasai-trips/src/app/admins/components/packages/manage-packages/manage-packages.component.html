@@ -53,7 +53,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu>
-        <button mat-menu-item  (click)="popUpdate(element.id)">
+        <button mat-menu-item  (click)="popUpdate(element.id,element)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
@@ -120,7 +120,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu>
-        <button mat-menu-item  (click)="popUpdate(element.id)">
+        <button mat-menu-item  (click)="popUpdate(element.id,element)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
@@ -159,9 +159,257 @@
   <p-progressSpinner  />
 </div>
 
-<p-dialog [modal]="true"  [maximizable]="true" [(visible)]="updateDestination">
-<add-destinations></add-destinations>
-</p-dialog>
+
+
+<p-dialog [modal]="true"  [(visible)]="updateDestination">
+  <mat-card >
+   
+    <form>
+      <div class="infos">
+        <h3>Package Information</h3>
+        <mat-form-field style="margin-top:10px;width: 100%;">
+          <mat-label>Package Title</mat-label>
+          <input required type="text" name="package-title" matInput [(ngModel)]="packageTitle" />
+          <mat-hint
+            >Example:4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint
+          >
+        </mat-form-field>
+  
+        <div>
+          <label>Enter Package OverView</label>
+          <p-editor
+          (onTextChange)="captureOverview($event)"
+            [style]="{ 'min-height': '245px' }"
+            placeholder="Enter Package OverView:Example brief description about this package"
+          />
+        </div>
+        <div>
+          <p-dropdown 
+          variant="filled"
+          [options]="destinationsData" 
+          [(ngModel)]="targetDestination"
+          [checkmark]="true" 
+          optionLabel="destinationTitle"
+          [filter]="true"
+       
+          [showClear]="true" 
+          [style]="{'width':'100%'}"
+          placeholder="Choose a Destination" />
+          </div>
+  
+          <div>
+            <p-dropdown 
+            variant="filled"
+            [options]="packageCategories" 
+            [(ngModel)]="targetCategory"
+            [checkmark]="true" 
+            optionLabel="title"
+            [filter]="true"
+         
+            [showClear]="true" 
+            [style]="{'width':'100%','margin-top':'10px'}"
+            placeholder="Choose Package Category" />
+            </div>
+  
+            <div>
+              <p-dropdown 
+              variant="filled"
+              [options]="budgetTypes" 
+              [(ngModel)]="choosenBudgetType"
+              [checkmark]="true" 
+          
+              [showClear]="true" 
+              [style]="{'width':'100%'}"
+              placeholder="Select a Budget Type" />
+              </div>
+  
+              <div>
+                <p-dropdown 
+                variant="filled"
+                [options]="transport" 
+                [(ngModel)]="choosenMeans"
+                [checkmark]="true" 
+            
+                [showClear]="true" 
+                [style]="{'width':'100%'}"
+                placeholder="Select Mode of Transport Type" />
+                </div>
+  
+  
+  
+  
+        <mat-form-field style="margin-top:10px;width: 100%;">
+          <mat-label>Package Inclusives</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Enter Inclusions">
+            <mat-chip-row *ngFor="let choosenCC of inclusions">
+              {{choosenCC}}
+              <button matChipRemove (click)="removeInclusions(choosenCC)">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+          
+          <input 
+            [matChipInputFor]="chipGrid"
+            [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="addInclusions($event)"
+            placeholder="Add More Inclusions"
+          />
+          <mat-hint>Example:Airport Transfers,</mat-hint>
+        </mat-form-field>
+  
+  
+        <mat-form-field style="margin-top:10px;width: 100%;">
+          <mat-label>Package Exclusions</mat-label>
+          <mat-chip-grid #chipExclusions aria-label="Enter CC Emails">
+            <mat-chip-row *ngFor="let choosenCC of exclusions">
+              {{choosenCC}}
+              <button matChipRemove (click)="removeExclusions(choosenCC)">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip-row>
+          </mat-chip-grid>
+          
+          <input 
+            [matChipInputFor]="chipExclusions"
+            [matChipInputAddOnBlur]="true"
+            (matChipInputTokenEnd)="addExclusions($event)"
+            placeholder="Add More Exclusions"
+          />
+          <mat-hint>Example:Hot Air Balooons</mat-hint>
+        </mat-form-field>
+  
+  
+        <mat-form-field style="margin-top:10px;width: 100%;">
+          <mat-label>Package Charge</mat-label>
+          <input required type="number" name="package-charge" matInput [(ngModel)]="packageCharge" />
+       
+        </mat-form-field>
+        <div>
+          <p-dropdown 
+          variant="filled"
+          [options]="countryCodes" 
+          [(ngModel)]="codeValues"
+          [checkmark]="true" 
+          optionLabel="name"
+          [filter]="true"
+       
+          [showClear]="true" 
+          [style]="{'width':'100%'}"
+          placeholder="Select a Currency Type" />
+          </div>
+        <div>
+          <label>Enter Package About</label>
+          <p-editor
+          (onTextChange)="captureAbout($event)"
+            [style]="{ 'min-height': '50vh' }"
+            placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
+          />
+        </div>
+  
+        <div>
+          <label>Enter Package Special Notes</label>
+          <p-editor
+          (onTextChange)="captureSpecialNotes($event)"
+            [style]="{ 'min-height': '20vh' }"
+            placeholder="Enter Any Special Notes you wish to add."
+          />
+        </div>
+  
+       <div style="display: flex; flex-direction: column;width: 100%;">
+        <label>Choose Package Date</label>
+        <p-calendar 
+       [style]="{'width':'100%'}"
+        [touchUI]="true"
+        [readonlyInput]="true" 
+        selectionMode="range"
+        required
+        
+        />
+       </div>
+        <div>
+          <label>Package Thumbnail</label>
+          <p-fileUpload
+          (onSelect)="chooser($event)"
+          (onUpload)="chooser($event)"
+            name="demo[]"
+            url="https://www.primefaces.org/cdn/api/upload.php"
+            [multiple]="false"
+            accept="image/*"
+            maxFileSize="100000000000"
+          >
+            <ng-template pTemplate="content">
+              <ul></ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+  
+  
+        <div class="hotel-photos">
+          <div *ngFor="let dest of images; let i = index">
+            <div>
+              <strong>Images {{i+1}}</strong>
+              <p-fileUpload
+                name="demo[]"
+                url="https://www.primefaces.org/cdn/api/upload.php"
+                [multiple]="false"
+                accept="image/*"
+                (onSelect)="chooserFile($event,i)"
+                maxFileSize="100000000000"
+              >
+                <ng-template pTemplate="content">
+                  <ul></ul>
+                </ng-template>
+              </p-fileUpload>
+            </div>
+          </div>
+          <mat-card-actions align="start">
+            <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+              Add Another Photo
+            </button>
+            <button mat-flat-button (click)=" popImage()">
+              Remove Photo 
+            </button>
+          </mat-card-actions>
+        </div>
+      </div>
+    </form>
+    <button
+    *ngIf="!processing"
+      style="
+        background-color: #fca608;
+        color: white;
+        width: fit-content;
+        margin-top: 20px;
+        
+      "
+      (click)="addPackages()"
+      mat-flat-button
+    >
+Update Package
+    </button>
+    <p-button
+    *ngIf="processing"
+    loading="processing"
+      [style]="{ 'background-color': 'rgb(252,166,8)' }"
+      label="Saving"
+    ></p-button>
+  </mat-card>
+  
+  
+  
+  
+  
+  
+  
+  
+  </p-dialog>
+
+
+
+
+
+
 
 <p-dialog [modal]="true" header="Delete" [(visible)]="deleteDestination" >
   <mat-card>
