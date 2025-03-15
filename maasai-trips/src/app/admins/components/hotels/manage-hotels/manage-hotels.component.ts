@@ -142,26 +142,38 @@ readonly dialog = inject(MatDialog)
         minimumRoomRate: this.minimumRoomRate,
         contactEmail: this.contactEmail,
         contactPerson: this.contactPerson,
-        contactPhoneNumber: this.contactPerson,
+        contactPhoneNumber: this.phoneNumber,
         locationDescription: this.locationDescription,
       };
       var { message } = await this.hotel.updateHotel(payload, this.idSelected);
-      if (message == 'update Saved') {
+      if (message == 'Hotel Updated') {
+        this.popEditor = false
         this.snack.open('Hotel Updated 😀', 'success');
         this.processing = false;
+     
       } else {
         this.snack.open(message, 'Failed');
         this.processing = false;
+        this.popEditor = false
       }
     } catch (err) {
       console.error(err);
     }
   }
+
+getDestination(event:any){
+
+this.Destinations = event.value.id
+}
+
+getContact(event:any){
+this.contactPerson = event.value
+}
   readonly snack = inject(MatSnackBar);
   availableContactPerson: string[] = [
     'Manager',
-    'Reservationist',
-    'HR Manager',
+   "Reservation",
+   "Hotelier"
   ];
   images: any[] = [{ image1: null }];
   addImage() {

@@ -71,6 +71,7 @@ class PackageController extends Controller implements PackageInterface
     public function addPackage(Request $request)
     {
         try {
+            ini_set("max_execution_time", 3600);
             $validatedRequest = $request->validate([
                 "packageTitle" => "required|unique:packages,packageTitle",
                 "imagePackage" => "required|file",
@@ -97,11 +98,12 @@ class PackageController extends Controller implements PackageInterface
             $packageImages = [];
 
             foreach ($request->all() as $key => $value) {
-                if ($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-6])$/", $key)) {
+                if ($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9]|[1-9][0-9]|[1-4][0-9]{2}|500)$/", $key)) {
                     $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
                     $packageImages[] = $imageUrl["url"];
                 }
             }
+
             $validatedRequest['packageImages'] = json_encode($packageImages);
             Package::create($validatedRequest);
             return response()->json([
@@ -121,6 +123,80 @@ class PackageController extends Controller implements PackageInterface
             ], 422);
         }
     }
+
+
+
+
+
+    public function updatePackage(Request $request)
+    {
+        try {
+            ini_set("max_execution_time", 3600);
+            $validatedRequest = $request->validate([
+                "packageTitle" => "nullable",
+        
+                "packageOverview" => "nullable",
+                "packageAbout" => "nullable",
+                "startDate" => "nullable",
+                "id" => "required|exists:packages,id",
+                "endDate" => "nullable",
+                "packageCharge" => "nullable",
+                "packageChargeCurrency" => "nullable",
+                "packageInclusives" => "nullable",
+                "budgetType" => "nullable",
+                "packageExclusives" => "nullable",
+                "mode_transport" => "nullable",
+                "packageSpecialNotes" => "nullable",
+                "destinations_id" => "nullable",
+                "package_categories_id" => "nullable"
+
+            ]);
+            $cld = new Cloudinary();
+            $validatedRequest["olanka_users_id"] = $this->verifyingToken($request);
+            if ($request->hasFile("imagePackage")) {
+                $imagePath = $cld->uploadApi()->upload($request->file("imagePackage")->getRealPath());
+                $validatedRequest['packageImage'] = $imagePath['url'];
+                unset($validatedRequest['imagePackage']);
+
+            }
+            if (!empty($validatedRequest['packageTitle'] ?? null)) {
+                $validatedRequest["packageSlug"] = Str::slug($validatedRequest['packageTitle'], "_");
+            }
+            
+            $packageImages = [];
+             foreach ($request->all() as $key => $value) {
+                if ($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9]|[1-9][0-9]|[1-4][0-9]{2}|500)$/", $key)) {
+                    $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+                    $packageImages[] = $imageUrl["url"];
+                }
+            }
+            $id = $request->query("id");
+          if(count($packageImages) > 0){
+            $validatedRequest['packageImages'] = json_encode($packageImages);
+            
+          }
+        
+         Package::where("id", $id)->update($validatedRequest);
+            
+            
+            return response()->json([
+                "message" => "package Updated"
+            ]);
+        } catch (ValidationException $errValidation) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong",
+                "content" => $err->getMessage()
+            ], 422);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong",
+                "content" => $err->getMessage()
+            ], 422);
+        }
+    }
+
 
 
 
@@ -174,7 +250,7 @@ class PackageController extends Controller implements PackageInterface
     {
         try {
             $olanka_users_id = $this->verifyingToken($request);
-            $packageData = Package::select(["packageCharge", "packageChargeCurrency" ,"packageInclusives","packageExclusives","endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
+            $packageData = Package::select(["packageCharge", "packageChargeCurrency", "packageInclusives", "packageExclusives", "endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
             return response()->json([
                 "message" => "Packages Found",
                 "data" => $packageData->items(),
@@ -242,11 +318,11 @@ class PackageController extends Controller implements PackageInterface
             ]);
             $slug = $request->query("packageSlug");
             $matchingPackage = Package::where("packageSlug", $slug)->get()->first();
-            $relatedPackages = Package::where("package_categories_id",$matchingPackage['package_categories_id'])->where("id", "!=",$matchingPackage['id'])->get();
-              
+            $relatedPackages = Package::where("package_categories_id", $matchingPackage['package_categories_id'])->where("id", "!=", $matchingPackage['id'])->get();
+
             return response()->json([
                 "data" => $matchingPackage,
-                "relatedPackages"=>$relatedPackages
+                "relatedPackages" => $relatedPackages
             ]);
         } catch (\Exception $err) {
             Log::error($err->getMessage());

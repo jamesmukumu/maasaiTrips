@@ -78,6 +78,60 @@ class RoomsController extends Controller implements RoomsInterface{
 
 
 
+        public function updateRoom(Request $request){
+            try{
+            $user_id = $this->verifyToken($request);
+            $validatedRequest = $request->validate([
+            "roomType"=>"nullable",
+            "bedBreakfast"=>"nullable",
+            "halfBoard"=>"nullable",
+            "fullBoard"=>"nullable",
+            "allInclusive"=>"nullable",
+            "singleRoomRateChild"=>"nullable|numeric",
+            "doubleRoomRateChild"=>"nullable|numeric",
+            "sharingRoomRateChildParent"=>"nullable|numeric",
+            "roomCount"=>"nullable|integer",
+            "maximumRoomOccupancy"=>"nullable|integer",
+            "roomDescription"=>"nullable",
+            "hotels_models_id"=>"nullable|exists:hotels_models,id",
+            "id"=>"required|integer|exists:rooms,id"
+            ]);
+            $id = $request->query("id");
+    
+            $roomsImages= [];
+            $cld = new Cloudinary();
+            foreach($request->all() as $key => $value){
+            if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-9])$/", $key)){
+            
+            $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+            $roomsImages[] = $imageUrl["url"];
+            }
+            }
+            if(count($roomsImages) > 0){
+            $validatedRequest["roomImages"] = json_encode($roomsImages);
+            }
+            $validatedRequest["olanka_users_id"] = $user_id;
+           
+            Rooms::where("id",$id)->update($validatedRequest);
+            
+            return response()->json([
+            "message"=>"Room Updated Successfully"
+            ],200);
+            }catch(\Exception $err){
+            return response()->json([
+            "message"=>$err->getMessage()
+            ],500);
+            }
+            }
+    
+
+
+
+
+
+
+
+
 
         public function fetchMyRooms(Request $request){
         try{

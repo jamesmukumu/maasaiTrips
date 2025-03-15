@@ -26,7 +26,7 @@ export class ManageDestinationsComponent implements OnInit {
   constructor(private hotels: HotelsService) {}
   destinationTitle: string = '';
 
-  destinationDescription: string = '';
+  destinationDescription: any;
   Thumbnail: any;
 
   captureDestinationAbout(event: any) {
@@ -47,21 +47,25 @@ export class ManageDestinationsComponent implements OnInit {
     this.images[index][`image${index + 1}`] = currentFiles[0];
   }
 
-  async saveDestination() {
+  async updateFuncDestination() {
     this.processing = true;
     try {
       var payload = {
-        destinationTitle: this.destinationTitle,
-        destinationAbout: this.destinationAbout,
-        destinationDescription: this.destinationDescription,
-        Thumbnail: this.Thumbnail,
-        images: this.images,
+        destinationTitle: this.destinationTitle ?? null,
+        destinationAbout: this.destinationAbout ?? null,
+        destinationDescription: this.destinationDescription ?? null,
+        Thumbnail: this.Thumbnail ??  null,
+        images: this.images ?? null,
       };
-      var { message } = await this.hotels.saveDestination(payload);
-      if (message == 'Destination Added') {
-        this.snack.open('Destination Added 😀', 'success');
+      var { message } = await this.hotels.updateDestination(payload,this.idSelected);
+      if (message == 'Destination Updated') {
+        this.updateDestination = false
+        this.snack.open('Destination Updated 😀', 'success');
+        this.fetchMyDestinations()
         this.processing = false;
+       
       } else {
+        this.updateDestination = false
         this.snack.open(message, 'Failed');
         this.processing = false;
       }

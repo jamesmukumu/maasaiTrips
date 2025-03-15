@@ -213,10 +213,11 @@
             <div>
            <p-dropdown 
                 [options]="hotelRelevantData" 
-                [(ngModel)]="idSelected"
+                
                 [checkmark]="true" 
                 optionLabel="hotelName" 
                 [showClear]="true" 
+                (onChange)="getHotel($event)"
                 [style]="{'width':'100%'}"
                 placeholder="Select a Hotel" />
               </div>
@@ -324,12 +325,12 @@
          
       </div>
       </form>
-      <button *ngIf="!processing" (click)="createRoom()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Create Room</button>
+      <button *ngIf="!processing" (click)="updateRoom()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Update Room</button>
       <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
       </mat-card>
       
       <div class="spinner" *ngIf="fetchingDestinations">
-      <p-progressSpinner/>
+      <p-progressSpinner/> 
       </div>
 </p-dialog>
 

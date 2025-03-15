@@ -130,29 +130,40 @@ export class HotelsService {
     try {
       var token = Cookies.get('grant_token');
       var formData = new FormData();
-      for (let i = 0; i < hotel.images.length; i++) {
-        var keysHotel = Object.keys(hotel.images[i]);
-        var valuesHotel: any = Object.values(hotel.images[i]);
-        for (let j = 0; j < keysHotel.length; j++) {
-          formData.append(keysHotel[j], valuesHotel[j]);
+      if (hotel.images.length > 0) {
+        for (let i = 0; i < hotel.images.length; i++) {
+          var keysHotel = Object.keys(hotel.images[i]);
+          var valuesHotel: any = Object.values(hotel.images[i]);
+          for (let j = 0; j < keysHotel.length; j++) {
+            formData.append(keysHotel[j], valuesHotel[j]);
+          }
         }
       }
-      formData.append('locationDescription', hotel.locationDescription);
-      formData.append('contactEmail', hotel.contactEmail);
-      formData.append('contactPhoneNumber', hotel.contactPhoneNumber);
-      formData.append('contactPerson', hotel.contactPerson);
-      formData.append('hotelCommission', `${hotel.hotelCommission}`);
-      formData.append('destinations_id', `${hotel.destinations_id}`);
-      formData.append('maximumRate', `${hotel.maximumRate}`);
-      formData.append('minimumRoomRate', `${hotel.minimumRoomRate}`);
-      formData.append(
-        'hotelCancellationPolicy',
-        `${hotel.hotelCancellationPolicy}`
-      );
-      formData.append('hotelMetaDescription', hotel.hotelMetaDescription);
-      formData.append('hotelDescription', hotel.hotelDescription);
-      formData.append('hotelName', hotel.hotelName);
-      formData.append('thumbnail', hotel.thumbnail);
+
+      var appender = (key: string, value: string) => {
+        if (
+          key != undefined &&
+          value != undefined &&
+          key != '' &&
+          value != ''
+        ) {
+          formData.append(key, value);
+        }
+      };
+
+      appender('locationDescription', hotel.locationDescription);
+      appender('contactEmail', hotel.contactEmail);
+      appender('contactPhoneNumber', hotel.contactPhoneNumber);
+      appender('contactPerson', hotel.contactPerson);
+      appender('hotelCommission', `${hotel.hotelCommission}`);
+      appender('destinations_id', `${hotel.destinations_id}`);
+      appender('maximumRate', `${hotel.maximumRate}`);
+      appender('minimumRoomRate', `${hotel.minimumRoomRate}`);
+      appender('hotelCancellationPolicy', `${hotel.hotelCancellationPolicy}`);
+      appender('hotelMetaDescription', hotel.hotelMetaDescription);
+      appender('hotelDescription', hotel.hotelDescription);
+      appender('hotelName', hotel.hotelName);
+      appender('thumbnail', hotel.thumbnail);
 
       var resp = await axios.post(`${this.baseUrl}/update/hotel`, formData, {
         headers: {
@@ -317,6 +328,38 @@ export class HotelsService {
     }
   }
 
+  async updateDestination(destination: any, id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var formData = new FormData();
+      for (let i = 0; i < destination.images.length; i++) {
+        var keysdestinations = Object.keys(destination.images[i]);
+        var valuesdestinations: any = Object.values(destination.images[i]);
+        for (let j = 0; j < keysdestinations.length; j++) {
+          formData.append(keysdestinations[j], valuesdestinations[j]);
+        }
+      }
+      formData.append('destinationTitle', destination.destinationTitle);
+      formData.append('destinationAbout', destination.destinationAbout ?? null);
+      formData.append(
+        'destinationDescription',
+        destination.destinationDescription ?? null
+      );
+      formData.append('thumbnail', destination.Thumbnail);
+      var resp = await axios.post(
+        `${this.baseUrl}/update/destination?id=${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
   async fetchHotelsDisplay(url: string) {
     try {
       var resp = await axios.get(url, {});

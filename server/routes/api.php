@@ -114,7 +114,7 @@ Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels'
 // Rooms Api
 Route::post("/create/new/room",[RoomsController::class,"createRoom"]);
 Route::get("/find/my/rooms",[RoomsController::class,"fetchMyRooms"]);
-
+Route::post("/update/room",[RoomsController::class,"updateRoom"]);
 
 
 
@@ -129,6 +129,8 @@ Route::get("/fetch/my/destinations",[DestinationController::class,"myDestination
 Route::delete("/delete/destination",[DestinationController::class,'DeleteDestination']);
 Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
 Route::put("/unpublish/destination",[DestinationController::class,"UnpublishDestination"]);
+Route::post("/update/destination",[DestinationController::class,"updateDestination"]);
+
 
 
 
@@ -142,7 +144,7 @@ Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPack
 Route::post("/create/package/category",[PackageController::class,'addPackageCategory']);
 Route::get("/fetch/package/categories",[PackageController::class,'fetchPackageCategories']);
 Route::get("/fetch/singular/package",[PackageController::class,'findSingularPackage']);
-
+Route::post("/update/package",[PackageController::class,'updatePackage']);
 
 
 

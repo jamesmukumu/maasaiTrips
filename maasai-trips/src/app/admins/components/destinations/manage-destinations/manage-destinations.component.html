@@ -154,7 +154,7 @@
   
   
   </form>
-  <button *ngIf="!processing"  (click)="saveDestination()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Create Destination</button>
+  <button *ngIf="!processing"  (click)="updateFuncDestination()" style="background-color:#fca608;color: white;width: fit-content; margin-top: 20px;" mat-flat-button>Update Destination</button>
   <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
   </mat-card>
   

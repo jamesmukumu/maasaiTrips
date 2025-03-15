@@ -158,7 +158,7 @@ var payload = {
 "budgetType":this.choosenBudgetType,
 "packageInclusives":incl,
 "packageExclusives":excl,
-"specialNotels":this.specialNotes
+"specialNotes":this.specialNotes
 
 
 }

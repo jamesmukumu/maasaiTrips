@@ -78,4 +78,53 @@ export class RoomsService {
       return err;
     }
   }
+
+  async updateRoom(room: Room, id: number) {
+    try {
+      var token = Cookies.get('grant_token');
+      var formData = new FormData();
+      if (room.images.length > 0) {
+        for (let i = 0; i < room.images.length; i++) {
+          var keysRoom = Object.keys(room.images[i]);
+          var valuesRoom: any = Object.values(room.images[i]);
+          for (let j = 0; j < keysRoom.length; j++) {
+            formData.append(keysRoom[j], valuesRoom[j]);
+          }
+        }
+      }
+      var appender = (key: string, val: string) => {
+        if (key != undefined && val != undefined && key != '' && val != '') {
+          formData.append(key, val);
+        }
+      };
+
+      appender('allInclusive', room.allInclusive);
+      appender('bedBreakfast', room.bedBreakfast);
+      appender('doubleRoomRateChild', `${room.doubleRoomRateChild}`);
+      appender('hotels_models_id', `${room.hotel_models_id}`);
+      appender('maximumRoomOccupancy', `${room.maximumRoomOccupancy}`);
+      appender('roomCount', `${room.roomCount}`);
+      appender(
+        'sharingRoomRateChildParent',
+        `${room.sharingRoomRateChildParent}`
+      );
+      appender('singleRoomRateChild', `${room.singleRoomRateChild}`);
+      appender('fullBoard', room.fullBoard);
+      appender('halfBoard', room.halfBoard);
+      appender('roomDescription', room.roomDescription);
+      appender('roomType', room.roomType);
+      var response = await axios.post(
+        `${this.baseUrl}/update/room?id=${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

@@ -226,6 +226,7 @@
           [checkmark]="true" 
           optionLabel="destinationTitle" 
           [showClear]="true" 
+          (onChange)="getDestination($event)"
           [style]="{'width':'100%'}"
           placeholder="Select a Destination" />
         </div>
@@ -376,7 +377,7 @@
           [options]="availableContactPerson" 
           [(ngModel)]="contactPerson"
           [checkmark]="true" 
-        
+          (onChange)="getContact($event)"
           [showClear]="true" 
           [style]="{'width':'100%'}"
           placeholder="Select a Contact Person" />

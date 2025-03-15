@@ -191,6 +191,7 @@
           [checkmark]="true" 
           optionLabel="destinationTitle"
           [filter]="true"
+          (onChange)="getDestination($event)"
        
           [showClear]="true" 
           [style]="{'width':'100%'}"
@@ -205,6 +206,7 @@
             [checkmark]="true" 
             optionLabel="title"
             [filter]="true"
+            (onChange)="getPackageCategory($event)"
          
             [showClear]="true" 
             [style]="{'width':'100%','margin-top':'10px'}"
@@ -217,7 +219,7 @@
               [options]="budgetTypes" 
               [(ngModel)]="choosenBudgetType"
               [checkmark]="true" 
-          
+              (onChange)="getBudget($event)"
               [showClear]="true" 
               [style]="{'width':'100%'}"
               placeholder="Select a Budget Type" />
@@ -229,7 +231,7 @@
                 [options]="transport" 
                 [(ngModel)]="choosenMeans"
                 [checkmark]="true" 
-            
+                (onChange)="getTransport($event)"
                 [showClear]="true" 
                 [style]="{'width':'100%'}"
                 placeholder="Select Mode of Transport Type" />
@@ -289,9 +291,10 @@
           <p-dropdown 
           variant="filled"
           [options]="countryCodes" 
-          [(ngModel)]="codeValues"
+          [(ngModel)]="someValue"
           [checkmark]="true" 
           optionLabel="name"
+          (onChange)="getCurrency($event)"
           [filter]="true"
        
           [showClear]="true" 
@@ -383,7 +386,7 @@
         margin-top: 20px;
         
       "
-      (click)="addPackages()"
+      (click)="updatePackages()"
       mat-flat-button
     >
 Update Package

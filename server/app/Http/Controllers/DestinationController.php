@@ -68,6 +68,58 @@ class DestinationController extends Controller implements DestinationsInterface{
 
 
 
+
+
+
+
+        public function updateDestination(Request $request){
+            try{
+            $user_id = $this->verifyToken($request);
+            $validatedRequest = $request->validate([
+            "id"=>"required|exists:destinations,id",
+            "destinationTitle"=>"nullable|unique:destinations,destinationTitle",
+            "destinationAbout"=>"nullable",
+            "destinationDescription"=>"nullable",
+            
+            ]);
+            $id = $request->query("id");
+             $destinationImages= [];
+            $cld = new Cloudinary();
+            foreach($request->all() as $key => $value){
+            if($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9])$/", $key)){
+            $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+            $destinationImages[] = $imageUrl["url"];
+            }
+            }
+if(count($destinationImages) > 0){
+    $validatedRequest["destinationPhotos"] = json_encode($destinationImages);
+}
+            $validatedRequest["olanka_users_id"] = $user_id;
+            
+            if($request->hasFile("thumbnail")){
+            $thumbnail= $cld->uploadApi()->upload($request->file("thumbnail")->getRealPath());
+            $validatedRequest["destinationThumbnail"]  = $thumbnail["url"];
+            }
+          if(!empty($validatedRequest["destinationTitle"])){
+            $slug = Str::slug($validatedRequest['destinationTitle'].uniqid(),"_");
+            $validatedRequest["destinationSlug"] = $slug; 
+          }
+           
+           
+           
+            Destinations::where("id",$id)->update($validatedRequest);
+            return response()->json([
+            "message"=>"Destination Updated"
+            ],200);
+            }catch(\Exception $err){
+            return response()->json([
+            "message"=>$err->getMessage()
+            ],500);
+            }
+            }
+    
+
+
 public function fetchDestinations(){
 try{
 $destinations =  Destinations::all()->select(["id","destinationTitle"]);

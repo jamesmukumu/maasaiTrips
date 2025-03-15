@@ -166,37 +166,7 @@ export class ManageRoomComponent {
   
    
   
-    async updateHotel() {
-      this.processing = true;
-      try {
-        var payload: any = {
-          hotelName: this.hotelName,
-          hotelCancellationPolicy: this.cancellationPolicy,
-          hotelCommission: this.hotelCommission,
-          hotelDescription: this.hotelDescription,
-          hotelMetaDescription: this.hotelMetaDescription,
-          thumbnail: this.Thumbnail,
-          destinations_id: this.Destinations,
-          images: this.images,
-          maximumRate: this.maximumRoomRate,
-          minimumRoomRate: this.minimumRoomRate,
-          contactEmail: this.contactEmail,
-          contactPerson: this.contactPerson,
-          contactPhoneNumber: this.contactPerson,
-          locationDescription: this.locationDescription,
-        };
-        var { message } = await this.hotel.updateHotel(payload, this.idSelected);
-        if (message == 'update Saved') {
-          this.snack.open('Hotel Updated 😀', 'success');
-          this.processing = false;
-        } else {
-          this.snack.open(message, 'Failed');
-          this.processing = false;
-        }
-      } catch (err) {
-        console.error(err);
-      }
-    }
+
     readonly snack = inject(MatSnackBar);
     availableContactPerson: string[] = [
       'Manager',
@@ -204,7 +174,29 @@ export class ManageRoomComponent {
       'HR Manager',
     ];
     
-    async createRoom(){
+    
+      captureRoom(event:any){
+        var {htmlValue} =  event
+       this.roomDescription = htmlValue
+       }
+    images: any[] = [{ image1: null }];
+    addImage() {
+      var index = this.images.length;
+      this.images.push({ [`image${index + 1}`]: null });
+    }
+    popImage() {
+      if (this.images.length <= 1) {
+        this.snack.open('Images cannot be less than 1', 'Add');
+        return;
+      }
+      this.images.pop();
+    }
+    getHotel(event:any){
+this.hotelid = event.value.id
+    }
+      hotelid:any
+
+    async updateRoom(){
       this.processing = true
      try{   
     var payload:Room = {
@@ -223,35 +215,28 @@ export class ManageRoomComponent {
    images:this.images
    
     }
-     var {message} = await this.room.saveRoom(payload)
-     if(message == 'Room Saved'){
-     this.snack.open("Room Saved 😀","success")
+     var {message} = await this.room.updateRoom(payload,this.idSelected)
+     if(message == 'Room Updated Successfully'){
+      this.popEditor = false
+     this.snack.open("Room Updated 😀","success")
      this.processing = false
      }else{
+      this.popEditor = false
      this.snack.open(message,"Failed")
      this.processing = false
+
      }
      }catch(err){
      console.error(err)
      }
      }
-      captureRoom(event:any){
-        var {htmlValue} =  event
-       this.roomDescription = htmlValue
-       }
-    images: any[] = [{ image1: null }];
-    addImage() {
-      var index = this.images.length;
-      this.images.push({ [`image${index + 1}`]: null });
-    }
-    popImage() {
-      if (this.images.length <= 1) {
-        this.snack.open('Images cannot be less than 1', 'Add');
-        return;
-      }
-      this.images.pop();
-    }
-  
+
+
+
+
+
+
+
     async fetchDestinations() {
       try {
         this.fetchingHotels = true;

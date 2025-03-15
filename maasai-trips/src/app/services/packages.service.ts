@@ -52,6 +52,69 @@ export class PackagesService {
     }
   }
 
+  async updatePackage(Payload: any, id: any) {
+    try {
+      let token = Cookies.get('grant_token');
+      var formData = new FormData();
+
+      if (Payload.images && Array.isArray(Payload.images)) {
+        for (let i = 0; i < Payload.images.length; i++) {
+          var keysHotel = Object.keys(Payload.images[i]);
+          var valuesHotel: any = Object.values(Payload.images[i]);
+          for (let j = 0; j < keysHotel.length; j++) {
+            if (
+              valuesHotel[j] !== undefined &&
+              valuesHotel[j] !== null &&
+              valuesHotel[j] !== ''
+            ) {
+              formData.append(keysHotel[j], valuesHotel[j]);
+            }
+          }
+        }
+      }
+
+      const appendIfValid = (key: string, value: any) => {
+        if (
+          value !== undefined &&
+          value !== null &&
+          value !== '' &&
+          value !== 'undefined'
+        ) {
+          formData.append(key, value);
+        }
+      };
+
+      appendIfValid('packageTitle', Payload.title);
+      appendIfValid('packageAbout', Payload.about);
+      appendIfValid('packageOverview', Payload.overview);
+      appendIfValid('imagePackage', Payload.image);
+      appendIfValid('packageCharge', Payload.charges);
+      appendIfValid('packageChargeCurrency', Payload.chargeCurrency);
+      appendIfValid('startDate', Payload.startDate);
+      appendIfValid('endDate', Payload.endDate);
+      appendIfValid('destinations_id', Payload.destinations_id);
+      appendIfValid('packageSpecialNotes', Payload.specialNotes);
+      appendIfValid('budgetType', Payload.budgetType);
+      appendIfValid('mode_transport', Payload.mode_transport);
+      appendIfValid('package_categories_id', Payload.package_categories_id);
+      appendIfValid('packageInclusives', Payload.packageInclusives);
+      appendIfValid('packageExclusives', Payload.packageExclusives);
+
+      var resp = await axios.post(
+        `${this.baseUrl}/update/package?id=${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
   async fetchMyPackages() {
     try {
       var token = Cookies.get('grant_token');
