@@ -244,6 +244,7 @@
         <div>
           <label>Enter Hotel Meta Description</label>
           <p-editor
+          [(ngModel)]="hotelMetaDescription"
             placeholder="Enter Hotel Meta  Description"
             (onTextChange)="captureMetaDescriptionHotel($event)"
             [style]="{ height: '245px' }"
@@ -396,7 +397,7 @@
       "
       mat-flat-button
     >
-      Create Hotel
+    Update Hotel
     </button>
     <p-button
       loading

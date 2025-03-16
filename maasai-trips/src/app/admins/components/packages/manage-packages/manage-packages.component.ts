@@ -115,13 +115,16 @@ export class ManagePackagesComponent {
     this.inclusions = JSON.parse(element.packageInclusives);
     this.exclusions = JSON.parse(element.packageExclusives);
     this.packageCharge = element.packageCharge;
-
+    this.packageAbout = element.packageAbout
+   this.packageOverview = element.packageOverview
+   this.specialNotes = element.packageSpecialNotes
     this.updateDestination = true;
   }
   popDeleteDestination(id: any) {
     this.idSelected = id;
     this.deleteDestination = true;
   }
+
   popPublish(id: any) {
     this.idSelected = id;
     this.publishDestination = true;
@@ -288,10 +291,10 @@ export class ManagePackagesComponent {
         payload,
         this.idSelected
       );
-      if (message == 'package Updated 😄') {
+      if (message == 'package Updated') {
         this.processing = false;
         this.updateDestination = false
-        this.snack.open('Package Updated', 'success');
+        this.snack.open('Package Updated 😄', 'success'.toUpperCase());
         this.fetchMyDestinations();
       } else {
         this.processing = false;

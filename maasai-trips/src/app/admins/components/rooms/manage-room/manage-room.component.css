@@ -18,7 +18,9 @@
         box-sizing: border-box;
         }
         
-        
+        .small-table{
+        display: none;
+        }
         mat-card,form{
         width: 100%;
         }

@@ -226,8 +226,8 @@ console.error(err)
           identifierName: 'My Hotels',
         },
         {
-          Tree_Name: 'New Hotel Rooms',
-          identifierName: 'New Hotel Rooms',
+          Tree_Name: 'My Rooms',
+          identifierName: 'MyRooms',
         },
       ],
     },

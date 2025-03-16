@@ -2,7 +2,7 @@
 
 <mat-form-field appearance="outline" >
   <mat-label>Search any Package</mat-label>
-  <input type="text" matInput  #inputSelect (keyup)="applyFilter($event)"  />
+  <input type="text" matInput  name="filter-search" #inputSelect (keyup)="applyFilter($event)"  />
   <mat-hint>Example:Easter Package</mat-hint>
 </mat-form-field>
 
@@ -155,7 +155,7 @@
 >
 </mat-paginator>
 
-<div class="spin" *ngIf="processing">
+<div class="spinner" *ngIf="processing">
   <p-progressSpinner  />
 </div>
 
@@ -178,6 +178,8 @@
         <div>
           <label>Enter Package OverView</label>
           <p-editor
+          [(ngModel)]="packageOverview"
+          name="package-overview"
           (onTextChange)="captureOverview($event)"
             [style]="{ 'min-height': '245px' }"
             placeholder="Enter Package OverView:Example brief description about this package"
@@ -304,15 +306,18 @@
         <div>
           <label>Enter Package About</label>
           <p-editor
+          name="package-about"
+          [(ngModel)]="packageAbout"
           (onTextChange)="captureAbout($event)"
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
           />
-        </div>
+        </div>  
   
         <div>
           <label>Enter Package Special Notes</label>
           <p-editor
+          [(ngModel)]="specialNotes"
           (onTextChange)="captureSpecialNotes($event)"
             [style]="{ 'min-height': '20vh' }"
             placeholder="Enter Any Special Notes you wish to add."
@@ -320,13 +325,29 @@
         </div>
   
        <div style="display: flex; flex-direction: column;width: 100%;">
-        <label>Choose Package Date</label>
+        <label>Choose Package Start Date</label>
         <p-calendar 
        [style]="{'width':'100%'}"
         [touchUI]="true"
         [readonlyInput]="true" 
-        selectionMode="range"
+      
         required
+        name="package-dates"
+        [(ngModel)]="startDate"
+        
+        />
+       </div>
+
+       <div style="display: flex; flex-direction: column;width: 100%;">
+        <label>Choose Package End Date</label>
+        <p-calendar 
+       [style]="{'width':'100%'}"
+        [touchUI]="true"
+        [readonlyInput]="true" 
+      
+        required
+        name="package-dates-end"
+        [(ngModel)]="endDate"
         
         />
        </div>

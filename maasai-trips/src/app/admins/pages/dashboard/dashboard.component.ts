@@ -97,6 +97,11 @@ case "Add Hotel":
   case "Add Rooms":
     this.activeIndex = 2
   this.hotelChoosen = 3
+  break
+  case "My Rooms":
+    this.activeIndex = 2
+    this.hotelChoosen = 4
+    break
   break  
   case 'My Hotels':
     this.activeIndex = 2

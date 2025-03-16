@@ -93,6 +93,7 @@
         <div>
           <label>Enter Destination About</label>
           <p-editor
+          [(ngModel)]="destinationAbout"
           [style]="{height:'245px'}"
           (onTextChange)="captureDestinationAbout($event)"
       placeholder="Enter Destination About.Example insights of the destination eg"
@@ -101,11 +102,11 @@
   
         <div>
           <label>Enter Destination Description</label>
-          <p-editor placeholder="Enter Destination  Description" (onTextChange)="captureDestinationDescription($event)"   [style]="{height:'245px'}" />
+          <p-editor [(ngModel)]="destinationDescription" placeholder="Enter Destination  Description" (onTextChange)="captureDestinationDescription($event)"   [style]="{height:'245px'}" />
         </div>
   
   
-      
+       
   
         <div>
           <label>Destination Thumbnail Photo</label>

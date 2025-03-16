@@ -55,11 +55,15 @@ readonly dialog = inject(MatDialog)
     this.latitude = element.latitude
     this.longitude = element.longitude
     this.hotelDescription = element.hotelDescription
+    this.hotelMetaDescription = element.hotelMetaDescription
     this.hotelCommission = element.hotelCommission
     this.minimumRoomRate = element.minimumRoomRate
     this.maximumRoomRate = element.maximumRate
     this.contactEmail = element.contactEmail
     this.phoneNumber = element.contactPhoneNumber
+    this.Destinations = element.destinations_id
+    this.locationDescription = element.locationDescription
+    this.cancellationPolicy = element.hotelCancellationPolicy
     this.popEditor = true;
   }
   publishingHotel(element: any) {

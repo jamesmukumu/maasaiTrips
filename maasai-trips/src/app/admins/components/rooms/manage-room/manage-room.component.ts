@@ -41,10 +41,9 @@ export class ManageRoomComponent {
     displayedColumnsSmall: string[] = [
       'roomType',
       'hotelName',
-      'singleRoomRateChild',
-      'doubleRoomRateChild',
+  
       'roomCount',
-      'maximumRoomOccupancy',
+     
     
       'actions',
     ];
@@ -88,10 +87,10 @@ export class ManageRoomComponent {
       this.allInclusive = element.allInclusive
       this.fullBoard = element.fullBoard
       this.halfBoard = element.halfBoard
-      this.doubleRoomRate = element.doubleRoomRate
+
       this.singleRoomRateChild = element.singleRoomRateChild
       this.bedBreakfast = element.bedBreakfast
-      this.doubleRoomRate = element.doubleRoomRate
+   
       
       this.popEditor = true;
     }

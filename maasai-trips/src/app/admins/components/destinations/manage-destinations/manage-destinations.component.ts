@@ -162,6 +162,8 @@ export class ManageDestinationsComponent implements OnInit {
   popUpdate(id: any, data: any) {
   this.destinationTitle = data.destinationTitle
   this.idSelected = id
+  this.destinationAbout = data.destinationAbout
+  this.destinationDescription = data.destinationDescription
   this.updateDestination = true;
   }
   popDeleteDestination(id: any) {
