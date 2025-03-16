@@ -44,7 +44,7 @@ class PackageController extends Controller implements PackageInterface
             $validatedRequest['slug'] = Str::slug($validatedRequest['title']);
             PackageCategories::create($validatedRequest);
             return response()->json([
-                "message" => "Package categories saved"
+                "message" => "Package category saved"
             ]);
         } catch (\Exception $err) {
             Log::error($err->getMessage());

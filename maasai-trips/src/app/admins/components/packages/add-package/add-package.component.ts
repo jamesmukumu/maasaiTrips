@@ -134,7 +134,22 @@ captureSpecialNotes(event:any){
     var {htmlValue} = event
     this.specialNotes = htmlValue
     }
-
+savingPackageCategory = false
+savePackageCategory(){
+this.savingPackageCategory = true
+this.packages.createPackage_Category(this.newPackageCategory).then((data)=>{
+var {message} = data
+if(message == 'Package category saved'){
+this.savingPackageCategory = false
+this.addPackageCategory = false
+this.snack.open("Package Category Added 😄")
+}else{
+this.savingPackageCategory = false
+this.addPackageCategory = false
+this.snack.open(message,"Failed")
+}
+})
+}
 
 async  addPackages(){
 let incl = JSON.stringify(this.inclusions)

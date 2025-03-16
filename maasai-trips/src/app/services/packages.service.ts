@@ -218,4 +218,24 @@ export class PackagesService {
       return err;
     }
   }
+
+  async createPackage_Category(title: string) {
+    try {
+      var token = Cookies.get('grant_token');
+      var response = await axios.post(
+        `${this.baseUrl}/create/package/category`,
+        {
+          title: title,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

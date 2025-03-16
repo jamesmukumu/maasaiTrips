@@ -1,0 +1,36 @@
+mat-dialog-content{
+    width: max-content;
+    height: max-content;
+    }
+    form{
+    display: flex;
+    flex-direction: row;
+    }
+    form div{
+    margin-left: 40px;
+    }
+    mat-dialog-actions button{
+        background-color: #fca608;
+        color: white;   
+    }
+    form div mat-form-field{
+    margin-top: 20px;
+    }
+    mat-form-field{
+    display: block;
+    }
+    
+    
+    @media(max-width:900px){
+    form{
+    flex-direction: column;
+    }
+    mat-dialog-content{
+    width: 100%;
+    height: fit-content;
+    }
+    form div{
+        margin-left: 0px;
+    margin-top: 20px;
+    }
+    }

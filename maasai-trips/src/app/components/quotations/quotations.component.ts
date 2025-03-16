@@ -70,9 +70,6 @@ case "Quotation added":
     verticalPosition:"top"
     })
 }
-
-
-
 }
 
 }

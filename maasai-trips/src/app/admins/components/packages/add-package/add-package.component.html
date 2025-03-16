@@ -232,13 +232,14 @@
   Example:2 days trips offers
 </mat-hint>
 </mat-form-field>
-<button  style="
+<button *ngIf="!savingPackageCategory" (click)="savePackageCategory()"  style="
 background-color: #fca608;
 color: white;
 width: fit-content;
 margin-top: 20px;
 
 " mat-flat-button>Add</button>
+<p-button [style]="{'background-color':'yellow'}" *ngIf="savingPackageCategory" label="addingPackage" loading="savingPackageCategory"></p-button>
 </form>
 </p-dialog>
 

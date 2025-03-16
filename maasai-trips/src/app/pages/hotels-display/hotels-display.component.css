@@ -41,6 +41,7 @@ mat-card div {
   max-width: 100%;
   min-width: 200px;
   min-height: 300px;
+  max-height: 500px;
   cursor: pointer;
   
   position: relative;
