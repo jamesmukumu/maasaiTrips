@@ -11,9 +11,10 @@ protected $fillable = ["roomType","bedBreakfast","halfBoard","fullBoard","allInc
     use HasFactory;
 
 
-public function hotels(){
-return $this->belongsTo(HotelsModel::class,"id")->select(["id","hotelName"]);
-}
+    public function hotels(){
+        return $this->belongsTo(HotelsModel::class, "hotels_models_id")->select(["id", "hotelName"]);
+    }
+    
 
 protected static function booted() {
     static::created(function ($roomTemplate) {

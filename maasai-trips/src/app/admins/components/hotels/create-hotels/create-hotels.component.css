@@ -34,7 +34,7 @@ mat-card-actions button{
 
 
 .contact-information{
-width: 35%;
+
 display: flex;
 flex-direction: column;
 }

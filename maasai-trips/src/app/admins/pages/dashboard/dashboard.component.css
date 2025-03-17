@@ -71,6 +71,9 @@ mat-icon {
 span {
   color: white;
 }
+header-add{
+width: max-content;
+}
 
 @media (max-width: 900px) {
   .main mat-card {
