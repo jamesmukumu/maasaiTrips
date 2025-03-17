@@ -108,6 +108,7 @@ class HotelsController extends Controller implements HotelInterface
                 "hotelDescription" => "nullable"
 
             ]);
+            $validatedRequest["actionPending"] = 'pending';
             $id = $request->query('id');
             if (!empty($validatedRequest["hotelName"])) {
                 $slug = Str::slug($validatedRequest["hotelName"], "-");
@@ -279,6 +280,30 @@ class HotelsController extends Controller implements HotelInterface
     }
 
 
+
+
+
+    public function updateActionPending(Request $request){
+        try{
+        $validatedRequest = $request->validate([
+        "actionPending"=>"required",
+        "id"=>"required|exists:hotels_models,id"
+        ]);
+        $matchingHotel = HotelsModel::find($request->query('id'));
+        
+        $matchingHotel["actionPending"] = $validatedRequest["actionPending"];
+        $matchingHotel->save();
+        return response()->json([
+        "message"=>"action updated",
+        
+        ]);
+        }catch(\Exception $err){
+        Log::error($err->getMessage());
+        return response()->json([
+        "message"=>$err->getMessage()
+        ]);
+        }
+        }
 
 
 }

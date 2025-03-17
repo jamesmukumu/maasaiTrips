@@ -10,14 +10,14 @@ public function up(): void{
             $table->id();
             $table->timestamps();
             $table->string("packageTitle")->unique(true)->nullable(false);
-            $table->tinyText("packageImage")->nullable(false);
+            $table->text("packageImage")->nullable(false);
             $table->text('packageOverview')->nullable(false);
             $table->string('packageSlug')->nullable(false);
             $table->boolean('published')->default(false);
             $table->text("packageAbout")->nullable(false);
-            $table->tinyText("packageInclusives")->nullable(false);
-            $table->tinyText("packageExclusives")->nullable(false);
-            $table->tinyText("packageSpecialNotes")->nullable(false);
+            $table->text("packageInclusives")->nullable(false);
+            $table->text("packageExclusives")->nullable(false);
+            $table->text("packageSpecialNotes")->nullable(false);
             $table->integer("packageCharge")->nullable(false);
             $table->string("startDate")->nullable(false);
             $table->string("endDate")->nullable(false);
@@ -28,7 +28,7 @@ public function up(): void{
             $table->enum("budgetType",["Mid Range Tour","Luxury Tour","Private Tour"]);
             $table->foreignID("package_categories_id")->constrained()->onDelete("cascade");
             $table->enum("mode_transport",["Air","LandCruiser","Van","Jeep"]);
-
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
 
         });
     }

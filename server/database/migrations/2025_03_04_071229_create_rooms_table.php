@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer("maximumRoomOccupancy");
             $table->text("roomDescription");
             $table->text("roomImages");
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
             $table->foreignId("hotels_models_id")->constrained()->onDelete("cascade");
             $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
              

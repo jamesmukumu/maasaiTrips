@@ -8,6 +8,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PromotionalControllers;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RoomsController;
+use App\Http\Middleware\VerifySuperUser;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Verify;
 use App\Http\Controllers\MailerController;
@@ -15,11 +16,20 @@ use App\Http\Controllers\NewsLetterAlert;
 use App\Http\Middleware\EmailVerify;
 
 
+// Middleware for super user
+Route::middleware(VerifySuperUser::class)->group(function(){
+Route::put("/adjust/status/destinations",[DestinationController::class,"updateActionPending"]);
+Route::put("/adjust/status/hotels",[HotelsController::class,"updateActionPending"]);
+Route::put("/adjust/status/packages",[PackageController::class,"updateActionPending"]);
+Route::put("/adjust/status/rooms",[RoomsController::class,"updateActionPending"]);
+
+
+});
+
+
 
 // grouping my routes here  y the middleware verify.T
 Route::middleware(Verify::class)->group(function () {
-
-
     // mail apis
 Route::post("/send/email",[MailerController::class,"sendMail"]);
 Route::post("/save/email/template",[MailerController::class,"saveEmailTemplate"]);
@@ -130,6 +140,7 @@ Route::delete("/delete/destination",[DestinationController::class,'DeleteDestina
 Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
 Route::put("/unpublish/destination",[DestinationController::class,"UnpublishDestination"]);
 Route::post("/update/destination",[DestinationController::class,"updateDestination"]);
+
 
 
 

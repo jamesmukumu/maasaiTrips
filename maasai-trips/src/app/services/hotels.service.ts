@@ -395,4 +395,44 @@ export class HotelsService {
       return err;
     }
   }
+
+  async adjustStatus_Destinations(status: string, id: number) {
+    try {
+      var token = Cookies.get(`grant_token`);
+      var response = await axios.put(
+        `${this.baseUrl}/adjust/status/destinations?id=${id}`,
+        {
+          actionPending: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async adjustStatus_Hotels(status: string, id: number) {
+    try {
+      var token = Cookies.get(`grant_token`);
+      var response = await axios.put(
+        `${this.baseUrl}/adjust/status/hotels?id=${id}`,
+        {
+          actionPending: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

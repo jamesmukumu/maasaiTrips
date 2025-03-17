@@ -5,26 +5,67 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PackagesService } from '../../../../services/packages.service';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MessageService,ConfirmationService } from 'primeng/api';
 import { provideNativeDateAdapter } from '@angular/material/core';
 @Component({
   selector: 'manage-packages',
   templateUrl: './manage-packages.component.html',
   styleUrl: './manage-packages.component.css',
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(),MessageService,ConfirmationService],
 })
 export class ManagePackagesComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly snack = inject(MatSnackBar);
   constructor(
     private hotels: HotelsService,
-    private packages: PackagesService
+    private packages: PackagesService,
+    private msg:MessageService,
+    private confirm:ConfirmationService
   ) {}
+  adjustStatus(id:any){
+    this.idSelected = id
+  this.showAdjuststatus = true
+  }    
+adjusting = false
+  popConfirm(event:any){
+  this.confirm.confirm({
+    target:event?.target as EventTarget,
+    message:"Are you ready to change the status",
+    accept:()=>{
+      this.adjusting = true
+      this.packages.adjustStatus_Packages(this.status,this.idSelected).then((data)=>{
+      var {message} = data
+      if(message === 'action updated'){
+       this.adjusting = false
+        this.snack.open("Adjusted","Success")
+        this.showAdjuststatus= false
+        this.fetchMyDestinations()
+      }else if(message == 'Unauthorized function'){
+        this.adjusting = false
+        this.showAdjuststatus = false
+        this.msg.add({life:13000,severity:"error",detail:'You cannot Perform this function'})
+      }
+
+      })
+
+
+    },
+    reject:()=>{}
+  })
+  }
+  showAdjuststatus = false
+  allowedStatus = ["pending","approved","rejected"]
+  status:string = ''
+  getStatus(event:any){
+   this.status = event.value
+  }
   displayedColumns: string[] = [
     'name',
     'charge',
     'startDate',
     'endDate',
     'published',
+    "actionPending",
     'actions',
   ];
   displayedColumnsSmall: string[] = ['name', 'charge', 'published', 'actions'];

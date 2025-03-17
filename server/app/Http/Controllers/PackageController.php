@@ -152,6 +152,7 @@ class PackageController extends Controller implements PackageInterface
 
             ]);
             $cld = new Cloudinary();
+            $validatedRequest["actionPending"] = 'pending';
             $validatedRequest["olanka_users_id"] = $this->verifyingToken($request);
             if ($request->hasFile("imagePackage")) {
                 $imagePath = $cld->uploadApi()->upload($request->file("imagePackage")->getRealPath());
@@ -250,7 +251,7 @@ class PackageController extends Controller implements PackageInterface
     {
         try {
             $olanka_users_id = $this->verifyingToken($request);
-            $packageData = Package::select(["packageCharge", "packageChargeCurrency", "packageInclusives", "packageExclusives", "endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
+            $packageData = Package::select(["actionPending","packageCharge", "packageChargeCurrency", "packageInclusives", "packageExclusives", "endDate", "startDate", "packageTitle", "packageAbout", "packageOverview", "published", "id", "packageSlug"])->where("olanka_users_id", $olanka_users_id)->paginate(100);
             return response()->json([
                 "message" => "Packages Found",
                 "data" => $packageData->items(),
@@ -334,6 +335,30 @@ class PackageController extends Controller implements PackageInterface
 
 
 
+
+
+
+    public function updateActionPending(Request $request){
+        try{
+        $validatedRequest = $request->validate([
+        "actionPending"=>"required",
+        "id"=>"required|exists:packages,id"
+        ]);
+        $matchingPackage = Package::find($request->query('id'));
+        
+        $matchingPackage["actionPending"] = $validatedRequest["actionPending"];
+        $matchingPackage->save();
+        return response()->json([
+        "message"=>"action updated",
+        
+        ]);
+        }catch(\Exception $err){
+        Log::error($err->getMessage());
+        return response()->json([
+        "message"=>$err->getMessage()
+        ]);
+        }
+        }
 
 
 

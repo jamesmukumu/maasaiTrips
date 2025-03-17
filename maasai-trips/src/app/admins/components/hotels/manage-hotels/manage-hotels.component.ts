@@ -4,15 +4,17 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { MessageService,ConfirmationService } from 'primeng/api';
 @Component({
   selector: 'manage-hotels',
   templateUrl: './manage-hotels.component.html',
   styleUrl: './manage-hotels.component.css',
+  providers:[MessageService,ConfirmationService]
 })
 export class ManageHotelsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 readonly dialog = inject(MatDialog)
-  constructor(private hotel: HotelsService) {}
+  constructor(private hotel: HotelsService,private msg:MessageService,private confirm:ConfirmationService) {}
   hotelData: any;
   popEditor = false;
   hotelNameDelete = '';
@@ -22,6 +24,10 @@ readonly dialog = inject(MatDialog)
   fetchingHotels = false;
   publishing = false;
   deleteHotel = false;
+  getStatus(event:any){
+    this.status = event.value
+   }
+  allowedStatus = ["pending","approved","rejected"]
   displayedColumns: string[] = [
     'hotelName',
     'contactPerson',
@@ -32,6 +38,7 @@ readonly dialog = inject(MatDialog)
     'maxRate',
     'minRate',
     'published',
+    "actionPending",
     'actions',
   ];
   displayedColumnsSmall: string[] = [
@@ -100,6 +107,39 @@ readonly dialog = inject(MatDialog)
   destinationsData: any[] = [];
   Destinations: any;
   fetchingDestinations = false;
+showAdjuststatus = false
+status = ''
+  adjustStatus(id:any){
+    this.idSelected = id
+  this.showAdjuststatus = true
+  }    
+adjusting = false
+  popConfirm(event:any){
+  this.confirm.confirm({
+    target:event?.target as EventTarget,
+    message:"Are you ready to change the status",
+    accept:()=>{
+      this.adjusting = true
+      this.hotel.adjustStatus_Hotels(this.status,this.idSelected).then((data)=>{
+      var {message} = data
+      if(message === 'action updated'){
+       this.adjusting = false
+        this.snack.open("Adjusted","Success")
+        this.showAdjuststatus= false
+        this.fetchHotels()
+      }else if(message == 'Unauthorized function'){
+        this.adjusting = false
+        this.showAdjuststatus = false
+        this.msg.add({life:13000,severity:"error",detail:'You cannot Perform this function'})
+      }
+
+      })
+
+
+    },
+    reject:()=>{}
+  })
+  }
 
   captureDescriptionHotel(event: any) {
     var { htmlValue } = event;

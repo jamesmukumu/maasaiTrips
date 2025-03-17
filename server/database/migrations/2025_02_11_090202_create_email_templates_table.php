@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('email_templates', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
             $table -> string("subject");
             $table -> longText("mailMessage");
             $table -> string('attachments')->nullable(true);

@@ -199,6 +199,25 @@ export class PackagesService {
     }
   }
 
+  async adjustStatus_Packages(status: string, id: number) {
+    try {
+      var token = Cookies.get(`grant_token`);
+      var response = await axios.put(
+        `${this.baseUrl}/adjust/status/packages?id=${id}`,
+        {
+          actionPending: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
   async fetchHotPackages() {
     try {
       var response = await axios.get(`${this.baseUrl}/fetch/display/packages`);

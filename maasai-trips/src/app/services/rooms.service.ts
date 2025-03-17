@@ -127,4 +127,24 @@ export class RoomsService {
       return err;
     }
   }
+
+  async adjustStatus_Rooms(status: string, id: number) {
+    try {
+      var token = Cookies.get(`grant_token`);
+      var response = await axios.put(
+        `${this.baseUrl}/adjust/status/rooms?id=${id}`,
+        {
+          actionPending: status,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

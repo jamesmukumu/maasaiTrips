@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('promotional_newsletters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
             $table -> tinyInteger("hotDiscount");
             $table -> string("promotional_newsletters_Slug")->unique(true);
             $table ->string("Title")->unique(true);

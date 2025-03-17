@@ -3,32 +3,72 @@ import { Hotel, HotelsService } from '../../../../services/hotels.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'manage-destinations',
   templateUrl: './manage-destinations.component.html',
   styleUrl: './manage-destinations.component.css',
+  providers:[ConfirmationService,MessageService]
 })
 export class ManageDestinationsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly snack = inject(MatSnackBar);
 
-  displayedColumns: string[] = ['name', 'published', 'actions'];
+  displayedColumns: string[] = ['name', 'published',"actionPending", 'actions'];
+  allowedStatus = ["pending","approved","rejected"]
   dataSource: any;
   processing = false;
   deleteDestination = false;
-  updateDestination = false;
+  showAdjuststatus = false
+  updateDestination = false; 
   publishDestination = false;
   unpublishDestination = false;
   destinationAbout: any;
   idSelected: any;
-
-  constructor(private hotels: HotelsService) {}
+status:string = ''
+  getStatus(event:any){
+   this.status = event.value
+  }
+  constructor(private msg:MessageService,private hotels: HotelsService,private confirm:ConfirmationService) {}
   destinationTitle: string = '';
 
   destinationDescription: any;
   Thumbnail: any;
 
+
+
+  adjustStatus(id:any){
+    this.idSelected = id
+  this.showAdjuststatus = true
+  }    
+adjusting = false
+  popConfirm(event:any){
+  this.confirm.confirm({
+    target:event?.target as EventTarget,
+    message:"Are you ready to change the status",
+    accept:()=>{
+      this.adjusting = true
+      this.hotels.adjustStatus_Destinations(this.status,this.idSelected).then((data)=>{
+      var {message} = data
+      if(message === 'action updated'){
+       this.adjusting = false
+        this.snack.open("Adjusted","Success")
+        this.showAdjuststatus= false
+        this.fetchMyDestinations()
+      }else if(message == 'Unauthorized function'){
+        this.adjusting = false
+        this.showAdjuststatus = false
+        this.msg.add({life:13000,severity:"error",detail:'You cannot Perform this function'})
+      }
+
+      })
+
+
+    },
+    reject:()=>{}
+  })
+  }
   captureDestinationAbout(event: any) {
     var { htmlValue } = event;
     this.destinationAbout = htmlValue;

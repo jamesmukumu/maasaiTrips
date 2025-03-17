@@ -11,6 +11,7 @@ return new class extends Migration{
         Schema::create('news_letters', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->nullable(false);
             $table -> string("Title")->unique()->nullable(false);
             $table -> mediumText("content")->nullable(false);
             $table -> foreignId("olanka_users_id")->constrained()->onDelete("cascade");

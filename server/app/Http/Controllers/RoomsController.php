@@ -97,12 +97,11 @@ class RoomsController extends Controller implements RoomsInterface{
             "id"=>"required|integer|exists:rooms,id"
             ]);
             $id = $request->query("id");
-    
+            $validatedRequest["actionPending"] = 'pending';
             $roomsImages= [];
             $cld = new Cloudinary();
             foreach($request->all() as $key => $value){
             if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-9])$/", $key)){
-            
             $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
             $roomsImages[] = $imageUrl["url"];
             }
@@ -136,7 +135,7 @@ class RoomsController extends Controller implements RoomsInterface{
         public function fetchMyRooms(Request $request){
         try{
         $userID = $this->verifyToken($request);
-        $roomData = Rooms::with(["hotels"])->select(["id","sharingRoomRateChildParent","bedBreakfast","roomType","halfBoard","fullBoard","allInclusive","singleRoomRateChild","hotels_models_id","doubleRoomRateChild","roomCount","maximumRoomOccupancy"])->where("olanka_users_id",$userID)->get();
+        $roomData = Rooms::with(["hotels"])->select(["actionPending","id","sharingRoomRateChildParent","bedBreakfast","roomType","halfBoard","fullBoard","allInclusive","singleRoomRateChild","hotels_models_id","doubleRoomRateChild","roomCount","maximumRoomOccupancy"])->where("olanka_users_id",$userID)->get();
         return response()->json([
         "message"=>"Rooms Fetched",
         "data"=>$roomData
@@ -144,14 +143,41 @@ class RoomsController extends Controller implements RoomsInterface{
         }catch(\Exception $err){
          Log::error($err->getMessage());
          return response()->json([
-          "message"=>"Something Went TWrong"
+          "message"=>"Something Went Wrong"
          ],500);
         }
+}
 
 
 
-        }
-        
 
+
+
+
+public function updateActionPending(Request $request){
+    try{
+    $validatedRequest = $request->validate([
+    "actionPending"=>"required",
+    "id"=>"required|exists:rooms,id"
+    ]);
+    $matchingRoom = Rooms::find($request->query('id'));
+    
+    $matchingRoom["actionPending"] = $validatedRequest["actionPending"];
+    $matchingRoom->save();
+    return response()->json([
+    "message"=>"action updated",
+    
+    ]);
+    }catch(\Exception $err){
+    Log::error($err->getMessage());
+    return response()->json([
+    "message"=>$err->getMessage()
+    ]);
+    }
+    }
+
+
+
+    
 
 }

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('newsletter_alerts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->default('pending')->nullable(false);
            $table -> string("Title")->unique();
            $table ->string("alert_newsletters_Slug")->unique(true);
            $table -> mediumText('TitleOne')->nullable(false);

@@ -51,7 +51,7 @@ export class AlertNewsComponent {
         FinalContentFour: this.contentEntry4,
       };
       var { message } = await this.alertsLetter.saveAlertsTemplate(payload);
-      if (message == 'NewsLetter Saved 😀') {
+      if (message == 'NewsLetter Saved') {
         this.snack.open(message, 'Success'.toUpperCase(), {
           horizontalPosition: 'center',
           verticalPosition: 'bottom',

@@ -22,7 +22,7 @@ import { DialogModule } from 'primeng/dialog';
 import {MatMenuModule} from "@angular/material/menu"
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
-
+import { TagModule } from 'primeng/tag';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { HeaderComponent } from './components/header/header.component';
@@ -110,7 +110,7 @@ import { RelatedPackagesComponent } from './components/related-packages/related-
 import { EditHotelsComponent } from './admins/components/hotels/edit-hotels/edit-hotels.component';
 import { RequestquoteComponent } from './components/requestquote/requestquote.component';
 import { enquiry } from './redux/reducers/quote.reducer';
-
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
@@ -147,8 +147,10 @@ const reducers:ActionReducerMap<any> = {
     MatSelectModule,
     TableModule,
     MatDatepickerModule,
+    TagModule,
     MatTreeModule,
     MatTableModule,
+    ConfirmPopupModule,
     MatCheckboxModule,
     MatDialogModule,
     FileUploadModule,

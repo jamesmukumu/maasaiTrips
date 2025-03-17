@@ -18,6 +18,7 @@ return new class extends Migration{
             $table->mediumText("locationDescription")->nullable(false);
             $table->string("contactEmail")->nullable(false);
             $table->tinyInteger("ratings")->default(5);
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
             $table ->string("contactPhoneNumber",12)->nullable(false); 
             $table->enum("contactPerson",["Manager","Reservation","Hotelier"])->nullable(false);
             $table->mediumInteger("hotelCommission")->nullable(false);

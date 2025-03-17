@@ -45,7 +45,11 @@ width: 70%;
         width: max-content;
         margin-left: 20px;
     }
-    
+    .btn{
+        background-color: #fca608;
+        color: white;
+        width: max-content; 
+    }
     
     .contact-information{
     width: 35%;

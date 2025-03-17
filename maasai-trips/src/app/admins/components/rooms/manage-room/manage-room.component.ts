@@ -6,15 +6,19 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { RoomsService,Room } from '../../../../services/rooms.service';
+import { MessageService,ConfirmationService } from 'primeng/api';
+
+
 @Component({
   selector: 'manage-room',
   templateUrl: './manage-room.component.html',
-  styleUrl: './manage-room.component.css'
+  styleUrl: './manage-room.component.css',
+  providers:[ConfirmationService,MessageService]
 })
 export class ManageRoomComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly dialog = inject(MatDialog)
-    constructor(private hotel: HotelsService,private room:RoomsService) {}
+    constructor(private hotel: HotelsService,private room:RoomsService,private msg:MessageService,private confirm:ConfirmationService) {}
     hotelData: any;
     popEditor = false;
     hotelNameDelete = '';
@@ -25,6 +29,43 @@ export class ManageRoomComponent {
     fetchingHotels = false;
     publishing = false;
     deleteHotel = false;
+    adjustStatus(id:any){
+      this.idSelected = id
+    this.showAdjuststatus = true
+    }    
+  adjusting = false
+    popConfirm(event:any){
+    this.confirm.confirm({
+      target:event?.target as EventTarget,
+      message:"Are you ready to change the status",
+      accept:()=>{
+        this.adjusting = true
+        this.room.adjustStatus_Rooms(this.status,this.idSelected).then((data)=>{
+        var {message} = data
+        if(message === 'action updated'){
+         this.adjusting = false
+          this.snack.open("Adjusted","Success")
+          this.showAdjuststatus= false
+          this.fetchDestinations()
+        }else if(message == 'Unauthorized function'){
+          this.adjusting = false
+          this.showAdjuststatus = false
+          this.msg.add({life:13000,severity:"error",detail:'You cannot Perform this function'})
+        }
+  
+        })
+  
+  
+      },
+      reject:()=>{}
+    })
+    }
+    showAdjuststatus = false
+    allowedStatus = ["pending","approved","rejected"]
+    status:string = ''
+    getStatus(event:any){
+     this.status = event.value
+    }
     displayedColumns: string[] = [
       'roomType',
       'hotelName',  
@@ -35,6 +76,7 @@ export class ManageRoomComponent {
       'doubleRoomRateChild',
       'roomCount',
       'maximumRoomOccupancy',
+      "actionPending",
     
       'actions',
     ];

@@ -10,6 +10,7 @@ return new class extends Migration{
         Schema::create('package_categories', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
              $table->string("title")->unique()->nullable(false);
              $table->string("slug")->unique()->nullable(false);
              $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");

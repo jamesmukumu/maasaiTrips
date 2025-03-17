@@ -11,6 +11,7 @@ return new class extends Migration{
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
             $table->boolean("published")->default(false);
             $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
             $table->string("destinationTitle")->nullable(false)->unique(true);

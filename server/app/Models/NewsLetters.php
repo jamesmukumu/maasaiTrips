@@ -12,4 +12,7 @@ public function newsLetterowner(){
 return $this->belongsTo(OlankaUsers::class);
 }
 
+
+
+
 }

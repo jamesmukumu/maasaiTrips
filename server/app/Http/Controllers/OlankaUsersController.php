@@ -100,8 +100,11 @@ return response()->json([
 ]);
 }else{
 $token = JWTAuth::fromUser($matchingUser);
+$status = $matchingUser["superUser"];
 return response()->json([
 "message"=>"Successful Login",
+"super"=>$status
+
 ])->header("Authorization",$token)->header("Access-Control-Expose-Headers","Authorization");
 }
 }else{

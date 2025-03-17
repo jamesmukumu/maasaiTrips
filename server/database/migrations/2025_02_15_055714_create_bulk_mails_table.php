@@ -11,6 +11,7 @@ return new class extends Migration{
         Schema::create('bulk_mails', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->enum("actionPending",["approved","rejected","pending"])->nullable(false)->default('pending');
             $table -> string("fullname")->unique();
             $table ->string("category");
             $table -> string("identificationNumber")->unique();
