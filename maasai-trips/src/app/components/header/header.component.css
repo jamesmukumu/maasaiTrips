@@ -53,7 +53,7 @@
     
       
     
-    @media(max-width:900px){
+    @media(max-width:768px){
         mat-card{
         display: none;
         }
@@ -97,4 +97,50 @@
     }
     
     
+    
+
+
+     
+    @media(min-width:801px)and (max-width:1023px){
+        mat-card{
+        display: none;
+        }
+        p-sidebar{
+            background-color: white;
+        }
+       
+    mat-drawer-container{
+    display: block;
+    max-width: 100%;
+    min-width: 100vw;
+    height: 68px;
+    position: relative;
+    background: #232526;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+    
+    }
+    .harmburg{
+    color: white;
+    position: absolute;
+    top: 30%;
+    left: 0;
+    }
+    img{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    }
+    .dark{
+    top: 30%;
+    color: white;
+    position: absolute;
+    right: 5.5%;
+    }
+    
+    mat-card mat-list{
+    display: none;
+    }
+    }
     

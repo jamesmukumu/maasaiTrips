@@ -10,7 +10,7 @@ top: 0;
 }
 .about-mara-depth p,strong,h3,span,b,ul,li,h2{
 color: white;
-letter-spacing: 1.55px;
+
 line-height: 1.5;
 }
 .explores mat-card{
@@ -29,10 +29,15 @@ align-items: center;
 .explores p {
 font-weight: bolder;
 }
-.explores button{
+.explores  mat-card button{
 background-color: #fca608;
 color: white;
 width: max-content;
+margin: 5px;
+
+}
+.explores mat-card p{
+    padding: 15px;
 }
 h1{
 text-align: center;
@@ -62,6 +67,7 @@ background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, F
 
 display: flex;
 flex-direction: row;
+
 }
 .about-mara-depth mat-card mat-card-content{
 
@@ -114,6 +120,8 @@ margin-right: 30px;
 }
 
 
+
+
 @media(max-width:768px){
 .about-mara{
 margin-left: 0;
@@ -138,6 +146,7 @@ margin-left:0px
 }
 .explores mat-card  button{
     width: fit-content;
+    margin-left: 2;
 }
 .about-mara h1,p{
 padding-top: 2.00px;

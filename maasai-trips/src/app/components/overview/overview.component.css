@@ -10,20 +10,27 @@ background-color: rgb(237,241,245);
 body{
 background-color: rgb(237,241,245);
 }
+p,strong{
+line-height: 1.5;
+}
 .card-display{
+margin-left: 20px;
 display: grid;
 grid-template-rows: repeat(1fr,1);
 grid-template-columns: repeat(4,1fr);
 }
 
 .card-destinations{
-  
+    margin-left: 20px;
+  align-items: center;
+  justify-content: center;
 display: grid;
 grid-template-rows: 1fr;
 grid-template-columns: repeat(4,1fr);
 }
 .card-destinations div{
-
+    padding: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 margin-left: 20px;
 margin-right: 20px;
 }
@@ -36,8 +43,10 @@ width: 100%;
 line-height: 1.85;
 }
 .card-display div{
+padding: 15px;
 margin-left: 10px;
 margin-right: 10px;
+box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 mat-card h1{
 text-align: center;
@@ -70,7 +79,7 @@ text-align: center;
 .card-display{
 width: 100%;
 display: flex;
-
+margin: 0;
 flex-wrap: wrap;
 flex-direction: column;
 }
@@ -85,6 +94,8 @@ padding-left: 5px;
 padding-right: 5px;
 }
 .card-destinations{
+margin-left: 0;
+margin-right: 0;
 width: 100%;
 display: flex;
 margin-top: 10px;
