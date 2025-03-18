@@ -2,13 +2,15 @@
 
 <div class="main">
   <h1>Explore our stunning Safari destinations in Kenya</h1>
-<mat-card *ngIf="!findingDestinations" @bounceLeft>
+<mat-card *ngIf="!findingDestinations">
     <div (click)="goDestinations(dest.destinationSlug,dest.destinationTitle)" *ngFor="let dest of destinations">
       <img [src]="dest.destinationThumbnail" alt="" />
       <span class="label">{{dest.destinationTitle}}</span>
-      <mat-icon style="color: rgb(228, 106, 118)">place</mat-icon>
+      <main>
+        <mat-icon style="color: rgb(228, 106, 118)">place</mat-icon>
       <h4>{{ dest.destinationTitle }}</h4>
-      <mat-divider></mat-divider>
+      </main>
+
       <mat-card-content [innerHTML]="sanitize(dest.destinationDescription)"></mat-card-content>
     </div>
   </mat-card>

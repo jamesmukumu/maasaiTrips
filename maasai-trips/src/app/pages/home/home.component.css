@@ -3,15 +3,11 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background: white; /* Adjust background as needed */
-    z-index: 1000; /* Ensures it stays above other content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for better visibility */
-}
 
+.head{
+position: sticky;
+top: 0;
+}
 .about-mara-depth p,strong,h3,span,b,ul,li,h2{
 color: white;
 letter-spacing: 1.55px;
@@ -159,6 +155,10 @@ flex-wrap: wrap;
 
 
 @media(min-width:801px) and (max-width:860px){
+    p,h1,h2,strong{
+    padding-left: 10px;
+    padding-right: 10px;
+    }
     .about-mara{
         margin-left: 0;
         margin-right: 0;
