@@ -28,7 +28,8 @@ margin-left: 20px;
 margin-right: 20px;
 }
 mat-card img{
-height: 200px;
+max-height: 300px;
+height: max-content;
 width: 100%;
 }
 .card-display div p {
@@ -43,16 +44,50 @@ text-align: center;
 }
 
 
-@media(max-width:900px){
+@media(min-width:801px) and (max-width:860px){
+    mat-card{
+    min-width: 100vw;
+    margin: 0;
+    }
+  
+    .card-destinations,.card-display{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1fr;
+    }
+    .card-destinations div{
+    margin: 0px;
+    }
+    .card-display div{
+    margin: 0px;
+    }
+    
+    }
+        
+
+
+@media(max-width:768px){
 .card-display{
 width: 100%;
 display: flex;
+
 flex-wrap: wrap;
 flex-direction: column;
+}
+.card-display div{
+margin-top: 20px;
+padding-left: 5px;
+padding-right: 5px;
+}
+.card-destinations div{
+margin-top: 20px;
+padding-left: 5px;
+padding-right: 5px;
 }
 .card-destinations{
 width: 100%;
 display: flex;
+margin-top: 10px;
 flex-wrap: wrap;
 flex-direction: column;
 }

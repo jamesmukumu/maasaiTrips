@@ -29,6 +29,7 @@
     "axios": "^1.7.9",
     "cloudinary": "^2.5.1",
     "js-cookie": "^3.0.5",
+    "mdb-angular-ui-kit": "^7.1.0",
     "ngrx-store-localstorage": "^19.0.0",
     "ngx-quill": "^27.0.0",
     "ngx-quill-upload": "^2.0.0",

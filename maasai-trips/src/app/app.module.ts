@@ -6,6 +6,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import {ToastModule} from "primeng/toast"
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
@@ -144,6 +145,7 @@ const reducers:ActionReducerMap<any> = {
     MatIconModule,  
     CalendarModule,    
     ButtonModule,
+    MdbCheckboxModule,
     MatSelectModule,
     TableModule,
     MatDatepickerModule,

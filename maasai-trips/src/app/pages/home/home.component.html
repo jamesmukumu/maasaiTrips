@@ -1,10 +1,12 @@
 <header></header>
 <mat-card>
-<mat-card-header>
-<img src="https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg" alt="">
-</mat-card-header>
-<div #animatedElement class="about-mara" [@fadeSlider]="animationState">
+    <mat-card-header>
+        <img src="https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg" alt="">
+    </mat-card-header>
+    
+<div #animatedElement class="about-mara" >
 <h1>About Masaai Mara</h1>
+
 <p>
 The Masai Mara is located in southwestern Kenya in Narok County,and has become one of Africa's most popular wildlife reserves. It is a vast expanse of savannah wilderness that forms the northern continuation of the Serengeti National Park in Tanzania. Covering approximately 1,510 square kilometers (580 square miles), the Masai Mara is famous for its wildlife, including the Big Five- lions, elephants, leopards, buffaloes, and rhinos.
 </p>
@@ -18,7 +20,7 @@ The reserve is named after the indigenous Maasai people who inhabit the area and
 The Masai Mara is also home to over 450 bird species, making it a paradise for bird watchers. Visitors can experience game drives, hot air balloon safaris, and cultural visits to Maasai villages at affordable charges, offering a deep connection to both the wildlife and the local culture.
 </p>
 </div>
-<div class="bouncer-overview" #bouncerCheck [@bouncer]="animationBouncer">
+<div class="bouncer-overview">
 <overview></overview>
 </div>
 <div class="about-mara-depth">
@@ -54,7 +56,7 @@ The best time to visit the Masai Mara is during the dry season, from June to Oct
 </mat-card>
 </div>
 <h1>Explore More of the Masaai Mara</h1>
-<div class="explores" #explores  [@explores]="exploreCheckerState">
+<div class="explores">
 <mat-card>
 <img src="../../../assets/hotair.webp" alt="">
 <p>Ultimate hot air balloon experience in Masaai Mara Kenya</p>
@@ -76,9 +78,10 @@ The best time to visit the Masai Mara is during the dry season, from June to Oct
             <button mat-raised-button style="width: fit-content;">Read more</button>
             </mat-card>
 </div>
-<frequent-quest></frequent-quest>
+
 <footer></footer>
 
 
 
 </mat-card>
+

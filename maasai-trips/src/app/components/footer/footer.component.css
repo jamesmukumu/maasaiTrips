@@ -41,7 +41,17 @@ margin-top: 5.00px;
 mat-divider{
 display: none;
 }
-@media(max-width:900px){
+
+
+@media(min-width:801px) and (max-width:860px){
+mat-card{
+margin: 0px;
+width: 100vw;
+}
+
+
+}
+@media(max-width:768px){
     mat-divider{
     display: block;
     }

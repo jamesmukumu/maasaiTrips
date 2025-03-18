@@ -3,6 +3,14 @@ margin: 0;
 padding: 0;
 box-sizing: border-box;
 }
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: white; /* Adjust background as needed */
+    z-index: 1000; /* Ensures it stays above other content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for better visibility */
+}
 
 .about-mara-depth p,strong,h3,span,b,ul,li,h2{
 color: white;
@@ -70,13 +78,23 @@ text-align: center;
 width: 550px;
 
 }
-mat-card-header{
-max-width: 100%;
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-background-image: url(https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg);
+mat-card-header {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+mat-card-header img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; 
+}
+
+
 
 .about-mara h1{
 text-align: center;
@@ -94,22 +112,27 @@ text-align: center;
 background-color: rgb(255,255,255);
 text-align: left;
 align-items: center;
-}
-.bg-home{
-background-image: url(https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg);
+margin-left: 30px;
+margin-right: 30px;
 
 }
 
 
-
-@media(max-width:900px){
-mat-card mat-card-header img{
-width: 100%;
+@media(max-width:768px){
+.about-mara{
+margin-left: 0;
+margin-right: 0;
+padding-left: 6px;
+padding-right: 6px;
+}
+mat-card mat-card-header{
+height: 40vh;
 }
 .about-mara-depth img{
 width: 100%;
 }
 .explores{
+min-width: 100vw;
 flex-direction: column;
 flex-wrap: wrap;
 }
@@ -118,7 +141,7 @@ margin-top: 5.555px;
 margin-left:0px
 }
 .explores mat-card  button{
-    width: 30px;
+    width: fit-content;
 }
 .about-mara h1,p{
 padding-top: 2.00px;
@@ -129,4 +152,47 @@ display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 }
+
 }
+
+
+
+
+@media(min-width:801px) and (max-width:860px){
+    .about-mara{
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 6px;
+        padding-right: 6px;
+        }
+mat-card mat-card-header{
+height: 45vh;
+}
+.explores mat-card{
+padding: 0;
+margin: 0;
+}
+.about-mara-depth{
+width: 100vw;
+}
+.about-mara-depth mat-card mat-card-content{
+width: 100vw;
+margin: 0px;
+}
+
+.about-mara-depth mat-card mat-card-content{
+margin-left: 0;
+    }
+.explores{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+grid-template-rows: 1fr;
+}
+
+
+}
+    
+  
