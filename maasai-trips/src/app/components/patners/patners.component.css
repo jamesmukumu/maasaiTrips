@@ -25,7 +25,7 @@ mat-card div button{
     background-color: #fca608;
     color: white; 
     width: max-content;
-    margin-top: 5.00px;
+    margin: 5.00px;
 }
 mat-card div{
     flex: 1;
