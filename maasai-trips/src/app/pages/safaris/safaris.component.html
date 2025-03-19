@@ -1,113 +1,114 @@
 <mat-card class="cont">
     <header></header>
     <div class="safaris" [@bounceRight]="bgState" #bg>
-    <h1>We Believe in your Dream Safari to Maasai Mara</h1>
+        <h1>We Believe in your Dream Safari to Maasai Mara</h1>
     </div>
-    
-    
-    <div class="safaris-main">
-    <mat-card >
-        <mat-card-header>
-            <h1>Maasai Mara Safari`s</h1>
-            <p>
-            Whether you want to fly to Masai Mara Game Reserve, or travelling by road using a land cruiser, these Masai Mara safari packages offer an unforgettable journey into one of Africa’s most iconic wildlife destinations. These packages are designed to suit a variety of travelers, whether you’re seeking luxury, adventure, or a family-friendly experience.
-            </p>
-            <h1>What is Included in a Masaai Mara Safari</h1>
-            <mat-list>
-            <mat-list-item>
-            <span matListItemTitle>Game Drives</span>
-            <span matListItemLine>Experience thrilling morning and evening game drives with expert guides who navigate the vast savannah, bringing you close to the Big Five and other wildlife.</span>
-            <mat-icon matListItemIcon>directions_car</mat-icon>
-            </mat-list-item>
-            <mat-list-item>
-            <span matListItemTitle>Accomodations</span>
-            <span matListItemLine>Stay in carefully selected lodges, tented camps, or luxury resorts that provide comfort, excellent service, and often stunning views of the Mara plains.</span>
-            <mat-icon matListItemIcon>apartment</mat-icon>
-            </mat-list-item>
-            
-            <mat-list-item>
-                <span matListItemTitle>Meals</span>
-                <span matListItemLine>Our packages include full-board meals, allowing you to enjoy local and international cuisine amidst the African wilderness.</span>
-                <mat-icon matListItemIcon>restaurant_menu</mat-icon>
-                </mat-list-item> 
-            
-                <mat-list-item>
-                    <span matListItemTitle>Cultural Experience`s</span>
-                    <span matListItemLine>The safaris include visits to Maasai villages, where you can learn about the rich traditions and daily life of the Maasai people.</span>
-                    <mat-icon matListItemIcon>groups</mat-icon>
-                    </mat-list-item>
-            
-                    <mat-list-item>
-                        <span matListItemTitle>Airport Transfers</span>
-                        <span matListItemLine>Convenient transfers from Nairobi or other entry points to the Masai Mara, ensuring a seamless travel experience.</span>
-                        <mat-icon matListItemIcon>airport_shuttle</mat-icon>
-                        </mat-list-item>
-            </mat-list>
-        <button mat-flat-button (click)="requestQuote()">Request Quote</button>
 
-            </mat-card-header>
-        
-    </mat-card>    
-    
-    <mat-card >
-        <mat-card-content>
-            <h1>Safari Experience Highlights</h1>
-            <mat-list>
-            <mat-list-item>
-            <span matListItemTitle>Great migration Safari`s</span>
-            <span matListItemLine>
-            Timed to coincide with the Great Migration, these packages offer a front-row seat to one of nature’s most spectacular events as millions of wildebeest and zebras cross the Mara River.
-            </span>
-            <mat-icon matListItemIcon>check</mat-icon>
-            </mat-list-item>
-            <mat-list-item>
-                <span matListItemTitle>Hot air Baloon Safari`s</span>
-                <p matListItemLine>
-                    Some safaris include the option of a hot air balloon ride, offering a breathtaking aerial view of the wildlife and landscapes at sunrise.
+    <div class="safaris-main">
+        <mat-card>
+            <mat-card-header>
+                <h1>Maasai Mara Safari`s</h1>
+                <p>
+                    Whether you want to fly to Masai Mara Game Reserve, or travel by road using a land cruiser, these Masai Mara safari packages offer an unforgettable journey into one of Africa’s most iconic wildlife destinations. These packages are designed to suit a variety of travelers, whether you’re seeking luxury, adventure, or a family-friendly experience.
                 </p>
-                <mat-icon matListItemIcon>check</mat-icon>
-                </mat-list-item>
-                <mat-list-item>
-                    <span matListItemTitle>Family Safari`s</span>
-                    <span matListItemLine>
-                        Family-friendly safaris often feature activities tailored for children, such as junior ranger programs and educational wildlife talks
-                    </span>
-                    <mat-icon matListItemIcon>check</mat-icon>
+
+                <h1>What is Included in a Masaai Mara Safari</h1>
+                <mat-list>
+                    <mat-list-item>
+                        <h3 matListItemTitle>Game Drives</h3>
+                        <span matListItemLine>
+                            Experience thrilling morning and evening game drives with expert guides  who navigate the vast savannah, bringing you close to the Big Five and other wildlife.
+                        </span>
+                        <mat-icon matListItemIcon>directions_car</mat-icon>
                     </mat-list-item>
-            
-            </mat-list>
-            
-            <div class="grid-see" *ngIf="!fetching">
-          <div *ngFor="let saf of safaris" >
-            <img [src]="saf.packageImage" alt="">
-            <h2>{{saf.PackageTitle}}</h2>
-            <p>
-            Charges:  <b>{{saf.packageCharge}} {{saf.packageChargeCurrency}} </b> per Adult
-            </p>
-            <h4>Perks and Benefits</h4>
-            <mat-list>
-            <mat-list-item matListItemAvatar>
-            <span matListItemTitle>{{saf.budgetType}}</span>
-            <mat-icon matListItemIcon>check</mat-icon>
-            </mat-list-item>
-            <mat-list-item matListItemAvatar>
-                <span matListItemTitle>{{saf.budgetType}}</span>
-                <mat-icon matListItemIcon>check</mat-icon>
-                </mat-list-item>
-                <mat-list-item matListItemAvatar>
-                    <span matListItemTitle> Safari in {{saf.mode_transport}}</span>
-                    <mat-icon matListItemIcon>check</mat-icon>
+
+                    <mat-list-item>
+                        <h3 matListItemTitle>Accommodations</h3>
+                        <span matListItemLine>
+                            Stay in carefully selected lodges, tented camps, or luxury resorts that provide comfort, excellent service, and often stunning views of the Mara plains.
+                        </span>
+                        <mat-icon matListItemIcon>apartment</mat-icon>
                     </mat-list-item>
-            </mat-list>
-            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>View more</button>
-          </div>
-            
-        
-        </div>
-            
+
+                    <mat-list-item>
+                        <h3 matListItemTitle>Meals</h3>
+                        <span matListItemLine>
+                            Our packages include full-board meals, allowing you to enjoy local and international cuisine amidst the African wilderness.
+                        </span>
+                        <mat-icon matListItemIcon>restaurant_menu</mat-icon>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h3 matListItemTitle>Cultural Experiences</h3>
+                        <span matListItemLine>
+                            The safaris include visits to Maasai villages, where you can learn about the rich traditions and daily life of the Maasai people.
+                        </span>
+                        <mat-icon matListItemIcon>groups</mat-icon>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <h3 matListItemTitle>Airport Transfers</h3>
+                        <span matListItemLine>
+                            Convenient transfers from Nairobi or other entry points to the Masai Mara, ensuring a seamless travel experience.
+                        </span>
+                        <mat-icon matListItemIcon>airport_shuttle</mat-icon>
+                    </mat-list-item>
+                </mat-list>
+                <button mat-flat-button (click)="requestQuote()">Request Quote</button>
+            </mat-card-header>
+        </mat-card>
+
+        <mat-card>
+            <mat-card-content>
+                <h1>Safari Experience Highlights</h1>
+                <mat-list>
+                    <mat-list-item>
+                        <span matListItemTitle>Great Migration Safari`s</span>
+                        <span matListItemLine>
+                            Timed to coincide with the Great Migration, these packages offer a front-row seat to one of nature’s most spectacular events as millions of wildebeest and zebras cross the Mara River.
+                        </span>
+                        <mat-icon matListItemIcon>check</mat-icon>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Hot Air Balloon Safari`s</span>
+                        <span matListItemLine>
+                            Some safaris include the option of a hot air balloon ride, offering a breathtaking aerial view of the wildlife and landscapes at sunrise.
+                        </span>
+                        <mat-icon matListItemIcon>check</mat-icon>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <span matListItemTitle>Family Safari`s</span>
+                        <span matListItemLine>
+                            Family-friendly safaris often feature activities tailored for children, such as junior ranger programs and educational wildlife talks.
+                        </span>
+                        <mat-icon matListItemIcon>check</mat-icon>
+                    </mat-list-item>
+                </mat-list>
+
+                <div class="grid-see" *ngIf="!fetching">
+                    <div *ngFor="let saf of safaris">
+                        <img [src]="saf.packageImage" alt="">
+                        <h1>{{saf.packageTitle}}</h1>
+                        <p>Charges: <b>{{saf.packageCharge}} {{saf.packageChargeCurrency}}</b> per Adult</p>
+                        <p>Perks and Benefits</p>
+                        <mat-list>
+                            <mat-list-item matListItemAvatar>
+                                <span  matListItemTitle>{{saf.budgetType}}</span>
+                                <mat-icon matListItemIcon>check</mat-icon>
+                            </mat-list-item>
+                           
+                            <mat-list-item matListItemAvatar>
+                                <span matListItemTitle> Safari in {{saf.mode_transport}}</span>
+                                <mat-icon matListItemIcon>check</mat-icon>
+                            </mat-list-item>
+                        </mat-list>
+                        <button (click)="goPackage(saf.packageSlug)" mat-flat-button>View more</button>
+                    </div>
+                </div>
             </mat-card-content>
-    </mat-card>
+        </mat-card>
     </div>
     <footer></footer>
-
 </mat-card>
