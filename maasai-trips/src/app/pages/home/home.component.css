@@ -141,8 +141,7 @@ flex-direction: column;
 flex-wrap: wrap;
 }
 .explores mat-card{
-margin-top: 5.555px;
-margin-left:0px
+margin: 7.5px;
 }
 .explores mat-card  button{
     width: fit-content;
@@ -179,7 +178,7 @@ height: 45vh;
 }
 .explores mat-card{
 padding: 0;
-margin: 0;
+margin-left:5px ;
 }
 .about-mara-depth{
 width: 100vw;

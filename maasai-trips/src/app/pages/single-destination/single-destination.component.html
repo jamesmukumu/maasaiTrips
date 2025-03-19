@@ -1,17 +1,14 @@
 <header></header>
-<div class="container">
+<div class="container">  
+ 
+<mat-card *ngIf="!fetchingDestination" [ngClass]="safaris.length > 0 ?'grid':'vert'">
+    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" [ngClass]="safaris.length > 0 ?'div-a-adjust':'div-a'">
 
-<mat-card *ngIf="!fetchingDestination ">
-    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" class="div-a">
-    <h1>{{destinationData.destinationTitle}}</h1>
-    
-    
     <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
     [autoPlay]="true"
     [circular]="true" 
-    [showThumbnails]="true"
+    [showThumbnails]="true"  
     [changeItemOnIndicatorHover]="true" 
-     
     [containerStyle]="{ 'max-width': '100%', }">
     
     <ng-template pTemplate="item" let-item>
@@ -36,30 +33,14 @@
     
     
     
-    <div class="div-b" >
+    <div class="div-b" *ngIf="safaris.length > 0" >
     <h2>Hot Packages for {{destinationData.destinationTitle}}</h2>
     <div class="grid-see" >
       <div *ngFor="let saf of safaris" >
         <img [src]="saf.packageImage" alt="">
-        <h2>{{saf.PackageTitle}}</h2>
-        <p>
-        Charges:  <b>{{saf.packageCharge}} {{saf.packageChargeCurrency}} </b> per Adult
-        </p>
-        <h4>Perks and Benefits</h4>
-        <mat-list>
-        <mat-list-item matListItemAvatar>
-        <span matListItemTitle>{{saf.budgetType}}</span>
-        <mat-icon style="color:  rgb(21, 181, 21);" matListItemIcon>check</mat-icon>
-        </mat-list-item>
-        <mat-list-item matListItemAvatar>
-            <span matListItemTitle>{{saf.budgetType}}</span>
-            <mat-icon style="color:  rgb(21, 181, 21);" matListItemIcon>check</mat-icon>
-            </mat-list-item>
-            <mat-list-item matListItemAvatar>
-                <span matListItemTitle> Safari in {{saf.mode_transport}}</span>
-                <mat-icon style="color: rgb(21, 181, 21)" matListItemIcon>check</mat-icon>
-                </mat-list-item>
-        </mat-list>
+        <h3>{{saf.packageTitle}}</h3>
+        
+     
         <button  (click)="goPackage(saf.packageSlug)" mat-flat-button>View Package</button>
       </div>
         
@@ -75,7 +56,7 @@
         *ngIf="fetchingDestination"
       />
       </div>
-      <related-hotels *ngIf="!fetchingDestination" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
+      <related-hotels  *ngIf="!fetchingDestination && relatedHotels.length > 0" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
     <patners  *ngIf="!fetchingDestination" ></patners>
     <p-scrollTop/>
   

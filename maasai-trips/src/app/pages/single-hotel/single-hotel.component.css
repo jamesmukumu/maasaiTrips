@@ -66,6 +66,7 @@
     object-fit: cover;
   }
   .spin{
+    min-height: 100vh;
     height: 100%;
     }
       .no-spin{

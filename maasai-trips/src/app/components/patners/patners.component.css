@@ -24,9 +24,12 @@ height: 100%;
 mat-card div button{
     background-color: #fca608;
     color: white; 
+    width: max-content;
+    margin-top: 5.00px;
 }
 mat-card div{
     flex: 1;
+    
     height: max-content;
     cursor: pointer;
     margin-left: 5.5px;
@@ -35,7 +38,7 @@ width: max-content;
 }
 
 
-@media(max-width:900px){
+@media(max-width:768px){
     mat-card{
         display: flex;
         width: 100%;
@@ -45,8 +48,10 @@ width: max-content;
        mat-card div{
         max-width: 100vw;
         min-width: 100%;
-        margin-left: 0.000000px;
-        margin-top: 5.55px;
-        margin-bottom: 5.55px;
+        margin: 5.55px;
+       
+       }
+       mat-card div img{
+        padding: 5.55px;
        }
 }
