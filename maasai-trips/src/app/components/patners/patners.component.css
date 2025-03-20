@@ -45,6 +45,9 @@ width: max-content;
         flex-direction: column;
         flex-wrap: wrap;
         }
+        mat-card div button{
+        margin-left: 10px;
+        }
        mat-card div{
         max-width: 100vw;
         min-width: 100%;
@@ -55,7 +58,7 @@ width: max-content;
         /* margin: 5.55px; */
        
        }
-       mat-card div img{
+       mat-card div img,p{
         padding: 20px;
        }
 }
