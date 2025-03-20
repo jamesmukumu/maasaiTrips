@@ -1,41 +1,46 @@
 <header></header>
-<div class="container">
+<mat-card class="container">
+  <h1>{{ destinationData.hotelName }}</h1>
+  <div *ngIf="!fetchingDestination" class="grid">
+    <div class="div-a-adjust">
+      <p-galleria
+        [value]="destinationPhoto"
+        [showIndicators]="true"
+        [autoPlay]="true"
+        [circular]="true"
+        [showThumbnails]="true"
+        [changeItemOnIndicatorHover]="true"
+        [containerStyle]="{ 'max-width': '100%', }"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" class="img-big" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <img [src]="item" class="img-thumbnail" />
+        </ng-template>
+      </p-galleria>
 
-<mat-card *ngIf="!fetchingDestination ">
-    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" class="div-a">
-    <h1>{{destinationData.hotelName}}</h1>
-    
-    
-    <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
-    [autoPlay]="true"
-    [circular]="true" 
-    [showThumbnails]="true"
-    [changeItemOnIndicatorHover]="true" 
-     
-    [containerStyle]="{ 'max-width': '100%', }">
-    
-    <ng-template pTemplate="item" let-item>
-        <img [src]="item"  class="img-big" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-        <img [src]="item" class="img-thumbnail" />
-    </ng-template>
-    </p-galleria>
-    
+      <h4>{{ destinationData.hotelName }}</h4>
+      <mat-icon style="color: rgb(228, 106, 118)">place</mat-icon>
+      <mat-card-content
+        style="margin-top: 20px"
+        [innerHTML]="destinationDescription"
+      >
+      </mat-card-content>
+      <mat-card-content
+        style="margin-top: 20px"
+        class="truncate-text"
+        [innerHTML]="destinationAbout"
+      >
+      </mat-card-content>
+      <mat-card-content
+        style="margin-top: 20px"
+        class="truncate-text"
+        [innerHTML]="hotelMetaDescription"
+      >
+      </mat-card-content>
 
-    <h4>{{destinationData.hotelName}}</h4>
-    <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
-       <mat-card-content style="margin-top: 20px;"  [innerHTML]="destinationDescription">
-
-       </mat-card-content>
-       <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="destinationAbout">
-
-       </mat-card-content>
-       <mat-card-content style="margin-top: 20px;"  class="truncate-text" [innerHTML]="hotelMetaDescription">
-
-       </mat-card-content>
-      
-       <h1>Rooms:</h1>
+      <!-- <h1>Rooms:</h1>
        <table mat-table *ngIf="!fetchingDestination" [dataSource]="dataSource" 
        style="width: 100%; border-collapse: collapse;">
        
@@ -79,47 +84,45 @@
        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
        
      </table>
-     
-  </div>
-    
-    
-    
-  <div class="div-b">
-    <h1>Here is how to locate Us</h1>
-    <google-map 
-        class="map" 
-        width="100%" 
-        mapId="21e602fe038c55d3" 
-        [center]="{lat: +destinationData.latitude, lng: +destinationData.longitude}" 
-        [zoom]="10">
-        
-    
-        <map-marker 
-            [position]="{lat: +destinationData.latitude, lng: +destinationData.longitude}" 
-            title="Destination">
-        </map-marker>
-
-    </google-map>
-</div>
-
-    </mat-card>
-    <div [classList]="fetchingDestination ? 'spin':'no-spin'">
-        <p-progressBar
-        mode="indeterminate"
-        [style]="{ height: '6px' }"
-        *ngIf="fetchingDestination"
-      />
-      </div>
-
-    <p-scrollTop/>
-
-    <footer></footer>
+      -->
     </div>
 
+    <div class="div-b">
+      <h3>Here is how to locate Us</h3>
+      <google-map
+        class="map"
+        width="100%"
+        mapId="21e602fe038c55d3"
+        [center]="{
+          lat: +destinationData.latitude,
+          lng: +destinationData.longitude
+        }"
+        [zoom]="10"
+      >
+        <map-marker
+          [position]="{
+            lat: +destinationData.latitude,
+            lng: +destinationData.longitude
+          }"
+          title="Destination"
+        >
+        </map-marker>
+      </google-map>
+    </div>
+  </div>
+  <div [classList]="fetchingDestination ? 'spin' : 'no-spin'">
+    <p-progressBar
+      mode="indeterminate"
+      [style]="{ height: '6px' }"
+      *ngIf="fetchingDestination"
+    />
+  </div>
+  <patners *ngIf="!fetchingDestination"></patners>
+  <p-scrollTop />
 
-   
+  <footer></footer>
+</mat-card>
 
-
-    <p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
+<!-- <p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
       <rooms [roomData]="roomData"></rooms>
-    </p-dialog>  
+    </p-dialog>   -->

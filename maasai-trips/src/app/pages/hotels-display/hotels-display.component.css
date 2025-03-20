@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  
 }
 
 .main {
@@ -56,10 +56,6 @@ mat-card div {
   padding: 10px;
   position: relative;
   display: inline-block;
-
-  
-
-
 }
 mat-card div img {
   max-width: 100%;
