@@ -24,6 +24,13 @@ Route::put("/adjust/status/packages",[PackageController::class,"updateActionPend
 Route::put("/adjust/status/rooms",[RoomsController::class,"updateActionPending"]);
 
 
+
+// Admins Roles for users are here
+Route::get("/see/all/users",[OlankaUsersController::class,"fetchAllUsers"]);
+Route::put("/make/super/user",[OlankaUsersController::class,"makeSuperUser"]);
+Route::put("/unmake/super/user",[OlankaUsersController::class,"unmakeSuperUser"]);
+Route::delete("/delete/admin",[OlankaUsersController::class,"deleteAdmins"]);
+
 });
 
 
@@ -51,6 +58,7 @@ Route::put("/update/news/letter",[NewsLettersController::class,'updateNewsLetter
 Route::get("/fetch/my/newsletters",[NewsLettersController::class,'fetchMyTemplates']);
 Route::delete("/delete/news/letter",[NewsLettersController::class,'deleteNewsLetterTemplateMail']);
 Route::post("/save/alerts/newsLetter",[NewsLetterAlert::class,'saveNewsLetterAlert']);
+Route::post("/sync/bulks",[BulkMailControllers::class,"syncWithHotelMails"]);
 
 
 

@@ -130,12 +130,12 @@ try{
         "lastName"=>"required",
         "email"=>"required",
         "phoneNumber"=>"required",
-        "adultsCount"=>"min:0",
-        "childrenCount"=>"min:0",
-        "travelDescription"=>"min:0",
+        "adultsCount"=>"required",
+        "childrenCount"=>"nullable",
+        "travelDescription"=>"nullable",
         "startStayDate"=>"required",
         "endStayDate"=>"required",
-        "roomsCount"=>"min:0"
+        "roomsCount"=>"required"
         ]);
         
         

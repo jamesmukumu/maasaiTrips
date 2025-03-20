@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,inject } from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { QuotationsService,Quotations } from '../../services/quotations.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'quotations',
@@ -23,6 +23,7 @@ travelDescription:string = ""
 startDate:string  = ""
 endDate:string = ""
 processingQuote:boolean = false
+readonly dialog = inject(MatDialog)
 
 constructor(private Quote:QuotationsService,private snack:MatSnackBar){}
 seeStartDate(event:any){
@@ -62,9 +63,11 @@ case "Quotation added":
     horizontalPosition:"center",
     verticalPosition:"bottom"
   })
+  this.dialog.closeAll()
   break;
   case "Something Went wrong":
     this.processingQuote = false
+    this.dialog.closeAll()
     this.snack.open("Something Went Wrong","Retry again",{
     horizontalPosition:"left",
     verticalPosition:"top"

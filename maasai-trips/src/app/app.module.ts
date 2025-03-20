@@ -26,6 +26,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar"
 import { TagModule } from 'primeng/tag';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import {ButtonModule} from "primeng/button"
 import { BreadcrumbModule } from 'angular-crumbs';
@@ -112,6 +113,7 @@ import { EditHotelsComponent } from './admins/components/hotels/edit-hotels/edit
 import { RequestquoteComponent } from './components/requestquote/requestquote.component';
 import { enquiry } from './redux/reducers/quote.reducer';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ManageadminsComponent } from './admins/components/manageadmins/manageadmins.component';
 
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
@@ -131,7 +133,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -173,6 +175,7 @@ const reducers:ActionReducerMap<any> = {
  ClipboardModule,   
  GalleriaModule,
  DropdownModule,
+ MatSlideToggleModule,
  StoreModule.forRoot(reducers,{metaReducers}) , 
 ProgressBarModule,
 MatTooltipModule,

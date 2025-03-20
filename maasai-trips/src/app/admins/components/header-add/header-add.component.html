@@ -36,6 +36,11 @@
           <span (click)="signUp()">Edit Profile</span>
         </button>
         
+        <button mat-menu-item (click)="mobileEmitter('Admins',false)" >
+          <mat-icon>person</mat-icon>
+          <span >Manage Users</span>
+        </button>
+
         <button mat-menu-item (click)="logoutUser()">
           <mat-icon>logout</mat-icon>
           <span >Logout Profile</span>

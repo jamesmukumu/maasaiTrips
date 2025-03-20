@@ -23,7 +23,7 @@ export class EnquiriesComponent implements OnInit {
 constructor(private quotations:QuotationsService,private store:Store){}
 processingFetchRequest:boolean = false
 tabularData:any
-displayedColumns:string[] = ["firstname","email","adults","childrenCount","kidsAges","rooms","startDate",'endDate','action']
+displayedColumns:string[] = ["firstname","email","adults","childrenCount","enquiry-status","rooms","startDate",'endDate','action']
 displayedColumnsMobile:string[] = ["firstname","startDate",'endDate','action']
 applyFilter(event: Event) {
   const filterValue = (event.target as HTMLInputElement).value;

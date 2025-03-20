@@ -233,5 +233,86 @@ return response()->json([
 
 
 
+public function fetchAllUsers(){
+try{
+$users = OlankaUsers::select(["created_at","userName","Email","phoneNumber","emailVerified","superUser"])->get();
+return response()->json([
+"message"=>'Users Fetched',
+"data"=>$users
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>'Something Went Wrong'
+]);
+}
+}
+
+
+
+public function makeSuperUser(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|integer|exists:olanka_users,id"
+]);
+$id = $request->query("id");
+$correspondentUser = OlankaUsers::find($id)->first();
+$correspondentUser["superUser"] = true;
+$correspondentUser->save();
+return response()->json([
+"message"=>"status updated"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went Wrong"
+]);
+}
+}
+
+
+
+public function unmakeSuperUser(Request $request){
+    try{
+    $validatedRequest = $request->validate([
+    "id"=>"required|integer|exists:olanka_users,id"
+    ]);
+    $id = $request->query("id");
+    $correspondentUser = OlankaUsers::find($id)->first();
+    $correspondentUser["superUser"] = false;
+    $correspondentUser->save();
+    return response()->json([
+    "message"=>"status updated"
+    ]);
+    }catch(\Exception $err){
+    Log::error($err->getMessage());
+    return response()->json([
+    "message"=>"Something Went Wrong"
+    ]);
+    }
+    }
+
+
+
+
+public function deleteAdmins(Request $request){
+try{
+$validatedRequst = $request->validate([
+"id"=>"required|integer|exists:olanka_users,id"
+]);
+$id = $request->query("id");
+OlankaUsers::where("id",$id)->delete();
+return response()->json([
+"message"=>"Deleted Successfully"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went Wrong"
+]);
+}
+}
+
+
 
 }

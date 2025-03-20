@@ -206,7 +206,8 @@
       </div>
 
     <div *ngSwitchCase="6">
-    <admin-profile></admin-profile>
+    <admin-profile *ngIf="adminChoosen == 1"></admin-profile>
+    <manageadmins  *ngIf="adminChoosen == 2"></manageadmins>
     </div>
   </div>
 </div>

@@ -17,7 +17,7 @@ use App\Http\Controllers\MailerController;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Models\NewsLetters;
 use App\Models\NewsletterAlerts;
-
+use App\Models\HotelsModel;
 interface BulkMailsInterface{
 public function verifyToken(Request $request);
 }
@@ -313,6 +313,48 @@ return response()->json([
 ],500);
 }
 }
+
+
+// Thought it would be wide to create a way to sync hotel mails with bulks
+public function syncWithHotelMails(Request $request){
+try{
+$id_user = $this->verifyToken($request);
+
+$allHotelMails = HotelsModel::all();
+foreach($allHotelMails as $hotel){
+try{
+
+    $bulkName = strstr($hotel["contactEmail"],'@',true);
+    $randomFigures = mt_rand(0,999);
+    $randomFiguresString = "411"."$randomFigures";
+    $bulkSave = [
+    "fullname"=>$bulkName,
+    "category"=>"Client Local",
+    "identificationNumber"=>$randomFiguresString,
+    "phoneNumber"=>$hotel['contactPhoneNumber'],
+    "olanka_users_id"=>$id_user,
+    "identificationMethod"=>"passport",
+    "email"=>$hotel['contactEmail'],
+    "country"=>"Kenya"
+    ];
+    BulkMails::create($bulkSave);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
+}
+return response()->json([
+"message"=>"Emails Synced"
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+"message"=>"Something Went wrong"
+]);
+}
+}
+
+
+
 
 
 

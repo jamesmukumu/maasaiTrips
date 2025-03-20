@@ -12,13 +12,13 @@ return new class extends Migration{
             $table->id();
             $table->timestamps();
             $table->enum("actionPending",["approved","rejected","pending"])->nullable(false)->default('pending');
-            $table -> string("fullname")->unique();
-            $table ->string("category");
+            $table -> string("fullname")->unique()->nullable(false);
+            $table ->enum("category",["Client Local","Administator","Hotel","client"])->nullable(false);
             $table -> string("identificationNumber")->unique();
-            $table -> string("phoneNumber")->unique();
-            $table ->mediumText("description")->nullable();
+            $table -> string("phoneNumber")->unique()->nullable(false);
+            $table ->mediumText("description")->nullable(true);
             $table ->string("email")->unique();
-            $table -> enum("identificationMethod",["passport","id"]);
+            $table -> enum("identificationMethod",["passport","id"])->nullable(false);
             $table -> string("country")->nullable(true);
             $table -> foreignId("olanka_users_id")->constrained()->onDelete("cascade");
 

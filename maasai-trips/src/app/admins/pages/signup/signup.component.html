@@ -1,7 +1,7 @@
 <header-add></header-add>
 <div>
 <mat-card>
-<form>
+<form #registrationForm="ngForm">
 <h3>Create a new Account</h3>
 <mat-form-field appearance="outline">
 <mat-label>Enter Your UserName</mat-label>
@@ -46,31 +46,16 @@ Provide this field as needed
 <mat-label>Re-Type your password</mat-label>
 <input (change)="checkerPassMatch($event)" minlength="6" [type]="seePassword ? 'text':'password'" required name="confirmPassword" [(ngModel)]="confirmPassword" matInput>
 </mat-form-field>
-<div
-id="g_id_onload"
-data-client_id="56995972649-r58h6hevtt4itu94dgmqq7tfp0s9vmnr.apps.googleusercontent.com"
-data-context="signin"
-data-ux_mode="popup"
-data-callback="handleCredentialResponse"
-data-auto_prompt="false"
-></div>
 
-<div
-class="g_id_signin"
-data-type="standard"
-data-shape="pill"
-data-theme="filled_blue"
-data-text="continue_with"
-data-size="large"
-data-logo_alignment="left"
-></div>
+
 <mat-error *ngIf="mismatchWarn">
-    Mismatch between passwords
-    </mat-error>
-<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign in</span></p>
+Mismatch between passwords
+</mat-error>
+<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign Up</span></p>
 
-<button mat-flat-button *ngIf="!processingRequest && !mismatchWarn" (click)="reg()">Sign In</button>
-<p-button label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<button mat-flat-button *ngIf="!processingRequest && !mismatchWarn && registrationForm.valid" (click)="reg()">Sign In</button>
+<p-button severity="warning" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<p-button disabled="" severity="warning" label="Sign Up" *ngIf="!processingRequest && !registrationForm.valid"/>
 </form>
 
 

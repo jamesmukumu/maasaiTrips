@@ -14,6 +14,7 @@ export class DashboardComponent implements OnInit {
 @ViewChild(MatMenuTrigger)menuTrigger!:MatMenuTrigger
 emailChoosen:number = 1
 hotelChoosen:number = 1
+adminChoosen = 1
 packageChoosen = 1
 destinationChoosen:number = 1
 choosenActive:any
@@ -52,7 +53,12 @@ var {activeNode,Name} = event
 if(Name == 'Home'){
 this.activeIndex = 0
 }else if(Name == 'Account'){
+  this.adminChoosen = 1
   this.activeIndex = 6
+ 
+}else if(Name == 'Admins'){
+  this.activeIndex = 6
+  this.adminChoosen = 2
 }
 switch(activeNode){
 case "Create Email":

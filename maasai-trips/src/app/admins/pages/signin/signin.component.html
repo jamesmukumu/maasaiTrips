@@ -1,7 +1,7 @@
 <header-add [showAdminControls]="false"></header-add>
 <div>
 
-<form>
+<form #formApproval="ngForm">
 <h1>Sign in to your account</h1>
 
 <mat-form-field appearance="outline">
@@ -20,7 +20,7 @@ Provide this field as needed
 <mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
 <input #pass="ngModel" minlength="6" required [type]="seePassword ? 'text':'password'" name="password" [(ngModel)]="password" matInput>
 <mat-error *ngIf="pass.invalid && pass.touched">
-Provide password as needed
+Provide password as needed(Should be at least 6 Charachters)
 </mat-error>
 </mat-form-field>
 
@@ -30,8 +30,10 @@ Provide password as needed
 <span style="color: #08088b;cursor: pointer;" (click)="popRequest()">Forgot password?</span>
 
 
-<button mat-flat-button *ngIf="!processingRequest" (click)="login()">Sign In</button>
-<p-button label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<button mat-flat-button *ngIf="!processingRequest && formApproval.valid" (click)="login()">Sign In</button>
+<p-button severity="warning" [raised]="true" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<p-button severity="warning" *ngIf="!processingRequest && !formApproval.valid"  [raised]="true" label="Sign In" disabled />
+
 <h3>Do not have an account yet? <span  (click)="signUp()" style="cursor: pointer;color: blue;">Sign up</span></h3>
 </form>
 

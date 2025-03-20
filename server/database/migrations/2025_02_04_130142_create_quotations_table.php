@@ -12,19 +12,19 @@ return new class extends Migration
         Schema::create('quotations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table ->string("firstName");
-            $table ->string("lastName");
-            $table -> string("fullName")->nullable();
-            $table -> string("email")->unique();
-            $table -> string("phoneNumber")->unique();
-            $table -> smallInteger("adultsCount");
-            $table -> smallInteger("childrenCount");
+            $table ->string("firstName")->nullable(false);
+            $table ->string("lastName")->nullable(false);
+            $table -> string("fullName")->nullable(false);
+            $table -> string("email")->nullable(false);
+            $table -> string("phoneNumber")->nullable(false);
+            $table -> smallInteger("adultsCount")->nullable(false);
+            $table -> smallInteger("childrenCount")->nullable(true);
             $table -> text("travelDescription");
-            $table ->string("startStayDate");
-            $table ->string("endStayDate");
+            $table ->string("startStayDate")->nullable(false);
+            $table ->string("endStayDate")->nullable(false);
             $table ->boolean("quotationAddressed")->default(false);
             $table -> smallInteger("roomsCount");
-            $table -> text("kidsAges");
+            $table -> text("kidsAges")->nullable(true);
         });
     }
 
