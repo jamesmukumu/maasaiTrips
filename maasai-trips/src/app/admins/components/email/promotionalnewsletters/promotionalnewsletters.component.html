@@ -1,27 +1,36 @@
 <mat-card>
-  <form>
+  <form #promotionalForm="ngForm">
 <mat-form-field>
   <mat-label>NewletterTitle</mat-label>
-  <input type="text" required name="titlePromotional" matInput [(ngModel)]="Title">
+  <input type="text" #title="ngModel" required name="titlePromotional" matInput [(ngModel)]="Title">
+<mat-error *ngIf="title.touched && title.invalid">
+Provide title Field as needed
+</mat-error>
+
 </mat-form-field>
 
     <div class="destinations">
       <div *ngFor="let dest of Destinations; let i = index">
         <mat-form-field>
           <mat-label>Enter Title Destination {{ i + 1 }}</mat-label>
-          <input required type="text" name="destinationOneTitle" matInput [(ngModel)]="dest['destinationTitle' + (i+1)]" />
-
+          <input  #destinationField="ngModel" required type="text" name="destinationOneTitle" matInput [(ngModel)]="dest['destinationTitle' + (i+1)]" />
+          <mat-error *ngIf="destinationField.invalid && destinationField.touched">
+            Provide Destination Title as needed
+          </mat-error>
         </mat-form-field>
         <div>
           <p-editor
             placeholder="Description {{ i + 1 }}"
-            [style]="{ height: 'fit-content' }"
+            [style]="{ height: 'fit-content','min-height':'250px' }"
            (onTextChange)="editorValue($event,i)"
           />
         </div>
         <mat-form-field>
           <mat-label>Enter Price Destination {{ i + 1 }}</mat-label>
-          <input type="number" matInput name="destinationPrice" [(ngModel)]="dest['destinationPrice' + (i+1)]" />
+          <input type="number" required matInput #priceDest="ngModel" name="destinationPrice" [(ngModel)]="dest['destinationPrice' + (i+1)]" />
+          <mat-error *ngIf="priceDest.invalid && priceDest.touched">
+            Provide Price of Destination as needed
+          </mat-error>
         </mat-form-field>
         <div>
           <p-fileUpload
@@ -75,10 +84,12 @@
       <mat-label>Enter Special Deal Discount </mat-label>
       <input required type="number" [(ngModel)]="specialDealDiscount" matInput name="hotDiscount" />
     </mat-form-field>
+    <a href="https://app.tango.us/app/workflow/Creating-a-Newsletter-in-MaasaiTrips-3702f1c77da947c2bc9b6c6b77cc7bd3" target="blank">Not So sure of doing this?Watch a step by step guide</a>
     <mat-card-actions align="start">
-      <button *ngIf="!processing" mat-flat-button  (click)="saveNewsLetter()">Create</button>
-      <button *ngIf="!processing" mat-flat-button (click)="previewing()">Preview</button>
-      <p-button loading *ngIf="processing" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving" ></p-button>
+      <button *ngIf="!processing && promotionalForm.valid" mat-flat-button  (click)="saveNewsLetter()">Create</button>
+      <button *ngIf="!processing && promotionalForm.valid" mat-flat-button (click)="previewing()">Preview</button>
+      <p-button loading *ngIf="processing" severity="warning" [raised]="true"   label="Saving" ></p-button>
+      <p-button disabled *ngIf="!processing && !promotionalForm.valid" severity="warning" [raised]="true"   label="Create" ></p-button>
     </mat-card-actions>
   </form>
 </mat-card>

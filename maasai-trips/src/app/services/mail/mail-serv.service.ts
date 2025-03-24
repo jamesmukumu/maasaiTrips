@@ -22,8 +22,8 @@ export interface Bulk {
 export interface BulkMailUser {
   fullname: string;
   category: string;
-  identificationNumber: string;
-  phoneNumber: string;
+  identificationNumber?: string;
+  phoneNumber?: string;
   description?: string;
   email: string;
   identificationMethod: string;

@@ -74,5 +74,7 @@ case "Quotation added":
     })
 }
 }
-
+closePop(){
+this.dialog.closeAll()
+}
 }

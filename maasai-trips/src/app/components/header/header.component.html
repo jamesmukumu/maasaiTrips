@@ -1,68 +1,69 @@
 <mat-card>
-<mat-list >
-<mat-list-item (click)="home()">
-<img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
-</mat-list-item>
+  <mat-list>
+    <mat-list-item (click)="home()">
+      <img
+        src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"
+        mat-card-md-image
+        alt=""
+      />
+    </mat-list-item>
+    <mat-list-item (click)="goDest()">
+      <span matListItemLine>Destinations</span>
+    </mat-list-item>
+    <mat-list-item (click)="navigate()">
+      <span matListItemLine>Safari's</span>
+    </mat-list-item>
 
+    <mat-list-item (click)="accomodations()">
+      <span matListItemLine>Accomodations</span>
+    </mat-list-item>
 
-<mat-list-item (click)="accomodations()">
-<span matListItemLine>Accomodations</span>
-</mat-list-item>
-<mat-list-item (click)="navigate()">
-<span  matListItemLine>Safari's</span>
-</mat-list-item>
-<mat-list-item (click)="goDest()">
-<span matListItemLine>Destinations</span>
-</mat-list-item>
-
-<mat-list-item>
-<span matListItemLine>About us</span>
-</mat-list-item>
-<mat-list-item (click)="navigate()">
-
-<button mat-flat-button (click)="home()">
-Travel 
-<mat-icon class="suff-icon">mood</mat-icon>
-</button>
-</mat-list-item>
-<mat-list-item>
-<mat-icon class="icon" matTooltip="Toggle dark mode" style="color: white;" matListItemIcon>dark_mode</mat-icon>
-</mat-list-item>
-</mat-list>
-
-
-
-
-
-</mat-card> 
-
-
-
+    <mat-list-item>
+      <span matListItemLine>About us</span>
+    </mat-list-item>
+    <mat-list-item (click)="navigate()">
+      <button mat-flat-button (click)="home()">
+        Travel
+        <mat-icon class="suff-icon">mood</mat-icon>
+      </button>
+    </mat-list-item>
+    <mat-list-item>
+      <mat-icon
+        class="icon"
+        matTooltip="Toggle dark mode"
+        style="color: white"
+        matListItemIcon
+        >dark_mode</mat-icon
+      >
+    </mat-list-item>
+  </mat-list>
+</mat-card>
 
 <p-sidebar [(visible)]="seeDrawer">
-    <mat-list>
-        <mat-list-item (click)="home()">
-            <span matListItemTitle>Masaai Mara Trips</span>
-        </mat-list-item>
-        <mat-list-item (click)="navigate()">All About Masai Mara</mat-list-item>
-        <mat-list-item (click)="accomodations()">Accommodations</mat-list-item>
-        <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
-        <mat-list-item (click)="goDest()">Destinations</mat-list-item>
-        <mat-list-item>
-            <button mat-flat-button (click)="navigate()">Travel to Mara</button>
-        </mat-list-item>
-    </mat-list>
+  <mat-list>
+    <mat-list-item (click)="home()">
+      <span matListItemTitle>Masaai Mara Trips</span>
+    </mat-list-item>
+    <mat-list-item (click)="navigate()">All About Masai Mara</mat-list-item>
+    <mat-list-item (click)="accomodations()">Accommodations</mat-list-item>
+    <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
+    <mat-list-item (click)="goDest()">Destinations</mat-list-item>
+    <mat-list-item>
+      <button mat-flat-button (click)="navigate()">Travel to Mara</button>
+    </mat-list-item>
+  </mat-list>
 </p-sidebar>
 
 <mat-drawer-container>
-    <mat-drawer #drawer mode="over" [opened]="false">
-      </mat-drawer>
-      
-<div>
+  <mat-drawer #drawer mode="over" [opened]="false"> </mat-drawer>
+
+  <div>
     <mat-icon class="harmburg" (click)="toggle()">menu</mat-icon>
-    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" mat-card-md-image alt="">
+    <img
+      src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"
+      mat-card-md-image
+      alt=""
+    />
     <mat-icon class="dark">dark_mode</mat-icon>
-</div>
-
-
-    </mat-drawer-container>
+  </div>
+</mat-drawer-container>

@@ -1,14 +1,21 @@
 <mat-card>
-  <form>
-    <mat-form-field appearance="outline" >
+  <form #alertForm="ngForm">
+    <mat-form-field appearance="outline"  >
       <mat-label>Enter Title</mat-label>
-      <input type="text" [(ngModel)]="title" required name="title" matInput />
+      <input #title="ngModel" type="text" [(ngModel)]="title" required name="title" matInput />
+    <mat-error *ngIf="title.invalid && title.touched">
+      Provide a valid title
+    </mat-error>
+    
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Title for Entry 1</mat-label>
-      <input type="text"[(ngModel)]="titleEntry1"  name="title" matInput />
+      <mat-label>Title For Paragraph one</mat-label>
+      <input type="text"[(ngModel)]="titleEntry1" #titleParaOne="ngModel" name="title" matInput />
+    <mat-error *ngIf="titleParaOne.invalid && titleParaOne.touched">
+     Provide a Valid Title For Entry One
+    </mat-error>
     </mat-form-field>
-    <p-editor (onTextChange)="captureValueOne($event)" placeholder="Content for entry one" [style]="{height:'100px'}"  />
+    <p-editor (onTextChange)="captureValueOne($event)" placeholder="Content for entry one" [style]="{height:'fit-content','min-height':'250px'}"  />
 
     <div>
       <p-fileUpload
@@ -27,10 +34,14 @@
 
 
     <mat-form-field appearance="outline">
-        <mat-label>Title for Entry 2</mat-label>
-        <input type="text" name="title" matInput [(ngModel)]="titleEntry2" />
+        <mat-label>Title for Paragraph 2</mat-label>
+        <input type="text" name="title" #titleParaTwo="ngModel" matInput [(ngModel)]="titleEntry2" />
+        <mat-error *ngIf="titleParaTwo.invalid && titleParaTwo.touched">
+          Provide a Valid Title For Entry Two
+         </mat-error>
+      
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueTwo($event)" placeholder="Content for entry two"  [style]="{height:'100px'}" />
+      <p-editor (onTextChange)="captureValueTwo($event)" placeholder="Content for entry two"  [style]="{height:'fit-content','min-height':'250px'}"/>
   
       <div>
         <p-fileUpload
@@ -50,9 +61,12 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Title for Entry 3</mat-label>
-        <input type="text" [(ngModel)]="titleEntry3" name="title" matInput />
+        <input type="text" [(ngModel)]="titleEntry3"  #titleParaThree="ngModel" name="title" matInput />
+        <mat-error *ngIf="titleParaThree.invalid && titleParaThree.touched">
+          Provide a Valid Title For Entry Three
+         </mat-error>
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueThree($event)" placeholder="Content for entry three" [style]="{height:'100px'}"  />
+      <p-editor (onTextChange)="captureValueThree($event)" placeholder="Content for entry three" [style]="{height:'fit-content','min-height':'250px'}" />
   
       <div>
         <p-fileUpload
@@ -70,9 +84,12 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Title for Entry 4</mat-label>
-        <input [(ngModel)]="titleEntry4" type="text" name="title" matInput />
+        <input [(ngModel)]="titleEntry4" #titleParaFour="ngModel" type="text" name="title" matInput />
+        <mat-error *ngIf="titleParaFour.invalid && titleParaFour.touched">
+          Provide a Valid Title For Entry Four
+         </mat-error>
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueFour($event)" placeholder="Content for entry four" [style]="{height:'100px'}"  />
+      <p-editor (onTextChange)="captureValueFour($event)" placeholder="Content for entry four" [style]="{height:'fit-content','min-height':'250px'}" />
   
       <div>
         <p-fileUpload
@@ -89,10 +106,14 @@
         </p-fileUpload>
       </div>
   </form>
+  <a href="https://app.tango.us/app/workflow/Creating-a-Newsletter-in-MaasaiTrips-3702f1c77da947c2bc9b6c6b77cc7bd3" target="blank">Not So sure of doing this?Watch a step by step guide</a>
   <mat-card-actions align="start">
-    <button  mat-raised-button (click)="actualizeSaving()" *ngIf="!saving">Save</button>
-    <button mat-raised-button (click)="actualizePreview()" *ngIf="!saving">Preview</button>
-    <p-button loading [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving...." *ngIf="saving"></p-button>
+    
+    <button  mat-raised-button (click)="actualizeSaving()" *ngIf="!saving && alertForm.valid">Save</button>
+    <button mat-raised-button (click)="actualizePreview()" *ngIf="!saving && alertForm.valid">Preview</button>
+    <p-button loading [raised]="true" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving...." *ngIf="saving"></p-button>
+    <p-button disabled [raised]="true" label="Create" severity="warning" *ngIf="!saving && !alertForm.valid"></p-button>
+  
   </mat-card-actions>
 </mat-card>
 

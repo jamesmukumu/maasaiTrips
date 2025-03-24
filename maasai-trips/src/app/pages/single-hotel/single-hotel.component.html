@@ -1,4 +1,11 @@
 <header></header>
+<div [classList]="fetchingDestination ? 'spin' : 'no-spin'"   >
+  <p-progressBar
+    mode="indeterminate"
+    [style]="{ height: '6px' }"
+    *ngIf="fetchingDestination"
+  />
+</div>
 <mat-card class="container">
   <h1>{{ destinationData.hotelName }}</h1>
   <div *ngIf="!fetchingDestination" class="grid">
@@ -110,13 +117,7 @@
       </google-map>
     </div>
   </div>
-  <div [classList]="fetchingDestination ? 'spin' : 'no-spin'">
-    <p-progressBar
-      mode="indeterminate"
-      [style]="{ height: '6px' }"
-      *ngIf="fetchingDestination"
-    />
-  </div>
+  
   <patners *ngIf="!fetchingDestination"></patners>
   <p-scrollTop />
 

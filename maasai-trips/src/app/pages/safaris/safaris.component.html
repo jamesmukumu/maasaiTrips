@@ -1,114 +1,300 @@
 <mat-card class="cont">
-    <header></header>
-    <div class="safaris" [@bounceRight]="bgState" #bg>
-        <h1>We Believe in your Dream Safari to Maasai Mara</h1>
-    </div>
+  <header></header>
+  <div class="safaris" [@bounceRight]="bgState" #bg>
+    <h1>We Believe in your Dream Safari to Maasai Mara</h1>
+  </div>
 
-    <div class="safaris-main">
-        <mat-card>
-            <mat-card-header>
-                <h1>Maasai Mara Safari`s</h1>
-                <p>
-                    Whether you want to fly to Masai Mara Game Reserve, or travel by road using a land cruiser, these Masai Mara safari packages offer an unforgettable journey into one of Africa’s most iconic wildlife destinations. These packages are designed to suit a variety of travelers, whether you’re seeking luxury, adventure, or a family-friendly experience.
-                </p>
+  <div class="safaris-main">
+    <mat-card>
+      <mat-card-header>
+        <h1>Maasai Mara Safari`s</h1>
+        <p>
+          Whether you want to fly to Masai Mara Game Reserve, or travel by road
+          using a land cruiser, these Masai Mara safari packages offer an
+          unforgettable journey into one of Africa’s most iconic wildlife
+          destinations. These packages are designed to suit a variety of
+          travelers, whether you’re seeking luxury, adventure, or a
+          family-friendly experience.
+        </p>
 
-                <h1>What is Included in a Masaai Mara Safari</h1>
-                <mat-list>
-                    <mat-list-item>
-                        <h3 matListItemTitle>Game Drives</h3>
-                        <span matListItemLine>
-                            Experience thrilling morning and evening game drives with expert guides  who navigate the vast savannah, bringing you close to the Big Five and other wildlife.
-                        </span>
-                        <mat-icon matListItemIcon>directions_car</mat-icon>
-                    </mat-list-item>
+        <div class="safari-type">
+          <img src="" alt="" />
+        </div>
+        <div class="transport-means">
+          <div (click)="scrollAirSafaris()">
+            <img src="../../../assets/icons8-airplane-32.png" alt="" />
+            <p>Fly in to the Maasai Mara</p>
+          </div>
+          <div>
+            <img src="../../../assets/icons8-van-64.png" alt="" />
+            <p>Safaris by Van</p>
+          </div>
+          <div (click)="scrollJPSafaris()">
+            <img src="../../../assets/icons8-jeep-64.png" alt="" />
+            <p>Safaris by Jeep</p>
+          </div>
+          <div (click)="scrollSafaris()">
+            <img src="../../../assets/icons8-suv-49 (1).png" alt="" />
+            <p>Safaris by LandCruiser</p>
+          </div>
+        </div>
+        <h1>What is Included in a Masaai Mara Safari</h1>
+        <mat-list>
+          <mat-list-item>
+            <h3 matListItemTitle>Game Drives</h3>
+            <span matListItemLine>
+              Experience thrilling morning and evening game drives with expert
+              guides who navigate the vast savannah, bringing you close to the
+              Big Five and other wildlife.
+            </span>
+            <mat-icon matListItemIcon>directions_car</mat-icon>
+          </mat-list-item>
 
-                    <mat-list-item>
-                        <h3 matListItemTitle>Accommodations</h3>
-                        <span matListItemLine>
-                            Stay in carefully selected lodges, tented camps, or luxury resorts that provide comfort, excellent service, and often stunning views of the Mara plains.
-                        </span>
-                        <mat-icon matListItemIcon>apartment</mat-icon>
-                    </mat-list-item>
+          <mat-list-item>
+            <h3 matListItemTitle>Accommodations</h3>
+            <span matListItemLine>
+              Stay in carefully selected lodges, tented camps, or luxury resorts
+              that provide comfort, excellent service, and often stunning views
+              of the Mara plains.
+            </span>
+            <mat-icon matListItemIcon>apartment</mat-icon>
+          </mat-list-item>
 
-                    <mat-list-item>
-                        <h3 matListItemTitle>Meals</h3>
-                        <span matListItemLine>
-                            Our packages include full-board meals, allowing you to enjoy local and international cuisine amidst the African wilderness.
-                        </span>
-                        <mat-icon matListItemIcon>restaurant_menu</mat-icon>
-                    </mat-list-item>
+          <mat-list-item>
+            <h3 matListItemTitle>Meals</h3>
+            <span matListItemLine>
+              Our packages include full-board meals, allowing you to enjoy local
+              and international cuisine amidst the African wilderness.
+            </span>
+            <mat-icon matListItemIcon>restaurant_menu</mat-icon>
+          </mat-list-item>
 
-                    <mat-list-item>
-                        <h3 matListItemTitle>Cultural Experiences</h3>
-                        <span matListItemLine>
-                            The safaris include visits to Maasai villages, where you can learn about the rich traditions and daily life of the Maasai people.
-                        </span>
-                        <mat-icon matListItemIcon>groups</mat-icon>
-                    </mat-list-item>
+          <mat-list-item>
+            <h3 matListItemTitle>Cultural Experiences</h3>
+            <span matListItemLine>
+              The safaris include visits to Maasai villages, where you can learn
+              about the rich traditions and daily life of the Maasai people.
+            </span>
+            <mat-icon matListItemIcon>groups</mat-icon>
+          </mat-list-item>
 
-                    <mat-list-item>
-                        <h3 matListItemTitle>Airport Transfers</h3>
-                        <span matListItemLine>
-                            Convenient transfers from Nairobi or other entry points to the Masai Mara, ensuring a seamless travel experience.
-                        </span>
-                        <mat-icon matListItemIcon>airport_shuttle</mat-icon>
-                    </mat-list-item>
-                </mat-list>
-                <button mat-flat-button (click)="requestQuote()">Request Quote</button>
-            </mat-card-header>
-        </mat-card>
+          <mat-list-item>
+            <h3 matListItemTitle>Airport Transfers</h3>
+            <span matListItemLine>
+              Convenient transfers from Nairobi or other entry points to the
+              Masai Mara, ensuring a seamless travel experience.
+            </span>
+            <mat-icon matListItemIcon>airport_shuttle</mat-icon>
+          </mat-list-item>
+        </mat-list>
+        <button mat-flat-button (click)="requestQuote()">Request Quote</button>
+      </mat-card-header>
+    </mat-card>
 
-        <mat-card>
-            <mat-card-content>
-                <h1>Safari Experience Highlights</h1>
-                <mat-list>
-                    <mat-list-item>
-                        <span matListItemTitle>Great Migration Safari`s</span>
-                        <span matListItemLine>
-                            Timed to coincide with the Great Migration, these packages offer a front-row seat to one of nature’s most spectacular events as millions of wildebeest and zebras cross the Mara River.
-                        </span>
-                        <mat-icon matListItemIcon>check</mat-icon>
-                    </mat-list-item>
+    <h1>Safari Experience Highlights</h1>
+    <mat-list>
+      <mat-list-item style="padding-right: 20px">
+        <span matListItemTitle>Great Migration Safari`s</span>
+        <span matListItemLine>
+          Timed to coincide with the Great Migration, these packages offer a
+          front-row seat to one of nature’s most spectacular events as millions
+          of wildebeest and zebras cross the Mara River.
+        </span>
+        <mat-icon style="color: green" matListItemIcon>check</mat-icon>
+      </mat-list-item>
 
-                    <mat-list-item>
-                        <span matListItemTitle>Hot Air Balloon Safari`s</span>
-                        <span matListItemLine>
-                            Some safaris include the option of a hot air balloon ride, offering a breathtaking aerial view of the wildlife and landscapes at sunrise.
-                        </span>
-                        <mat-icon matListItemIcon>check</mat-icon>
-                    </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Hot Air Balloon Safari`s</span>
+        <span matListItemLine>
+          Some safaris include the option of a hot air balloon ride, offering a
+          breathtaking aerial view of the wildlife and landscapes at sunrise.
+        </span>
+        <mat-icon matListItemIcon style="color: green">check</mat-icon>
+      </mat-list-item>
 
-                    <mat-list-item>
-                        <span matListItemTitle>Family Safari`s</span>
-                        <span matListItemLine>
-                            Family-friendly safaris often feature activities tailored for children, such as junior ranger programs and educational wildlife talks.
-                        </span>
-                        <mat-icon matListItemIcon>check</mat-icon>
-                    </mat-list-item>
-                </mat-list>
+      <mat-list-item style="margin-bottom: 5.5px">
+        <span matListItemTitle>Family Safari`s</span>
+        <span matListItemLine>
+          Family-friendly safaris often feature activities tailored for
+          children, such as junior ranger programs and educational wildlife
+          talks.
+        </span>
+        <mat-icon matListItemIcon style="color: green">check</mat-icon>
+      </mat-list-item>
+    </mat-list>
+    <mat-card-content>
+      <mat-card-content *ngIf="landCruiserSaf.length != 0">
+        <h2>Feature Packages (LandCruiser Safaris)</h2>
+        <p>
+          The most popular mode of getting to Masai Mara is by road, typically
+          starting and ending in Nairobi, with the choice of vehicle being a 4x4
+          Landcruiser Jeep or the less costly Safari Minibus (Tour Van). The
+          trip from Nairobi to Masai Mara typically takes 5 to 6 hours depending
+          on which Camp has been booked for your tour. The benefit of a safari
+          by road is the typically lower tour cost as well as getting to see and
+          experience more of the real Kenyan countryside. The downside is that
+          stretches of road on the route are of below average condition.
+        </p>
 
-                <div class="grid-see" *ngIf="!fetching">
-                    <div *ngFor="let saf of safaris">
-                        <img [src]="saf.packageImage" alt="">
-                        <h1>{{saf.packageTitle}}</h1>
-                        <p>Charges: <b>{{saf.packageCharge}} {{saf.packageChargeCurrency}}</b> per Adult</p>
-                        <p>Perks and Benefits</p>
-                        <mat-list>
-                            <mat-list-item matListItemAvatar>
-                                <span  matListItemTitle>{{saf.budgetType}}</span>
-                                <mat-icon matListItemIcon>check</mat-icon>
-                            </mat-list-item>
-                           
-                            <mat-list-item matListItemAvatar>
-                                <span matListItemTitle> Safari in {{saf.mode_transport}}</span>
-                                <mat-icon matListItemIcon>check</mat-icon>
-                            </mat-list-item>
-                        </mat-list>
-                        <button (click)="goPackage(saf.packageSlug)" mat-flat-button>View more</button>
-                    </div>
-                </div>
-            </mat-card-content>
-        </mat-card>
-    </div>
-    <footer></footer>
+        <div class="grid-see" *ngIf="!fetching" #landCruiserSafaris>
+          <div *ngFor="let saf of landCruiserSaf">
+            <img [src]="saf.packageImage" alt="" />
+            <h1>{{ saf.packageTitle }}</h1>
+            <p>
+              Charges:
+              <b>{{ saf.packageCharge }} {{ saf.packageChargeCurrency }}</b> per
+              Adult
+            </p>
+            <p>Perks and Benefits</p>
+            <mat-list>
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>{{ saf.budgetType }}</span>
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>
+                  Safari in {{ saf.mode_transport }}</span
+                >
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+            </mat-list>
+            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>
+              See Package
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content *ngIf="airSafariss.length != 0">
+        <h2>Feature Packages (AirSafari`s)</h2>
+        <p>
+          Fly~in or "Flyng Safaris" as these are also known offer the
+          convenience of getting to Masai Mara within an hour from Nairobi and
+          are norm for certain Safari Camps in Maasai Mara which are more remote
+          or those that only offer packaged stays including safari drives.
+          Flights take off from Wilson airport in Nairobi twice daily and upon
+          arrival at the airstrip in the Mara, guests are received and
+          transfered to their respective Camp or Lodge in time for lunch. Game
+          drives are provided in 4x4 Safari Tour Vehicles by the property.
+        </p>
+
+        <div class="grid-see" *ngIf="!fetching" #airSafaris>
+          <div *ngFor="let saf of airSafariss">
+            <img [src]="saf.packageImage" alt="" />
+            <h1>{{ saf.packageTitle }}</h1>
+            <p>
+              Charges:
+              <b>{{ saf.packageCharge }} {{ saf.packageChargeCurrency }}</b> per
+              Adult
+            </p>
+            <p>Perks and Benefits</p>
+            <mat-list>
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>{{ saf.budgetType }}</span>
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>
+                  Safari in {{ saf.mode_transport }}</span
+                >
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+            </mat-list>
+            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>
+              See Package
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content *ngIf="jeepSafaris.length != 0">
+        <h2>Feature Packages (Jeep Safari`s)</h2>
+        <p>
+          Fly~in or "Flyng Safaris" as these are also known offer the
+          convenience of getting to Masai Mara within an hour from Nairobi and
+          are norm for certain Safari Camps in Maasai Mara which are more remote
+          or those that only offer packaged stays including safari drives.
+          Flights take off from Wilson airport in Nairobi twice daily and upon
+          arrival at the airstrip in the Mara, guests are received and
+          transfered to their respective Camp or Lodge in time for lunch. Game
+          drives are provided in 4x4 Safari Tour Vehicles by the property.
+        </p>
+
+        <div class="grid-see" *ngIf="!fetching" #jpSafaris>
+          <div *ngFor="let saf of jeepSafaris">
+            <img [src]="saf.packageImage" alt="" />
+            <h1>{{ saf.packageTitle }}</h1>
+            <p>
+              Charges:
+              <b>{{ saf.packageCharge }} {{ saf.packageChargeCurrency }}</b> per
+              Adult
+            </p>
+            <p>Perks and Benefits</p>
+            <mat-list>
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>{{ saf.budgetType }}</span>
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>
+                  Safari in {{ saf.mode_transport }}</span
+                >
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+            </mat-list>
+            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>
+              See Package
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+
+      <mat-card-content *ngIf="vanSafaris.length != 0">
+        <h2>Feature Packages (Van Safari`s)</h2>
+        <p>
+          Fly~in or "Flyng Safaris" as these are also known offer the
+          convenience of getting to Masai Mara within an hour from Nairobi and
+          are norm for certain Safari Camps in Maasai Mara which are more remote
+          or those that only offer packaged stays including safari drives.
+          Flights take off from Wilson airport in Nairobi twice daily and upon
+          arrival at the airstrip in the Mara, guests are received and
+          transfered to their respective Camp or Lodge in time for lunch. Game
+          drives are provided in 4x4 Safari Tour Vehicles by the property.
+        </p>
+
+        <div class="grid-see" *ngIf="!fetching" #vnSafaris>
+          <div *ngFor="let saf of vanSafaris">
+            <img [src]="saf.packageImage" alt="" />
+            <h1>{{ saf.packageTitle }}</h1>
+            <p>
+              Charges:
+              <b>{{ saf.packageCharge }} {{ saf.packageChargeCurrency }}</b> per
+              Adult
+            </p>
+            <p>Perks and Benefits</p>
+            <mat-list>
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>{{ saf.budgetType }}</span>
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+
+              <mat-list-item matListItemAvatar>
+                <span matListItemTitle>
+                  Safari in {{ saf.mode_transport }}</span
+                >
+                <mat-icon matListItemIcon>check</mat-icon>
+              </mat-list-item>
+            </mat-list>
+            <button (click)="goPackage(saf.packageSlug)" mat-flat-button>
+              See Package
+            </button>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card-content>
+  </div>
+  <footer></footer>
 </mat-card>

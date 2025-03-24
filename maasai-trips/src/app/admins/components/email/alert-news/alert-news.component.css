@@ -7,7 +7,9 @@ mat-card form{
 display: flex;
 flex-direction: column;
 }
-
+form mat-form-field{
+margin-top: 15px;
+}
 .spin{
     width: 100%;
     display: flex;

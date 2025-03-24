@@ -1,5 +1,5 @@
 <header></header>
-
+<img class="img-bg" src="../../../assets/destinations_bg.jpg" alt="destinations_bg">
 <div class="main">
   <h1>Explore our stunning Safari destinations in Kenya</h1>
 <mat-card *ngIf="!findingDestinations">
@@ -11,7 +11,7 @@
       <h4>{{ dest.destinationTitle }}</h4>
       </main>
 
-      <mat-card-content [innerHTML]="sanitize(dest.destinationDescription)"></mat-card-content>
+      <mat-card-content [innerHTML]="sanitize(dest.destinationAbout)"></mat-card-content>
     </div>
   </mat-card>
 

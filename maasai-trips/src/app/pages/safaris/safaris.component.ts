@@ -34,15 +34,26 @@ import { Router } from '@angular/router';
 })
 export class SafarisComponent implements AfterViewInit{
 @ViewChild("bg") bgRef!:ElementRef
+@ViewChild("landCruiserSafaris")landCruiserSafarisRef!:ElementRef
+@ViewChild("airSafaris")airSafaris!:ElementRef
+@ViewChild("jpSafaris")jpSafaris!:ElementRef
+
 bgState:string = 'clear'
 fetching = false
+airSafariss:any = []
+vanSafaris:any = []
+jeepSafaris:any = []
+landCruiserSaf:any = []
 readonly dialog = inject(MatDialog)
 constructor(private packages:PackagesService,private router:Router){}
 async fetchSafaris(){
 this.fetching = true
 try{ 
-var  {data} = await this.packages.fetchHotPackages()
-this.safaris = data
+var  {vanPackages,landCruiserPackages,airPackages,jeepPackages} = await this.packages.fetchHotPackages()
+this.airSafariss = airPackages
+this.vanSafaris = vanPackages
+this.jeepSafaris = jeepPackages
+this.landCruiserSaf= landCruiserPackages
 this.fetching = false
 }catch(err){
 console.error(err)
@@ -58,7 +69,8 @@ requestQuote(){
 this.dialog.open(QuotationsComponent)
 }
 goPackage(slug:any){
-this.router.navigate([`/safaris/${slug}`])
+  window.open(`/safaris/${slug}`,"_blank")
+// this.router.navigate([`/safaris/${slug}`])
 }
 
 
@@ -87,5 +99,25 @@ observer.observe(this.bgRef.nativeElement)
 ngAfterViewInit(){
 this.bgBounce()
 }
+scrollSafaris(){
+this.landCruiserSafarisRef.nativeElement.scrollIntoView({
+behavior:"smooth",
+block:"start"
+})
+}
+
+scrollAirSafaris(){
+  this.airSafaris.nativeElement.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+  })
+  }
+
+  scrollJPSafaris(){
+    this.jpSafaris.nativeElement.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+      })
+  }
   safaris: any[] = [];
 }

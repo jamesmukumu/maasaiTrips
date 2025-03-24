@@ -294,13 +294,17 @@ class PackageController extends Controller implements PackageInterface
     public function fetchDisplayPackages(Request $request)
     {
         try {
-
-            $paginatedPackage = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("published", true)->paginate(30);
-            return response()->json([
+        $airPackages = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("mode_transport","Air")->where("published",true)->get()->shuffle()->take(4);
+        $vanPackages = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("mode_transport","Van")->where("published",true)->get()->shuffle()->take(4);
+        $landCruiserPackages = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("mode_transport","LandCruiser")->where("published",true)->get()->shuffle()->take(4);
+        $jeepPackages = Package::select(["mode_transport", 'budgetType', "packageCharge", "packageImage", "packageChargeCurrency", "packageTitle", "id", "packageSlug", "packageOverview"])->where("mode_transport","Jeep")->where("published",true)->get()->shuffle()->take(4);
+          
+        return response()->json([
                 "message" => "Packages Fetched",
-                "data" => $paginatedPackage->items(),
-                "nextUrl" => $paginatedPackage->nextPageUrl(),
-                "previousPage" => $paginatedPackage->previousPageUrl()
+             "vanPackages"=>$vanPackages,
+              "landCruiserPackages"=>$landCruiserPackages,
+                "airPackages"=>$airPackages,
+                "jeepPackages"=>$jeepPackages
             ]);
         } catch (\Exception $err) {
             Log::error($err->getMessage());

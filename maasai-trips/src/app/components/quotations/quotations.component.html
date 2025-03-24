@@ -1,10 +1,10 @@
 <mat-dialog-content>
   <h1>Get your Safari quote</h1>
   <p>Please fill the form including all the information you need to know about Masai Mara Safari.</p>
-
+<mat-icon (click)="closePop()">close</mat-icon>
   <form #quoteForm="ngForm">
     <div class="formA">
-      <mat-form-field>
+      <mat-form-field> 
         <mat-label>Enter Your First Name</mat-label>
         <input autocomplete="off" type="text" required name="firstName" matInput [(ngModel)]="firstName" #FirstName="ngModel">
         <mat-hint>Example: John</mat-hint>

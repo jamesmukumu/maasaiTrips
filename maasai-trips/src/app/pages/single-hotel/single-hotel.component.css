@@ -1,7 +1,7 @@
 .container {
   max-width: 100%;
   min-width: 100%;
-  /* min-height: 100vh; */
+  min-height: 100vh;
   height: max-content;
   display: flex;
   flex-direction: column;
@@ -90,10 +90,10 @@ flex-direction: column;
   .grid-see div h2{
     padding: 15px;
   }
-.spin {
-  min-height: 100vh;
-  height: 100%;
-}
+  .spin {
+    min-height: 100%;
+    height: 100%;
+  }
 
 .grid-see div button{
   width: fit-content;

@@ -11,8 +11,8 @@ export class NewBulkAddComponent {
 processing = false
 see = true
 fullName:string = ''
-phoneNumber:number  = 0
-idNumber:number = 0
+phoneNumber?:number  
+idNumber?:number 
 description:string = ''
 emailAddress:string = ''
 bulkOptions:string[] = ["Hotel","client","Client local","Administrator"]
@@ -31,11 +31,11 @@ var payload:BulkMailUser = {
 fullname:this.fullName,
 category:this.category,
 identificationMethod:this.identificationMethod,
-identificationNumber:this.idNumber.toString(),
+identificationNumber:`${this.idNumber}`,
 description:this.description,
 email:this.emailAddress,
 country:this.country,
-phoneNumber:this.phoneNumber.toString(),
+phoneNumber:`${this.phoneNumber}`,
 }
 var resp = await this.mail.SaveBulkUser(payload);
 var {message} = resp

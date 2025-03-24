@@ -13,20 +13,21 @@ export interface Register {
 export class AdminService {
   constructor() {}
 
- async findAllUsers(){
- try{
-var token = Cookies.get("grant_token")
-var response = await axios.get("http://localhost:8000/api/see/all/users",{
-headers:{
-"Authorization":`Bearer ${token}`
-}
-})
-return response.data
- }catch(err){
-return err
- }
-
-
+  async findAllUsers() {
+    try {
+      var token = Cookies.get('grant_token');
+      var response = await axios.get(
+        'https://maasaitrips-2.onrender.com/api/see/all/users',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
   }
 
   async Register(Reg: Register) {
@@ -99,10 +100,10 @@ return err
       );
 
       var { authorization } = resp.headers;
-  if(resp.data.message == 'Successful Login'){
-  Cookies.set('grant_token', authorization, { expires: 1 / 24 });
-  }
-  return resp.data;
+      if (resp.data.message == 'Successful Login') {
+        Cookies.set('grant_token', authorization, { expires: 1 / 24 });
+      }
+      return resp.data;
     } catch (err) {
       return err;
     }

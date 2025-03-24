@@ -1,6 +1,6 @@
 <mat-card>
 <h1>Send Email</h1>
-<form>
+<form #sendEmailForm="ngForm">
 <mat-form-field >
 <mat-label>Send to</mat-label>
 <input required type="email" matInput name="mailTo" [(ngModel)]="targetMail">
@@ -38,7 +38,7 @@
 
         <div>
         <mat-label>Enter message</mat-label>
-        <p-editor (onTextChange)="captureMessage($event)" required [style]="{height:'fit-content'}" placeholder="Enter your message here" [(ngModel)]="message"/>
+        <p-editor (onTextChange)="captureMessage($event)" required [style]="{height:'fit-content','min-height':'255px'}" placeholder="Enter your message here" [(ngModel)]="message"/>
       </div>
 
       <input #fileInput type="file" style="display: none;" >
@@ -63,9 +63,10 @@
 </form>
 
 <mat-card-actions>
-<button mat-flat-button *ngIf="!processingEmail" (click)="sendingEmail()">Send</button>
-<p-button label="Sending" *ngIf="processingEmail" loading/>
-
+<button mat-flat-button *ngIf="!processingEmail && sendEmailForm.valid" (click)="sendingEmail()">Send</button>
+<p-button label="Sending" *ngIf="processingEmail && sendEmailForm.valid" [raised]="true" severity="warning" loading/>
+<p-button label="Send Mail" disabled [raised]="true" severity="warning"  *ngIf="!sendEmailForm.valid"/>
+    
 </mat-card-actions>
 <p-toast/>
-</mat-card>
+</mat-card> 

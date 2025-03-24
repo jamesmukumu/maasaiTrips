@@ -6,7 +6,7 @@
 @import "../node_modules/quill/dist/quill.core.css";
 @import "../node_modules/quill/dist/quill.snow.css";
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;overflow-x: clip; }
+body { margin: 0; font-family:"Manrope", sans-serif,;  font-optical-sizing:auto; font-weight: normal;font-style: normal; overflow-x: clip; }
 
 
   

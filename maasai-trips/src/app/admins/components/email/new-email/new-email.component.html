@@ -1,6 +1,6 @@
 <mat-card>
     <h1>Create new Email</h1>
-    <form>
+    <form #createEmailFrom="ngForm">
     <mat-form-field >
     <mat-label>Subject</mat-label>
     <input  required [(ngModel)]="subject" #subjectContent="ngModel" required type="text" matInput name="mailTo">
@@ -13,8 +13,8 @@
        
     
             <div>
-            <mat-label>Enter message</mat-label>
-            <p-editor required [style]="{height:'fit-content'}" placeholder="Enter your message here" (onTextChange)="captureMessage($event)"/>
+            <mat-label>Enter message Body</mat-label>
+            <p-editor required [style]="{height:'fit-content','min-height':'250px'}" placeholder="Enter your message body here:Example Requesting for Quotations" (onTextChange)="captureMessage($event)"/>
           </div>
     
           <input #fileInput type="file" style="display: none;" >
@@ -39,8 +39,11 @@
     </form>
     
     <mat-card-actions>
-    <button mat-flat-button *ngIf="!processingRequest" (click)="savingTemplate()">Create</button>
-    <p-button loading *ngIf="processingRequest">Processing request</p-button>
-    </mat-card-actions>
+    <button mat-flat-button *ngIf="!processingRequest && createEmailFrom.valid" (click)="savingTemplate()">Create</button>
+    <p-button disabled *ngIf="createEmailFrom.invalid"  [raised]="true" severity="warning">Save Mail</p-button>
+    
+
+
+</mat-card-actions>
     <p-toast/>
     </mat-card>

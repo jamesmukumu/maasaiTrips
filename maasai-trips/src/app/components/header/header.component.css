@@ -36,6 +36,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: no-wrap;
+    justify-content: space-between;
     }
     .icon{
     color: white;
@@ -49,7 +50,9 @@
     p,strong,mat-card-title,mat-card-subtitle,span{
     color: white;
     }
-    
+    mat-list mat-list-item{
+ margin-left: 0;
+    }
     
       
     

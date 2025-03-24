@@ -1,18 +1,23 @@
 * {
   margin: 0;
   padding: 0;
-  
+  /* box-sizing: border-box; */
 }
+.img-bg{
+  width: 100%;
+  height: 80vh;
+  /* min-width: 1250px;
+  max-height: 625px; */
 
+
+}
 .main {
   max-width: 100%;
   min-width: 100vw;
   min-height: 100vh;
   height: 100%;
 }
-p{
-padding: 25px;
-}
+
 mat-card {
   margin-left: 20px;
   margin-right: 20px;
@@ -56,20 +61,15 @@ mat-card div {
   padding: 10px;
   position: relative;
   display: inline-block;
+
+  
+
+
 }
 mat-card div img {
   max-width: 100%;
   height: auto;
   max-height: 200px;
-}
-mat-card button{
-margin-top: 20px;
-margin-left: 2px;
-padding: 3.5px;
-width: fit-content;
-background-color: #fca608;
-color: white;
-
 }
 mat-card-content strong,
 
@@ -101,7 +101,13 @@ display: flex;
 flex-direction: row;
 }
 
-
+div button{
+  text-align: center;
+  background-color: #fca608;
+      color: white;
+      gap: 20px;
+      cursor: pointer;
+  }
 p {
   line-height: 1.7;
   letter-spacing: 0.77px;
@@ -134,7 +140,9 @@ gap: 0px;
 width: 100%;
 }
 
-
+.img-bg{
+  height: 45vh;
+}
 mat-card div{
   width: 100%;
 margin-top: 20px;

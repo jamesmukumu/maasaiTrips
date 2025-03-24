@@ -53,7 +53,7 @@ accept=".csv"
 </p-fileUpload>
 
 </mat-card-header>
-<p-button loading [style]="{'background-color':'rgb(252,166,8)'}"   label="Sending mails" *ngIf="sendingMails"></p-button>
+<p-button loading [raised]="true"  label="Sending mails" severity="warning" *ngIf="sendingMails"></p-button>
 <p-button loading  label="Processing csv" [style]="{'background-color':'green'}" *ngIf="savingCsv"></p-button>
 <mat-form-field>
 <mat-label>Choose mail type</mat-label>

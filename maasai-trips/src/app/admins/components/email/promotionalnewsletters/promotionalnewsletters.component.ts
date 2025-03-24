@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MessageService } from 'primeng/api';
 import { Store } from '@ngrx/store';
 import { NewslettersService,Promotional } from '../../../../services/mail/promotional/newsletters.service';
+
+
 export interface destinations{
 destinationTitle:string
 destinationDescription:string
