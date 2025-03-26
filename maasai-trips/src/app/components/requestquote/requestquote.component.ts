@@ -58,9 +58,10 @@ export class RequestquoteComponent {
   
   var {message} = resp
   switch(message){
-    this.dialog.closeAll()
+   
   case "Quotation added":
     this.processingQuote = false 
+    this.dialog.closeAll()
     this.snack.open("Saved","Added 😀",{
       horizontalPosition:"center",
       verticalPosition:"bottom"
