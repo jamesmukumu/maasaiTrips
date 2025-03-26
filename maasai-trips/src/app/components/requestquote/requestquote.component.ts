@@ -1,8 +1,9 @@
-import { Component,Input,OnInit } from '@angular/core';
+import { Component,Input,OnInit,inject } from '@angular/core';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import { QuotationsService,Quotations } from '../../services/quotations.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Store } from '@ngrx/store';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'requestquote',
   templateUrl: './requestquote.component.html',
@@ -10,6 +11,7 @@ import { Store } from '@ngrx/store';
   providers:[provideNativeDateAdapter()]
 })
 export class RequestquoteComponent {
+  readonly dialog = inject(MatDialog)
   @Input() hotelName:string = ''
   firstName:string = ""
   secondName:string = ""
@@ -56,12 +58,14 @@ export class RequestquoteComponent {
   
   var {message} = resp
   switch(message){
+    this.dialog.closeAll()
   case "Quotation added":
     this.processingQuote = false 
     this.snack.open("Saved","Added 😀",{
       horizontalPosition:"center",
       verticalPosition:"bottom"
     })
+  
     break;
     case "Something Went wrong":
       this.processingQuote = false
@@ -73,7 +77,9 @@ export class RequestquoteComponent {
   }
 
 
-
+closePopUp(){
+this.dialog.closeAll()
+}
 
 
 

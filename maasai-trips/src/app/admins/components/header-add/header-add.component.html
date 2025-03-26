@@ -1,7 +1,7 @@
 <mat-card>
   <mat-list>
     <mat-list-item *ngIf="showAdminControls">
-     <mat-icon (click)="actualizeToggle()" matTooltip="Toogle menu bar"
+     <mat-icon (click)="actualizeToggle()" #controlBar  matTooltip="Toogle menu bar"
      style="color: white">menu</mat-icon>
     </mat-list-item>
     <mat-list-item (click)="home()">

@@ -160,12 +160,27 @@
       <mat-divider style="background-color: white"></mat-divider>
 
       <div [classList]="activeIndex == 6 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(6)">
+        <mat-list-item (click)="changeActive(6)" [mat-menu-trigger-for]="adminMenu">
           <span matListItemTitle>Account</span>
           <mat-icon style="color: white" matListItemIcon
             >account_circle</mat-icon
           >
-          <p matCardAvatar>sk</p>
+
+         <mat-menu #adminMenu="matMenu">
+           
+          <button mat-menu-item  (click)="toggleAdmins(1)" >
+            <mat-icon>person</mat-icon>
+            <span style="color: black" >My Profile</span>
+          </button>
+  
+          <button *ngIf="adminStatus" mat-menu-item (click)="toggleAdmins(2)">
+            <mat-icon>person</mat-icon>
+            <span style="color: black">Manage Users</span>
+          </button>
+  
+         </mat-menu>
+
+
         </mat-list-item>
       </div>
     </mat-list>

@@ -7,6 +7,9 @@ import { PackagesService } from '../../../../services/packages.service';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MessageService,ConfirmationService } from 'primeng/api';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { Store } from '@ngrx/store';
+
+
 @Component({
   selector: 'manage-packages',
   templateUrl: './manage-packages.component.html',
@@ -17,6 +20,7 @@ export class ManagePackagesComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly snack = inject(MatSnackBar);
   constructor(
+    private store:Store,
     private hotels: HotelsService,
     private packages: PackagesService,
     private msg:MessageService,
@@ -26,6 +30,7 @@ export class ManagePackagesComponent {
     this.idSelected = id
   this.showAdjuststatus = true
   }    
+adminStatus = false
 adjusting = false
   popConfirm(event:any){
   this.confirm.confirm({
@@ -209,6 +214,10 @@ adjusting = false
   }
 
   async ngOnInit() {
+    this.store.subscribe((data:any)=>{
+      var {statusAdmin} = data
+      this.adminStatus = statusAdmin
+    })
     try {
       this.fetchingDestinations = true;
       this.fetchMyDestinations();

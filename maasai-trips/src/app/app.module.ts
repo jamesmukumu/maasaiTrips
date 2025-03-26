@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { userStatusReducer } from './redux/reducers/userStatus.reducer';
 import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterModule } from '@angular/router';
@@ -119,12 +120,13 @@ const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
   preview:previewReducer,
-  enquiryRed:enquiry
+  enquiryRed:enquiry,
+  statusAdmin:userStatusReducer
   }
   export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
     return (state, action) => {
       if (typeof window !== 'undefined') {
-        return localStorageSync({ keys: ['enquiry','bulks',"preview","enquiryRed"], rehydrate: true })(reducer)(state, action);
+        return localStorageSync({ keys: ['enquiry','bulks',"statusAdmin","preview","enquiryRed"], rehydrate: true })(reducer)(state, action);
       }
       return reducer(state, action);
     };

@@ -1,8 +1,9 @@
-import { Component, Output, EventEmitter, Input, OnInit,inject } from '@angular/core';
+import { Component, Output, EventEmitter,HostListener, Input, OnInit,inject,ViewChild,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../../../services/admin.service';
 import Cookies from 'js-cookie';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
 import { ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import {
@@ -38,6 +39,15 @@ export class HeaderAddComponent {
   @Output() choosenEmitter = new EventEmitter<CurrentSelection>();
   @Output() toogleNav = new EventEmitter<boolean>();
   @Input() showAdminControls = false;
+  @ViewChild("controlBar",{static:false}) controlsSideBar!: ElementRef
+  @HostListener('window:keydown', ['$event'])
+  handleKeydown(event: KeyboardEvent) {
+    if (event.ctrlKey && event.key.toLowerCase() === 'b') {
+    event.preventDefault(); 
+this.actualizeToggle()
+    }
+  }
+
 
   openSideDrawer = false;
   sideNavOpener = false;

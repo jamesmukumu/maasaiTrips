@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PackagesService } from '../../services/packages.service';
 import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
@@ -10,6 +10,28 @@ import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
   styleUrl: './singular-package.component.css'
 })
 export class SingularPackageComponent {
+@ViewChild("specialNotes") specialNotesRef!:ElementRef
+@ViewChild("inclusions") inclusionsRef!:ElementRef
+@ViewChild("exclusions") exclusionsRef!:ElementRef
+@ViewChild("itinerary") itineraryRef!:ElementRef
+@ViewChild("overView") overViewRef!:ElementRef
+
+
+goOverview(){
+this.overViewRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
+}
+goExclusions(){
+this.exclusionsRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
+}
+goInclusions(){
+  this.inclusionsRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
+  }
+goItinerary(){
+this.itineraryRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
+}
+goSpecial(){
+this.specialNotesRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
+}
 constructor(private router:ActivatedRoute,private sanitizor:DomSanitizer,private packages:PackagesService){}
 fetching = false
 packageData:any

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject,ElementRef } from '@angular/core';
 import { Hotel, HotelsService } from '../../services/hotels.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -19,32 +19,27 @@ import { addEnquiry } from '../../redux/actions/enquiry.action';
   selector: 'app-hotels-display',
   templateUrl: './hotels-display.component.html',
   styleUrl: './hotels-display.component.css',
-  animations: [
-    trigger('bounceLeft', [
-      transition('* =>*', [
+ animations:[
+    trigger('bounceRight', [
+      transition('clear => visible', [
         style({
           opacity: 1,
-          transform: 'translateY(-45px)',
+          transform: 'translateX(-48px)'
         }),
         animate(
-          '2s ease-in-out',
-          keyframes([
-            style({
-              offset: 1,
-              opacity: 1,
-              transform: 'translateY(0px)',
-              easing: 'ease-out',
-            }),
-          ])
-        ),
-      ]),
-    ]),
-  ],
+          '1.55s ease-in-out',
+          style({ transform: 'translateX(0px)', opacity: 1 })
+        )
+      ])
+    ])
+  ]
 })
 export class HotelsDisplayComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild("bg") bgRef!:ElementRef
   readonly dialog = inject(MatDialog);
 
+  bgState:string = 'clear'
   destinations: any;
   findingDestinations = false;
   hotelCount: number = 0;
@@ -96,4 +91,25 @@ export class HotelsDisplayComponent {
   ngOnInit() {
     this.fetchDestinations();
   }
+
+  bgBounce(){
+    var observer = new IntersectionObserver((entries)=>{
+    entries.map((entry)=>{
+    if(entry.isIntersecting){
+    this.bgState = 'visible'
+    }else{
+    this.bgState = 'clear'
+    }
+    
+    })
+    
+    
+    })
+    observer.observe(this.bgRef.nativeElement)
+    }
+    
+    
+    ngAfterViewInit(){
+    this.bgBounce()
+    }
 }

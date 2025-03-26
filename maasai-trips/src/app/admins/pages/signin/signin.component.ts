@@ -7,8 +7,8 @@ import {MatDialog} from "@angular/material/dialog"
 import { RequestResetComponent } from '../../../components/request-reset/request-reset.component';
 import Cookie from "js-cookie"
 import Cookies from 'js-cookie';
-
-
+import { Store } from '@ngrx/store';
+import { saveSuperUser } from '../../../redux/actions/userStatus.action';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class SigninComponent  {
   credential = ''
   password = ''
   seePassword:boolean = false
-  constructor(private admin:AdminService,private router:Router,private msg:MessageService){}
+  constructor(private store:Store,private admin:AdminService,private router:Router,private msg:MessageService){}
 
   ngOnInit(){
     var token = Cookie.get("grant_token")
@@ -43,9 +43,9 @@ export class SigninComponent  {
   }
 login(){
   this.processingRequest = true
-this.admin.login(this.credential,this.password).then((data)=>{
-var {message,token} = data
-switch(message){
+this.admin.login(this.credential,this.password).then((data:any)=>{
+var {message} = data
+switch(message){ 
   case "Credentials mismatch":
 this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
   this.processingRequest= false
@@ -61,6 +61,7 @@ this.msg.add({severity:"error",life:10000,detail:"Invalid credentials"})
 
     break
 case "Successful Login":
+this.store.dispatch(saveSuperUser({status:data.super}))
 this.router.navigate(["/dashboard"])
   }
 })
@@ -75,4 +76,4 @@ this.router.navigate(["/register"])
     }
 }
 
-
+ 

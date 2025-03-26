@@ -1,16 +1,16 @@
 <mat-dialog-content>
-  <mat-icon>close</mat-icon>
+  <mat-icon (click)="closePopUp()">close</mat-icon>
     <h1>Get your  quote</h1>
-    <p> Please fill the form including all the information you need to know about Masai Mara Safari.</p>
+    <p> Please fill the form including all the information you need to know about {{hotelName}}</p>
     
-        <form>
+        <form #formEnquire="ngForm">
             <div class="formA">
             <mat-form-field>
             <mat-label>Enter Your First Name</mat-label>
             <input type="text" required name="firstName" matInput [(ngModel)]="firstName" #FirstName="ngModel">
             <mat-hint>Example John</mat-hint>
             <mat-error *ngIf="FirstName.invalid && FirstName.touched">
-              This field must be filled  
+              Provide First Name as needed 
             </mat-error>
             </mat-form-field>
             <mat-form-field>
@@ -46,8 +46,8 @@
                 <mat-form-field>
                     <mat-label>Enter a date range</mat-label>
                     <mat-date-range-input [rangePicker]="picker">
-                      <input matStartDate placeholder="Start date" (dateChange)="seeStartDate($event)">
-                      <input matEndDate placeholder="End date" (dateChange)="endDateFormat($event)">
+                      <input required matStartDate placeholder="Start date" (dateChange)="seeStartDate($event)">
+                      <input required matEndDate placeholder="End date" (dateChange)="endDateFormat($event)">
                     </mat-date-range-input>
                     <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -56,26 +56,28 @@
          
             <mat-form-field>
             <mat-label>Number of Adults</mat-label>
-            <input type="number" matInput name="adults" [(ngModel)]="adultsCount">
-            <mat-hint>Example:2</mat-hint>
+            <input  required type="number" matInput name="adults" [(ngModel)]="adultsCount" #adultCount="ngModel">
+          <mat-error *ngIf="adultCount.touched && adultCount.invalid">
+            Provide number of adults
+          </mat-error>
             </mat-form-field>
             
             <mat-form-field>
-            <mat-label>Number of Children</mat-label>
+            <mat-label>Number of Children (Optional)</mat-label>
             <input type="number" matInput name="children" [(ngModel)]="childrenCount">
-            <mat-hint>Example:5</mat-hint>
+            
             </mat-form-field>
     
     
             <mat-form-field>
-            <mat-label>Provide children age`s comma separated</mat-label>
+            <mat-label>Children ages (Optional)</mat-label>
             <input type="text" matInput name="ages" [(ngModel)]="kidsAges">
-            <mat-hint>Example:5,6,7,8</mat-hint>
+            <mat-hint>Separate Children ages with comma.Example 2,4,5</mat-hint>
             </mat-form-field>
             
             <mat-form-field>
                 <mat-label>Number of rooms</mat-label>
-                <input type="number" matInput name="rooms" [(ngModel)]="roomsCount" >
+                <input required type="number" matInput name="rooms" [(ngModel)]="roomsCount" >
                 <mat-hint>Example 3</mat-hint>
                 </mat-form-field>
     
@@ -93,6 +95,7 @@
     </mat-dialog-content>
     
     <mat-dialog-actions>
-    <button mat-flat-button *ngIf="!processingQuote" (click)="actualizeSave()">Submit</button>
+    <button mat-flat-button *ngIf="!processingQuote && formEnquire.valid" (click)="actualizeSave()">Submit</button>
     <button mat-flat-button *ngIf="processingQuote">Processing Request....</button>
-    </mat-dialog-actions>
+  <p-button  *ngIf="!processingQuote && !formEnquire.valid"severity="warning" disabled  label="Submit" raised="true"/>  
+  </mat-dialog-actions>

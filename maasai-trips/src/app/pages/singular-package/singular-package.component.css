@@ -3,11 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+mat-card mat-card-header mat-card-title{
+text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+h2{
+  text-decoration: underline;
+}
 mat-card-content strong,
 span,
 p,
 b {
-  display: inline; /* Ensures they don't break the layout */
+  display: inline; 
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -18,7 +26,7 @@ b {
 }
 
 mat-card-content span {
-  display: inline; /* Ensures they don't break the layout */
+  display: inline;
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -33,11 +41,15 @@ mat-card-title {
 mat-card {
   height: max-content;
   margin-left: 3%;
+  margin-top: 30px;
+  margin-right: 30px;
 }
 .galleria {
   max-width: 100%;
   display: flex;
   flex-direction: row;
+
+
 }
 
 .galleria-thumbnails {
@@ -52,17 +64,51 @@ mat-card {
   grid-template-rows: repeat(1, 1fr);
 }
 .package-overview {
-  margin-top: 20px;
+
   height: max-content;
   max-width: 600px;
   width: 100%;
+  margin-top: calc(25vh);
 }
-.package-about {
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
   margin-top: 20px;
-  height: max-content;
-  width: 100%;
-  max-width: 600px;
 }
+
+ul li {
+  cursor: pointer;
+  list-style: none;
+  padding: 20px;
+  text-align: center;
+  position: relative; 
+}
+
+ul li h3 {
+  text-transform: capitalize;
+  font-size: 18.55px;
+  position: relative;
+}
+
+ul li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 0;
+  height: 3px;
+  background-color:  #fca608;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+ul li:hover::after {
+  width: 100%;
+}
+
 mat-card-content {
   word-wrap: break-word;
   overflow-wrap: anywhere;
@@ -109,15 +155,20 @@ mat-card-content {
   display: none;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+
+
   .galleria {
     max-width: 100%;
     display: flex;
     flex-direction: column;
   }
-
+mat-card-content{
+margin-top: 30px;
+}
   .galleria-thumbnails {
     margin-left: 0px;
+
   }
   .galleria-thumbnails img {
     margin: 0px;

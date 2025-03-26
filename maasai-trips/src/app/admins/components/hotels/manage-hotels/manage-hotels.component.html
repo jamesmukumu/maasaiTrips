@@ -78,10 +78,10 @@
       </button>
       <mat-menu #menu>
         <button mat-menu-item (click)="editHotel(element)">
-          <mat-icon>edit</mat-icon>
+          <mat-icon>edit</mat-icon> 
           <span>Edit</span>
         </button>
-        <button mat-menu-item  (click)="adjustStatus(element.id)">
+        <button mat-menu-item *ngIf="grant_all_functions" (click)="adjustStatus(element.id)">
           <mat-icon>edit</mat-icon>
           <span>Adjust Status</span> 
         </button>
@@ -92,6 +92,10 @@
         <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
           <mat-icon style="color: green" >publish</mat-icon>
           <span>Publish hotel</span>
+        </button>
+        <button mat-menu-item *ngIf="element.publishable" (click)="publishingHotel(element)">
+          <mat-icon style="color: red" >publish</mat-icon>
+          <span>Un-publish hotel</span>
         </button>
       </mat-menu>
     </td>
@@ -159,6 +163,10 @@
         </button>
         <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
           <mat-icon style="color: green" >publish</mat-icon>
+          <span>Publish hotel</span>
+        </button>
+        <button mat-menu-item *ngIf="element.publishable" (click)="publishingHotel(element)">
+          <mat-icon style="color: red" >Un-publish</mat-icon>
           <span>Publish hotel</span>
         </button>
       </mat-menu>

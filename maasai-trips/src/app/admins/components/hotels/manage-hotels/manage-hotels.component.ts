@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageService,ConfirmationService } from 'primeng/api';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'manage-hotels',
   templateUrl: './manage-hotels.component.html',
@@ -14,8 +15,9 @@ import { MessageService,ConfirmationService } from 'primeng/api';
 export class ManageHotelsComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 readonly dialog = inject(MatDialog)
-  constructor(private hotel: HotelsService,private msg:MessageService,private confirm:ConfirmationService) {}
+  constructor(private store:Store,private hotel: HotelsService,private msg:MessageService,private confirm:ConfirmationService) {}
   hotelData: any;
+  grant_all_functions = false
   popEditor = false;
   hotelNameDelete = '';
   idSelected: number = 0;
@@ -283,6 +285,10 @@ this.contactPerson = event.value
   }
 
   ngOnInit() {
+    this.store.subscribe((data:any)=>{
+    var {statusAdmin} = data
+    this.grant_all_functions = statusAdmin
+    })
     this.fetchHotels();
     this.fetchDestinations();
   }

@@ -4,6 +4,8 @@ import Cookies from 'js-cookie';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AdminService } from '../../../services/admin.service';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'dashboard',
   templateUrl: './dashboard.component.html',
@@ -46,6 +48,9 @@ async popDialog(){
   }
    
   
+  }
+  toggleAdmins(idx:number){
+ this.adminChoosen = idx
   }
 triggerChoosen(event:any){
 console.log(event)
@@ -148,7 +153,7 @@ this.router.navigate(["/login"])
 
 
 
-constructor(private router:Router,private admin:AdminService){}
+constructor(private router:Router,private admin:AdminService,private store:Store){}
 chooserEmail(choosenOptionEmail:number){
 this.emailChoosen = choosenOptionEmail
 }
@@ -170,12 +175,15 @@ openMenu(event:MouseEvent,trigger:any){
 event.stopPropagation()
 trigger.openMenu()
 }
-
+adminStatus = false
 
 ngOnInit(){
+this.store.subscribe((status:any)=>{
+this.adminStatus = status.statusAdmin
+}) 
 var token = Cookies.get("grant_token")
 if(token == undefined || token == ''){
-this.router.navigate(["/login"])
+this.router.navigate(["/page/not found"])
 }
 }
 

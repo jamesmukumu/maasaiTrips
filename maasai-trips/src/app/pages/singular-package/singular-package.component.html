@@ -3,8 +3,31 @@
 <mat-card *ngIf="!fetching">
 <mat-card-header>
 <mat-card-title>{{packageData.packageTitle}}</mat-card-title>
-</mat-card-header>
 
+
+</mat-card-header>
+<ul>
+  <li (click)="goOverview()">
+  <h3 >OVERVIEW</h3>
+  </li>
+  <li (click)="goItinerary()">
+  <h3 >ITINERARY</h3>
+  </li>
+  <li (click)="goInclusions()">
+  <h3>INCLUSIONS</h3>
+  </li>
+  <li (click)="goExclusions()">
+  <h3 >EXCLUSIONS</h3>
+  </li>
+  <li (click)="goSpecial()">
+  <h3 >SPECIAL NOTES</h3>
+  </li>
+    
+    
+    
+  
+  </ul>
+  
 <div class="galleria">
 <div class="image-main">
 <img [src]="packageData.packageImage" alt="">
@@ -16,19 +39,19 @@
 </div>
 
 
-<div class="package-overview">
-<strong>Package Overview</strong>
+<div class="package-overview" #overView>
+<h2>Package Overview</h2>
 <mat-card-content [innerHTML]="sanitize(packageData.packageOverview)"></mat-card-content>
 </div>
 
-<div class="package-about">
-<strong>More About this Package</strong>
+<div class="package-about" #itinerary>
+<h2>More About this Package</h2>
 <mat-card-content [innerHTML]="sanitize(packageData.packageAbout)"></mat-card-content>
 </div>
 
 
-<div class="package-about">
-<h2>What you get</h2>
+<div class="package-about" #inclusions>
+<h2>Inclusions</h2>
 <mat-list *ngFor="let inc of formatInclusives(packageData.packageInclusives)">
 <mat-list-item matListItemAvatar>
 <span matListItemTitle>{{inc}}</span>
@@ -37,8 +60,8 @@
 </mat-list>
 </div>
 
-<div class="package-about">
-    <h2>What you do not get</h2>
+<div class="package-about" #exclusions>
+    <h2>Exclusions</h2>
     <mat-list *ngFor="let excl of formatExclusives(packageData.packageExclusives)">
     <mat-list-item matListItemAvatar>
     <span matListItemTitle>{{excl}}</span>
@@ -47,8 +70,8 @@
     </mat-list>
     </div>
 
-    <div class="package-about">
-        <strong>Special Notes</strong>
+    <div class="package-about" #specialNotes>
+        <h2>Special Notes</h2>
         <mat-card-content [innerHTML]="sanitize(packageData.packageAbout)"></mat-card-content>
         </div>
 
@@ -81,5 +104,5 @@
     *ngIf="fetching"
   />
   </div>
-
+  <p-scrollTop/>
 <footer></footer>

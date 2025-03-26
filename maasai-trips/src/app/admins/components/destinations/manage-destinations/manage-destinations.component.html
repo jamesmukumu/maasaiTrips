@@ -48,7 +48,7 @@
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item  (click)="adjustStatus(element.id)">
+        <button mat-menu-item  *ngIf="adminStatus" (click)="adjustStatus(element.id)">
           <mat-icon>edit</mat-icon>
           <span>Adjust Status</span> 
         </button>

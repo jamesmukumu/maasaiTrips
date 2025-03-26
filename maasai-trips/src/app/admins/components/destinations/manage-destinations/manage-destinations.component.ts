@@ -5,6 +5,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import {Store} from "@ngrx/store"
+
+
 @Component({
   selector: 'manage-destinations',
   templateUrl: './manage-destinations.component.html',
@@ -30,7 +33,7 @@ status:string = ''
   getStatus(event:any){
    this.status = event.value
   }
-  constructor(private msg:MessageService,private hotels: HotelsService,private confirm:ConfirmationService) {}
+  constructor(private store:Store,private msg:MessageService,private hotels: HotelsService,private confirm:ConfirmationService) {}
   destinationTitle: string = '';
 
   destinationDescription: any;
@@ -219,7 +222,12 @@ adjusting = false
     this.idSelected = id;
     this.unpublishDestination = true;
   }
+  adminStatus = false
   ngOnInit() {
+    this.store.subscribe((data:any)=>{
+      var {statusAdmin} = data
+      this.adminStatus = statusAdmin
+    })
     this.fetchMyDestinations();
   }
 }
