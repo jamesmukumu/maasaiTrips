@@ -1,10 +1,10 @@
-import { Component,inject } from '@angular/core';
+import { Component,inject,OnInit } from '@angular/core';
 import { AdminService,Register } from '../../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import Cookies from 'js-cookie';
-
+import {v5 as uuidv5} from 'uuid'
 
 @Component({
   selector: 'signup',
@@ -22,7 +22,7 @@ confirmPassword:string = ''
 mismatchWarn:boolean = false
 seePassword:boolean = false
 processingRequest = false
-constructor(private admin:AdminService,private router:Router,private msg:MessageService){}
+constructor(private activeRoute:ActivatedRoute,private admin:AdminService,private router:Router,private msg:MessageService){}
 reg(){
 this.processingRequest = true
 var payload:Register = {
@@ -61,10 +61,26 @@ this.mismatchWarn = false
 }
 }
 goSignIn(){
-  this.router.navigate(["/login"])
-  }
+this.router.navigate(["/login"])
+}
 toggleSee(){
 this.seePassword = !this.seePassword
 }
+
+
+ngOnInit(){
+var uniqueID  = uuidv5("http://localhost:4200/register",uuidv5.URL)
+
+
+this.activeRoute.paramMap.subscribe((data)=>{
+if(uniqueID != data.get('passkey')){
+this.router.navigate(["/"])
+}
+})
+
+
+}
+
+
 
 }

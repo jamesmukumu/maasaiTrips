@@ -16,7 +16,7 @@
     form button{
         background-color: rgb(252,166,8);
         color: white;
-        margin-left: 30%;
+        margin-left: 10px;
         width: fit-content;
     }
     mat-card-header button{
@@ -33,14 +33,24 @@
     height: 100%;
     display: flex;
     align-items: center;
+    position: relative;
+    }
+    mat-icon{
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
     }
     form{
+
     width: 100%;
     height: 70%;
     display: grid;
     grid-template-columns: repeat(2,2fr);
     grid-template-rows: 1fr;
     }
+   
+    
     div{
     display: flex;
     flex-direction: column;
@@ -51,11 +61,13 @@
     
     
 
-    @media(max-width:900px){
+    @media(max-width:768px){
 mat-card,form{
     min-width: 100vw;
     max-width: 100%;
+    min-height: 100vh;
     height: max-content;
+    overflow-y: visible;
 }
     form{
     width: 100%;
@@ -67,7 +79,7 @@ mat-card,form{
     margin-left: 0;
     }
     mat-form-field{
-        width: 90%;
+        width: 100%;
     }
     button{
         margin-top: 20px;

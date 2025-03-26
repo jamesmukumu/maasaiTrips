@@ -1519,18 +1519,23 @@ this.msg.add({severity:"success",detail:"Updated",life:11000})
   constructor(private mail:MailServService,private msg:MessageService,private store:Store){}
   
 
-
+  closePop(){
+  this.dialog.closeAll()
+  }
 
   ngOnInit(){
   this.store.subscribe((data:any)=>{
 var {bulks} = data
 
 var updateData = JSON.parse(bulks)
-var {fullname,category,phoneNumber,email,identificationNumber,description,id} = updateData
+console.log(updateData)
+var {fullname,country,category,phoneNumber,email,identificationNumber,description,id} = updateData
 this.fullName = fullname
 this.idUser = id
 this.category = category
-this.phoneNumber = phoneNumber
+this.country = country
+this.identificationMethod = 'id'
+this.phoneNumber = updateData.phoneNumber
 this.emailAddress = email
 this.idNumber = identificationNumber
 this.description = description

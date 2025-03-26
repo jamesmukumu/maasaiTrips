@@ -1,7 +1,7 @@
 import { Component,inject,OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import {MatDialog} from "@angular/material/dialog"
 import { RequestResetComponent } from '../../../components/request-reset/request-reset.component';
@@ -9,7 +9,7 @@ import Cookie from "js-cookie"
 import Cookies from 'js-cookie';
 import { Store } from '@ngrx/store';
 import { saveSuperUser } from '../../../redux/actions/userStatus.action';
-
+import {v5 as  uuidv5} from "uuid"
 
 @Component({
   selector: 'app-signin',
@@ -17,21 +17,28 @@ import { saveSuperUser } from '../../../redux/actions/userStatus.action';
   styleUrl: './signin.component.css',
   providers:[MessageService]
 })
-export class SigninComponent  {
+export class SigninComponent implements OnInit  {
   readonly snack = inject(MatSnackBar)
   readonly dialog = inject(MatDialog)
   processingRequest = false
   credential = ''
   password = ''
   seePassword:boolean = false
-  constructor(private store:Store,private admin:AdminService,private router:Router,private msg:MessageService){}
+  constructor(private activeRoute:ActivatedRoute,private store:Store,private admin:AdminService,private router:Router,private msg:MessageService){}
 
   ngOnInit(){
+   
+   let validuuid = uuidv5("http://localhost:4200/login",uuidv5.URL)
+   this.activeRoute.paramMap.subscribe(data=>{
+    if(validuuid != data.get('passkey')){
+      this.router.navigate(["/"])
+    }else{
+      this.router.navigate([`/login/${validuuid}`])
+    }
+   })
     var token = Cookie.get("grant_token")
     if(token){
       this.router.navigate(["/dashboard"])
-    }else{
-      this.router.navigate(["/login"])
     }
   }
 

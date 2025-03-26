@@ -8,12 +8,43 @@ import { AdminService } from '../../../services/admin.service';
 })
 export class ManageadminsComponent {
 constructor(private admin:AdminService){}
-displayedColumns = ["created_at","name","email","super","emailVerified","actions"]
+displayedColumns = ["created_at","name","email","phone","super","emailVerified","actions"]
 dataSource:any
 processing = false
+editUser = false
+deleteUser = false
+userIdSelected?:number
+fullname?:string
+email?:string
+emailVerificationStatus?:boolean
 
 
+validEmailStatus = [
+  {
+  "status":false,
+  "label":"Unverified"
+  },
+  {
+    "status":true,
+    "label":"Verified"
+    },
+]
 
+popAdminUpdate(element:any){
+  
+this.editUser = true
+this.fullname = element.userName
+this.email = element.Email
+this.emailVerificationStatus = element.emailVerified
+}
+
+popAdminDelete(element:any){
+  
+  this.deleteUser = true
+  this.fullname = element.userName
+  this.email = element.Email
+  this.emailVerificationStatus = element.emailVerified
+  }
 formater(dateTime:any){
 return new Date(dateTime).toDateString()
 }

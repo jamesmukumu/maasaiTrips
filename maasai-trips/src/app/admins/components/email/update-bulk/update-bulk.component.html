@@ -1,6 +1,6 @@
 <mat-card>
     <h2>Edit this bulk</h2>
-    
+    <mat-icon (click)="closePop()">close</mat-icon>
     <form>
     <div class="form-a">
     
@@ -21,7 +21,7 @@
     <mat-form-field>
     <mat-label>Enter your phone Number</mat-label>
     <mat-icon matIconPrefix>call</mat-icon>
-    <input type="text" min="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
+    <input type="text"  [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
     </mat-form-field>
     
     

@@ -196,6 +196,15 @@ MatTooltipModule,
     component:SingularPackageComponent,
     path:"safaris/:packageSlug"
     },
+    {
+      path:"login/:passkey",
+      component:SigninComponent
+      },
+        
+      {
+        path:"register/:passkey",
+        component:SignupComponent
+      },
       {
       component:VerifyEmailComponent,
       path:"verify/email/:token"
@@ -225,15 +234,8 @@ path:"dashboard"
       component:HomeComponent,
       path:""
       },
+    
       
-      {
-        path:"register",
-        component:SignupComponent
-      },
-      {
-      path:"login",
-      component:SigninComponent
-      },
       
       {
       path:"safaris",
