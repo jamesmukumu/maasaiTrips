@@ -8,7 +8,7 @@ import { AdminService } from '../../../services/admin.service';
 })
 export class ManageadminsComponent {
 constructor(private admin:AdminService){}
-displayedColumns = ["created_at","name","email","phone","super","emailVerified","actions"]
+displayedColumns = ["created_at","name","email","phone","roleAdmin","super","emailVerified","actions"]
 dataSource:any
 processing = false
 editUser = false
@@ -16,7 +16,9 @@ deleteUser = false
 userIdSelected?:number
 fullname?:string
 email?:string
+phoneNumber?:string
 emailVerificationStatus?:boolean
+roleAdmin?:string
 
 
 validEmailStatus = [
@@ -30,12 +32,21 @@ validEmailStatus = [
     },
 ]
 
+acceptedAdminRoles = ["Marketing","Transport","Sales","Reservations"]
+
 popAdminUpdate(element:any){
-  
+
+
 this.editUser = true
 this.fullname = element.userName
 this.email = element.Email
 this.emailVerificationStatus = element.emailVerified
+this.phoneNumber = element.phoneNumber
+this.roleAdmin = element.adminRoles
+}
+
+bindDropDown(event:any){
+console.log(event)
 }
 
 popAdminDelete(element:any){

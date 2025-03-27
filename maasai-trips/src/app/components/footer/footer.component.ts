@@ -9,6 +9,10 @@ export class FooterComponent {
 yr:number = new Date().getFullYear()
 constructor(private router:Router){}
 
+goSocials(url:string){
+window.open(url,"_blank")
+}
+
 home(){
 this.router.navigate(["/"])
 }

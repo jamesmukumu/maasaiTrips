@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { Hotel,HotelsService } from '../../services/hotels.service';
 import { Router } from '@angular/router';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 import { trigger,transition,keyframes,style,animate } from '@angular/animations';
 
 @Component({
@@ -31,9 +31,9 @@ import { trigger,transition,keyframes,style,animate } from '@angular/animations'
 export class DestinationsComponent implements OnInit {
 destinations:any[] = []
 findingDestinations = false
-constructor(private hotel:HotelsService,private router:Router,private sanitizer:DomSanitizer){}
+constructor(private titlePage:Title,private hotel:HotelsService,private router:Router,private sanitizer:DomSanitizer){}
 goDestinations(id:any,title:any){  
-this.router.navigate([`/destinations/${title}/${id}`])
+window.open(`/destinations/${title}/${id}`,"_blank")
 }
 sanitize(data:SafeHtml|any){
 return this.sanitizer.bypassSecurityTrustHtml(data)
@@ -55,6 +55,7 @@ console.error(err)
 
 ngOnInit(){
 this.fetchDestinations()
+this.titlePage.setTitle("Explore scenic destinations | Maasai Mara Trips")
 }
 
 }

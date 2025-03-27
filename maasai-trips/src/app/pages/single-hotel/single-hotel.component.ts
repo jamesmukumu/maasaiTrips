@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hotel,HotelsService } from '../../services/hotels.service';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 
 
@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrl: './single-hotel.component.css'
 })
 export class SingleHotelComponent {
-  constructor(private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
+  constructor(private titlePage:Title,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
   destinationsID:any
   fetchingDestination = false
   destinationData:any
@@ -69,11 +69,12 @@ return new Array(count)
   
   
   
-  ngOnInit(){
+  async ngOnInit(){
   this.router.paramMap.subscribe((data)=>{
   this.destinationsID = data.get("hotelSlug") ?? ""
   })
-  this.fetchDestinations()
+  await this.fetchDestinations()
+  this.titlePage.setTitle(this.destinationData.hotelName+" | "+"Maasai MaraTrips")
   }
   
 }

@@ -66,10 +66,12 @@
     p,strong,mat-card-title,mat-card-subtitle{
     color: white;
     }
+    p{
+    font-size: 16px;
+    }
     
     
-    
-    @media(max-width:900px){
+    @media(max-width:768px){
         mat-card{
         display: none;
         }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table -> string("phoneNumber")->nullable(false);
             $table -> smallInteger("adultsCount")->nullable(false);
             $table -> smallInteger("childrenCount")->nullable(true);
-            $table -> text("travelDescription");
+            $table -> text("travelDescription")->nullable(false);
             $table ->string("startStayDate")->nullable(false);
             $table ->string("endStayDate")->nullable(false);
             $table ->boolean("quotationAddressed")->default(false);

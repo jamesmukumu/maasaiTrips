@@ -2,7 +2,7 @@
 <div>
 <mat-card>
 <form #registrationForm="ngForm">
-<h3>Create a new Account</h3>
+<h2>Create a new Account</h2>
 <mat-form-field appearance="outline">
 <mat-label>Enter Your UserName</mat-label>
 <input type="text" required name="userName" #username="ngModel" [(ngModel)]="userName" matInput>
@@ -28,6 +28,18 @@ Provide this field as needed
 </mat-error>
 
 </mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Pick a Role</mat-label>
+<mat-select required [(value)]="roleAdmin"> 
+<mat-option [value]="roles" *ngFor="let roles of acceptedAdminRoles">
+{{roles}}
+</mat-option>
+
+</mat-select>
+
+</mat-form-field>
+
 
 <mat-form-field appearance="outline">
 <mat-label>Enter your password</mat-label>
@@ -61,10 +73,7 @@ Mismatch between passwords
 
  
 </mat-card>
-<mat-card style="background-color: rgb(241,245,249);">
-<img src="../../../../assets/undraw_access-account_aydp.svg" alt="">
 
-</mat-card>
 
     <p-toast/>
 

@@ -63,6 +63,7 @@ mat-icon {
 mat-list mat-list-item {
   margin-top: 10px;
   padding-top: 20px;
+  cursor: pointer;
 }
 mat-menu span,
 mat-icon {
@@ -75,7 +76,7 @@ header-add{
 width: max-content;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
   .main mat-card {
     display: none;
   }

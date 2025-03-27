@@ -110,7 +110,8 @@ flex-direction: column;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
   .grid-see div button{
-  margin-left: 2.5px;
+  margin-left: 12.5px;
+  
   }
   .grid-see div h2{
     padding: 15px;

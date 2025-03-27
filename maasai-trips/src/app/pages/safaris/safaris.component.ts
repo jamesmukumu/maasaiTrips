@@ -10,6 +10,7 @@ import { PackagesService } from '../../services/packages.service';
 import { QuotationsComponent } from '../../components/quotations/quotations.component';
 import {MatDialog} from '@angular/material/dialog'
 import { Router } from '@angular/router';
+import {Title} from "@angular/platform-browser"
 
 
 
@@ -45,7 +46,7 @@ vanSafaris:any = []
 jeepSafaris:any = []
 landCruiserSaf:any = []
 readonly dialog = inject(MatDialog)
-constructor(private packages:PackagesService,private router:Router){}
+constructor(private packages:PackagesService,private router:Router,private titlePage:Title){}
 async fetchSafaris(){
 this.fetching = true
 try{ 
@@ -97,7 +98,9 @@ observer.observe(this.bgRef.nativeElement)
 
 
 ngAfterViewInit(){
+this.titlePage.setTitle("Explore Adventurous Maasai Safaris | Maasai Mara Trips")
 this.bgBounce()
+
 }
 scrollSafaris(){
 this.landCruiserSafarisRef.nativeElement.scrollIntoView({

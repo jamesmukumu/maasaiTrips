@@ -1,7 +1,13 @@
-import { Component, OnInit, ViewChild, inject,ElementRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  inject,
+  ElementRef,
+} from '@angular/core';
 import { Hotel, HotelsService } from '../../services/hotels.service';
 import { Router } from '@angular/router';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { MatPaginator } from '@angular/material/paginator';
 import { RequestquoteComponent } from '../../components/requestquote/requestquote.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,27 +25,27 @@ import { addEnquiry } from '../../redux/actions/enquiry.action';
   selector: 'app-hotels-display',
   templateUrl: './hotels-display.component.html',
   styleUrl: './hotels-display.component.css',
- animations:[
+  animations: [
     trigger('bounceRight', [
       transition('clear => visible', [
         style({
           opacity: 1,
-          transform: 'translateX(-48px)'
+          transform: 'translateX(-48px)',
         }),
         animate(
           '1.55s ease-in-out',
           style({ transform: 'translateX(0px)', opacity: 1 })
-        )
-      ])
-    ])
-  ]
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HotelsDisplayComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild("bg") bgRef!:ElementRef
+  @ViewChild('bg') bgRef!: ElementRef;
   readonly dialog = inject(MatDialog);
 
-  bgState:string = 'clear'
+  bgState: string = 'clear';
   destinations: any;
   findingDestinations = false;
   hotelCount: number = 0;
@@ -48,13 +54,14 @@ export class HotelsDisplayComponent {
   requestingQuote = false;
 
   constructor(
+    private titlePage: Title,
     private hotel: HotelsService,
     private router: Router,
     private store: Store,
     private sanitizer: DomSanitizer
   ) {}
   goDestinations(id: any, title: any) {
-    this.router.navigate([`/hotel/${title}/${id}`]);
+    window.open(`/hotel/${title}/${id}`, '_blank');
   }
   capturePage(event: any) {
     console.log(event);
@@ -89,27 +96,26 @@ export class HotelsDisplayComponent {
   }
 
   ngOnInit() {
+    this.titlePage.setTitle(
+      'Explore Hotels In Maasai Mara | Maasai Mara Trips'
+    );
     this.fetchDestinations();
   }
 
-  bgBounce(){
-    var observer = new IntersectionObserver((entries)=>{
-    entries.map((entry)=>{
-    if(entry.isIntersecting){
-    this.bgState = 'visible'
-    }else{
-    this.bgState = 'clear'
-    }
-    
-    })
-    
-    
-    })
-    observer.observe(this.bgRef.nativeElement)
-    }
-    
-    
-    ngAfterViewInit(){
-    this.bgBounce()
-    }
+  bgBounce() {
+    var observer = new IntersectionObserver((entries) => {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          this.bgState = 'visible';
+        } else {
+          this.bgState = 'clear';
+        }
+      });
+    });
+    observer.observe(this.bgRef.nativeElement);
+  }
+
+  ngAfterViewInit() {
+    this.bgBounce();
+  }
 }

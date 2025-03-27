@@ -1,7 +1,7 @@
 import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PackagesService } from '../../services/packages.service';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -32,13 +32,13 @@ this.itineraryRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'}
 goSpecial(){
 this.specialNotesRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
 }
-constructor(private router:ActivatedRoute,private sanitizor:DomSanitizer,private packages:PackagesService){}
+constructor(private titlePage:Title,private router:ActivatedRoute,private sanitizor:DomSanitizer,private packages:PackagesService){}
 fetching = false
 packageData:any
 packageSlug = ''
 relatedPackage:any
 
-
+ 
 sanitize(data:SafeHtml|any){
   return this.sanitizor.bypassSecurityTrustHtml(data)
   }
@@ -70,12 +70,13 @@ return JSON.parse(packageImages)
 }
 
 
-ngOnInit(){
+async ngOnInit(){
 this.router.paramMap.subscribe((data)=>{
 this.packageSlug = data.get("packageSlug") ?? ""
 })
 
-this.fetchPackage()
+await this.fetchPackage()
+this.titlePage.setTitle(`${this.packageData.packageTitle} | Maasai Mara Trips`)
 }
 
 }

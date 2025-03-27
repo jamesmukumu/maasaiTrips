@@ -6,6 +6,12 @@ box-sizing: border-box;
 h1{
 text-align: center;
 }
+mat-card mat-list{
+padding: 20px;
+}
+h2{
+padding: 30px;
+}
 mat-card mat-card-footer{
 display: grid;
 grid-template-rows: 1fr;
@@ -13,11 +19,16 @@ grid-template-columns: repeat(4,1fr);
 }
 .socials img{
 padding-left: 15.55px;
+cursor: pointer;
+
+height: 50px;
+width: 50px;
 }
-img{
+.payment-img{
     cursor: pointer;
-    height: 25px;
-    width: 35px;
+  min-height: 50px;
+    width: max-content;
+    min-width: 100px;
 }
 h1,h2,h3,mat-list-item,mat-list{
 color: white;
@@ -41,7 +52,12 @@ margin-top: 5.00px;
 mat-divider{
 display: none;
 }
-
+h3{
+padding-top: 15.55px;
+}
+div{
+margin-top: 15.55px;
+}
 
 @media(min-width:801px) and (max-width:860px){
 mat-card{

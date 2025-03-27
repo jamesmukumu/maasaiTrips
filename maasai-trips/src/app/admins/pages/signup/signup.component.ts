@@ -19,9 +19,11 @@ password:string = ''
 Email:string = ''
 phoneNumber:string = ''
 confirmPassword:string = ''
+roleAdmin = ''
 mismatchWarn:boolean = false
 seePassword:boolean = false
 processingRequest = false
+acceptedAdminRoles = ["Marketing","Transport","Sales","Reservations"]
 constructor(private activeRoute:ActivatedRoute,private admin:AdminService,private router:Router,private msg:MessageService){}
 reg(){
 this.processingRequest = true
@@ -29,7 +31,8 @@ var payload:Register = {
 userName:this.userName,
 password:this.password,
 Email:this.Email,
-phoneNumber:this.phoneNumber
+phoneNumber:this.phoneNumber,
+adminRoles:this.roleAdmin
 }
 
 this.admin.Register(payload).then((data)=>{

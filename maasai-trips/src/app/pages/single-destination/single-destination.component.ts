@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Hotel,HotelsService } from '../../services/hotels.service';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
   styleUrl: './single-destination.component.css'
 })
 export class SingleDestinationComponent {
-constructor(private route:Router,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
+constructor(private titlePage:Title,private route:Router,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
 destinationsID:any
 fetchingDestination = false
 destinationData:any
@@ -51,11 +51,13 @@ console.error(err)
 
 
 
-ngOnInit(){
+async ngOnInit(){
 this.router.paramMap.subscribe((data)=>{
 this.destinationsID = data.get("destinationsid") ?? ""
 })
-this.fetchDestinations()
+await this.fetchDestinations()
+this.titlePage.setTitle(`${this.destinationData.destinationTitle}`)
+
 }
 
 

@@ -1,5 +1,7 @@
-import { Component,ElementRef,ViewChild,AfterViewInit } from '@angular/core';
+import { Component,ElementRef,ViewChild,AfterViewInit,OnInit } from '@angular/core';
 import { trigger, style, animate, transition,state,keyframes } from '@angular/animations';
+import { Title } from '@angular/platform-browser';
+
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -73,7 +75,7 @@ style({transform:"scale3d(1,1,1)",offset:1}),
   
 })
 export class HomeComponent implements AfterViewInit{  
-
+constructor(private titlePage:Title){}
 @ViewChild("animatedElement")animatedElement!:ElementRef
 @ViewChild("bouncerCheck")animatedBounce!:ElementRef
 @ViewChild("explores")exploresEffect!:ElementRef
@@ -121,6 +123,9 @@ this.checkExplores()
 
 
 
+}
+ngOnInit(){
+this.titlePage.setTitle("Maasai Mara Trips")
 }
 
 }

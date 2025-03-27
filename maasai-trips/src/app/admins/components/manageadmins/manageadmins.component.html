@@ -35,6 +35,12 @@
         {{element.phoneNumber}}
         </td>    
     </ng-container>
+    <ng-container matColumnDef="roleAdmin">
+      <th mat-header-cell *matHeaderCellDef>Role Admin</th>
+      <td mat-cell *matCellDef="let element">
+        {{element.adminRoles}}
+        </td>    
+    </ng-container>
 
     <ng-container matColumnDef="emailVerified">
       <th mat-header-cell *matHeaderCellDef>email status</th>
@@ -96,14 +102,37 @@
 <input [(ngModel)]="fullname" type="text" required name="admin-full-name" matInput>
 </mat-form-field>
 
+<mat-form-field>
+  <mat-label>Enter New Phone Number</mat-label>
+  <input [(ngModel)]="phoneNumber" type="text" required name="admin-phone-number" matInput>
+  </mat-form-field>
+
+
+
+<div>
+<label for="role-admin">Pick Role for Admin:</label>
 <p-dropdown
+[(ngModel)]="roleAdmin"
+[options]="acceptedAdminRoles"
+placeholder="Select a role for admin"
+name="role-admin"
+[style]="{'width':'100%','margin-top':'10px','margin-bottom':'10px'}"
+/>
+</div>
+
+<div>
+  <label for="email-status">Edit Email Status:</label>
+  <p-dropdown
+name="email-status" 
+
 [(ngModel)]="emailVerificationStatus"
 [options]="validEmailStatus"
 placeholder="Select an Email Status"
 optionLabel="label"
 optionValue="status"
-[style]="{'width':'100%','margin-top':'20px','margin-bottom':'40px'}"
+[style]="{'width':'100%','margin-top':'10px','margin-bottom':'10px'}"
 />
+</div>
 
 <button mat-flat-button>Change</button>
 <!-- <p-button severity="warning" label="Change" [raised]="true" disabled />

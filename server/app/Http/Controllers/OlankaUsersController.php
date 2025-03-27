@@ -46,11 +46,13 @@ throw new \Exception($err->getMessage(),500);
               "userName" => "required",
               "password" => "required|min:5",
               "Email" => "required",
-              "phoneNumber" => "required"
+              "phoneNumber" => "required",
+              "adminRoles"=>"required"
           ]);
   
           $olankaUser = new OlankaUsers();
           $olankaUser->userName = $validatedRequest["userName"];
+          $olankaUser->adminRoles = $validatedRequest['adminRoles'];
           $olankaUser->password = Hash::make($validatedRequest["password"]);
           $olankaUser->Email = $validatedRequest["Email"];
           $olankaUser->phoneNumber = $validatedRequest["phoneNumber"];
@@ -235,7 +237,7 @@ return response()->json([
 
 public function fetchAllUsers(){
 try{
-$users = OlankaUsers::select(["created_at","userName","Email","phoneNumber","emailVerified","superUser"])->get();
+$users = OlankaUsers::select(["created_at","userName","Email","phoneNumber","emailVerified","superUser","adminRoles"])->get();
 return response()->json([
 "message"=>'Users Fetched',
 "data"=>$users

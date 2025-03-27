@@ -234,16 +234,9 @@ path:"dashboard"
       component:HomeComponent,
       path:""
       },
-    
-      
-      
-      {
+     {
       path:"safaris",
 component:SafarisComponent
-      },
-      {
-      path:"enquiries",
-      component:EnquiriesComponent
       },
     
       {

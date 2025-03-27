@@ -13,12 +13,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             
-            $table ->string("userName")->unique();
-            $table -> string("password");
-            $table ->string("Email")->unique();
+            $table ->string("userName")->unique()->nullable(false);
+            $table -> string("password")->nullable(false);
+            $table ->string("Email")->unique()->nullable(false);
             $table -> boolean("superUser")->default(false);
             $table -> string("phoneNumber")->unique();
             $table -> boolean("emailVerified")->default(false);
+            $table-> enum("adminRoles",["Marketing","Transport","Sales","Reservations"])->nullable(false);
 });
     }
 

@@ -10,7 +10,7 @@ class OlankaUsers extends Model implements JWTSubject
 {
     use HasFactory;
 
-    protected $fillable = ["userName", "password", "Email", "phoneNumber"];
+    protected $fillable = ["userName","adminRoles", "password", "Email", "phoneNumber"];
 
     public function getJWTIdentifier(){
         return $this->getKey();

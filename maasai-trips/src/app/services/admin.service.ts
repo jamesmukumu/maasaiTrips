@@ -5,7 +5,8 @@ export interface Register {
   userName: string;
   password: string;
   Email: string;
-  phoneNumber: String;
+  phoneNumber: string;
+  adminRoles: string;
 }
 @Injectable({
   providedIn: 'root',

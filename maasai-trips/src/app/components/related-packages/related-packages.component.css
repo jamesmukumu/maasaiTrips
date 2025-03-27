@@ -4,7 +4,11 @@
     box-sizing: border-box;
     }
     p{
-        font-weight: bolder;
+        padding: 15.55px;
+      
+    }
+    b{
+    color: rgb(41,194,146);
     }
     
     .main{
@@ -14,6 +18,7 @@
     }
     h1{
     text-align: center;
+    padding: 15.55px;
     }
     mat-card{
         background-color: rgb(238,238,238);
@@ -32,6 +37,7 @@
     mat-card div button{
         background-color: #fca608;
         color: white; 
+        margin: 15.55px;
     }
     mat-card div{
        
