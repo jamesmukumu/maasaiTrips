@@ -99,7 +99,7 @@ Route::post("/add/new/hotel",[HotelsController::class,"createHotel"]);
 Route::delete("/delete/hotel",[HotelsController::class,"deleteHotel"]);
 Route::post("/update/hotel",[HotelsController::class,"updateHotel"]);
 Route::put("/publish/hotel",[HotelsController::class,"publishHotel"]);
-Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
+
 Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
 Route::put("/unpublish/hotel",[HotelsController::class,'unpublishHotel']);
 Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
@@ -116,7 +116,6 @@ Route::post("/update/room",[RoomsController::class,"updateRoom"]);
 
 // Destination Api here
 Route::post("/add/new/destination",[DestinationController::class,"createDestination"]);
-Route::get("/fetch/destinations",[DestinationController::class,"findAllDestinations"]);
 Route::get("/fetch/my/destinations",[DestinationController::class,"myDestinations"]);
 Route::delete("/delete/destination",[DestinationController::class,'DeleteDestination']);
 Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
@@ -149,7 +148,7 @@ Route::post("/save/quote",[QuotationController::class,"saveQuotations"]); //rout
 
 
 Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels']);//route for fetching all hotels to display
-
+Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
 
 //User Routes here
 Route::post("/register/user",[OlankaUsersController::class,"handleRegister"]);
@@ -161,7 +160,7 @@ Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
 
 Route::get("/find/all/destinations",[DestinationController::class,"fetchDestinations"]);//route for fetching all destinations for which to display
 Route::get("/find/single/destination",[DestinationController::class,"findSingularDestination"]);//unprotected route for finding just a singular destination
-
+Route::get("/fetch/destinations",[DestinationController::class,"findAllDestinations"]);
 
 
 Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);//route for finding all packages to showcase
