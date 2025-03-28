@@ -202,6 +202,36 @@ class HotelsController extends Controller implements HotelInterface
 
 
 
+    
+    public function unpublishHotel(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "id" => "required|integer|exists:hotels_models,id"
+            ]);
+            $hotelID = $request->query("id");
+            $hotelData = HotelsModel::with(["rooms"])->find($hotelID);
+            if ($hotelData->rooms->isEmpty()) {
+                return response()->json([
+                    "message" => "Rejected",
+                    "Content" => "Hotel Must have Rooms"
+                ]);
+            }
+
+            $hotelData["publishable"] = false;
+            $hotelData->save();
+            return response()->json([
+                "message" => "updated"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something Went Wrong"
+            ]);
+        }
+    }
+
+
 
     public function fetchHotel(Request $request)
     {

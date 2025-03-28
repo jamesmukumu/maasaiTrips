@@ -78,7 +78,7 @@ var payload = {
    minimumRoomRate:this.minimumRoomRate,
    contactEmail:this.contactEmail,
    contactPerson:this.contactPerson,
-   contactPhoneNumber:this.contactPerson,
+   contactPhoneNumber:this.phoneNumber,
    locationDescription:this.locationDescription
 }
 

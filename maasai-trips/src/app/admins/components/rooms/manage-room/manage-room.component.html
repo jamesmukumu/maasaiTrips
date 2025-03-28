@@ -214,7 +214,7 @@
             <div>
            <p-dropdown 
                 [options]="hotelRelevantData" 
-                
+                name="hotel-room"
                 [checkmark]="true" 
                 optionLabel="hotelName" 
                 [showClear]="true" 
@@ -226,7 +226,9 @@
             <div>
               <label>Enter Room Description</label>
               <p-editor
+              name="room-description"
               [style]="{height:'245px'}"
+              [(ngModel)]="roomDescriptionDisplay"
               (onTextChange)="captureRoom($event)"
               placeholder="Enter Room Description.Example insights of the room"
               />
@@ -361,25 +363,6 @@
 
 
 
-<p-dialog [modal]="true" header="Publish Hotel" [(visible)]="publishing">
-  <mat-card>
-    <mat-card-title
-      >Are you sure you wish to Publish {{ hotelNameDelete }}</mat-card-title
-    >
-    <mat-card-actions align="end">
-      <button
-        mat-icon-button
-        style="background-color: green"
-        (click)="completePublish()"
-      >
-        <mat-icon>check</mat-icon>
-      </button>
-      <button mat-icon-button style="background-color: red">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-</p-dialog>
 
 
 
@@ -387,19 +370,19 @@
 
 
 
-<p-dialog [style]="{'height':'260px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
+<p-dialog [style]="{'height':'300px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
 
   <div>
   <p-dropdown
   [options]="allowedStatus"
   placeholder="Choose a status"
-  [style]="{'width':'100%','height':'fit-content'}"
+  [style]="{'width':'100%','height':'fit-content','margin-bottom':'20px'}"
   showClear="true"
-  (onChange)="getStatus($event)"
+  (onChange)="getStatus($event)" 
     
   />
   <button   (click)="popConfirm($event)" class="btn" *ngIf="!adjusting" mat-flat-button>Adjust</button>
-  <p-button [style]="{'margin-top':'25px','background-color':'yellow'}" loading="adjusting" *ngIf="adjusting" label="adjusting status"/>
+  <p-button [style]="{'margin-top':'25px'}" severity="warning" raised="true" loading="adjusting" *ngIf="adjusting" label="adjusting status"/>
   </div>
    
   </p-dialog>

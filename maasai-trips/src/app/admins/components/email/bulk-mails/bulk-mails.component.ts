@@ -5,6 +5,7 @@ import {
   AfterViewInit,
   inject,
 } from '@angular/core';
+import {ConfirmationService} from 'primeng/api'
 import {
   MailServService,
   Bulk,
@@ -23,7 +24,7 @@ import { DeleteBulkComponent } from '../delete-bulk/delete-bulk.component';
   selector: 'bulk-mails',
   templateUrl: './bulk-mails.component.html',
   styleUrl: './bulk-mails.component.css',
-  providers: [MessageService],
+  providers: [MessageService,ConfirmationService],
 })
 export class BulkMailsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -67,7 +68,8 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     private mailer: MailServService,
     private msg: MessageService,
     private news: NewslettersService,
-    private store: Store
+    private store: Store,
+    private confirm:ConfirmationService
   ) {}
   log(event: any) {
     var { source } = event;
@@ -101,7 +103,28 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
     var datatoUpdate = JSON.stringify(updateData);
     this.store.dispatch(SaveToUpdateBulk({ bulkMail: datatoUpdate }));
   }
+confirmSync(event:any){
+this.confirm.confirm({
+target:event.target,
+message:"Are you sure you wish to sync hotel emails with bulk mails",
+accept:()=>{
+this.processingTable = true
+this.mailer.syncBulksWithHotels().then((data:any)=>{
+var {message} = data
+if(message == 'Emails Synced'){
+this.processingTable = false
+this.fetchBulkMails()
+this.msg.add({severity:"success","detail":"Email Synced","closable":false,life:13000})
+}else{
+  this.processingTable = false
 
+  this.msg.add({severity:"error","detail":"Something Went Wrong","closable":false,life:13000})
+}
+
+})
+}
+})
+}
   async sendBulks() {
     this.sendingMails = true;
     try {

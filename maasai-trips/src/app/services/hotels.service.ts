@@ -200,6 +200,31 @@ export class HotelsService {
     }
   }
 
+
+
+  async unpublishHotel(id: number) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.put(
+        `http://localhost:8000/api/unpublish/hotel`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+
+
   async fetchDestinationsDisplay() {
     try {
       var resp = await axios.get(`${this.baseUrl}/fetch/destinations`);

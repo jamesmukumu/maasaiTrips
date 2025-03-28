@@ -208,7 +208,7 @@
           optionLabel="destinationTitle"
           [filter]="true"
           (onChange)="getDestination($event)"
-       
+           name="destination-name"
           [showClear]="true" 
           [style]="{'width':'100%'}"
           placeholder="Choose a Destination" />
@@ -223,7 +223,7 @@
             optionLabel="title"
             [filter]="true"
             (onChange)="getPackageCategory($event)"
-         
+           name="package-category"
             [showClear]="true" 
             [style]="{'width':'100%','margin-top':'10px'}"
             placeholder="Choose Package Category" />
@@ -238,6 +238,7 @@
               (onChange)="getBudget($event)"
               [showClear]="true" 
               [style]="{'width':'100%'}"
+              name="package-category"
               placeholder="Select a Budget Type" />
               </div>
   
@@ -250,6 +251,7 @@
                 (onChange)="getTransport($event)"
                 [showClear]="true" 
                 [style]="{'width':'100%'}"
+                name="transport-means"
                 placeholder="Select Mode of Transport Type" />
                 </div>
   
@@ -305,15 +307,16 @@
         </mat-form-field>
         <div>
           <p-dropdown 
+          [(ngModel)]="someValue"
           variant="filled"
           [options]="countryCodes" 
-          [(ngModel)]="someValue"
+          
           [checkmark]="true" 
           optionLabel="name"
           (onChange)="getCurrency($event)"
           [filter]="true"
-       
-          [showClear]="true" 
+         name="package-currency-type"
+        
           [style]="{'width':'100%'}"
           placeholder="Select a Currency Type" />
           </div>
@@ -334,6 +337,7 @@
           [(ngModel)]="specialNotes"
           (onTextChange)="captureSpecialNotes($event)"
             [style]="{ 'min-height': '20vh' }"
+            name="package-special-notes"
             placeholder="Enter Any Special Notes you wish to add."
           />
         </div>
@@ -526,15 +530,15 @@ Update Package
 
 
 
-<p-dialog [style]="{'height':'260px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
+<p-dialog [style]="{'height':'300px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
 
   <div>
   <p-dropdown
   [options]="allowedStatus"
   placeholder="Choose a status"
-  [style]="{'width':'100%','height':'fit-content'}"
+  [style]="{'width':'100%','height':'fit-content','margin-bottom':'30px'}"
   showClear="true"
-  (onChange)="getStatus($event)"
+  (onChange)="getStatus($event)" 
     
   />
   <button   (click)="popConfirm($event)" class="btn" *ngIf="!adjusting" mat-flat-button>Adjust</button>

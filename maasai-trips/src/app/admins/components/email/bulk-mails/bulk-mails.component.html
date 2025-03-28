@@ -7,9 +7,9 @@
     <button mat-flat-button (click)="openBulk()" >
     Add new Mail
     </button> 
-    <button mat-icon-button matTooltip="Sync Hotels Email with Bulk">
+    <button (click)="confirmSync($event)" mat-icon-button matTooltip="Sync Hotels Email with Bulk">
     <mat-icon>sync</mat-icon>
-
+ 
     </button>
 
     <p-fileUpload 
@@ -245,7 +245,7 @@ accept=".csv"
 </mat-paginator>
 
 <p-toast/>
-
+<p-confirmPopup/>
 <div class="spin">
  <p-progressSpinner *ngIf="processingTable"/>
 </div>

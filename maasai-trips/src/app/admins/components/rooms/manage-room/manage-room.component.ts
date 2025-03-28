@@ -47,7 +47,7 @@ export class ManageRoomComponent {
          this.adjusting = false
           this.snack.open("Adjusted","Success")
           this.showAdjuststatus= false
-          this.fetchDestinations()
+          this.fetchHotels()
         }else if(message == 'Unauthorized function'){
           this.adjusting = false
           this.showAdjuststatus = false
@@ -122,7 +122,9 @@ export class ManageRoomComponent {
       this.idSelected = element.id;
       this.deleteHotel = true;
     }
+    roomDescriptionDisplay?:string
     editHotel(element: any) {
+    
       this.idSelected = element.id;
       this.roomType = element.roomType
       this.maxOccupancy = element.maximumRoomOccupancy
@@ -133,7 +135,7 @@ export class ManageRoomComponent {
 
       this.singleRoomRateChild = element.singleRoomRateChild
       this.bedBreakfast = element.bedBreakfast
-   
+      this.roomDescriptionDisplay = element.roomDescription
       
       this.popEditor = true;
     }
@@ -308,26 +310,7 @@ this.hotelid = event.value.id
       }
     }
   
-    async completePublish() {
-      this.fetchingHotels = true;
-      this.publishing = false;
-      try {
-        var { message, Content } = await this.hotel.publishHotel(this.idSelected);
-        if (message == 'Rejected') {
-          this.snack.open(Content + ' ' + '❌', 'Add Rooms');
-          this.fetchingHotels = false;
-        } else if (message == 'updated') {
-          this.snack.open('Published 😃 ', 'success');
-          this.fetchDestinations();
-        } else {
-          this.snack.open('Something Went Wrong 😞', 'Failed');
-          this.fetchingHotels = false;
-        }
-      } catch (err) {
-        console.log(err);
-        this.fetchingHotels = true;
-      }
-    }
+    
   
     ngOnInit() {
       this.store.subscribe((data:any)=>{

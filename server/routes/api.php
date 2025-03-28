@@ -30,6 +30,7 @@ Route::get("/see/all/users",[OlankaUsersController::class,"fetchAllUsers"]);
 Route::put("/make/super/user",[OlankaUsersController::class,"makeSuperUser"]);
 Route::put("/unmake/super/user",[OlankaUsersController::class,"unmakeSuperUser"]);
 Route::delete("/delete/admin",[OlankaUsersController::class,"deleteAdmins"]);
+Route::put("/update/admin",[OlankaUsersController::class,"updateAdmin"]);
 
 });
 
@@ -37,9 +38,10 @@ Route::delete("/delete/admin",[OlankaUsersController::class,"deleteAdmins"]);
 
 // grouping my routes here  y the middleware verify.T
 Route::middleware(Verify::class)->group(function () {
-    // mail apis
+// mail apis
 Route::post("/send/email",[MailerController::class,"sendMail"]);
 Route::post("/save/email/template",[MailerController::class,"saveEmailTemplate"]);
+Route::post("/save/bulk/from/csv",[BulkMailControllers::class,"saveFromCsv"]);
 Route::post("/save/email/bulk",[BulkMailControllers::class,'saveBulkEmail']);
 Route::get("/fetch/bulk/emails",[BulkMailControllers::class,"fetchBulkMails"]);
 Route::post("/send/bulk/mails",[BulkMailControllers::class,"sendMailsBulk"]);
@@ -61,15 +63,13 @@ Route::post("/save/alerts/newsLetter",[NewsLetterAlert::class,'saveNewsLetterAle
 Route::post("/sync/bulks",[BulkMailControllers::class,"syncWithHotelMails"]);
 
 
-
-
 // Protected user Routes
 Route::get("/fetch/user/profile",[OlankaUsersController::class,"fetchUserProfile"]);
 
 
 
 
-
+// Protected Enquiry Routes
 Route::get("/fetch/enquiries",[QuotationController::class,"fetchAllEnquiries"]);
 Route::put("/update/enquiry",[QuotationController::class,"updateEnquiry"]);
 Route::delete("/delete/enquiry",[QuotationController::class,"deleteEnquiry"]);
@@ -82,23 +82,6 @@ Route::get("/fetch/my/alert/news/alerts",[NewsLetterAlert::class,"fetchMyTemplat
 Route::delete("/delete/news/alert",[NewsLetterAlert::class,"deleteNewsLetterTemplateMail"]);
 Route::post("/preview/alerts",[NewsLetterAlert::class,"previewAlerts"]);
 Route::post("/preview/edit-mode/alerts",[NewsLetterAlert::class,"previewAlertsReady"]);
-});
-
-
-Route::post("/save/quote",[QuotationController::class,"saveQuotations"]);
-
-
-//User Routes here
-Route::post("/register/user",[OlankaUsersController::class,"handleRegister"]);
-Route::post("/login/user",[OlankaUsersController::class,"handleLogin"])->middleware(EmailVerify::class);
-Route::put("/verify/email",[OlankaUsersController::class,"verifyEmail"]);
-Route::put("/reset/password",[OlankaUsersController::class,"actualizeVerify"])->middleware(Verify::class);
-Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
-
-
-
-Route::post("/save/bulk/from/csv",[BulkMailControllers::class,"saveFromCsv"]);
-Route::post("/test/dummy",[NewsLettersController::class,"seeNewsLetter"]);
 
 
 // promotional newsletters
@@ -111,10 +94,6 @@ Route::post("/update/promotional/newsletter",[PromotionalControllers::class,"Upd
 Route::post("/preview/promotional/newsletter",[PromotionalControllers::class,"previewPromotional"]);
 
 
-
-
-
-
 // Hotels Api
 Route::post("/add/new/hotel",[HotelsController::class,"createHotel"]);
 Route::delete("/delete/hotel",[HotelsController::class,"deleteHotel"]);
@@ -122,10 +101,8 @@ Route::post("/update/hotel",[HotelsController::class,"updateHotel"]);
 Route::put("/publish/hotel",[HotelsController::class,"publishHotel"]);
 Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
 Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
+Route::put("/unpublish/hotel",[HotelsController::class,'unpublishHotel']);
 Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
-Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels']);
-
-
 
 
 
@@ -137,12 +114,9 @@ Route::post("/update/room",[RoomsController::class,"updateRoom"]);
 
 
 
-
 // Destination Api here
 Route::post("/add/new/destination",[DestinationController::class,"createDestination"]);
-Route::get("/find/all/destinations",[DestinationController::class,"fetchDestinations"]);
 Route::get("/fetch/destinations",[DestinationController::class,"findAllDestinations"]);
-Route::get("/find/single/destination",[DestinationController::class,"findSingularDestination"]);
 Route::get("/fetch/my/destinations",[DestinationController::class,"myDestinations"]);
 Route::delete("/delete/destination",[DestinationController::class,'DeleteDestination']);
 Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
@@ -159,11 +133,36 @@ Route::get("/fetch/my/packages",[PackageController::class,'fetchMyPackages']);
 Route::delete("/delete/package",[PackageController::class,'deletePackage']);
 Route::put("/publish/package",[PackageController::class,"PublishPackage"]);
 Route::put("/unpublish/package",[PackageController::class,"UnpublishPackage"]);
-Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);
+
 Route::post("/create/package/category",[PackageController::class,'addPackageCategory']);
 Route::get("/fetch/package/categories",[PackageController::class,'fetchPackageCategories']);
-Route::get("/fetch/singular/package",[PackageController::class,'findSingularPackage']);
+
 Route::post("/update/package",[PackageController::class,'updatePackage']);
 
 
 
+});
+
+
+// All Unprotected Routes 
+Route::post("/save/quote",[QuotationController::class,"saveQuotations"]); //route for saving an enquiry.
+
+
+Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels']);//route for fetching all hotels to display
+
+
+//User Routes here
+Route::post("/register/user",[OlankaUsersController::class,"handleRegister"]);
+Route::post("/login/user",[OlankaUsersController::class,"handleLogin"])->middleware(EmailVerify::class);
+Route::put("/verify/email",[OlankaUsersController::class,"verifyEmail"]);
+Route::put("/reset/password",[OlankaUsersController::class,"actualizeVerify"])->middleware(Verify::class);
+Route::post("/request/reset",[OlankaUsersController::class,"RequestResetLink"]);
+
+
+Route::get("/find/all/destinations",[DestinationController::class,"fetchDestinations"]);//route for fetching all destinations for which to display
+Route::get("/find/single/destination",[DestinationController::class,"findSingularDestination"]);//unprotected route for finding just a singular destination
+
+
+
+Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);//route for finding all packages to showcase
+Route::get("/fetch/singular/package",[PackageController::class,'findSingularPackage']);//single package route

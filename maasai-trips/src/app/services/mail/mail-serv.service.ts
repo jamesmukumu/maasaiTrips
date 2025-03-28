@@ -38,6 +38,24 @@ export interface newsLetter {
   providedIn: 'root',
 })
 export class MailServService {
+  async syncBulksWithHotels() {
+    try {
+      var token = Cookies.get('grant_token');
+      var response = await axios.post(
+        'https://maasaitrips-2.onrender.com/api/sync/bulks',
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
   async saveNewsLetter(payload: newsLetter) {
     try {
       var token = Cookies.get('grant_token');

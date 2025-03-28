@@ -83,6 +83,41 @@ throw new \Exception($err->getMessage(),500);
 
 
 
+
+
+
+
+
+
+  public function updateAdmin(Request $request){
+    try {
+        $validatedRequest = $request->validate([
+            "userName" => "nullable",
+            "password" => "nullable",
+            "Email" => "nullable",
+            "phoneNumber" => "nullable",
+            "adminRoles"=>"nullable",
+            "id"=>"required|exists:olanka_users,id"
+        ]);
+        $adminid = $request->query('id');
+        OlankaUsers::where("id",$adminid)->update($validatedRequest);
+        return response()->json([
+        "message"=>"Admin Updated"
+        ]);
+    } catch (\Exception $e) {  
+        die($e->getMessage());
+    } catch (ValidationException $err) {
+        return response()->json([
+            "message" => "Validation Failed",
+            "err" => $err->getMessage()
+        ]);
+    }
+}
+
+
+
+
+
 public function handleLogin(Request $request){
 try{
 $validatedRequest = $request->validate([
@@ -203,8 +238,8 @@ $olankanewUser = $olankaUser->find($userID);
 $olankanewUser -> emailVerified = true;
 $olankanewUser ->save();
 return "Updated successfully";
-
-}catch(Exception $err){
+ 
+}catch(\Exception $err){
 return response()->json([
 "message"=>"Something went wrong"
 ]);

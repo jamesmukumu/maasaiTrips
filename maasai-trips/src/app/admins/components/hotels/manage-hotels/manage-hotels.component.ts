@@ -37,8 +37,7 @@ readonly dialog = inject(MatDialog)
     'phoneNumber',
     'contactEmail',
     'commission',
-    'maxRate',
-    'minRate',
+    
     'published',
     "actionPending",
     'actions',
@@ -58,8 +57,10 @@ readonly dialog = inject(MatDialog)
     this.idSelected = element.id;
     this.deleteHotel = true;
   }
-  editHotel(element: any) {
-    this.idSelected = element.id;
+  destinationTitle?:string
+  actionPending?:string
+  editHotel(element: any) { 
+this.idSelected = element.id;
     this.hotelName = element.hotelName;
     this.latitude = element.latitude
     this.longitude = element.longitude
@@ -73,14 +74,22 @@ readonly dialog = inject(MatDialog)
     this.Destinations = element.destinations_id
     this.locationDescription = element.locationDescription
     this.cancellationPolicy = element.hotelCancellationPolicy
+    this.destinationTitle = element.destination.destinationTitle
     this.popEditor = true;
   }
+  unpublishing = false
   publishingHotel(element: any) {
     this.hotelNameDelete = element.hotelName;
     this.idSelected = element.id;
     this.publishing = true;
   }
 
+
+  unpublishingHotel(element: any) {
+    this.hotelNameDelete = element.hotelName;
+    this.idSelected = element.id;
+    this.unpublishing = true;
+  }
   async fetchHotels() {
     try {
       this.fetchingHotels = true;
@@ -111,8 +120,9 @@ readonly dialog = inject(MatDialog)
   fetchingDestinations = false;
 showAdjuststatus = false
 status = ''
-  adjustStatus(id:any){
+  adjustStatus(id:any,actionPend:string){
     this.idSelected = id
+    this.actionPending = actionPend
   this.showAdjuststatus = true
   }    
 adjusting = false
@@ -263,6 +273,32 @@ this.contactPerson = event.value
     }
   }
 
+  async completeUnPublish() {
+    this.fetchingHotels = true;
+    this.publishing = false;
+    try {
+      var { message, Content } = await this.hotel.unpublishHotel(this.idSelected);
+      if (message == 'Rejected') {
+        this.snack.open(Content + ' ' + '❌', 'Add Rooms');
+        this.fetchingHotels = false;
+      } else if (message == 'updated') {
+        this.snack.open('Un-Published 😃 ', 'success');
+        this.fetchHotels()
+      } else {
+        this.snack.open('Something Went Wrong 😞', 'Failed');
+        this.fetchingHotels = false;
+      }
+    } catch (err) {
+      console.log(err);
+      this.fetchingHotels = true;
+    }
+  }
+
+
+
+
+
+
   async completePublish() {
     this.fetchingHotels = true;
     this.publishing = false;
@@ -273,7 +309,7 @@ this.contactPerson = event.value
         this.fetchingHotels = false;
       } else if (message == 'updated') {
         this.snack.open('Published 😃 ', 'success');
-        this.fetchDestinations();
+        this.fetchHotels()
       } else {
         this.snack.open('Something Went Wrong 😞', 'Failed');
         this.fetchingHotels = false;

@@ -155,7 +155,10 @@ adjusting = false
       console.error(err);
     }
   }
+  ordinaryUpdate = false
   popUpdate(id: any, element: any) {
+    
+    
     this.packageTitle = element.packageTitle;
     this.idSelected = element.id;
     this.inclusions = JSON.parse(element.packageInclusives);
@@ -164,6 +167,7 @@ adjusting = false
     this.packageAbout = element.packageAbout
    this.packageOverview = element.packageOverview
    this.specialNotes = element.packageSpecialNotes
+   this.someValue = element.packageChargeCurrency
     this.updateDestination = true;
   }
   popDeleteDestination(id: any) {
