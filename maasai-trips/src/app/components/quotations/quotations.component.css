@@ -1,43 +1,42 @@
-mat-dialog-content{
-width: max-content;
-height: max-content;
-position: relative;
+mat-dialog-content {
+  width: max-content;
+  height: max-content;
+  position: relative;
 }
-mat-icon{
-position: absolute;
-right: 0;
-top: 10px;
-cursor: pointer;
+mat-icon {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  cursor: pointer;
 }
-form{
-display: flex;
-flex-direction: row;
+form {
+  display: flex;
+  flex-direction: row;
 }
-form div{
-margin-left: 40px;
+form div {
+  margin-left: 40px;
 }
-mat-dialog-actions button{
-    background-color: #fca608;
-    color: white;   
+mat-dialog-actions button {
+  background-color: rgb(232, 139, 34);
+  color: white;
 }
-form div mat-form-field{
-margin-top: 20px;
+form div mat-form-field {
+  margin-top: 20px;
 }
-mat-form-field{
-display: block;
+mat-form-field {
+  display: block;
 }
 
-
-@media(max-width:900px){
-form{
-flex-direction: column;
-}
-mat-dialog-content{
-width: 100%;
-height: fit-content;
-}
-form div{
+@media (max-width: 900px) {
+  form {
+    flex-direction: column;
+  }
+  mat-dialog-content {
+    width: 100%;
+    height: fit-content;
+  }
+  form div {
     margin-left: 0px;
-margin-top: 20px;
-}
+    margin-top: 20px;
+  }
 }

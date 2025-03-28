@@ -15,7 +15,13 @@
       <h3>Package Information</h3>
       <mat-form-field>
         <mat-label>Package Title</mat-label>
-        <input required type="text" name="package-title" matInput [(ngModel)]="packageTitle" />
+        <input
+          required
+          type="text"
+          name="package-title"
+          matInput
+          [(ngModel)]="packageTitle"
+        />
         <mat-hint
           >Example:4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint
         >
@@ -24,63 +30,65 @@
       <div>
         <label>Enter Package OverView</label>
         <p-editor
-        (onTextChange)="captureOverview($event)"
+          (onTextChange)="captureOverview($event)"
           [style]="{ 'min-height': '245px' }"
           placeholder="Enter Package OverView:Example brief description about this package"
         />
       </div>
       <mat-form-field>
         <mat-label>Choose Destination</mat-label>
-        <mat-select required [(value)]="targetDestination"> 
-          <mat-option *ngFor="let destinaton of destinationsData" [value]="destinaton.id">
-            {{destinaton.destinationTitle}}
+        <mat-select required [(value)]="targetDestination">
+          <mat-option
+            *ngFor="let destinaton of destinationsData"
+            [value]="destinaton.id"
+          >
+            {{ destinaton.destinationTitle }}
           </mat-option>
         </mat-select>
-        </mat-form-field>
+      </mat-form-field>
 
-        <mat-form-field>
-          <mat-label>Choose Package Category</mat-label>
-          <mat-select required [(value)]="targetCategory"> 
-            <mat-option *ngFor="let package of packageCategories" [value]="package.id">
-              {{package.title}}
-            </mat-option>
-          </mat-select>
-          </mat-form-field>
+      <mat-form-field>
+        <mat-label>Choose Package Category</mat-label>
+        <mat-select required [(value)]="targetCategory">
+          <mat-option
+            *ngFor="let package of packageCategories"
+            [value]="package.id"
+          >
+            {{ package.title }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Choose Budget Type </mat-label>
+        <mat-select required [(value)]="choosenBudgetType">
+          <mat-option *ngFor="let budget of budgetTypes" [value]="budget">
+            {{ budget }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-          <mat-form-field>
-            <mat-label>Choose Budget Type </mat-label>
-            <mat-select required [(value)]="choosenBudgetType"> 
-              <mat-option *ngFor="let budget of budgetTypes" [value]="budget">
-                {{budget}}
-              </mat-option>
-            </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-              <mat-label>Choose Mean of Transport</mat-label>
-              <mat-select required [(value)]="choosenMeans"> 
-                <mat-option *ngFor="let trans of transport" [value]="trans">
-                  {{trans}}
-                </mat-option>
-              </mat-select>
-              </mat-form-field>
-
-
-
+      <mat-form-field>
+        <mat-label>Choose Mean of Transport</mat-label>
+        <mat-select required [(value)]="choosenMeans">
+          <mat-option *ngFor="let trans of transport" [value]="trans">
+            {{ trans }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Package Inclusives</mat-label>
         <mat-chip-grid #chipGrid aria-label="Enter Inclusions">
           <mat-chip-row *ngFor="let choosenCC of inclusions">
-            {{choosenCC}}
+            {{ choosenCC }}
             <button matChipRemove (click)="removeInclusions(choosenCC)">
               <mat-icon>cancel</mat-icon>
             </button>
           </mat-chip-row>
         </mat-chip-grid>
-        
-        <input 
+
+        <input
           [matChipInputFor]="chipGrid"
           [matChipInputAddOnBlur]="true"
           (matChipInputTokenEnd)="addInclusions($event)"
@@ -89,19 +97,18 @@
         <mat-hint>Example:Airport Transfers,</mat-hint>
       </mat-form-field>
 
-
       <mat-form-field>
         <mat-label>Package Exclusions</mat-label>
         <mat-chip-grid #chipExclusions aria-label="Enter CC Emails">
           <mat-chip-row *ngFor="let choosenCC of exclusions">
-            {{choosenCC}}
+            {{ choosenCC }}
             <button matChipRemove (click)="removeExclusions(choosenCC)">
               <mat-icon>cancel</mat-icon>
             </button>
           </mat-chip-row>
         </mat-chip-grid>
-        
-        <input 
+
+        <input
           [matChipInputFor]="chipExclusions"
           [matChipInputAddOnBlur]="true"
           (matChipInputTokenEnd)="addExclusions($event)"
@@ -110,25 +117,37 @@
         <mat-hint>Example:Hot Air Balooons</mat-hint>
       </mat-form-field>
 
-
       <mat-form-field>
         <mat-label>Package Charge</mat-label>
-        <input required type="number" name="package-charge" matInput [(ngModel)]="packageCharge" />
-     
+        <input
+          required
+          type="number"
+          name="package-charge"
+          matInput
+          [(ngModel)]="packageCharge"
+        />
       </mat-form-field>
       <mat-form-field>
         <mat-label>Choose Currency for Country</mat-label>
-         <mat-select [(value)]="codeValues">
-         <mat-option *ngFor="let country of countryCodes" [value]="country.code">
-           {{country.name}}
-           <img [src]="formatFlag(country.countryCode)"  width="20" height="15" style="margin-right: 8px;">
-         </mat-option>
-         </mat-select>
-        </mat-form-field>
+        <mat-select [(value)]="codeValues">
+          <mat-option
+            *ngFor="let country of countryCodes"
+            [value]="country.code"
+          >
+            {{ country.name }}
+            <img
+              [src]="formatFlag(country.countryCode)"
+              width="20"
+              height="15"
+              style="margin-right: 8px"
+            />
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
       <div>
         <label>Enter Package About</label>
         <p-editor
-        (onTextChange)="captureAbout($event)"
+          (onTextChange)="captureAbout($event)"
           [style]="{ 'min-height': '50vh' }"
           placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
         />
@@ -137,7 +156,7 @@
       <div>
         <label>Enter Package Special Notes</label>
         <p-editor
-        (onTextChange)="captureSpecialNotes($event)"
+          (onTextChange)="captureSpecialNotes($event)"
           [style]="{ 'min-height': '20vh' }"
           placeholder="Enter Any Special Notes you wish to add."
         />
@@ -146,18 +165,29 @@
       <mat-form-field>
         <mat-label>Enter a Validity Period Range</mat-label>
         <mat-date-range-input [rangePicker]="picker">
-          <input matStartDate placeholder="Start date" (dateChange)="seeStartDate($event)">
-          <input matEndDate placeholder="End date" (dateChange)="endDateFormat($event)">
+          <input
+            matStartDate
+            placeholder="Start date"
+            (dateChange)="seeStartDate($event)"
+          />
+          <input
+            matEndDate
+            placeholder="End date"
+            (dateChange)="endDateFormat($event)"
+          />
         </mat-date-range-input>
         <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
         <mat-date-range-picker #picker></mat-date-range-picker>
       </mat-form-field>
       <div>
         <label>Package Thumbnail</label>
         <p-fileUpload
-        (onSelect)="chooser($event)"
-        (onUpload)="chooser($event)"
+          (onSelect)="chooser($event)"
+          (onUpload)="chooser($event)"
           name="demo[]"
           url="https://www.primefaces.org/cdn/api/upload.php"
           [multiple]="false"
@@ -170,17 +200,16 @@
         </p-fileUpload>
       </div>
 
-
       <div class="hotel-photos">
         <div *ngFor="let dest of images; let i = index">
           <div>
-            <strong>Images {{i+1}}</strong>
+            <strong>Images {{ i + 1 }}</strong>
             <p-fileUpload
               name="demo[]"
               url="https://www.primefaces.org/cdn/api/upload.php"
               [multiple]="false"
               accept="image/*"
-              (onSelect)="chooserFile($event,i)"
+              (onSelect)="chooserFile($event, i)"
               maxFileSize="100000000000"
             >
               <ng-template pTemplate="content">
@@ -190,24 +219,25 @@
           </div>
         </div>
         <mat-card-actions align="start">
-          <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+          <button
+            mat-flat-button
+            (click)="addImage()"
+            [matBadge]="images.length"
+          >
             Add Another Photo
           </button>
-          <button mat-flat-button (click)=" popImage()">
-            Remove Photo 
-          </button>
+          <button mat-flat-button (click)="popImage()">Remove Photo</button>
         </mat-card-actions>
       </div>
     </div>
   </form>
   <button
-  *ngIf="!processing"
+    *ngIf="!processing"
     style="
-      background-color: #fca608;
+      background-color: rgb(232, 139, 34);
       color: white;
       width: fit-content;
       margin-top: 20px;
-      
     "
     (click)="addPackages()"
     mat-flat-button
@@ -215,37 +245,52 @@
     Create Package
   </button>
   <p-button
-  *ngIf="processing"
-  loading="processing"
+    *ngIf="processing"
+    loading="processing"
     [style]="{ 'background-color': 'rgb(252,166,8)' }"
     label="Saving"
   ></p-button>
 </mat-card>
 
-
-<p-dialog header="Add Package Category"  [modal]="true" [(visible)]="addPackageCategory">
-<form style="display: flex;flex-direction: column;">
-<mat-form-field>
-<mat-label>Package Category Name</mat-label>
-<input required [(ngModel)]="newPackageCategory" type="text" required matInput name="package-category-name">
-<mat-hint>
-  Example:2 days trips offers
-</mat-hint>
-</mat-form-field>
-<button *ngIf="!savingPackageCategory" (click)="savePackageCategory()"  style="
-background-color: #fca608;
-color: white;
-width: fit-content;
-margin-top: 20px;
-
-" mat-flat-button>Add</button>
-<p-button [style]="{'background-color':'yellow'}" *ngIf="savingPackageCategory" label="addingPackage" loading="savingPackageCategory"></p-button>
-</form>
+<p-dialog
+  header="Add Package Category"
+  [modal]="true"
+  [(visible)]="addPackageCategory"
+>
+  <form style="display: flex; flex-direction: column">
+    <mat-form-field>
+      <mat-label>Package Category Name</mat-label>
+      <input
+        required
+        [(ngModel)]="newPackageCategory"
+        type="text"
+        required
+        matInput
+        name="package-category-name"
+      />
+      <mat-hint> Example:2 days trips offers </mat-hint>
+    </mat-form-field>
+    <button
+      *ngIf="!savingPackageCategory"
+      (click)="savePackageCategory()"
+      style="
+        background-color: rgb(232, 139, 34);
+        color: white;
+        width: fit-content;
+        margin-top: 20px;
+      "
+      mat-flat-button
+    >
+      Add
+    </button>
+    <p-button
+      [style]="{ 'background-color': 'yellow' }"
+      *ngIf="savingPackageCategory"
+      label="addingPackage"
+      loading="savingPackageCategory"
+    ></p-button>
+  </form>
 </p-dialog>
-
-
-
-
 
 <div class="spinner" *ngIf="fetchingDestinations">
   <p-progressSpinner />

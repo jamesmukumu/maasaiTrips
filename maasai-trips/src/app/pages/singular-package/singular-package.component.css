@@ -3,19 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
-mat-card mat-card-header mat-card-title{
-text-align: center;
-margin-top: 20px;
-margin-bottom: 20px;
+mat-card mat-card-header mat-card-title {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-h2{
+h2 {
   text-decoration: underline;
 }
 mat-card-content strong,
 span,
 p,
 b {
-  display: inline; 
+  display: inline;
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -48,8 +48,6 @@ mat-card {
   max-width: 100%;
   display: flex;
   flex-direction: row;
-
-
 }
 
 .galleria-thumbnails {
@@ -64,7 +62,6 @@ mat-card {
   grid-template-rows: repeat(1, 1fr);
 }
 .package-overview {
-
   height: max-content;
   max-width: 600px;
   width: 100%;
@@ -84,7 +81,7 @@ ul li {
   list-style: none;
   padding: 20px;
   text-align: center;
-  position: relative; 
+  position: relative;
 }
 
 ul li h3 {
@@ -100,7 +97,7 @@ ul li::after {
   bottom: 5px;
   width: 0;
   height: 3px;
-  background-color:  #fca608;
+  background-color: rgb(232, 139, 34);
   transition: all 0.3s ease-in-out;
   transform: translateX(-50%);
 }
@@ -156,19 +153,16 @@ mat-card-content {
 }
 
 @media (max-width: 768px) {
-
-
   .galleria {
     max-width: 100%;
     display: flex;
     flex-direction: column;
   }
-mat-card-content{
-margin-top: 30px;
-}
+  mat-card-content {
+    margin-top: 30px;
+  }
   .galleria-thumbnails {
     margin-left: 0px;
-
   }
   .galleria-thumbnails img {
     margin: 0px;

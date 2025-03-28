@@ -1,206 +1,209 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.head{
-position: sticky;
-top: 0;
+.head {
+  position: sticky;
+  top: 0;
 }
-.about-mara-depth p,strong,h3,span,b,ul,li,h2{
-color: white;
+.about-mara-depth p,
+strong,
+h3,
+span,
+b,
+ul,
+li,
+h2 {
+  color: white;
 
-line-height: 1.5;
+  line-height: 1.5;
 }
-.explores mat-card{
-margin-left: 15.55px;
+.explores mat-card {
+  margin-left: 15.55px;
 }
 .about-mara-depth span {
-max-lines: 4;
+  max-lines: 4;
 }
-.explores{
-width: 100%;
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
+.explores {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .explores p {
-font-weight: bolder;
+  font-weight: bolder;
 }
-.explores  mat-card button{
-background-color: #fca608;
-color: white;
-width: max-content;
-margin: 5px;
+.explores mat-card button {
+  background-color: rgb(232, 139, 34);
+  color: white;
+  width: max-content;
+  margin: 5px;
+}
+.explores mat-card p {
+  padding: 15px;
+}
+h1 {
+  text-align: center;
+}
+.explores img {
+  width: 100%;
+}
+li {
+  padding-top: 22px;
+}
+.about-mara-depth {
+  margin-top: 10px;
+  min-width: 100%;
+  max-width: 100vw;
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.about-mara-depth mat-card {
+  background: #232526; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #414345,
+    #232526
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+  display: flex;
+  flex-direction: row;
 }
-.explores mat-card p{
-    padding: 15px;
+.about-mara-depth mat-card mat-card-content {
+  margin-left: 15px;
 }
-h1{
-text-align: center;
+.about-mara-depth h3 {
+  text-align: center;
 }
-.explores img{
-width: 100%;
-}
-li{
-padding-top: 22px;
-}
-.about-mara-depth{
-    margin-top: 10px;
-min-width: 100%;
-max-width: 100vw;
-background: #232526;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-
-}
-.about-mara-depth mat-card{
-    background: #232526;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-display: flex;
-flex-direction: row;
-
-}
-.about-mara-depth mat-card mat-card-content{
-
-margin-left: 15.00px;
-}
-.about-mara-depth h3{
-text-align: center;
-}
-.about-mara-depth img{
-width: 550px;
-
+.about-mara-depth img {
+  width: 550px;
 }
 mat-card-header {
-    width: 100vw;
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 mat-card-header img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; 
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
 }
 
-
-
-.about-mara h1{
-text-align: center;
+.about-mara h1 {
+  text-align: center;
 }
 .about-mara p {
-    letter-spacing: 1.15px;
-    font-size: 14.5px;
-
+  letter-spacing: 1.15px;
+  font-size: 14.5px;
 }
-.about-mara-depth mat-card mat-card-content{
-
-    margin-left: 0.00px;
-    }
-.about-mara{
-background-color: rgb(255,255,255);
-text-align: left;
-align-items: center;
-margin-left: 30px;
-margin-right: 30px;
-
+.about-mara-depth mat-card mat-card-content {
+  margin-left: 0px;
+}
+.about-mara {
+  background-color: rgb(255, 255, 255);
+  text-align: left;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
-
-
-
-@media(max-width:768px){
-.about-mara{
-margin-left: 0;
-margin-right: 0;
-padding-left: 6px;
-padding-right: 6px;
-}
-mat-card mat-card-header{
-height: 40vh;
-}
-.about-mara-depth img{
-width: 100%;
-}
-.explores{
-min-width: 100vw;
-flex-direction: column;
-flex-wrap: wrap;
-}
-.explores mat-card{
-margin: 7.5px;
-}
-.explores mat-card  button{
+@media (max-width: 768px) {
+  .about-mara {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  mat-card mat-card-header {
+    height: 40vh;
+  }
+  .about-mara-depth img {
+    width: 100%;
+  }
+  .explores {
+    min-width: 100vw;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .explores mat-card {
+    margin: 7.5px;
+  }
+  .explores mat-card button {
     width: fit-content;
     margin-left: 2;
+  }
+  .about-mara h1,
+  p {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+  .about-mara-depth mat-card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
 }
-.about-mara h1,p{
-padding-top: 2.00px;
-padding-bottom: 2.00px;
-}
-.about-mara-depth mat-card{
-display: flex;
-flex-direction: column;
-flex-wrap: wrap;
-}
 
-}
-
-
-
-
-@media(min-width:801px) and (max-width:860px){
-    p,h1,h2,strong{
+@media (min-width: 801px) and (max-width: 860px) {
+  p,
+  h1,
+  h2,
+  strong {
     padding-left: 10px;
     padding-right: 10px;
-    }
-    .about-mara{
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 6px;
-        padding-right: 6px;
-        }
-mat-card mat-card-header{
-height: 45vh;
-}
-.explores mat-card{
-padding: 0;
-margin-left:5px ;
-}
-.about-mara-depth{
-width: 100vw;
-}
-.about-mara-depth mat-card mat-card-content{
-width: 100vw;
-margin: 0px;
-}
+  }
+  .about-mara {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  mat-card mat-card-header {
+    height: 45vh;
+  }
+  .explores mat-card {
+    padding: 0;
+    margin-left: 5px;
+  }
+  .about-mara-depth {
+    width: 100vw;
+  }
+  .about-mara-depth mat-card mat-card-content {
+    width: 100vw;
+    margin: 0px;
+  }
 
-.about-mara-depth mat-card mat-card-content{
-margin-left: 0;
-    }
-.explores{
+  .about-mara-depth mat-card mat-card-content {
+    margin-left: 0;
+  }
+  .explores {
     margin: 0;
     padding: 0;
     width: 100vw;
-display: grid;
-grid-template-columns: repeat(2,1fr);
-grid-template-rows: 1fr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+  }
 }
-
-
-}
-    
-  

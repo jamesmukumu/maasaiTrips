@@ -125,40 +125,19 @@
     <mat-card-content>
       <mat-card-content *ngIf="landCruiserSaf.length != 0">
         <h2>Feature Packages (LandCruiser Safaris)</h2>
-        <p>
-          The most popular mode of getting to Masai Mara is by road, typically
-          starting and ending in Nairobi, with the choice of vehicle being a 4x4
-          Landcruiser Jeep or the less costly Safari Minibus (Tour Van). The
-          trip from Nairobi to Masai Mara typically takes 5 to 6 hours depending
-          on which Camp has been booked for your tour. The benefit of a safari
-          by road is the typically lower tour cost as well as getting to see and
-          experience more of the real Kenyan countryside. The downside is that
-          stretches of road on the route are of below average condition.
-        </p>
+      
 
         <div class="grid-see" *ngIf="!fetching" #landCruiserSafaris>
           <div *ngFor="let saf of landCruiserSaf">
-            <img [src]="saf.packageImage" alt="" />
+            <img [src]="saf.packageImage" alt="" /> 
             <h1>{{ saf.packageTitle }}</h1>
             <p>
               Charges:
               <b>{{ saf.packageCharge }} {{ saf.packageChargeCurrency }}</b> per
               Adult
             </p>
-            <p>Perks and Benefits</p>
-            <mat-list>
-              <mat-list-item matListItemAvatar>
-                <span matListItemTitle>{{ saf.budgetType }}</span>
-                <mat-icon matListItemIcon>check</mat-icon>
-              </mat-list-item>
-
-              <mat-list-item matListItemAvatar>
-                <span matListItemTitle>
-                  Safari in {{ saf.mode_transport }}</span
-                >
-                <mat-icon matListItemIcon>check</mat-icon>
-              </mat-list-item>
-            </mat-list>
+           
+           
             <button (click)="goPackage(saf.packageSlug)" mat-flat-button>
               See Package
             </button>

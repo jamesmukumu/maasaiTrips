@@ -6,7 +6,12 @@
   <mat-hint>Example:Kunste Hotel</mat-hint>
 </mat-form-field>
 
-<table mat-table [dataSource]="hotelData" *ngIf="!fetchingHotels" class="large-table">
+<table
+  mat-table
+  [dataSource]="hotelData"
+  *ngIf="!fetchingHotels"
+  class="large-table"
+>
   <ng-container matColumnDef="hotelName">
     <th mat-header-cell *matHeaderCellDef>Hotel Name</th>
     <td mat-cell *matCellDef="let element">
@@ -39,14 +44,24 @@
     <td mat-cell *matCellDef="let element">{{ element.hotelCommission }}%</td>
   </ng-container>
 
- 
   <ng-container matColumnDef="actionPending">
     <th mat-header-cell *matHeaderCellDef>Status</th>
     <td mat-cell *matCellDef="let element">
-      <p-tag *ngIf="element.actionPending == 'approved'" severity="success" value="approved"/>
-      <p-tag *ngIf="element.actionPending == 'pending'"  severity="warning" value="pending"/>
-      <p-tag *ngIf="element.actionPending == 'rejected'"  severity="danger" value="rejected"/>
-
+      <p-tag
+        *ngIf="element.actionPending == 'approved'"
+        severity="success"
+        value="approved"
+      />
+      <p-tag
+        *ngIf="element.actionPending == 'pending'"
+        severity="warning"
+        value="pending"
+      />
+      <p-tag
+        *ngIf="element.actionPending == 'rejected'"
+        severity="danger"
+        value="rejected"
+      />
     </td>
   </ng-container>
 
@@ -70,23 +85,35 @@
       </button>
       <mat-menu #menu>
         <button mat-menu-item (click)="editHotel(element)">
-          <mat-icon>edit</mat-icon> 
+          <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item *ngIf="grant_all_functions" (click)="adjustStatus(element.id,element.actionPending)">
+        <button
+          mat-menu-item
+          *ngIf="grant_all_functions"
+          (click)="adjustStatus(element.id, element.actionPending)"
+        >
           <mat-icon>edit</mat-icon>
-          <span>Adjust Status</span>   
+          <span>Adjust Status</span>
         </button>
         <button mat-menu-item (click)="deletingHotel(element)">
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
-          <mat-icon style="color: green" >publish</mat-icon>
+        <button
+          mat-menu-item
+          *ngIf="!element.publishable"
+          (click)="publishingHotel(element)"
+        >
+          <mat-icon style="color: green">publish</mat-icon>
           <span>Publish hotel</span>
         </button>
-        <button mat-menu-item *ngIf="element.publishable" (click)="unpublishingHotel(element)">
-          <mat-icon style="color: red" >publish</mat-icon>
+        <button
+          mat-menu-item
+          *ngIf="element.publishable"
+          (click)="unpublishingHotel(element)"
+        >
+          <mat-icon style="color: red">publish</mat-icon>
           <span>Un-publish hotel</span>
         </button>
       </mat-menu>
@@ -100,22 +127,18 @@
   </tr>
 </table>
 
-
-
-
-
-
-
-
-<table mat-table [dataSource]="hotelData" *ngIf="!fetchingHotels" class="small-table">
+<table
+  mat-table
+  [dataSource]="hotelData"
+  *ngIf="!fetchingHotels"
+  class="small-table"
+>
   <ng-container matColumnDef="hotelName">
     <th mat-header-cell *matHeaderCellDef>Hotel Name</th>
     <td mat-cell *matCellDef="let element">
       {{ element.hotelName }}
     </td>
   </ng-container>
- 
-
 
   <ng-container matColumnDef="destination">
     <th mat-header-cell *matHeaderCellDef>Destination</th>
@@ -124,9 +147,7 @@
     </td>
   </ng-container>
 
-  
-
-<ng-container matColumnDef="published">
+  <ng-container matColumnDef="published">
     <th mat-header-cell *matHeaderCellDef>Published</th>
     <td mat-cell *matCellDef="let element">
       <mat-icon *ngIf="element.publishable" style="color: green">done</mat-icon>
@@ -153,12 +174,20 @@
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.publishable" (click)="publishingHotel(element)">
-          <mat-icon style="color: green" >publish</mat-icon>
+        <button
+          mat-menu-item
+          *ngIf="!element.publishable"
+          (click)="publishingHotel(element)"
+        >
+          <mat-icon style="color: green">publish</mat-icon>
           <span>Publish hotel</span>
         </button>
-        <button mat-menu-item *ngIf="element.publishable" (click)="unpublishingHotel(element)">
-          <mat-icon style="color: red" >Un-publish</mat-icon>
+        <button
+          mat-menu-item
+          *ngIf="element.publishable"
+          (click)="unpublishingHotel(element)"
+        >
+          <mat-icon style="color: red">Un-publish</mat-icon>
           <span>Publish hotel</span>
         </button>
       </mat-menu>
@@ -172,21 +201,6 @@
   </tr>
 </table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <mat-paginator
   [pageSizeOptions]="[5, 10, 20, 50, 100]"
   showFirstLastButtons
@@ -197,10 +211,6 @@
 <div class="spin">
   <p-progressSpinner *ngIf="fetchingHotels" />
 </div>
-
-
-
-
 
 <p-dialog [modal]="true" [(visible)]="popEditor" [maximizable]="true">
   <mat-card *ngIf="!fetchingDestinations">
@@ -220,35 +230,59 @@
 
         <mat-form-field>
           <mat-label>Enter Hotel Latitude</mat-label>
-          <input [(ngModel)]="latitude" type="number" required name="hotel-lat"  matInput  />
-          <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"></a>Find Latitude</mat-hint>
+          <input
+            [(ngModel)]="latitude"
+            type="number"
+            required
+            name="hotel-lat"
+            matInput
+          />
+          <mat-hint
+            ><a
+              style="color: blue"
+              href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"
+            ></a
+            >Find Latitude</mat-hint
+          >
         </mat-form-field>
-  
+
         <mat-form-field>
           <mat-label>Enter Hotel Longitude</mat-label>
-          <input [(ngModel)]="longitude" type="number" name="hotel-long" required matInput  />
-          <mat-hint><a style="color: blue;" href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop">Find Longitude</a></mat-hint>
+          <input
+            [(ngModel)]="longitude"
+            type="number"
+            name="hotel-long"
+            required
+            matInput
+          />
+          <mat-hint
+            ><a
+              style="color: blue"
+              href="https://support.google.com/maps/answer/18539?hl=en&co=GENIE.Platform%3DDesktop"
+              >Find Longitude</a
+            ></mat-hint
+          >
         </mat-form-field>
 
-
         <div>
-        <label for="destinations-title-mark">Edit Hotel`s Destination</label>
-          <p-dropdown 
-          [options]="destinationsData" 
-          [(ngModel)]="destinationTitle"
-          [checkmark]="true" 
-          name="destinations-title-mark"
-          optionLabel="destinationTitle" 
-          [showClear]="true" 
-          (onChange)="getDestination($event)"
-          [style]="{'width':'100%'}"
-          placeholder="Select a Destination" />
+          <label for="destinations-title-mark">Edit Hotel`s Destination</label>
+          <p-dropdown
+            [options]="destinationsData"
+            [(ngModel)]="destinationTitle"
+            [checkmark]="true"
+            name="destinations-title-mark"
+            optionLabel="destinationTitle"
+            [showClear]="true"
+            (onChange)="getDestination($event)"
+            [style]="{ width: '100%' }"
+            placeholder="Select a Destination"
+          />
         </div>
 
         <div>
           <label>Enter Hotel Description</label>
           <p-editor
-        [(ngModel)]="hotelDescription"
+            [(ngModel)]="hotelDescription"
             [style]="{ height: '245px' }"
             name="hotel-description"
             (onTextChange)="captureDescriptionHotel($event)"
@@ -259,8 +293,8 @@
         <div>
           <label>Enter Hotel Meta Description</label>
           <p-editor
-          [(ngModel)]="hotelMetaDescription"
-          name="hotel-meta-description"
+            [(ngModel)]="hotelMetaDescription"
+            name="hotel-meta-description"
             placeholder="Enter Hotel Meta  Description"
             (onTextChange)="captureMetaDescriptionHotel($event)"
             [style]="{ height: '245px' }"
@@ -270,12 +304,11 @@
         <div>
           <label>Enter Cancellation Policy</label>
           <p-editor
-          name="hotel-cancellation-policy"
+            name="hotel-cancellation-policy"
             (onTextChange)="captureCancellationPolicyHotel($event)"
             placeholder="Enter Hotel Cancellation Policy"
             [style]="{ height: '245px' }"
             [(ngModel)]="cancellationPolicy"
-            
           />
         </div>
 
@@ -289,7 +322,7 @@
             [(ngModel)]="locationDescription"
           />
         </div>
-    
+
         <mat-form-field>
           <mat-label>Enter Hotel Commission</mat-label>
           <input
@@ -395,16 +428,16 @@
         </mat-form-field>
 
         <div>
-          <p-dropdown 
-          [options]="availableContactPerson" 
-          [(ngModel)]="contactPerson"
-          [checkmark]="true" 
-          name="contact-person-dropdown"
-          (onChange)="getContact($event)"
-          [showClear]="true" 
-          [style]="{'width':'100%'}"
-          placeholder="Select a Contact Person" />
-         
+          <p-dropdown
+            [options]="availableContactPerson"
+            [(ngModel)]="contactPerson"
+            [checkmark]="true"
+            name="contact-person-dropdown"
+            (onChange)="getContact($event)"
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            placeholder="Select a Contact Person"
+          />
         </div>
       </div>
     </form>
@@ -412,14 +445,14 @@
       *ngIf="!processing"
       (click)="updateHotel()"
       style="
-        background-color: #fca608;
+        background-color: rgb(232, 139, 34);
         color: white;
-        width: fit-content; 
+        width: fit-content;
         margin-top: 20px;
       "
       mat-flat-button
     >
-    Update Hotel
+      Update Hotel
     </button>
     <p-button
       loading
@@ -450,9 +483,6 @@
   </mat-card>
 </p-dialog>
 
-
-
-
 <p-dialog [modal]="true" header="Unpublish Hotel" [(visible)]="unpublishing">
   <mat-card>
     <mat-card-title
@@ -472,7 +502,6 @@
     </mat-card-actions>
   </mat-card>
 </p-dialog>
-
 
 <p-dialog [modal]="true" header="Publish Hotel" [(visible)]="publishing">
   <mat-card>
@@ -494,30 +523,43 @@
   </mat-card>
 </p-dialog>
 
-
-
-
-
-
-
-<p-dialog [style]="{'height':'300px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
-
+<p-dialog
+  [style]="{ height: '300px' }"
+  [(visible)]="showAdjuststatus"
+  header="Are you ready to change status"
+>
   <div>
-  <label for="allowed-status">Update Hotel Status</label>
-  <p-dropdown
-  name="allowed-status"
-  [options]="allowedStatus"
-  placeholder="Choose a status"
-  [style]="{'width':'100%','height':'fit-content','margin-bottom':'25px'}"
-  showClear="true"
-  (onChange)="getStatus($event)"
-  [(ngModel)]="actionPending"
-    
-  />
-  <button   (click)="popConfirm($event)" class="btn" *ngIf="!adjusting" mat-flat-button>Adjust</button>
-  <p-button [style]="{'margin-top':'25px',}" severity="warning" raised="true"  loading="adjusting" *ngIf="adjusting" label="adjusting status"/>
+    <label for="allowed-status">Update Hotel Status</label>
+    <p-dropdown
+      name="allowed-status"
+      [options]="allowedStatus"
+      placeholder="Choose a status"
+      [style]="{
+        width: '100%',
+        height: 'fit-content',
+        'margin-bottom': '25px'
+      }"
+      showClear="true"
+      (onChange)="getStatus($event)"
+      [(ngModel)]="actionPending"
+    />
+    <button
+      (click)="popConfirm($event)"
+      class="btn"
+      *ngIf="!adjusting"
+      mat-flat-button
+    >
+      Adjust
+    </button>
+    <p-button
+      [style]="{'margin-top':'25px',}"
+      severity="warning"
+      raised="true"
+      loading="adjusting"
+      *ngIf="adjusting"
+      label="adjusting status"
+    />
   </div>
-   
-  </p-dialog>
-  <p-confirmPopup/> 
-  <p-toast/>
+</p-dialog>
+<p-confirmPopup />
+<p-toast />

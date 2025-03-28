@@ -5,16 +5,50 @@
 @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
 @import "../node_modules/quill/dist/quill.core.css";
 @import "../node_modules/quill/dist/quill.snow.css";
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+html, body { height: 100%;  }
+body { margin: 0; font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;  overflow-x: clip; }
 
-html, body { height: 100%; font-family: "Love Ya Like A Sister", cursive;
-  font-weight: 400;
-  font-style: normal; }
-body { margin: 0;  font-family: "Love Ya Like A Sister", cursive;
-  font-weight: 400;
-  font-style: normal; overflow-x: clip; }
+/* Global font settings */
+:root {
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+}
 
 
-  
+.mat-typography {
+  font-family: "Red Hat Display", sans-serif !important;
+}
+.mat-button {
+  letter-spacing: normal !important;
+  white-space: nowrap !important;
+  padding: 0 16px !important;
+}
+.mat-typography h1, 
+.mat-typography h2, 
+.mat-typography h3, 
+.mat-typography h4, 
+.mat-typography h5, 
+.mat-typography h6 {
+  font-family: "Red Hat Display", sans-serif !important;
+}
+
+/* Body styles */
+body { 
+
+  margin: 0; 
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;  
+  overflow-x: clip; 
+ 
+}
 .green-snack {
     background-color: green !important;
     color: white !important;

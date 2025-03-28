@@ -1,92 +1,84 @@
-*{
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-    }
-    
-    
-    mat-card,form{
-    width: 100%;
-    }
-    h3{
-    text-align: center;
-    }
-    form{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    }
-    .infos{
-    max-width: 85vw;
-    display: flex;
-    flex-direction: column;
-    }
-    .infos mat-form-field,.infos div{
-    margin-top: 15.555px;
-    }
-    
-    mat-card-actions button{
-        background-color: #fca608;
-        color: white;
-        width: max-content;
-        margin-left: 20px;
-    }
-    
-    
-    .contact-information{
-    max-width: 85vw;
-    display: flex;
-    flex-direction: column;
-    }
-    
-    .contact-information mat-form-field{
-    max-width: 80vw;
-    }
-    
-    
-    .spinner{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    }
-    
-    
-    
-    
-    
-    @media(max-width:900px){
-    form{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    }
-    div mat-form-field{
-    width: 100%;
-    }
-    .contact-information{
-        width: 100%;
-    }
-    .contact-information mat-form-field{
-    width: 100%;
-    }
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
 
-    .contact-information{
-        max-width: 100vw;
-        display: flex;
-        flex-direction: column;
-        }
-        
-        .contact-information mat-form-field{
-        max-width: 100vw;
-        }
-        .infos{
-            max-width: 100vw;
-            display: flex;
-            flex-direction: column;
-            }
-    
-    }
-    
-    
+mat-card,
+form {
+  width: 100%;
+}
+h3 {
+  text-align: center;
+}
+form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.infos {
+  max-width: 85vw;
+  display: flex;
+  flex-direction: column;
+}
+.infos mat-form-field,
+.infos div {
+  margin-top: 15.555px;
+}
+
+mat-card-actions button {
+  background-color: rgb(232, 139, 34);
+  color: white;
+  width: max-content;
+  margin-left: 20px;
+}
+
+.contact-information {
+  max-width: 85vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-information mat-form-field {
+  max-width: 80vw;
+}
+
+.spinner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  div mat-form-field {
+    width: 100%;
+  }
+  .contact-information {
+    width: 100%;
+  }
+  .contact-information mat-form-field {
+    width: 100%;
+  }
+
+  .contact-information {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .contact-information mat-form-field {
+    max-width: 100vw;
+  }
+  .infos {
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+  }
+}

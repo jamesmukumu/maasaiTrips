@@ -1,48 +1,70 @@
 <h3>Manage My Packages</h3>
 
-<mat-form-field appearance="outline" >
+<mat-form-field appearance="outline">
   <mat-label>Search any Package</mat-label>
-  <input type="text" matInput  name="filter-search" #inputSelect (keyup)="applyFilter($event)"  />
+  <input
+    type="text"
+    matInput
+    name="filter-search"
+    #inputSelect
+    (keyup)="applyFilter($event)"
+  />
   <mat-hint>Example:Easter Package</mat-hint>
 </mat-form-field>
 
-<table mat-table  *ngIf="!processing" [dataSource]="dataSource" class="large-table">
+<table
+  mat-table
+  *ngIf="!processing"
+  [dataSource]="dataSource"
+  class="large-table"
+>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Package Title</th>
     <td mat-cell *matCellDef="let element">
       {{ element.packageTitle }}
-    </td>  
+    </td>
   </ng-container>
   <ng-container matColumnDef="actionPending">
     <th mat-header-cell *matHeaderCellDef>Status</th>
     <td mat-cell *matCellDef="let element">
-      <p-tag *ngIf="element.actionPending == 'approved'" severity="success" value="approved"/>
-      <p-tag *ngIf="element.actionPending == 'pending'"  severity="warning" value="pending"/>
-      <p-tag *ngIf="element.actionPending == 'rejected'"  severity="danger" value="rejected"/>
-
+      <p-tag
+        *ngIf="element.actionPending == 'approved'"
+        severity="success"
+        value="approved"
+      />
+      <p-tag
+        *ngIf="element.actionPending == 'pending'"
+        severity="warning"
+        value="pending"
+      />
+      <p-tag
+        *ngIf="element.actionPending == 'rejected'"
+        severity="danger"
+        value="rejected"
+      />
     </td>
   </ng-container>
   <ng-container matColumnDef="charge">
     <th mat-header-cell *matHeaderCellDef>Package Charges</th>
     <td mat-cell *matCellDef="let element">
-     <b>{{ element.packageCharge }} {{element.packageChargeCurrency}}</b>
-    </td>  
+      <b>{{ element.packageCharge }} {{ element.packageChargeCurrency }}</b>
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="startDate">
     <th mat-header-cell *matHeaderCellDef>Start Validity</th>
     <td mat-cell *matCellDef="let element">
-      {{formatDate(element.startDate) }} 
-    </td>  
+      {{ formatDate(element.startDate) }}
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="endDate">
     <th mat-header-cell *matHeaderCellDef>End Validity</th>
     <td mat-cell *matCellDef="let element">
-        {{formatDate(element.endDate) }} 
-      </td>    
+      {{ formatDate(element.endDate) }}
+    </td>
   </ng-container>
- 
+
   <ng-container matColumnDef="published">
     <th mat-header-cell *matHeaderCellDef>Published</th>
     <td mat-cell *matCellDef="let element">
@@ -61,28 +83,40 @@
       >
         <mat-icon>more_vert</mat-icon>
       </button>
-      
+
       <mat-menu #menu>
-        <button mat-menu-item  (click)="popUpdate(element.id,element)">
+        <button mat-menu-item (click)="popUpdate(element.id, element)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item *ngIf="adminStatus"  (click)="adjustStatus(element.id)">
+        <button
+          mat-menu-item
+          *ngIf="adminStatus"
+          (click)="adjustStatus(element.id)"
+        >
           <mat-icon>edit</mat-icon>
-          <span>Adjust Status</span> 
+          <span>Adjust Status</span>
         </button>
-        <button mat-menu-item (click)="popDeleteDestination(element.id)" >
+        <button mat-menu-item (click)="popDeleteDestination(element.id)">
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.published" (click)="popPublish(element.id)">
+        <button
+          mat-menu-item
+          *ngIf="!element.published"
+          (click)="popPublish(element.id)"
+        >
           <mat-icon style="color: green">publish</mat-icon>
           <span>Publish Destination</span>
         </button>
-        <button mat-menu-item *ngIf="element.published" (click)="popUn_Publish(element.id)">
-            <mat-icon style="color: red">publish</mat-icon>
-            <span>Un-Publish Destination</span>
-          </button>
+        <button
+          mat-menu-item
+          *ngIf="element.published"
+          (click)="popUn_Publish(element.id)"
+        >
+          <mat-icon style="color: red">publish</mat-icon>
+          <span>Un-Publish Destination</span>
+        </button>
       </mat-menu>
     </td>
   </ng-container>
@@ -94,27 +128,25 @@
   </tr>
 </table>
 
-
-
-
-
-
-
-<table mat-table  *ngIf="!processing" [dataSource]="dataSourceSmall" class="small-table">
+<table
+  mat-table
+  *ngIf="!processing"
+  [dataSource]="dataSourceSmall"
+  class="small-table"
+>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Package Title</th>
     <td mat-cell *matCellDef="let element">
       {{ element.packageTitle }}
-    </td>  
+    </td>
   </ng-container>
   <ng-container matColumnDef="charge">
     <th mat-header-cell *matHeaderCellDef>Package Charges</th>
     <td mat-cell *matCellDef="let element">
-     <b>{{ element.packageCharge }} {{element.packageChargeCurrency}}</b>
-    </td>  
+      <b>{{ element.packageCharge }} {{ element.packageChargeCurrency }}</b>
+    </td>
   </ng-container>
 
- 
   <ng-container matColumnDef="published">
     <th mat-header-cell *matHeaderCellDef>Published</th>
     <td mat-cell *matCellDef="let element">
@@ -134,22 +166,30 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu>
-        <button mat-menu-item  (click)="popUpdate(element.id,element)">
+        <button mat-menu-item (click)="popUpdate(element.id, element)">
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button mat-menu-item (click)="popDeleteDestination(element.id)" >
+        <button mat-menu-item (click)="popDeleteDestination(element.id)">
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button mat-menu-item *ngIf="!element.published" (click)="popPublish(element.id)">
+        <button
+          mat-menu-item
+          *ngIf="!element.published"
+          (click)="popPublish(element.id)"
+        >
           <mat-icon style="color: green">publish</mat-icon>
           <span>Publish Package</span>
         </button>
-        <button mat-menu-item *ngIf="element.published" (click)="popUn_Publish(element.id)">
-            <mat-icon style="color: red">publish</mat-icon>
-            <span>Un-Publish Destination</span>
-          </button>
+        <button
+          mat-menu-item
+          *ngIf="element.published"
+          (click)="popUn_Publish(element.id)"
+        >
+          <mat-icon style="color: red">publish</mat-icon>
+          <span>Un-Publish Destination</span>
+        </button>
       </mat-menu>
     </td>
   </ng-container>
@@ -161,7 +201,6 @@
   </tr>
 </table>
 
-
 <mat-paginator
   [pageSizeOptions]="[5, 10, 20, 50, 100]"
   showFirstLastButtons
@@ -170,106 +209,111 @@
 </mat-paginator>
 
 <div class="spinner" *ngIf="processing">
-  <p-progressSpinner  />
+  <p-progressSpinner />
 </div>
 
-
-
-<p-dialog [modal]="true"  [(visible)]="updateDestination">
-  <mat-card >
-   
+<p-dialog [modal]="true" [(visible)]="updateDestination">
+  <mat-card>
     <form>
       <div class="infos">
         <h3>Package Information</h3>
-        <mat-form-field style="margin-top:10px;width: 100%;">
+        <mat-form-field style="margin-top: 10px; width: 100%">
           <mat-label>Package Title</mat-label>
-          <input required type="text" name="package-title" matInput [(ngModel)]="packageTitle" />
+          <input
+            required
+            type="text"
+            name="package-title"
+            matInput
+            [(ngModel)]="packageTitle"
+          />
           <mat-hint
-            >Example:4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint
+            >Example:4 Days Olkinyei Mara Tented Camp Masai Mara
+            Safari</mat-hint
           >
         </mat-form-field>
-  
+
         <div>
           <label>Enter Package OverView</label>
           <p-editor
-          [(ngModel)]="packageOverview"
-          name="package-overview"
-          (onTextChange)="captureOverview($event)"
+            [(ngModel)]="packageOverview"
+            name="package-overview"
+            (onTextChange)="captureOverview($event)"
             [style]="{ 'min-height': '245px' }"
             placeholder="Enter Package OverView:Example brief description about this package"
           />
         </div>
         <div>
-          <p-dropdown 
-          variant="filled"
-          [options]="destinationsData" 
-          [(ngModel)]="targetDestination"
-          [checkmark]="true" 
-          optionLabel="destinationTitle"
-          [filter]="true"
-          (onChange)="getDestination($event)"
-           name="destination-name"
-          [showClear]="true" 
-          [style]="{'width':'100%'}"
-          placeholder="Choose a Destination" />
-          </div>
-  
-          <div>
-            <p-dropdown 
+          <p-dropdown
             variant="filled"
-            [options]="packageCategories" 
+            [options]="destinationsData"
+            [(ngModel)]="targetDestination"
+            [checkmark]="true"
+            optionLabel="destinationTitle"
+            [filter]="true"
+            (onChange)="getDestination($event)"
+            name="destination-name"
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            placeholder="Choose a Destination"
+          />
+        </div>
+
+        <div>
+          <p-dropdown
+            variant="filled"
+            [options]="packageCategories"
             [(ngModel)]="targetCategory"
-            [checkmark]="true" 
+            [checkmark]="true"
             optionLabel="title"
             [filter]="true"
             (onChange)="getPackageCategory($event)"
-           name="package-category"
-            [showClear]="true" 
-            [style]="{'width':'100%','margin-top':'10px'}"
-            placeholder="Choose Package Category" />
-            </div>
-  
-            <div>
-              <p-dropdown 
-              variant="filled"
-              [options]="budgetTypes" 
-              [(ngModel)]="choosenBudgetType"
-              [checkmark]="true" 
-              (onChange)="getBudget($event)"
-              [showClear]="true" 
-              [style]="{'width':'100%'}"
-              name="package-category"
-              placeholder="Select a Budget Type" />
-              </div>
-  
-              <div>
-                <p-dropdown 
-                variant="filled"
-                [options]="transport" 
-                [(ngModel)]="choosenMeans"
-                [checkmark]="true" 
-                (onChange)="getTransport($event)"
-                [showClear]="true" 
-                [style]="{'width':'100%'}"
-                name="transport-means"
-                placeholder="Select Mode of Transport Type" />
-                </div>
-  
-  
-  
-  
-        <mat-form-field style="margin-top:10px;width: 100%;">
+            name="package-category"
+            [showClear]="true"
+            [style]="{ width: '100%', 'margin-top': '10px' }"
+            placeholder="Choose Package Category"
+          />
+        </div>
+
+        <div>
+          <p-dropdown
+            variant="filled"
+            [options]="budgetTypes"
+            [(ngModel)]="choosenBudgetType"
+            [checkmark]="true"
+            (onChange)="getBudget($event)"
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            name="package-category"
+            placeholder="Select a Budget Type"
+          />
+        </div>
+
+        <div>
+          <p-dropdown
+            variant="filled"
+            [options]="transport"
+            [(ngModel)]="choosenMeans"
+            [checkmark]="true"
+            (onChange)="getTransport($event)"
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            name="transport-means"
+            placeholder="Select Mode of Transport Type"
+          />
+        </div>
+
+        <mat-form-field style="margin-top: 10px; width: 100%">
           <mat-label>Package Inclusives</mat-label>
           <mat-chip-grid #chipGrid aria-label="Enter Inclusions">
             <mat-chip-row *ngFor="let choosenCC of inclusions">
-              {{choosenCC}}
+              {{ choosenCC }}
               <button matChipRemove (click)="removeInclusions(choosenCC)">
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip-row>
           </mat-chip-grid>
-          
-          <input 
+
+          <input
             [matChipInputFor]="chipGrid"
             [matChipInputAddOnBlur]="true"
             (matChipInputTokenEnd)="addInclusions($event)"
@@ -277,20 +321,19 @@
           />
           <mat-hint>Example:Airport Transfers,</mat-hint>
         </mat-form-field>
-  
-  
-        <mat-form-field style="margin-top:10px;width: 100%;">
+
+        <mat-form-field style="margin-top: 10px; width: 100%">
           <mat-label>Package Exclusions</mat-label>
           <mat-chip-grid #chipExclusions aria-label="Enter CC Emails">
             <mat-chip-row *ngFor="let choosenCC of exclusions">
-              {{choosenCC}}
+              {{ choosenCC }}
               <button matChipRemove (click)="removeExclusions(choosenCC)">
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip-row>
           </mat-chip-grid>
-          
-          <input 
+
+          <input
             [matChipInputFor]="chipExclusions"
             [matChipInputAddOnBlur]="true"
             (matChipInputTokenEnd)="addExclusions($event)"
@@ -298,82 +341,81 @@
           />
           <mat-hint>Example:Hot Air Balooons</mat-hint>
         </mat-form-field>
-  
-  
-        <mat-form-field style="margin-top:10px;width: 100%;">
+
+        <mat-form-field style="margin-top: 10px; width: 100%">
           <mat-label>Package Charge</mat-label>
-          <input required type="number" name="package-charge" matInput [(ngModel)]="packageCharge" />
-       
+          <input
+            required
+            type="number"
+            name="package-charge"
+            matInput
+            [(ngModel)]="packageCharge"
+          />
         </mat-form-field>
         <div>
-          <p-dropdown 
-          [(ngModel)]="someValue"
-          variant="filled"
-          [options]="countryCodes" 
-          
-          [checkmark]="true" 
-          optionLabel="name"
-          (onChange)="getCurrency($event)"
-          [filter]="true"
-         name="package-currency-type"
-        
-          [style]="{'width':'100%'}"
-          placeholder="Select a Currency Type" />
-          </div>
+          <p-dropdown
+            [(ngModel)]="someValue"
+            variant="filled"
+            [options]="countryCodes"
+            [checkmark]="true"
+            optionLabel="name"
+            (onChange)="getCurrency($event)"
+            [filter]="true"
+            name="package-currency-type"
+            [style]="{ width: '100%' }"
+            placeholder="Select a Currency Type"
+          />
+        </div>
         <div>
           <label>Enter Package About</label>
           <p-editor
-          name="package-about"
-          [(ngModel)]="packageAbout"
-          (onTextChange)="captureAbout($event)"
+            name="package-about"
+            [(ngModel)]="packageAbout"
+            (onTextChange)="captureAbout($event)"
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
           />
-        </div>  
-  
+        </div>
+
         <div>
           <label>Enter Package Special Notes</label>
           <p-editor
-          [(ngModel)]="specialNotes"
-          (onTextChange)="captureSpecialNotes($event)"
+            [(ngModel)]="specialNotes"
+            (onTextChange)="captureSpecialNotes($event)"
             [style]="{ 'min-height': '20vh' }"
             name="package-special-notes"
             placeholder="Enter Any Special Notes you wish to add."
           />
         </div>
-  
-       <div style="display: flex; flex-direction: column;width: 100%;">
-        <label>Choose Package Start Date</label>
-        <p-calendar 
-       [style]="{'width':'100%'}"
-        [touchUI]="true"
-        [readonlyInput]="true" 
-      
-        required
-        name="package-dates"
-        [(ngModel)]="startDate"
-        
-        />
-       </div>
 
-       <div style="display: flex; flex-direction: column;width: 100%;">
-        <label>Choose Package End Date</label>
-        <p-calendar 
-       [style]="{'width':'100%'}"
-        [touchUI]="true"
-        [readonlyInput]="true" 
-      
-        required
-        name="package-dates-end"
-        [(ngModel)]="endDate"
-        
-        />
-       </div>
+        <div style="display: flex; flex-direction: column; width: 100%">
+          <label>Choose Package Start Date</label>
+          <p-calendar
+            [style]="{ width: '100%' }"
+            [touchUI]="true"
+            [readonlyInput]="true"
+            required
+            name="package-dates"
+            [(ngModel)]="startDate"
+          />
+        </div>
+
+        <div style="display: flex; flex-direction: column; width: 100%">
+          <label>Choose Package End Date</label>
+          <p-calendar
+            [style]="{ width: '100%' }"
+            [touchUI]="true"
+            [readonlyInput]="true"
+            required
+            name="package-dates-end"
+            [(ngModel)]="endDate"
+          />
+        </div>
         <div>
           <label>Package Thumbnail</label>
           <p-fileUpload
-          (onSelect)="chooser($event)"
-          (onUpload)="chooser($event)"
+            (onSelect)="chooser($event)"
+            (onUpload)="chooser($event)"
             name="demo[]"
             url="https://www.primefaces.org/cdn/api/upload.php"
             [multiple]="false"
@@ -385,18 +427,17 @@
             </ng-template>
           </p-fileUpload>
         </div>
-  
-  
+
         <div class="hotel-photos">
           <div *ngFor="let dest of images; let i = index">
             <div>
-              <strong>Images {{i+1}}</strong>
+              <strong>Images {{ i + 1 }}</strong>
               <p-fileUpload
                 name="demo[]"
                 url="https://www.primefaces.org/cdn/api/upload.php"
                 [multiple]="false"
                 accept="image/*"
-                (onSelect)="chooserFile($event,i)"
+                (onSelect)="chooserFile($event, i)"
                 maxFileSize="100000000000"
               >
                 <ng-template pTemplate="content">
@@ -406,64 +447,48 @@
             </div>
           </div>
           <mat-card-actions align="start">
-            <button mat-flat-button (click)="addImage()" [matBadge]="images.length">
+            <button
+              mat-flat-button
+              (click)="addImage()"
+              [matBadge]="images.length"
+            >
               Add Another Photo
             </button>
-            <button mat-flat-button (click)=" popImage()">
-              Remove Photo 
-            </button>
+            <button mat-flat-button (click)="popImage()">Remove Photo</button>
           </mat-card-actions>
         </div>
       </div>
     </form>
     <button
-    *ngIf="!processing"
+      *ngIf="!processing"
       style="
-        background-color: #fca608;
+        background-color: rgb(232, 139, 34);
         color: white;
         width: fit-content;
         margin-top: 20px;
-        
       "
       (click)="updatePackages()"
       mat-flat-button
     >
-Update Package
+      Update Package
     </button>
     <p-button
-    *ngIf="processing"
-    loading="processing"
+      *ngIf="processing"
+      loading="processing"
       [style]="{ 'background-color': 'rgb(252,166,8)' }"
       label="Saving"
     ></p-button>
   </mat-card>
-  
-  
-  
-  
-  
-  
-  
-  
-  </p-dialog>
+</p-dialog>
 
-
-
-
-
-
-
-<p-dialog [modal]="true" header="Delete" [(visible)]="deleteDestination" >
+<p-dialog [modal]="true" header="Delete" [(visible)]="deleteDestination">
   <mat-card>
-    <mat-card-title
-      >Are you sure you wish to delete </mat-card-title
-    >
+    <mat-card-title>Are you sure you wish to delete </mat-card-title>
     <mat-card-actions align="end">
       <button
         mat-icon-button
         style="background-color: green"
         (click)="actualizedeleteDestination()"
-      
       >
         <mat-icon>check</mat-icon>
       </button>
@@ -474,45 +499,40 @@ Update Package
   </mat-card>
 </p-dialog>
 
-
-
-
-
-
-<p-dialog [modal]="true" header="Publish Destination" [(visible)]="publishDestination" >
-    <mat-card>
-      <mat-card-title
-        >Are you sure you wish to Publish </mat-card-title
-      >
-      <mat-card-actions align="end">
-        <button
-          mat-icon-button
-          (click)="actualizepublishDestination()"
-          style="background-color: green"
-        
-        >
-          <mat-icon>check</mat-icon>
-        </button>
-        <button mat-icon-button style="background-color: red">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </p-dialog>
-
-
-  
-<p-dialog [modal]="true" header="UnPublish Destination" [(visible)]="unpublishDestination" >
+<p-dialog
+  [modal]="true"
+  header="Publish Destination"
+  [(visible)]="publishDestination"
+>
   <mat-card>
-    <mat-card-title
-      >Are you sure you wish to Un- Publish </mat-card-title
-    >
+    <mat-card-title>Are you sure you wish to Publish </mat-card-title>
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        (click)="actualizepublishDestination()"
+        style="background-color: green"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+<p-dialog
+  [modal]="true"
+  header="UnPublish Destination"
+  [(visible)]="unpublishDestination"
+>
+  <mat-card>
+    <mat-card-title>Are you sure you wish to Un- Publish </mat-card-title>
     <mat-card-actions align="end">
       <button
         mat-icon-button
         (click)="actualizeUn_publishDestination()"
         style="background-color: green"
-      
       >
         <mat-icon>check</mat-icon>
       </button>
@@ -523,28 +543,38 @@ Update Package
   </mat-card>
 </p-dialog>
 
-
-
-
-
-
-
-
-<p-dialog [style]="{'height':'300px'}" [(visible)]="showAdjuststatus" header="Are you ready to change status">
-
+<p-dialog
+  [style]="{ height: '300px' }"
+  [(visible)]="showAdjuststatus"
+  header="Are you ready to change status"
+>
   <div>
-  <p-dropdown
-  [options]="allowedStatus"
-  placeholder="Choose a status"
-  [style]="{'width':'100%','height':'fit-content','margin-bottom':'30px'}"
-  showClear="true"
-  (onChange)="getStatus($event)" 
-    
-  />
-  <button   (click)="popConfirm($event)" class="btn" *ngIf="!adjusting" mat-flat-button>Adjust</button>
-  <p-button [style]="{'margin-top':'25px','background-color':'yellow'}" loading="adjusting" *ngIf="adjusting" label="adjusting status"/>
+    <p-dropdown
+      [options]="allowedStatus"
+      placeholder="Choose a status"
+      [style]="{
+        width: '100%',
+        height: 'fit-content',
+        'margin-bottom': '30px'
+      }"
+      showClear="true"
+      (onChange)="getStatus($event)"
+    />
+    <button
+      (click)="popConfirm($event)"
+      class="btn"
+      *ngIf="!adjusting"
+      mat-flat-button
+    >
+      Adjust
+    </button>
+    <p-button
+      [style]="{ 'margin-top': '25px', 'background-color': 'yellow' }"
+      loading="adjusting"
+      *ngIf="adjusting"
+      label="adjusting status"
+    />
   </div>
-   
-  </p-dialog>
-  <p-confirmPopup/> 
-  <p-toast/>
+</p-dialog>
+<p-confirmPopup />
+<p-toast />

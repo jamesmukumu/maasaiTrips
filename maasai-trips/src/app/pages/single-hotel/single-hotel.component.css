@@ -5,11 +5,10 @@
   height: max-content;
   display: flex;
   flex-direction: column;
-background-color: rgb(237,241,245);
+  background-color: rgb(237, 241, 245);
 }
-body{
-overflow-x: hidden;
-
+body {
+  overflow-x: hidden;
 }
 mat-card-content {
   word-wrap: break-word;
@@ -21,34 +20,35 @@ mat-card-content {
   text-overflow: unset;
   line-height: 1.55;
   padding: 5px;
-  
 }
-mat-card-content p,span,h1,h2{
-padding: 10px;
+mat-card-content p,
+span,
+h1,
+h2 {
+  padding: 10px;
 }
 
 .btn {
-  background-color: #fca608;
+  background-color: rgb(232, 139, 34);
   color: white;
   width: max-content;
 }
-.grid{
+.grid {
   min-width: 90vw;
   width: fit-content;
   display: grid;
- margin: 2%;
+  margin: 2%;
   grid-template-columns: 2fr 1fr;
 
-  background-color: rgb(237,241,245);
+  background-color: rgb(237, 241, 245);
 }
 .div-a-adjust {
-
-  width: fit-content; 
+  width: fit-content;
   max-width: 700px;
   height: auto;
   min-height: max-content;
   min-height: unset;
-margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 .img-big {
   width: 100%;
@@ -57,9 +57,8 @@ margin-bottom: 30px;
   max-height: 800px;
 }
 .div-b {
-max-width: 450px;
-max-height: 200px;
-
+  max-width: 450px;
+  max-height: 200px;
 }
 .img-thumbnail {
   width: 100%;
@@ -68,92 +67,85 @@ max-height: 200px;
   object-fit: cover;
 }
 
-.grid-see{
+.grid-see {
   width: 100%;
   display: flex;
-flex-direction: column;
-
-
-  }
-  h3{
+  flex-direction: column;
+}
+h3 {
   padding: 15px;
-  }
-  .grid-see div{
-    width: max-content;
-    max-width: 300px;
+}
+.grid-see div {
+  width: max-content;
+  max-width: 300px;
   margin-top: 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-  .grid-see div button{
+}
+.grid-see div button {
   margin-left: 2.5px;
-  }
-  .grid-see div h2{
-    padding: 15px;
-  }
-  .spin {
-    min-height: 100%;
-    height: 100%;
-  }
+}
+.grid-see div h2 {
+  padding: 15px;
+}
+.spin {
+  min-height: 100%;
+  height: 100%;
+}
 
-.grid-see div button{
+.grid-see div button {
   width: fit-content;
-  background-color: #fca608;
+  background-color: rgb(232, 139, 34);
   color: white;
 }
 .no-spin {
   display: none;
 }
-.grid-see img{
+.grid-see img {
   width: 100%;
   height: 75%;
-  }
+}
 h1 {
   text-align: center;
 }
 
-
-
-
-
-
-
 @media (max-width: 768px) {
- 
- .grid,.vert{
-  width: max-content;
-  display: flex;
-  flex-direction: column;
-margin: 0;
-  max-width: 100vw;
- }
+  .grid,
+  .vert {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-width: 100vw;
+  }
 
-p-galleria{
-max-width: 95vw;
-}
+  p-galleria {
+    max-width: 95vw;
+  }
 
-mat-card-content{
-margin: 0;
-padding: 15px;
-}
-::ng-deep mat-card-content {
-  padding: 15px;
-}
+  mat-card-content {
+    margin: 0;
+    padding: 15px;
+  }
+  ::ng-deep mat-card-content {
+    padding: 15px;
+  }
 
-.div-a,.div-a-adjust{
-/* margin: 5.5px; */
-width: fit-content;
-}
-.div-a-adjust{
-margin-left: 0;
-}
-  
+  .div-a,
+  .div-a-adjust {
+    /* margin: 5.5px; */
+    width: fit-content;
+  }
+  .div-a-adjust {
+    margin-left: 0;
+  }
+
   .img-big {
     height: fit-content;
     width: fit-content;
     max-width: 80vw;
   }
   .div-b {
-   max-width: 100vw;
+    max-width: 100vw;
     height: fit-content;
     width: 100%;
   }
@@ -164,7 +156,6 @@ margin-left: 0;
     object-fit: cover;
   }
 
-
   .truncate-text {
     margin-top: 10px;
     height: max-content;
@@ -174,30 +165,28 @@ margin-left: 0;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   }
-  .grid-see{
+  .grid-see {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
-    }
-    .grid-see div{
-      width: max-content;
-     max-width: fit-content;
-     margin-top: 5.55px;
+  }
+  .grid-see div {
+    width: max-content;
+    max-width: fit-content;
+    margin-top: 5.55px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    }
-    .grid-see div img{
+  }
+  .grid-see div img {
     padding-right: 20px;
-    }
+  }
   .spin {
     min-height: 100vh;
     height: 100%;
   }
-  .div-b img{
-  padding: 20px;
+  .div-b img {
+    padding: 20px;
   }
   .no-spin {
     display: none;
   }
-
 }

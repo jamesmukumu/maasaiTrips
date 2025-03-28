@@ -19,7 +19,7 @@ mat-form-field {
 }
 mat-card-actions button {
   width: fit-content;
-  background-color: #fca608;
+  background-color: rgb(232, 139, 34);
   color: white;
 }
 mat-card {
@@ -72,8 +72,8 @@ mat-icon {
 span {
   color: white;
 }
-header-add{
-width: max-content;
+header-add {
+  width: max-content;
 }
 
 @media (max-width: 768px) {
@@ -81,7 +81,7 @@ width: max-content;
     display: none;
   }
 
-  .choosen div{
-margin: 0px;
+  .choosen div {
+    margin: 0px;
   }
 }

@@ -1,67 +1,102 @@
 <mat-card>
-<h1>Create Life Long  Safari Memories with us</h1>
-<mat-card-footer>
-<div>
-<h2>Quick Links</h2> 
-<mat-list>
-<mat-list>
-Masaai Mara Safari`s
-</mat-list>
+  <h1>Create Life Long Safari Memories with us</h1>
+  <mat-card-footer>
+    <div>
+    
+      <ul>
+        <li>
+        <h2>Quick Links</h2>
+        </li>
+        <li>
+          <span>Masaai Mara Safari`s</span>
+        </li>
 
-<mat-list (click)="accomodations()">
-Masaai Mara accomodation`s
-</mat-list>
-<mat-list (click)="safaris()">
-Masaai Mara from Nairobi
-</mat-list>
-<mat-list (click)="safaris()">
-Masaai Mara Conservancies
-</mat-list>
-<mat-list (click)="safaris()">
-Great Wildebeast Migration
-</mat-list>
-<mat-list (click)="safaris()">
- Place`s to Visit in Masaai mara
-</mat-list >
-<mat-list (click)="safaris()">
-Current Masaai mara parking fee
-</mat-list>
-<mat-list>
- Flight to Masaai Mara
-</mat-list>
-</mat-list>
-</div>
-<mat-divider style="background-color: white;"></mat-divider>
-<div>
-<h2>Get to Know Us</h2>
-<mat-list>
-<mat-list>About Masaai mara trips</mat-list>
-<mat-list>Contact us</mat-list>
-</mat-list>
-</div>
-<mat-divider style="background-color: white;"></mat-divider>
-<div>
-<h2>Explore more</h2>
-<mat-list>
-<mat-list>Masaai Mara Special offers</mat-list>
-<mat-list>New`s and Events</mat-list>  
-</mat-list>
-</div>
-<mat-divider style="background-color: white;"></mat-divider>
-<div>
-<h2>Connect with us</h2>
-<div class="socials">
-<img (click)="goSocials('https://www.facebook.com/masaimaratrips')" src="../../../assets/facebook.png" alt="facebook_png">
-<img (click)="goSocials('https://x.com/masaimaratrips')" src="../../../assets/twitter.png" alt="twitter_png">
-<img (click)="goSocials('https://www.facebook.com/masaimaratrips')" src="../../../assets/youtube.png" alt="youtube_png">
-<img (click)="goSocials('https://www.facebook.com/masaimaratrips')" src="../../../assets/linkedin (1).png" alt="linkedin_png">
-<img (click)="goSocials('https://www.facebook.com/masaimaratrips')" src="../../../assets/social.png" alt="pintrest_png">
-</div>
-<h3>Secure Online Payment Options available</h3>
-<img  class="payment-img" src="https://www.masaimaratrips.com/assets/images/system/Secure-pay.png?v1.1.1" alt="Secure Payments">
+        <li (click)="accomodations()">
+          <span>Masaai Mara accomodation`s</span>
+        </li>
+        <li (click)="safaris()">
+          <span>Masaai Mara from Nairobi</span>
+        </li>
+        <li (click)="safaris()">
+          <span>Masaai Mara Conservancies</span>
+        </li>
+        <li (click)="safaris()">
+          <span >Great Wildebeast Migration</span>
+        </li>
+        <li (click)="safaris()">
+            <span>Current Maasai Mara Parking fee</span>
+        </li>
+        <li (click)="safaris()">
+        <span>Flight to Maasai Ara</span>
+        </li>
+      
+      </ul>
+    </div>
+    <mat-divider style="background-color: white"></mat-divider>
+    <div>
+     
+      <ul>
+        <li>
+        <h2>Get to Know Us</h2>
+        </li>
+        <li><span>About Masaai mara trips</span></li>
+        <li><span>Contact us</span></li>
+      </ul>
+    </div>
+    <mat-divider style="background-color: white"></mat-divider>
+    <div>
+    
+      <ul>
+        <li>
+        <h2>Explore more</h2>
+        </li>
+        <li><span>Masaai Mara Special offers</span></li>
+        <li><span>New`s and Events</span></li>
+      </ul>
+    </div>
+    <mat-divider style="background-color: white"></mat-divider>
+    <div>
+        <ul>
+         <li>
+        <h2>Connect with us</h2>
+         </li>
 
-</div>
-</mat-card-footer>
-<b>&copy; {{yr}}  MasaaiMaraTrips.All Rights Reserved</b>
-
+        </ul>
+    
+      <div class="socials">
+        <img
+          (click)="goSocials('https://www.facebook.com/masaimaratrips')"
+          src="../../../assets/facebook.png"
+          alt="facebook_png"
+        />
+        <img
+          (click)="goSocials('https://x.com/masaimaratrips')"
+          src="../../../assets/twitter.png"
+          alt="twitter_png"
+        />
+        <img
+          (click)="goSocials('https://www.facebook.com/masaimaratrips')"
+          src="../../../assets/youtube.png"
+          alt="youtube_png"
+        />
+        <img
+          (click)="goSocials('https://www.facebook.com/masaimaratrips')"
+          src="../../../assets/linkedin (1).png"
+          alt="linkedin_png"
+        />
+        <img
+          (click)="goSocials('https://www.facebook.com/masaimaratrips')"
+          src="../../../assets/social.png"
+          alt="pintrest_png"
+        />
+      </div>
+      <h3>Secure Online Payment Options available</h3>
+      <img
+        class="payment-img"
+        src="https://www.masaimaratrips.com/assets/images/system/Secure-pay.png?v1.1.1"
+        alt="Secure Payments"
+      />
+    </div>
+  </mat-card-footer>
+  <b>&copy; {{ yr }} MasaaiMaraTrips.All Rights Reserved</b>
 </mat-card>

@@ -1,23 +1,21 @@
-*{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-p-dropdown{
-width: 100%;
-margin-top: 20px;
-margin-bottom: 30px;
+p-dropdown {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
-form button{
-    background-color: #fca608;
-    color: white;
-    width: max-content;
-
+form button {
+  background-color: rgb(232, 139, 34);
+  color: white;
+  width: max-content;
 }
-form{
-    width: 60vw;
-    height: max-content;
-display: flex;
-flex-direction: column;
+form {
+  width: 60vw;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
 }
-
