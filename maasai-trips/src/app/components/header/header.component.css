@@ -1,62 +1,182 @@
-* {
+
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+}
+.button-5 {
+  margin-right: 20px;
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #e88b22;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
 }
-mat-card {
-  position: sticky;
-  top: 0;
 
-  max-width: 100vw;
-  width: 100%;
-  background: #232526;
-  background: -webkit-linear-gradient(to right, #414345, #232526);
-  background: linear-gradient(to right, #414345, #232526);
+.button-5:hover,
+.button-5:focus {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
 }
-mat-list-item button {
-  background-color: rgb(232, 139, 34);
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
+.navbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to right, #303233, #303233);
+  padding: 15px 20px;
+}
+.logo{
+cursor: pointer;
+}
+.logo img {
+  
+  height: 50px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  text-decoration: none;
   color: white;
+  font-weight: bold;
+  padding: 10px;
 }
 
+.nav-links a:hover {
+  color: white; 
+}
+
+.nav-links a:hover::after {
+  background-color: #e88b22; 
+}
+.dropdown-menu mat-card {
+  display: flex;
+  width: max-content;
+  height: fit-content;
+  min-width: 300px;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  gap: 10px;
+  padding: 10px;
+  background: #fff;
+}
 mat-drawer-container {
   display: none;
 }
-mat-list mat-list-item {
-  cursor: pointer;
-  margin: 0;
+ul li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 5px;
+  width: 0;
+  height: 3px;
+  background-color: rgb(232, 139, 34);
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
 }
-img {
-  height: max-content;
-}
-mat-card mat-list {
-  max-width: 100vw;
-  height: 75px;
+.dropdown-menu mat-card div {
   display: flex;
-  flex-direction: row;
-  flex-wrap: no-wrap;
-  justify-content: space-evenly;
-}
-.icon {
-  color: white;
   cursor: pointer;
-}
-.suff-icon {
-  margin-left: auto;
-  display: flex;
+  flex-direction: column; 
   align-items: center;
+  width: 250px; 
+  text-align: center;
 }
 
-p,
-strong,
-mat-card-title,
-mat-card-subtitle,
-span {
+.dropdown-menu mat-card div img {
+  width: 100%; 
+  max-width: 120px; 
+  height: 100%;
+  border-radius: 5px;
+}
+
+.dropdown-menu mat-card div span {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  list-style: none;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  padding: 0;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu li {
+  padding: 10px;
+}
+
+.dropdown-menu li a {
+  color: black;
+  display: block;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.contact-button a {
+  background: black;
   color: white;
-  font-size: 18px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
 }
-mat-list mat-list-item {
-  margin-left: 0;
+
+.contact-button a:hover {
+  background: white;
+  color: #e88b22;
 }
+
 
 @media (max-width: 768px) {
   mat-card {
@@ -101,8 +221,10 @@ mat-list mat-list-item {
     position: absolute;
     right: 0;
   }
-
-  mat-card mat-list {
+  img {
+    height: max-content;
+  }
+  .navbar{
     display: none;
   }
 }
@@ -151,7 +273,7 @@ mat-list mat-list-item {
     right: 5.5%;
   }
 
-  mat-card mat-list {
+  nav {
     display: none;
   }
 }

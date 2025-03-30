@@ -1,43 +1,71 @@
-<mat-card>
-  <mat-list>
-    <mat-list-item (click)="home()">
-      <img
-        src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png"
-        mat-card-lg-image
-        alt=""
-      />
-    </mat-list-item>
-    <mat-list-item (click)="goDest()">
-      <span matListItemLine>Destinations</span>
-    </mat-list-item>
-    <mat-list-item (click)="navigate()">
-      <span matListItemLine>Safari's</span>
-    </mat-list-item>
 
-    <mat-list-item (click)="accomodations()">
-      <span matListItemLine>Accomodations</span>
-    </mat-list-item>
+    <nav class="navbar" ng-app="tourApp" >
+        <div class="logo" (click)="home()">
+            <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" alt="Company Logo">
+        </div>
 
-    <mat-list-item>
-      <span matListItemLine>About us</span>
-    </mat-list-item>
-    <mat-list-item (click)="navigate()">
-      <button mat-flat-button (click)="home()">
-        Travel
-        <mat-icon class="suff-icon">mood</mat-icon>
+        <ul class="nav-links">
+            <li (click)="home()"><a href="/">Home</a></li> 
+            <li class="dropdown">
+              <a href="/destinations">Destinations ▾</a>
+              <ul class="dropdown-menu" >
+                <li *ngFor="let dest of featureDestinations">
+                  <a target="_blank" [attr.href]="'destinations/'+dest.destinationTitle + '/' + dest.destinationSlug">
+                    {{ dest.destinationTitle }}
+                  </a>
+                </li>
+              </ul>
+              </li>
+              <li class="dropdown">
+                <a href="/hotels">Accomodations ▾</a>
+                <ul class="dropdown-menu">
+                 <mat-card>
+                  <div>
+                    <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+                    <span>Bella Camp</span>
+                    </div>
+                    <div>
+                      <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+                      <span>Bella Camp</span>
+                      </div>
+                
+                      <div>
+                        <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+                        <span>Bella Camp</span>
+                        </div>
+                  <div>
+                    <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+                  <span>Bella Camp</span>
+                  </div>
+                  <div>
+                    <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+                  <span>Bella Camp</span>
+                  </div>
+
+                 </mat-card>
+                </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="/safaris">Safaris Packages ▾</a>
+                  <ul class="dropdown-menu">
+                  <li *ngFor="let pack of featureSafaris"><a target="_blank" [attr.href]="'safaris/'+pack.safariSlug">{{pack.safariTitle}}</a></li>
+                  
+                  </ul> 
+                  </li>
+                  <li><a href="#">Blogs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">About Us</a></li>
+            
+        </ul>
+      <button class="button-5" role="button">
+        <mat-icon>mood</mat-icon>
+      Travel
+      
       </button>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon
-        class="icon"
-        matTooltip="Toggle dark mode"
-        style="color: white"
-        matListItemIcon
-        >dark_mode</mat-icon
-      >
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+    </nav>
+
+
+
 
 <p-sidebar [(visible)]="seeDrawer">
   <mat-list>
@@ -49,7 +77,7 @@
     <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
     <mat-list-item (click)="goDest()">Destinations</mat-list-item>
     <mat-list-item>
-      <button mat-flat-button (click)="navigate()">Travel to Mara</button>
+      <button class="button-5" role="button" (click)="navigate()">Travel to Mara</button>
     </mat-list-item>
   </mat-list>
 </p-sidebar>
@@ -64,6 +92,6 @@
       mat-card-md-image
       alt=""
     />
-    <mat-icon class="dark">dark_mode</mat-icon>
+   
   </div>
-</mat-drawer-container>
+</mat-drawer-container> 

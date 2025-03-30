@@ -15,7 +15,7 @@
      
       <mat-card-content [innerHTML]="sanitize(dest.hotelDescription)"></mat-card-content>
     
-    <button class="btn" (click)="requestQuote(dest.hotelName)" mat-raised-button>Request Quote</button>
+    <button class="button-5" (click)="requestQuote(dest.hotelName)" role="button">Request Quote</button>
     </div>
   </mat-card>
   <div [classList]="findingDestinations ? 'spin':'no-spin'">

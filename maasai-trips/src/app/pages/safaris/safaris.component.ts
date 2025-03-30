@@ -38,6 +38,7 @@ export class SafarisComponent implements AfterViewInit{
 @ViewChild("landCruiserSafaris")landCruiserSafarisRef!:ElementRef
 @ViewChild("airSafaris")airSafaris!:ElementRef
 @ViewChild("jpSafaris")jpSafaris!:ElementRef
+@ViewChild('vnSafaris')vnSaf!:ElementRef
 
 bgState:string = 'clear'
 fetching = false
@@ -118,6 +119,13 @@ scrollAirSafaris(){
 
   scrollJPSafaris(){
     this.jpSafaris.nativeElement.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+      })
+  }
+
+  scrollVansafaris(){
+    this.vnSaf.nativeElement.scrollIntoView({
       behavior:"smooth",
       block:"start"
       })

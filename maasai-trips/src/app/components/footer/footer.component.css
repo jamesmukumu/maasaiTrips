@@ -19,11 +19,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: repeat(4,1fr);
     }
-    .socials img{
-    height: 48px;
-    width: 48px;
-    padding-left: 15.55px;
-    }
+   
     img{
         cursor: pointer;
         height: fit-content;
