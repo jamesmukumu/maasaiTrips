@@ -7,11 +7,11 @@
         <li>
         <h2>Quick Links</h2>
         </li>
-        <li>
+        <li routerLink="/safaris">
           <span>Masaai Mara Safari`s</span>
         </li>
 
-        <li (click)="accomodations()">
+        <li routerLink="/hotels" >
           <span>Masaai Mara accomodation`s</span>
         </li>
         <li (click)="safaris()">
@@ -27,7 +27,7 @@
             <span>Current Maasai Mara Parking fee</span>
         </li>
         <li (click)="safaris()">
-        <span>Flight to Maasai Ara</span>
+        <span>Flight to Maasai Area</span>
         </li>
       
       </ul>
@@ -40,7 +40,7 @@
         <h2>Get to Know Us</h2>
         </li>
         <li><span>About Masaai mara trips</span></li>
-        <li><span>Contact us</span></li>
+        <li routerLink="contact"><span>Contact us</span></li>
       </ul>
     </div>
     <mat-divider style="background-color: white"></mat-divider>
@@ -50,7 +50,7 @@
         <li>
         <h2>Explore more</h2>
         </li>
-        <li><span>Masaai Mara Special offers</span></li>
+        <li routerLink="/safaris"><span>Masaai Mara Special offers</span></li>
         <li><span>New`s and Events</span></li>
       </ul>
     </div>

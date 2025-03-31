@@ -123,6 +123,30 @@ homeImages = [
   title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
   urlPath:"safaris/3_days_budget_masai_mara_safari"
 },
+{
+  itemImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
+  thumbnailImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
+  thumbnailImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
+  thumbnailImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
 
 
 

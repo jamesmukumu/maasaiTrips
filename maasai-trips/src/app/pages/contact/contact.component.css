@@ -1,0 +1,42 @@
+.divider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
+}
+span{
+cursor: pointer;
+}
+.divider {
+    flex-grow: 1;
+    height: 2px;
+    background-color: #e88b22;
+}
+mat-card mat-card-content{
+height: max-content;
+}
+mat-card-footer{
+display: grid;
+grid-template-columns: repeat(4,1fr);
+place-content: center;
+}
+h1,p{
+text-align: center;
+}
+.circle {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border: 2px solid #e88b22;
+    border-radius: 50%;
+    margin: 0 10px;
+}
+
+@media(max-width:768px){
+    mat-card-footer{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        place-content: center;
+        }
+}
