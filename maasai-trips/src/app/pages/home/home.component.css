@@ -147,13 +147,35 @@ mat-card-header {
   justify-content: center;
   align-items: center;
 }
-
+.img-big{
+width: 100vw;
+}
 mat-card-header img {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
 }
+.card{
+  width: 100vw;
+margin: 0;
 
+}
+.content-galleria{
+  position: absolute;
+    bottom: 50%;
+    left: 30%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+   
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.main-caption{
+  font-size: 21px;
+  letter-spacing: 1.55px;
+  font-weight: bolder;
+}
 .about-mara h1 {
   text-align: center;
 }
@@ -178,9 +200,18 @@ mat-card-header img {
     margin-right: 0;
     padding-left: 6px;
     padding-right: 6px;
+    margin-top: calc(50px + 20vh); /* Adjust this value as needed */
+   
+  }
+  .content-galleria{
+    left: 50%;
+   top: 50%; 
   }
   mat-card mat-card-header {
-    height: 40vh;
+    max-height: 50vh;
+    height: fit-content;
+   
+ 
   }
   .about-mara-depth img {
     width: 100%;

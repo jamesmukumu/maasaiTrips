@@ -19,11 +19,8 @@
     </div>
   </mat-card>
   <div [classList]="findingDestinations ? 'spin':'no-spin'">
-    <p-progressBar
-    mode="indeterminate"
-    [style]="{ height: '6px' }"
-    *ngIf="findingDestinations"
-  />
+<!-- From Uiverse.io by doniaskima --> 
+<div class="loader"></div>
   </div>
   <mat-paginator [length]="hotelCount"
   pageSize="15"

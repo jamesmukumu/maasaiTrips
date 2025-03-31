@@ -10,7 +10,8 @@ import { RouterModule } from '@angular/router';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import {ToastModule} from "primeng/toast"
 import { CalendarModule } from 'primeng/calendar';
-import { TableModule } from 'primeng/table';
+import { TableModule } from 'primeng/table'; 
+// import { AlertComponent,AlertModule } from '@coreui/angular';
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -31,6 +32,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import {ButtonModule} from "primeng/button"
 import { BreadcrumbModule } from 'angular-crumbs';
+
 import {MatExpansionModule} from '@angular/material/expansion'
 import { AccordionModule } from 'primeng/accordion';
 import {MatInputModule} from '@angular/material/input'
@@ -53,6 +55,7 @@ import {GalleriaModule} from 'primeng/galleria'
 import { DropdownModule } from 'primeng/dropdown';
 import { GoogleMapsModule } from '@angular/google-maps';
 import {ProgressBarModule} from "primeng/progressbar";
+
 import { PatnersComponent } from './components/patners/patners.component';
 import { EnquiriesComponent } from './pages/enquiries/enquiries.component'
 import {MatTableModule} from "@angular/material/table"
@@ -115,7 +118,7 @@ import { RequestquoteComponent } from './components/requestquote/requestquote.co
 import { enquiry } from './redux/reducers/quote.reducer';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ManageadminsComponent } from './admins/components/manageadmins/manageadmins.component';
-
+import {BadgeModule} from "@coreui/angular"
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -141,6 +144,8 @@ const reducers:ActionReducerMap<any> = {
     AppRoutingModule,
     BrowserAnimationsModule,    
  MatChipsModule,
+
+
  PaginatorModule,
     EditorModule,
     HttpClientModule,
@@ -166,6 +171,7 @@ const reducers:ActionReducerMap<any> = {
     AccordionModule,
     MatDividerModule,
     MatButtonModule,
+
     FormsModule,
     ScrollTopModule,
     ProgressSpinnerModule,

@@ -46,6 +46,10 @@ featureDestinations = [
 },
 
 ]
+viewHotel(urlPath:string){
+window.open(urlPath,"_blank")
+}
+
 
 featureSafaris = [
 {

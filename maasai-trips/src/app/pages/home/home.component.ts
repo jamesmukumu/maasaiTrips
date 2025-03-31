@@ -82,6 +82,72 @@ constructor(private titlePage:Title){}
 
 
 
+homeImages = [
+  {
+  itemImageSrc: '../../../assets/front_offers/flying-safari-masaimara.jpg',
+  thumbnailImageSrc: '../../../assets/front_offers/flying-safari-masaimara.jpg',
+  alt: 'Fly in Safaris',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/masai-mara-governors-camp-game-drives.jpg',
+  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/maasai-village-culture.jpg',
+  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
+  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
+  thumbnailImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
+  urlPath:"safaris/3_days_budget_masai_mara_safari"
+},
+
+
+
+
+
+]
+responsiveOptions: any[] = [
+  {
+      breakpoint: '1024px',
+      numVisible: 5
+  },
+  {
+      breakpoint: '768px',
+      numVisible: 3
+  },
+  {
+      breakpoint: '560px',
+      numVisible: 1
+  }
+];
+
+view(urlPath:string){
+window.open(urlPath,"_blank")
+}
+
 animationState:string = 'void'
 animationBouncer:string = 'hide'
 exploreCheckerState:string = 'here'

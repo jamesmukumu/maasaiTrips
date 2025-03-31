@@ -2,10 +2,31 @@
   <header></header>
 
   <mat-card-header>
-    <img
-      src="https://www.masaimaratrips.com/assets/images/system/maasai-mara-cover.jpg"
-      alt=""
-    />
+   <div class="card">
+    <p-galleria 
+        [value]="homeImages" 
+     
+      showThumbnailNavigators="false"
+      showIndicators="false"
+        [responsiveOptions]="responsiveOptions" 
+      showThumbnails="false"
+      autoPlay="true"
+      circular="true"
+        [numVisible]="5"> 
+            <ng-template pTemplate="item" let-item>
+                <img class="img-big" [src]="item.itemImageSrc" style="width: 100%;" />
+            <div class="content-galleria">
+              <p style="font-weight: bolder;" class="sub-caption">{{ item.subtitle }}</p>
+              <h1  class="main-caption">{{ item.title }}</h1>
+              
+              <button (click)="view(item.urlPath)" style="margin-top: 20px;" class="button-5">Book Now</button>
+
+            </div>
+            
+              </ng-template>
+           
+    </p-galleria>
+</div>
   </mat-card-header>
 
   <div #animatedElement class="about-mara">

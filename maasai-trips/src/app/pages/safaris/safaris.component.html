@@ -17,7 +17,7 @@
           family-friendly experience.
         </p>
 
-        <div class="safari-type">
+        <div class="safari-type" *ngIf="!fetching">
           <img src="" alt="" />
         </div>
         <div class="transport-means">
@@ -122,7 +122,7 @@
         <mat-icon matListItemIcon style="color: green">check</mat-icon>
       </mat-list-item>
     </mat-list>
-    <mat-card-content>
+    <mat-card-content *ngIf="!fetching">
       <mat-card-content *ngIf="landCruiserSaf.length != 0" #landCruiserSafaris>
         <h2>Feature Packages (LandCruiser Safaris)</h2>
       
@@ -207,6 +207,11 @@
         </div>
       </mat-card-content>
     </mat-card-content>
+
+    <div [classList]="fetching ? 'spin':'no-spin'">
+      <!-- From Uiverse.io by doniaskima --> 
+      <div class="loader"></div>
+        </div>
   </div>
   <footer></footer>
   <p-scrollTop/>

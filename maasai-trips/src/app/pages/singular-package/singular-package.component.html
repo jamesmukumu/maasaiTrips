@@ -98,11 +98,8 @@
 
 
 <div [classList]="fetching ? 'spin':'no-spin'">
-    <p-progressBar
-    mode="indeterminate"
-    [style]="{ height: '6px' }"
-    *ngIf="fetching"
-  />
+<!-- From Uiverse.io by doniaskima --> 
+<div class="loader"></div>
   </div>
   <p-scrollTop/>
 <footer></footer>

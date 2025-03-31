@@ -1,10 +1,6 @@
 <header></header>
 <div [classList]="fetchingDestination ? 'spin' : 'no-spin'">
-  <p-progressBar
-    mode="indeterminate"
-    [style]="{ height: '6px' }"
-    *ngIf="fetchingDestination"
-  />
+  <div class="loader"></div>
 </div>
 <mat-card class="container">
   <h1>{{ destinationData.hotelName }}</h1>
@@ -47,7 +43,7 @@
       >
       </mat-card-content>
 
-      <!-- <h1>Rooms:</h1>
+       <h1>Rooms:</h1>
        <table mat-table *ngIf="!fetchingDestination" [dataSource]="dataSource" 
        style="width: 100%; border-collapse: collapse;">
        
@@ -91,7 +87,7 @@
        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
        
      </table>
-      -->
+      
     </div>
 
     <div class="div-b">
@@ -124,6 +120,6 @@
   <footer></footer>
 </mat-card>
 
-<!-- <p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
+<p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
       <rooms [roomData]="roomData"></rooms>
-    </p-dialog>   -->
+    </p-dialog>  

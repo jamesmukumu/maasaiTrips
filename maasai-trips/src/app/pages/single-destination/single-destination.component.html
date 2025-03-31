@@ -50,11 +50,7 @@
     </div>
     </mat-card>
     <div [classList]="fetchingDestination ? 'spin':'no-spin'">
-        <p-progressBar
-        mode="indeterminate"
-        [style]="{ height: '6px' }"
-        *ngIf="fetchingDestination"
-      />
+    <div class="loader"></div>
       </div>
       <related-hotels  *ngIf="!fetchingDestination && relatedHotels.length > 0" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
     <patners  *ngIf="!fetchingDestination" ></patners>
