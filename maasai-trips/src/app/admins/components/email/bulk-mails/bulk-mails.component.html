@@ -4,12 +4,12 @@
 <div class="table-form" *ngIf="!processingTable">
 
   <mat-card-header  *ngIf="!sendingMails && !savingCsv">
-    <button mat-flat-button (click)="openBulk()" >
+    <button class="button-5" role="button" (click)="openBulk()" >
     Add new Mail
     </button> 
-    <button (click)="confirmSync($event)" mat-icon-button matTooltip="Sync Hotels Email with Bulk">
+    <button (click)="confirmSync($event)" class="button-5" role="button" matTooltip="Sync Hotels Email with Bulk">
     <mat-icon>sync</mat-icon>
- 
+    Sync Mails
     </button>
 
     <p-fileUpload 
@@ -28,10 +28,10 @@ accept=".csv"
 </p-fileUpload>
 
  
-    <button mat-flat-button  *ngIf="mailType=='ordinary mail'" (click)="sendBulks()" [matBadge]="choosenDefaults.length" >
+    <button class="button-5" role="button"  *ngIf="mailType=='ordinary mail'" (click)="sendBulks()" [matBadge]="choosenDefaults.length" >
     Send Mails 
     </button> 
-    <button mat-flat-button *ngIf="mailType=='newsletter' && newsletterType=='alerts'" [matBadge]="choosenDefaults.length" (click)="sendBulksNewsTemplates()" >
+    <button class="button-5" role="button" *ngIf="mailType=='newsletter' && newsletterType=='alerts'" [matBadge]="choosenDefaults.length" (click)="sendBulksNewsTemplates()" >
       Send Newsletter
       </button>
       <button mat-flat-button *ngIf="mailType=='newsletter' && newsletterType=='promotional'" [matBadge]="choosenDefaults.length" (click)="sendPromotionalNewsTemplates()" >
@@ -249,3 +249,127 @@ accept=".csv"
 <div class="spin">
  <p-progressSpinner *ngIf="processingTable"/>
 </div>
+
+
+
+
+
+
+<p-dialog header="Add a New Email" [(visible)]="adding">
+
+  <h2>Add new email </h2>
+
+  <form #formAddBulk="ngForm">
+   
+   <div class="form-a">
+
+     <mat-form-field>
+     <mat-label>Enter your Full name</mat-label>
+     <mat-icon matIconPrefix>person</mat-icon>
+     <input type="text" #namePerson="ngModel" matInput name="fullName" [(ngModel)]="fullName"  required>
+     <mat-error *ngIf="namePerson.invalid && namePerson.touched">
+       Provide Full Name As Needed
+     </mat-error>
+     </mat-form-field>
+     <div>
+       <label>Choose option:</label>
+        <p-dropdown
+        variant="filled"
+        [options]="bulkOptions"
+        [(ngModel)]="category" 
+        checkmark="true"
+        required="true"
+        [showClear]="true"
+        [style]="{ width: '100%' }"
+        name="option-means"
+        placeholder="Choose an option category"
+        />
+
+
+     </div>
+     
+     
+     <mat-form-field>
+     <mat-label>Enter your phone Number</mat-label>
+     <mat-icon matIconPrefix>call</mat-icon>
+     
+     <input  placeholder="7********" #phoneValidation="ngModel" type="number" minLength="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
+    <mat-error *ngIf="phoneValidation.invalid && phoneValidation.touched">
+       Provide valid phone number(Valid Phone Number Should be at least 10 charachters long)
+    </mat-error>  
+   </mat-form-field>
+     
+     
+     <mat-form-field>
+     <mat-label>Enter id number</mat-label>
+     <mat-icon matIconPrefix>remember_me</mat-icon>
+     <input minlength="6" type="number" #idBulk="ngModel" matInput name="idField" [(ngModel)]="idNumber"  required>
+       <mat-error *ngIf="idBulk.invalid && idBulk.touched">
+         Provide id field as required(Minimum Length should be 6 charachters)
+       </mat-error>  
+   </mat-form-field>
+     
+     <mat-form-field>
+     <mat-label>Enter description(Optional)</mat-label>
+     <textarea name="desc" id="" matInput cols="1" rows="1" [(ngModel)]="description"></textarea>
+     </mat-form-field>
+     </div>
+     
+     
+     <div class="form-b">
+         <mat-form-field>
+         <mat-label>Enter email address</mat-label>
+           <input #emailField="ngModel" type="email" name="mail" matInput required [(ngModel)]="emailAddress">
+         <mat-error *ngIf="emailField.invalid && emailField.touched">
+           Provide Email Field as needed
+         </mat-error>
+         </mat-form-field>
+
+         <div>
+         <label>Choose identification method:</label>
+        <p-dropdown
+        [options]="idOptions"
+        [(ngModel)]="identificationMethod"
+        checkmark="true"
+        required="true"
+        [showClear]="true"
+        [style]="{ width: '100%' }"
+        name="option-means"
+        placeholder="Choose an option category"
+        />
+         </div>
+         
+         <div>
+           <label>Choose country(Optional)</label>
+           <p-dropdown
+            [options]="countryCodes"
+            optionLabel="name"
+            name="country-optional"
+            checkmark="true"
+            
+            [showClear]="true"
+            [style]="{ width: '100%' }"
+            filter="true"
+            optionValue="name"
+            [(ngModel)]="country"
+           
+           />
+           </div>
+     
+      
+      
+         
+         
+      
+         </div>
+  </form>
+       <button class="btn" mat-flat-button (click)="saveMail()" *ngIf="!processing && formAddBulk.valid">Add</button>
+       <p-button [raised]=true  severity='warning' label="Saving..." loading *ngIf="processing"></p-button>
+       <p-button [raised]=true  severity='warning' label="Add" disabled *ngIf="!processing && !formAddBulk.valid"></p-button>
+
+
+   <p-toast/> 
+
+
+
+</p-dialog>

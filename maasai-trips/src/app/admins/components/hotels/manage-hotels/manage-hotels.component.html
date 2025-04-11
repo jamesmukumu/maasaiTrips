@@ -392,13 +392,14 @@
           </div>
           <mat-card-actions align="start">
             <button
-              mat-flat-button
+             role="button"
+             class="button-5"
               (click)="addImage()"
               [matBadge]="images.length"
             >
               Add Another Photo
             </button>
-            <button mat-flat-button (click)="popImage()">Remove Photo</button>
+            <button role="button" class="button-5"  (click)="popImage()">Remove Photo</button>
           </mat-card-actions>
         </div>
       </div>
@@ -445,12 +446,12 @@
       *ngIf="!processing"
       (click)="updateHotel()"
       style="
-        background-color: rgb(232, 139, 34);
-        color: white;
+        
         width: fit-content;
         margin-top: 20px;
       "
-      mat-flat-button
+     class="button-5"
+     role="button"
     >
       Update Hotel
     </button>
@@ -545,9 +546,9 @@
     />
     <button
       (click)="popConfirm($event)"
-      class="btn"
+      class="button-5"
       *ngIf="!adjusting"
-      mat-flat-button
+      role="button"
     >
       Adjust
     </button>

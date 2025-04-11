@@ -150,12 +150,12 @@
           <mat-icon style="color: white" matListItemIcon>feed</mat-icon>
        
           <mat-menu #blogsMenu>
-            <button mat-menu-item (click)="chooserDestinations(1)">
+            <button mat-menu-item (click)="blogChooser(1)">
               <mat-icon>rate_review</mat-icon>
               <span style="color: black">Add Blogs</span>
             </button>
     
-            <button mat-menu-item (click)="chooserDestinations(2)">
+            <button mat-menu-item (click)="blogChooser(2)">
               <mat-icon>announcement</mat-icon>
               <span style="color: black">Manage My Blogs</span>
             </button>
@@ -228,6 +228,12 @@
     <div *ngSwitchCase="6">
     <admin-profile *ngIf="adminChoosen == 1"></admin-profile>
     <manageadmins  *ngIf="adminChoosen == 2"></manageadmins>
+    </div>
+
+
+    <div *ngSwitchCase="7">
+    <create-blogs *ngIf="choosenBlog==1"></create-blogs>
+
     </div>
   </div>
 </div>

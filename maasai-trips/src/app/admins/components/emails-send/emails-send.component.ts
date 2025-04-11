@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MessageService } from 'primeng/api';
 import { MailServService,Mail } from '../../../services/mail/mail-serv.service';
-
+import { FormControl } from '@angular/forms';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { MailServService,Mail } from '../../../services/mail/mail-serv.service';
   styleUrl: './emails-send.component.css',
   providers:[MessageService]
 })
-export class EmailsSendComponent {
+export class EmailsSendComponent implements OnInit {
 constructor(private mailer:MailServService,private msg:MessageService){}
   ccCopies: string[] = [];
   targetMail = ''
@@ -20,6 +20,20 @@ constructor(private mailer:MailServService,private msg:MessageService){}
   actualCC:string = ''
   attachments = []
   processingEmail = false
+  fetchingEmails = false
+  bulkEmails:any = []
+  formCont = new FormControl('')
+ fetchEmails(){
+ this.fetchingEmails = true
+this.mailer.fetchBulks('https://maasaitrips-2.onrender.com/api/fetch/bulk/emails').then((data:any)=>{
+this.bulkEmails = data.data
+this.fetchingEmails = false
+}).catch((err)=>{
+console.log(err)
+this.fetchingEmails = false
+})  
+ }
+
 
 choosenFile(event:any){
 var {currentFiles} = event
@@ -67,5 +81,10 @@ this.processingEmail = false
     if (index >= 0) {
       this.ccCopies.splice(index, 1);
     }
-  } 
+  }
+  
+  
+  ngOnInit(){
+  this.fetchEmails()
+  }
 }

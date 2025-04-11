@@ -5,7 +5,7 @@
     url="https://www.primefaces.org/cdn/api/upload.php"
     mode="basic"
     accept=".csv"
-    chooseLabel="Choose csv file"
+    chooseLabel="Choose Destinations csv file"
     [style]="{ 'background-color': 'green' }"
     maxFileSize="1000000"
   >
@@ -27,20 +27,19 @@
 
       <div>
         <label>Enter Destination About</label>
-        <p-editor
+        <!-- <p-editor
           [style]="{ height: '245px' }"
           (onTextChange)="captureDestinationAbout($event)"
           placeholder="Enter Destination About.Example insights of the destination eg"
-        />
+        /> -->
+
+   <jodit-editor name="destination-about" (onChange)="captureDestinationAbout($event)"></jodit-editor>
+
       </div>
 
       <div>
-        <label>Enter Destination Description</label>
-        <p-editor
-          placeholder="Enter Destination  Description"
-          (onTextChange)="captureDestinationDescription($event)"
-          [style]="{ height: '245px' }"
-        />
+        <label>Enter Destination Description:</label>
+       <jodit-editor (onChange)="captureDestinationDescription($event)"></jodit-editor>
       </div>
 
       <div>
@@ -79,13 +78,15 @@
         </div>
         <mat-card-actions align="start">
           <button
-            mat-flat-button
+          class="button-5"
+            role="button"
             (click)="addImage()"
             [matBadge]="images.length"
           >
             Add Another Photo
           </button>
-          <button mat-flat-button (click)="popImage()">Remove Photo</button>
+          <button style="margin-left: 12px;"  class="button-5"
+          role="button" (click)="popImage()">Remove Photo</button>
         </mat-card-actions>
       </div>
     </div>
@@ -93,13 +94,10 @@
   <button
     *ngIf="!processing"
     (click)="saveDestination()"
-    style="
-      background-color: rgb(232, 139, 34);
-      color: white;
-      width: fit-content;
-      margin-top: 20px;
-    "
-    mat-flat-button
+    class="button-5"
+    role="button"
+    style="width: fit-content;margin-top: 20px;"
+
   >
     Create Destination
   </button>

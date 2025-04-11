@@ -19,9 +19,9 @@ processingRequest = false
 subject = ''
 message = ''
 captureMessage(event:any){
-var {htmlValue} = event
+var {args} = event
 
-this.message = htmlValue
+this.message = args[0]
 }
 
 savingTemplate(){

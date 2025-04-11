@@ -1,6 +1,6 @@
 <h1>Alert News Letters</h1>
 
-<table mat-table [dataSource]="dataSource" *ngIf="!processing && !previewing ">
+<table mat-table [dataSource]="dataSource" *ngIf="!processing && !previewing && !alertsReady  ">
     
    
     <ng-container matColumnDef="createdon">
@@ -53,7 +53,7 @@
     </tr>
   </table>
   
-  <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator *ngIf="!alertsReady" [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
@@ -191,3 +191,4 @@
 <p-toast/>
 
 <preview *ngIf="previewing" [previewContent]="previewData"></preview>
+<empty-data [emptyMesage]="'You have no alerts newsletters'" [emptyDescription]="'create some newsletters and be able to manage them'"  *ngIf="!processing && !previewing && alertsReady"></empty-data> 

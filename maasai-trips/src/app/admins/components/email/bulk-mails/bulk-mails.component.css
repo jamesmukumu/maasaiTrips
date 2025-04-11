@@ -6,17 +6,60 @@ box-sizing: border-box;
 h1{
 text-align: center;
 }
+.button-5 {
+    margin-right: 15px;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #e88b22;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    height: fit-content;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+  }
+  
+  .button-5:hover,
+  .button-5:focus {
+    background-color: #e88b22;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+ 
+  .button-5:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-5:active {
+    background-color: #e88b22;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
+  
 .spin{
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
 }
-mat-card-header button{
-background-color: rgb(252,166,8);
-color: white;
-margin-left: 20px;
-}
+
 .table-form{
 width: 100%;
 }
@@ -44,9 +87,94 @@ margin-left: 20px;
 .upload{
 margin-left: 20px;
 }
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  }
+  h1{
+  text-align: center;
+  }
+  .spin{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  .btn{
+      background-color:#E88B22;
+      color: white;
+ width: fit-content;
+  }
+
+  .table-form{
+  width: 100%;
+  }
+  mat-card{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  }
+  form{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2,2fr);
+  grid-template-rows: 1fr;
+  }
+
+  div{
+  display: flex;
+  flex-direction: column;
+  margin-left: 2px;
+ 
+  }
+  
+  
+  
+  
 
 
-@media(max-width:900px){
+  @media(max-width:768px){
+      mat-card{
+          width: 100vw;
+          max-width: 100%;
+       
+      }
+  form button{
+      margin-top: 10px;
+  }
+
+  form{
+ min-width: 100vw;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+div{
+width: 100%;
+min-width: 100vw;
+margin-left: 0px;
+}
+  mat-card-header button{
+      background-color: rgb(252,166,8);
+      color: white;
+      width: fit-content;
+      }
+      form button{
+          width: fit-content;
+      }
+      mat-form-field{
+      width: 90%;
+      }
+  }
+form div{
+margin: 10px;
+}
+@media(max-width:768px){
     .table-visible{
         display: none;
     }

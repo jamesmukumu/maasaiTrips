@@ -25,6 +25,7 @@ export class ManagePromotionalsComponent implements OnInit {
   updating = false
   subj = ''
   messageEdit = ''
+  promotionalReadyData = false
   constructor(private router:Router,private store:Store,private mail:MailServService,private msg:MessageService,private news:NewslettersService){}
   @ViewChild(MatPaginator) paginator!:MatPaginator
   
@@ -141,9 +142,15 @@ export class ManagePromotionalsComponent implements OnInit {
     this.processing = true
     try{
     var {message,data} =await this.news.fetchPromotionalNewsletters()
-    this.dataSource = new MatTableDataSource(data)
+    if(message == "You have no templates saved"){
+     this.promotionalReadyData = false
+     this.processing = false
+    }else{
+      this.dataSource = new MatTableDataSource(data)
     this.dataSource.paginator = this.paginator
     this.processing = false
+    this.promotionalReadyData = true
+    }
     }catch(err){
     console.error(err)
     }

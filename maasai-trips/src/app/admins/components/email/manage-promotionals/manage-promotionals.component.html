@@ -1,6 +1,6 @@
 <h1>Promotional News Letters</h1>
 
-<table mat-table [dataSource]="dataSource" *ngIf="!processing  ">
+<table mat-table [dataSource]="dataSource" *ngIf="!processing && promotionalReadyData ">
     
    
     <ng-container matColumnDef="createdon">
@@ -87,3 +87,4 @@
 </p-dialog>
 <p-toast/>
 
+<empty-data [emptyMesage]="'Currently you dont have any promotional emails'" [emptyDescription]="'Try Creating Some'"ngIf="!processing && !promotionalReadyData"></empty-data>

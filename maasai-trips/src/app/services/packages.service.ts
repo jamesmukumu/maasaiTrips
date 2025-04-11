@@ -131,13 +131,13 @@ export class PackagesService {
 
   async fetchPackageCategories() {
     try {
-      let token = Cookies.get('grant_token')
+      let token = Cookies.get('grant_token');
       var response = await axios.get(
         `${this.baseUrl}/fetch/package/categories`,
         {
-          headers:{
-          "Authorization":`Bearer ${token}`
-          }
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       return response.data;

@@ -13,8 +13,7 @@
     
     .main{
         background-color: rgb(238,238,238);
-    max-width: 100%;
-    min-width: 100vw;
+   width: 100%;
     }
     h1{
     text-align: center;
@@ -26,6 +25,7 @@
     max-width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+   
     }
     mat-card div img {
     width: 100%; 
@@ -84,7 +84,7 @@
        
         height: max-content;
         cursor: pointer;
-        margin-left: 5.5px;
+        margin: 7.5px;
         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
         object-fit: cover;
         

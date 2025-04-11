@@ -5,10 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Rooms;
 use Illuminate\Http\Request;
 use Cloudinary\Cloudinary;
-use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Log;
-
+use Dotenv\Exception\ValidationException;
 
 interface RoomsInterface{
 public function verifyToken(Request $request);
@@ -178,6 +177,47 @@ public function updateActionPending(Request $request){
 
 
 
+
+
+    public function saveRoomsCSV(Request $request){
+        try {
+            $validation = $request->validate([
+                "rooms_csv" => "required"
+            ]);
+    
+            $csvFile = $request->file("rooms_csv");
+            $contentsFile = fopen($csvFile->getRealPath(), "r");
+    
+            $datacont = [];
+            $headers = fgetcsv($contentsFile, 1000, ","); 
+    
+            while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+                $datacont[] = array_combine($headers, $data); 
+            }
+    
+            fclose($contentsFile);
+         
+            Rooms::insert($datacont);
+        
+    
+            return response()->json([
+                "message" => "Rooms Newsletters Saved",
+            
+            ]);
+    
+        } catch (\Exception $err) {
+            return response()->json([
+                "message" => "Something went wrong"
+            ], 500);
+        }catch(ValidationException $errValidate){
+    return response()->json([
+    "message"=>$errValidate->getMessage()
+    ],500);
+    }
+    }
     
 
+
+    
+    
 }

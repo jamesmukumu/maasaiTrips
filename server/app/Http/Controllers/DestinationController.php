@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Cloudinary\Cloudinary;
 use Log;
+use Dotenv\Exception\ValidationException;
 
 
 interface DestinationsInterface
@@ -271,6 +272,42 @@ return response()->json([
 
 
 
+public function save_Destinations_CSV(Request $request){
+    try {
+        $validation = $request->validate([
+            "destinations_csv" => "required"
+        ]);
+
+        $csvFile = $request->file("destinations_csv");
+        $contentsFile = fopen($csvFile->getRealPath(), "r");
+
+        $datacont = [];
+        $headers = fgetcsv($contentsFile, 1000, ","); 
+
+        while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+            $datacont[] = array_combine($headers, $data); 
+        }
+
+        fclose($contentsFile);
+     
+        Destinations::insert($datacont);
+    
+
+        return response()->json([
+            "message" => "Destinations Saved",
+        
+        ]);
+
+    } catch (\Exception $err) {
+        return response()->json([
+            "message" => "Something went wrong"
+        ], 500);
+    }catch(ValidationException $errValidate){
+return response()->json([
+"message"=>$errValidate->getMessage()
+],500);
+}
+}
 
 
 

@@ -396,7 +396,7 @@ adjusting = false
     return flag;
   }
   codeValues: any;
-  someValue: any;
+  someValue ="asta";
 
   countryCodes: any = [
     {

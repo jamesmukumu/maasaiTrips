@@ -1,57 +1,96 @@
-<mat-card>
-  <mat-list>
-    <mat-list-item *ngIf="showAdminControls">
-     <mat-icon (click)="actualizeToggle()" #controlBar  matTooltip="Toogle menu bar"
-     style="color: white">menu</mat-icon>
-    </mat-list-item>
-    <mat-list-item (click)="home()">
-      <p matListItemLine>Masaai Mara Trips</p>
-    </mat-list-item>
-  
-    <mat-list-item (click)="hotels()">
-      <p matListItemLine>Hotels</p>
-    </mat-list-item>
-    <mat-list-item (click)="destinations()">
-      <p matListItemLine>Destinations</p>
-    </mat-list-item>
-    <mat-list-item (click)="safaris()"> 
-      <p matListItemLine>Masaai Mara Safari's</p>
-    </mat-list-item>
-    <mat-list-item *ngIf="showAdminControls">
-      <mat-icon
-        matTooltip="Show more actions"
-       
-        style="color: white"
-        [mat-menu-trigger-for]="menu"
-        >account_circle</mat-icon
-      >
 
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="mobileEmitter('Account',false)" >
-          <mat-icon>person</mat-icon>
-          <span >My Profile</span>
-        </button>
-        <button mat-menu-item (click)="popDialog()">
-          <mat-icon>edit</mat-icon>
-          <span (click)="signUp()">Edit Profile</span>
-        </button>
-        
-        <button mat-menu-item (click)="mobileEmitter('Admins',false)" >
-          <mat-icon>person</mat-icon>
-          <span >Manage Users</span>
-        </button>
+<nav class="navbar" ng-app="tourApp" >
+  <mat-icon (click)="actualizeToggle()" #controlBar  matTooltip="Toogle menu bar"
+  style="color: white">menu</mat-icon>
+  <div class="logo" (click)="home()">
+      <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738078271/wlogo_squ1nc.png" alt="Company Logo">
+  </div>
 
-        <button mat-menu-item (click)="logoutUser()">
-          <mat-icon>logout</mat-icon>
-          <span >Logout Profile</span>
-        </button>
-      </mat-menu>
-    </mat-list-item>
-    <mat-list-item>
-      <mat-icon class="icon">dark_mode</mat-icon>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+  <ul class="nav-links">
+      <li (click)="home()"><a href="/">Home</a></li> 
+      <li class="dropdown">
+        <a href="/destinations">Destinations ▾</a>
+     
+        </li>
+        <li class="dropdown">
+          <a href="/hotels">Accomodations ▾</a>
+          <ul class="dropdown-menu">
+           <mat-card>
+            <div >
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738354725/maasaiTrips/karenBlixen/xKaren_P20Blixen_P20Camp_P20Masai_P20Mara_220241008142708.webp.pagespeed.ic.CM1qMtionv_jh2fry.webp" alt="karen0blixen">
+              <span>Karen Blixen Camp Maasai Mara</span>
+              </div>
+              <div>
+                <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495354/maasaiTrips/maraMaisha/Mara_Maisha_Camp_320241011084806_ytp6aa.webp" alt="mara sweet acacia lodge">
+                <span>Mara Sweet Acacia Lodge</span>
+                </div>
+          
+                <div>
+                  <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738353694/maasaiTrips/zebra%20plains/xZebra_P20Plains_P20Mara_P20Camp_120241007163955.webp.pagespeed.ic.FsBOBodvI7_st8xkf.webp" alt="zebra plains">
+                  <span>Zebra Plains Mara Camp</span>
+                  </div>
+            <div>
+              <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+            <span>Mara Serena Safari Lodge</span>
+            </div>
+            <div>
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495143/maasaiTrips/ashnil/Ashnil_Mara_Camp_320241009151206_bhakad.webp" alt="ashnil">
+            <span>Ashnil Mara Camp</span>
+            </div>
+            <div>
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495049/maasaiTrips/enkorok/xEnkorok_P20Mara_P20Camp_P20Ltd_120241009150305.webp.pagespeed.ic.P_KMHYCw1n_fnucdt.webp" alt="enkorok">
+            <span>Enkorok Mara Camp</span>
+            </div>
+
+           </mat-card>
+          </ul>
+          </li>
+          <li class="dropdown">
+            <a href="/safaris">Safaris Packages ▾</a>
+            <ul class="dropdown-menu">
+          
+            </ul> 
+            </li>
+            <li><a href="#">Blogs</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">About Us</a></li>
+
+      
+  </ul>
+  <mat-icon
+  matTooltip="Account Controls"
+  *ngIf="showAdminControls"
+  style="color: white"
+  [mat-menu-trigger-for]="menu"
+  >account_circle</mat-icon
+>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="mobileEmitter('Account',false)" >
+      <mat-icon>person</mat-icon>
+      <span >My Profile</span>
+    </button>
+    <button mat-menu-item (click)="popDialog()">
+      <mat-icon>edit</mat-icon>
+      <span (click)="signUp()">Edit Profile</span>
+    </button>
+    
+    <button mat-menu-item (click)="mobileEmitter('Admins',false)" >
+      <mat-icon>person</mat-icon>
+      <span >Manage Users</span>
+    </button>
+
+    <button mat-menu-item (click)="logoutUser()">
+      <mat-icon>logout</mat-icon>
+      <span >Logout Profile</span>
+    </button>
+  </mat-menu>
+<button class="button-5" role="button">
+  <mat-icon>mood</mat-icon>
+Travel
+
+</button>
+</nav>
+
 
 
 

@@ -11,7 +11,7 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import {ToastModule} from "primeng/toast"
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table'; 
-// import { AlertComponent,AlertModule } from '@coreui/angular';
+
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -32,7 +32,8 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { HeaderComponent } from './components/header/header.component';
 import {ButtonModule} from "primeng/button"
 import { BreadcrumbModule } from 'angular-crumbs';
-
+import {ImageModule} from "primeng/image"
+import {JoditAngularModule} from 'jodit-angular'
 import {MatExpansionModule} from '@angular/material/expansion'
 import { AccordionModule } from 'primeng/accordion';
 import {MatInputModule} from '@angular/material/input'
@@ -120,6 +121,10 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ManageadminsComponent } from './admins/components/manageadmins/manageadmins.component';
 import {BadgeModule} from "@coreui/angular";
 import { ContactComponent } from './pages/contact/contact.component'
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { EmptyDataComponent } from './components/empty-data/empty-data.component';
+import { CreateBlogsComponent } from './admins/components/blogs/create-blogs/create-blogs.component';
+import { ManageBlogsComponent } from './admins/components/blogs/manage-blogs/manage-blogs.component';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -139,12 +144,13 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
     BrowserAnimationsModule,    
  MatChipsModule,
+ MatAutocompleteModule,
 
 
  PaginatorModule,
@@ -152,6 +158,7 @@ const reducers:ActionReducerMap<any> = {
     HttpClientModule,
     MatSnackBarModule,
     MatBadgeModule,
+    JoditAngularModule,
     MatIconModule,  
     CalendarModule,    
     ButtonModule,
@@ -172,7 +179,7 @@ const reducers:ActionReducerMap<any> = {
     AccordionModule,
     MatDividerModule,
     MatButtonModule,
-
+    ImageModule,
     FormsModule,
     ScrollTopModule,
     ProgressSpinnerModule,

@@ -30,7 +30,9 @@ Provide password as needed(Should be at least 6 Charachters)
 <span style="color: #08088b;cursor: pointer;" (click)="popRequest()">Forgot password?</span>
 
 
-<button mat-flat-button *ngIf="!processingRequest && formApproval.valid" (click)="login()">Sign In</button>
+<div class="buttoner">
+    <button class="button-5" role="button" *ngIf="!processingRequest && formApproval.valid" (click)="login()">Sign In</button>
+</div>
 <p-button severity="warning" [raised]="true" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
 <p-button severity="warning" *ngIf="!processingRequest && !formApproval.valid"  [raised]="true" label="Sign In" disabled />
 

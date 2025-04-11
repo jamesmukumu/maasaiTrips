@@ -1,4 +1,15 @@
 <mat-card>
+    <p-fileUpload
+    class="upload"
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    mode="basic"
+    accept=".csv"
+    chooseLabel="Choose Email-Templates CSV file"
+    [style]="{ 'background-color': 'green' }"
+    maxFileSize="1000000"
+  >
+  </p-fileUpload>
     <h1>Create new Email</h1>
     <form #createEmailFrom="ngForm">
     <mat-form-field >
@@ -14,7 +25,7 @@
     
             <div>
             <mat-label>Enter message Body</mat-label>
-            <p-editor required [style]="{height:'fit-content','min-height':'250px'}" placeholder="Enter your message body here:Example Requesting for Quotations" (onTextChange)="captureMessage($event)"/>
+          <jodit-editor (onChange)="captureMessage($event)"></jodit-editor>
           </div>
     
           <input #fileInput type="file" style="display: none;" >

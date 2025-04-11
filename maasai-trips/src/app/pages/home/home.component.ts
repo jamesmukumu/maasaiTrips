@@ -94,8 +94,8 @@ homeImages = [
 {
   itemImageSrc: '../../../assets/front_offers/masai-mara-governors-camp-game-drives.jpg',
   thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
+  alt: 'Easter Vacation',
+  subtitle:"Ashnil Mara Camp".toUpperCase(),
   title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
   urlPath:"safaris/3_days_budget_masai_mara_safari"
 },

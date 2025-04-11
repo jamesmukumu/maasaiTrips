@@ -83,7 +83,7 @@
   <ng-container matColumnDef="maximumRoomOccupancy">
     <th mat-header-cell *matHeaderCellDef>Max Occupancy</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.maximumRoomOccupancy }}%
+      {{ element.maximumRoomOccupancy }}
     </td>
   </ng-container>
 
@@ -244,13 +244,14 @@
 
         <div>
           <label>Enter Room Description</label>
-          <p-editor
+          <!-- <p-editor
             name="room-description"
             [style]="{ height: '245px' }"
             [(ngModel)]="roomDescriptionDisplay"
             (onTextChange)="captureRoom($event)"
             placeholder="Enter Room Description.Example insights of the room"
-          />
+          /> -->
+          <jodit-editor   name="room-description" (onChange)="captureRoom($event)" [(ngModel)]="roomDescriptionDisplay"></jodit-editor>
         </div>
 
         <mat-form-field>

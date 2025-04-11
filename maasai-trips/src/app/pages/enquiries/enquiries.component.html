@@ -1,5 +1,5 @@
 
-<mat-card *ngIf="!processingFetchRequest">
+<mat-card *ngIf="!processingFetchRequest  && dataPresent">
 <mat-card-content>
   <mat-form-field >
     <mat-label>Search any email</mat-label>
@@ -201,5 +201,5 @@
 </style>
 
 
-
+<empty-data [emptyMesage]="'No Enquired can be found'" [emptyDescription]="'Regularly Refresh check to avoid missing crucial enquiries'" *ngIf="!processingFetchRequest && !dataPresent"></empty-data>
 

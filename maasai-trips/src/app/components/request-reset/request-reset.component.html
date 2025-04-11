@@ -1,18 +1,18 @@
 <mat-card>
 <mat-form-field appearance="outline">
 <mat-label>Enter your Email</mat-label>
-<input [(ngModel)]="email" required minlength="6" #mail="ngModel" type="text" matInput >
+<input autocomplete="off" name="email-reset" [(ngModel)]="email" required minlength="6" #mail="ngModel" type="text" matInput >
 <mat-hint>Example:johndoegmail.com</mat-hint>
-<mat-error *ngIf="mail.invalid">
+<mat-error *ngIf="mail.invalid && mail.touched">
 Email is required as needed
 </mat-error>
 
 </mat-form-field> 
 
 <mat-card-footer>
-<button (click)="processRequest()" *ngIf="!processingRequest" style="background-color: rgb(242,159,8);color: white;" mat-flat-button>Request</button>
-<button *ngIf="!processingRequest"  mat-dialog-close style="background-color: red;color: white;" mat-flat-button>Cancel</button>
-<p-button *ngIf="processingRequest" loading="true" label="Processing Request"/>
+<button *ngIf="!processingRequest" [disabled]="mail.invalid && mail.touched" (click)="processRequest()" class="button-5" role="button" >Request</button>
+<button *ngIf="!processingRequest" class="button-5-close" role="button"  mat-dialog-close >Cancel</button>
+<p-button *ngIf="processingRequest" raised="true" severity="warning" loading="true" label="Processing"  />
 
 </mat-card-footer>
 <p-toast/>

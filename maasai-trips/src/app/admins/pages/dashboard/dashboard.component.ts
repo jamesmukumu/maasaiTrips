@@ -19,6 +19,7 @@ hotelChoosen:number = 1
 adminChoosen = 1
 packageChoosen = 1
 destinationChoosen:number = 1
+choosenBlog = 1
 choosenActive:any
 processing = false
 adminData:any
@@ -28,6 +29,10 @@ fullname = ''
 email = ''
 phoneNumber = ''
 
+
+blogChooser(blogID:any){
+this.choosenBlog = blogID
+}
 triggerSideNav(event:any){
 this.toogleSidenav = event
 }

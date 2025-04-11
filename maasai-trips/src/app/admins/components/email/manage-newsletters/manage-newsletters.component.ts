@@ -25,6 +25,7 @@ export class ManageNewslettersComponent {
   processing = false;
   rawData = []
   previewing = false
+  alertsReady  = false
   dataSource: any;
   idSelected: number = 0;
   deleting = false;
@@ -163,9 +164,15 @@ this.contentEntry4 = FinalContentFour
     try {
       var { message, data } = await this.mail.fetchNewsLetters();
     this.rawData = data
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.processing = false;
+    if(message=='You have no templates saved'){
+    this.alertsReady = true
+    this.processing = false
+    }else{
+this.dataSource = new MatTableDataSource(data);
+this.dataSource.paginator = this.paginator;
+this.processing = false;
+
+}
     } catch (err) {
       console.error(err);
     }

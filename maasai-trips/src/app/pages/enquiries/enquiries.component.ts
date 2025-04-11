@@ -23,6 +23,7 @@ export class EnquiriesComponent implements OnInit {
 constructor(private quotations:QuotationsService,private store:Store){}
 processingFetchRequest:boolean = false
 tabularData:any
+dataPresent = false
 displayedColumns:string[] = ["firstname","email","adults","childrenCount","enquiry-status","rooms","startDate",'endDate','action']
 displayedColumnsMobile:string[] = ["firstname","startDate",'endDate','action']
 applyFilter(event: Event) {
@@ -52,9 +53,16 @@ fetchingEnquiryData(){
 this.processingFetchRequest = true
 this.quotations.fetchQuotations().then((dataa)=>{
 var {data} = dataa
-this.tabularData = new MatTableDataSource(data)
-
+if( dataa == 'No Active Enquiries'){
 this.processingFetchRequest = false
+this.dataPresent = false
+
+}else{
+  this.tabularData = new MatTableDataSource(data)
+
+  this.processingFetchRequest = false
+}
+
 })
 }
 formatDate(date:any){

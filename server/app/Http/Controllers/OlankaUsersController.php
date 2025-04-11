@@ -272,7 +272,7 @@ return response()->json([
 
 public function fetchAllUsers(){
 try{
-$users = OlankaUsers::select(["created_at","userName","Email","phoneNumber","emailVerified","superUser","adminRoles"])->get();
+$users = OlankaUsers::select(["created_at","userName","Email","phoneNumber","emailVerified","superUser","adminRoles","id"])->get();
 return response()->json([
 "message"=>'Users Fetched',
 "data"=>$users

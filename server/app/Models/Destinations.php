@@ -24,7 +24,7 @@ class Destinations extends Model {
         return $this->hasMany(Package::class, "destinations_id", "id")
             ->select(["id", "packageSlug", "packageChargeCurrency",
                 "budgetType", "mode_transport", "destinations_id",
-                "packageImage", "packageCharge","packageTitle"]);
+                "packageImage", "packageCharge","packageTitle"])->limit(3);
     }
 
     protected static function booted() {

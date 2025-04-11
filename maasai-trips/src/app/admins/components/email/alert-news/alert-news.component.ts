@@ -17,7 +17,7 @@ export class AlertNewsComponent {
   readonly snack = inject(MatSnackBar);
   processing = false;
   saving = false
-  title: string = '';
+  title = '';
   titleEntry1 = '';
   contentEntry1 = '';
   titleEntry2 = '';
@@ -117,22 +117,22 @@ export class AlertNewsComponent {
   }
 
   captureValueOne(event: any) {
-    var { textValue } = event;
-    this.contentEntry1 = textValue;
+    var { args } = event;
+    this.contentEntry1 = args[0];
   }
   captureValueTwo(event: any) {
-    var { textValue } = event;
-    this.contentEntry2 = textValue;
+    var { args } = event;
+    this.contentEntry2 = args[0];
   }
 
   captureValueThree(event: any) {
-    var { textValue } = event;
-    this.contentEntry3 = textValue;
+    var { args } = event;
+    this.contentEntry3 =  args[0];
   }
 
   captureValueFour(event: any) {
-    var { textValue } = event;
-    this.contentEntry4 = textValue;
+    var { args } = event;
+    this.contentEntry4 = args[0];
   }
 
   uploadImageThree(event: any) {

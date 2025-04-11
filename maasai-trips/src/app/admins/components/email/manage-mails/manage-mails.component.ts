@@ -15,7 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ManageMailsComponent {
   readonly snack = inject(MatSnackBar)
-displayedColumns:string[] = [ "createdon","subject","message","attachments","actions"]
+displayedColumns:string[] = [ "createdon","subject","attachments","actions"]
 processing = false
 dataSource:any
 idSelected:number = 0
@@ -31,8 +31,8 @@ timeFormater(time:string){
   return new Date(time).toString()
   }
   logger(event:any){
-  var {htmlValue} = event
-  this.messageEdit = htmlValue
+  var {args} = event
+  this.messageEdit = args[0]
   }
   
 async updatingMailer(){

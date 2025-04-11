@@ -53,15 +53,15 @@ window.open(urlPath,"_blank")
 
 featureSafaris = [
 {
-safariTitle:"3 DAYS BUDGET LANDCRUISER SAFARI",
+safariTitle:"3 DAYS BUDGET LANDCRUISER SAFARI".toLowerCase(),
 safariSlug:"3_days_budget_landcruiser_safari_tours_travel"
 },
 {
-safariTitle:"3 DAYS BUDGET LANDCRUISER SAFARI TOURS TRAVEL",
+safariTitle:"3 DAYS BUDGET LANDCRUISER SAFARI TOURS TRAVEL".toLowerCase(),
 safariSlug:"3_days_budget_landcruiser_safari_tours_travel"
 },
 {
-safariTitle:"TSAVO JEEP SAFARIS 4 DAYS 4 NIGHT",
+safariTitle:"TSAVO JEEP SAFARIS 4 DAYS 4 NIGHT".toLowerCase(),
 safariSlug:"3_days_budget_landcruiser_safari_tours_travel"
 }
 

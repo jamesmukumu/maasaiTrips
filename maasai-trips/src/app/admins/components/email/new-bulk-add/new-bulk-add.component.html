@@ -2,8 +2,9 @@
     <h2>Add new email </h2>
 
    <form #formAddBulk="ngForm">
-    <div class="form-a">
     
+    <div class="form-a">
+      <mat-icon class="close">close</mat-icon>
       <mat-form-field>
       <mat-label>Enter your Full name</mat-label>
       <mat-icon matIconPrefix>person</mat-icon>
@@ -28,7 +29,8 @@
       <mat-form-field>
       <mat-label>Enter your phone Number</mat-label>
       <mat-icon matIconPrefix>call</mat-icon>
-      <input #phoneValidation="ngModel" type="number" minLength="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
+      <span matPrefix>+254</span>
+      <input  placeholder="7********" #phoneValidation="ngModel" type="number" minLength="10" maxlength="12" [(ngModel)]="phoneNumber" matInput name="phoneNumber" required>
      <mat-error *ngIf="phoneValidation.invalid && phoneValidation.touched">
         Provide valid phone number(Valid Phone Number Should be at least 10 charachters long)
      </mat-error>  

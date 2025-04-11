@@ -12,7 +12,7 @@ use Log;
 use Mail;
 use App\Models\BulkMails;
 use App\Models\MailStatus;
-
+use Dotenv\Exception\ValidationException;
 
 
 interface NewsAlertInterface{
@@ -429,10 +429,47 @@ public function previewAlertsReady(Request $request){
     
     }catch(\Exception $err){
     echo $err->getMessage();
+    }}
+    
+
+
+
+
+    public function Alerts_From_Csv(Request $request){
+        try {
+            $validation = $request->validate([
+                "alert_promotional_csv" => "required"
+            ]);
+    
+            $csvFile = $request->file("alert_promotional_csv");
+            $contentsFile = fopen($csvFile->getRealPath(), "r");
+    
+            $datacont = [];
+            $headers = fgetcsv($contentsFile, 1000, ","); 
+    
+            while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+                $datacont[] = array_combine($headers, $data); 
+            }
+    
+            fclose($contentsFile);
+         
+            NewsletterAlerts::insert($datacont);
+        
+    
+            return response()->json([
+                "message" => "Promotional Alerts Saved",
+            
+            ]);
+    
+        } catch (\Exception $err) {
+            return response()->json([
+                "message" => "Something went wrong"
+            ], 500);
+        }catch(ValidationException $errValidate){
+    return response()->json([
+    "message"=>$errValidate->getMessage()
+    ],500);
     }
-    
-    
-    
     }
     
 }

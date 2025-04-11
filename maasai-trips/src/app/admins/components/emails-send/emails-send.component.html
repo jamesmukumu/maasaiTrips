@@ -1,9 +1,18 @@
-<mat-card>
+<mat-card *ngIf="!fetchingEmails">
 <h1>Send Email</h1>
 <form #sendEmailForm="ngForm">
 <mat-form-field >
 <mat-label>Send to</mat-label>
-<input required type="email" matInput name="mailTo" [(ngModel)]="targetMail">
+<input [matAutocomplete]="auto" #target="ngModel"  required type="email" matInput name="mailTo" [(ngModel)]="targetMail">
+<mat-autocomplete #auto="matAutocomplete" > 
+<mat-option *ngFor="let suggestedEmails of bulkEmails" [value]="suggestedEmails.email">
+{{suggestedEmails.email}}
+</mat-option> 
+
+</mat-autocomplete>
+<mat-error *ngIf="target.invalid && target.touched">
+Fill Out Target Address as needed 
+</mat-error>
 <mat-hint>Example johnDoe&#64;gmail.com</mat-hint>
 </mat-form-field>
 
@@ -32,13 +41,16 @@
     
     <mat-form-field>
         <mat-label>Subject</mat-label>
-        <input [(ngModel)]="subjectEmail" required type="email" matInput name="mailTo">
+        <input [(ngModel)]="subjectEmail"#subjectMailer="ngModel"  required type="email" matInput name="mailSubect">
+        <mat-error *ngIf="subjectMailer.touched && subjectMailer.touched">
+          Subject Ought be Filled
+         </mat-error>
         <mat-hint>Example:Reservation Request</mat-hint>
         </mat-form-field>
-
+        
         <div>
         <mat-label>Enter message</mat-label>
-        <p-editor (onTextChange)="captureMessage($event)" required [style]="{height:'fit-content','min-height':'255px'}" placeholder="Enter your message here" [(ngModel)]="message"/>
+<jodit-editor (onChange)="captureMessage($event)"></jodit-editor>
       </div>
 
       <input #fileInput type="file" style="display: none;" >
@@ -65,8 +77,15 @@
 <mat-card-actions>
 <button mat-flat-button *ngIf="!processingEmail && sendEmailForm.valid" (click)="sendingEmail()">Send</button>
 <p-button label="Sending" *ngIf="processingEmail && sendEmailForm.valid" [raised]="true" severity="warning" loading/>
-<p-button label="Send Mail" disabled [raised]="true" severity="warning"  *ngIf="!sendEmailForm.valid"/>
+<p-button label="Send Mail" [style]="{'cursor':'not-allowed'}" disabled [raised]="true" severity="warning"  *ngIf="!sendEmailForm.valid"/>
     
 </mat-card-actions>
 <p-toast/>
 </mat-card> 
+
+
+
+<div *ngIf="fetchingEmails" class="spinner">
+<p-progressSpinner/>
+
+</div>

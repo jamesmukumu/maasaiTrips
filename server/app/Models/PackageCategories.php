@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\ActionRequired;
 
+
 class PackageCategories extends Model{
    protected $fillable = ["title","slug","olanka_users_id"];
     use HasFactory;
@@ -31,6 +32,10 @@ class PackageCategories extends Model{
 
 
         
+
+    
+
+
     }
     
     

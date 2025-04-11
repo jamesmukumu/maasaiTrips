@@ -63,9 +63,9 @@ Provide this field as needed
 <mat-error *ngIf="mismatchWarn">
 Mismatch between passwords
 </mat-error>
-<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign Up</span></p>
+<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign in</span></p>
 
-<button mat-flat-button *ngIf="!processingRequest && !mismatchWarn && registrationForm.valid" (click)="reg()">Sign In</button>
+<button class="button-5" role="button" *ngIf="!processingRequest && !mismatchWarn && registrationForm.valid" (click)="reg()">Register</button>
 <p-button severity="warning" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
 <p-button disabled="" severity="warning" label="Sign Up" *ngIf="!processingRequest && !registrationForm.valid"/>
 </form>

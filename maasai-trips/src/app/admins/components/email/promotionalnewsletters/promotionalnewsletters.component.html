@@ -19,11 +19,8 @@ Provide title Field as needed
           </mat-error>
         </mat-form-field>
         <div>
-          <p-editor
-            placeholder="Description {{ i + 1 }}"
-            [style]="{ height: 'fit-content','min-height':'250px' }"
-           (onTextChange)="editorValue($event,i)"
-          />
+          <label>Enter Descripton for paragraph {{i + 1}}</label>
+         <jodit-editor (onChange)="editorValue($event,i)"></jodit-editor>
         </div>
         <mat-form-field>
           <mat-label>Enter Price Destination {{ i + 1 }}</mat-label>
@@ -48,11 +45,11 @@ Provide title Field as needed
         </div>
       </div>
       <mat-card-actions align="start">
-        <button mat-flat-button (click)="addDestinations()">
-          Add Another Destination
+        <button [matBadge]="Destinations.length" class="button-5" role="button" (click)="addDestinations()">
+          Add Paragraph
         </button>
-        <button mat-flat-button (click)="popDestintions()">
-          Remove Destination
+        <button [matBadge]="Destinations.length" class="button-5" role="button" mat-flat-button (click)="popDestintions()">
+          Remove paragraph
         </button>
       </mat-card-actions>
     </div>

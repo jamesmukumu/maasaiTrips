@@ -30,21 +30,21 @@ fetchingDestinations = false
 
 
 captureDescriptionHotel(event:any){
-var {htmlValue} = event
-this.hotelDescription = htmlValue
+var {args} = event
+this.hotelDescription = args[0]
 }
 
 captureMetaDescriptionHotel(event:any){ 
-var {htmlValue} = event
-this.hotelMetaDescription = htmlValue
+var {args} = event
+this.hotelMetaDescription = args[0]
 }
 captureCancellationPolicyHotel(event:any){
-var {htmlValue} = event
-this.cancellationPolicy = htmlValue
+var {args} = event
+this.cancellationPolicy = args[0]
 }
 captureLocationHotel(event:any){
-var {htmlValue} = event
-this.locationDescription = htmlValue
+var {args} = event
+this.locationDescription = args[0]
 }
 
 captureThumbnail(event:any){
@@ -130,3 +130,4 @@ ngOnInit(){
   this.fetchDestinations()
 }
 }
+ 

@@ -72,9 +72,14 @@ console.error(err)
 }
 
 
-
-
 ngOnInit(){
 this.fetchAdmins()
+}
+
+
+
+handleToggle(element:any){
+var {id} = element
+
 }
 }

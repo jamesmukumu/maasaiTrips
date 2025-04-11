@@ -23,12 +23,12 @@ processing = false
 
 
 captureDestinationAbout(event:any){
-var {htmlValue} = event
-this.destinationAbout = htmlValue
+var {args} = event
+this.destinationAbout = args[0]
 }
 captureDestinationDescription(event:any){
-var {htmlValue} = event
-this.destinationDescription = htmlValue
+var {args} = event
+this.destinationDescription = args[0]
 }
 
   

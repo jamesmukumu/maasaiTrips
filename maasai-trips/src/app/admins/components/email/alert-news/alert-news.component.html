@@ -2,26 +2,28 @@
   <form #alertForm="ngForm">
     <mat-form-field appearance="outline"  >
       <mat-label>Enter Title</mat-label>
-      <input #title="ngModel" type="text" [(ngModel)]="title" required name="title" matInput />
-    <mat-error *ngIf="title.invalid && title.touched">
+      <input #titleBody="ngModel" type="text" autocomplete="off" [(ngModel)]="title" required name="title-body" matInput />
+    <mat-error *ngIf="titleBody.invalid && titleBody.touched">
       Provide a valid title
     </mat-error>
-    
+     
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Title For Paragraph one</mat-label>
-      <input type="text"[(ngModel)]="titleEntry1" #titleParaOne="ngModel" name="title" matInput />
+      <input required type="text"[(ngModel)]="titleEntry1" #titleParaOne="ngModel" name="paragraph-one" matInput />
     <mat-error *ngIf="titleParaOne.invalid && titleParaOne.touched">
      Provide a Valid Title For Entry One
     </mat-error>
     </mat-form-field>
-    <p-editor (onTextChange)="captureValueOne($event)" placeholder="Content for entry one" [style]="{height:'fit-content','min-height':'250px'}"  />
-
+<div>
+<label>Enter Content For Paragraph One:</label>
+<jodit-editor (onChange)="captureValueOne($event)"></jodit-editor>
+</div>
     <div>
       <p-fileUpload
         name="demo[]"
        
-    
+        class="file-upload"
         accept="image/*"
         (onSelect)="uploadImageOne($event)"
         maxFileSize="1000000"
@@ -35,13 +37,16 @@
 
     <mat-form-field appearance="outline">
         <mat-label>Title for Paragraph 2</mat-label>
-        <input type="text" name="title" #titleParaTwo="ngModel" matInput [(ngModel)]="titleEntry2" />
+        <input type="text" required name="para-two" #titleParaTwo="ngModel" matInput [(ngModel)]="titleEntry2" />
         <mat-error *ngIf="titleParaTwo.invalid && titleParaTwo.touched">
           Provide a Valid Title For Entry Two
          </mat-error>
       
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueTwo($event)" placeholder="Content for entry two"  [style]="{height:'fit-content','min-height':'250px'}"/>
+      <div>
+        <label>Enter Content for Paragraph Two:</label>
+        <jodit-editor (onChange)="captureValueTwo($event)"></jodit-editor>
+      </div>
   
       <div>
         <p-fileUpload
@@ -61,13 +66,15 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Title for Entry 3</mat-label>
-        <input type="text" [(ngModel)]="titleEntry3"  #titleParaThree="ngModel" name="title" matInput />
+        <input type="text" [(ngModel)]="titleEntry3"  required #titleParaThree="ngModel" name="para-three-title" matInput />
         <mat-error *ngIf="titleParaThree.invalid && titleParaThree.touched">
           Provide a Valid Title For Entry Three
          </mat-error>
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueThree($event)" placeholder="Content for entry three" [style]="{height:'fit-content','min-height':'250px'}" />
-  
+   <div>
+    <label>Enter Description Paragraph Three</label>
+    <jodit-editor (onChange)="captureValueThree($event)"></jodit-editor>
+   </div>
       <div>
         <p-fileUpload
           name="demo[]"
@@ -84,13 +91,15 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Title for Entry 4</mat-label>
-        <input [(ngModel)]="titleEntry4" #titleParaFour="ngModel" type="text" name="title" matInput />
+        <input required [(ngModel)]="titleEntry4" #titleParaFour="ngModel" type="text" name="para-four" matInput />
         <mat-error *ngIf="titleParaFour.invalid && titleParaFour.touched">
           Provide a Valid Title For Entry Four
          </mat-error>
       </mat-form-field>
-      <p-editor (onTextChange)="captureValueFour($event)" placeholder="Content for entry four" [style]="{height:'fit-content','min-height':'250px'}" />
-  
+   <div>
+    <label>Enter Description Paragraph Four:</label>
+    <jodit-editor (onChange)="captureValueFour($event)"></jodit-editor>
+   </div>
       <div>
         <p-fileUpload
           name="demo[]"

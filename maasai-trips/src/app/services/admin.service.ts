@@ -126,4 +126,25 @@ export class AdminService {
       return err;
     }
   }
+
+
+
+
+  async makeSuperUser(id:any){
+  try{
+   var token =  Cookies.get("grant_token")
+   var response = await axios.put("http://localhost:8000/api/make/super/user",{},{
+    params:{
+      "id":id
+    },
+    headers:{
+     "Authorization":`Bearer ${token}`
+    }
+   })
+   return await response.data
+  }catch(err){
+   return err
+  }
+
+  }
 }

@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\EmailSaver;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
-
+     
 class Saver{
 public function __construct(){
     

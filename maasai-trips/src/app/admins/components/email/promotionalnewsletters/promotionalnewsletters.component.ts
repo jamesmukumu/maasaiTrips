@@ -40,12 +40,16 @@ this.Destinations.push({[`destinationTitle${index+1}`]:"",[`destinationDescripti
 
 }
 popDestintions(){
+if(this.Destinations.length <= 1){
+this.snack.open("Paragraphs cannot be less than one","Add More")
+}else{
 this.Destinations.pop() 
+}
 }
 
 editorValue(content:any,index:number){
-var {textValue} = content
-this.Destinations[index][`destinationDescription${index+1}`] = textValue
+var {args} = content
+this.Destinations[index][`destinationDescription${index+1}`] = args[0]
 }
 chooserFile(file:any,index:number){
   var {currentFiles} = file

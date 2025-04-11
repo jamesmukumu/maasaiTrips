@@ -3,7 +3,7 @@
  
 <mat-card *ngIf="!fetchingDestination" [ngClass]="safaris.length > 0 ?'grid':'vert'">
     <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" [ngClass]="safaris.length > 0 ?'div-a-adjust':'div-a'">
-
+     <h1>{{destinationData.destinationTitle}}</h1>
     <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
     [autoPlay]="true"
     [circular]="true" 
@@ -18,10 +18,14 @@
         <img [src]="item" class="img-thumbnail" />
     </ng-template>
     </p-galleria>
-    
-
-    <h3>{{destinationData.destinationTitle}}</h3>
-    <mat-icon style="color: rgb(228,106,118);">place</mat-icon>
+     
+     <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>{{destinationData.destinationTitle}}</span>
+        <mat-icon style="color: #e88b22;" matListItemIcon>place</mat-icon>
+      </mat-list-item>
+     </mat-list>
+  
        <mat-card-content style="margin-top: 20px;" [innerHTML]="destinationDescription">
 
        </mat-card-content>
@@ -41,7 +45,9 @@
         <h3>{{saf.packageTitle}}</h3>
         
      
-        <button class="button-5" role="button"  (click)="goPackage(saf.packageSlug)" >View Package</button>
+         <mat-card-footer>
+          <button class="button-5" role="button"  (click)="goPackage(saf.packageSlug)" >View Package</button>
+         </mat-card-footer>
       </div>
         
     

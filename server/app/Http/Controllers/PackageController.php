@@ -54,6 +54,73 @@ class PackageController extends Controller implements PackageInterface
         }
     }
 
+
+
+    public function updatePackageCategory(Request $request)
+    {
+        try {
+            $validatedRequest = $request->validate([
+                "title" => "nullable|unique:package_categories,title",
+                "id"=>"required|exists:package_categories,id"
+            ]);
+            $id = $request->query("id");
+            $user_id = $this->verifyingToken($request);
+            $validatedRequest['olanka_users_id'] = $user_id;
+            $validatedRequest['slug'] = Str::slug($validatedRequest['title']);
+            PackageCategories::where("id",$id)->update($validatedRequest);
+            return response()->json([
+                "message" => "Package category saved"
+            ]);
+        } catch (\Exception $err) {
+            Log::error($err->getMessage());
+            return response()->json([
+                "message" => "Something went wrong"
+            ], 500);
+        }
+    }
+
+
+    public function fetchMyPackageCategories(Request $request){
+    try{
+    $user_id = $this->verifyingToken($request);
+    $packageCategories = PackageCategories::where("olanka_users_id",$user_id)->get(); 
+    if(count($packageCategories) == 0){
+     return response()->json([
+      "message"=>"Package Categories is empty"
+     ]);
+    }else{
+    return response()->json([
+    "message"=>"Package Categories Found",
+    "data"=>$packageCategories
+    ]);
+    }
+    }catch(\Exception $err){
+   Log::error($err->getMessage());
+    return response()->json([
+    "message"=>"Something Went Wrong"
+    ]);
+    }
+}
+
+
+public function deletePackageCategory(Request $request){
+try{
+$validatedRequest = $request->validate([
+"id"=>"required|exists:package_categories,id"
+]);
+$id = $request->query("id");
+PackageCategories::where("id",$id)->delete();
+return response()->json([
+"message"=>"Package Category Deleted",
+
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
+
+
+}
+
     public function fetchPackageCategories(Request $request)
     {
         try {
@@ -323,7 +390,7 @@ class PackageController extends Controller implements PackageInterface
             ]);
             $slug = $request->query("packageSlug");
             $matchingPackage = Package::where("packageSlug", $slug)->get()->first();
-            $relatedPackages = Package::where("package_categories_id", $matchingPackage['package_categories_id'])->where("id", "!=", $matchingPackage['id'])->get();
+            $relatedPackages = Package::where("package_categories_id", $matchingPackage['package_categories_id'])->where("id", "!=", $matchingPackage['id'])->limit(6)->get();
 
             return response()->json([
                 "data" => $matchingPackage,
@@ -366,4 +433,42 @@ class PackageController extends Controller implements PackageInterface
 
 
 
+
+        public function PackagesFromCsv(Request $request){
+            try {
+                $validation = $request->validate([
+                    "package_csv" => "required"
+                ]);
+        
+                $csvFile = $request->file("package_csv");
+                $contentsFile = fopen($csvFile->getRealPath(), "r");
+        
+                $datacont = [];
+                $headers = fgetcsv($contentsFile, 1000, ","); 
+        
+                while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+                    $datacont[] = array_combine($headers, $data); 
+                }
+        
+                fclose($contentsFile);
+             
+                Package::insert($datacont);
+            
+        
+                return response()->json([
+                    "message" => "Package Data Saved",
+                
+                ]);
+        
+            } catch (\Exception $err) {
+                return response()->json([
+                    "message" => "Something went wrong"
+                ], 500);
+            }catch(ValidationException $errValidate){
+        return response()->json([
+        "message"=>$errValidate->getMessage()
+        ],500);
+        }
+        }
+        
 }

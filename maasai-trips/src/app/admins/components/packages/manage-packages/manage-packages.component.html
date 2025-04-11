@@ -290,9 +290,10 @@
 
         <div>
           <p-dropdown
+          [(ngModel)]="choosenMeans"
             variant="filled"
             [options]="transport"
-            [(ngModel)]="choosenMeans"
+         
             [checkmark]="true"
             (onChange)="getTransport($event)"
             [showClear]="true"
@@ -357,7 +358,7 @@
             [(ngModel)]="someValue"
             variant="filled"
             [options]="countryCodes"
-            [checkmark]="true"
+         
             optionLabel="name"
             (onChange)="getCurrency($event)"
             [filter]="true"
@@ -448,34 +449,33 @@
           </div>
           <mat-card-actions align="start">
             <button
-              mat-flat-button
+              class="button-5"
+              role="button"
               (click)="addImage()"
               [matBadge]="images.length"
             >
               Add Another Photo
             </button>
-            <button mat-flat-button (click)="popImage()">Remove Photo</button>
+            <button class="button-5" role="button" (click)="popImage()">Remove Photo</button>
           </mat-card-actions>
         </div>
       </div>
     </form>
     <button
       *ngIf="!processing"
-      style="
-        background-color: rgb(232, 139, 34);
-        color: white;
-        width: fit-content;
-        margin-top: 20px;
-      "
+    class="button-5"
+    role="button-5"
+    style="width: fit-content;"
       (click)="updatePackages()"
-      mat-flat-button
+
     >
       Update Package
     </button>
     <p-button
       *ngIf="processing"
       loading="processing"
-      [style]="{ 'background-color': 'rgb(252,166,8)' }"
+       severity="warning"
+       raised="true"
       label="Saving"
     ></p-button>
   </mat-card>
@@ -562,14 +562,16 @@
     />
     <button
       (click)="popConfirm($event)"
-      class="btn"
+      class="button-5"
+      role="button"
       *ngIf="!adjusting"
       mat-flat-button
     >
       Adjust
     </button>
     <p-button
-      [style]="{ 'margin-top': '25px', 'background-color': 'yellow' }"
+      severity="warning"
+      raised="true"
       loading="adjusting"
       *ngIf="adjusting"
       label="adjusting status"

@@ -129,6 +129,7 @@
           <p-editor
             [(ngModel)]="destinationAbout"
             [style]="{ height: '245px' }"
+            name="destination_about"
             (onTextChange)="captureDestinationAbout($event)"
             placeholder="Enter Destination About.Example insights of the destination eg"
           />
@@ -141,6 +142,7 @@
             placeholder="Enter Destination  Description"
             (onTextChange)="captureDestinationDescription($event)"
             [style]="{ height: '245px' }"
+            name="destination_description"
           />
         </div>
 
@@ -180,13 +182,14 @@
           </div>
           <mat-card-actions align="start">
             <button
-              mat-flat-button
+              class="button-5"
+              role="button"
               (click)="addImage()"
               [matBadge]="images.length"
             >
               Add Another Photo
             </button>
-            <button mat-flat-button (click)="popImage()">Remove Photo</button>
+            <button class="button-5" role="button" (click)="popImage()">Remove Photo</button>
           </mat-card-actions>
         </div>
       </div>
@@ -194,13 +197,10 @@
     <button
       *ngIf="!processing"
       (click)="updateFuncDestination()"
-      style="
-        background-color: rgb(232, 139, 34);
-        color: white;
-        width: fit-content;
-        margin-top: 20px;
-      "
-      mat-flat-button
+     
+   class="button-5"
+   role="button"
+   style="width: fit-content;margin-top: 20px;"
     >
       Update Destination
     </button>

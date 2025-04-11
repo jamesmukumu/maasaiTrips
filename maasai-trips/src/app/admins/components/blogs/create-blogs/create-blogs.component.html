@@ -1,0 +1,33 @@
+<mat-card>
+<form>
+<h1>Create A New Blog</h1>
+<button class="button-5" role="button">Create Blog Category</button>
+<mat-form-field>
+ <mat-label>Enter a title for the blog</mat-label>   
+ <input type="text" name="blog-title" required matInput >
+ <mat-hint>Example:Blog Post for 3 day Lake Nakuru Expeditions</mat-hint>
+</mat-form-field>
+<div>
+<label>Enter Blog Description:</label>
+<jodit-editor></jodit-editor>
+</div>
+<div>
+    <label>Choose a thumbnail:</label>
+    <p-fileUpload
+    name="blog-thumbnail"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    [multiple]="false"
+    accept="image/*"
+    maxFileSize="100000000000"
+   
+  >
+    <ng-template pTemplate="content">
+      <ul></ul>
+    </ng-template>
+  </p-fileUpload>
+</div>
+<!-- Select Tags Category Blogs -->
+<button class="button-5" role="button">Create Blog</button>
+</form>
+
+</mat-card>

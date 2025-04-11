@@ -15,8 +15,8 @@ export class CreateRoomComponent {
 
 
   captureRoom(event:any){
- var {htmlValue} =  event
-this.roomDescription = htmlValue
+ var {args} =  event
+this.roomDescription = args[0]
 }
   images:any[] = [
   {room1:null}

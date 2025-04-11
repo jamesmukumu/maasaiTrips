@@ -68,6 +68,9 @@ this.fetchingDestinations = false
 console.error(err)
 }
 }
+addPackage(){
+this.addPackageCategory = true
+}
 
 chooserFile(file:any,index:number){
     var {currentFiles} = file
@@ -96,7 +99,7 @@ readonly snack = inject(MatSnackBar)
 baseFlag = "https://flagcdn.com/16x12/"
 newCountryCodes:any[] = []
 inclusions: string[] = [];
-exclusions:string[] = []
+exclusions:string[] = ["Anything Else Not Mentioned"]
 processing = false
 packageTitle = ''
 packageOverview = ''
@@ -107,8 +110,8 @@ packageCharge = 0
 packagePhoto:any
 addPackageCategory = false
 captureOverview(event:any){
-var {htmlValue} = event
-this.packageOverview = htmlValue
+var {args} = event
+this.packageOverview = args[0]
 }
 
 chooser(event:any){
@@ -125,14 +128,14 @@ seeStartDate(event:any){
     }
 
 captureAbout(event:any){
-var {htmlValue} = event
-this.packageAbout = htmlValue
+var {args} = event
+this.packageAbout = args[0]
 }
   
 
 captureSpecialNotes(event:any){
-    var {htmlValue} = event
-    this.specialNotes = htmlValue
+    var {args} = event
+    this.specialNotes =args[0]
     }
 savingPackageCategory = false
 savePackageCategory(){

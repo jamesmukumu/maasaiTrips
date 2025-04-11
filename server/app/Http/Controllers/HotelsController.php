@@ -336,4 +336,41 @@ class HotelsController extends Controller implements HotelInterface
         }
 
 
+        public function save_Hotels_From_Csv(Request $request){
+            try {
+                $validation = $request->validate([
+                    "hotels_csv" => "required"
+                ]);
+        
+                $csvFile = $request->file("hotels_csv");
+                $contentsFile = fopen($csvFile->getRealPath(), "r");
+        
+                $datacont = [];
+                $headers = fgetcsv($contentsFile, 1000, ","); 
+        
+                while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+                    $datacont[] = array_combine($headers, $data); 
+                }
+        
+                fclose($contentsFile);
+             
+                HotelsModel::insert($datacont);
+            
+        
+                return response()->json([
+                    "message" => "Hotels Saved",
+                
+                ]);
+        
+            } catch (\Exception $err) {
+                return response()->json([
+                    "message" => "Something went wrong"
+                ], 500);
+            }catch(ValidationException $errValidate){
+        return response()->json([
+        "message"=>$errValidate->getMessage()
+        ],500);
+        }
+        }
+        
 }

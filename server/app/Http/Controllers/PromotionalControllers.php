@@ -355,8 +355,51 @@ class PromotionalControllers extends Controller implements PromotionalInterface
          "message"=>$err->getMessage()
          ],500);
 
+        }}
+
+
+
+
+        public function promotional_newsletters_Csv(Request $request){
+            try {
+                $validation = $request->validate([
+                    "newsletters_csv" => "required"
+                ]);
+        
+                $csvFile = $request->file("newsletters_csv");
+                $contentsFile = fopen($csvFile->getRealPath(), "r");
+        
+                $datacont = [];
+                $headers = fgetcsv($contentsFile, 1000, ","); 
+        
+                while (($data = fgetcsv($contentsFile, 1000, ",")) !== false) {
+                    $datacont[] = array_combine($headers, $data); 
+                }
+        
+                fclose($contentsFile);
+             
+                PromotionalNewsletters::insert($datacont);
+            
+        
+                return response()->json([
+                    "message" => "Promotional Newsletters Saved",
+                
+                ]);
+        
+            } catch (\Exception $err) {
+                return response()->json([
+                    "message" => "Something went wrong"
+                ], 500);
+            }catch(ValidationException $errValidate){
+        return response()->json([
+        "message"=>$errValidate->getMessage()
+        ],500);
         }
+        }
+        
 
 
-    }
+
+
+
 }

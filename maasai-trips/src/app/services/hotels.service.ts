@@ -200,13 +200,11 @@ export class HotelsService {
     }
   }
 
-
-
   async unpublishHotel(id: number) {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        `http://localhost:8000/api/unpublish/hotel`,
+        `https://maasaitrips-2.onrender.com/api/unpublish/hotel`,
         {},
         {
           headers: {
@@ -222,8 +220,6 @@ export class HotelsService {
       return err;
     }
   }
-
-
 
   async fetchDestinationsDisplay() {
     try {

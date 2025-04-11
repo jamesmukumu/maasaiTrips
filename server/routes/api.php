@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\BlogCategories;
+use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BulkMailControllers;
 use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HotelsController;
@@ -82,6 +84,9 @@ Route::get("/fetch/my/alert/news/alerts",[NewsLetterAlert::class,"fetchMyTemplat
 Route::delete("/delete/news/alert",[NewsLetterAlert::class,"deleteNewsLetterTemplateMail"]);
 Route::post("/preview/alerts",[NewsLetterAlert::class,"previewAlerts"]);
 Route::post("/preview/edit-mode/alerts",[NewsLetterAlert::class,"previewAlertsReady"]);
+Route::post("/save/alert/newsletters/csv",[NewsLetterAlert::class],"Alerts_From_Csv");
+
+
 
 
 // promotional newsletters
@@ -92,6 +97,8 @@ Route::get("/fetch/promotional/newsletter",[PromotionalControllers::class,"fetch
 Route::delete("/delete/promotional/newsletter",[PromotionalControllers::class,"deleteNewsLetterTemplateMail"]);
 Route::post("/update/promotional/newsletter",[PromotionalControllers::class,"UpdatePromotionalNewsletters"]);
 Route::post("/preview/promotional/newsletter",[PromotionalControllers::class,"previewPromotional"]);
+Route::post("/save/promotional/content/csv",[PromotionalControllers::class,"promotional_newsletters_Csv"]);
+
 
 
 // Hotels Api
@@ -99,10 +106,11 @@ Route::post("/add/new/hotel",[HotelsController::class,"createHotel"]);
 Route::delete("/delete/hotel",[HotelsController::class,"deleteHotel"]);
 Route::post("/update/hotel",[HotelsController::class,"updateHotel"]);
 Route::put("/publish/hotel",[HotelsController::class,"publishHotel"]);
-
 Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
 Route::put("/unpublish/hotel",[HotelsController::class,'unpublishHotel']);
 Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
+Route::post("/save/hotels/from/csv",[HotelsController::class,"promotional_newsletters_Csv"]);
+
 
 
 
@@ -110,6 +118,9 @@ Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
 Route::post("/create/new/room",[RoomsController::class,"createRoom"]);
 Route::get("/find/my/rooms",[RoomsController::class,"fetchMyRooms"]);
 Route::post("/update/room",[RoomsController::class,"updateRoom"]);
+Route::post("/save/room/from/csv",[RoomsController::class,"saveRoomsCSV"]);
+
+
 
 
 
@@ -121,8 +132,7 @@ Route::delete("/delete/destination",[DestinationController::class,'DeleteDestina
 Route::put("/publish/destination",[DestinationController::class,'PublishDestination']);
 Route::put("/unpublish/destination",[DestinationController::class,"UnpublishDestination"]);
 Route::post("/update/destination",[DestinationController::class,"updateDestination"]);
-
-
+Route::post("/save/destinations/from/csv",[DestinationController::class,"save_Destinations_CSV"]);
 
 
 
@@ -132,23 +142,37 @@ Route::get("/fetch/my/packages",[PackageController::class,'fetchMyPackages']);
 Route::delete("/delete/package",[PackageController::class,'deletePackage']);
 Route::put("/publish/package",[PackageController::class,"PublishPackage"]);
 Route::put("/unpublish/package",[PackageController::class,"UnpublishPackage"]);
-
 Route::post("/create/package/category",[PackageController::class,'addPackageCategory']);
 Route::get("/fetch/package/categories",[PackageController::class,'fetchPackageCategories']);
-
 Route::post("/update/package",[PackageController::class,'updatePackage']);
+Route::post("/save/package/csv",[PackageController::class,'PackagesFromCsv']);
 
+
+
+
+// Blog Api`s go here
+
+
+
+
+// Blog Category Api here
+Route::post("/create/new/blog/category",[BlogCategories::class,"addBlogCategory"]);
 
 
 });
 
 
+
+Route::post("/create/new/blog",[BlogsController::class,"addBlog"]);
+
+
+
+
 // All Unprotected Routes 
 Route::post("/save/quote",[QuotationController::class,"saveQuotations"]); //route for saving an enquiry.
-
-
 Route::get("/fetch/display/hotels",[HotelsController::class,'fetchDisplayHotels']);//route for fetching all hotels to display
 Route::get("/fetch/hotel",[HotelsController::class,"fetchHotel"]);
+
 
 //User Routes here
 Route::post("/register/user",[OlankaUsersController::class,"handleRegister"]);
