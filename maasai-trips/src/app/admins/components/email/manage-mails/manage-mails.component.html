@@ -1,6 +1,6 @@
 <h1>My Email Templates</h1>
 
-<table mat-table [dataSource]="dataSource" *ngIf="!processing">
+<table mat-table [dataSource]="dataSource" *ngIf="!processing && emailDataReady">
     
    
     <ng-container matColumnDef="createdon">
@@ -55,7 +55,7 @@
     </tr>
   </table>
   
-  <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator *ngIf="emailDataReady"  [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
@@ -107,3 +107,5 @@
   
 
 </p-dialog>
+
+<empty-data *ngIf="!processing && !emailDataReady" [emptyMesage]="'No Email Templates Found'"></empty-data>

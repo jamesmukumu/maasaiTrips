@@ -23,6 +23,7 @@ deleting = false
 subject =''
 updating = false
 subj = ''
+emailDataReady = false
 messageEdit = ''
 constructor(private mail:MailServService,private msg:MessageService){}
 @ViewChild(MatPaginator) paginator!:MatPaginator
@@ -97,6 +98,13 @@ console.error(err)
   this.processing = true
   try{
   var {message,data} =await this.mail.fetchEmailTemplates()
+  if(message == 'You have no templates saved'){
+  this.emailDataReady = false
+  this.processing = false
+  return
+  }else{
+  this.emailDataReady = true
+  }
   this.dataSource = new MatTableDataSource(data)
   this.dataSource.paginator = this.paginator
   this.processing = false

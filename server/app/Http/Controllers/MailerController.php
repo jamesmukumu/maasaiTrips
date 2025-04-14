@@ -6,13 +6,14 @@ use App\Events\EmailSaver;
 use App\Models\BulkMails;
 use App\Models\MailStatus;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Log;
+// use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Mail\MailerSend;
 use Dotenv\Exception\ValidationException;
 use App\Models\EmailTemplates;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Log; 
 
 
 
@@ -318,11 +319,12 @@ class MailerController extends Controller implements MailerInterface
         
     
             return response()->json([
-                "message" => "Data Saved",
+                "message" => "Mail Templates Saved",
             
             ]);
     
         } catch (\Exception $err) {
+            Log::error($err->getMessage());
             return response()->json([
                 "message" => "Something went wrong"
             ], 500);

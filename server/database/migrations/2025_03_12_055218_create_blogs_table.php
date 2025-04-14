@@ -14,7 +14,7 @@ return new class extends Migration{
             $table->string("blogTitle")->nullable(false)->unique(true);
             $table->string("blogSlug")->nullable(false)->unique(true);
             $table->string("blogThumbnail")->nullable(true);
-            $table->fullText("blogContent")->nullable(false);
+            $table->mediumText("blogContent")->nullable(false);
             $table->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
             $table->foreignId("blog_categories_id")->constrained()->onDelete('cascade');
             $table->boolean("published")->default(false);

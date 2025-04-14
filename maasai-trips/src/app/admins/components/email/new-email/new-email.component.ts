@@ -18,12 +18,26 @@ constructor(private msg:MessageService,private mailer:MailServService){}
 processingRequest = false
 subject = ''
 message = ''
+choosenCSV:any
 captureMessage(event:any){
 var {args} = event
 
 this.message = args[0]
 }
+captureEmailTemplateCSV(event:any){
+this.choosenCSV = event.currentFiles[0]
+}
 
+uploadCSV(){
+this.mailer.uploadCSVTemplates(this.choosenCSV).then((data)=>{
+ var {message} = data 
+ if(message == "Mail Templates Saved"){
+  this.msg.add({severity:"success",detail:"Mail Templates Added",life:15000})
+ }else{
+  this.msg.add({severity:"error",detail:"Something Went Wrong"})
+ }
+})
+}
 savingTemplate(){
 this.processingRequest = true
 var payload:MailTemplate = {

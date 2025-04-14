@@ -11,6 +11,7 @@ use Log;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\JWT;
 use function Laravel\Prompts\error;
+use App\Models\BlogCategory;
 
 interface BlogsInterface{
 public function validator(Request $request);
@@ -43,7 +44,7 @@ throw new \Exception($errValidaation->getMessage());
 public function addBlog(Request $request){
 try{
 $validatedRequest =  $request->validate([
-"blogTitle"=>"required|unique:blogs,id",
+"blogTitle"=>"required|unique:blogs,blogTitle",
 "blogContent"=>"required|min:20",
 "thumbnail"=>"file|required",
 "blog_categories_id"=>"required|exists:blog_categories,id"
@@ -81,9 +82,6 @@ return response()->json([
 "message"=>$errValidation->getMessage()
 ]);
 }    
-
-
-
 public function updateBlog(Request $request){
     try{
     $validatedRequest =  $request->validate([
@@ -147,7 +145,7 @@ return response()->json([
 public function fetchMyBlogs(Request $request){
 try{
 $user_id = $this->validator($request);    
-$blogs = Blogs::where("olanka_users_id",$user_id)->get();
+$blogs = Blogs::where("olanka_users_id",$user_id)->with(["blogCategory"])->get();
 return response()->json([
 "message"=>"Blogs Fetched",
 "data"=>$blogs
@@ -181,7 +179,7 @@ return response()->json([
 
 public function fetchBlogsDisplay(Request $request){
 try{
-$blogs = Blogs::select(['blogTitle','blogThumbnail','blogContent','id'])->where("published",true)->paginate();
+$blogs = Blogs::select(["created_at",'blogTitle','blogSlug','blogThumbnail','blogContent','id','olanka_users_id'])->with(["creatorBlog"])->where("published",true)->paginate();
 return response()->json([
 "message"=>"Blogs Fetched",
 "blogs"=>$blogs->items(),
@@ -225,11 +223,44 @@ public function unpublishBlog(Request $request){
     $blog["published"] = false;
     $blog->save();
     return response()->json([
-    "message"=>"Blog has been published"
+    "message"=>"Blog has been un-published"
     ]);
     }catch(\Exception $err){
     Log::error($err->getMessage());
     }}
+
+
+
+
+
+
+    public function adjustBlogStatus(Request $request){
+    try{
+   $validatedRequest =  $request->validate([
+    "id"=>"required|exists:blogs,id",
+    "status"=>"required"
+]);
+$id = $request->query("id");
+$allowedStatuses = array("pending","allowed","rejected");
+if(!in_array($validatedRequest['status'],$allowedStatuses,true)){
+return response()->json([
+"message"=>"Status Rejected"
+]);
+}
+$blog = Blogs::find($id);
+$blog['blogStatus'] = $validatedRequest['status'];
+$blog->save();
+return response()->json([
+'message'=>'Blog Status Adjusted'
+]);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+return response()->json([
+'message'=>"Something Went Wrong"
+],500);
+}
+}
+
 
 
 }

@@ -1,1 +1,260 @@
-<p>manage-blogs works!</p>
+<h3>Manage My Blogs</h3>
+
+<mat-form-field appearance="outline">
+  <mat-label>Search any Blog</mat-label>
+  <input type="text" matInput #inputSelect (keyup)="applyFilter($event)" />
+  <mat-hint>Example:Amboseli  National park Blogs</mat-hint>
+</mat-form-field>
+
+<table mat-table *ngIf="!processing" [dataSource]="dataSource">
+  <ng-container matColumnDef="blogTitle">
+    <th mat-header-cell *matHeaderCellDef>Blog Title</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.blogTitle }}
+    </td>
+  </ng-container> 
+  <ng-container matColumnDef="blogCategoryTitle">
+    <th mat-header-cell *matHeaderCellDef>Blog Category  Title</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.blog_category.blogCategoryTitle }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="published">
+    <th mat-header-cell *matHeaderCellDef>Published</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon *ngIf="element.published" style="color: green">done</mat-icon>
+      <mat-icon *ngIf="!element.published" style="color: red">close</mat-icon>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actionPending">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">
+      <p-tag
+        *ngIf="element.blogStatus == 'approved'"
+        severity="success"
+        value="approved"
+      />
+      <p-tag
+        *ngIf="element.blogStatus== 'pending'"
+        severity="warning"
+        value="pending"
+      />
+      <p-tag
+        *ngIf="element.blogStatus== 'rejected'"
+        severity="danger"
+        value="rejected"
+      />
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        matTooltip="actions"
+        [mat-menu-trigger-for]="menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu>
+        <button mat-menu-item (click)="popUpdate(element.id, element)">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button
+          mat-menu-item
+          *ngIf="adminStatus"
+          (click)="adjustStatus(element.id)"
+        >
+          <mat-icon>edit</mat-icon>
+          <span>Adjust Status</span>
+        </button>
+        <button mat-menu-item (click)="popDeleteDestination(element.id,element)">
+          <mat-icon style="color: red">delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        <button
+          mat-menu-item
+          *ngIf="!element.published"
+          (click)="popPublish(element.id)"
+        >
+          <mat-icon style="color: green">publish</mat-icon>
+          <span>Publish Blog</span>
+        </button>
+        <button
+          mat-menu-item
+          *ngIf="element.published"
+          (click)="popUn_Publish(element.id)"
+        >
+          <mat-icon style="color: red">publish</mat-icon>
+          <span>Un-Publish Blog</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter</td>
+  </tr>
+</table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20, 50, 100]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements"
+>
+</mat-paginator>
+
+<div class="spin" *ngIf="processing">
+  <p-progressSpinner />
+</div>
+
+<p-dialog [modal]="true" [maximizable]="true" [(visible)]="updateDestination">
+
+    <form  *ngIf="!processingCategories">
+    <h1>Create A New Blog</h1>
+
+    <mat-form-field>
+     <mat-label>Enter a title for the blog</mat-label>   
+     <input type="text" name="blog-title" required matInput [(ngModel)]="blogCategoryTitle" >
+     <mat-hint>Example:Blog Post for 3 day Lake Nakuru Expeditions</mat-hint>
+    </mat-form-field>
+    <div style="display: flex;flex-direction: column;width: 100%;"> 
+    <label>Choose a Blog Category:</label>
+    <p-dropdown
+    [options]="categories"
+    optionLabel="blogCategoryTitle"
+    optionValue="id"
+    (onChange)="changeBlogCategoryTitle($event)"
+    [(ngModel)]="choosenCategory"
+    filter
+    [style]="{'width':'100%'}" 
+    checkmark="true"
+
+    />
+    
+    </div>
+    
+    <div>
+    <label>Enter Blog Description:</label>
+    <jodit-editor [(ngModel)]="blogContent" name="blog-content" (onChange)="captureBlogContent($event)"></jodit-editor>
+    </div>
+    <div>
+        <label>Choose a thumbnail:</label>
+        <p-fileUpload
+        name="blog-thumbnail"
+        url="https://www.primefaces.org/cdn/api/upload.php"
+        [multiple]="false"
+        accept="image/*"
+        maxFileSize="100000000000"
+        (onSelect)="captureThumbnails($event)"
+       
+      >
+        <ng-template pTemplate="content">
+          <ul></ul>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+    <!-- Select Tags Category Blogs -->
+    <button (click)="updateBlog()"  *ngIf="!processingSave" class="button-5" role="button">Update Blog</button>
+    <p-button *ngIf="processingSave" severity="warning" loading label="Saving" raised/>
+    </form>
+ 
+</p-dialog>
+
+
+
+
+<p-dialog [modal]="true" [header]="'Delete Blog'+blogCategoryTitle" [(visible)]="deleteDestination">
+  <mat-card>
+    <mat-card-title>Are you sure you wish to delete {{blogCategoryTitle}} </mat-card-title>
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        style="background-color: green"
+        (click)="actualizedeleteDestination()"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+<p-dialog
+  [modal]="true"
+  header="Publish Destination"
+  [(visible)]="publishDestination"
+>
+  <mat-card>
+    <mat-card-title>Are you sure you wish to Publish </mat-card-title>
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        (click)="actualizepublishDestination()"
+        style="background-color: green"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+<p-dialog
+  [modal]="true"
+  header="UnPublish Destination"
+  [(visible)]="unpublishDestination"
+>
+  <mat-card>
+    <mat-card-title>Are you sure you wish to Un- Publish </mat-card-title>
+    <mat-card-actions align="end">
+      <button
+        mat-icon-button
+        (click)="actualizeUn_publishDestination()"
+        style="background-color: green"
+      >
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button style="background-color: red">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</p-dialog>
+
+<p-dialog
+  [style]="{ height: '260px' }"
+  [(visible)]="showAdjuststatus"
+  header="Are you ready to change status"
+>
+  <div>
+    <p-dropdown
+      [options]="allowedStatus"
+      placeholder="Choose a status"
+      [style]="{ width: '100%', height: 'fit-content' }"
+      showClear="true"
+      (onChange)="getStatus($event)"
+    />
+    <button
+      (click)="popConfirm($event)"
+      class="btn"
+      *ngIf="!adjusting"
+      mat-flat-button
+    >
+      Adjust
+    </button>
+    <p-button loading="adjusting" *ngIf="adjusting" label="adjusting status" />
+  </div>
+</p-dialog>
+<p-confirmPopup />
+<p-toast />

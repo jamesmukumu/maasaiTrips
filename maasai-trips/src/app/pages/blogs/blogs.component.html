@@ -1,0 +1,53 @@
+<header></header>
+
+<mat-card >
+   
+
+    <div class="safaris" [@bounceRight]="bgState" #bg>
+        <h1>Enjoy the latest maasai mara updates</h1>
+       </div>
+       
+       <div *ngIf="!processingBlogs">
+        <h2>Tour Blog Posts</h2>
+       <div class="divider-container">
+        <div class="divider"></div>
+        <div class="circle"></div>
+        <div class="divider"></div>
+      </div>
+       <h3>Tips to enjoy your holidays with distinctive experience</h3>
+       <div class="container"  *ngFor="let blogs of blogData">
+   <div> 
+    <img [src]="blogs.blogThumbnail" alt="">
+    </div>
+    <div>
+        <h1>{{blogs.blogTitle}}</h1>
+        <span>Author:<b>{{blogs.creator_blog.userName}}</b></span>
+        <span>posted on:<b>{{formatCreationDay(blogs.created_at)}}</b></span>
+        <p [innerHTML]="sanitize(blogs.blogContent)">
+
+        </p>
+        <button class="button-5" role="button">Read Blog</button>
+        </div>
+       </div>
+       </div>
+       <div class="spinner" *ngIf="processingBlogs">
+        <div  class="loader"></div>
+    </div>
+  <footer></footer>     
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

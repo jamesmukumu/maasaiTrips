@@ -5,6 +5,8 @@
     url="https://www.primefaces.org/cdn/api/upload.php"
     mode="basic"
     accept=".csv"
+    (onUpload)="uploadCSV()"
+    (onSelect)="captureEmailTemplateCSV($event)"
     chooseLabel="Choose Email-Templates CSV file"
     [style]="{ 'background-color': 'green' }"
     maxFileSize="1000000"

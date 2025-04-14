@@ -363,6 +363,7 @@ class HotelsController extends Controller implements HotelInterface
                 ]);
         
             } catch (\Exception $err) {
+                Log::error($err->getMessage());
                 return response()->json([
                     "message" => "Something went wrong"
                 ], 500);

@@ -34,6 +34,11 @@ Route::put("/unmake/super/user",[OlankaUsersController::class,"unmakeSuperUser"]
 Route::delete("/delete/admin",[OlankaUsersController::class,"deleteAdmins"]);
 Route::put("/update/admin",[OlankaUsersController::class,"updateAdmin"]);
 
+
+
+// Blog Admin Api`s Go here
+Route::patch("/adjust/blog/status",[BlogsController::class,"adjustBlogStatus"]);
+
 });
 
 
@@ -63,6 +68,8 @@ Route::get("/fetch/my/newsletters",[NewsLettersController::class,'fetchMyTemplat
 Route::delete("/delete/news/letter",[NewsLettersController::class,'deleteNewsLetterTemplateMail']);
 Route::post("/save/alerts/newsLetter",[NewsLetterAlert::class,'saveNewsLetterAlert']);
 Route::post("/sync/bulks",[BulkMailControllers::class,"syncWithHotelMails"]);
+Route::post("/save/mail/templates/csv",[MailerController::class,"saveMails_CSV"]);
+
 
 
 // Protected user Routes
@@ -110,7 +117,7 @@ Route::get("/fetch/my/hotels",[HotelsController::class,"fetchMyHotels"]);
 Route::put("/unpublish/hotel",[HotelsController::class,'unpublishHotel']);
 Route::get("/fetch/all/hotels",[HotelsController::class,"fetchAllHotels"]);
 Route::post("/save/hotels/from/csv",[HotelsController::class,"promotional_newsletters_Csv"]);
-
+Route::post("/save/hotels/csv",[HotelsController::class,"save_Hotels_From_Csv"]);
 
 
 
@@ -151,19 +158,31 @@ Route::post("/save/package/csv",[PackageController::class,'PackagesFromCsv']);
 
 
 // Blog Api`s go here
+Route::post("/create/new/blog",[BlogsController::class,"addBlog"]);
+Route::post("/update/blog",[BlogsController::class,"updateBlog"]);
+Route::delete('/delete/blog',[BlogsController::class,"deleteBlog"]);
+Route::patch("/publish/blog",[BlogsController::class,"publishBlog"]);
+Route::patch('/unpublish/blog',[BlogsController::class,"unpublishBlog"]);
+
+
+
+
+Route::get("/fetch/my/blogs",[BlogsController::class,'fetchMyBlogs']);
+
+
+
+
+
 
 
 
 
 // Blog Category Api here
 Route::post("/create/new/blog/category",[BlogCategories::class,"addBlogCategory"]);
-
+Route::get("/fetch/blog/categories",[BlogCategories::class,"fetchBlogCategories"]);
 
 });
 
-
-
-Route::post("/create/new/blog",[BlogsController::class,"addBlog"]);
 
 
 
@@ -189,3 +208,8 @@ Route::get("/fetch/destinations",[DestinationController::class,"findAllDestinati
 
 Route::get("/fetch/display/packages",[PackageController::class,'fetchDisplayPackages']);//route for finding all packages to showcase
 Route::get("/fetch/singular/package",[PackageController::class,'findSingularPackage']);//single package route
+
+
+// Unprotected Blogs Apis
+Route::get("/fetch/display/blogs",[BlogsController::class,'fetchBlogsDisplay']);
+

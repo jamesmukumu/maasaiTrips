@@ -1,0 +1,23 @@
+<mat-card>
+<h1>Add New Blog Category</h1>
+<form>
+<mat-form-field>
+<mat-label>Enter Blog Category Name:</mat-label>
+<input #title="ngModel" required type="text" name="blog-category-name" matInput [(ngModel)]="blogCategoryName">
+<mat-hint>Example:Blogs For Amboseli Nat Park</mat-hint>
+<mat-error *ngIf="title.touched && title.invalid">
+Provide a category name
+</mat-error>
+</mat-form-field>
+<div>
+<label for="blog-description-category"></label>
+<p-editor (onTextChange)="captureBlogDescription($event)" [style]="{'min-height':'275px'}"  name="blog-description-category" placeholder="Enter Description for this blog category"/>
+</div>
+<button (click)="savingBlogCategory()" *ngIf="!processing" class="button-5" role="button">Save Category</button>
+<p-button *ngIf="processing" severity="warning" loading label="Saving Category"/>
+</form>
+
+
+</mat-card>
+
+<p-toast/>

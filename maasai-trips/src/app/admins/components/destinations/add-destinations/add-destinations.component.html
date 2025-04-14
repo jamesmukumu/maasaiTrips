@@ -8,6 +8,8 @@
     chooseLabel="Choose Destinations csv file"
     [style]="{ 'background-color': 'green' }"
     maxFileSize="1000000"
+    (onSelect)="getDestinationsCSV($event)"
+    (onUpload)="uploadCSV()"
   >
   </p-fileUpload>
 

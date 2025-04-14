@@ -1,8 +1,8 @@
-<h3>Manage My Packages</h3>
+<h1>Manage My Packages</h1>
 
-<mat-form-field appearance="outline">
+<mat-form-field appearance="outline" *ngIf="packageDataPresent">
   <mat-label>Search any Package</mat-label>
-  <input
+  <input 
     type="text"
     matInput
     name="filter-search"
@@ -14,7 +14,7 @@
 
 <table
   mat-table
-  *ngIf="!processing"
+  *ngIf="!processing && packageDataPresent"
   [dataSource]="dataSource"
   class="large-table"
 >
@@ -202,6 +202,7 @@
 </table>
 
 <mat-paginator
+*ngIf="packageDataPresent"
   [pageSizeOptions]="[5, 10, 20, 50, 100]"
   showFirstLastButtons
   aria-label="Select page of periodic elements"
@@ -580,3 +581,6 @@
 </p-dialog>
 <p-confirmPopup />
 <p-toast />
+
+
+<empty-data *ngIf="!packageDataPresent && !processing" [emptyMesage]="'No Packages have been added'"></empty-data>

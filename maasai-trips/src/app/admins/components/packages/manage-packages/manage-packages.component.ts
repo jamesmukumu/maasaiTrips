@@ -82,6 +82,7 @@ adjusting = false
   unpublishDestination = false;
   idSelected: any;
   dataSourceSmall: any;
+  packageDataPresent = false
 
   formatDate(dateTime: any) {
     return new Date(dateTime).toDateString();
@@ -146,11 +147,18 @@ adjusting = false
     this.processing = true;
     try {
       var { data, message } = await this.packages.fetchMyPackages();
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSourceSmall = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSourceSmall.paginator = this.paginator;
-      this.processing = false;
+      if(data.length == 0){
+      this.processing = false
+      this.packageDataPresent = false
+      }else{
+        this.dataSource = new MatTableDataSource(data);
+        this.dataSourceSmall = new MatTableDataSource(data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSourceSmall.paginator = this.paginator;
+        this.processing = false;
+        this.packageDataPresent = true
+      }
+   
     } catch (err) {
       console.error(err);
     }

@@ -27,11 +27,26 @@ processing = false
 destinationsData:any[] = []
 Destinations:any
 fetchingDestinations = false
+hotelsCSVFile:any
 
 
 captureDescriptionHotel(event:any){
 var {args} = event
 this.hotelDescription = args[0]
+}
+
+uploadHotels(){
+this.hotels.addHotelsCSV(this.hotelsCSVFile).then((data)=>{
+if(data.message == 'Hotels Saved'){
+this.snack.open("Hotels Added","Success")
+}else{
+this.snack.open("Something Went Wrong")
+}
+})
+}
+
+captureHotelCSVFile(event:any){
+this.hotelsCSVFile = event.currentFiles[0]
 }
 
 captureMetaDescriptionHotel(event:any){ 

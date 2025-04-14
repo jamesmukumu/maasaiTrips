@@ -15,29 +15,30 @@ public function validator(Request $request);
 
 class BlogCategories extends Controller implements BlogCategoriesInterface{
 
-public function validator(Request $request){
-try{
-$header = $request->header("Authorization");
-$token = substr($header,7);
-if(!$header || !$token){
-throw new \Exception("Unauthorized",401);
-}
-$payload = JWTAuth::setToken($request)->getPayload();
-return $payload["sub"];
-}catch(\Exception $err){
-Log::error($err->getMessage());
-}
-
-}
-
+    public function validator(Request $request)
+    {
+        try {
+            $tokenHeader = $request->header("Authorization");
+            $actualToken = substr($tokenHeader, 7);
+            Log::info($actualToken);
+            if (!$tokenHeader || !$actualToken) {
+                throw new \Exception("Unauthorized", 401);
+            }
+            $payload = JWTAuth::setToken($actualToken)->getPayload();
+            return $payload["sub"];
+        } catch (\Exception $err) {
+            throw new \Exception($err->getMessage(), 500);
+        }
+    }
 
 public function addBlogCategory(Request $request){
 try{
 $validatedRequest = $request->validate([
 "blogCategoryTitle"=>"required|unique:blog_categories,blogCategoryTitle",
-"blogCategoryDescription"=>"required|min:50"
+"blogCategoryDescription"=>"required"
 ]);
-$validatedRequest['olanka_users_id'] = $this->validator($request);
+$user_id=  $this->validator($request);
+$validatedRequest['olanka_users_id'] = $user_id;
 $validatedRequest["blogCategorySlug"] = Str::slug($validatedRequest["blogCategoryTitle"]);
 BlogCategory::create($validatedRequest);
 return response()->json([
@@ -48,10 +49,17 @@ Log::error($err->getMessage());
 }catch(ValidationException $errValidation){
 Log::error($errValidation->getMessage());
 }
-
-
 }
 
+
+public function fetchBlogCategories(Request $request){
+try{
+$blogCategories = BlogCategory::all()->select(["id","blogCategoryTitle"]);
+return response($blogCategories);
+}catch(\Exception $err){
+Log::error($err->getMessage());
+}
+}
 
 
 

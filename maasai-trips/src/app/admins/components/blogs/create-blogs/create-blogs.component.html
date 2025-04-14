@@ -1,15 +1,28 @@
-<mat-card>
+<mat-card *ngIf="!processingCategories">
 <form>
 <h1>Create A New Blog</h1>
-<button class="button-5" role="button">Create Blog Category</button>
+<button class="button-5" role="button" (click)="actualizeAdd()">Create Blog Category</button>
 <mat-form-field>
  <mat-label>Enter a title for the blog</mat-label>   
- <input type="text" name="blog-title" required matInput >
+ <input type="text" name="blog-title" required matInput [(ngModel)]="blogCategoryTitle" >
  <mat-hint>Example:Blog Post for 3 day Lake Nakuru Expeditions</mat-hint>
 </mat-form-field>
+<mat-form-field>
+<mat-label>Choose a Blog Category:</mat-label>
+<mat-select required [(value)]="choosenCategory" >
+<mat-option [value]="blogCategory.id"   *ngFor="let blogCategory of categories">
+{{blogCategory.blogCategoryTitle}}
+</mat-option>
+</mat-select>
+<mat-error>
+Each Blog Should have a category
+</mat-error>
+
+</mat-form-field>
+
 <div>
 <label>Enter Blog Description:</label>
-<jodit-editor></jodit-editor>
+<jodit-editor  (onChange)="captureBlogContent($event)"></jodit-editor>
 </div>
 <div>
     <label>Choose a thumbnail:</label>
@@ -19,6 +32,7 @@
     [multiple]="false"
     accept="image/*"
     maxFileSize="100000000000"
+    (onSelect)="captureThumbnails($event)"
    
   >
     <ng-template pTemplate="content">
@@ -27,7 +41,15 @@
   </p-fileUpload>
 </div>
 <!-- Select Tags Category Blogs -->
-<button class="button-5" role="button">Create Blog</button>
+<button  (click)="saveBlog()" *ngIf="!processingSave" class="button-5" role="button">Create Blog</button>
+<p-button *ngIf="processingSave" severity="warning" loading label="Saving" raised/>
 </form>
-
 </mat-card>
+
+
+
+<p-progressSpinner *ngIf="processingCategories"/>
+
+<p-dialog header="Add New Blog Category" [(visible)]="addBlogCategory">
+<add-blog-category></add-blog-category>
+</p-dialog>

@@ -8,6 +8,8 @@
   chooseLabel="Choose Hotels csv file"
   [style]="{ 'background-color': 'green' }"
   maxFileSize="1000000"
+  (onSelect)="captureHotelCSVFile($event)"
+  (onUpload)="uploadHotels()"
 >
 </p-fileUpload>
   <form>

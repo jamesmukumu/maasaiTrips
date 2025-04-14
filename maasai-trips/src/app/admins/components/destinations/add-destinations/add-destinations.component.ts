@@ -19,8 +19,22 @@ destinationAbout = ''
 destinationDescription:string = ''
 Thumbnail:any
 processing = false
+destinationsCSV:any
 
 
+getDestinationsCSV(event:any){
+this.destinationsCSV = event.currentFiles[0]
+}
+uploadCSV(){
+this.hotels.addDestinationsCSV(this.destinationsCSV).then((data)=>{
+var {message} = data
+if(message == 'Destinations Saved'){
+this.snack.open("Destinations Saved","Success")
+}else{
+  
+}
+})
+}
 
 captureDestinationAbout(event:any){
 var {args} = event

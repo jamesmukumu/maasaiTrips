@@ -23,6 +23,7 @@ class DestinationController extends Controller implements DestinationsInterface{
         try {
             $tokenHeader = $request->header("Authorization");
             $actualToken = substr($tokenHeader, 7);
+            Log::info($actualToken);
             if (!$tokenHeader || !$actualToken) {
                 throw new \Exception("Unauthorized", 401);
             }
