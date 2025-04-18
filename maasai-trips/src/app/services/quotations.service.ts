@@ -24,7 +24,7 @@ export class QuotationsService {
   async saveQuotation(Quote: Quotations) {
     try {
       var resp = await axios.post(
-        'http://localhost:8000/api/save/quote',
+        'https://maasaitrips-2.onrender.com/api/save/quote',
         Quote
       );
       return resp.data;
@@ -36,7 +36,7 @@ export class QuotationsService {
   async updateEnquiry(Payload: Quotations) {
     try {
       var resp = await axios.put(
-        'http://localhost:8000/api/update/enquiry',
+        'https://maasaitrips-2.onrender.com/api/update/enquiry',
         Payload
       );
       return resp.data;
@@ -48,7 +48,7 @@ export class QuotationsService {
   async deleteEnquiry(email: string) {
     try {
       var resp = await axios.delete(
-        'http://localhost:8000/api/delete/enquiry',
+        'https://maasaitrips-2.onrender.com/api/delete/enquiry',
         {
           params: {
             email: email,
@@ -65,11 +65,14 @@ export class QuotationsService {
   async fetchQuotations() {
     try {
       var token = Cookies.get('grant_token');
-      var resp = await axios.get('http://localhost:8000/api/fetch/enquiries', {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      var resp = await axios.get(
+        'https://maasaitrips-2.onrender.com/api/fetch/enquiries',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       return resp.data;
     } catch (err) {
       console.error(err);
