@@ -164,8 +164,10 @@ try{
 $validatedRequest = $request->validate([
 "blogSlug"=>"required|exists:blogs,blogSlug"
 ]);
-$relevantBlog = Blogs::where("blogSlug",$validatedRequest['blogSlug'])->get()[0];
-$relevantblogs = Blogs::where("blogSlug","!=",$validatedRequest['blogSlug'])->limit(6)->get()->shuffle();
+$blogSlug = $request->query('blogSlug');
+
+$relevantBlog = Blogs::where("blogSlug",$blogSlug)->with(['creatorBlog'])->get()[0];
+$relevantblogs = Blogs::with(['creatorBlog'])->where("blogSlug","!=",$blogSlug)->limit(6)->get()->shuffle();
 return response()->json([
 "message"=>"Blog Fetched",
 "blogData"=>$relevantBlog,
@@ -174,6 +176,7 @@ return response()->json([
 }catch(\Exception $err){
 Log::error($err->getMessage());
 return response()->json([
+"message"=>$err->getMessage()
 ]);
 }}
 
@@ -231,10 +234,7 @@ public function unpublishBlog(Request $request){
 
 
 
-
-
-
-    public function adjustBlogStatus(Request $request){
+public function adjustBlogStatus(Request $request){
     try{
    $validatedRequest =  $request->validate([
     "id"=>"required|exists:blogs,id",
@@ -260,6 +260,13 @@ return response()->json([
 ],500);
 }
 }
+
+
+
+
+
+
+
 
 
 

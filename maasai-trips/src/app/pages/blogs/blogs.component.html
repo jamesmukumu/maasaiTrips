@@ -26,7 +26,7 @@
         <p [innerHTML]="sanitize(blogs.blogContent)">
 
         </p>
-        <button class="button-5" role="button">Read Blog</button>
+        <button class="button-5" role="button" (click)="goBlog(blogs.blogSlug)">Read Blog</button>
         </div>
        </div>
        </div>

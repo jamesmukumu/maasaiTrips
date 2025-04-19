@@ -28,7 +28,7 @@ export class EmailsSendComponent implements OnInit {
   fetchEmails() {
     this.fetchingEmails = true;
     this.mailer
-      .fetchBulks('http://localhost:8000/api/fetch/bulk/emails')
+      .fetchBulks('https://maasaitrips-2.onrender.com/api/fetch/bulk/emails')
       .then((data: any) => {
         this.bulkEmails = data.data;
         this.fetchingEmails = false;

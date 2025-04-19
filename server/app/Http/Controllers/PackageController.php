@@ -332,7 +332,7 @@ Log::error($err->getMessage());
             ], 500);
         }
     }
-
+// 
 
     public function deletePackage(Request $request)
     {

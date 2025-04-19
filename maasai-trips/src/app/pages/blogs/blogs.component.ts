@@ -34,6 +34,9 @@ export class BlogsComponent implements AfterViewInit {
 formatCreationDay(time:string){
 return new Date(time).toLocaleString()
 }
+goBlog(baseUrl:string){
+window.open(`/blog/${baseUrl}`,'_blank')
+}
   bgBounce(){
     var observer = new IntersectionObserver((entries)=>{
     entries.map((entry)=>{

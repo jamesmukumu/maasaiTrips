@@ -171,4 +171,15 @@ export class BlogsService {
       return err;
     }
   }
+
+  async fetchSingularBlog(blogSlug: string) {
+    try {
+      var response = await axios.get(
+        `${this.baseUrl}/fetch/singular/blog?blogSlug=${blogSlug}`
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
 }

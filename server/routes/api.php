@@ -212,4 +212,4 @@ Route::get("/fetch/singular/package",[PackageController::class,'findSingularPack
 
 // Unprotected Blogs Apis
 Route::get("/fetch/display/blogs",[BlogsController::class,'fetchBlogsDisplay']);
-
+Route::get('/fetch/singular/blog',[BlogsController::class,"fetchSingularBlog"]);

@@ -1,0 +1,177 @@
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+.waiting{
+min-height: 100vh;
+width: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    padding: 1rem;
+    max-width: 900px;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    background-color: white;
+  }
+  
+.container img {
+    width: 100%;
+    max-width: 700px;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  /* From Uiverse.io by vinodjangid07 */ 
+.card {
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+  }
+  
+  /* for all social containers*/
+  .socialContainer {
+    width: 52px;
+    height: 52px;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: .3s;
+  }
+  /* instagram*/
+  .containerOne:hover {
+    background-color: #d62976;
+    transition-duration: .3s;
+  }
+  /* twitter*/
+  .containerTwo:hover {
+    background-color: #00acee;
+    transition-duration: .3s;
+  }
+  /* linkdin*/
+  .containerThree:hover {
+    background-color: #0072b1;
+    transition-duration: .3s;
+  }
+  /* Whatsapp*/
+  .containerFour:hover {
+    background-color: #128C7E;
+    transition-duration: .3s;
+  }
+  
+  .socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: .3s;
+  }
+  
+  .socialSvg {
+    width: 17px;
+  }
+  
+  .socialSvg path {
+    fill: rgb(255, 255, 255);
+  }
+  
+  .socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+  }
+  
+  @keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  span,b,p{
+    padding: 5px;
+    margin-top: 10px;
+    }
+  
+ 
+/* From Uiverse.io by doniaskima */ 
+/* HTML: <div class="loader"></div> */
+.loader {
+    --c1: #673b14;
+    --c2: #f8b13b;
+    width: 70px;
+    height: 200px;
+    border-top: 4px solid var(--c1);
+    border-bottom: 4px solid var(--c1);
+    background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;
+    display: grid;
+    overflow: hidden;
+    animation: l5-0 2s infinite linear;
+  }
+  
+  .loader::before,
+  .loader::after {
+    content: "";
+    grid-area: 1/1;
+    width: 75%;
+    height: calc(50% - 4px);
+    margin: 0 auto;
+    border: 2px solid var(--c1);
+    border-top: 0;
+    box-sizing: content-box;
+    border-radius: 0 0 40% 40%;
+    -webkit-mask: linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    background: linear-gradient(var(--d,0deg),var(--c2) 50%,#0000 0) bottom /100% 205%,
+      linear-gradient(var(--c2) 0 0) center/0 100%;
+    background-repeat: no-repeat;
+    animation: inherit;
+    animation-name: l5-1;
+  }
+  
+  .loader::after {
+    transform-origin: 50% calc(100% + 2px);
+    transform: scaleY(-1);
+    --s: 3px;
+    --d: 180deg;
+  }
+  
+  @keyframes l5-0 {
+    80% {
+      transform: rotate(0)
+    }
+  
+    100% {
+      transform: rotate(0.5turn)
+    }
+  }
+  
+  @keyframes l5-1 {
+    10%,70% {
+      background-size: 100% 205%,var(--s,0) 100%
+    }
+  
+    70%,100% {
+      background-position: top,center
+    }
+  }
+  
