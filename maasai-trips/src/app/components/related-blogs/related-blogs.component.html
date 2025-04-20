@@ -1,0 +1,15 @@
+<h1>Blogs We think You will also Like.</h1>
+<div class="container"  *ngFor="let blogs of relatedBlogs">
+    <div> 
+     <img [src]="blogs.blogThumbnail" alt="">
+     </div>
+     <div>
+         <h1>{{blogs.blogTitle}}</h1>
+         <span>Author:<b>{{blogs.creator_blog.userName}}</b></span>
+         <span>posted on:<b>{{formatCreationDay(blogs.created_at)}}</b></span>
+         <p [innerHTML]="sanitize(blogs.blogContent)">
+ 
+         </p>
+         <button class="button-5" role="button" (click)="goBlog(blogs.blogSlug)">Read Blog</button>
+         </div>
+        </div>

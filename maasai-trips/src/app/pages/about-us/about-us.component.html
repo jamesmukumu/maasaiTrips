@@ -1,0 +1,793 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Our Journey</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        
+        :root {
+            --primary-color: #e88b22;
+            --secondary-color: #e88b22;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --gray-color: #6b7280;
+            --light-gray: #e5e7eb;
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: #ffffff;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--dark-color);
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-family: 'Pacifico', serif;
+            font-size: 28px;
+            color: var(--primary-color);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            padding: 8px 0;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: 500px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('https://www.masaimara.travel/images/game-drives-entim-main-camp-masai-mara.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* History Timeline Section */
+        .history {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: #e88b22;
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--gray-color);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--light-gray);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            border-left: 4px solid #e88b22;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            border-right: 4px solid #e88b22;
+        }
+        
+        .timeline-year {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #e88b22;
+            border-radius: 50%;
+            top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -30px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -30px;
+            background-color: #e88b22;
+        }
+        
+        .timeline-content h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .timeline-content p {
+            color: var(--gray-color);
+        }
+        
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-icon {
+            color: var(--secondary-color);
+        }
+        
+        /* Mission & Vision Section */
+        .mission-vision {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+        
+        .mission-vision-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .mission, .vision {
+            flex: 1;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .mission-vision-icon {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(74, 108, 247, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 30px;
+        }
+        
+        .vision .mission-vision-icon {
+            background-color: rgba(249, 115, 22, 0.1);
+            color: var(--secondary-color);
+        }
+        
+        .mission h3, .vision h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 100px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .team-member {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 30px auto 20px;
+            border: 5px solid var(--light-color);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info {
+            padding: 0 20px 30px;
+        }
+        
+        .member-info h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .member-info p {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--light-color);
+            border-radius: 50%;
+            color: var(--gray-color);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .mission-vision-container {
+                flex-direction: column;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-year {
+                left: 0 !important;
+                right: auto !important;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .header-container {
+                padding: 15px 0;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: #ffffff;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 20px;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+            header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+            .hero{
+            margin-top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+ 
+    </header>
+    
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Safari Journey</h1>
+            <p>Since  2025 April,Maasai Trips has been here to serve both local and international tourists to remarkable journey`s not only to the Mara but over and beyond</p>
+        </div>
+    </section>
+
+    <!-- History Timeline Section -->
+    <section class="history">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Journey</h2>
+                <p>From humble beginnings to the tourism industry , explore the key milestones that have shaped our company's evolution </p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-flag-line"></i>
+                        </div>
+                        <h3>The Beginning</h3>
+                        <p>Founded by James Wilson and Emily Chen in a small office in San Francisco with just 3 employees and a vision to revolutionize the industry with innovative solutions.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2008</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-award-line"></i>
+                        </div>
+                        <h3>First Major Client</h3>
+                        <p>Secured our first enterprise client, Horizon Technologies, which helped establish our reputation for delivering exceptional quality and service in the industry.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2012</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-building-line"></i>
+                        </div>
+                        <h3>Expansion Phase</h3>
+                        <p>Opened our second office in New York and expanded our team to 50 employees. Launched our flagship product that would go on to win multiple industry awards.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2016</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-global-line"></i>
+                        </div>
+                        <h3>International Growth</h3>
+                        <p>Established our first international presence with offices in London and Singapore. Reached the milestone of serving over 500 clients across 20 countries.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-rocket-line"></i>
+                        </div>
+                        <h3>Digital Transformation</h3>
+                        <p>Successfully pivoted to remote-first operations during the global pandemic. Launched our cloud-based platform that helped clients navigate challenging times.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="ri-heart-line"></i>
+                        </div>
+                        <h3>Today</h3>
+                        <p>Now a team of 200+ professionals serving over 1,000 clients globally. Recognized as an industry leader with a commitment to innovation, sustainability, and excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mission & Vision</h2>
+                <p>The core principles that guide our work and shape our future aspirations.</p>
+            </div>
+            
+            <div class="mission-vision-container">
+                <div class="mission">
+                    <div class="mission-vision-icon">
+                        <i class="ri-focus-3-line"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To empower businesses through innovative solutions that drive growth, efficiency, and competitive advantage. We are committed to delivering exceptional value through technology, expertise, and unwavering customer focus.</p>
+                </div>
+                
+                <div class="vision">
+                    <div class="mission-vision-icon">
+                        <i class="ri-eye-line"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the global leader in transformative business solutions, recognized for our innovation, integrity, and impact. We aspire to create a future where technology enhances human potential and contributes to a more sustainable world.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Leadership Team</h2>
+                <p>Meet the talented individuals who drive our success and embody our values every day.</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1745159277/WhatsApp_Image_2025-04-20_at_4.45.52_PM_rqzyso.jpg" alt="Leah Mukumu">
+                    </div>
+                    <div class="member-info">
+                        <h3>Leah Mukumu</h3>
+                        <p>Co-Founder & CEO</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-mail-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1745159276/WhatsApp_Image_2025-04-20_at_4.13.50_PM_rd3wyc.jpg" alt="James Mukumu">
+                    </div>
+                    <div class="member-info">
+                        <h3>James Mukumu</h3>
+                        <p>Chief Software Developer</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-mail-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1745159277/WhatsApp_Image_2025-04-20_at_5.23.55_PM_uktm7k.jpg" alt="Michael Johnson">
+                    </div>
+                    <div class="member-info">
+                        <h3>Phyllis Mithamo</h3>
+                        <p>Chief Operations Officer</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-mail-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1745159277/WhatsApp_Image_2025-04-20_at_4.46.43_PM_vu0x9b.jpg" alt="Sophia Rodriguez">
+                    </div>
+                    <div class="member-info">
+                        <h3>Irene Mukumu</h3>
+                        <p>Chief Marketing Officer</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="ri-linkedin-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="social-link"><i class="ri-mail-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="#" class="logo" style="color: #ffffff;">logo</a>
+                    <p style="margin-top: 20px; color: #d1d5db;">Empowering businesses through innovative solutions since 2005. We're committed to excellence, integrity, and customer success.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="footer-contact">
+                        <p><i class="ri-map-pin-line"></i> 123 Innovation Drive, San Francisco, CA 94103</p>
+                        <p><i class="ri-phone-line"></i> +1 (555) 123-4567</p>
+                        <p><i class="ri-mail-line"></i> infocompanyname.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Company Name. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            mobileToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    mobileToggle.innerHTML = '<i class="ri-close-line"></i>';
+                } else {
+                    mobileToggle.innerHTML = '<i class="ri-menu-line"></i>';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
