@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
   providedIn: 'root',
 })
 export class BlogsService {
-  baseUrl = 'https://maasaitrips-2.onrender.com/api';
+  baseUrl = 'http://localhost:8000/api';
   constructor() {}
 
   async createBlogCategory(blogCategory: any) {

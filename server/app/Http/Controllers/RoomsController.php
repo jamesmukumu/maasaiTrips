@@ -55,7 +55,9 @@ class RoomsController extends Controller implements RoomsInterface{
         foreach($request->all() as $key => $value){
         if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-9])$/", $key)){
         
-        $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+        $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath(),[
+        'folder'=>'Maasai Mara Trips Rooms'
+        ]);
         $roomsImages[] = $imageUrl["url"];
         }
         }
@@ -101,7 +103,9 @@ class RoomsController extends Controller implements RoomsInterface{
             $cld = new Cloudinary();
             foreach($request->all() as $key => $value){
             if($request->hasFile($key) && preg_match("/^room([A-Za-z]*)([1-9])$/", $key)){
-            $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+            $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath(),[
+            'folder'=>'Maasai Mara Trips Rooms'
+            ]);
             $roomsImages[] = $imageUrl["url"];
             }
             }

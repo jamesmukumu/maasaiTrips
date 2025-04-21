@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ElementRef,ViewChild,AfterViewInit } from '@angular/core';
 import { Hotel,HotelsService } from '../../services/hotels.service';
 import { Router } from '@angular/router';
 import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
@@ -8,19 +8,16 @@ import { trigger,transition,keyframes,style,animate } from '@angular/animations'
   selector: 'destinations',
   templateUrl: './destinations.component.html',
   styleUrl: './destinations.component.css',
-  animations: [
-    trigger("bounceLeft", [
-      transition("* =>*", [
+  animations:[
+    trigger('bounceRight', [
+      transition('clear => visible', [
         style({
           opacity: 1,
-          transform: "translateY(-45px)",
+          transform: 'translateX(-48px)',
         }),
         animate(
-          "2s ease-in-out",
-          keyframes([
-            
-            style({ offset: 1, opacity: 1, transform: "translateY(0px)", easing: "ease-out" }),
-          ])
+          '1.55s ease-in-out',
+          style({ transform: 'translateX(0px)', opacity: 1 })
         ),
       ]),
     ]),
@@ -28,7 +25,9 @@ import { trigger,transition,keyframes,style,animate } from '@angular/animations'
 
   
 })
-export class DestinationsComponent implements OnInit {
+export class DestinationsComponent implements AfterViewInit {
+  @ViewChild('bg') bgRef!: ElementRef;
+  bgState: string = 'clear';
 destinations:any[] = []
 findingDestinations = false
 constructor(private titlePage:Title,private hotel:HotelsService,private router:Router,private sanitizer:DomSanitizer){}
@@ -50,7 +49,18 @@ console.error(err)
 }
 }
 
-
+bgBounce() {
+  var observer = new IntersectionObserver((entries) => {
+    entries.map((entry) => {
+      if (entry.isIntersecting) {
+        this.bgState = 'visible';
+      } else {
+        this.bgState = 'clear';
+      }
+    });
+  });
+  observer.observe(this.bgRef.nativeElement);
+}
 
 
 ngOnInit(){
@@ -58,4 +68,7 @@ this.fetchDestinations()
 this.titlePage.setTitle("Explore scenic destinations | Maasai Mara Trips")
 }
 
+ngAfterViewInit(){
+this.bgBounce()
+}
 }

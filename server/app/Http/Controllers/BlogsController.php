@@ -55,6 +55,7 @@ return response()->json([
 ]);
 }else{
 $cld = new Cloudinary();
+// 
 $uploadResultBlog = $cld->uploadApi()->upload(
     $request->file("thumbnail")->getRealPath(), [
         "folder" => "blogs",

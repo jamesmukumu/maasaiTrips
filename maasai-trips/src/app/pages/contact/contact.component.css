@@ -1,42 +1,172 @@
-.divider-container {
+
+  
+  .safari-bg {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(https://www.masaimara.travel/images/best-african-elephant-photo-masai-mara.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+  }
+  
+  .contact-card {
+    max-width: 1200px;
     width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    .contact-container {
+      flex-direction: row;
+    }
+  }
+  
+  .contact-info {
+    background-color: #8B5A2B;
+    color: #ffffff;
+    padding: 2rem;
+    flex: 2;
+  }
+  
+  .contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-info p {
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+  
+  .info-block {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .info-block i {
+    font-size: 1.5rem;
+    margin-top: 0.3rem;
+  }
+  
+  .contact-form {
+    flex: 3;
+    padding: 2rem;
+    background-color: #fff;
+  }
+  
+  .contact-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid rgba(209, 213, 219, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #8B5A2B;
+    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
+    outline: none;
+  }
+  
+  .form-group.checkbox {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .form-group.checkbox label {
+    margin-left: 0.5rem;
+  }
+  
+  .submit-btn {
+    background-color: #8B5A2B;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+    width: 100%;
+  }
+  
+  .submit-btn:hover {
+    background-color: #7a4e25;
+  }
+  
+  .map-section {
+    width: 100%;
+    height: 400px;
     position: relative;
-}
-span{
-cursor: pointer;
-}
-.divider {
-    flex-grow: 1;
-    height: 2px;
-    background-color: #e88b22;
-}
-mat-card mat-card-content{
-height: max-content;
-}
-mat-card-footer{
-display: grid;
-grid-template-columns: repeat(4,1fr);
-place-content: center;
-}
-h1,p{
-text-align: center;
-}
-.circle {
-    width: 20px;
-    height: 20px;
-    background-color: transparent;
-    border: 2px solid #e88b22;
-    border-radius: 50%;
-    margin: 0 10px;
+    margin-top: 2rem;
+  }
+  
+  .map-overlay {
+    background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .map-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+  }
+  
+  .map-card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .map-card p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+  
+
+
+  @media(max-width:768px){
+.contact-card{
+width: 100vw;
 }
 
-@media(max-width:768px){
-    mat-card-footer{
-        display: grid;
-        grid-template-columns: repeat(1,1fr);
-        place-content: center;
-        }
-}
+  }

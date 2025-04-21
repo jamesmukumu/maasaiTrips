@@ -1,5 +1,7 @@
 <header></header>
-<img class="img-bg" src="../../../assets/destinations_bg.jpg" alt="destinations_bg">
+<div class="safaris"  [@bounceRight]="bgState" #bg>
+  <h1 style="color: white;">See many destinations which may interest you</h1>
+</div>
 <div class="main">
   <h1>Explore our stunning Safari destinations in Kenya</h1>
 <mat-card *ngIf="!findingDestinations">

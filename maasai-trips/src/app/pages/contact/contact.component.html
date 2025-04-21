@@ -1,62 +1,117 @@
 <header></header>
-<mat-card>
-  <mat-card-content>
-    <h1>Contact Us</h1>
-    <div class="divider-container">
-      <div class="divider"></div>
-      <div class="circle"></div>
-      <div class="divider"></div>
-    </div>
-    <p>
-      Book travel packages and enjoy your holidays with distinctive experience
-      from Maasai Mara Trips
-    </p>
-  </mat-card-content>
+  <div class="safari-bg">
+    <div class="contact-card">
+      <div class="contact-container">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2>Contact Us</h2>
+          <p>We're here to help with any questions about your safari adventure. Reach out to us using any of the following methods:</p>
 
-  <mat-card-footer>
-    <div>
-      <mat-list>
-        <mat-list-item>
-          <h2 matListItemTitle>Maasai Mara Trips</h2>
+          <div class="info-block">
+            <i class="ri-map-pin-line"></i>
+            <div>
+              <h3>Our Location</h3>
+              <p>123 Safari Drive<br>Nairobi, Kenya 00100</p>
+            </div>
+          </div>
 
-          <span matListItemLine>
-            Dedicated to bring wholesome memories
-          </span>
-        </mat-list-item>
-      </mat-list>
-    </div>
- 
-    <div>
-      <mat-list>
-        <mat-list-item>
-          <h2 matListItemTitle>Our Address</h2>
-          <span matListItemLine (click)="goMail()">maasaimaratrips&#64;sale.coke Nakuru Gralex Plaza, Kenya</span
->
-        </mat-list-item>
-      </mat-list>
-    </div>
+          <div class="info-block">
+            <i class="ri-phone-line"></i>
+            <div>
+              <h3>Phone Number</h3>
+              <p>+254 712 345 678</p>
+            </div>
+          </div>
 
-    <div> 
-      <mat-list>
-        <mat-list-item>
-          <h2 matListItemTitle>Our Contact Info:</h2>
-          <span matListItemLine (click)="goPhone()">Phone Number:+254759857032</span>
-          <span matListItemLine>Email Address:maasaitrips&#64;.com</span>
-        </mat-list-item>
-      </mat-list>
-    </div>
+          <div class="info-block">
+            <i class="ri-mail-line"></i>
+            <div>
+              <h3>Email Address</h3>
+              <p>infosafariadventures.com</p>
+            </div>
+          </div>
 
-    <div>
-      <mat-list>
-        <mat-list-item>
-          <h2 matListItemTitle>Social Handles:</h2>
-          <span matListItemLine>FaceBook://fb link</span>
-          <span matListItemLine>Instagram://insta link</span>
-          <span matListItemLine>Twitter://insta link</span>
-        </mat-list-item>
-      </mat-list>
+          <div class="info-block">
+            <i class="ri-time-line"></i>
+            <div>
+              <h3>Office Hours</h3>
+              <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 2:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form>
+            <div class="form-group">
+              <label for="firstName">First Name</label>
+              <input type="text" id="firstName" name="firstName" placeholder="John">
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Doe">
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="john.doe@example.com">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (234) 567-8900">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="" disabled selected>Select a subject</option>
+                <option value="booking">Safari Booking Inquiry</option>
+                <option value="custom">Custom Safari Package</option>
+                <option value="feedback">Feedback</option>
+                <option value="support">Customer Support</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Your Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Please provide details about your inquiry..."></textarea>
+            </div>
+            <div class="form-group checkbox">
+              <input type="checkbox" id="newsletter" name="newsletter">
+              <label for="newsletter">Subscribe to our newsletter for safari updates and special offers</label>
+            </div>
+            <button type="submit" class="submit-btn">Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
-  </mat-card-footer>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#E88B22" fill-opacity="1" d="M0,256L49.7,288L99.3,288L149,32L198.6,32L248.3,224L297.9,96L347.6,128L397.2,224L446.9,192L496.6,256L546.2,64L595.9,288L645.5,128L695.2,224L744.8,256L794.5,32L844.1,256L893.8,96L943.4,96L993.1,32L1042.8,288L1092.4,160L1142.1,224L1191.7,96L1241.4,256L1291,160L1340.7,288L1390.3,32L1440,32L1440,320L1390.3,320L1340.7,320L1291,320L1241.4,320L1191.7,320L1142.1,320L1092.4,320L1042.8,320L993.1,320L943.4,320L893.8,320L844.1,320L794.5,320L744.8,320L695.2,320L645.5,320L595.9,320L546.2,320L496.6,320L446.9,320L397.2,320L347.6,320L297.9,320L248.3,320L198.6,320L149,320L99.3,320L49.7,320L0,320Z"></path></svg>
-  <footer></footer>
-</mat-card>
+  </div>
+
+  <div class="map-section">
+    <google-map
+    class="map"
+    width="100%"
+    mapId="21e602fe038c55d3"
+    [center]="{
+      lat: -0.2986296267263081,
+      lng: 36.06202903707794
+    }"
+    [zoom]="10"
+  >
+    <map-marker
+      [position]="{
+        lat: -0.2986296267263081,
+        lng: 36.06202903707794
+      }"
+      title="Contact-Location"
+    >
+    </map-marker>
+  </google-map>
+  
+    <div class="map-card">
+      <h3>Safari Adventures Headquarters</h3>
+      <p>123 Safari Drive, Nairobi, Kenya 00100</p>
+      <button class="submit-btn">Get Directions</button>
+    </div>
+  
+  </div>
+<footer></footer>

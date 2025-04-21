@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
   providedIn: 'root',
 })
 export class PackagesService {
-  baseUrl: string = 'https://maasaitrips-2.onrender.com/api';
+  baseUrl: string = 'http://localhost:8000/api';
   constructor() {}
 
   async addPackage(Payload: any) {

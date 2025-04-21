@@ -127,6 +127,19 @@
 .no-spin{
 display: none;
 }
+.safaris {
+  background-image: url(https://www.masaimara.travel/images/gamedrive-sarova-mara%20camp.jpg);
+  background-position: center;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+}
 /* From Uiverse.io by doniaskima */ 
 /* HTML: <div class="loader"></div> */
 .loader {

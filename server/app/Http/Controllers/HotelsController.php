@@ -67,7 +67,9 @@ class HotelsController extends Controller implements HotelInterface
             }
             $validatedRequest["imagesHotel"] = json_encode($hotelImages);
             $validatedRequest["olanka_users_id"] = $user_id;
-            $thumbnail = $cld->uploadApi()->upload($request->file("thumbnail")->getRealPath());
+            $thumbnail = $cld->uploadApi()->upload($request->file("thumbnail")->getRealPath(),[
+            "folder"=>"Maasai Mara Trips Hotels"
+            ]);
             $validatedRequest["hotelThumbnail"] = $thumbnail["url"];
             HotelsModel::create($validatedRequest);
 
@@ -119,7 +121,9 @@ class HotelsController extends Controller implements HotelInterface
             foreach ($request->all() as $key => $value) {
                 if ($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9])$/", $key)) {
 
-                    $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+                    $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath(),[
+                    "folder"=>"Maasai mara trips hotels"
+                    ]);
                     $hotelImages[] = $imageUrl["url"];
                 }
             }

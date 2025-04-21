@@ -47,7 +47,9 @@ class DestinationController extends Controller implements DestinationsInterface{
         $cld = new Cloudinary();
         foreach($request->all() as $key => $value){
         if($request->hasFile($key) && preg_match("/^image([A-Za-z]*)([1-9])$/", $key)){
-        $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath());
+        $imageUrl = $cld->uploadApi()->upload($request->file($key)->getRealPath(),[
+        'folder'=>'Maasai Mara Trips Destinations'
+        ]);
         $destinationImages[] = $imageUrl["url"];
         }
         }
