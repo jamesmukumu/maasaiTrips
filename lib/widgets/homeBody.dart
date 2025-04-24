@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+
+
+
 class HomeWidget extends StatelessWidget {
    HomeWidget({super.key});
  final List<Widget> packagesOffer = [

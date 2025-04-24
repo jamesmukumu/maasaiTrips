@@ -38,7 +38,9 @@ class _LandingState extends State<Landing> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Color(0xFFE88B22))
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                    internetVerifyer();
+                  },
                   child: Text('Check Internet',style: TextStyle(
                     color: Colors.white
                   ),),

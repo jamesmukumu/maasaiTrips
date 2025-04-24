@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:masaitrips/widgets/Overviews.dart';
-import 'package:masaitrips/widgets/homeBody.dart';
+import 'package:masaitrips/views/destinations.dart';
+import 'package:masaitrips/views/homePreview.dart';
+
+
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,20 +21,20 @@ class _HomeState extends State<Home> {
       'destinationSlug':'NakuruCounty'
     },
     {
-      'destinationName':'Nakuru County',
-      'destinationSlug':'NakuruCounty'
+      'destinationName':'Nairobi County',
+      'destinationSlug':'Nairobi County'
     },
     {
-      'destinationName':'Nakuru County',
-      'destinationSlug':'NakuruCounty'
+      'destinationName':'Kisumu County',
+      'destinationSlug':'Kisumu County'
     },
     {
-      'destinationName':'Nakuru County',
-      'destinationSlug':'NakuruCounty'
+      'destinationName':'Samburu County',
+      'destinationSlug':'Samburu County'
     },
     {
-      'destinationName':'Nakuru County',
-      'destinationSlug':'NakuruCounty'
+      'destinationName':'Mombasa North Coast',
+      'destinationSlug':'Mombasa North Coast'
     },
   ];
   final List hotels = [
@@ -49,56 +52,64 @@ class _HomeState extends State<Home> {
     },
 
   ];
+
+
+  final List packages = [
+    {
+      'packageTitle':'Olikinyei 4 days trips',
+      'packageSlug':''
+    },
+
+
+  ];
+
   void changeNav(int newNav){
     setState(() {
       initialIdx = newNav;
     });
   }
+  List <Widget> pages = [HomeBody(),Destinations()];
   int initialIdx = 0 ;
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        elevation: 3.0,
-        child: Column(
-          children: [
-            ExpansionTile(title: Text("Our Destinations"),children: featureDestinations.map((destination){
-              return   ListTile(
-                leading: Icon(Icons.place,color: Color(0xFFE88B22),),
-                title: Text("${destination['destinationName']}"),
-              );
-            }).toList()),
-            ExpansionTile(title: Text("Our Hotels"),children:hotels.map((hotel){
-              return  ListTile(
-                leading: Icon(Icons.hotel,color: Color(0xFFE88B22),),
-                title: Text("${hotel['hotelName']}"),
-              );
-            }).toList(),),
-            ExpansionTile(title: Text("Feature Packages"),children: [
-              ListTile(
-                leading: Icon(Icons.place,color: Color(0xFFE88B22),),
-                title: Text("Destination Name"),
-              )
-            ],),
-          TextButton.icon(style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xFFE88B22))
-          ),onPressed: (){}, label: Text('Travel to the mara',style: TextStyle(
-            color: Colors.white
-          ),),icon: Icon(Icons.face,color: Colors.white,),)
-
-          ],
-        )
+      drawer:  SafeArea(
+        child: Drawer(
+          elevation: 3.0,
+          child: Column(
+            children: [
+              ExpansionTile(title: Text("Feature Destinations"),children: featureDestinations.map((destination){
+                return   ListTile(
+                  leading: Icon(Icons.place,color: Color(0xFFE88B22),),
+                  title: Text("${destination['destinationName']}"),
+                );
+              }).toList()),
+              ExpansionTile(title: Text("Feature Hotels"),children:hotels.map((hotel){
+                return  ListTile(
+                  leading: Icon(Icons.hotel,color: Color(0xFFE88B22),),
+                  title: Text("${hotel['hotelName']}"),
+                );
+              }).toList(),),
+              ExpansionTile(title: Text("Feature Packages"),children: packages.map((package){
+                return
+                  ListTile(
+                    leading: Icon(Icons.place,color: Color(0xFFE88B22),),
+                    title: Text("${package['packageTitle']}"),
+                  );
+              }).toList(),),
+            TextButton.icon(style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Color(0xFFE88B22))
+            ),onPressed: (){}, label: Text('Travel to the mara',style: TextStyle(
+              color: Colors.white
+            ),),icon: Icon(Icons.face,color: Colors.white,),)
+        
+            ],
+          )
+        ),
       ),
       bottomNavigationBar: BottomNav(changeItem:changeNav , currentIdx: initialIdx),
       body: Container(
 
-          child:  ListView(
-
-            children: [
-              HomeWidget(),
-              OverViewsMara()
-            ],
-
-        ),
+          child: pages[initialIdx] ,
       ),
       appBar: AppBar(
 
