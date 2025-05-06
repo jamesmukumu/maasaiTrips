@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masaitrips/views/destinations.dart';
 import 'package:masaitrips/views/homePreview.dart';
+import 'package:masaitrips/views/hotel.dart';
 
 
 
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
       initialIdx = newNav;
     });
   }
-  List <Widget> pages = [HomeBody(),Destinations()];
+  List <Widget> pages = [HomeBody(),Destinations(),Hotels()];
   int initialIdx = 0 ;
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,7 +166,6 @@ class BottomNav extends StatelessWidget {
               NavigationDestination(icon: Icon(Icons.home), label: "Home"),
               NavigationDestination(icon: Icon(Icons.place), label: "Destinations"),
               NavigationDestination(icon: Icon(Icons.hotel), label: "Hotels"),
-              NavigationDestination(icon: Icon(Icons.local_offer), label: "Packages"),
               NavigationDestination(icon: Icon(Icons.newspaper_rounded), label: "Blogs"),
 
 

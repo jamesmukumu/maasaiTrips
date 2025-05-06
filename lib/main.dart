@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:masaitrips/views/home.dart';
 import 'package:masaitrips/views/landingPage.dart';
+import 'package:masaitrips/views/singe_hotel.dart';
 import 'package:masaitrips/views/singlePackage.dart';
 import 'package:masaitrips/views/singular_destination.dart';
 
@@ -11,7 +12,8 @@ void main() {
       "/":(context)=>Landing(),
       "/home":(context)=>Home(),
       "/singular/package":(context)=>Singular_Package(),
-      '/singular/destination':(context)=>Singular_Destination()
+      '/singular/destination':(context)=>Singular_Destination(),
+       '/singular/hotel':(context)=>Hotel()
 
     },
 

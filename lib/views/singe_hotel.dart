@@ -1,48 +1,51 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:masaitrips/services/hotels/hotels_service.dart';
 import 'package:masaitrips/services/package/package_service.dart';
 import 'dart:convert';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:masaitrips/services/destinations/destinations_service.dart';
 import 'dart:convert';
 import 'dart:math';
-class Singular_Destination extends StatefulWidget {
-  const Singular_Destination({super.key});
+
+
+class Hotel extends StatefulWidget {
+  const Hotel({super.key});
 
   @override
-  State<Singular_Destination> createState() => _Singular_DestinationState();
+  State<Hotel> createState() => _HotelState();
 }
 
-class _Singular_DestinationState extends State<Singular_Destination> {
-  var dest = new Destinations_Service();
+class _HotelState extends State<Hotel> {
+  var dest = new hotels();
   Future<void> ?fetchingDestination;
-   dynamic destinationData;
+  dynamic destinationData;
 
 
 
   @override
   void didChangeDependencies() {
-   var destMap = ModalRoute.of(context)!.settings.arguments as Map;
-   String destinationSlug = destMap['destinationSlug'];
-     print(destinationSlug);
+    var destMap = ModalRoute.of(context)!.settings.arguments as Map;
+    String destinationSlug = destMap['hotelSlug'];
+    print(destinationSlug);
 
-    fetchingDestination = dest.fetchParticularDestination(destinationSlug).then((data){
-    setState(() {
-      var dataBody = json.decode(data.body);
-      destinationData = dataBody['data'];
-      print(destinationData);
+    fetchingDestination = dest.fetchSingularHotel(destinationSlug).then((data){
+      setState(() {
+        var dataBody = json.decode(data.body);
+        destinationData = dataBody['data'];
+        print(destinationData);
+      });
+    }).catchError((err){
+      print(err);
     });
-   }).catchError((err){
-  print(err);
-   });
     super.didChangeDependencies();
   }
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(future: fetchingDestination, builder: (_,snap){
       if(snap.connectionState == ConnectionState.done){
-return Pck(packageData: destinationData);
+        return Pck(packageData: destinationData);
       }else{
         return Center(child: CircularProgressIndicator(color: Color(0xFFE88B22),));
       }
@@ -91,7 +94,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 4, vsync: this);
     randomNumber = (random.nextInt(51) / 10).toDouble();
   }
 
@@ -108,7 +111,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.black,
-        title: Text("${widget.packageData['destinationTitle']}",style: TextStyle(
+        title: Text("${widget.packageData['hotelName']}",style: TextStyle(
             color: Colors.white
         ),),
         leading: Padding(padding: EdgeInsets.all(8.5),child: Image(image: AssetImage('lib/assets/maasai-trips-logo.png')),),
@@ -120,7 +123,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
             Stack(
               children: [
                 Image.network(
-                  widget.packageData['destinationThumbnail'],
+                  widget.packageData['hotelThumbnail'],
                   fit: BoxFit.cover,
                   height: 220,
                   width: double.infinity,
@@ -133,7 +136,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                widget.packageData['destinationTitle'],
+                widget.packageData['hotelName'],
                 style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -143,7 +146,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
 
 
             CarouselSlider(
-              items: (json.decode(widget.packageData['destinationPhotos']) as List<dynamic>)
+              items: (json.decode(widget.packageData['imagesHotel']) as List<dynamic>)
                   .map((imageUrl) => Container(
                 margin: const EdgeInsets.all(6),
                 child: ClipRRect(
@@ -174,8 +177,10 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                 unselectedLabelColor: Color(0xFFE88B22),
                 indicatorColor: Color(0xFFE88B22),
                 tabs: const [
-                  Tab(text: 'About'),
+                  Tab(text: "About Hotel",),
+                  Tab(text: 'Location'),
                   Tab(text: 'Description'),
+                  Tab(text: 'Cancellation Policy',)
                 ],
               ),
             ),
@@ -190,7 +195,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                   SingleChildScrollView(
                     padding: const EdgeInsets.all(16),
                     child: Html(
-                      data: widget.packageData['destinationAbout'],
+                      data: widget.packageData['hotelMetaDescription'],
                       style: {
                         "*": Style(
                           backgroundColor: Colors.transparent,
@@ -205,11 +210,59 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                   SingleChildScrollView(
                     padding: const EdgeInsets.all(16),
                     child: Html(
-                      data: widget.packageData['destinationDescription'],
+                      data: widget.packageData['locationDescription'],
                       style: {
                         "*": Style(
-                          fontSize: FontSize(16),
-                          lineHeight: LineHeight(1.6),
+                            fontSize: FontSize(16),
+                            lineHeight: LineHeight(1.6),
+                            backgroundColor: Colors.transparent
+                        ),
+                        "h2": Style(
+                          fontSize: FontSize(20),
+                          fontWeight: FontWeight.bold,
+                          margin: Margins.only(top: 16, bottom: 8),
+                        ),
+                        "h3": Style(
+                          fontSize: FontSize(18),
+                          fontWeight: FontWeight.bold,
+                          margin: Margins.only(top: 12, bottom: 6),
+                        ),
+                      },
+                    ),
+                  ),
+
+                  SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Html(
+                      data: widget.packageData['hotelDescription'],
+                      style: {
+                        "*": Style(
+                            fontSize: FontSize(16),
+                            lineHeight: LineHeight(1.6),
+                            backgroundColor: Colors.transparent
+                        ),
+                        "h2": Style(
+                          fontSize: FontSize(20),
+                          fontWeight: FontWeight.bold,
+                          margin: Margins.only(top: 16, bottom: 8),
+                        ),
+                        "h3": Style(
+                          fontSize: FontSize(18),
+                          fontWeight: FontWeight.bold,
+                          margin: Margins.only(top: 12, bottom: 6),
+                        ),
+                      },
+                    ),
+                  ),
+
+                  SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Html(
+                      data: widget.packageData['hotelCancellationPolicy'],
+                      style: {
+                        "*": Style(
+                            fontSize: FontSize(16),
+                            lineHeight: LineHeight(1.6),
                             backgroundColor: Colors.transparent
                         ),
                         "h2": Style(
@@ -230,15 +283,15 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
             ),
 
 
-            if (widget.packageData['fetch_hotels'] != null &&
-                (widget.packageData['fetch_hotels'] as List).isNotEmpty)
+            if (widget.packageData['rooms'] != null &&
+                (widget.packageData['rooms'] as List).isNotEmpty)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Padding(
+                   Padding(
                     padding: EdgeInsets.fromLTRB(16, 24, 16, 8),
                     child: Text(
-                      "Hotels You'll Love",
+                      "Rooms Available in ${widget.packageData['hotelName']}",
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -250,9 +303,9 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: (widget.packageData['fetch_hotels'] as List).length,
+                      itemCount: (widget.packageData['rooms'] as List).length,
                       itemBuilder: (context, index) {
-                        final hotel = widget.packageData['fetch_hotels'][index];
+                        final room = widget.packageData['rooms'][index];
                         return Container(
                           width: 180,
                           margin: const EdgeInsets.only(right: 16),
@@ -270,7 +323,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                                     top: Radius.circular(12),
                                   ),
                                   child: Image.network(
-                                    hotel['hotelThumbnail'],
+                                    json.decode(room['roomImages'])[0],
                                     height: 120,
                                     width: double.infinity,
                                     fit: BoxFit.cover,
@@ -284,7 +337,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        hotel['hotelName'],
+                                        room['roomType'],
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16,
@@ -305,14 +358,7 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                                           ),
                                         ],
                                       ),
-                                      const SizedBox(height: 4),
-                                      Text(
-                                        'From \$120/night',
-                                        style: TextStyle(
-                                          color: Colors.green,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
+
                                     ],
                                   ),
                                 ),
@@ -326,116 +372,9 @@ class _PckState extends State<Pck> with SingleTickerProviderStateMixin {
                 ],
               ),
 
-            // Packages Section
-            if (widget.packageData['packages'] != null &&
-                (widget.packageData['packages'] as List).isNotEmpty)
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                   Padding(
-                    padding: EdgeInsets.fromLTRB(16, 24, 16, 8),
-                    child: Text(
-                      "Popular Packages in ${widget.packageData['destinationTitle']}",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 360,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: (widget.packageData['packages'] as List).length,
-                      itemBuilder: (context, index) {
-                        final package = widget.packageData['packages'][index];
-                        return Container(
-                          width: 220,
-                          margin: const EdgeInsets.only(right: 16),
-                          child: Card(
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ), 
-                            child:  Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Package Image
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(
-                                    top: Radius.circular(12),
-                                  ),
-                                  child: Image.network(
-                                    package['packageImage'],
-                                    height: 140,
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-
-                                // Package Info
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(12),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          package['packageTitle'],
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16,
-                                          ),
-                                          maxLines: 2,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        const SizedBox(height: 8),
-
-
-                                        Text(
-                                          '${package['packageCharge']} ${package['packageChargeCurrency']}',
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xFFE88B22),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        SizedBox(
-                                          width: double.infinity,
-                                          child:  ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.of(context).pushNamed("/singular/package",arguments: {
-                                                "packageSlug":package['packageSlug']
-                                              });
-                                            },
-                                            style: ElevatedButton.styleFrom(
-                                              backgroundColor: Color(0xFFE88B22),
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(8),
-                                              ),
-                                            ),
-                                            child:Text(
-                                              'Book Now',
-                                              style: TextStyle(color: Colors.white),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
-            const SizedBox(height: 24),
+         
+              
+        
           ],
         ),
       ),

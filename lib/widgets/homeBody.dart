@@ -209,7 +209,7 @@ class HomeWidget extends StatelessWidget {
                ],
              ),),
              Padding(
-               padding: const EdgeInsets.all(8.0),
+               padding: EdgeInsets.all(8.0),
                child: FilledButton(
                  style: ButtonStyle(
                      backgroundColor: MaterialStateProperty.all(Color(0xFFE88B22))

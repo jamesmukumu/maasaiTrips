@@ -18,8 +18,11 @@ class Destinations_Service {
   Future<dynamic> fetchParticularDestination(String destinationSlug) async {
     try {
       var client = http.Client();
-      final uriPath = Uri.parse(
-          '$baseUrl/find/single/destination?slug=$destinationSlug}');
+      final uriPath = Uri.parse('$baseUrl/find/single/destination').replace(
+        queryParameters: {
+          'slug': destinationSlug, // Adds ?destination=your_slug_here
+        },
+      );
       var response = await client.get(uriPath);
       return response;
     } catch (err) {
