@@ -25,7 +25,7 @@ export interface Hotel {
 })
 export class HotelsService {
   constructor() {}
-  baseUrl = 'http://localhost:8000/api';
+  baseUrl = 'https://maasaitrips-2.onrender.com/api';
 
   async saveHotel(hotel: any) {
     try {
@@ -204,7 +204,7 @@ export class HotelsService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        `http://localhost:8000/api/unpublish/hotel`,
+        `https://maasaitrips-2.onrender.com/api/unpublish/hotel`,
         {},
         {
           headers: {
@@ -463,7 +463,7 @@ export class HotelsService {
       let formData = new FormData();
       formData.append('hotels_csv', hotelCSV);
       var response = await axios.post(
-        'http://localhost:8000/api/save/hotels/csv',
+        'https://maasaitrips-2.onrender.com/api/save/hotels/csv',
         formData,
         {
           headers: {
@@ -483,7 +483,7 @@ export class HotelsService {
       let formData = new FormData();
       formData.append('destinations_csv', destinationsCSV);
       var response = await axios.post(
-        'http://localhost:8000/api/save/destinations/from/csv',
+        'https://maasaitrips-2.onrender.com/api/save/destinations/from/csv',
         formData,
         {
           headers: {

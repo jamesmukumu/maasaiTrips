@@ -43,7 +43,7 @@
       >
       </mat-card-content>
 
-       <!-- <h1>Rooms:</h1>
+        <h1>Rooms:</h1>
        <table mat-table *ngIf="!fetchingDestination" [dataSource]="dataSource" 
        style="width: 100%; border-collapse: collapse;">
        
@@ -86,7 +86,7 @@
        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
        
-     </table> -->
+     </table> 
       
     </div>
 
@@ -120,6 +120,6 @@
   <footer></footer>
 </mat-card>
 
-<!-- <p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
+<p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
       <rooms [roomData]="roomData"></rooms>
-    </p-dialog>   -->
+    </p-dialog>  
