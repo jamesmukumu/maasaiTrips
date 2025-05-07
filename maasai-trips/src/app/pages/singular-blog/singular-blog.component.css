@@ -198,4 +198,8 @@ justify-content: space-evenly;
     overflow-wrap: break-word;
     white-space: normal;
     }
+    .blog-meta{
+      display: flex;
+      flex-direction: column;
+     }
   }

@@ -20,6 +20,30 @@ sanitize(blogContent:SafeHtml| any){
 formatCreationDay(time:string){
 return new Date(time).toLocaleString()
 }
+shareOnTwitter() {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent(`Check out this blog: ${this.blogData.blogTitle}`);
+  window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}`, '_blank');
+}
+
+shareOnLinkedIn() {
+  const url = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(this.blogData.blogTitle);
+  const summary = encodeURIComponent('Check out this interesting blog post');
+  window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}&summary=${summary}`, '_blank');
+}
+
+shareOnWhatsApp() {
+  const url = encodeURIComponent(window.location.href);
+  const text = encodeURIComponent(`Check out this blog: ${this.blogData.blogTitle} - ${url}`);
+  window.open(`https://wa.me/?text=${text}`, '_blank');
+}
+
+shareOnInstagram() {
+
+  window.open('https://www.instagram.com/', '_blank');
+
+}
 
 findBlog(){
 this.findingBlog = true

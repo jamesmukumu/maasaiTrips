@@ -197,6 +197,13 @@ place-content: center;
 
 
     @media(max-width:768px){
+      .blog-meta{
+        display: flex;
+        flex-direction: column;
+       }
+       .button-5{
+        width: fit-content;
+      }
       .container{
         max-width: 100vw;
       flex-direction: column;
