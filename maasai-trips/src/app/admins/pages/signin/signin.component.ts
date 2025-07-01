@@ -17,7 +17,7 @@ import {v5 as  uuidv5} from "uuid"
   styleUrl: './signin.component.css',
   providers:[MessageService]
 })
-export class SigninComponent implements OnInit  {
+export class SigninComponent  {
   readonly snack = inject(MatSnackBar)
   readonly dialog = inject(MatDialog)
   processingRequest = false
@@ -26,21 +26,7 @@ export class SigninComponent implements OnInit  {
   seePassword:boolean = false
   constructor(private activeRoute:ActivatedRoute,private store:Store,private admin:AdminService,private router:Router,private msg:MessageService){}
 
-  ngOnInit(){
-   
-   let validuuid = uuidv5("http://localhost:4200/login",uuidv5.URL)
-   this.activeRoute.paramMap.subscribe(data=>{
-    if(validuuid != data.get('passkey')){
-      this.router.navigate(["/"])
-    }else{
-      this.router.navigate([`/login/${validuuid}`])
-    }
-   })
-    var token = Cookie.get("grant_token")
-    if(token){
-      this.router.navigate(["/dashboard"])
-    }
-  }
+ 
 
 
   popRequest(){
