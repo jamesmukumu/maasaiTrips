@@ -1,0 +1,61 @@
+<header></header>
+<mat-card>
+  <mat-stepper #stepper linear>
+   
+    <mat-step label="Fill Out Details" >
+     <form #validatedForm="ngForm">
+    <mat-form-field>
+     <mat-label>Enter your first name</mat-label>  
+     <input  #first_name='ngModel' [(ngModel)]="firstName" required type="text" name="first-name" matInput>
+     <mat-hint>Example:John</mat-hint> 
+     <mat-error *ngIf="first_name.touched && first_name.invalid">
+      First Name Ought be provided
+    </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+        <mat-label>Enter your Second name</mat-label>  
+        <input required type="text" #last_name="ngModel"  [(ngModel)]="lastName" name="first-name" matInput>
+        <mat-hint>Example:Doe</mat-hint> 
+        <mat-error *ngIf="last_name.touched && last_name.invalid">
+          Last name Ought be provided
+        </mat-error>
+       </mat-form-field>
+
+
+       <mat-form-field>
+        <mat-label>Enter your Email Address</mat-label>  
+        <input [(ngModel)]="email" type="email" required #Email="ngModel" name="email-address" matInput>
+        <mat-hint>Example:johndoegmail.com</mat-hint> 
+        <mat-error *ngIf="Email.touched && Email.invalid">
+          Email Ought be provided
+        </mat-error>
+       </mat-form-field>
+       <button matStepperNext *ngIf="!purchasing && validatedForm.valid" (click)="initiatePay()" class="button-5" role="button" >Submit</button> 
+    <p-button *ngIf="purchasing" loading raised severity="warning" label="Processing Form..."/> 
+    </form>
+
+
+    </mat-step>
+
+    <mat-step label="Validate and Confirm Payment">
+     <div class="loading">
+      <pre-loader></pre-loader>
+     </div>
+      <div>
+        <button matStepperPrevious>Back</button>
+        <button  matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+ 
+    <mat-step label="Contact">
+   
+      <div>
+        <button class="button-5" role="button"  matStepperPrevious>Back</button>
+      
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-card>

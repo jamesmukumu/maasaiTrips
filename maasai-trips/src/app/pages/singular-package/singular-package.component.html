@@ -22,7 +22,9 @@
   <li (click)="goSpecial()">
   <h3 >SPECIAL NOTES</h3>
   </li>
-    
+  <li (click)="goSpecial()">
+    <h3 >PURCHASE PACKAGE</h3>
+    </li> 
     
     
   
@@ -124,7 +126,9 @@
         <div class="package-overview" #specialNotes>
             <h2>Special Notes</h2>
             <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
-            </div>
+            <button (click)="onboard()" class="button-5" role="button" >Purchase Package</button>  
+          </div>
+
     
 </div>
 

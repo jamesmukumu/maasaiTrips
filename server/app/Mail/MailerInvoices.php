@@ -10,23 +10,20 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class MailerUpdateActions extends Mailable{
+class MailerInvoices extends Mailable
+{
     use Queueable, SerializesModels;
-    public $entityName;
-    public $tableName;
-    public $adminName;
-    public $superAdminName;
-
-    public function __construct($tableName,$entityName,$superAdminName,$adminName){
-        $this->tableName = $tableName;
-        $this->entityName = $entityName;
-        $this->adminName = $adminName;
-        $this->superAdminName = $superAdminName;
-        }
+   public $storagePath;
     
-    public function envelope(): Envelope {
+    public function __construct($storePath){
+     $this->storagePath = $storePath;
+    }
+
+    
+    public function envelope(): Envelope
+    {
         return new Envelope(
-            subject: 'Updates Alert',
+            subject: 'Invoice Alert',
         );
     }
 
@@ -34,7 +31,7 @@ class MailerUpdateActions extends Mailable{
     public function content(): Content
     {
         return new Content(
-            view: 'UpdateAction',
+            view: 'AlertInvoice',
         );
     }
 
@@ -46,7 +43,7 @@ class MailerUpdateActions extends Mailable{
     public function attachments(): array
     {
         return [
-           
+            Attachment::fromPath($this->storagePath)
         ];
     }
 }

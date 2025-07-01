@@ -1,5 +1,5 @@
 import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { PackagesService } from '../../services/packages.service';
 import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 
@@ -32,7 +32,7 @@ this.itineraryRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'}
 goSpecial(){
 this.specialNotesRef.nativeElement.scrollIntoView({behavior:"smooth",block:'start'})
 }
-constructor(private titlePage:Title,private router:ActivatedRoute,private sanitizor:DomSanitizer,private packages:PackagesService){}
+constructor(private route:Router,private titlePage:Title,private router:ActivatedRoute,private sanitizor:DomSanitizer,private packages:PackagesService){}
 fetching = false
 packageData:any
 packageSlug = ''
@@ -68,7 +68,13 @@ formatExclusives(excl:any){
 formatPackageImages(packageImages:any){
 return JSON.parse(packageImages).slice(0,4)
 }
-
+onboard(){
+this.route.navigate([`/onboard/packages/${this.packageSlug}`],{
+queryParams:{
+"onboard":this.packageData['id']
+}
+})
+}
 
 async ngOnInit(){
 this.router.paramMap.subscribe((data)=>{

@@ -11,7 +11,7 @@ import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import {ToastModule} from "primeng/toast"
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table'; 
-
+import {MatStepperModule} from '@angular/material/stepper';
 import { EditorModule } from 'primeng/editor';
 import {MatCardModule} from '@angular/material/card'
 import {ClipboardModule} from '@angular/cdk/clipboard';
@@ -131,6 +131,8 @@ import { SingularBlogComponent } from './pages/singular-blog/singular-blog.compo
 import { RelatedBlogsComponent } from './components/related-blogs/related-blogs.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { TeamComponent } from './components/team/team.component';
+import { OnboardComponent } from './pages/onboard/onboard.component';
+import { PreLoaderComponent } from './components/pre-loader/pre-loader.component';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -150,7 +152,7 @@ const reducers:ActionReducerMap<any> = {
   
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent, OnboardComponent, PreLoaderComponent ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -197,6 +199,7 @@ const reducers:ActionReducerMap<any> = {
  ClipboardModule,   
  GalleriaModule,
  DropdownModule,
+ MatStepperModule,
  MatSlideToggleModule,
  StoreModule.forRoot(reducers,{metaReducers}) , 
 ProgressBarModule,
@@ -207,6 +210,10 @@ MatTooltipModule,
         component:AboutUsComponent,
         path:"about/us"
       }, 
+      {
+      component:OnboardComponent,
+      path:"onboard/:paymentFor/:slug"
+      },
 
     {
       component:HotelsDisplayComponent,
@@ -229,12 +236,12 @@ MatTooltipModule,
       path:"contact"
     },
     {
-      path:"login/:passkey",
+      path:"login",
       component:SigninComponent
       },
         
       {
-        path:"register/:passkey",
+        path:"register",
         component:SignupComponent
       },
       {

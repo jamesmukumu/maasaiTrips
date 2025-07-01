@@ -7,6 +7,7 @@ use App\Http\Controllers\HotelsController;
 use App\Http\Controllers\NewsLettersController;
 use App\Http\Controllers\OlankaUsersController;
 use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PromotionalControllers;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\RoomsController;
@@ -213,3 +214,14 @@ Route::get("/fetch/singular/package",[PackageController::class,'findSingularPack
 // Unprotected Blogs Apis
 Route::get("/fetch/display/blogs",[BlogsController::class,'fetchBlogsDisplay']);
 Route::get('/fetch/singular/blog',[BlogsController::class,"fetchSingularBlog"]);
+
+
+
+
+
+
+
+//  payments link
+Route::get("/download/invoice",[PaymentController::class,"downloadPdf"]);
+Route::post("/verify/payment",[PaymentController::class,"verifySavePayment"]);
+Route::post("/create/payment/{packageid}",[PaymentController::class,'requestPayment']);
