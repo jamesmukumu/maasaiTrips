@@ -79,7 +79,7 @@ class DestinationController extends Controller implements DestinationsInterface{
                 $user_id = $this->verifyToken($request);
                 $validatedRequest = $request->validate([
                     "id" => "required|exists:destinations,id",
-                    "destinationTitle" => "nullable|unique:destinations,destinationTitle",
+                    "destinationTitle" => "nullable",
                     "destinationAbout" => "nullable",
                     "destinationDescription" => "nullable",
                 ]);
@@ -114,7 +114,7 @@ class DestinationController extends Controller implements DestinationsInterface{
         
                 
                 $destination = Destinations::find($id);
-        
+                 
                 
                 $destination->update($validatedRequest);
         

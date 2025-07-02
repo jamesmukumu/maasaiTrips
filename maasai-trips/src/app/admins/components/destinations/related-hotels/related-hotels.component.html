@@ -1,13 +1,13 @@
 <div class="main">
-    <h3>Hotels we think you will like in {{destinationName}}</h3>
+    <h2>Hotels we think you will like in {{destinationName}}</h2>
     <mat-card >
       <div *ngFor="let hotels of hotelData">
         <img
   [src]="hotels.hotelThumbnail" 
           alt=""
         />
-        <p>{{hotels.hotelName}}</p>
-        <button mat-flat-button >See Hotel</button>
+        <h4>{{hotels.hotelName}}</h4>
+        <button (click)="visitHotel(hotels)" mat-flat-button >See Hotel</button>
       </div>
       
   </mat-card>

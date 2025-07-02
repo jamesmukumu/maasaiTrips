@@ -84,12 +84,12 @@ constructor(private titlePage:Title){}
 
 homeImages = [
   {
-  itemImageSrc: '../../../assets/front_offers/flying-safari-masaimara.jpg',
-  thumbnailImageSrc: '../../../assets/front_offers/flying-safari-masaimara.jpg',
+  itemImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
+  thumbnailImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
   alt: 'Fly in Safaris',
   subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
+  urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
 },
 {
   itemImageSrc: '../../../assets/front_offers/masai-mara-governors-camp-game-drives.jpg',

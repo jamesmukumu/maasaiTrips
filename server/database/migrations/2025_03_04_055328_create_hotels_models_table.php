@@ -15,7 +15,7 @@ return new class extends Migration{
             $table->string("hotelSlug")->unique(true)->nullable(false);
            $table->boolean("publishable")->default(false);
            $table->string("hotelThumbnail")->nullable(false);
-            $table->mediumText("locationDescription")->nullable(false);
+            $table->text("locationDescription")->nullable(false);
             $table->string("contactEmail")->nullable(false);
             $table->tinyInteger("ratings")->default(5);
             $table->enum("actionPending",["approved","rejected","pending"])->default("pending")->nullable(false);
@@ -27,10 +27,10 @@ return new class extends Migration{
             $table->text("imagesHotel");
             $table->float("latitude")->nullable(false);
             $table->float("longitude")->nullable(false);
-            $table->mediumText("hotelCancellationPolicy")->nullable(false);
-            $table->mediumText("hotelMetaDescription");
+            $table->text("hotelCancellationPolicy")->nullable(false);
+            $table->text("hotelMetaDescription");
             $table ->foreignId("olanka_users_id")->constrained()->onDelete("cascade");
-            $table->mediumText("hotelDescription")->nullable(false);
+            $table->text("hotelDescription")->nullable(false);
             $table->foreignId("destinations_id")->constrained()->onDelete("cascade");
  
         });

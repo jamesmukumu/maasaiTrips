@@ -248,7 +248,7 @@ margin-top: 0;
 width: 100%;
 display: grid;
 place-content: center;
-margin-top: 20px;
+margin-top: 30vh;
 }
 
 ul {
@@ -400,6 +400,9 @@ ul li:hover::after {
   }
   mat-card {
     margin: 0;
+  }
+  .package-main-content{
+  margin-top: 5vh;
   }
   .package-overview,.package-overview-html {
   padding: 5.5px;

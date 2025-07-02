@@ -6,29 +6,7 @@
 
 
 </mat-card-header>
-<ul>
-  <li (click)="goOverview()">
-  <h3 >OVERVIEW</h3>
-  </li>
-  <li (click)="goItinerary()">
-  <h3 >ITINERARY</h3>
-  </li>
-  <li (click)="goInclusions()">
-  <h3>INCLUSIONS</h3>
-  </li>
-  <li (click)="goExclusions()">
-  <h3 >EXCLUSIONS</h3>
-  </li>
-  <li (click)="goSpecial()">
-  <h3 >SPECIAL NOTES</h3>
-  </li>
-  <li (click)="goSpecial()">
-    <h3 >PURCHASE PACKAGE</h3>
-    </li> 
-    
-    
-  
-  </ul>
+
   <div>
   
     <!-- From Uiverse.io by aadium --> 
@@ -89,46 +67,67 @@
 </div>
 
 
-<div class="package-main-content">
+<div class="card">
+<p-tabView>
+<p-tabPanel  header="Overview">
   <div class="package-overview" #overView>
     <h2>Package Overview</h2>
     <div  class="package-overview-html" [innerHTML]="sanitize(packageData.packageOverview)"></div>
     </div>
-    
-    <div class="package-overview"  #itinerary>
+</p-tabPanel>
+<p-tabPanel header="Itinerary">
+  <div class="package-overview"  #itinerary>
     <h2>More About this Package</h2>
     <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
     </div>
-    
-    
-    <div class="in-ex">
-      <div class="package-overview" #inclusions>
-        <h2>Inclusions</h2>
-        <mat-list *ngFor="let inc of formatInclusives(packageData.packageInclusives)">
-        <mat-list-item matListItemAvatar>
-        <span matListItemTitle>{{inc}}</span>
-        <mat-icon style="color: green;" matListItemIcon>check</mat-icon>
-        </mat-list-item>
-        </mat-list>
-        </div>
-         
-        <div class="package-overview" #exclusions>
-            <h2>Exclusions</h2>
-            <mat-list *ngFor="let excl of formatExclusives(packageData.packageExclusives)">
-            <mat-list-item matListItemAvatar>
-            <span matListItemTitle>{{excl}}</span>
-            <mat-icon style="color: red;" matListItemIcon>close</mat-icon>
-            </mat-list-item>
-            </mat-list>
-            </div>
-    </div>
-    
-        <div class="package-overview" #specialNotes>
-            <h2>Special Notes</h2>
-            <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
-            <button (click)="onboard()" class="button-5" role="button" >Purchase Package</button>  
+</p-tabPanel>
+<p-tabPanel header="Inclusions & Exclusions">
+  <div class="in-ex">
+    <div class="package-overview" #inclusions>
+      <h2>Inclusions</h2>
+      <mat-list *ngFor="let inc of formatInclusives(packageData.packageInclusives)">
+      <mat-list-item matListItemAvatar>
+      <span matListItemTitle>{{inc}}</span>
+      <mat-icon style="color: green;" matListItemIcon>check</mat-icon>
+      </mat-list-item>
+      </mat-list>
+      </div>
+       
+      <div class="package-overview" #exclusions>
+          <h2>Exclusions</h2>
+          <mat-list *ngFor="let excl of formatExclusives(packageData.packageExclusives)">
+          <mat-list-item matListItemAvatar>
+          <span matListItemTitle>{{excl}}</span>
+          <mat-icon style="color: red;" matListItemIcon>close</mat-icon>
+          </mat-list-item>
+          </mat-list>
           </div>
+  </div>
+</p-tabPanel>
+<p-tabPanel header="Special Notes">
+  <div class="package-overview" #specialNotes>
+    <h2>Special Notes</h2>
+    <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageSpecialNotes)"></div>
+ 
+  </div>
 
+</p-tabPanel>
+
+
+</p-tabView>
+
+
+</div>
+
+<div class="package-main-content">
+ 
+    
+   
+    
+    
+   
+    
+       
     
 </div>
 

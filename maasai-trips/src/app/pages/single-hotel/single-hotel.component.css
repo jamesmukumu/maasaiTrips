@@ -193,12 +193,13 @@ h1 {
   }
 
   p-galleria {
-    max-width: 95vw;
+    max-width: 75vw;
   }
 
   mat-card-content {
     margin: 0;
-    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   ::ng-deep mat-card-content {
     padding: 15px;

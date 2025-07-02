@@ -66,7 +66,7 @@ formatExclusives(excl:any){
   return JSON.parse(excl)
   }
 formatPackageImages(packageImages:any){
-return JSON.parse(packageImages).slice(0,4)
+return JSON.parse(packageImages)
 }
 onboard(){
 this.route.navigate([`/onboard/packages/${this.packageSlug}`],{

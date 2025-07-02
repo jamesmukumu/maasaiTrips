@@ -8,7 +8,8 @@
   max-width: 100%;
   min-width: 100vw;
 }
-h1 {
+h4 {
+  font-weight: bolder;
   text-align: center;
 }
 mat-card {

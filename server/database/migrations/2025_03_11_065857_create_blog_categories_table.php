@@ -13,7 +13,7 @@ return new class extends Migration{
             $table->timestamps();
             $table->string("blogCategoryTitle")->unique(true)->nullable(false);
             $table->string("blogCategorySlug")->unique(true)->nullable(false);
-            $table->tinyText("blogCategoryDescription")->nullable(false);
+            $table->text("blogCategoryDescription")->nullable(false);
             $table->foreignId("olanka_users_id")->constrained();
         });
     }

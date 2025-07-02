@@ -43,6 +43,7 @@ import {SidebarModule} from "primeng/sidebar"
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatIconModule} from "@angular/material/icon";
 import { HomeComponent } from './pages/home/home.component';
+import { TabViewModule } from 'primeng/tabview';
 import { OverviewComponent } from './components/overview/overview.component';
 import { FrequentQuestComponent } from './components/frequent-quest/frequent-quest.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -159,8 +160,7 @@ const reducers:ActionReducerMap<any> = {
     BrowserAnimationsModule,    
  MatChipsModule,
  MatAutocompleteModule,
-
-
+ TabViewModule,
  PaginatorModule,
     EditorModule,
     HttpClientModule,
