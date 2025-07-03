@@ -22,7 +22,7 @@ export class SingleHotelComponent {
   hotelMetaDescription:SafeHtml = ''
   relatedHotels:any
   dataSource:any = []
-  displayedColumns:string[] = ["roomType","maxOccupancy","more"]
+  displayedColumns:string[] = ["roomType","maxOccupancy"]
   showRoom = false
   roomData:any
 

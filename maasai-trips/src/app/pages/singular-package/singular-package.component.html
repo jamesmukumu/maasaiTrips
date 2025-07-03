@@ -71,16 +71,15 @@
 <p-tabView>
 <p-tabPanel  header="Overview">
   <div class="package-overview" #overView>
-    <h2>Package Overview</h2>
+    <h2>Itinerary</h2>
     <div  class="package-overview-html" [innerHTML]="sanitize(packageData.packageOverview)"></div>
     </div>
+    <div class="package-overview"  #itinerary>
+      <h2>Comprehensive itinerary</h2>
+      <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
+      </div>
 </p-tabPanel>
-<p-tabPanel header="Itinerary">
-  <div class="package-overview"  #itinerary>
-    <h2>More About this Package</h2>
-    <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
-    </div>
-</p-tabPanel>
+
 <p-tabPanel header="Inclusions & Exclusions">
   <div class="in-ex">
     <div class="package-overview" #inclusions>

@@ -3,46 +3,50 @@
   padding: 0;
   box-sizing: border-box;
 }
-mat-card mat-card-header mat-card-title {
-  text-align: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+
+/* General card styling */
+mat-card {
+  margin: 3%;
+  margin-top: 30px;
+  height: max-content;
 }
+
+mat-card-header mat-card-title {
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Button styling */
 .button-5 {
   width: fit-content;
   max-width: 300px;
   align-items: center;
-  background-clip: padding-box;
   background-color: #e88b22;
   border: 1px solid transparent;
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Red Hat Display", sans-serif;
+  font-family: " Tester", sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
-  margin: 0;
   min-height: 3rem;
-  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-  position: relative;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
   text-decoration: none;
+  position: relative;
   transition: all 250ms;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
 }
 
 .button-5:hover,
 .button-5:focus {
   background-color: #e88b22;
-  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .button-5:hover {
@@ -51,29 +55,70 @@ mat-card mat-card-header mat-card-title {
 
 .button-5:active {
   background-color: #e88b22;
-  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
   transform: translateY(0);
 }
-.package-overview,.package-overview-html {
+
+/* Package overview styling */
+.package-overview {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-top: 0;
-   padding-left: 50px;
-   padding-right: 50px; 
-   padding-top: 10px;
+  padding: 10px 50px;
+}
+
+/* Package overview HTML content */
+.package-overview-html {
+  width: 100%;
+  max-width: 100%;
+  word-break: break-word; /* Breaks long words */
+  overflow-wrap: break-word; /* Ensures text wraps within bounds */
+  hyphens: auto; /* Adds hyphenation for better word breaks */
+  text-align: left; /* Align text left for readability */
   box-sizing: border-box;
 }
 
+/* Ensure all child elements respect max-width */
+.package-overview-html * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Handle specific elements */
+.package-overview-html p,
+.package-overview-html span,
+.package-overview-html strong,
+.package-overview-html b {
+  display: inline;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Handle tables */
+.package-overview-html table {
+  width: 100% !important;
+  table-layout: fixed;
+  word-break: break-word;
+}
+
+/* Handle images and iframes */
+.package-overview-html img,
+.package-overview-html iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Social buttons */
 .social-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #f2f2f2;
-  box-shadow: 0px 0px 15px #00000027;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   padding: 15px 10px;
   border-radius: 5em;
 }
@@ -87,13 +132,13 @@ mat-card mat-card-header mat-card-title {
   border-radius: 50%;
   margin: 0 10px;
   background-color: #fff;
-  box-shadow: 0px 0px 4px #00000027;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
   transition: 0.3s;
 }
 
 .social-button:hover {
   background-color: #f2f2f2;
-  box-shadow: 0px 0px 6px 3px #00000027;
+  box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.15);
 }
 
 .social-buttons svg {
@@ -105,7 +150,7 @@ mat-card mat-card-header mat-card-title {
   background-color: #3b5998;
 }
 
-.facebook svg {
+-facebook svg {
   fill: #f2f2f2;
 }
 
@@ -151,73 +196,7 @@ mat-card mat-card-header mat-card-title {
   fill: #c13584;
 }
 
-.package-overview-html {
-  width: 100vw;
-  max-width: 100%;
-  
-  box-sizing: border-box;
-}
-
-.package-overview-html * {
-  word-break: break-word; /* Break long words */
-  overflow-wrap: break-word; /* Alternative for better support */
-  max-width: 100%; /* Ensure child elements don't exceed container */
-  box-sizing: border-box; /* Include padding & border in width calculation */
-}
-
-/* Optional: Handle tables to prevent overflow */
-.package-overview-html table {
-  width: 100% !important;
-  table-layout: fixed; /* Force table to respect width */
-}
-
-.package-overview-html img, 
-.package-overview-html iframe {
-  max-width: 100%;
-  height: auto; /* Prevent images/videos from overflowing */
-}
-
-.in-ex{
-display: flex;
-flex-direction: column;
-}
-h2 {
-  padding-left: 15.55px;
-  text-decoration: underline;
-}
-mat-card-content strong,
-span,
-p,
-b {
-  display: inline;
-  word-break: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-}
-
-mat-card-content span {
-  display: inline;
-  word-break: break-word;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-}
-mat-card-title {
-  text-align: center;
-}
-mat-card {
-  height: max-content;
-  margin: 3%;
-  margin-top: 30px;
- 
-}
+/* Galleria and thumbnails */
 .galleria {
   max-width: 100%;
   display: flex;
@@ -226,31 +205,35 @@ mat-card {
 
 .galleria-thumbnails {
   width: 100%;
-  cursor: pointer;
-  margin-left: 20px;
-  height: 100%;
   max-width: 710px;
   max-height: 410px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
+  margin-left: 20px;
+  cursor: pointer;
 }
-mat-card-content table{
-max-width: 100vw;
-}
-.package-overview {
- 
-margin-top: 0;
+
+.galleria-thumbnails img {
   width: 100%;
-
-}
-.package-main-content{
-width: 100%;
-display: grid;
-place-content: center;
-margin-top: 30vh;
+  height: 100%;
+  padding: 5.5px;
+  margin: 5.5px;
 }
 
+.image-main {
+  width: 100%;
+  max-width: 600px;
+  max-height: 800px;
+  border-radius: 40px;
+}
+
+.image-main img {
+  width: 100%;
+  height: 100%;
+}
+
+/* List styling */
 ul {
   display: flex;
   flex-wrap: wrap;
@@ -272,69 +255,6 @@ ul li h3 {
   font-size: 18.55px;
   position: relative;
 }
-/* From Uiverse.io by doniaskima */ 
-/* HTML: <div class="loader"></div> */
-.loader {
-  --c1: #673b14;
-  --c2: #f8b13b;
-  width: 70px;
-  height: 200px;
-  border-top: 4px solid var(--c1);
-  border-bottom: 4px solid var(--c1);
-  background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px,var(--c1) 0) 50%/7px 8px no-repeat;
-  display: grid;
-  overflow: hidden;
-  animation: l5-0 2s infinite linear;
-}
-
-.loader::before,
-.loader::after {
-  content: "";
-  grid-area: 1/1;
-  width: 75%;
-  height: calc(50% - 4px);
-  margin: 0 auto;
-  border: 2px solid var(--c1);
-  border-top: 0;
-  box-sizing: content-box;
-  border-radius: 0 0 40% 40%;
-  -webkit-mask: linear-gradient(#000 0 0) bottom/4px 2px no-repeat,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: destination-out;
-  mask-composite: exclude;
-  background: linear-gradient(var(--d,0deg),var(--c2) 50%,#0000 0) bottom /100% 205%,
-    linear-gradient(var(--c2) 0 0) center/0 100%;
-  background-repeat: no-repeat;
-  animation: inherit;
-  animation-name: l5-1;
-}
-
-.loader::after {
-  transform-origin: 50% calc(100% + 2px);
-  transform: scaleY(-1);
-  --s: 3px;
-  --d: 180deg;
-}
-
-@keyframes l5-0 {
-  80% {
-    transform: rotate(0)
-  }
-
-  100% {
-    transform: rotate(0.5turn)
-  }
-}
-
-@keyframes l5-1 {
-  10%,70% {
-    background-size: 100% 205%,var(--s,0) 100%
-  }
-
-  70%,100% {
-    background-position: top,center
-  }
-}
 
 ul li::after {
   content: "";
@@ -352,25 +272,81 @@ ul li:hover::after {
   width: 100%;
 }
 
-
-
-.galleria-thumbnails img {
-  height: 100%;
-  padding: 5.55px;
-  margin: 5.5px;
-  width: 100%;
+/* Loader */
+.loader {
+  --c1: #673b14;
+  --c2: #f8b13b;
+  width: 70px;
+  height: 200px;
+  border-top: 4px solid var(--c1);
+  border-bottom: 4px solid var(--c1);
+  background: linear-gradient(90deg, var(--c1) 2px, var(--c2) 0 5px, var(--c1) 0) 50% / 7px 8px no-repeat;
+  display: grid;
+  overflow: hidden;
+  animation: l5-0 2s infinite linear;
 }
 
-.image-main {
-  width: 100%;
-  height: 100%;
-  max-width: 600px;
-  max-height: 800px;
-  border-radius: 40px;
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  width: 75%;
+  height: calc(50% - 4px);
+  margin: 0 auto;
+  border: 2px solid var(--c1);
+  border-top: 0;
+  box-sizing: content-box;
+  border-radius: 0 0 40% 40%;
+  -webkit-mask: linear-gradient(#000 0 0) bottom / 4px 2px no-repeat, linear-gradient(#000 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  background: linear-gradient(var(--d, 0deg), var(--c2) 50%, #0000 0) bottom / 100% 205%, linear-gradient(var(--c2) 0 0) center / 0 100%;
+  background-repeat: no-repeat;
+  animation: inherit;
+  animation-name: l5-1;
 }
-.image-main img {
-  height: 100%;
+
+.loader::after {
+  transform-origin: 50% calc(100% + 2px);
+  transform: scaleY(-1);
+  --s: 3px;
+  --d: 180deg;
+}
+
+@keyframes l5-0 {
+  80% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(0.5turn);
+  }
+}
+
+@keyframes l5-1 {
+  10%, 70% {
+    background-size: 100% 205%, var(--s, 0) 100%;
+  }
+  70%, 100% {
+    background-position: top, center;
+  }
+}
+
+/* Other sections */
+.in-ex {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  padding-left: 15.55px;
+  text-decoration: underline;
+}
+
+.package-main-content {
   width: 100%;
+  display: grid;
+  place-content: center;
+  margin-top: 30vh;
 }
 
 .spin {
@@ -379,32 +355,35 @@ ul li:hover::after {
   justify-content: center;
   height: 100%;
 }
+
 .no-spin {
   display: none;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .galleria {
-    max-width: 100%;
-    display: flex;
     flex-direction: column;
   }
-  mat-card-content {
-    margin-top: 30px;
-  }
+
   .galleria-thumbnails {
-    margin-left: 0px;
+    margin-left: 0;
   }
+
   .galleria-thumbnails img {
-    margin: 0px;
+    margin: 0;
   }
+
   mat-card {
     margin: 0;
   }
-  .package-main-content{
-  margin-top: 5vh;
+
+  .package-main-content {
+    margin-top: 5vh;
   }
-  .package-overview,.package-overview-html {
-  padding: 5.5px;
+
+  .package-overview,
+  .package-overview-html {
+    padding: 5.5px;
   }
 }

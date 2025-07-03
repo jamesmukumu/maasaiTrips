@@ -23,8 +23,9 @@
         </ng-template>
       </p-galleria>
 
-      <h4>{{ destinationData.hotelName }}</h4>
-      <mat-icon style="color: rgb(228, 106, 118)">place</mat-icon>
+      <mat-icon style="color: rgb(232, 139, 34)">place</mat-icon>
+      <b>{{ destinationData.hotelName }}</b>
+      
       <mat-card-content
         style="margin-top: 20px"
         [innerHTML]="destinationDescription"
@@ -55,7 +56,7 @@
           <mat-list>
            <mat-list-item>
             <mat-icon matListItemIcon style="color: orangered;">play_arrow</mat-icon>
-            <b matListItemTitle>
+            <b (click)="popRoom(element)" matListItemTitle>
               {{ element.roomType }}
             </b>
            </mat-list-item>
@@ -70,18 +71,13 @@
            Maximum Occupancy
          </th>
          <td mat-cell *matCellDef="let element" style="padding: 10px;">
-        <div >
+        <div (click)="popRoom(element)">
         <mat-icon *ngFor="let person of generateMaxOccupancy(element.maximumRoomOccupancy)">person</mat-icon>  
         </div>
          </td>
        </ng-container>
      
-       <ng-container matColumnDef="more">
-         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;"></th>
-         <td mat-cell *matCellDef="let element" style="padding: 10px;">
-           <button (click)="popRoom(element)" style="background-color: rgb(232,139,34);color:white;width:max-content" mat-flat-button>More</button>
-         </td>      
-       </ng-container>
+     
      
        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
