@@ -29,21 +29,10 @@ this.route.navigate(["/hotels"])
 constructor(private route:Router){}
 featureDestinations = [
 {
-"destinationTitle":"Nakuru County",
-"destinationSlug":""
+"destinationTitle":"Nyeri",
+"destinationSlug":"nyeri6863e1dc338f6"
 },
-{
-"destinationTitle":"Samburu County",
-"destinationSlug":"samburu_county67e68b1e3feba"
-},
-{
-"destinationTitle":"Garisaa County",
-"destinationSlug":""
-},
-{
-"destinationTitle":"Eldama Ravine",
-"destinationSlug":""
-},
+
 
 ]
 viewHotel(urlPath:string){

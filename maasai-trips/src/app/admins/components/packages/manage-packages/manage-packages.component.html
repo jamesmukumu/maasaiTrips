@@ -247,9 +247,10 @@
           <p-dropdown
             variant="filled"
             [options]="destinationsData"
-            [(ngModel)]="targetDestination"
+          
             [checkmark]="true"
             optionLabel="destinationTitle"
+            optionValue="id"
             [filter]="true"
             (onChange)="getDestination($event)"
             name="destination-name"

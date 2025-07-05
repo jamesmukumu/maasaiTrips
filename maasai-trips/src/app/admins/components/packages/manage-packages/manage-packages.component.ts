@@ -322,7 +322,8 @@ adjusting = false
 
   getDestination(event: any) {
     var { value } = event;
-    this.targetDestination = value.destinations_id;
+    this.targetDestination = value;
+   
   }
 
   async updatePackages() {

@@ -87,7 +87,7 @@ homeImages = [
   itemImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
   thumbnailImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
   alt: 'Fly in Safaris',
-  subtitle:"Turkana".toUpperCase(),
+  subtitle:"aberdare excursion".toUpperCase(),
   title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
   urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
 },
