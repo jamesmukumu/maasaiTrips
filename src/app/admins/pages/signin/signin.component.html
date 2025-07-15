@@ -1,0 +1,51 @@
+<header-add [showAdminControls]="false"></header-add>
+<div>
+
+<form #formApproval="ngForm">
+<h1>Sign in to your account</h1>
+
+<mat-form-field appearance="outline">
+<mat-label>Enter Your UserName/Email</mat-label>
+<input type="text" required name="userName" #username="ngModel" [(ngModel)]="credential" matInput>
+<mat-error *ngIf="username.invalid && username.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your password</mat-label>
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<input #pass="ngModel" minlength="6" required [type]="seePassword ? 'text':'password'" name="password" [(ngModel)]="password" matInput>
+<mat-error *ngIf="pass.invalid && pass.touched">
+Provide password as needed(Should be at least 6 Charachters)
+</mat-error>
+</mat-form-field>
+
+
+
+
+<span style="color: #08088b;cursor: pointer;" (click)="popRequest()">Forgot password?</span>
+
+
+<div class="buttoner">
+    <button class="button-5" role="button" *ngIf="!processingRequest && formApproval.valid" (click)="login()">Sign In</button>
+</div>
+<p-button severity="warning" [raised]="true" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<p-button severity="warning" *ngIf="!processingRequest && !formApproval.valid"  [raised]="true" label="Sign In" disabled />
+
+<h3>Do not have an account yet? <span  (click)="signUp()" style="cursor: pointer;color: blue;">Sign up</span></h3>
+</form>
+
+
+ 
+
+
+
+    
+<p-toast/>
+
+
+</div>

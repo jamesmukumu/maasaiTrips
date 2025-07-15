@@ -1,0 +1,82 @@
+<h1>Queue Status</h1>
+
+<table mat-table [dataSource]="dataSource" *ngIf="!processing">
+    
+   
+    <ng-container matColumnDef="created">
+      <th mat-header-cell *matHeaderCellDef>Created On</th>
+      <td mat-cell *matCellDef="let element"> 
+         {{timeFormater(element.created_at)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.bulk_user_relation.fullname}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="mail">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element"> {{element.bulk_user_relation.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element"> 
+        <button *ngIf="element.status == 'delivered'" mat-flat-button style="background-color: green;color: white;">
+        {{element.status}}
+        </button>
+        <button *ngIf="element.status == 'pending'" mat-flat-button style="background-color: orange;color: white;">
+            {{element.status}}
+            </button>
+            <button  *ngIf="element.status == 'failed' || element.status=='cancelled'" mat-flat-button style="background-color: red;color: white;">
+                {{element.status}}
+                </button>
+                
+      
+        </td>
+      </ng-container>
+    
+ 
+<ng-container matColumnDef="action" >
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+      <button mat-icon-button matTooltip="actions" *ngIf="element.status != 'delivered'" [mat-menu-trigger-for]="menu">
+      <mat-icon>more_vert</mat-icon>
+      </button>
+      
+      <mat-menu #menu>
+        <button mat-menu-item >
+            <mat-icon >pause</mat-icon>
+            <span>Pause</span>
+           </button>
+       <button mat-menu-item >
+        <mat-icon>try</mat-icon>
+        <span>Retry</span>
+       </button>
+     
+  
+      </mat-menu>
+  
+      
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row  *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter </td>
+    </tr>
+  </table>
+  
+  <mat-paginator  [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+
+
+  <div class="spin">
+    <p-progressSpinner *ngIf="processing"/>
+   </div>

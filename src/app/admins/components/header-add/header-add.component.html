@@ -1,0 +1,298 @@
+
+<nav class="navbar" ng-app="tourApp" >
+  <mat-icon (click)="actualizeToggle()" #controlBar  matTooltip="Toogle menu bar"
+  style="color: white">menu</mat-icon>
+  <div class="logo" (click)="home()">
+      <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1746617656/logoMaasai_vw03id_r3n9yf.png" alt="Company Logo">
+  </div>
+
+  <ul class="nav-links">
+      <li (click)="home()"><a href="/">Home</a></li> 
+      <li class="dropdown">
+        <a href="/destinations">Destinations ▾</a>
+     
+        </li>
+        <li class="dropdown">
+          <a href="/hotels">Accomodations ▾</a>
+          <ul class="dropdown-menu">
+           <mat-card>
+            <div >
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738354725/maasaiTrips/karenBlixen/xKaren_P20Blixen_P20Camp_P20Masai_P20Mara_220241008142708.webp.pagespeed.ic.CM1qMtionv_jh2fry.webp" alt="karen0blixen">
+              <span>Karen Blixen Camp Maasai Mara</span>
+              </div>
+              <div>
+                <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495354/maasaiTrips/maraMaisha/Mara_Maisha_Camp_320241011084806_ytp6aa.webp" alt="mara sweet acacia lodge">
+                <span>Mara Sweet Acacia Lodge</span>
+                </div>
+          
+                <div>
+                  <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738353694/maasaiTrips/zebra%20plains/xZebra_P20Plains_P20Mara_P20Camp_120241007163955.webp.pagespeed.ic.FsBOBodvI7_st8xkf.webp" alt="zebra plains">
+                  <span>Zebra Plains Mara Camp</span>
+                  </div>
+            <div>
+              <img src="../../../assets/Accomodations/xBella,P20Camp,P20Mara_120241009113342.webp.pagespeed.ic.uyCcOyVUpT.webp" alt="">
+            <span>Mara Serena Safari Lodge</span>
+            </div>
+            <div>
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495143/maasaiTrips/ashnil/Ashnil_Mara_Camp_320241009151206_bhakad.webp" alt="ashnil">
+            <span>Ashnil Mara Camp</span>
+            </div>
+            <div>
+              <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495049/maasaiTrips/enkorok/xEnkorok_P20Mara_P20Camp_P20Ltd_120241009150305.webp.pagespeed.ic.P_KMHYCw1n_fnucdt.webp" alt="enkorok">
+            <span>Enkorok Mara Camp</span>
+            </div>
+
+           </mat-card>
+          </ul>
+          </li>
+          <li class="dropdown">
+            <a href="/safaris">Safaris Packages ▾</a>
+            <ul class="dropdown-menu">
+          
+            </ul> 
+            </li>
+            <li><a href="#">Blogs</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">About Us</a></li>
+
+      
+  </ul>
+  <mat-icon
+  matTooltip="Account Controls"
+  *ngIf="showAdminControls"
+  style="color: white"
+  [mat-menu-trigger-for]="menu"
+  >account_circle</mat-icon
+>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="mobileEmitter('Account',false)" >
+      <mat-icon>person</mat-icon>
+      <span >My Profile</span>
+    </button>
+    <button mat-menu-item (click)="popDialog()">
+      <mat-icon>edit</mat-icon>
+      <span (click)="signUp()">Edit Profile</span>
+    </button>
+    
+    <button mat-menu-item (click)="mobileEmitter('Admins',false)" >
+      <mat-icon>person</mat-icon>
+      <span >Manage Users</span>
+    </button>
+
+    <button mat-menu-item (click)="logoutUser()">
+      <mat-icon>logout</mat-icon>
+      <span >Logout Profile</span>
+    </button>
+  </mat-menu>
+<button class="button-5" role="button">
+  <mat-icon>mood</mat-icon>
+Travel
+
+</button>
+</nav>
+
+
+
+
+<p-sidebar [(visible)]="openSideDrawer">
+  <mat-list >
+    <mat-list-item (click)="mobileEmitter('Home', false)">
+      <span matListItemTitle>Home</span>
+    </mat-list-item>
+
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p
+          style="color: black"
+          (click)="mobileEmitter('Email', true, node.Tree_Name)"
+        >
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-tree [dataSource]="dataSourceHotels" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black"    (click)="mobileEmitter('Hotels', true, node.Tree_Name)" >
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-tree [dataSource]="dataSourcePackages" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black" (click)="mobileEmitter('Packages', true, node.Tree_Name)">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-tree [dataSource]=" dataSourceDestinations" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black"  (click)="mobileEmitter('Destinations', true, node.Tree_Name)">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+
+    <mat-list-item>
+      <span matListItemTitle>Enquiries</span>
+    </mat-list-item>
+   
+    <mat-list-item>
+      <button mat-flat-button (click)="home()">Travel to Mara</button>
+    </mat-list-item>
+    
+    <mat-tree [dataSource]="dataSourceAccounts" [treeControl]="treeControl">
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+        <button mat-icon-button disabled></button>
+
+        <p style="color: black"   (click)="mobileEmitter('Account-Mini', true, node.Tree_Name)">
+          {{ node.Tree_Name }}
+        </p>
+      </mat-tree-node>
+
+      <mat-tree-node
+        *matTreeNodeDef="let node; when: hasChild"
+        matTreeNodePadding
+        matTreeNodeToggle
+      >
+        <button
+          mat-icon-button
+          matTreeNodeToggle
+          [attr.aria-label]="'toggle ' + node.Tree_Name"
+        >
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{ treeControl.isExpanded(node) ? "expand_more" : "account_circle" }}
+          </mat-icon>
+        </button>
+        {{ node.Tree_Name }}
+      </mat-tree-node>
+    </mat-tree>
+  </mat-list>
+</p-sidebar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" [opened]="false"> </mat-drawer>
+
+  <div>
+    <mat-icon class="harmburg"  *ngIf="showAdminControls" (click)="opener()">menu</mat-icon>
+    <img
+      src="https://res.cloudinary.com/dasrniwpk/image/upload/v1746617656/logoMaasai_vw03id_r3n9yf.png"
+      mat-card-md-image
+      alt=""
+    />
+    <mat-icon class="dark">dark_mode</mat-icon>
+  </div>
+</mat-drawer-container>
+
+
+
+
+<p-dialog [(visible)]="editAdminInfo"  [style]="{ width: '50rem' }" 
+[breakpoints]="{ '1199px': '75vw', '575px': '90vw' }" 
+  header="Edit Your Profile"
+  [maximizable]="true" 
+[modal]="true">
+
+<form >
+<mat-form-field appearance="outline">
+<mat-label>Enter your fullname</mat-label>
+<input type="text" matInput name="fullname" [(ngModel)]="fullname">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Email</mat-label>
+<input type="email" matInput name="email" [(ngModel)]="email">
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter new Phone number</mat-label>
+<input [(ngModel)]="phoneNumber" type="text" matInput name="phoneNumber">
+</mat-form-field>
+</form>
+<mat-card-actions>
+<button mat-flat-button >Edit</button>
+</mat-card-actions>
+
+
+
+
+
+
+
+</p-dialog>

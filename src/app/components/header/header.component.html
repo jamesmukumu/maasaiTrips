@@ -1,0 +1,103 @@
+
+    <nav class="navbar" ng-app="tourApp" >
+        <div class="logo" (click)="home()">
+            <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1746617656/logoMaasai_vw03id_r3n9yf.png" alt="Company Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li (click)="home()"><a href="/">Home</a></li> 
+            <li class="dropdown">
+              <a href="/destinations">Destinations ▾</a>
+              <ul class="dropdown-menu" >
+                <li *ngFor="let dest of featureDestinations">
+                  <a target="_blank" [attr.href]="'destinations/'+dest.destinationTitle + '/' + dest.destinationSlug">
+                    {{ dest.destinationTitle }}
+                  </a>
+                </li>
+              </ul>
+              </li>
+              <li class="dropdown">
+                <a href="/hotels">Accomodations ▾</a>
+                <ul class="dropdown-menu">
+                 <mat-card>
+                  <div (click)="viewHotel('hotel/Maasai%20Mara%20Serena/maasai-mara-serena')">
+                    <img src="http://res.cloudinary.com/dasrniwpk/image/upload/v1752125664/Maasai%20Mara%20Trips%20Hotels/n6wtnjfh5nxpz6csht2v.jpg" alt="karen_blixen">
+                    <span>Karen Blixen Camp Maasai Mara</span>
+                    </div>
+                    <div>
+                      <img src="http://res.cloudinary.com/dasrniwpk/image/upload/v1751473467/Maasai%20Mara%20Trips%20Hotels/lkejozwidfpckd4u9613.jpg" alt="Outspan Hotel">
+                      <span>Outspan hotel</span>
+                      </div>
+                
+                      <div>
+                        <img src="http://res.cloudinary.com/dasrniwpk/image/upload/v1752083500/Maasai%20Mara%20Trips%20Hotels/lvwx2o7cnwjygjebxzsl.jpg" alt="White Rhino">
+                        <span>White Rhino</span>
+                        </div>
+                  <div>
+                    <img src="http://res.cloudinary.com/dasrniwpk/image/upload/v1751376954/Maasai%20Mara%20Trips%20Hotels/ryq6tmciszd9b82latd5.jpg" alt="">
+                  <span>Tree Tops</span>
+                  </div>
+                  <div>
+                    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495143/maasaiTrips/ashnil/Ashnil_Mara_Camp_320241009151206_bhakad.webp" alt="ashnil">
+                  <span>Ashnil Mara Camp</span>
+                  </div>
+                  <div>
+                    <img src="https://res.cloudinary.com/dasrniwpk/image/upload/v1738495049/maasaiTrips/enkorok/xEnkorok_P20Mara_P20Camp_P20Ltd_120241009150305.webp.pagespeed.ic.P_KMHYCw1n_fnucdt.webp" alt="enkorok">
+                  <span>Enkorok Mara Camp</span>
+                  </div>
+
+                 </mat-card>
+                </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="/safaris">Safaris Packages ▾</a>
+                  <ul class="dropdown-menu">
+                  <li *ngFor="let pack of featureSafaris"><a target="_blank" [attr.href]="'safaris/'+pack.safariSlug">{{pack.safariTitle}}</a></li>
+                  
+                  </ul> 
+                  </li>
+                  <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about/us">About Us</a></li>
+            <li><a href="#">Gallery</a></li>
+        </ul>
+      <button class="button-5" role="button">
+        <mat-icon>mood</mat-icon>
+      Travel
+      
+      </button>
+    </nav>
+
+
+
+
+<p-sidebar [(visible)]="seeDrawer">
+  <mat-list>
+    <mat-list-item (click)="home()">
+      <span matListItemTitle>Masaai Mara Trips</span>
+    </mat-list-item>
+    <mat-list-item (click)="navigate()">All About Masai Mara</mat-list-item>
+    <mat-list-item (click)="accomodations()">Accommodations</mat-list-item>
+    <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
+    <mat-list-item (click)="goDest('destinations')">Destinations</mat-list-item>
+    <mat-list-item (click)="goDest('contact')">Contact Us</mat-list-item>
+    <mat-list-item (click)="goDest('about/us')">About Us</mat-list-item>
+    <mat-list-item>
+      <button class="button-5" role="button" (click)="navigate()">Travel to Mara</button>
+    </mat-list-item>
+  </mat-list>
+</p-sidebar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" [opened]="false"> </mat-drawer>
+
+  <div>
+    <mat-icon class="harmburg" (click)="toggle()">menu</mat-icon>
+    <img
+      src="https://res.cloudinary.com/dasrniwpk/image/upload/v1746617656/logoMaasai_vw03id_r3n9yf.png"
+      mat-card-md-image
+      alt=""
+    />
+   
+  </div>
+</mat-drawer-container> 

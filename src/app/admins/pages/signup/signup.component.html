@@ -1,0 +1,83 @@
+<header-add></header-add>
+<div>
+<mat-card>
+<form #registrationForm="ngForm">
+<h2>Create a new Account</h2>
+<mat-form-field appearance="outline">
+<mat-label>Enter Your UserName</mat-label>
+<input type="text" required name="userName" #username="ngModel" [(ngModel)]="userName" matInput>
+<mat-error *ngIf="username.invalid && username.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your Email Address</mat-label>
+<input type="email" required name="Email" #email="ngModel" [(ngModel)]="Email" matInput>
+<mat-error *ngIf="email.invalid && email.touched">
+Provide this field as needed
+</mat-error>
+
+</mat-form-field>
+<mat-form-field appearance="outline">
+<mat-label>Enter your phone Number</mat-label>
+<input type="text" required name="phoneNumber" #phone="ngModel" [(ngModel)]="phoneNumber" matInput>
+<mat-error *ngIf="phone.invalid && phone.touched">
+Provide this field as needed
+</mat-error>
+
+</mat-form-field>
+
+<mat-form-field appearance="outline">
+<mat-label>Pick a Role</mat-label>
+<mat-select required [(value)]="roleAdmin"> 
+<mat-option [value]="roles" *ngFor="let roles of acceptedAdminRoles">
+{{roles}}
+</mat-option>
+
+</mat-select>
+
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+<mat-label>Enter your password</mat-label>
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<input #pass="ngModel" (change)="checkerPassMatch($event)" minlength="6" required [type]="seePassword ? 'text':'password'" name="password" [(ngModel)]="password" matInput>
+<mat-error *ngIf="pass.invalid && pass.touched">
+Provide this field as needed
+</mat-error>
+</mat-form-field>
+
+
+<mat-form-field appearance="outline">
+<mat-icon (click)="toggleSee()" *ngIf="seePassword" matIconSuffix>visibility</mat-icon>
+<mat-icon (click)="toggleSee()" matIconSuffix *ngIf="!seePassword">visibility_off</mat-icon>
+<mat-label>Re-Type your password</mat-label>
+<input (change)="checkerPassMatch($event)" minlength="6" [type]="seePassword ? 'text':'password'" required name="confirmPassword" [(ngModel)]="confirmPassword" matInput>
+</mat-form-field>
+
+
+<mat-error *ngIf="mismatchWarn">
+Mismatch between passwords
+</mat-error>
+<p>Have an Account?<span style="color: #08088b;cursor: pointer;" (click)="goSignIn()">Sign in</span></p>
+
+<button class="button-5" role="button" *ngIf="!processingRequest && !mismatchWarn && registrationForm.valid" (click)="reg()">Register</button>
+<p-button severity="warning" label="processing" [loading]="processingRequest" *ngIf="processingRequest"/>
+<p-button disabled="" severity="warning" label="Sign Up" *ngIf="!processingRequest && !registrationForm.valid"/>
+</form>
+
+
+ 
+</mat-card>
+
+
+    <p-toast/>
+
+
+
+</div>
+<footer></footer>

@@ -1,0 +1,133 @@
+<mat-card>
+  <form #alertForm="ngForm">
+    <mat-form-field appearance="outline"  >
+      <mat-label>Enter Title</mat-label>
+      <input #titleBody="ngModel" type="text" autocomplete="off" [(ngModel)]="title" required name="title-body" matInput />
+    <mat-error *ngIf="titleBody.invalid && titleBody.touched">
+      Provide a valid title
+    </mat-error>
+     
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Title For Paragraph one</mat-label>
+      <input required type="text"[(ngModel)]="titleEntry1" #titleParaOne="ngModel" name="paragraph-one" matInput />
+    <mat-error *ngIf="titleParaOne.invalid && titleParaOne.touched">
+     Provide a Valid Title For Entry One
+    </mat-error>
+    </mat-form-field>
+<div>
+<label>Enter Content For Paragraph One:</label>
+<jodit-editor (onChange)="captureValueOne($event)"></jodit-editor>
+</div>
+    <div>
+      <p-fileUpload
+        name="demo[]"
+       
+        class="file-upload"
+        accept="image/*"
+        (onSelect)="uploadImageOne($event)"
+        maxFileSize="1000000"
+      >
+        <ng-template pTemplate="content">
+          <ul></ul>
+        </ng-template>
+      </p-fileUpload>
+    </div>
+
+
+    <mat-form-field appearance="outline">
+        <mat-label>Title for Paragraph 2</mat-label>
+        <input type="text" required name="para-two" #titleParaTwo="ngModel" matInput [(ngModel)]="titleEntry2" />
+        <mat-error *ngIf="titleParaTwo.invalid && titleParaTwo.touched">
+          Provide a Valid Title For Entry Two
+         </mat-error>
+      
+      </mat-form-field>
+      <div>
+        <label>Enter Content for Paragraph Two:</label>
+        <jodit-editor (onChange)="captureValueTwo($event)"></jodit-editor>
+      </div>
+  
+      <div>
+        <p-fileUpload
+          name="demo[]"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+         
+          (onSelect)="uploadImageTwo($event)"
+          
+          accept="image/*"
+          maxFileSize="1000000000"
+        >
+          <ng-template pTemplate="content">
+            <ul></ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Title for Entry 3</mat-label>
+        <input type="text" [(ngModel)]="titleEntry3"  required #titleParaThree="ngModel" name="para-three-title" matInput />
+        <mat-error *ngIf="titleParaThree.invalid && titleParaThree.touched">
+          Provide a Valid Title For Entry Three
+         </mat-error>
+      </mat-form-field>
+   <div>
+    <label>Enter Description Paragraph Three</label>
+    <jodit-editor (onChange)="captureValueThree($event)"></jodit-editor>
+   </div>
+      <div>
+        <p-fileUpload
+          name="demo[]"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+          (onSelect)="uploadImageThree($event)"
+          accept="image/*"
+          maxFileSize="1000000000"
+        >
+          <ng-template pTemplate="content">
+            <ul></ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Title for Entry 4</mat-label>
+        <input required [(ngModel)]="titleEntry4" #titleParaFour="ngModel" type="text" name="para-four" matInput />
+        <mat-error *ngIf="titleParaFour.invalid && titleParaFour.touched">
+          Provide a Valid Title For Entry Four
+         </mat-error>
+      </mat-form-field>
+   <div>
+    <label>Enter Description Paragraph Four:</label>
+    <jodit-editor (onChange)="captureValueFour($event)"></jodit-editor>
+   </div>
+      <div>
+        <p-fileUpload
+          name="demo[]"
+          url="https://www.primefaces.org/cdn/api/upload.php"
+          [multiple]="true"
+          accept="image/*"
+          maxFileSize="1000000"
+          (onSelect)="uploadImageFour($event)"
+        > 
+          <ng-template pTemplate="content">
+            <ul></ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+  </form>
+  <a href="https://app.tango.us/app/workflow/Creating-a-Newsletter-in-MaasaiTrips-3702f1c77da947c2bc9b6c6b77cc7bd3" target="blank">Not So sure of doing this?Watch a step by step guide</a>
+  <mat-card-actions align="start">
+    
+    <button  mat-raised-button (click)="actualizeSaving()" *ngIf="!saving && alertForm.valid">Save</button>
+    <button mat-raised-button (click)="actualizePreview()" *ngIf="!saving && alertForm.valid">Preview</button>
+    <p-button loading [raised]="true" [style]="{'background-color':'rgb(252,166,8)'}"   label="Saving...." *ngIf="saving"></p-button>
+    <p-button disabled [raised]="true" label="Create" severity="warning" *ngIf="!saving && !alertForm.valid"></p-button>
+  
+  </mat-card-actions>
+</mat-card>
+
+
+
+<div class="spin">
+<p-progressSpinner *ngIf="processing"/>
+</div>

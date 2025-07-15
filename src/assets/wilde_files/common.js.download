@@ -1,0 +1,98 @@
+
+baseurl = "/"; //    "/masaimaratrips/"; //
+
+$(document).ready(function () {
+
+//Join Form
+    $("#joinform").on('submit', (function (e) {
+        e.preventDefault();
+        $("#joinerror").html('');
+        $.ajax({
+            url: baseurl + "Home/sendJoinMail", // Url to which the request is send
+            type: "POST", // Type of request to be send, called as method
+            data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+            contentType: false, // The content type used when sending data to the server.
+            cache: false, // To unable request pages to be cached
+            processData: false, // To send DOMDocument or non processed data file it is set to false
+            beforeSend: function () {
+                $("#joinerror").html('<center><img src="' + baseurl + 'assets/images/preloader/preloader.svg" /> &nbsp; Sending...<br/>Please wait!!</center>');
+            },
+            success: function (data)   // A function to be called if request succeeds.
+            {
+                
+                try {
+                    JSON.parse(data);
+                } catch (err) {
+                    console.log(data);
+                    $("#joinerror").html("<div  class='alert alert-danger' ><center><i class='fa fa-times fa-2x text-danger mb50 animated zoomIn'></i><br /><b>Invalid Server Response.</b><br /> Please check your details and try again</center></div>");
+                    return;
+                }
+
+                var obj = JSON.parse(data);
+
+                if (obj.success == "1") {
+                    $("#joinerror").html(''); //clearing joinerror message
+                    $("#joinform")[0].reset();
+                    $("#joinform").html("<div  class='alert alert-success' ><center><i class='fa fa-check fa-2x text-success mb50 animated zoomIn'></i><br />" + obj.message + "</center></div>");
+                    setTimeout(function () {
+                        $("#joinerror").html(''); //clearing error message
+                    }, 4000);
+
+                } else if (obj.success == "0") {
+                    $("#joinerror").html(''); //clearing joinerror message
+                    $("#joinerror").html("<div  class='alert alert-danger' ><center><i class='fa fa-times fa-2x text-danger mb50 animated zoomIn'></i><br />" + obj.message + "</center></div>");
+                     setTimeout(function () {
+                        $("#joinerror").html(''); //clearing error message
+                    }, 4000);
+                } else {
+                    $("#joinform")[0].reset();
+                    console.log(data);
+                    $("#joinerror").html("<div  class='alert alert-success' ><center><i class='fa fa-check fa-2x text-success mb50 animated zoomIn'></i><br />OPPS!! Unknown joinError Occured.<br /> Please check your deatails and try again</center></div>");
+
+                }
+            },
+            error: function (request, status, errorThrown) {
+                $("#joinerror").html("<div  class='alert alert-danger' ><center><i class='fa fa-times fa-2x text-danger mb50 animated zoomIn'></i><br />OPPS!! Error Occured.<br /> Description: <b> " + request.statusText + " </b> </center></div>");
+             setTimeout(function () {
+                        $("#joinerror").html(''); //clearing error message
+                    }, 4000);
+            }
+
+        });
+
+
+    }));
+    
+    
+    //adding class bold
+    $("b,strong").addClass("font-weight-bold");
+    
+     //select boxes
+    $("select").css("height", "45px");
+    $('.package-body img').css({ 'width' : '', 'height' : '','max-width' : '100%' });
+   
+   
+});
+ $(".selectpicker").selectpicker();
+        $(function () {
+
+            var end = moment().add(1, 'days');
+            var start = moment();
+
+            function cb(start, end) {
+                $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                document.getElementById("start_date").value = start.format('YYYY-MM-DD');
+                document.getElementById("end_date").value = end.format('YYYY-MM-DD');
+            }
+
+            $('#reportrange').daterangepicker({
+                startDate: start,
+                endDate: end,
+                minDate: start,
+
+            }, cb);
+
+            cb(start, end);
+
+        });
+

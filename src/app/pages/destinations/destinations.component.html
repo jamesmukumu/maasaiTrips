@@ -1,0 +1,24 @@
+<header></header>
+<div class="safaris" [@bounceRight]="bgState" #bg>
+  <h1 style="color: white;">See many destinations which may interest you</h1>
+</div>
+<div class="main">
+  <h1>Explore our stunning Safari destinations in Kenya</h1>
+  <mat-card *ngIf="!findingDestinations">
+    <div (click)="goDestinations(dest.destinationSlug, dest.destinationTitle)" *ngFor="let dest of destinations">
+      <img [src]="dest.destinationThumbnail" alt="{{dest.destinationTitle}}" />
+      <span class="label">{{dest.destinationTitle}}</span>
+      <main>
+        <mat-icon style="color: rgb(232,139,34)">place</mat-icon>
+        <h4>{{dest.destinationTitle}}</h4>
+      </main>
+      <mat-card-content [innerHTML]="sanitize(dest.destinationAbout)"></mat-card-content>
+    </div>
+  </mat-card>
+  <p-scrollTop/>
+  <div [classList]="findingDestinations ? 'spin' : 'no-spin'">
+    <!-- From Uiverse.io by doniaskima --> 
+    <div class="loader"></div>
+  </div>
+  <footer></footer>
+</div>

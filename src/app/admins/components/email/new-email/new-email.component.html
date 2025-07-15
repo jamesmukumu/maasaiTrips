@@ -1,0 +1,62 @@
+<mat-card>
+    <p-fileUpload
+    class="upload"
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    mode="basic"
+    accept=".csv"
+    (onUpload)="uploadCSV()"
+    (onSelect)="captureEmailTemplateCSV($event)"
+    chooseLabel="Choose Email-Templates CSV file"
+    [style]="{ 'background-color': 'green' }"
+    maxFileSize="1000000"
+  >
+  </p-fileUpload>
+    <h1>Create new Email</h1>
+    <form #createEmailFrom="ngForm">
+    <mat-form-field >
+    <mat-label>Subject</mat-label>
+    <input  required [(ngModel)]="subject" #subjectContent="ngModel" required type="text" matInput name="mailTo">
+    <mat-hint>Introducing maasai trips.com</mat-hint>
+    <mat-error *ngIf="subjectContent.invalid && subjectContent.touched">
+    Provide the subject field as required
+    </mat-error>
+    </mat-form-field>
+    
+       
+    
+            <div>
+            <mat-label>Enter message Body</mat-label>
+          <jodit-editor (onChange)="captureMessage($event)"></jodit-editor>
+          </div>
+    
+          <input #fileInput type="file" style="display: none;" >
+          
+          <div class="card flex justify-content-center">
+            
+            <p-fileUpload 
+                name="demo[]" 
+                url="https://www.primefaces.org/cdn/api/upload.php" 
+                
+                [multiple]="true" 
+                accept="image/*" 
+                maxFileSize="1000000">
+                    <ng-template pTemplate="content">
+                        <ul >
+                        
+                        </ul>
+                    </ng-template>
+            </p-fileUpload>
+        </div>
+        
+    </form>
+    
+    <mat-card-actions>
+    <button mat-flat-button *ngIf="!processingRequest && createEmailFrom.valid" (click)="savingTemplate()">Create</button>
+    <p-button disabled *ngIf="createEmailFrom.invalid"  [raised]="true" severity="warning">Save Mail</p-button>
+    
+
+
+</mat-card-actions>
+    <p-toast/>
+    </mat-card>

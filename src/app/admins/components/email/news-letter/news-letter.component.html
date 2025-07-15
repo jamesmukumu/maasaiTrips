@@ -1,0 +1,11 @@
+<mat-card>
+  <h1>Create Newsletter</h1>
+  <mat-checkbox  [checked]="alertsNewsLetter" (change)="checkerAlerts($event)" >Alerts newsletter</mat-checkbox>
+  <mat-checkbox [checked]="promotionalNewsLetter" (change)="checker($event)" >Promotional newsletter</mat-checkbox>
+
+  <p-toast />
+
+  <alert-news *ngIf="alertsNewsLetter"></alert-news>
+  <promotionalnewsletters *ngIf="promotionalNewsLetter"></promotionalnewsletters>
+</mat-card>
+ 

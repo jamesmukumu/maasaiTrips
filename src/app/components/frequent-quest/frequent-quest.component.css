@@ -1,0 +1,50 @@
+mat-card{
+    margin-top: 20px;
+max-width: 100vw;
+min-width: 100%;
+background-color: rgb(237,241,245);
+}
+
+mat-expansion-panel{
+margin-top: 10px;
+}
+mat-panel-title,h1,p{
+text-align: center;
+}
+mat-panel-title{
+font-size: 17.5px;
+font-weight: bolder;
+color:rgb(179, 118, 65);
+}
+mat-panel-description{
+font-weight: bolder;
+line-height: 1.5;
+letter-spacing: 1.22px;
+}
+.frequent-questions{
+width: 100%;
+}
+
+.frequent-questions mat-accordion{
+display: grid;
+grid-template-columns: repeat(2,1fr);
+grid-template-rows: 1fr;
+
+}
+
+
+@media(max-width:900px){
+    .frequent-questions mat-accordion{
+        display: flex;
+        flex-direction: column;
+        flex-direction: wrap;
+        
+        }
+        mat-panel-title{
+            font-size: 15.000px;
+        }
+    mat-expansion-panel{
+margin-top: 2.777px;
+    }
+
+}

@@ -1,0 +1,205 @@
+
+<mat-card *ngIf="!processingFetchRequest  && dataPresent">
+<mat-card-content>
+  <mat-form-field >
+    <mat-label>Search any email</mat-label>
+    <input type="text" matInput (keyup)="applyFilter($event)" #inputSelect>
+    <mat-hint>Example:johndoegmail.com</mat-hint>
+    </mat-form-field>
+
+    <table mat-table [dataSource]="tabularData"  class="main-table" *ngIf="!processingFetchRequest">
+
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+          </ng-container>
+
+         
+          <ng-container matColumnDef="adults">
+            <th mat-header-cell *matHeaderCellDef>No of Adults</th>
+            <td mat-cell *matCellDef="let element"> {{element.adultsCount}} </td>
+          </ng-container>
+          <ng-container matColumnDef="childrenCount">
+            <th mat-header-cell *matHeaderCellDef>No of Children</th>
+            <td mat-cell *matCellDef="let element"> {{element.childrenCount}} </td>
+          </ng-container>
+          <ng-container matColumnDef="enquiry-status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element"> 
+            <p-tag severity="success" value="Addressed" *ngIf="element.quotationAddressed" />
+            <p-tag severity="warning" value="Pending" *ngIf="!element.quotationAddressed" />
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="rooms">
+            <th mat-header-cell *matHeaderCellDef>Rooms</th>
+            <td mat-cell *matCellDef="let element"> {{element.roomsCount}} </td>
+          </ng-container>
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef>Start stay Date</th>
+            <td mat-cell *matCellDef="let element"> {{formatDate(element.startStayDate)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef>End stay Date</th>
+            <td mat-cell *matCellDef="let element"> {{formatDate(element.endStayDate)}} </td>
+          </ng-container>
+  
+      
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon (click)="saveInfo(element)" style="cursor: pointer;"  matTooltip="Edit Inquiry">edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                <button mat-menu-item *ngIf="!element.quotationAddressed">
+                  <mat-icon style="cursor: pointer;color: green;"  matTooltip="Edit Status">edit</mat-icon>
+                  <span>Mark Addressed</span>
+                </button>
+
+                <button mat-menu-item *ngIf="element.quotationAddressed">
+                  <mat-icon style="cursor: pointer;color: red;"  matTooltip="Edit Status">edit</mat-icon>
+                  <span>Mark Un-Addressed</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon (click)="showDelete()" style="color: red;cursor: pointer;"  matTooltip="Delete Inquiry">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+
+
+            </td>
+          </ng-container>
+
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter </td>
+        </tr>
+      </table>
+
+
+
+      <table mat-table [dataSource]="tabularData" class="mat-elevation-z8" class="small-table" *ngIf="!processingFetchRequest">
+
+        <ng-container matColumnDef="firstname">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+        </ng-container>
+      
+     
+     
+        
+          
+          <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef>Start stay Date</th>
+            <td mat-cell *matCellDef="let element"> {{formatDate(element.startStayDate)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef>End stay Date</th>
+            <td mat-cell *matCellDef="let element"> {{formatDate(element.endStayDate)}} </td>
+          </ng-container>
+  
+      
+          <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef>Action</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon (click)="saveInfo(element)" style="cursor: pointer;"  matTooltip="Edit Inquiry">edit</mat-icon>
+                  <span>Edit</span>
+                </button>
+                
+                <button mat-menu-item>
+                  <mat-icon (click)="showDelete()" style="color: red;cursor: pointer;"  matTooltip="Delete Inquiry">delete</mat-icon>
+                  <span>Delete</span>
+                </button>
+              </mat-menu>
+
+
+            </td>
+          </ng-container>
+
+        
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsMobile"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsMobile;"></tr>
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter </td>
+        </tr>
+      </table>
+</mat-card-content>
+
+
+</mat-card>
+
+
+<div class="spin" *ngIf="processingFetchRequest">
+  <p-progressSpinner/>
+</div>
+
+<style>
+.progress {
+   width: 129.6px;
+   height: 21.6px;
+   background: linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0),
+        linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0),
+        linear-gradient(rgba(195, 208, 98, 0.96) 50%,#0000 0),
+        linear-gradient(#0000 50%,rgba(195, 208, 98, 0.96) 0)
+        #dbdcef;
+   background-size: calc(100%/6 + 1px) 200%;
+   background-repeat: no-repeat;
+   animation: progress-qh65fe 2s infinite;
+}
+
+@keyframes progress-qh65fe {
+   0% {
+      background-position: 0% 100%, 20%   0%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   16.67% {
+      background-position: 0%   0%, 20%   0%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   33.33% {
+      background-position: 0%   0%, 20% 100%, 40% 100%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   50% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60%   0%, 80% 100%, 100%   0%;
+   }
+
+   66.67% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80% 100%, 100%   0%;
+   }
+
+   83.33% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80%   0%, 100%   0%;
+   }
+
+   100% {
+      background-position: 0%   0%, 20% 100%, 40%   0%, 60% 100%, 80%   0%, 100% 100%;
+   }
+}
+</style>
+
+
+<empty-data [emptyMesage]="'No Enquired can be found'" [emptyDescription]="'Regularly Refresh check to avoid missing crucial enquiries'" *ngIf="!processingFetchRequest && !dataPresent"></empty-data>
+

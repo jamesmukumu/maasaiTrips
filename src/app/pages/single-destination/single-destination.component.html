@@ -1,0 +1,66 @@
+<header></header>
+<div class="container">  
+ 
+<mat-card *ngIf="!fetchingDestination" [ngClass]="safaris.length > 0 ?'grid':'vert'">
+    <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" [ngClass]="safaris.length > 0 ?'div-a-adjust':'div-a'">
+     <h1>{{destinationData.destinationTitle}}</h1>
+    <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
+    [autoPlay]="true"
+    [circular]="true" 
+    [showThumbnails]="true"  
+    [changeItemOnIndicatorHover]="true" 
+    [containerStyle]="{ 'max-width': '100%', }">
+    
+    <ng-template pTemplate="item" let-item>
+        <img [src]="item"  class="img-big" />
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <img [src]="item" class="img-thumbnail" />
+    </ng-template>
+    </p-galleria>
+     
+     <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>{{destinationData.destinationTitle}}</span>
+        <mat-icon style="color: #e88b22;" matListItemIcon>place</mat-icon>
+      </mat-list-item>
+     </mat-list>
+  
+       <mat-card-content style="margin-top: 20px;" [innerHTML]="destinationDescription">
+
+       </mat-card-content>
+       <mat-card-content style="margin-top: 20px;"  [innerHTML]="destinationAbout">
+
+       </mat-card-content>
+      
+  </div>
+    
+    
+    
+    <div class="div-b" *ngIf="safaris.length > 0" >
+    <h2>Feature Packages for {{destinationData.destinationTitle}}</h2>
+    <div class="grid-see" >
+      <div *ngFor="let saf of safaris" >
+        <img [src]="saf.packageImage" alt="">
+        <h3>{{saf.packageTitle}}</h3>
+        
+     
+         <mat-card-footer>
+          <button class="button-5" role="button"  (click)="goPackage(saf.packageSlug)" >View Package</button>
+         </mat-card-footer>
+      </div>
+        
+    
+    </div>
+    
+    </div>
+    </mat-card>
+    <div [classList]="fetchingDestination ? 'spin':'no-spin'">
+    <div class="loader"></div>
+      </div>
+      <related-hotels  *ngIf="!fetchingDestination && relatedHotels.length > 0" [destinationName]="destinationData.destinationTitle" [hotelData]="relatedHotels"></related-hotels>
+    <patners  *ngIf="!fetchingDestination" ></patners>
+    <p-scrollTop/>
+  
+    <footer></footer>
+    </div>

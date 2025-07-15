@@ -1,0 +1,58 @@
+*{
+margin: 0;
+padding: 0;
+}
+mat-card mat-card-content div img{
+width: 100%;
+}
+mat-card mat-card-content div{
+width: fit-content;
+height: fit-content;
+cursor: pointer;
+margin: 7.66px;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+mat-card mat-card-content div p{
+font-size: 20px;
+}
+.align-hor{
+display: flex;
+flex-direction: row;
+}
+.align-hor p{
+    font-size: 15.5px;
+}
+mat-card mat-card-content{
+width: 100%;
+display: grid;
+grid-template-columns: repeat(4,1fr);
+grid-template-rows: 1fr;
+}
+mat-card{
+max-width: 100vw;
+min-width: 100%;
+
+background-color: rgb(237,241,245);
+}
+h1{
+text-align: center;
+line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+@media(max-width:900px){
+
+    mat-card mat-card-content{
+        width: 100%;
+        display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+        }
+
+}
