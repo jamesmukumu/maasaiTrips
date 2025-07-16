@@ -8,10 +8,12 @@
     <div (click)="goDestinations(dest.destinationSlug, dest.destinationTitle)" *ngFor="let dest of destinations">
       <img [src]="dest.destinationThumbnail" alt="{{dest.destinationTitle}}" />
       <span class="label">{{dest.destinationTitle}}</span>
-      <main>
-        <mat-icon style="color: rgb(232,139,34)">place</mat-icon>
-        <h4>{{dest.destinationTitle}}</h4>
-      </main>
+      <mat-list>
+       <mat-list-item>
+        <mat-icon style="color: rgb(232,139,34)" matListItemIcon>place</mat-icon>
+        <h4 matListItemTitle>{{dest.destinationTitle}}</h4>
+       </mat-list-item>
+      </mat-list>
       <mat-card-content [innerHTML]="sanitize(dest.destinationAbout)"></mat-card-content>
     </div>
   </mat-card>

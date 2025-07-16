@@ -53,7 +53,8 @@ fetchingEnquiryData(){
 this.processingFetchRequest = true
 this.quotations.fetchQuotations().then((dataa)=>{
 var {data} = dataa
-if( dataa == 'No Active Enquiries'){
+
+if( data.message == 'No Active Enquiries'){
 this.processingFetchRequest = false
 this.dataPresent = false
 
@@ -61,6 +62,7 @@ this.dataPresent = false
   this.tabularData = new MatTableDataSource(data)
 
   this.processingFetchRequest = false
+  this.dataPresent = true
 }
 
 })
