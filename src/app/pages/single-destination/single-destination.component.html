@@ -4,21 +4,8 @@
 <mat-card *ngIf="!fetchingDestination" [ngClass]="safaris.length > 0 ?'grid':'vert'">
     <div style=" box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" [ngClass]="safaris.length > 0 ?'div-a-adjust':'div-a'">
      <h1>{{destinationData.destinationTitle}}</h1>
-    <p-galleria [value]="destinationPhoto" [showIndicators]="true" 
-    [autoPlay]="true"
-    [circular]="true" 
-    [showThumbnails]="true"  
-    [changeItemOnIndicatorHover]="true" 
-    [containerStyle]="{ 'max-width': '100%', }">
-    
-    <ng-template pTemplate="item" let-item>
-        <img [src]="item"  class="img-big" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-        <img [src]="item" class="img-thumbnail" />
-    </ng-template>
-    </p-galleria>
-     
+   <gallery  autoplay="true" thumbAutosize="true"  [items]="destinationModifiedPhotos" itemAutosize="true" ></gallery>
+       
      <mat-list>
       <mat-list-item>
         <span matListItemTitle>{{destinationData.destinationTitle}}</span>

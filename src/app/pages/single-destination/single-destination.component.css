@@ -230,6 +230,43 @@ h3 {
   align-items: center;
   justify-content: center;
 }
+/* Ensure the gallery container stretches full width */
+gallery {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* Make sure ngx-gallery images fill the container and are responsive */
+gallery ::ng-deep .ngx-gallery-image,
+gallery ::ng-deep .ngx-gallery-main {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+/* Make thumbnails responsive if used */
+gallery ::ng-deep .ngx-gallery-thumbnail {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+  gallery {
+    max-width: 100vw;
+  }
+  gallery ::ng-deep .ngx-gallery-image {
+    max-height: 400px;
+  }
+}
+
 
 .grid-see div button {
   width: fit-content;

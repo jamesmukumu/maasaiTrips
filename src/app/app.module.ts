@@ -6,6 +6,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { userStatusReducer } from './redux/reducers/userStatus.reducer';
 import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import {GalleryModule} from "ng-gallery"
 import { RouterModule } from '@angular/router';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import {ToastModule} from "primeng/toast"
@@ -25,6 +26,7 @@ import { DialogModule } from 'primeng/dialog';
 import {MatMenuModule} from "@angular/material/menu"
 import {MatSidenavModule} from "@angular/material/sidenav"
 import {MatSnackBarModule} from "@angular/material/snack-bar"
+import {LightboxModule} from "ng-gallery/lightbox"
 import { TagModule } from 'primeng/tag';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -157,7 +159,8 @@ const reducers:ActionReducerMap<any> = {
   imports: [
     BrowserModule,  
     AppRoutingModule,
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,
+    GalleryModule,    
  MatChipsModule,
  MatAutocompleteModule,
  TabViewModule,
@@ -174,6 +177,7 @@ const reducers:ActionReducerMap<any> = {
     MatSelectModule,
     TableModule,
     MatDatepickerModule,
+    LightboxModule,
     TagModule,
     MatTreeModule,
     MatTableModule,
@@ -196,6 +200,7 @@ const reducers:ActionReducerMap<any> = {
  MatSidenavModule,   
  MatMenuModule,
  MatPaginatorModule,
+
  ClipboardModule,   
  GalleriaModule,
  DropdownModule,
@@ -292,8 +297,10 @@ component:SafarisComponent
     
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    
   ],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

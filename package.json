@@ -36,6 +36,7 @@
     "jodit-angular": "^1.14.2",
     "js-cookie": "^3.0.5",
     "mdb-angular-ui-kit": "^7.1.0",
+    "ng-gallery": "^12.0.0",
     "ng-mat-carousel": "^0.11.1",
     "ngrx-store-localstorage": "^19.0.0",
     "ngx-quill": "^27.0.0",

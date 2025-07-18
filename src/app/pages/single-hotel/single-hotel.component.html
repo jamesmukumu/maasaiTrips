@@ -6,22 +6,8 @@
   <h1>{{ destinationData.hotelName }}</h1>
   <div *ngIf="!fetchingDestination" class="grid">
     <div class="div-a-adjust">
-      <p-galleria
-        [value]="destinationPhoto"
-        [showIndicators]="true"
-        [autoPlay]="true"
-        [circular]="true"
-        [showThumbnails]="true"
-        [changeItemOnIndicatorHover]="true"
-    
-      >
-        <ng-template pTemplate="item" let-item>
-          <img [src]="item" class="img-big" />
-        </ng-template>
-        <ng-template pTemplate="thumbnail" let-item>
-          <img [src]="item" class="img-thumbnail" />
-        </ng-template>
-      </p-galleria>
+      <gallery  autoplay="true" thumbAutosize="true"  autoHeight="true" [items]="destinationPhoto" thumbPosition="left" thumbs="true" itemAutosize="true" imageSize="contain"></gallery>
+       
 
       <mat-icon style="color: rgb(232, 139, 34)">place</mat-icon>
       <b>{{ destinationData.hotelName }}</b>

@@ -2,6 +2,7 @@ import { Component,OnInit,ViewChild,ElementRef } from '@angular/core';
 import { ActivatedRoute,Router } from '@angular/router';
 import { PackagesService } from '../../services/packages.service';
 import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
+import { ImageItem } from 'ng-gallery';
 
 
 @Component({
@@ -66,7 +67,12 @@ formatExclusives(excl:any){
   return JSON.parse(excl)
   }
 formatPackageImages(packageImages:any){
-return JSON.parse(packageImages)
+return JSON.parse(packageImages).map((photo:string)=>{
+return new ImageItem({
+src:photo,
+thumb:photo
+})
+})
 }
 onboard(){
 this.route.navigate([`/onboard/packages/${this.packageSlug}`],{
