@@ -51,7 +51,7 @@
       <img [src]="packageData.packageImage" alt="">
     </div>
     <div class="galleria-thumbnails">
-      <img [lightbox]="i" *ngFor="let imgs of formatPackageImages(packageData.packageImages);let i =index" [src]="imgs['src']" alt="">
+      <img [lightbox]="i" *ngFor="let imgs of formatPackageImages(packageData.packageImages);let i =index" [src]="imgs" alt="">
     </div>
   </div>
 
