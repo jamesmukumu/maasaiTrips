@@ -167,10 +167,11 @@ color: rgb(21, 181, 21);
 font-size: 25.55px;
 color: white;
 }
-.grid-see img{
+.grid-see div img{
 width: 100%;
 padding: 5px;
 max-width: 500px;
+height: 200px;
 }
 h5,h2{
 text-align: center;

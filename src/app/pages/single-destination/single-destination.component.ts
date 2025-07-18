@@ -39,14 +39,14 @@ export class SingleDestinationComponent {
       if (message === 'Destination Fetched') {
         this.destinationData = data;
         this.destinationPhoto = JSON.parse(data.destinationPhotos);
-        // Map destinationPhotos to destinationModifiedPhotos
+     
         this.destinationModifiedPhotos = this.destinationPhoto.map((photo:string)=>{
          return new ImageItem({
           src:photo,
           thumb:photo
           })
         })
-        console.log(this.destinationModifiedPhotos)
+
         this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.destinationDescription);
         this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.destinationAbout);
         this.relatedHotels = data.fetch_hotels;

@@ -92,8 +92,8 @@ homeImages = [
   urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
 },
 {
-  itemImageSrc: '../../../assets/front_offers/masai-mara-governors-camp-game-drives.jpg',
-  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  itemImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
+  thumbnailImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
   alt: 'Easter Vacation',
   subtitle:"Ashnil Mara Camp".toUpperCase(),
   title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),

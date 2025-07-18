@@ -51,9 +51,16 @@
       <img [src]="packageData.packageImage" alt="">
     </div>
     <div class="galleria-thumbnails">
-      <img [lightbox]="i" *ngFor="let imgs of formatPackageImages(packageData.packageImages);let i =index" [src]="imgs" alt="">
+      <img *ngFor="let img of formatPackageImages(packageData.packageImages); let i = index"
+           [src]="img"
+           [lightbox]="i"
+           [gallery]="galleryId"
+           class="gallery-thumb"
+           alt="Gallery Image {{i}}">
     </div>
   </div>
+  
+  
 
   <div class="card">
     <p-tabView>

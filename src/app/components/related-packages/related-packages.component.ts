@@ -1,5 +1,5 @@
 import { Component,Input } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'related-packages',
   templateUrl: './related-packages.component.html',
@@ -7,9 +7,11 @@ import { Component,Input } from '@angular/core';
 })
 export class RelatedPackagesComponent {
 @Input() packageData:any
- 
+ constructor(private router:Router){}
 
-
+visitPackage(slug:any){
+this.router.navigate([`safaris/${slug}`])
+}
 
 
 }

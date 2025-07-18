@@ -28,6 +28,10 @@ this.route.navigate(["/hotels"])
 
 constructor(private route:Router){}
 featureDestinations = [
+  {
+    "destinationTitle":"Diani",
+    "destinationSlug":"diani687a393329ec1"
+    },
 {
 "destinationTitle":"Nyeri",
 "destinationSlug":"nyeri6863e1dc338f6"

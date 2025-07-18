@@ -1,15 +1,11 @@
 <div class="main">
-    <h1>More Related Packages</h1>
-    <mat-card >
+  <h1>More Related Packages</h1>
+  <mat-card>
       <div *ngFor="let package of packageData">
-        <img
-  [src]="package.packageImage" 
-          alt=""
-        />
-        <p>{{package.packageTitle}}</p>
-        <p>Charges: <b>{{package.packageCharge}} {{package.packageChargeCurrency}}</b>  per Adult</p>
-        <button class="button-5" role="button" >See Package</button>
+          <img [src]="package.packageImage" alt="{{package.packageTitle}}" />
+          <p>{{package.packageTitle}}</p>
+          <p>Charges: <b>{{package.packageCharge}} {{package.packageChargeCurrency}}</b> per Adult</p>
+          <button (click)="visitPackage(package.packageSlug)" class="button-5" role="button">See Package</button>
       </div>
-      
   </mat-card>
-  </div>
+</div>
