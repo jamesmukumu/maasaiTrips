@@ -1,0 +1,32 @@
+<header></header>
+<div class="safaris"  [@bounceRight]="bgState" #bg>
+  <h1>Enjoy our scenic galleria</h1>
+</div>
+
+<h2>Our Galleria</h2>
+<div class="container" gallerize *ngIf="!fetching">
+    <div class="gallery-wrapper">
+      <div class="gallery-item" *ngFor="let image of galleryContent">
+        <div class="gallery-item-inner">
+          <img class="gallery-image"
+               [src]="image.url"
+               [attr.imageSrc]="image.url"
+               [attr.thumbSrc]="image.url"
+               alt="gallery" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+<p-scrollTop/>
+
+
+
+
+   
+
+
+

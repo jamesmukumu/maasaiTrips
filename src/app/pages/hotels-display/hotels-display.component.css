@@ -18,6 +18,9 @@
   font-size: 25.55px;
   color: white;
 }
+h2{
+  text-align: center;
+}
 .safaris {
   background-image: url(https://www.masaimara.travel/images/lounge-area-entim-private-camp-masai-mara.jpeg);
   background-position: center;
