@@ -343,7 +343,8 @@ h3 {
   }
   .grid-see div {
     width: max-content;
-    max-width: fit-content;
+    max-width: 100%;
+    min-width: 100%;
     margin-top: 5.55px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
