@@ -1,0 +1,70 @@
+<div *ngIf="!processingUser">
+  <div class="container">
+    <h1 class="title">Welcome Back {{ userData['userName'] }} 👋 </h1>
+    
+  
+    <h2 class="subtitle">General Stats</h2>
+    
+    <div class="card-grid">
+      <div class="card booking-total-card">
+        <div>
+          <div class="card-label">My Packages</div>
+          <div class="card-value">{{ stats_info['packages'] }}</div>
+        </div>
+        <div class="card-more">…</div>
+      </div>
+    
+      <div class="card booking-processed-card">
+        <div>
+          <div class="card-label">My Hotels</div>
+          <div class="card-value">{{stats_info['hotels']}}</div>
+        </div>
+        <div class="card-more">…</div>
+      </div>
+    
+      <div class="card booking-terminated-card">
+        <div>
+          <div class="card-label">My Destinations</div>
+          <div class="card-value">{{stats_info['destinations']}}</div>
+        </div>
+        <div class="card-more">…</div>
+      </div>
+    
+      <div class="card booking-pending-card">
+        <div>
+          <div class="card-label">My Blogs</div>
+          <div class="card-value">{{stats_info['blog']}}</div>
+        </div>
+        <div class="card-more">…</div>
+      </div>
+
+      <div class="card room-card">
+        <div>
+          <div class="card-label">My Rooms</div>
+          <div class="card-value">{{stats_info['rooms']}}</div>
+        </div>
+        <div class="card-more">…</div>
+      </div>
+    </div>
+<div>
+  <h1>Graphical Analysis of overall stats</h1>
+  <p-chart type="bar" [data]="basicStats" [options]="basicOptions" />
+</div>
+  
+   <div>
+    <h1>Annual Analysis</h1>
+    <p-chart type="bar" [data]="data_stats" [options]="options" />
+   </div>
+
+</div>
+
+
+
+
+
+
+</div>
+
+<div *ngIf="processingUser">
+<p-progressSpinner/>
+  </div>

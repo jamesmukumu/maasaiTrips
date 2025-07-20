@@ -147,4 +147,20 @@ export class AdminService {
       return err;
     }
   }
+
+
+
+  async fetchStats(){
+  try{
+  let response = await axios.get("https://maasai-trips.laravel.cloud/api/fetch/nav/stats",{
+  headers:{
+  "Authorization":`Bearer ${Cookies.get("grant_token")}`
+  }
+  })
+return response.data
+  }catch(err){
+return err
+  }
+
+  }
 }
