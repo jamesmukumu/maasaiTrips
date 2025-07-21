@@ -29,17 +29,26 @@ this.route.navigate(["/hotels"])
 constructor(private route:Router){}
 featureDestinations = [
   {
+    "destinationTitle":"Maasai Mara",
+    "destinationSlug":"maasai_mara68663ba90ba07"
+    },
+  {
     "destinationTitle":"Diani",
     "destinationSlug":"diani687a393329ec1"
     },
+    {
+      "destinationTitle":"Amboseli",
+      "destinationSlug":"amboseli687d3f7f1d8cb"
+      },
+      {
+        "destinationTitle":"Tsavo West",
+        "destinationSlug":"tsavo_west_national_park687e3df073803"
+        },
 {
 "destinationTitle":"Nyeri",
 "destinationSlug":"nyeri6863e1dc338f6"
 },
-{
-  "destinationTitle":"Maasai Mara",
-  "destinationSlug":"maasai_mara68663ba90ba07"
-  },
+
 
 
 ]

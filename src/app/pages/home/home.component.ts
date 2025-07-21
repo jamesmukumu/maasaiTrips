@@ -95,57 +95,57 @@ homeImages = [
   itemImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
   thumbnailImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
   alt: 'Easter Vacation',
-  subtitle:"Ashnil Mara Camp".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  subtitle:"Lake Basin Tours".toUpperCase(),
+  title: '4 DAYS RUMA NATIONAL PARK ADVENTURE SAFARI'.toUpperCase(),
+  urlPath:"4_days_ruma_national_park_adventure_safari"
 },
 {
   itemImageSrc: '../../../assets/front_offers/maasai-village-culture.jpg',
   thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
   alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  subtitle:"Abedare/Sambura Gateaway".toUpperCase(),
+  title: '4-Day Aberdare & Samburu Safari Escape'.toUpperCase(),
+  urlPath:"safaris/4_day_aberdare_samburu_safari_escape"
 },
 {
   itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
   thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
   alt: 'Description for Image 1',
   subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  title: '5-Day Nairobi, Tsavo East, Tsavo West & Amboseli Safari'.toUpperCase(),
+  urlPath:"safaris/5_day_nairobi_tsavo_east_tsavo_west_amboseli_safari"
 },
 {
   itemImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
   thumbnailImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
   alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  subtitle:"Jeep Safaris".toUpperCase(),
+  title: '3-Day Masai Group Joining Safari on 4x4 Landcruiser Jeep'.toUpperCase(),
+  urlPath:"safaris/3_days_4_nights_retreat_maasai_mara"
 },
 {
   itemImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
   thumbnailImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
   alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  subtitle:"Lake Nakuru-Ambosel Packages".toUpperCase(),
+  title: '4-Day Lake Nakuru National Park Tour'.toUpperCase(),
+  urlPath:"safaris/4_day_lake_nakuru_national_park_tour"
 },
 {
   itemImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
   thumbnailImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
   alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  subtitle:"Mt Kenya/Abedare Safari".toUpperCase(),
+  title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
+  urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
 },
 {
   itemImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
   thumbnailImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
   alt: 'Description for Image 1',
   subtitle:"Turkana".toUpperCase(),
-  title: '3 DAYS BUDGET LANDCRUISER SAFARI'.toUpperCase(),
-  urlPath:"safaris/3_days_budget_masai_mara_safari"
+  title: '4 Days Maasai Mara Honeymoon/Anniversary Package'.toUpperCase(),
+  urlPath:"safaris/4_days_maasai_mara_honeymoonanniversary_package"
 },
 
 
