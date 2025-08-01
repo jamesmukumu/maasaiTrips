@@ -30,19 +30,19 @@ name:"Kenya Airways"
 },
 {
 src:"../../../assets/patners/Safari-bookings.jpg",
-name:"Kenya Airways"
+name:"Safari Bookings"
 },
 {
 src:"../../../assets/patners/TOSK.jpg",
-name:"Kenya Airways"
+name:"TOSK"
 },
 {
   src:"../../../assets/patners/TripAdvisor.jpg",
-  name:"Kenya Airways"
+  name:"Trip Advisor"
   },
   {
-    src:"../../../assets/patners/Safaricom.jpg",
-    name:"Kenya Airways"
+    src:"https://www.olankasafaris.com/assets/images/system/tra1.png?v1.0.9",
+    name:"Tourism Regulatory Authority"
     }
 
 
