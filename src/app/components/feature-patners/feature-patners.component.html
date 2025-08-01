@@ -1,0 +1,26 @@
+<h1>Our Feature Partners</h1>
+<div class="carousel-container">
+    <p-carousel 
+        [value]="Patners" 
+        [numVisible]="3" 
+       
+        [circular]="true" 
+        autoplayInterval="3000"
+        [responsiveOptions]="responsiveOptions">
+            <ng-template let-patner pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3">
+                    <div class="mb-3">
+                        <div class="relative mx-auto">
+                            <img 
+                               [src]="patner.src" 
+                               [alt]="patner.name" 
+                               class="w-full border-round" />
+                        </div>
+                    </div>
+                    <div class="mb-3 font-medium">
+                        {{ patner.name }}
+                    </div>
+                </div>
+            </ng-template>
+    </p-carousel>
+</div>

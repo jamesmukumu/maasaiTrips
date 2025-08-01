@@ -19,6 +19,7 @@ hotelChoosen:number = 1
 adminChoosen = 1
 packageChoosen = 1
 destinationChoosen:number = 1
+plannerStatus = 1
 choosenBlog = 1
 choosenActive:any
 processing = false
