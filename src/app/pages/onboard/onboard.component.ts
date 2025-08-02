@@ -41,6 +41,10 @@ clearInterval(interval)
 }else if (this.messageResponse == 'Invoice saved to storage and email propagated'){
 this.snack.open("Payment Processed and invoice sent","Success")
 clearInterval(interval)
+}else if(this.messageResponse  === "A similar transaction is in progress"){
+  this.snack.open("Payment Processed and invoice sent","Success",{
+  
+  })
 }
 },10000)
 

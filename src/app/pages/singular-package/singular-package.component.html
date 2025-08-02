@@ -106,8 +106,8 @@
         <div class="package-overview" #specialNotes>
           <h2>Purchase Package</h2>
           <p>After purchasing this package you will be sent an invoice.Thereafter our support team will contact you so that you trip may be planned thankyou</p>
-          <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageSpecialNotes)"></div>
-        <button class="button-5" role="button">Purchase Package</button>
+
+        <button (click)="onboard()" class="button-5" role="button">Purchase Package</button>
         </div>
       </p-tabPanel>
     </p-tabView>
