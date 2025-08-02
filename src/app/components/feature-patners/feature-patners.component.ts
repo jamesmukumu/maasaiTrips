@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class FeaturePatnersComponent {
   responsiveOptions = [
     {
-        breakpoint: '1199px',
+        breakpoint: '768px',
         numVisible: 1,
         numScroll: 1
     },
@@ -18,11 +18,12 @@ export class FeaturePatnersComponent {
         numScroll: 1
     },
     {
-        breakpoint: '767px',
-        numVisible: 1,
+        breakpoint: '1199px',
+        numVisible: 3,
         numScroll: 1
     }
 ];
+
 Patners = [
 {
 src:"../../../assets/patners/KQ.jpg",
