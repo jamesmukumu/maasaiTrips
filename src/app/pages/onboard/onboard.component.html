@@ -1,6 +1,6 @@
 <header></header>
 <mat-card>
-  <mat-stepper #stepper linear>
+  <mat-stepper #stepper >
    
     <mat-step label="Fill Out Details" >
      <form #validatedForm="ngForm">
@@ -40,9 +40,10 @@
     </mat-step>
 
     <mat-step label="Validate and Confirm Payment">
-     <div class="loading">
+     <div class="loading" *ngIf="!paymentFailed">
       <pre-loader></pre-loader>
      </div>
+     <p *ngIf="paymentFailed">Payment Failed.Kindly Try again</p>
       <div>
         <button matStepperPrevious>Back</button>
         <button  matStepperNext>Next</button>

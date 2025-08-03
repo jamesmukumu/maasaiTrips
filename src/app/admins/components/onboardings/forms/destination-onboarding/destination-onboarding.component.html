@@ -1,0 +1,93 @@
+<h1>Create Destination Onboardings</h1>
+<form *ngIf="!fetching">
+
+
+  <mat-form-field>
+    <mat-label>Choose a Destination Target</mat-label>
+    <mat-select [(ngModel)]="Onboarding.destinationTarget" name="destinationTarget">
+      <mat-option *ngFor="let destination of dests" [value]="destination">
+        {{ destination.destinationTitle }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h1>Clients Sections</h1>
+
+  <div *ngFor="let client of Onboarding.clientsCredential; let i = index">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [(ngModel)]="client.name" name="name{{i}}" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="client.email" name="email{{i}}" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput [(ngModel)]="client.phoneNumber" name="phone{{i}}" />
+    </mat-form-field>
+
+    <button mat-flat-button color="warn" (click)="removeClient(i)">Remove Client</button>
+  </div>
+
+  <button mat-flat-button color="primary" (click)="addClient()">Add Another Client</button>
+
+  <h1>Questionaire Sections</h1>
+  <div *ngFor="let question of Onboarding.questionaire.items; let qi = index">
+    <mat-form-field>
+      <mat-label>Question Title {{ qi + 1 }}</mat-label>
+      <input matInput [(ngModel)]="question.questionOne" name="question{{qi}}" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Choices</mat-label>
+      <mat-chip-grid #chipGrid aria-label="Enter Answers">
+        <mat-chip-row *ngFor="let answer of question.answers">
+          {{ answer }}
+          <button matChipRemove (click)="removeAnswer(qi, answer)">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+      </mat-chip-grid>
+
+      <input
+        [matChipInputFor]="chipGrid"
+        [matChipInputAddOnBlur]="true"
+        (matChipInputTokenEnd)="addAnswer($event, qi)"
+        placeholder="Add More Answers"
+      />
+      <mat-hint>Example: Excellent, Poor</mat-hint>
+    </mat-form-field>
+  </div>
+
+  <button mat-flat-button color="primary" (click)="addQuestion()">Add Another Question</button>
+  <button mat-flat-button color="warn" (click)="removeQuestion()">Remove Question</button>
+
+
+
+  <mat-form-field>
+    <mat-label>Enter a date Range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input
+        matStartDate
+        placeholder="Start date"
+        name="onboarding-start-date"
+       
+      />
+      <input
+        matEndDate
+        placeholder="End date"
+        name="onboarding-end-date"
+        
+      />
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker"
+    ></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+</form>

@@ -13,7 +13,7 @@ let payload = {
 "last_name":load.last_name,
 "email":load.email
 }
-let response = await axios.post(`https://maasai-trips.laravel.cloud/api/create/payment/${id}`,payload)
+let response = await axios.post(`http://localhost:8000/api/create/payment/${id}`,payload)
 let token = response.headers['authorization']
 Cookies.set("Payment",token.split("Bearer ")[1])
 return response.data
@@ -25,7 +25,7 @@ return err
 async verifyPayment(){
 try{
 let token = Cookies.get('Payment')
-let response = await axios.post("https://maasai-trips.laravel.cloud/api/verify/payment",{},{
+let response = await axios.post("http://localhost:8000/api/verify/payment",{},{
 headers:{
 "Authorization":`Bearer ${token}`
 }

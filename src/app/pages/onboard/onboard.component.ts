@@ -2,6 +2,7 @@ import { Component,OnInit,inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PaymentsService } from '../../services/payments.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-onboard',
   templateUrl: './onboard.component.html',
@@ -15,11 +16,13 @@ email = ''
 id:any
 purchasing = false
 messageResponse = ''
+paymentFailed = false
 constructor(private router:ActivatedRoute,private payments:PaymentsService){}
 
 
 initiatePay(){
 this.purchasing = true
+this.snack.open("Payment initiated,you are now being redirected","Initiated")
 this.payments.initializePayment({
 "first_name":this.firstName,
 "last_name":this.lastName,
@@ -32,23 +35,28 @@ if(message === 'Payment started'){
   this.purchasing = false
 window.open(url,"_blank")
 let count = 0
-var interval = setInterval(()=>{
+var interval = setInterval(async()=>{
 count += 1
-this.verifyPayment()
+await this.verifyPayment()
 if(count >= 20 && this.messageResponse != 'Invoice saved to storage and email propagated' ){
 this.snack.open(this.messageResponse,"Close")
 clearInterval(interval)
+this.paymentFailed = true
 }else if (this.messageResponse == 'Invoice saved to storage and email propagated'){
 this.snack.open("Payment Processed and invoice sent","Success")
+
 clearInterval(interval)
 }else if(this.messageResponse  === "A similar transaction is in progress"){
-  this.snack.open("Payment Processed and invoice sent","Success",{
-  
-  })
+this.snack.open("Payment Processed and invoice sent","Success",{
+})
 }
 },10000)
 
 }
+}).catch((err)=>{
+this.snack.open("Something has gone wrong","Failed")
+console.error(err)
+
 })
 }
 

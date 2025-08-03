@@ -143,6 +143,30 @@
           </mat-menu>
         </mat-list-item>
       </div>
+
+ 
+      <mat-divider style="background-color: white"></mat-divider>
+      <div [classList]="activeIndex == 10 ? 'activeList' : ''">
+        <mat-list-item (click)="changeActive(10)" [mat-menu-trigger-for]="destinationsMenu">
+          <span matListItemTitle>Onboardings</span>
+          <mat-icon style="color: white" matListItemIcon>travel_explore</mat-icon>
+       
+          <mat-menu #destinationsMenu>
+            <button mat-menu-item (click)="chooserDestinations(1)">
+              <mat-icon>place</mat-icon>
+              <span style="color: black">Make an onboarding</span>
+            </button>
+     
+            <button mat-menu-item (click)="chooserDestinations(2)">
+              <mat-icon>place</mat-icon>
+              <span style="color: black">Manage Onboardings</span>
+            </button>
+          
+          </mat-menu>
+        </mat-list-item>
+      </div>
+
+
       <mat-divider style="background-color: white"></mat-divider>
       <div [classList]="activeIndex == 7 ? 'activeList' : ''">
         <mat-list-item (click)="changeActive(7)" [mat-menu-trigger-for]="blogsMenu">
@@ -261,6 +285,11 @@
      <enquiries *ngIf="plannerStatus==1"></enquiries>
 
     </div>
+
+    <div *ngSwitchCase="10">
+      <app-create-onboardings ></app-create-onboardings>
+ 
+     </div>
   </div>
 </div>
 
