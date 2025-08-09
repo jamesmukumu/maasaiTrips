@@ -59,7 +59,7 @@ async popDialog(){
  this.adminChoosen = idx
   }
 triggerChoosen(event:any){
-console.log(event)
+
 var {activeNode,Name} = event
 if(Name == 'Home'){
 this.activeIndex = 0
@@ -70,6 +70,8 @@ this.activeIndex = 0
 }else if(Name == 'Admins'){
   this.activeIndex = 6
   this.adminChoosen = 2
+}else if(Name === "Onboardings"){
+this.activeIndex = 10
 }
 switch(activeNode){
 case "Create Email":
@@ -146,6 +148,7 @@ break
 case "Edit Profile":
 this.popDialog()
 break
+;
 case "Logout":
 Cookies.remove("grant_token")
 this.router.navigate(["/login"])

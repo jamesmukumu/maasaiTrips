@@ -163,6 +163,23 @@ console.error(err)
     this.treeFlattener
   )
 
+  
+  onboardingsCategories: MainCategory[] = [
+    {
+      Tree_Name: 'Onboardings',
+      identifierName: 'Onboardings',
+      Tree_Children: [
+        {
+          Tree_Name: 'Make onboarding',
+          identifierName: 'Make onboarding',
+        },
+        {
+          Tree_Name: 'Manage Onboardings',
+          identifierName: 'Manage Omboardings',
+        }
+      ],
+    },
+  ];
   destinationsCategories: MainCategory[] = [
     {
       Tree_Name: 'Destinations',
@@ -282,6 +299,10 @@ console.error(err)
       ],
     },
   ];
+  dataSourceOnboardings:any = new MatTreeFlatDataSource(
+    this.treeControl,
+    this.treeFlattener
+  )
   constructor(
     private router: Router,
     private cdr: ChangeDetectorRef,
@@ -292,6 +313,7 @@ console.error(err)
     this.dataSourcePackages.data = this.packagesCategories;
     this.dataSourceAccounts.data = this.accountsCategories
     this.dataSourceDestinations.data = this.destinationsCategories
+    this.dataSourceOnboardings.data = this.onboardingsCategories
   }
   hasChild = (_: number, node: FlatNode) => node.expandable;
 

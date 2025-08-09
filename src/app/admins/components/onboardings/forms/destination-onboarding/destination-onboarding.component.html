@@ -74,13 +74,14 @@
         matStartDate
         placeholder="Start date"
         name="onboarding-start-date"
+        (dateChange)="seeStartDate($event)"
        
       />
       <input
         matEndDate
-        placeholder="End date"
+        placeholder="End date" 
         name="onboarding-end-date"
-        
+        (dateChange)="endStartDate($event)"
       />
     </mat-date-range-input>
     <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
@@ -90,4 +91,11 @@
     ></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
+
+
+
+<div [ngSwitch]="saving">
+  <button *ngSwitchCase="false" class="button-5" role="button" (click)="save()">Onboard</button>
+ <p-button severity="warning" *ngSwitchCase="true" loading label="Saving..."/>
+</div>
 </form>

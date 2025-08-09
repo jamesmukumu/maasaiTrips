@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,inject } from '@angular/core';
 import { HotelsService } from '../../../../../services/hotels.service';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { OnboardingsService } from '../../../../../services/onboardings.service';
 interface onboarding {
   onboardingType: string;
   id?: number;
@@ -25,9 +27,17 @@ interface onboarding {
   providers:[provideNativeDateAdapter()]
 })
 export class DestinationOnboardingComponent implements OnInit {
+  readonly snack = inject(MatSnackBar)
   Onboarding: onboarding = {
     onboardingType: 'destinations',
-    clientsCredential: [],
+    clientsCredential: [
+     
+      {
+        name: '',
+        email: '',
+        phoneNumber: ''
+      }
+    ],
     questionaire: {
       items: [],
     },
@@ -36,7 +46,7 @@ export class DestinationOnboardingComponent implements OnInit {
   dests: any[] = [];
   fetching = false;
 
-  constructor(private destinations: HotelsService) {}
+  constructor(private destinations: HotelsService,private onboard:OnboardingsService) {}
 
   async ngOnInit() {
     await this.fetchDestinations();
@@ -99,4 +109,50 @@ removeQuestion() {
       }
     }
   }
+startDate:any
+endDate:any
+  seeStartDate(event:any){
+    var {value} = event
+    this.startDate = new Date(value)
+    }
+
+    endStartDate(event:any){
+      var {value} = event
+      this.endDate = new Date(value)
+      }
+      saving = false
+  save(){
+this.saving = true
+this.onboard.saveOnboarding(
+    {
+      "onboarding_type":"destinations",
+      "destination_id":this.Onboarding.destinationTarget.id,
+      "onBoardingQuestionaire":{
+      "items":this.Onboarding.questionaire.items
+      
+      },
+      "clientsCredential":this.Onboarding.clientsCredential,
+      "startDate":this.startDate,
+      "endDate":this.endDate,
+      "onboardingTitle":"Some title"
+      }
+
+
+  ).then((data:any)=>{
+ if(data.message  === "onboarding set"){
+  this.snack.open("Saved","Onboarding Saved")
+  this.saving = false
+ }else{
+  this.snack.open("Failed",data.message)
+  this.saving = false
+ }
+
+  }).catch((err)=>{
+
+  this.snack.open("Failed","Something has gone wrong")
+  console.error(err)
+  this.saving = false
+  })
+  }
+
 }

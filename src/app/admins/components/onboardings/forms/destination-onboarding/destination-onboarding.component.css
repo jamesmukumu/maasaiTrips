@@ -4,15 +4,19 @@ flex-direction: column;
 
 }
 button{
-    margin-right: 15px;
+max-width: 200px;
+margin-top: 20px;
+}
+.button-5 {
+  margin-right: 15px;
   align-items: center;
   background-clip: padding-box;
-
+  background-color: #e88b22;
   border: 1px solid transparent;
   border-radius: .25rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
   box-sizing: border-box;
-
+  color: #fff;
   cursor: pointer;
   display: inline-flex;
   font-family: "Red Hat Display", sans-serif;
@@ -31,9 +35,24 @@ button{
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
-  margin-top: 10px;
+  
 }
 
+.button-5:hover,
+.button-5:focus {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
 h1,div,mat-form-field{
 margin-top: 20px;
 }

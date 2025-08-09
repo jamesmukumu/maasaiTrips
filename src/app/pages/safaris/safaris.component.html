@@ -87,7 +87,9 @@
             <mat-icon matListItemIcon>airport_shuttle</mat-icon>
           </mat-list-item>
         </mat-list>
-        <button class="button-5" role="button" (click)="requestQuote()">Request Quote</button>
+        <div class="button-container">
+          <button class="button-5" role="button" (click)="requestQuote()">Request Quote</button>
+        </div>
       </mat-card-header>
     </mat-card>
 
@@ -123,95 +125,90 @@
       </mat-list-item>
     </mat-list>
     <mat-card-content *ngIf="!fetching">
-      <mat-card-content  #landCruiserSafaris>
+      <mat-card-content #landCruiserSafaris>
         <h2>Feature Packages (LandCruiser Safaris)</h2>
-      
-
-        <div class="grid-see" *ngIf="!fetching" >
+        <div class="grid-see" *ngIf="!fetching">
           <div *ngFor="let saf of landCruiserSaf">
-            <img [src]="saf.packageImage" alt="" /> 
+            <img [src]="saf.packageImage" alt="" />
             <h1>{{ saf.packageTitle }}</h1>
             <p>
               Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge )}} </b> per
+              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
               Adult
             </p>
-           
-           
-            <button  (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-              See Package
-            </button>
+            
+              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
+                See Package
+              </button>
+          
           </div>
         </div>
       </mat-card-content>
 
-      <mat-card-content  #airSafaris>
+      <mat-card-content #airSafaris>
         <h2>Feature Packages (AirSafari`s)</h2>
-      
-
-        <div class="grid-see" *ngIf="!fetching" >
+        <div class="grid-see" *ngIf="!fetching">
           <div *ngFor="let saf of airSafariss">
             <img [src]="saf.packageImage" alt="" />
             <h1>{{ saf.packageTitle }}</h1>
             <p>
               Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}  </b> per
+              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
               Adult
             </p>
             
-            <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-              See Package
-            </button>
+              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
+                See Package
+              </button>
+         
           </div>
         </div>
       </mat-card-content>
 
       <mat-card-content #jpSafaris>
         <h2>Feature Packages (Jeep Safari`s)</h2>
-     
-
-        <div class="grid-see" *ngIf="!fetching" >
+        <div class="grid-see" *ngIf="!fetching">
           <div *ngFor="let saf of jeepSafaris">
             <img [src]="saf.packageImage" alt="" />
             <h1>{{ saf.packageTitle }}</h1>
             <p>
               Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}  </b>per
+              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
               Adult
             </p>
-            <button (click)="goPackage(saf.packageSlug)"  class="button-5" role="button">
-              See Package
-            </button>
+            
+              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
+                See Package
+              </button>
+         
           </div>
         </div>
       </mat-card-content>
 
-      <mat-card-content   #vnSafaris>
+      <mat-card-content #vnSafaris>
         <h2>Feature Packages (Van Safari`s)</h2>
-       
-
         <div class="grid-see" *ngIf="!fetching">
           <div *ngFor="let saf of vanSafaris">
             <img [src]="saf.packageImage" alt="" />
             <h1>{{ saf.packageTitle }}</h1>
             <p>
               Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}  </b> per
+              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
               Adult
             </p>
-           
-            <button (click)="goPackage(saf.packageSlug)"  class="button-5" role="button">
-              See Package
-            </button>
+            
+              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
+                See Package
+              </button>
+          
           </div>
         </div>
       </mat-card-content>
     </mat-card-content>
 
     <div [classList]="fetching ? 'spin':'no-spin'">
-      <!-- From Uiverse.io by doniaskima --> 
       <div class="loader"></div>
-        </div>
+    </div>
   </div>
   <footer></footer>
   <p-scrollTop/>

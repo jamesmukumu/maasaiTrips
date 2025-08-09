@@ -147,11 +147,11 @@
  
       <mat-divider style="background-color: white"></mat-divider>
       <div [classList]="activeIndex == 10 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(10)" [mat-menu-trigger-for]="destinationsMenu">
+        <mat-list-item (click)="changeActive(10)" [mat-menu-trigger-for]="onboardingsMenu">
           <span matListItemTitle>Onboardings</span>
           <mat-icon style="color: white" matListItemIcon>travel_explore</mat-icon>
        
-          <mat-menu #destinationsMenu>
+          <mat-menu #onboardingsMenu>
             <button mat-menu-item (click)="chooserDestinations(1)">
               <mat-icon>place</mat-icon>
               <span style="color: black">Make an onboarding</span>
