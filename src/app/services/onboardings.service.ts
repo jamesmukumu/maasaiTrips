@@ -19,10 +19,21 @@ headers:{
 return response.data
 }catch(err){
 return err
+}}
+
+
+
+async getForm(id:any){
+try{
+let response = await axios.get(`${this.baseUrl}/fetch/onboarding`,{
+params:{
+"id":id
+}
+})
+return response.data
+}catch(err){
+return err
 }
 
-
 }
-
-
 }
