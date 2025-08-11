@@ -55,7 +55,19 @@ constructor(private packages:PackagesService,private router:Router,private title
 async fetchSafaris(){
 this.fetching = true
 try{ 
-var  {vanPackages,landCruiserPackages,airPackages,jeepPackages} = await this.packages.fetchHotPackages()
+  let {
+    vanPackages,
+    landCruiserPackages,
+    airPackages,
+    jeepPackages
+  } = await this.packages.fetchHotPackages();
+  
+  [vanPackages, landCruiserPackages, airPackages, jeepPackages] =
+    [vanPackages.slice(0, 4),
+     landCruiserPackages.slice(0, 4),
+     airPackages.slice(0, 4),
+     jeepPackages.slice(0, 4)];
+  
 this.airSafariss = airPackages
 this.vanSafaris = vanPackages
 this.jeepSafaris = jeepPackages
