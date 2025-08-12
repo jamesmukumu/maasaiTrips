@@ -17,6 +17,7 @@ id:any
 purchasing = false
 messageResponse = ''
 paymentFailed = false
+paymentSuccess = false
 constructor(private router:ActivatedRoute,private payments:PaymentsService){}
 
 
@@ -44,7 +45,7 @@ clearInterval(interval)
 this.paymentFailed = true
 }else if (this.messageResponse == 'Invoice saved to storage and email propagated'){
 this.snack.open("Payment Processed and invoice sent","Success")
-
+this.paymentSuccess = true
 clearInterval(interval)
 }else if(this.messageResponse  === "A similar transaction is in progress"){
 this.snack.open("Payment Processed and invoice sent","Success",{
@@ -58,6 +59,12 @@ this.snack.open("Something has gone wrong","Failed")
 console.error(err)
 
 })
+}
+
+mailMasker(){
+var [userPart,domain] = this.email.split("@")
+let user_part_hidden = userPart.slice(0,4).padEnd(userPart.length,"*")
+return `${user_part_hidden}@${domain}`
 }
 
 verifyPayment(){

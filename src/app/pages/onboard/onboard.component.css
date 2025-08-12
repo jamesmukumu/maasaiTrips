@@ -2,6 +2,74 @@ form{
 display: flex;
 flex-direction: column;
 }
+/* Background and container */
+.container {
+  background-color: #f7fafc; /* Tailwind bg-gray-100 */
+  height: 100vh;
+}
+
+/* Card */
+.card {
+  background-color: white; /* Tailwind bg-white */
+  padding: 1.5rem; /* p-6 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Icon */
+.icon {
+  color: #16a34a; /* Tailwind text-green-600 */
+  width: 4rem; /* w-16 */
+  height: 4rem; /* h-16 */
+  display: block;
+  margin: 1.5rem auto; /* mx-auto my-6 */
+}
+
+/* Title */
+.title {
+  font-size: 1rem; /* text-base */
+  color: #1f2937; /* text-gray-900 */
+  font-weight: 600; /* font-semibold */
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 1.5rem; /* md:text-2xl */
+  }
+}
+
+/* Subtitle */
+.subtitle {
+  color: #4b5563; /* text-gray-600 */
+  margin: 0.5rem 0; /* my-2 */
+}
+
+/* Button container */
+.button-container {
+  padding-top: 2.5rem; /* py-10 */
+  padding-bottom: 2.5rem;
+  text-align: center;
+}
+
+/* Button */
+.btn {
+  padding-left: 3rem; /* px-12 */
+  padding-right: 3rem;
+  padding-top: 0.75rem; /* py-3 */
+  padding-bottom: 0.75rem;
+  background-color: #4f46e5; /* bg-indigo-600 */
+  color: white;
+  font-weight: 600; /* font-semibold */
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: #6366f1; /* hover:bg-indigo-500 */
+}
+
 .loading{
 display: grid;
 place-content: center;
