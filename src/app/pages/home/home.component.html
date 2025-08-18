@@ -3,20 +3,23 @@
 
   <mat-card-header>
    <div class="card">
-    <p-galleria 
-        [value]="homeImages" 
-     
-      showThumbnailNavigators="false"
-      showIndicators="false"
-        [responsiveOptions]="responsiveOptions" 
-      showThumbnails="false"
-      autoPlay="true"
-      circular="true"
-        [numVisible]="5"> 
+    <p-galleria  
+    [value]="homeImages" 
+    [responsiveOptions]="responsiveOptions" 
+    showThumbnailNavigators="false"
+    showIndicators="false"
+    showThumbnails="false"
+    autoPlay="true"
+    circular="true"
+    [numVisible]="5"
+    [transitionInterval]="4000"
+        
+        
+        > 
             <ng-template pTemplate="item" let-item>
                 <img class="img-big" [src]="item.itemImageSrc" style="width: 100%;" />
             <div class="content-galleria">
-              <p style="font-weight: bolder;" class="sub-caption">{{ item.subtitle }}</p>
+
               <h1  class="main-caption">{{ item.title }}</h1>
               
               <button (click)="view(item.urlPath)" style="margin-top: 20px;" class="button-5">Book Now</button>
@@ -30,7 +33,7 @@
   </mat-card-header>
 
   <div #animatedElement class="about-mara">
-    <h1>About Masaai Mara</h1>
+    <h1 class="text-xs">About Masaai Mara</h1>
 
     <p>
       The Masai Mara is located in southwestern Kenya in Narok County,and has
@@ -61,11 +64,27 @@
       offering a deep connection to both the wildlife and the local culture.
     </p>
   </div>
-  <div class="bouncer-overview">
-    <overview></overview>
+
+
+  <div #animatedElement class="about-mara">
+    <h1 class="text-xs">Below are a Safari`s to Masaai Mara</h1>
+
+    <p>
+      National Park. Accommodation options come in various price ranges, so you can rest assured to find an offer perfectly suited for you.
+    </p>
+   
+<feature-safaris [featureSafaris]="package_data.airPackages"></feature-safaris>
+<feature-safaris [featureSafaris]="package_data.jeepPackages"></feature-safaris>
+<feature-safaris [featureSafaris]="package_data.vanPackages"></feature-safaris>
+<feature-safaris [featureSafaris]="package_data.landCruiserPackages"></feature-safaris>
   </div>
+
+
+
+  
+  
   <div class="about-mara-depth">
-    <h3>Key information About Masaai mara</h3>
+    <h1>Key information About Masaai Mara</h1>
     <mat-card>
       <mat-card-content>
         <img src="../../../assets/MasaiMara_Map.png" alt="" />
@@ -115,8 +134,13 @@
       </mat-card-content>
     </mat-card>
   </div>
+<section>
+<app-testmonials></app-testmonials>
+</section>
+ <section>
   <h1>Explore More of the Masaai Mara</h1>
   <div class="explores">
+    
     <mat-card>
       <img src="../../../assets/hotair.webp" alt="" />
       <p>Ultimate hot air balloon experience in Masaai Mara Kenya</p>
@@ -140,6 +164,7 @@
       <button class="button-5" role="button" >Read more</button>
     </mat-card>
   </div>
+ </section>
 <feature-patners></feature-patners>
   <footer></footer>
 

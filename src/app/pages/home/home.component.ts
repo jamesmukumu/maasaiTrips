@@ -1,6 +1,8 @@
 import { Component,ElementRef,ViewChild,AfterViewInit,OnInit } from '@angular/core';
 import { trigger, style, animate, transition,state,keyframes } from '@angular/animations';
 import { Title } from '@angular/platform-browser';
+import { PackagesService } from '../../services/packages.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -75,7 +77,7 @@ style({transform:"scale3d(1,1,1)",offset:1}),
   
 })
 export class HomeComponent implements AfterViewInit{  
-constructor(private titlePage:Title){}
+constructor(private titlePage:Title,private packages:PackagesService,private router:ActivatedRoute){}
 @ViewChild("animatedElement")animatedElement!:ElementRef
 @ViewChild("bouncerCheck")animatedBounce!:ElementRef
 @ViewChild("explores")exploresEffect!:ElementRef
@@ -83,38 +85,8 @@ constructor(private titlePage:Title){}
 
 
 homeImages = [
-  {
-  itemImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
-  thumbnailImageSrc: 'https://res.cloudinary.com/dasrniwpk/image/upload/v1751376927/Maasai%20Mara%20Trips%20Hotels/fp7wjj6rwxpzclqhrayk.jpg',
-  alt: 'Fly in Safaris',
-  subtitle:"aberdare excursion".toUpperCase(),
-  title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
-  urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
-},
-{
-  itemImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
-  thumbnailImageSrc: 'http://res.cloudinary.com/dasrniwpk/image/upload/v1752741851/nz0d6ygwdjknqe4lsxb9.jpg',
-  alt: 'Easter Vacation',
-  subtitle:"Lake Basin Tours".toUpperCase(),
-  title: '4 DAYS RUMA NATIONAL PARK ADVENTURE SAFARI'.toUpperCase(),
-  urlPath:"4_days_ruma_national_park_adventure_safari"
-},
-{
-  itemImageSrc: '../../../assets/front_offers/maasai-village-culture.jpg',
-  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Abedare/Sambura Gateaway".toUpperCase(),
-  title: '4-Day Aberdare & Samburu Safari Escape'.toUpperCase(),
-  urlPath:"safaris/4_day_aberdare_samburu_safari_escape"
-},
-{
-  itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
-  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '5-Day Nairobi, Tsavo East, Tsavo West & Amboseli Safari'.toUpperCase(),
-  urlPath:"safaris/5_day_nairobi_tsavo_east_tsavo_west_amboseli_safari"
-},
+
+
 {
   itemImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
   thumbnailImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
@@ -138,6 +110,22 @@ homeImages = [
   subtitle:"Mt Kenya/Abedare Safari".toUpperCase(),
   title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
   urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/maasai-village-culture.jpg',
+  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Abedare/Sambura Gateaway".toUpperCase(),
+  title: '4-Day Aberdare & Samburu Safari Escape'.toUpperCase(),
+  urlPath:"safaris/4_day_aberdare_samburu_safari_escape"
+},
+{
+  itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
+  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
+  alt: 'Description for Image 1',
+  subtitle:"Turkana".toUpperCase(),
+  title: '5-Day Nairobi, Tsavo East, Tsavo West & Amboseli Safari'.toUpperCase(),
+  urlPath:"safaris/5_day_nairobi_tsavo_east_tsavo_west_amboseli_safari"
 },
 {
   itemImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
@@ -214,8 +202,12 @@ this.checkExplores()
 
 
 }
-ngOnInit(){
+package_data:any
+
+async ngOnInit(){
 this.titlePage.setTitle("Maasai Mara Trips")
+let data_dummy = this.router.snapshot.data['packages']
+this.package_data = data_dummy
 }
 
 }

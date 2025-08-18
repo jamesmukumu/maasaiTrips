@@ -1,0 +1,22 @@
+<section class="container">
+    <div class="card-grid">
+      <div *ngFor="let off of featureSafaris" class="card">
+        <img
+          [src]="off.packageImage"
+          alt="{{off.offerName}}"
+          class="card-img"
+        />
+        <h3 class="card-title">{{off.packageTitle}}</h3>
+        <p class="card-desc" [innerHTML]="off.packageOverview"></p>
+        <div class="card-footer">
+          <b class="card-price">
+            From   <span class="price-highlight">
+                {{off.packageChargeCurrency}} {{ priceFormatter(off.packageCharge) }}
+              </span>
+          </b>
+          
+        </div>
+      </div>
+    </div>
+  </section>
+  
