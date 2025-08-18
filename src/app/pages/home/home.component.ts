@@ -207,7 +207,9 @@ package_data:any
 async ngOnInit(){
 this.titlePage.setTitle("Maasai Mara Trips")
 let data_dummy = this.router.snapshot.data['packages']
-this.package_data = data_dummy
+
+this.package_data = [...data_dummy.airPackages,...data_dummy.jeepPackages,...data_dummy.vanPackages,...data_dummy.landCruiserPackages]
+
 }
 
 }

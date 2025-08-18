@@ -1,153 +1,61 @@
-body {
-   
-    
-    color: #333;
+* {
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-}
+    box-sizing: border-box;
+  }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
+  body, html {
+    height: 100%;
+  
+    color: white;
+  }
 
-.intro-quote {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 40px;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.intro-quote blockquote {
-    font-size: 1.5em;
-    font-style: italic;
-    margin: 0 0 20px;
+  .hero {
+    background: url(https://www.masaimara.travel/images/governors-hot-air-baloon-kenya.jpg) no-repeat center center/cover;
+    height: 100vh;
     position: relative;
-}
-
-.intro-quote blockquote::before {
-    content: '“';
-    font-size: 4em;
-    color: #d4a373; /* Earthy tone */
-    position: absolute;
-    left: -40px;
-    top: -20px;
-}
-
-.intro-quote blockquote::after {
-    content: '”';
-    font-size: 4em;
-    color: #d4a373;
-    position: absolute;
-    right: -40px;
-    bottom: -60px;
-}
-
-.intro-quote cite {
-    display: block;
-    font-size: 1em;
-    font-style: normal;
-    color: #666;
-    text-transform: uppercase;
-}
-
-.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 40px;
-}
+  }
 
-.section-header h2 {
-    font-size: 2.5em;
-    color: #4a4a4a;
-    margin-bottom: 10px;
-}
+  .overlay {
+    background: rgba(0, 0, 0, 0.3); /* subtle dark overlay for readability */
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+  }
 
-.section-header p {
-    font-size: 1.2em;
-    color: #777;
-}
+  .content {
+    position: relative;
+    max-width: 800px;
+    padding: 20px;
+    z-index: 2;
+  }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-bottom: 60px;
-}
-
-.testimonial-card {
-    background-color: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.testimonial-card:hover {
-    transform: translateY(-5px);
-}
-
-.testimonial-card h3 {
-    font-size: 1.3em;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-.testimonial-card .title {
-    font-size: 1em;
-    color: #999;
-    margin-bottom: 15px;
-}
-
-.testimonial-card blockquote {
-    font-size: 1.1em;
+  .quote {
+    font-size: 1.5rem;
     font-style: italic;
-    color: #555;
-    margin: 0;
-}
+    line-height: 1.6;
+  }
 
-.cta {
-    text-align: center;
-    background-color: #d4a373;
+  .quote::before, 
+  .quote::after {
+    content: "❝";
+    font-size: 2rem;
+    vertical-align: top;
+    margin: 0 5px;
     color: #fff;
-    padding: 40px;
-    border-radius: 12px;
-}
+  }
 
-.cta h3 {
-    font-size: 2em;
-    margin-bottom: 15px;
-}
+  .author {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: #ddd;
+  }
 
-.cta p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-.cta button {
-    background-color: #fff;
-    color: #d4a373;
-    border: none;
-    padding: 15px 30px;
-    font-size: 1.1em;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.cta button:hover {
-    background-color: #f8f4f0;
-}
-
-@media (max-width: 768px) {
-    .intro-quote blockquote {
-        font-size: 1.2em;
-    }
-
-    .section-header h2 {
-        font-size: 2em;
-    }
-}
+  .author span {
+    color: #6fb1fc; /* Tripadvisor green/blue accent */
+  }

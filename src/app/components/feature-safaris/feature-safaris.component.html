@@ -9,14 +9,15 @@
         <h3 class="card-title">{{off.packageTitle}}</h3>
         <p class="card-desc" [innerHTML]="off.packageOverview"></p>
         <div class="card-footer">
-          <b class="card-price">
+          <p class="card-price">
             From   <span class="price-highlight">
                 {{off.packageChargeCurrency}} {{ priceFormatter(off.packageCharge) }}
               </span>
-          </b>
+          </p>
           
         </div>
+        <button class="button-5" (click)="seeSafari(off.packageSlug)" role="button">Read More</button>
       </div>
-    </div>
+    </div>  
   </section>
   

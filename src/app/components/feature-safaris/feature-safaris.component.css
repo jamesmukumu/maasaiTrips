@@ -14,7 +14,52 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+  .button-5 {
+    max-width: 150px;
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #e88b22;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-top: 15px;
+    vertical-align: baseline;
+    width: auto;
+  }
   
+  .button-5:hover,
+  .button-5:focus {
+    background-color: #e88b22;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  }
+  
+  .button-5:hover {
+    transform: translateY(-1px);
+  }
+  
+  .button-5:active {
+    background-color: #e88b22;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
   @media (min-width: 768px) {
     .card-grid {
       grid-template-columns: repeat(2, 1fr);
@@ -86,6 +131,7 @@
   /* Price */
   .card-price {
     font-size: 0.875rem;
+   
     font-weight: 500;
     color: #374151;
   }
@@ -94,7 +140,8 @@
     font-size: 2rem;
     font-weight: 700;
     color: #222;
-    display: block;
+    padding-left: 5px;
+   
     margin-top: 0.25rem;
   }
   

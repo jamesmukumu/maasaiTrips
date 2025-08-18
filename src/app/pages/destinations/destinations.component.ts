@@ -1,6 +1,6 @@
 import { Component,OnInit,ElementRef,ViewChild,AfterViewInit } from '@angular/core';
 import { Hotel,HotelsService } from '../../services/hotels.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 import { trigger,transition,keyframes,style,animate } from '@angular/animations';
 
@@ -30,7 +30,7 @@ export class DestinationsComponent implements AfterViewInit {
   bgState: string = 'clear';
 destinations:any[] = []
 findingDestinations = false
-constructor(private titlePage:Title,private hotel:HotelsService,private router:Router,private sanitizer:DomSanitizer){}
+constructor(private titlePage:Title,private hotel:HotelsService,private router:ActivatedRoute,private sanitizer:DomSanitizer){}
 goDestinations(id:any,title:any){  
 window.open(`/destinations/${title}/${id}`,"_blank")
 }
@@ -63,9 +63,10 @@ bgBounce() {
 }
 
 
-ngOnInit(){
-this.fetchDestinations()
+ngOnInit(){ 
+this.destinations = this.router.snapshot.data['destinations']['destinations']
 this.titlePage.setTitle("Explore scenic destinations | Maasai Mara Trips")
+
 }
 
 ngAfterViewInit(){

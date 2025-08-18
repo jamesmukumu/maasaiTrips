@@ -151,6 +151,7 @@ import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { FeatureSafarisComponent } from './components/feature-safaris/feature-safaris.component';
 import { packagesResolver } from './resolver/packages.resolver';
 import { TestmonialsComponent } from './components/displays/testmonials/testmonials.component';
+import { destinationsResolver } from './resolver/destinations.resolver';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -290,7 +291,10 @@ path:"dashboard"
       },
       {
       component:DestinationsComponent,
-      path:"destinations"
+      path:"destinations",
+      resolve:{
+      destinations:destinationsResolver
+      }
       },
 
       {
