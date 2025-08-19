@@ -3,11 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-header {
-  position: sticky;
-  top: 0; /* 👈 required */
-  z-index: 1000; /* 👈 keep it above content */
-}
+
 
 .button-5 {
   align-items: center;
