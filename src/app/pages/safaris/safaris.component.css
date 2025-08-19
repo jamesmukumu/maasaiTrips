@@ -320,6 +320,7 @@ b {
 }
 .safaris {
   background-image: url(https://www.masaimaratrips.com/images/ma.jpeg);
+  border-radius: 55px;
   background-position: center;
   overflow: hidden;
   background-repeat: no-repeat;

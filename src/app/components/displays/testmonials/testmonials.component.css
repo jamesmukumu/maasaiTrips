@@ -54,7 +54,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'Inter', sans-serif;
+
   line-height: 1.5;
 }
 :where([class^="ri-"])::before {
@@ -223,7 +223,7 @@ font-size: large;
   color: white;
 }
 .cta-title {
-  font-family: 'Cormorant Garamond', serif;
+
   font-size: 3rem;
   font-weight: 300;
   margin-bottom: 2rem;

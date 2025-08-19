@@ -18,6 +18,11 @@
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+  .btn{
+  display: grid;
+  width: 100%;
+  place-content: center;
+  }
   .button-5 {
     max-width: 150px;
     align-items: center;
