@@ -28,6 +28,11 @@ body { margin: 0; font-family: "Red Hat Display", sans-serif;
 .mat-typography {
   font-family: "Manrope", sans-serif !important;
 }
+header {
+  position: sticky;
+  top: 0; /* 👈 required */
+  z-index: 1000; /* 👈 keep it above content */
+}
 
 .mat-typography h1, 
 .mat-typography h2, 

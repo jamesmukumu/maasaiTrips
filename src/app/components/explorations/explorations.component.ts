@@ -40,7 +40,7 @@ export class ExplorationsComponent {
   startRotation() {
     setTimeout(() => {
       this.state = 'hidden';
-    }, 5000); // Initial display time
+    }, 3000); // Initial display time
   }
 
   onFadeDone(event: AnimationEvent) {
@@ -52,7 +52,7 @@ export class ExplorationsComponent {
       // After fade in, start the timer for the next fade out
       setTimeout(() => {
         this.state = 'hidden';
-      }, 5000);
+      }, 3000);
     }
   }
 }

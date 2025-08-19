@@ -5,205 +5,109 @@
   </div>
 
   <div class="safaris-main">
-    <mat-card>
+    <section>
       <mat-card-header>
-        <h1>Maasai Mara Safari`s</h1>
-        <p>
-          Whether you want to fly to Masai Mara Game Reserve, or travel by road
-          using a land cruiser, these Masai Mara safari packages offer an
-          unforgettable journey into one of Africa’s most iconic wildlife
-          destinations. These packages are designed to suit a variety of
-          travelers, whether you’re seeking luxury, adventure, or a
-          family-friendly experience.
-        </p>
-
-        <div class="safari-type" *ngIf="!fetching">
-          <img src="" alt="" />
+      
+        
+     
+        <div class="container">
+        <!-- Transportation Cards -->
+        <div class="grid-container">
+        <!-- Van Card -->
+        <div class="card" (click)="scrollVansafaris()">
+        <div class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M17 5H3c-1.1 0-2 .89-2 2v9h2c0 1.65 1.34 3 3 3s3-1.35 3-3h5.5c0 1.65 1.34 3 3 3s3-1.35 3-3H23v-5l-6-6zM3 11V7h4v4H3zm3 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7-6.5H9V7h4v4zm4.5 6.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM15 11V7h1l4 4h-5z"/></svg>
         </div>
-        <div class="transport-means">
-          <div (click)="scrollAirSafaris()">
-            <img src="../../../assets/icons8-aircraft-50.png" alt="" />
-            <p>Fly in to the Maasai Mara</p>
-          </div>
-          <div (click)="scrollVansafaris()">
-            <img src="../../../assets/icons8-van-64.png" alt="" />
-            <p>Safaris by Van</p>
-          </div>
-          <div (click)="scrollJPSafaris()">
-            <img src="../../../assets/icons8-jeep-64.png" alt="" />
-            <p>Safaris by Jeep</p>
-          </div>
-          <div (click)="scrollSafaris()">
-            <img src="../../../assets/icons8-suv-49 (1).png" alt="" />
-            <p>Safaris by LandCruiser</p>
-          </div>
+        <h3>Safaris by Van</h3>
+        <p>Comfortable group adventures with panoramic views</p>
         </div>
-        <h1>What is Included in a Masaai Mara Safari</h1>
-        <mat-list>
-          <mat-list-item>
-            <h3 matListItemTitle>Game Drives</h3>
-            <span matListItemLine>
-              Experience thrilling morning and evening game drives with expert
-              guides who navigate the vast savannah, bringing you close to the
-              Big Five and other wildlife.
-            </span>
-            <mat-icon matListItemIcon>directions_car</mat-icon>
-          </mat-list-item>
-
-          <mat-list-item>
-            <h3 matListItemTitle>Accommodations</h3>
-            <span matListItemLine>
-              Stay in carefully selected lodges, tented camps, or luxury resorts
-              that provide comfort, excellent service, and often stunning views
-              of the Mara plains.
-            </span>
-            <mat-icon matListItemIcon>apartment</mat-icon>
-          </mat-list-item>
-
-          <mat-list-item>
-            <h3 matListItemTitle>Meals</h3>
-            <span matListItemLine>
-              Our packages include full-board meals, allowing you to enjoy local
-              and international cuisine amidst the African wilderness.
-            </span>
-            <mat-icon matListItemIcon>restaurant_menu</mat-icon>
-          </mat-list-item>
-
-          <mat-list-item>
-            <h3 matListItemTitle>Cultural Experiences</h3>
-            <span matListItemLine>
-              The safaris include visits to Maasai villages, where you can learn
-              about the rich traditions and daily life of the Maasai people.
-            </span>
-            <mat-icon matListItemIcon>groups</mat-icon>
-          </mat-list-item>
-
-          <mat-list-item>
-            <h3 matListItemTitle>Airport Transfers</h3>
-            <span matListItemLine>
-              Convenient transfers from Nairobi or other entry points to the
-              Masai Mara, ensuring a seamless travel experience.
-            </span>
-            <mat-icon matListItemIcon>airport_shuttle</mat-icon>
-          </mat-list-item>
-        </mat-list>
-        <div class="button-container">
-          <button class="button-5" role="button" (click)="requestQuote()">Request Quote</button>
+        <!-- Jeep Card -->
+        <div class="card" (click)="scrollJPSafaris()">
+        <div class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
         </div>
+        <h3>Safaris by Jeep</h3>
+        <p>Off-road adventures for the ultimate wildlife experience</p>
+        </div>
+        <!-- Airplane Card -->
+        <div class="card" (click)="scrollAirSafaris()">
+        <div class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><g><path d="M22,16v-2l-8.5-5V3.5C13.5,2.67,12.83,2,12,2s-1.5,0.67-1.5,1.5V9L2,14v2l8.5-2.5V19L8,20.5L8,22l4-1l4,1l0-1.5L13.5,19 v-5.5L22,16z"/><path d="M0,0h24v24H0V0z" fill="none"/></g></svg>
+        </div>
+        <h3>Air Safaris</h3>
+        <p>Bird's eye view of the magnificent African landscape</p>
+        </div>
+        <!-- Land Cruiser Card -->
+        <div class="card" (click)="scrollSafaris()">
+        <div class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+        </div>
+        <h3>Land Cruiser Safaris</h3>
+        <p>Premium comfort meets rugged terrain exploration</p>
+        </div>
+        </div>
+        <!-- Masai Mara Feature Card -->
+        <div class="feature-card">
+        <div class="feature-content">
+        <!-- Content Section -->
+        <div class="feature-text">
+        <h2>Experience the Magic of Masai Mara</h2>
+        <p>Witness the breathtaking Great Migration, encounter the Big Five, and immerse yourself in the rich culture of the Maasai people. Our expertly guided safaris offer unparalleled access to one of Africa's most spectacular wildlife reserves.</p>
+        <div class="feature-list">
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        <span>Professional wildlife guides</span>
+        </div>
+        <div class="feature-item">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        <span>Luxury accommodation options</span>
+        </div>
+        <div class="feature-item">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        <span>Cultural village visits</span>
+        </div>
+        </div>
+        <button class="button-5" role="button">Book Your Adventure</button>
+        </div>
+        <!-- Image Section -->
+        <div class="feature-image">
+        <img
+        src="https://www.masaimara.travel/images/impalas-hyena-olerai-conservancy-masaimara.jpeg"
+        alt="Masai Mara Landscape"
+        >
+        </div>
+        </div>
+        </div>
+        </div>
+       
+       
+      
+       
       </mat-card-header>
-    </mat-card>
+    </section>
 
-    <h1>Safari Experience Highlights</h1>
-    <mat-list>
-      <mat-list-item style="padding-right: 20px">
-        <span matListItemTitle>Great Migration Safari`s</span>
-        <span matListItemLine>
-          Timed to coincide with the Great Migration, these packages offer a
-          front-row seat to one of nature’s most spectacular events as millions
-          of wildebeest and zebras cross the Mara River.
-        </span>
-        <mat-icon style="color: green" matListItemIcon>check</mat-icon>
-      </mat-list-item>
-
-      <mat-list-item>
-        <span matListItemTitle>Hot Air Balloon Safari`s</span>
-        <span matListItemLine>
-          Some safaris include the option of a hot air balloon ride, offering a
-          breathtaking aerial view of the wildlife and landscapes at sunrise.
-        </span>
-        <mat-icon matListItemIcon style="color: green">check</mat-icon>
-      </mat-list-item>
-
-      <mat-list-item style="margin-bottom: 5.5px">
-        <span matListItemTitle>Family Safari`s</span>
-        <span matListItemLine>
-          Family-friendly safaris often feature activities tailored for
-          children, such as junior ranger programs and educational wildlife
-          talks.
-        </span>
-        <mat-icon matListItemIcon style="color: green">check</mat-icon>
-      </mat-list-item>
-    </mat-list>
+    
     <mat-card-content *ngIf="!fetching">
-      <mat-card-content #landCruiserSafaris>
-        <h2>Feature Packages (LandCruiser Safaris)</h2>
-        <div class="grid-see" *ngIf="!fetching">
-          <div *ngFor="let saf of landCruiserSaf">
-            <img [src]="saf.packageImage" alt="" />
-            <h1>{{ saf.packageTitle }}</h1>
-            <p>
-              Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
-              Adult
-            </p>
-            
-              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-                See Package
-              </button>
-          
-          </div>
-        </div>
-      </mat-card-content>
+      
+       <section  class="section-card" #landCruiserSafaris>
+        <h1>Land Cruiser Safari`s</h1>
+        <feature-safaris [featureSafaris]="landCruiserSaf"></feature-safaris>
+       </section>
+      
+  <section  class="section-card" #airSafaris>
+        <h1>Air Safari`s</h1>
+        <feature-safaris [featureSafaris]="airSafariss"></feature-safaris>
+       </section>
 
-      <mat-card-content #airSafaris>
-        <h2>Feature Packages (AirSafari`s)</h2>
-        <div class="grid-see" *ngIf="!fetching">
-          <div *ngFor="let saf of airSafariss">
-            <img [src]="saf.packageImage" alt="" />
-            <h1>{{ saf.packageTitle }}</h1>
-            <p>
-              Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
-              Adult
-            </p>
-            
-              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-                See Package
-              </button>
-         
-          </div>
-        </div>
-      </mat-card-content>
+       <section  class="section-card" #jpSafaris>
+        <h1>Jeep Safari`s</h1>
+        <feature-safaris [featureSafaris]="jeepSafaris"></feature-safaris>
+       </section>
 
-      <mat-card-content #jpSafaris>
-        <h2>Feature Packages (Jeep Safari`s)</h2>
-        <div class="grid-see" *ngIf="!fetching">
-          <div *ngFor="let saf of jeepSafaris">
-            <img [src]="saf.packageImage" alt="" />
-            <h1>{{ saf.packageTitle }}</h1>
-            <p>
-              Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
-              Adult
-            </p>
-            
-              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-                See Package
-              </button>
-         
-          </div>
-        </div>
-      </mat-card-content>
-
-      <mat-card-content #vnSafaris>
-        <h2>Feature Packages (Van Safari`s)</h2>
-        <div class="grid-see" *ngIf="!fetching">
-          <div *ngFor="let saf of vanSafaris">
-            <img [src]="saf.packageImage" alt="" />
-            <h1>{{ saf.packageTitle }}</h1>
-            <p>
-              Charges:
-              <b>{{ saf.packageChargeCurrency }} {{ currencyFormatter(saf.packageCharge) }}</b> per
-              Adult
-            </p>
-            
-              <button (click)="goPackage(saf.packageSlug)" class="button-5" role="button">
-                See Package
-              </button>
-          
-          </div>
-        </div>
-      </mat-card-content>
+       <section  class="section-card" #vnSafaris>
+        <h1>Van Safari`s</h1>
+        <feature-safaris [featureSafaris]="vanSafaris"></feature-safaris>
+       </section>
     </mat-card-content>
 
     <div [classList]="fetching ? 'spin':'no-spin'">
