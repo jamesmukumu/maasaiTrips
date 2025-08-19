@@ -13,6 +13,23 @@
         <div class="container">
         <!-- Transportation Cards -->
         <div class="grid-container">
+   <!-- Airplane Card -->
+   <div class="card" (click)="scrollAirSafaris()">
+    <div class="icon-container">
+      <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><g><path d="M22,16v-2l-8.5-5V3.5C13.5,2.67,12.83,2,12,2s-1.5,0.67-1.5,1.5V9L2,14v2l8.5-2.5V19L8,20.5L8,22l4-1l4,1l0-1.5L13.5,19 v-5.5L22,16z"/><path d="M0,0h24v24H0V0z" fill="none"/></g></svg>
+    </div>
+    <h3>Air Safaris</h3>
+    <p>Bird's eye view of the magnificent African landscape</p>
+    </div>
+
+      <!-- Land Cruiser Card -->
+      <div class="card" (click)="scrollSafaris()">
+        <div class="icon-container">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+        </div>
+        <h3>Land Cruiser Safaris</h3>
+        <p>Premium comfort meets rugged terrain exploration</p>
+        </div>
         <!-- Van Card -->
         <div class="card" (click)="scrollVansafaris()">
         <div class="icon-container">
@@ -29,22 +46,8 @@
         <h3>Safaris by Jeep</h3>
         <p>Off-road adventures for the ultimate wildlife experience</p>
         </div>
-        <!-- Airplane Card -->
-        <div class="card" (click)="scrollAirSafaris()">
-        <div class="icon-container">
-          <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><g><path d="M22,16v-2l-8.5-5V3.5C13.5,2.67,12.83,2,12,2s-1.5,0.67-1.5,1.5V9L2,14v2l8.5-2.5V19L8,20.5L8,22l4-1l4,1l0-1.5L13.5,19 v-5.5L22,16z"/><path d="M0,0h24v24H0V0z" fill="none"/></g></svg>
-        </div>
-        <h3>Air Safaris</h3>
-        <p>Bird's eye view of the magnificent African landscape</p>
-        </div>
-        <!-- Land Cruiser Card -->
-        <div class="card" (click)="scrollSafaris()">
-        <div class="icon-container">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
-        </div>
-        <h3>Land Cruiser Safaris</h3>
-        <p>Premium comfort meets rugged terrain exploration</p>
-        </div>
+     
+      
         </div>
         <!-- Masai Mara Feature Card -->
         <div class="feature-card">
@@ -72,7 +75,7 @@
         <!-- Image Section -->
         <div class="feature-image">
         <img
-        src="https://www.masaimara.travel/images/impalas-hyena-olerai-conservancy-masaimara.jpeg"
+        src="https://www.olankasafaris.com/uploads/package/3-days-2-nights-group-joining-budget-safari_20250217132820.jpg?v1.1.9"
         alt="Masai Mara Landscape"
         >
         </div>
@@ -90,22 +93,22 @@
     <mat-card-content *ngIf="!fetching">
       
        <section  class="section-card" #landCruiserSafaris>
-        <h1>Land Cruiser Safari`s</h1>
+        <h1>Land Cruiser Safari</h1>
         <feature-safaris [featureSafaris]="landCruiserSaf"></feature-safaris>
        </section>
       
   <section  class="section-card" #airSafaris>
-        <h1>Air Safari`s</h1>
+        <h1>Air Safari</h1>
         <feature-safaris [featureSafaris]="airSafariss"></feature-safaris>
        </section>
 
        <section  class="section-card" #jpSafaris>
-        <h1>Jeep Safari`s</h1>
+        <h1>Jeep Safari</h1>
         <feature-safaris [featureSafaris]="jeepSafaris"></feature-safaris>
        </section>
 
        <section  class="section-card" #vnSafaris>
-        <h1>Van Safari`s</h1>
+        <h1>Van Safaris</h1> 
         <feature-safaris [featureSafaris]="vanSafaris"></feature-safaris>
        </section>
     </mat-card-content>
@@ -113,7 +116,7 @@
     <div [classList]="fetching ? 'spin':'no-spin'">
       <div class="loader"></div>
     </div>
-  </div>
+  </div> 
   <section>
   <app-contact></app-contact>  
   </section>

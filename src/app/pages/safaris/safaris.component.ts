@@ -81,7 +81,7 @@ this.fetching = false
 }
 async ngOnInit(){
 await this.fetchSafaris()
-this.requestQuote()
+
 }
 requestQuote(){
 this.dialog.open(QuotationsComponent)

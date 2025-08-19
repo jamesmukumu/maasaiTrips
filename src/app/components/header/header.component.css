@@ -1,9 +1,11 @@
 body {
-  font-family: Arial, sans-serif;
+ 
   margin: 0;
   padding: 0;
 }
-
+nav button{
+margin-right: 3.5rem;
+}
 .button-5 {
   margin-right: 20px;
   align-items: center;

@@ -66,7 +66,7 @@ export class SingularPackageComponent implements OnInit {
   }
 
   formatPackageImages(packageImages: any) {
-    return JSON.parse(packageImages);
+    return JSON.parse(packageImages).slice(0,4);
   }
 
   onboard() {
@@ -104,5 +104,9 @@ export class SingularPackageComponent implements OnInit {
       this.packageSlug = params.get("packageSlug") ?? "";
       this.fetchPackage();
     });
+  }
+
+  priceFormatter(charge:any){
+    return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
   }
 }

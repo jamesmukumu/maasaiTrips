@@ -11,11 +11,15 @@ export class ContactComponent {
   onSubmit(form: NgForm) {
     if (form.valid) {
       console.log('Form submitted:', form.value);
-      alert('Thank you! Your enquiry has been sent.');
+ 
       form.reset();
     } else {
-      console.log("invalid form")
-      alert('Please fill out all required fields correctly.');
+      
+      Object.keys(form.controls).forEach(field => {
+        const control = form.controls[field];
+        control.markAsTouched({ onlySelf: true });
+      });
     }
   }
+  
 }

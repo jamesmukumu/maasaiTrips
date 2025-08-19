@@ -3,17 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
-
-mat-card {
+.related h3{
+font-size: x-large;
+text-align: center;
+font-weight: bold;
+}
+.container {
   margin: 2rem;
   padding: 1rem;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+ 
 }
-
-mat-card-header mat-card-title {
+.price-highlight {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #222;
+  padding-left: 5px;
+ 
+  margin-top: 0.25rem;
+}
+.section-header-title mat-card-title {
   text-align: center;
   font-size: 1.8rem;
   margin: 1rem 0;
@@ -196,7 +207,7 @@ mat-card-header mat-card-title {
 
 .in-ex {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
 }
 
@@ -291,7 +302,9 @@ mat-list-item {
   .package-overview {
     padding: 0.5rem;
   }
-
+.in-ex{
+flex-direction: column;
+}
   .social-buttons {
     flex-wrap: wrap;
     gap: 0.5rem;

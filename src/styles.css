@@ -54,3 +54,10 @@ body {
   overflow-x: clip; 
  
 }
+@media(max-width:768px){
+  header {
+    position: static; /* 👈 disable sticky on small screens */
+    top: auto;        /* reset */
+    z-index: auto;    /* reset if needed */
+  } 
+}

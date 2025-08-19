@@ -1,11 +1,11 @@
 <header></header>
 
-<mat-card *ngIf="!fetching">
-  <mat-card-header>
-    <mat-card-title>{{packageData.packageTitle}}({{packageData.packageChargeCurrency}} {{packageData.packageCharge}})</mat-card-title>
-  </mat-card-header>
+<div *ngIf="!fetching" class="container">
+  <section class="header-title">
+    <mat-card-title>{{packageData.packageTitle}} <span class="price-highlight">({{packageData.packageChargeCurrency}} {{ priceFormatter(packageData.packageCharge) }})</span></mat-card-title>
+  </section>
 
-  <div class="social-buttons">
+  <!-- <div class="social-buttons">
     <h3>Share This Package</h3>
     <a class="social-button whatsapp" href="#">
       <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
         </g>
       </svg>
     </a>
-  </div>
+  </div> -->
 
   <div class="galleria">
     <div class="image-main">
@@ -115,12 +115,15 @@
 
   <div class="package-main-content">
   </div>
-
-  <related-packages [packageData]="relatedPackage"></related-packages>
-</mat-card>
+<section class="related">
+  <h3>Similar Maasai Mara Packages</h3>
+<feature-safaris [featureSafaris]="relatedPackage" [showOverview]="false"></feature-safaris>
+</section>
+</div>
 
 <div [classList]="fetching ? 'spin':'no-spin'">
   <div class="loader"></div>
 </div>
 <p-scrollTop/>
-<footer></footer>
+<app-contact></app-contact>
+<footer></footer> 

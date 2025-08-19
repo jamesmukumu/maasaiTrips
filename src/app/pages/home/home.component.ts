@@ -95,14 +95,7 @@ homeImages = [
   title: '3-Day Masai Group Joining Safari on 4x4 Landcruiser Jeep'.toUpperCase(),
   urlPath:"safaris/3_days_4_nights_retreat_maasai_mara"
 },
-{
-  itemImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
-  thumbnailImageSrc: '../../../assets/front_offers/MARA-LEISURE-DINING.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Lake Nakuru-Ambosel Packages".toUpperCase(),
-  title: '4-Day Lake Nakuru National Park Tour'.toUpperCase(),
-  urlPath:"safaris/4_day_lake_nakuru_national_park_tour"
-},
+
 {
   itemImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
   thumbnailImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',

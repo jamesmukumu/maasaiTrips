@@ -7,7 +7,7 @@
           class="card-img"
         />
         <h3 class="card-title">{{off.packageTitle}}</h3>
-        <p class="card-desc" [innerHTML]="off.packageOverview"></p>
+        <p class="card-desc"*ngIf="showOverview"  [innerHTML]="off.packageOverview"></p>
         <div class="card-footer">
           <p class="card-price">
             From   <span class="price-highlight">

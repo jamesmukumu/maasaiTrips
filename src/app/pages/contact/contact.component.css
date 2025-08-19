@@ -1,9 +1,19 @@
+/* Error message */
 .error {
   color: red;
   font-size: 0.85em;
   margin-top: 4px;
 }
 
+/* Page background */
+body {
+  background-color: #f2f4f7;
+  font-family: "Red Hat Display", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Button styles (unchanged) */
 .button-5 {
   max-width: 150px;
   align-items: center;
@@ -21,17 +31,14 @@
   font-weight: 600;
   justify-content: center;
   line-height: 1.25;
-  margin: 0;
   min-height: 3rem;
   padding: calc(.875rem - 1px) calc(1.5rem - 1px);
   position: relative;
   text-decoration: none;
   transition: all 250ms;
   user-select: none;
-  -webkit-user-select: none;
   touch-action: manipulation;
   margin-top: 15px;
-  vertical-align: baseline;
   width: auto;
 }
 
@@ -50,173 +57,82 @@
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
 }
-  .safari-bg {
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   
-  }
-  
-  .contact-card {
-    max-width: 1200px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 16px;
-    
-    overflow: hidden;
-  }
-  
-  .contact-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  @media (min-width: 768px) {
-    .contact-container {
-      flex-direction: row;
-    }
-  }
-  
-  .contact-info {
-    background-color: #8B5A2B;
-    color: #ffffff;
-    padding: 2rem;
-    flex: 2;
-  }
-  
-  .contact-info h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .contact-info p {
-    opacity: 0.8;
-    margin-bottom: 2rem;
-  }
-  
-  .info-block {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .info-block i {
-    font-size: 1.5rem;
-    margin-top: 0.3rem;
-  }
-  
-  .contact-form {
-    flex: 3;
-    padding: 2rem;
-    background-color: #fff;
-  }
-  
-  .contact-form h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    margin-bottom: 0.5rem;
-    color: #555;
-  }
-  
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 0.75rem;
-    border-radius: 8px;
-    border: 1px solid rgba(209, 213, 219, 0.5);
-    transition: all 0.3s ease;
-  }
-  
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: #8B5A2B;
-    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.2);
-    outline: none;
-  }
-  
-  .form-group.checkbox {
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .form-group.checkbox label {
-    margin-left: 0.5rem;
-  }
-  
-  .submit-btn {
-    background-color: #8B5A2B;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-    width: 100%;
-  }
-  
-  .submit-btn:hover {
-    background-color: #7a4e25;
-  }
-  
-  .map-section {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    margin-top: 2rem;
-  }
-  
-  .map-overlay {
-    background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png');
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .map-card {
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
-  }
-  
-  .map-card h3 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .map-card p {
-    color: #666;
-    margin-bottom: 1rem;
-  }
-  
-
-
-  @media(max-width:768px){
-.contact-card{
-width: 100vw;
+/* Background wrapper */
+.safari-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fefefe, #f3f4f6);
+  padding: 20px;
 }
 
+/* Card wrapper */
+.contact-card {
+  width: 100%;
+  max-width: 700px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  padding: 2rem;
+}
+
+/* Form container */
+.contact-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form section */
+.contact-form {
+  padding: 1rem 0;
+}
+
+.contact-form h2 {
+  font-size: 1.75rem;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  text-align: center;
+}
+
+/* Form groups */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background-color: #fafafa;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #e88b22;
+  box-shadow: 0 0 0 3px rgba(232, 139, 34, 0.2);
+  background-color: #fff;
+  outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 1.5rem;
   }
+}

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class FeatureSafarisComponent {
 @Input() featureSafaris:any
+@Input() showOverview:any = true
 
 priceFormatter(charge:any){
   return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
