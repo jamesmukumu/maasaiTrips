@@ -57,6 +57,7 @@ body {
   justify-content: space-between;
   background: linear-gradient(to right, #303233, #303233);
   padding: 15px 20px;
+  min-height: 110px;
 }
 
 .logo {

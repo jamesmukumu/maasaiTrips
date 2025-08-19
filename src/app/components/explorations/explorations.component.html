@@ -1,0 +1,19 @@
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="content-wrapper">
+      <div 
+        class="quote-container" 
+        [@fadeAnimation]="state" 
+        (@fadeAnimation.done)="onFadeDone($event)">
+  
+        <div class="quote-mark">"</div>
+        <blockquote class="quote-text">
+          {{ block_quotes[currentIndex].block }}
+        </blockquote>
+        <div class="separator-line"></div>
+        <section class="attribution">
+          — {{ block_quotes[currentIndex].creator }}
+        </section>
+      </div>
+    </div>
+  </section>

@@ -2,6 +2,52 @@
   --color-primary: #8B7355;
   --color-secondary: #5C4033;
 }
+.button-5 {
+  max-width: 150px;
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #e88b22;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "Red Hat Display", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 15px;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-5:hover,
+.button-5:focus {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-5:hover {
+  transform: translateY(-1px);
+}
+
+.button-5:active {
+  background-color: #e88b22;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}
 * {
   margin: 0;
   padding: 0;
@@ -126,7 +172,18 @@ font-size: large;
 }
 .card {
   text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;  /* Stack children vertically */
 }
+
+.card-text {
+  color: #4B5563;
+  font-size: 1.125rem;
+  letter-spacing: 0.025em;
+  flex-grow: 1; /* Take up available space and push button down */
+}
+
 .card-image {
   position: relative;
   overflow: hidden;
@@ -150,11 +207,7 @@ font-size: large;
   margin-bottom: 1rem;
   letter-spacing: 0.05em;
 }
-.card-text {
-  color: #4B5563;
-  font-size: 1.125rem;
-  letter-spacing: 0.025em;
-}
+
 .cta-section {
   position: relative;
   padding: 8rem 0;

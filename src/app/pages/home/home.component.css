@@ -3,6 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+header {
+  position: sticky;
+  top: 0; /* 👈 required */
+  z-index: 1000; /* 👈 keep it above content */
+}
+
 .button-5 {
   align-items: center;
   background-clip: padding-box;
@@ -194,7 +200,7 @@ text-align: center;
 
 .about-mara {
   max-width: 1200px;
-    margin: 20px auto 2px auto; /* top | right | bottom | left */;
+    margin: 20px auto  auto; /* top | right | bottom | left */;
   padding: 40px 20px;
   line-height: 1.8;
   font-size: 16.5px;
