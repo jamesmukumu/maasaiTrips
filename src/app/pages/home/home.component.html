@@ -1,5 +1,5 @@
 <mat-card>
-  <header></header>
+  <header (contactFormEmitter)="contact_handler($event)"></header>
 
   <mat-card-header>
    <div class="card">
@@ -58,13 +58,13 @@ The Maasai Mara in southwestern Kenya is a vast 1,510 square kilometer savannah 
   
 <app-explorations></app-explorations>
 </section> 
-<section>
-<app-testmonials></app-testmonials>
+<section >
+<app-testmonials (contactFormEmitter)="contact_handler($event)"></app-testmonials>
 </section>
 
 
 
-<app-contact></app-contact>
+<app-contact #contactRef></app-contact>
 
   <footer></footer>
 

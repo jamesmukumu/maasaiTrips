@@ -1,4 +1,4 @@
-import { Component,ViewChild,AfterViewInit } from '@angular/core';
+import { Component,ViewChild,AfterViewInit,Output,EventEmitter } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 
@@ -9,6 +9,12 @@ import { Router } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
+
+@Output() contactFormEmitter = new EventEmitter<string>()
+  
+contact_us(){
+this.contactFormEmitter.emit("contact")
+}
   goDest(path:string){
     this.route.navigate([`${path}`])
   }

@@ -81,9 +81,15 @@ constructor(private titlePage:Title,private packages:PackagesService,private rou
 @ViewChild("animatedElement")animatedElement!:ElementRef
 @ViewChild("bouncerCheck")animatedBounce!:ElementRef
 @ViewChild("explores")exploresEffect!:ElementRef
+@ViewChild("contactRef", { read: ElementRef }) contactRef!: ElementRef;
 
 
-
+contact_handler(event:any){
+this.contactRef.nativeElement.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+  })
+}
 homeImages = [
 
 

@@ -39,7 +39,15 @@ export class SafarisComponent implements AfterViewInit{
 @ViewChild("airSafaris")airSafaris!:ElementRef
 @ViewChild("jpSafaris")jpSafaris!:ElementRef
 @ViewChild('vnSafaris')vnSaf!:ElementRef
+@ViewChild("contactRef", { read: ElementRef }) contactRef!: ElementRef;
 
+
+contact_handler(event:any){
+this.contactRef.nativeElement.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+  })
+}
 bgState:string = 'clear'
 fetching = false
 airSafariss:any = []

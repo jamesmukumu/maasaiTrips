@@ -1,5 +1,5 @@
 <mat-card class="cont">
-  <header></header>
+  <header (contactFormEmitter)="contact_handler($event)"></header>
   <div class="safaris" [@bounceRight]="bgState" #bg>
     <h1>We Believe in your Dream Safari to Maasai Mara</h1>
   </div>
@@ -117,7 +117,7 @@
       <div class="loader"></div>
     </div>
   </div> 
-  <section>
+  <section #contactRef>
   <app-contact></app-contact>  
   </section>
   <footer></footer>
