@@ -29,7 +29,7 @@ navigate(){
 this.route.navigate(["/safaris"])
 }
 accomodations(){
-this.route.navigate(["/hotels"])
+this.route.navigate(["/accomodations"])
 }
 
 constructor(private route:Router){}

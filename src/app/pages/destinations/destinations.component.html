@@ -7,7 +7,7 @@
   <mat-card *ngIf="!findingDestinations">
     <div (click)="goDestinations(dest.destinationSlug, dest.destinationTitle)" *ngFor="let dest of destinations">
       <img [src]="dest.destinationThumbnail" alt="{{dest.destinationTitle}}" />
-      <span class="label">{{dest.destinationTitle}}</span>
+    
       <mat-list>
        <mat-list-item>
 
