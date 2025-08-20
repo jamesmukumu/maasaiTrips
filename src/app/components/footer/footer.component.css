@@ -1,179 +1,197 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    }
-    h1{
- padding-left: 10px;
-    text-align: center;
-    margin-bottom: 20px;
-    }
-    ul li{
-        padding-top: 10px;
-    padding-left: 10px;
-    list-style: none;
-    cursor: pointer;
-    }
-    mat-card mat-card-footer{
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: repeat(4,1fr);
-    }
-   
-    img{
-        cursor: pointer;
-        height: fit-content;
-        max-width: 250px;
-        width: fit-content;
-    }
-    h1,h2,h3,mat-list-item,mat-list-item,span{
-    color: white;
-    }
-    mat-card-footer div mat-list mat-list-item{
-    color: white;
-    }
-    b{
-    text-align: center;
-    color: white;
-    }
-    mat-card{
-        background: #232526;  
-    background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    display: grid;
-    place-content: center;
-    max-width: 100vw;
-   
-    }
-    
-    mat-divider{
-    display: none;
-    }
-    h3{
-    padding-top: 10px;
-    }
-    /* From Uiverse.io by Yaya12085 */ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  padding-left: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul li {
+  padding-top: 10px;
+  padding-left: 10px;
+  list-style: none;
+  cursor: pointer;
+}
+
+mat-card mat-card-footer {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px; /* Added gap for even spacing between columns */
+  padding: 20px; /* Added padding around the footer for better overall spacing */
+}
+
+img {
+  cursor: pointer;
+  height: fit-content;
+  max-width: 250px;
+  width: fit-content;
+}
+
+h1, h2, h3, mat-list-item, mat-list-item, span {
+  color: white;
+}
+
+mat-card-footer div mat-list mat-list-item {
+  color: white;
+}
+
+b {
+  text-align: center;
+  color: white;
+}
+
+mat-card {
+  background: #232526;
+  background: -webkit-linear-gradient(to right, #414345, #232526); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: grid;
+  place-content: center;
+  max-width: 100vw;
+}
+
+mat-divider {
+  display: none;
+}
+
+h3 {
+  padding-top: 10px;
+}
+
+/* From Uiverse.io by Yaya12085 */
 .card {
-    max-width: 350px;
-    background-color: rgb(7 16 45);
-    background: linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
-    background: -webkit-linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid rgb(84 90 106);
+  max-width: 350px;
+  background-color: rgb(7 16 45);
+  background: linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
+  background: -webkit-linear-gradient(to top right, rgb(7 16 45), rgb(58 60 84));
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgb(84 90 106);
+}
+
+.small-text, .title, .desc {
+  font-weight: 600;
+}
+
+.title, .desc {
+  margin: 8px 0;
+}
+
+.small-text {
+  color: #488aec;
+  font-size: 14px;
+}
+
+.title {
+  color: #fff;
+  font-size: 26px;
+  line-height: 26px;
+}
+
+.desc {
+  color: rgb(151 153 167);
+  font-size: 13px;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 6px;
+  text-decoration: none;
+}
+
+.button:first-child {
+  box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
+  background-color: #488aec;
+}
+
+.button:last-child {
+  box-shadow: 0 4px 6px -1px #0b162531, 0 2px 4px -1px #0e192b17;
+  background-color: #fff;
+}
+
+.icon {
+  height: 25px;
+  width: 25px;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon svg:last-child {
+  fill: #000
+}
+
+.button-text {
+  display: flex;
+  flex-direction: column;
+  margin-left: 8px;
+}
+
+.button-text span:first-child {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.google span:first-child {
+  color: rgb(219 206 253);
+}
+
+.apple span:first-child {
+  color: rgb(81 87 108);
+}
+
+.google span:last-child {
+  color: #fff;
+  font-weight: 800;
+}
+
+.apple span:last-child {
+  color: #000;
+  font-weight: 800;
+}
+
+.social {
+  display: flex;
+  justify-content: space-evenly; /* Added to space social icons evenly */
+  align-items: center;
+  gap: 10px; /* Added gap between icons for better spacing */
+  margin-top: 10px;
+}
+
+@media (min-width: 801px) and (max-width: 860px) {
+  mat-card {
+      margin: 0px;
+      width: 100vw;
   }
-  
-  .small-text, .title,.desc {
-    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  mat-divider {
+      display: block;
   }
-  
-  .title,.desc {
-    margin: 8px 0;
+  mat-card mat-card-footer {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      gap: 20px; /* Maintain gap in mobile view for spacing between sections */
   }
-  
-  .small-text {
-    color: #488aec;
-    font-size: 14px;
-  }
-  
-  .title {
-    color: #fff;
-    font-size: 26px;
-    line-height: 26px;
-  }
-  
-  .desc {
-    color: rgb(151 153 167);
-    font-size: 13px;
-  }
-  
-  .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    padding: 6px;
-    text-decoration: none;
-  }
-  
-  .button:first-child {
-    box-shadow: 0 4px 6px -1px #488aec31, 0 2px 4px -1px #488aec17;
-    background-color: #488aec;
-  }
-  
-  .button:last-child {
-    box-shadow: 0 4px 6px -1px #0b162531, 0 2px 4px -1px #0e192b17;
-    background-color: #fff;
-  }
-  
-  .icon {
-    height: 25px;
-    width: 25px;
-  }
-  
-  .icon svg {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .icon svg:last-child {
-    fill: #000
-  }
-  
-  .button-text {
-    display: flex;
-    flex-direction: column;
-    margin-left: 8px;
-  }
-  
-  .button-text span:first-child {
-    font-size: 12px;
-    font-weight: 600;
-  }
-  
-  .google span:first-child {
-    color: rgb(219 206 253);
-  }
-  
-  .apple span:first-child {
-    color: rgb(81 87 108);
-  }
-  
-  .google span:last-child {
-    color: #fff;
-    font-weight: 800;
-  }
-  
-  .apple span:last-child {
-    color: #000;
-    font-weight: 800;
-  }
-    @media(min-width:801px) and (max-width:860px){
-    mat-card{
-    margin: 0px;
-    width: 100vw;
-    }
-    
-    
-    }
-    @media(max-width:768px){
-        mat-divider{
-        display: block;
-        }
-        mat-card mat-card-footer{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            
-            }
-    }
+}

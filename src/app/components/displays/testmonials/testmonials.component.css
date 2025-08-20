@@ -86,11 +86,11 @@ body {
   color: white;
 }
 .hero-title {
-  font-family: 'Cormorant Garamond', serif;
+
   font-size: 6rem;
   font-weight: 300;
   margin-bottom: 2.5rem;
-  letter-spacing: 0.05em;
+
 }
 .hero-subtitle {
   font-size: 1.875rem;
@@ -98,6 +98,7 @@ body {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin-bottom: 4rem;
+  padding-top: 10px;
 }
 .btn {
   display: inline-block;
@@ -159,7 +160,7 @@ font-size: large;
   }
   
   .hero-title {
-    font-size: 4rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
@@ -200,7 +201,7 @@ font-size: large;
   transform: scale(1.05);
 }
 .card-title {
-  font-family: 'Cormorant Garamond', serif;
+
   font-size: 1.875rem;
   font-weight: 300;
   color: #111827;
