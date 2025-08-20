@@ -13,6 +13,20 @@ import { ImageItem } from 'ng-gallery';
   styleUrl: './single-hotel.component.css'
 })
 export class SingleHotelComponent {
+  responsiveOptions: any[] = [
+    {
+        breakpoint: '1024px',
+        numVisible: 5
+    },
+    {
+        breakpoint: '768px',
+        numVisible: 3
+    },
+    {
+        breakpoint: '560px',
+        numVisible: 1
+    }
+  ];
   constructor(private titlePage:Title,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
   destinationsID:any
   fetchingDestination = false
@@ -51,10 +65,11 @@ return new Array(count)
     this.destinationData = data
     let parsed_images = JSON.parse(data.imagesHotel)
     this.destinationPhoto = parsed_images.map((photo:string)=>{
-    return new ImageItem({
-    src:photo,
-    thumb:photo
-    })
+   
+return {
+  src:photo,
+  thumb:photo
+}
     })
     this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.locationDescription)
     this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.hotelDescription)

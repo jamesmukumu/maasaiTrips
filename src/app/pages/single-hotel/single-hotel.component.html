@@ -4,76 +4,54 @@
 </div>
 <mat-card class="container">
   <h1>{{ destinationData.hotelName }}</h1>
-  <div *ngIf="!fetchingDestination" class="grid">
-    <div class="div-a-adjust">
-      <gallery  autoplay="true" thumbAutosize="true"  autoHeight="true" [items]="destinationPhoto" itemAutosize="true" imageSize="contain"></gallery>
-       
-
-      <mat-icon style="color: rgb(232, 139, 34)">place</mat-icon>
-      <b>{{ destinationData.hotelName }}</b>
+  <div *ngIf="!fetchingDestination" class="content-column">
+    <div class="galleria-wrapper">
+      <div class="card">
+        <p-galleria  
+        [value]="destinationPhoto" 
+        [responsiveOptions]="responsiveOptions" 
+        showThumbnailNavigators="false"
+        showIndicators="false"
+        showThumbnails="false"
+        autoPlay="true"
+        circular="true"
+        [numVisible]="5"
+        [transitionInterval]="4000"
+      > 
+        <ng-template pTemplate="item" let-item>
+          <img 
+            class="img-big"
+            [src]="item.src" 
+            style="width: 100%; height: 400px; object-fit: cover; " 
+          />
+        </ng-template>
+      </p-galleria>
       
+      </div>
+    </div>
+
+    <div class="description-wrapper">
       <mat-card-content
         style="margin-top: 20px"
         [innerHTML]="destinationDescription"
-      >
-      </mat-card-content>
+      ></mat-card-content>
       <mat-card-content
         style="margin-top: 20px"
         class="truncate-text"
         [innerHTML]="destinationAbout"
-      >
-      </mat-card-content>
+      ></mat-card-content>
       <mat-card-content
         style="margin-top: 20px"
         class="truncate-text"
         [innerHTML]="hotelMetaDescription"
-      >
-      </mat-card-content>
+      ></mat-card-content>
 
-        <h1>Rooms:</h1>
-       <table mat-table *ngIf="!fetchingDestination" [dataSource]="dataSource" 
-       style="width: 100%; border-collapse: collapse;">
-       
-       <ng-container matColumnDef="roomType">
-         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;">
-           Room Type
-         </th>
-         <td mat-cell *matCellDef="let element" style="padding: 10px;">
-          <mat-list>
-           <mat-list-item>
-            <mat-icon matListItemIcon style="color: orangered;">play_arrow</mat-icon>
-            <b (click)="popRoom(element)" matListItemTitle>
-              {{ element.roomType }}
-            </b>
-           </mat-list-item>
-
-
-          </mat-list>
-         </td>  
-       </ng-container>
-       
-       <ng-container matColumnDef="maxOccupancy">
-         <th mat-header-cell *matHeaderCellDef style="background-color: rgb(76,118,178); color: white; padding: 10px;">
-           Maximum Occupancy
-         </th>
-         <td mat-cell *matCellDef="let element" style="padding: 10px;">
-        <div (click)="popRoom(element)">
-        <mat-icon *ngFor="let person of generateMaxOccupancy(element.maximumRoomOccupancy)">person</mat-icon>  
-        </div>
-         </td>
-       </ng-container>
      
-     
-     
-       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-       
-     </table> 
       
     </div>
 
-    <div class="div-b">
-      <h3>Here is how to locate Us</h3>
+    <div class="map-wrapper">
+    
       <google-map
         class="map"
         width="100%"
@@ -90,18 +68,19 @@
             lng: +destinationData.longitude
           }"
           title="Destination"
-        >
-        </map-marker>
+        ></map-marker>
       </google-map>
     </div>
   </div>
+<section>
+<app-contact></app-contact>
+</section>
 
-  <patners *ngIf="!fetchingDestination"></patners>
   <p-scrollTop />
 
-  <footer></footer>
+  
 </mat-card>
 
-<p-dialog [maximizable]="true" header="Read More About this room" [modal]="true" [style]="{'width':'90vw','max-width':'600px','object-fit':'cover'}"  [(visible)]="showRoom">
-      <rooms [roomData]="roomData"></rooms>
-    </p-dialog>  
+
+
+<footer></footer>

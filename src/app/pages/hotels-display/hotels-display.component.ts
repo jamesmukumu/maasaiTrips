@@ -61,7 +61,7 @@ export class HotelsDisplayComponent {
     private sanitizer: DomSanitizer
   ) {}
   goDestinations(id: any, title: any) {
-    window.open(`/hotel/${title}/${id}`, '_blank');
+    window.open(`/accomodation/${id}`, '_blank');
   }
   capturePage(event: any) {
     console.log(event);

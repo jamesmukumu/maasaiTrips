@@ -10,7 +10,7 @@
   <mat-card  *ngIf="!findingDestinations" >
   <div  *ngFor="let dest of destinations">
       <img (click)="goDestinations(dest.hotelSlug,dest.hotelName)" [src]="dest.hotelThumbnail" alt="" />
-      <span class="label">{{dest.hotelName}}</span>
+    
     <h4>{{ dest.hotelName }}</h4>
      
       <mat-card-content [innerHTML]="sanitize(dest.hotelDescription)"></mat-card-content>

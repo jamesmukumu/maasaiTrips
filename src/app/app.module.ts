@@ -244,7 +244,7 @@ MatTooltipModule,
 
     {
       component:HotelsDisplayComponent,
-      path:"hotels"
+      path:"accomodations"
      },
      {
       component:SingularBlogComponent,
@@ -256,7 +256,7 @@ MatTooltipModule,
      },
      {
       component:SingleHotelComponent,
-      path:"hotel/:hotelName/:hotelSlug"
+      path:"accomodation/:hotelSlug"
     }, 
     {
     component:SingularPackageComponent,

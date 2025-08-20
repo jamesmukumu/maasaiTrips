@@ -5,13 +5,20 @@
   height: max-content;
   display: flex;
   flex-direction: column;
-  background-color: rgb(237, 241, 245);
-  padding: 10px;
-}
+  align-items: center;
+  
 
+
+}
+.card{
+  width: 100vw;
+margin: 0;
+
+}
 body {
   overflow-x: hidden;
   margin: 0;
+  background-color: #f9f9f9;
 }
 
 /* From Uiverse.io by doniaskima */
@@ -82,9 +89,12 @@ mat-card-content {
   display: block;
   max-width: 100%;
   line-height: 1.6;
-  padding: 10px 15px;
+  padding: 15px 20px;
   font-size: 16px;
   box-sizing: border-box;
+  background-color: #ffffff;
+  
+  margin-bottom: 20px;
 }
 
 mat-card-content p,
@@ -103,78 +113,71 @@ mat-card-content h2 {
   color: white;
   width: max-content;
   padding: 8px 16px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.grid {
+.btn:hover {
+  background-color: rgb(200, 120, 30);
+}
+
+.content-column {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  background-color: rgb(237, 241, 245);
-  direction: rtl;
-  padding: 10px;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+
 }
 
-.grid > * {
-  direction: ltr;
-}
-
-.div-a-adjust {
+.galleria-wrapper {
   width: 100%;
-  max-width: 700px;
-  height: auto;
-  margin-bottom: 20px;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .img-big {
   width: 100%;
   height: auto;
-  max-width: 700px;
-  max-height: 800px;
   object-fit: cover;
+  border-radius: 12px 12px 0 0;
 }
 
-.div-b {
-  max-width: 450px;
-  height: auto;
-}
-
-.img-thumbnail {
+.description-wrapper {
   width: 100%;
-  height: 100px;
-  max-height: 400px;
-  object-fit: cover;
-}
-
-.grid-see {
-  width: 100%;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+}
+
+.map-wrapper {
+  width: 100vw;
+  /* max-width: 800px; */
+  background-color: #ffffff;
+
+ 
+  
+}
+.map-wrapper h2{
+text-align: center;
+}
+.map {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 h3 {
   padding: 10px 0;
   margin: 0;
-}
-
-.grid-see div {
-  width: 100%;
-  max-width: 300px;
-  margin-top: 15px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
-
-.grid-see div button {
-  margin: 5px;
-  padding: 8px 16px;
-}
-
-.grid-see div h2 {
-  padding: 10px;
-  margin: 0;
+  text-align: center;
+  color: #333;
+  font-size: 1.5em;
 }
 
 .spin {
@@ -184,35 +187,27 @@ h3 {
   min-height: 100vh;
 }
 
-.grid-see div button {
-  background-color: rgb(232, 139, 34);
-  color: white;
-}
-
 .no-spin {
   display: none;
-}
-
-.grid-see img {
-  width: 100%;
-  height: auto;
-  max-height: 75%;
 }
 
 h1 {
   text-align: center;
   padding: 15px 0;
   margin: 0;
+  color: #333;
+  font-size: 2em;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 100vw;
+  .container {
     padding: 10px;
-    margin: 0;
+    border-radius: 8px;
+  }
+
+  .content-column {
+    padding: 10px;
+    gap: 20px;
   }
 
   p-galleria {
@@ -234,30 +229,10 @@ h1 {
     word-break: break-word;
   }
 
-  .div-a-adjust {
-    width: 100%;
+  .galleria-wrapper,
+  .description-wrapper,
+  .map-wrapper {
     max-width: 90vw;
-    margin: 0 auto 20px;
-  }
-
-  .img-big {
-    width: 100%;
-    max-width: 90vw;
-    height: auto;
-  }
-
-  .div-b {
-    width: 100%;
-    max-width: 90vw;
-    height: auto;
-    margin: 0 auto;
-  }
-
-  .img-thumbnail {
-    width: 100%;
-    height: 100px;
-    max-height: 400px;
-    object-fit: cover;
   }
 
   .truncate-text {
@@ -267,31 +242,5 @@ h1 {
     display: block;
     -webkit-line-clamp: unset;
     -webkit-box-orient: unset;
-  }
-
-  .grid-see {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
-
-  .grid-see div {
-    width: 100%;
-    max-width: 90vw;
-    margin-top: 10px;
-  }
-
-  .grid-see div img {
-    padding-right: 0;
-    width: 100%;
-    height: auto;
-  }
-
-  .spin {
-    min-height: 100vh;
-  }
-
-  .div-b img {
-    padding: 10px 0;
   }
 }
