@@ -1,9 +1,33 @@
 <header></header>
 
+<div 
+  class="hero-section"
+  [ngStyle]="{
+    'position': 'relative',
+    'width': '100%',
+    'height': '70vh',
+    'overflow': 'hidden',
+    'background-image': 'url(' + packageData.packageImage + ')',
+    'background-size': 'cover',
+    'background-position': 'center',
+    'background-repeat': 'no-repeat'
+  }"
+>
+  <div class="overlay"></div>
+  <div class="text-content">
+    <h1 class="main-heading">
+      {{ packageData.packageTitle }}
+      <span class="price-highlight">
+        ({{ packageData.packageChargeCurrency }} {{ priceFormatter(packageData.packageCharge) }})
+      </span>
+    </h1>
+    <p class="sub-heading">{{ packageData.mode_transport }} Safari</p>
+  </div>
+</div>
+
+
 <div *ngIf="!fetching" class="container">
-  <section class="header-title">
-    <mat-card-title>{{packageData.packageTitle}} <span class="price-highlight">({{packageData.packageChargeCurrency}} {{ priceFormatter(packageData.packageCharge) }})</span></mat-card-title>
-  </section>
+
 
   <!-- <div class="social-buttons">
     <h3>Share This Package</h3>
@@ -46,20 +70,6 @@
     </a>
   </div> -->
 
-  <div class="galleria">
-    <div class="image-main">
-      <img [src]="packageData.packageImage" alt="">
-    </div>
-    <div class="galleria-thumbnails">
-      <img *ngFor="let img of formatPackageImages(packageData.packageImages); let i = index"
-           [src]="img"
-           [lightbox]="i"
-           [gallery]="galleryId"
-           class="gallery-thumb"
-           alt="Gallery Image {{i}}">
-    </div>
-  </div>
-  
   
 
   <div class="card">

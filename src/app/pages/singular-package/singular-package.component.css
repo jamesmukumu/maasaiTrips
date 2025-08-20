@@ -21,7 +21,7 @@ font-weight: bold;
   font-weight: 700;
   color: #222;
   padding-left: 5px;
- 
+ color: white;
   margin-top: 0.25rem;
 }
 .section-header-title mat-card-title {
@@ -30,7 +30,88 @@ font-weight: bold;
   margin: 1rem 0;
   color: #333;
 }
-
+:where([class^="ri-"])::before {
+  content: "\f3c2";
+}
+:root {
+  --primary-color: #57b5e7;
+  --secondary-color: #8dd3c7;
+  --white: #ffffff;
+  --gray-50: #f9fafb;
+  --gray-100: #f3f4f6;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  color: var(--gray-900);
+  background-color: var(--white);
+}
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  background-image: url('https://readdy.ai/api/search-image?query=african%20savanna%20landscape%20with%20giraffes%20in%20natural%20habitat%20golden%20hour%20lighting%20vast%20grasslands%20scattered%20acacia%20trees%20warm%20earth%20tones%20peaceful%20wildlife%20scene&width=1920&height=800&seq=hero001&orientation=landscape');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+}
+.text-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: var(--white);
+}
+.main-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 0.1em;
+  color: white;
+}
+.sub-heading {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+.destination {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .main-heading {
+    font-size: 2rem;
+  }
+  
+  .destination {
+    font-size: 1.2rem;
+  }
+}
 .social-buttons {
   display: flex;
   align-items: center;
