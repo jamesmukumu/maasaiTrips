@@ -1,18 +1,39 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChild,ElementRef,AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Hotel,HotelsService } from '../../services/hotels.service';
 import { DomSanitizer,SafeHtml,Title } from '@angular/platform-browser';
 import { MatTableDataSource } from '@angular/material/table';
 import { ImageItem } from 'ng-gallery';
-
+import {
+  trigger,
+  transition,
+  keyframes,
+  style,
+  animate,
+} from '@angular/animations';
 
 
 @Component({
   selector: 'single-hotel',
   templateUrl: './single-hotel.component.html',
-  styleUrl: './single-hotel.component.css'
+  styleUrl: './single-hotel.component.css',
+  animations:[
+    trigger('bounceRight', [
+      transition('clear => visible', [
+        style({
+          opacity: 1,
+          transform: 'translateX(-48px)',
+        }),
+        animate(
+          '1.55s ease-in-out',
+          style({ transform: 'translateX(0px)', opacity: 1 })
+        ),
+      ]),
+    ]),
+  ]
 })
 export class SingleHotelComponent {
+  bgState: string = 'clear';
   responsiveOptions: any[] = [
     {
         breakpoint: '1024px',
@@ -27,6 +48,7 @@ export class SingleHotelComponent {
         numVisible: 1
     }
   ];
+  @ViewChild('bg') bgRef!: ElementRef;
   constructor(private titlePage:Title,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
   destinationsID:any
   fetchingDestination = false
@@ -86,7 +108,22 @@ return {
   }
   
   
-  
+  bgBounce() {
+    var observer = new IntersectionObserver((entries) => {
+      entries.map((entry) => {
+        if (entry.isIntersecting) {
+          this.bgState = 'visible';
+        } else {
+          this.bgState = 'clear';
+        }
+      });
+    });
+    observer.observe(this.bgRef.nativeElement);
+  }
+
+  ngAfterViewInit() {
+    this.bgBounce();
+  }
   
   
   
