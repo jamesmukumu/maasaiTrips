@@ -1,15 +1,6 @@
 <mat-card *ngIf="!fetchingDestinations">
-  <p-fileUpload
-  class="upload"
-  name="demo[]"
-  url="https://www.primefaces.org/cdn/api/upload.php"
-  mode="basic"
-  accept=".csv"
-  chooseLabel="Choose Package csv file"
-  [style]="{ 'background-color': 'green' }"
-  maxFileSize="1000000"
->
-</p-fileUpload>
+ 
+
 <button (click)="addPackage()" class="button-5" style="width:fit-content;" role="button">Add Package Category</button>
   <form>
     <div class="infos">
@@ -141,12 +132,8 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <div>
-        <label>Enter Package About</label>
-        <jodit-editor [(ngModel)]="packageAbout" (onChange)="captureAbout($event)"></jodit-editor>
-      </div>
 
-      <div>
+<div>
         <label>Enter Package Special Notes</label>
         <jodit-editor (onChange)="captureSpecialNotes($event)"></jodit-editor>
       </div>
@@ -220,6 +207,53 @@
         </mat-card-actions>
       </div>
     </div>
+  <section>
+  <h1>Itinerary</h1>
+
+  <div *ngFor="let itinerary of itinerary_comprehensive; let q = index">
+    <mat-form-field>
+      <mat-label>Day {{ q + 1 }} title</mat-label>
+      <input
+        required
+        type="text"
+        name="package-title-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.title"
+      />
+      <mat-hint>Example: 4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Choose Destination</mat-label>
+      <mat-select required [(value)]="itinerary.destination_id">
+        <mat-option
+          *ngFor="let destination of destinationsData"
+          [value]="destination.id"
+        >
+          {{ destination.destinationTitle }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <label>Description for day {{ q + 1 }}</label>
+    <jodit-editor
+      [(ngModel)]="itinerary.description"
+      (onChange)="captureDescription($event, q)"
+    ></jodit-editor>
+
+  
+  </div>
+
+  <mat-card-actions align="start">
+    <button
+     role="button"
+     class="button-5"
+      (click)="addDay()"
+      [matBadge]="itinerary_comprehensive.length"
+    >
+      Add Day
+    </button>
+    <button role="button"class="button-5"  (click)="removeDay()">Remove day</button>
+  </mat-card-actions>
+</section>
     <button
     style="margin-top:20px;"
     *ngIf="!processing"

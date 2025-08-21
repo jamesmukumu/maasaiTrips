@@ -15,6 +15,53 @@ constructor(private packages:PackagesService,private hotels:HotelsService){}
 images:any[] = [
 {image1:null}
 ]
+itinerary_comprehensive: any[] = [
+    {
+      title: '',
+      description: '',
+      images: [],
+      destination_id: '',
+    },
+    {
+      title: '',
+      description: '',
+      images: [],
+      destination_id: '',
+    },
+    {
+      title: '',
+      description: '',
+      images: [],
+      destination_id: '',
+    },
+  ];
+  
+  
+  
+  addDay() {
+    this.itinerary_comprehensive.push({
+      title: '',
+      description: '',
+      images: [],
+      destination_id: '',
+    });
+  }
+  
+  removeDay() {
+    if (this.itinerary_comprehensive.length > 1) {
+      this.itinerary_comprehensive.pop();
+    }
+  }
+  
+  captureDescription(event: any, index: number) {
+    const { args } = event;
+    this.itinerary_comprehensive[index].description = args[0];
+  }
+   
+onImageSelect(event: any, index: number) {
+this.itinerary_comprehensive[index].images.push(...event.files);
+}
+
 targetDestination:any
 targetCategory:any
 choosenBudgetType:any
@@ -162,7 +209,7 @@ try{
 this.processing = true
 var payload = {
 "title":this.packageTitle,
-"about":this.packageAbout,
+"about":this.itinerary_comprehensive,
 "overview":this.packageOverview,
 "image":this.packagePhoto,
 "charges":this.packageCharge,
@@ -180,13 +227,14 @@ var payload = {
 
 
 }
+
 var {message,content} = await this.packages.addPackage(payload)
 if(message == 'package Saved'){
     this.processing = false
 this.snack.open("Package Saved","success")
 }else {
 this.processing = false
-this.snack.open("Something Went Wrong","Try again")
+this.snack.open("Something Went Wrong",content)
 }
 }catch(err){
 this.processing = false

@@ -22,7 +22,7 @@ export class PackagesService {
       }
 
       formData.append('packageTitle', Payload.title);
-      formData.append('packageAbout', Payload.about);
+      formData.append('packageAbout', JSON.stringify(Payload.about));
       formData.append('packageOverview', Payload.overview);
       formData.append('imagePackage', Payload.image);
       formData.append('packageCharge', `${Payload.charges}`);

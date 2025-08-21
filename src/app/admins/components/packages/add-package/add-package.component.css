@@ -3,6 +3,14 @@
   padding: 0px;
   box-sizing: border-box;
 }
+
+section{
+margin-top: 20px;
+}
+section div{
+display: flex;
+flex-direction: column;
+}
 .button-5 {
   margin-right: 15px;
   align-items: center;
@@ -15,7 +23,7 @@
   color: #fff;
   cursor: pointer;
   display: inline-flex;
-  font-family: "Red Hat Display", sans-serif;
+
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
