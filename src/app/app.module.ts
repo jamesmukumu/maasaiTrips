@@ -154,6 +154,7 @@ import { TestmonialsComponent } from './components/displays/testmonials/testmoni
 import { destinationsResolver } from './resolver/destinations.resolver';
 import { ExplorationsComponent } from './components/explorations/explorations.component';
 import { FooterFormComponent } from './components/footer-form/footer-form.component';
+import { authGuardGuard } from './auth-guard.guard';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -289,8 +290,9 @@ MatTooltipModule,
       },
       {
 component:DashboardComponent,
-path:"dashboard"
-      },
+path:"dashboard",
+canActivate:[authGuardGuard]
+      }, 
       {
       component:DestinationsComponent,
       path:"destinations",

@@ -18,9 +18,11 @@ export class SingularPackageComponent implements OnInit {
   @ViewChild("overView") overViewRef!: ElementRef;
 
   fetching = false;
+  comprehensiveItinerary: any;
   packageData: any;
   packageSlug = '';
   relatedPackage: any;
+  imagesPackage: any;
   galleryId = 'packageGallery';
 
   constructor(
@@ -66,7 +68,7 @@ export class SingularPackageComponent implements OnInit {
   }
 
   formatPackageImages(packageImages: any) {
-    return JSON.parse(packageImages).slice(0,4);
+    return JSON.parse(packageImages).slice(0, 4);
   }
 
   onboard() {
@@ -77,14 +79,50 @@ export class SingularPackageComponent implements OnInit {
     });
   }
 
+  /**
+   * Distribute images evenly across itinerary days
+   */
+  distributeImages(images: string[], itinerary: any[]): string[][] {
+    const totalImages = images.length;
+    const totalDays = itinerary.length;
+    const baseCount = Math.floor(totalImages / totalDays);
+    let remainder = totalImages % totalDays;
+
+    const chunks: string[][] = [];
+    let start = 0;
+
+    for (let i = 0; i < totalDays; i++) {
+      let extra = remainder > 0 ? 1 : 0; // spread leftover images one by one
+      let count = baseCount + extra;
+      remainder = Math.max(0, remainder - 1);
+
+      let end = start + count;
+      chunks.push(images.slice(start, end));
+      start = end;
+    }
+
+    return chunks;
+  }
+
   async fetchPackage() {
     try {
       this.fetching = true;
       const { data, relatedPackages } = await this.packages.fetchSingularPackages(this.packageSlug);
       this.packageData = data;
+      this.comprehensiveItinerary = JSON.parse(data.packageAbout);
+      this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;
-      this.fetching = false;
 
+      // distribute images evenly across itinerary
+      const distributed = this.distributeImages(this.imagesPackage, this.comprehensiveItinerary);
+      this.comprehensiveItinerary = this.comprehensiveItinerary.map((day: any, i: number) => {
+        return {
+          ...day,
+          images: distributed[i] || []
+        };
+      });
+
+      this.fetching = false;
       this.loadGalleryImages();
       this.titlePage.setTitle(`${this.packageData.packageTitle} | Maasai Mara Trips`);
     } catch (err) {
@@ -95,7 +133,7 @@ export class SingularPackageComponent implements OnInit {
 
   loadGalleryImages() {
     const images = this.formatPackageImages(this.packageData.packageImages) || [];
-    const items: GalleryItem[] = images.map((img:any) => new ImageItem({ src: img, thumb: img }));
+    const items: GalleryItem[] = images.map((img: any) => new ImageItem({ src: img, thumb: img }));
     this.gallery.ref(this.galleryId).load(items);
   }
 
@@ -106,7 +144,7 @@ export class SingularPackageComponent implements OnInit {
     });
   }
 
-  priceFormatter(charge:any){
-    return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",")
+  priceFormatter(charge: any) {
+    return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 }

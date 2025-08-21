@@ -188,10 +188,13 @@ h3 {
   mat-divider {
       display: block;
   }
+  ul li{
+    padding-left: 0;
+  }
   mat-card mat-card-footer {
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
-      gap: 20px; /* Maintain gap in mobile view for spacing between sections */
+       /* Maintain gap in mobile view for spacing between sections */
   }
 }

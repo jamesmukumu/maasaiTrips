@@ -164,6 +164,15 @@ adjusting = false
     }
   }
   ordinaryUpdate = false
+  addDay(){
+  this.packageAbout.push({
+  title:"",
+  description:""
+  })
+  }
+  removeDay(){
+    this.packageAbout.pop()
+    }
   popUpdate(id: any, element: any) {
     
     
@@ -172,10 +181,11 @@ adjusting = false
     this.inclusions = JSON.parse(element.packageInclusives);
     this.exclusions = JSON.parse(element.packageExclusives);
     this.packageCharge = element.packageCharge;
-    this.packageAbout = element.packageAbout
+    this.packageAbout = JSON.parse(element.packageAbout)
    this.packageOverview = element.packageOverview
    this.specialNotes = element.packageSpecialNotes
    this.someValue = element.packageChargeCurrency
+ 
     this.updateDestination = true;
   }
   popDeleteDestination(id: any) {

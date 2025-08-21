@@ -1,4 +1,4 @@
-<header></header>
+<header  (contactFormEmitter)="contact_handler($event)"></header>
 <div class="safaris"  [@bounceRight]="bgState" #bg>
   <h1>We believe in getting you the best accomodation </h1>
 </div>
@@ -28,6 +28,9 @@
   showFirstLastButtons
   (page)="capturePage($event)"
 aria-label="Select page"></mat-paginator>
+<section #contactRef>
+  <app-contact ></app-contact>
+</section>
   <footer></footer>
 </div>
 

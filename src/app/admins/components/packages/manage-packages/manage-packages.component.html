@@ -213,7 +213,7 @@
   <p-progressSpinner />
 </div>
 
-<p-dialog [modal]="true" [(visible)]="updateDestination">
+<p-dialog [modal]="true" [(visible)]="updateDestination" maximizable="true">
   <mat-card>
     <form>
       <div class="infos">
@@ -369,16 +369,59 @@
             placeholder="Select a Currency Type"
           />
         </div>
-        <div>
-          <label>Enter Package About</label>
+      <section>
+        <div *ngFor="let itnerary of packageAbout;let p = index;">
+          <mat-form-field style="margin-top: 10px; width: 100%">
+            <mat-label>Day {{ p + 1 }} Itinerary Title</mat-label>
+            <input
+              required
+              type="text"
+              name="itinerary-title-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary['title']"
+            />
+          </mat-form-field>
+          <label>Day {{ p +1 }} Itinerary Description</label>
           <p-editor
-            name="package-about"
-            [(ngModel)]="packageAbout"
+            name="package-about {{ p }}"
+            [(ngModel)]="itnerary['description']"
             (onTextChange)="captureAbout($event)"
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
           />
         </div>
+          <div *ngFor="let itnerary of packageAbout;let p = index;">
+          <mat-form-field style="margin-top: 10px; width: 100%">
+            <mat-label>Day {{ p + 1 }} Itinerary Title</mat-label>
+            <input
+              required
+              type="text"
+              name="itinerary-title-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary['title']"
+            />
+          </mat-form-field>
+          <label>Day {{ p +1 }} Itinerary Description</label>
+          <p-editor
+            name="package-about {{ p }}"
+            [(ngModel)]="itnerary['description']"
+            (onTextChange)="captureAbout($event)"
+            [style]="{ 'min-height': '50vh' }"
+            placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
+          />
+        </div>
+        <mat-card-actions align="start">
+          <button
+            class="button-5"
+            role="button"
+            (click)="addDay()"
+            [matBadge]="images.length"
+          >
+            Add Day
+          </button>
+          <button class="button-5" role="button" (click)="removeDay()">Remove Day</button>
+        </mat-card-actions> 
+      </section>
 
         <div>
           <label>Enter Package Special Notes</label>

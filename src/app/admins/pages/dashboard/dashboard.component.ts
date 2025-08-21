@@ -190,10 +190,7 @@ ngOnInit(){
 this.store.subscribe((status:any)=>{
 this.adminStatus = status.statusAdmin
 }) 
-var token = Cookies.get("grant_token")
-if(token == undefined || token == ''){
-this.router.navigate(["/page/not found"])
-}
+
 }
 
 

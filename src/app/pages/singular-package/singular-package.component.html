@@ -76,13 +76,25 @@
   <div class="card">
     <p-tabView>
       <p-tabPanel header="Overview">
-        <div class="package-overview" #overView>
-          <h2>Itinerary</h2>
-          <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageOverview)"></div>
-        </div>
-        <div class="package-overview" #itinerary>
-          <h2>Comprehensive Itinerary</h2>
-          <div class="package-overview-html" [innerHTML]="sanitize(packageData.packageAbout)"></div>
+       
+        <div class="package-overview" #itinerary >
+          <p-accordion [activeIndex]="0" *ngFor="let itenerary of comprehensiveItinerary; let i = index">
+            <p-accordionTab [header]="'Day ' + (i + 1)"  >
+              <div class="package-overview-html" [innerHTML]="sanitize(itenerary.description)"></div>
+              <div class="galleria">
+                <div class="galleria-thumbnails">
+                  <img *ngFor="let img of itenerary.images; let j = index"
+                       [src]="img"
+                       [lightbox]="j"
+                       [gallery]="galleryId"
+                       class="gallery-thumb"
+                       alt="Gallery Image {{j}}">
+                </div>
+              </div>
+            </p-accordionTab>
+          </p-accordion>
+          
+
         </div>
       </p-tabPanel>
       <p-tabPanel header="Inclusions & Exclusions">
@@ -126,7 +138,7 @@
 
   <div class="package-main-content">
   </div>
-<section class="related">
+<section class="related" *ngIf="relatedPackage.length > 0">
   <h3>Similar Maasai Mara Packages</h3>
 <feature-safaris [featureSafaris]="relatedPackage" [showOverview]="false"></feature-safaris>
 </section>

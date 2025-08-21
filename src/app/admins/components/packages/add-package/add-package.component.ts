@@ -19,19 +19,19 @@ itinerary_comprehensive: any[] = [
     {
       title: '',
       description: '',
-      images: [],
+      
       destination_id: '',
     },
     {
       title: '',
       description: '',
-      images: [],
+    
       destination_id: '',
     },
     {
       title: '',
       description: '',
-      images: [],
+      
       destination_id: '',
     },
   ];
@@ -42,7 +42,7 @@ itinerary_comprehensive: any[] = [
     this.itinerary_comprehensive.push({
       title: '',
       description: '',
-      images: [],
+      
       destination_id: '',
     });
   }
@@ -234,7 +234,7 @@ if(message == 'package Saved'){
 this.snack.open("Package Saved","success")
 }else {
 this.processing = false
-this.snack.open("Something Went Wrong",content)
+this.snack.open("Something Went Wrong","Retry")
 }
 }catch(err){
 this.processing = false

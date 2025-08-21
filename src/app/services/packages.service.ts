@@ -85,7 +85,7 @@ export class PackagesService {
       };
 
       appendIfValid('packageTitle', Payload.title);
-      appendIfValid('packageAbout', Payload.about);
+      appendIfValid('packageAbout', JSON.stringify(Payload.about));
       appendIfValid('packageOverview', Payload.overview);
       appendIfValid('imagePackage', Payload.image);
       appendIfValid('packageCharge', Payload.charges);

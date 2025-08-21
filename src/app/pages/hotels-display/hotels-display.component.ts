@@ -43,7 +43,16 @@ import { addEnquiry } from '../../redux/actions/enquiry.action';
 export class HotelsDisplayComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('bg') bgRef!: ElementRef;
+  @ViewChild("contactRef") contactRef!:ElementRef
   readonly dialog = inject(MatDialog);
+
+
+  contact_handler(event:any){
+    this.contactRef.nativeElement.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+      })
+    }
 
   bgState: string = 'clear';
   destinations: any;
