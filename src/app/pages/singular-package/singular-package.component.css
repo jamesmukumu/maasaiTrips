@@ -234,10 +234,11 @@ body {
 .galleria-thumbnails img {
   width: 100%;
   height: auto;
+  max-height: 400px;
   border-radius: 0.5rem;
   object-fit: cover;
   cursor: pointer;
-}
+} 
 
 .package-overview {
   padding: 1rem;
