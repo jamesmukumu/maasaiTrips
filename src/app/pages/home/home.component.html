@@ -22,7 +22,7 @@
 
               <h1  class="main-caption">{{ item.title }}</h1>
               
-              <button (click)="view(item.urlPath)" style="margin-top: 20px;" class="button-5">Book Now</button>
+              <button (click)="view(item.urlPath)"  class="button-5">Book Now</button>
 
             </div>
             
@@ -44,13 +44,7 @@
   </div>
 
 
-  <div #animatedElement class="about-mara">
-    <h1 class="text-xs">Safari to Masaai Mara</h1>
 
-    <p>
-The Maasai Mara in southwestern Kenya is a vast 1,510 square kilometer savannah reserve, renowned for its Big Five wildlife, over 450 bird species, and the spectacular annual Great Wildebeest Migration from July to October, where millions of animals cross the Mara River. Named after the indigenous Maasai people and its spotted acacia-dotted landscape, it offers visitors game drives, hot air balloon safaris, and cultural experiences in a stunning backdrop of rolling grasslands and meandering rivers.
-    </p>
-   </div>
    <feature-safaris [featureSafaris]="package_data"></feature-safaris>
 
 

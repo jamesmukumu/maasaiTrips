@@ -246,10 +246,14 @@ body {
 }
 
 .package-overview h2 {
-  font-size: 1.5rem;
+  font-size: larger;
   margin-bottom: 0.5rem;
   color: #333;
+  text-align: center;
   text-decoration: underline;
+  font-weight: bolder;
+  
+
 }
 
 .package-overview-html {
@@ -366,13 +370,58 @@ mat-list-item {
 .no-spin {
   display: none;
 }
+/* General reset for mat-list */
+mat-list {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%; /* ensures full width usage */
+}
+
+/* Base styling for items */
+mat-list-item {
+  margin: 0 !important;
+  padding: 0.5rem 1rem !important;
+  min-height: unset !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  white-space: normal !important; /* allow wrapping */
+  overflow: visible !important;
+  text-overflow: unset !important;
+}
+
+/* Title/text inside mat-list-item */
+mat-list-item span[matListItemTitle] {
+  flex: 1 1 auto !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+  word-break: normal !important; /* prevents awkward breaks */
+  line-height: 1.4;
+}
 
 @media (max-width: 768px) {
   mat-card {
     margin: 1rem;
     padding: 0.5rem;
   }
+  mat-list-item {
+    margin-top:3.5rem !important; /* remove big margin */
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem;
+    align-items: flex-start !important; /* keep icon + text aligned */
+  }
+  mat-list-item span[matListItemTitle] {
+    display: block;        /* ensures text sits below naturally */
+    flex: 1 1 auto !important;
+    white-space: normal !important;
+    word-break: break-word !important; /* prevents overflow */
+    line-height: 1.4;
+  }
 
+  mat-icon[matListItemIcon] {
+    margin-left: 0.5rem; /* space between text and icon */
+    align-self: flex-start; /* align icon with text top */
+  }
   .galleria {
     flex-direction: column;
   }
