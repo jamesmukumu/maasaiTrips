@@ -79,7 +79,7 @@
        
         <div class="package-overview" #itinerary >
           <p-accordion [activeIndex]="0" *ngFor="let itenerary of comprehensiveItinerary; let i = index">
-            <p-accordionTab [header]="'Day ' + (i + 1)"  >
+            <p-accordionTab [header]="'Day ' + (i + 1)+': '+itenerary.title"  >
               <div class="package-overview-html" [innerHTML]="sanitize(itenerary.description)"></div>
               <div class="galleria">
                 <div class="galleria-thumbnails">
