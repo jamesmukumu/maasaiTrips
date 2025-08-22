@@ -65,9 +65,10 @@
     <mat-list-item (click)="home()">
       <span matListItemTitle>Home</span>
     </mat-list-item>
+ 
    
     <mat-list-item (click)="toggleAccommodations()">
-      Accommodations
+      Maasai Mara
       <mat-icon matListItemIcon class="ml-2">
         {{ showAccommodations ? 'expand_less' : 'expand_more' }}
       </mat-icon>
@@ -81,7 +82,9 @@
       </ng-container>
     </div>
     
-    
+    <mat-list-item (click)="accomodations()">
+      <span matListItemTitle>Accomodations</span>
+    </mat-list-item>   
     <mat-list-item (click)="navigate()">Safari Packages</mat-list-item>
   
     <mat-list-item (click)="goDest('gallery')">Our Gallery</mat-list-item>
