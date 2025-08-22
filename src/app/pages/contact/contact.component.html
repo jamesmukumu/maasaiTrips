@@ -70,9 +70,11 @@
             </div>
           </div>
    
-          <button class="button-5" type="submit" >Submit</button>
+          <button class="button-5" *ngIf="!saving" type="submit" >Submit</button>
+          <app-buttons *ngIf="saving"></app-buttons>
         </form>
       </div>
     </div>
   </div>
 </div>
+<p-toast/>

@@ -63,11 +63,26 @@
 <p-sidebar [(visible)]="seeDrawer">
   <mat-list>
     <mat-list-item (click)="home()">
-      <span matListItemTitle>Masaai Mara Trips</span>
+      <span matListItemTitle>Home</span>
+    </mat-list-item>
+   
+    <mat-list-item (click)="toggleAccommodations()">
+      Accommodations
+      <mat-icon matListItemIcon class="ml-2">
+        {{ showAccommodations ? 'expand_less' : 'expand_more' }}
+      </mat-icon>
     </mat-list-item>
     
-    <mat-list-item (click)="accomodations()">Accommodations</mat-list-item>
-    <mat-list-item (click)="navigate()">Masaai Mara Safari's</mat-list-item>
+    <div *ngIf="showAccommodations" class="pl-4">
+      <ng-container *ngFor="let node of featureDestinations">
+        <p style="color: black" (click)="goDest(node.destinationSlug)">
+          {{ node.destinationTitle }}
+        </p>
+      </ng-container>
+    </div>
+    
+    
+    <mat-list-item (click)="navigate()">Safari Packages</mat-list-item>
   
     <mat-list-item (click)="goDest('gallery')">Our Gallery</mat-list-item>
     <mat-list-item>

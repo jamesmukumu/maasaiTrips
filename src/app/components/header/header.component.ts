@@ -77,7 +77,12 @@ safariSlug:"3_days_4_nights_retreat_maasai_mara"
 
 ]
 
+  // control dropdown visibility
+  showAccommodations = false;
 
+  toggleAccommodations() {
+    this.showAccommodations = !this.showAccommodations;
+  }
 
 
 }

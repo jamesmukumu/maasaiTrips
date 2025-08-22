@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { CdkTreeModule } from '@angular/cdk/tree';
+
 import { userStatusReducer } from './redux/reducers/userStatus.reducer';
 import { AppComponent } from './app.component';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -224,7 +226,7 @@ const reducers:ActionReducerMap<any> = {
  MatMenuModule,
  MatPaginatorModule,
  CarouselModule,
-
+CdkTreeModule,
  ClipboardModule,   
  GalleriaModule,
  DropdownModule,
