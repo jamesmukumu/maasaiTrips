@@ -171,11 +171,25 @@ margin: 0;
   padding: 20px;
   border-radius: 12px;
 
-  display: flex;                /* Make it flex */
-  flex-direction: column;       /* Stack heading & button vertically */
-  align-items: center;          /* Center horizontally */
-  justify-content: space-between; /* Spread items (title at top, button at bottom) */
-  min-height: 180px;            /* Adjust height to ensure consistent spacing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* title top, button bottom */
+  align-items: center;
+
+  min-height: 220px;   /* <-- set consistent height */
+  max-width: 90%;      /* keep it from overflowing */
+}
+
+.content-galleria h1 {
+  font-size: 1rem;
+  line-height: 1.3;
+  margin: 0;
+  word-wrap: break-word;
+  text-align: center;
+}
+
+.content-galleria .button-5 {
+  margin-top: auto; /* ensures button sticks to bottom */
 }
 
 
@@ -214,10 +228,12 @@ text-align: center;
 .about-mara h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  text-align: left;
+  text-align: center;
   font-weight: 700;
 }
-
+.about-mara p{
+text-align: center;
+}
 .about-mara-depth mat-card mat-card-content {
   margin-left: 0px;
 }
@@ -238,10 +254,7 @@ text-align: center;
     margin-top: auto; /* Adjust this value as needed */
    
   }
-  .content-galleria{
-    left: 50%;
-   top: 50%; 
-  }
+ 
   .content-galleria h1 {
     font-size: 1rem;        /* responsive size already in your media query */
     line-height: 1.3;
