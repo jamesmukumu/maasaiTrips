@@ -223,6 +223,18 @@
       <mat-hint>Example: 4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint>
     </mat-form-field>
     <mat-form-field>
+      <mat-label>Accomodation for Day {{ q + 1 }}</mat-label>
+      <input
+        required
+        type="text"
+        name="package-accomodation-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.accomodation"
+      />
+
+    </mat-form-field>
+    <mat-form-field>
+     
       <mat-label>Choose Destination</mat-label>
       <mat-select required [(value)]="itinerary.destination_id">
         <mat-option
@@ -235,11 +247,67 @@
     </mat-form-field>
     <label>Description for day {{ q + 1 }}</label>
     <jodit-editor
+    name="descp{{ q +1 }}"
       [(ngModel)]="itinerary.description"
       (onChange)="captureDescription($event, q)"
     ></jodit-editor>
+    <label>Meal Plan for day {{ q + 1 }}</label>
+    <jodit-editor
+    name="meal-plan{{ q +1 }}"
+      [(ngModel)]="itinerary.mealPlan"
+      (onChange)="captureMealPlan($event, q)"
+    ></jodit-editor>
 
-  
+
+        <mat-form-field>
+      <mat-label>Origin(Latitiude) {{ q + 1 }} </mat-label>
+      <input
+        required
+        type="number"
+        name="package-lat-origin-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.origin.lat"
+      />
+      <mat-hint>Example:1.345</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label>Origin(Longitude) {{ q + 1 }} </mat-label>
+      <input
+        required
+        type="number"
+        name="package-longitude-origin-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.origin.lng"
+      />
+      <mat-hint>Example:36.677</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Target(Latitiude) {{ q + 1 }} </mat-label>
+      <input
+        required
+        type="number"
+        name="package-lat-target-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.target_destination.lat"
+      />
+      <mat-hint>Example:1.345</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Target(Longitude) {{ q + 1 }} </mat-label>
+      <input
+        required
+        type="number"
+        name="package-longitude-target-{{ q }}"
+        matInput
+        [(ngModel)]="itinerary.target_destination.lng"
+      />
+      <mat-hint>Example:36.677</mat-hint>
+    </mat-form-field>
+   
   </div>
 
   <mat-card-actions align="start">

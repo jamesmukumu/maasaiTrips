@@ -40,6 +40,9 @@ h2{
   min-height: 100vh;
   height: 100%;
 }
+.main p{
+  text-align: center;
+}
 
 mat-card {
   margin-left: 20px;

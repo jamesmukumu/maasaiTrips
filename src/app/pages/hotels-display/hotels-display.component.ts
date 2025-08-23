@@ -73,7 +73,7 @@ export class HotelsDisplayComponent {
     window.open(`/accomodation/${id}`, '_blank');
   }
   capturePage(event: any) {
-    console.log(event);
+  
     var { length, pageSize } = event;
 
     this.activePage = pageSize;
@@ -87,7 +87,7 @@ export class HotelsDisplayComponent {
     this.findingDestinations = true;
     try {
       var { data } = await this.hotel.fetchHotelsDisplay(
-        `https://maasai-trips.laravel.cloud/api/fetch/display/hotels?page=${this.activePage}`
+        `http://localhost:8000/api/fetch/display/hotels`
       );
       this.destinations = data;
       this.hotelCount = data.length;

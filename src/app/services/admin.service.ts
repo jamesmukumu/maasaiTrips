@@ -31,6 +31,28 @@ export class AdminService {
     }
   }
 
+  async updateAdmin(Reg: Register, id: any) {
+    try {
+      let token = Cookies.get('grant_token');
+      var resp = await axios.post(
+        'https://maasai-trips.laravel.cloud/api/update/admin',
+        Reg,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return resp.data;
+    } catch (err) {
+      console.error(err);
+      return err;
+    }
+  }
+
   async Register(Reg: Register) {
     try {
       var resp = await axios.post(
@@ -39,6 +61,7 @@ export class AdminService {
       );
       return resp.data;
     } catch (err) {
+      return err;
       console.error(err);
     }
   }
@@ -127,6 +150,27 @@ export class AdminService {
     }
   }
 
+  async un_makeSuperUser(id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var response = await axios.put(
+        'https://maasai-trips.laravel.cloud/api/unmake/super/user',
+        {},
+        {
+          params: {
+            id: id,
+          },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return await response.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
   async makeSuperUser(id: any) {
     try {
       var token = Cookies.get('grant_token');
@@ -148,19 +192,19 @@ export class AdminService {
     }
   }
 
-
-
-  async fetchStats(){
-  try{
-  let response = await axios.get("https://maasai-trips.laravel.cloud/api/fetch/nav/stats",{
-  headers:{
-  "Authorization":`Bearer ${Cookies.get("grant_token")}`
-  }
-  })
-return response.data
-  }catch(err){
-return err
-  }
-
+  async fetchStats() {
+    try {
+      let response = await axios.get(
+        'https://maasai-trips.laravel.cloud/api/fetch/nav/stats',
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get('grant_token')}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
   }
 }

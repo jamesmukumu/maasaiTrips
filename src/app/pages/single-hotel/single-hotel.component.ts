@@ -49,6 +49,15 @@ export class SingleHotelComponent {
     }
   ];
   @ViewChild('bg') bgRef!: ElementRef;
+  @ViewChild("contactRef", { read: ElementRef }) contactRef!: ElementRef;
+
+
+contact_handler(event:any){
+this.contactRef.nativeElement.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+  })
+}
   constructor(private titlePage:Title,private sanitizer:DomSanitizer,private router:ActivatedRoute,private hotel:HotelsService){}
   destinationsID:any
   fetchingDestination = false

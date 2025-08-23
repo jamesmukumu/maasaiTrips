@@ -424,10 +424,29 @@ mat-list-item span[matListItemTitle] {
   }
   .galleria {
     flex-direction: column;
+    gap: 1rem;
+  }
+
+  .image-main img {
+    min-height: 250px;
+    max-height: 250px;
   }
 
   .galleria-thumbnails {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* bigger thumbnails */
+    gap: 0.75rem;
+  }
+
+  .galleria-thumbnails img {
+    aspect-ratio: 1/1; /* keep them square */
+    object-fit: cover;
+    border-radius: 0.75rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .galleria-thumbnails img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   }
 
   .package-overview {

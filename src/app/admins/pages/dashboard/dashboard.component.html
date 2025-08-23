@@ -145,27 +145,7 @@
       </div>
 
  
-      <mat-divider style="background-color: white"></mat-divider>
-      <div [classList]="activeIndex == 10 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(10)" [mat-menu-trigger-for]="onboardingsMenu">
-          <span matListItemTitle>Onboardings</span>
-          <mat-icon style="color: white" matListItemIcon>travel_explore</mat-icon>
-       
-          <mat-menu #onboardingsMenu>
-            <button mat-menu-item (click)="chooserDestinations(1)">
-              <mat-icon>place</mat-icon>
-              <span style="color: black">Make an onboarding</span>
-            </button>
-     
-            <button mat-menu-item (click)="chooserDestinations(2)">
-              <mat-icon>place</mat-icon>
-              <span style="color: black">Manage Onboardings</span>
-            </button>
-          
-          </mat-menu>
-        </mat-list-item>
-      </div>
-
+    
 
       <mat-divider style="background-color: white"></mat-divider>
       <div [classList]="activeIndex == 7 ? 'activeList' : ''">
@@ -190,11 +170,11 @@
 
 
       <div [classList]="activeIndex == 8 ? 'activeList' : ''">
-        <mat-list-item (click)="changeActive(8)" [mat-menu-trigger-for]="destinationsMenu">
-          <span matListItemTitle>Enquiry & Planner</span>
+        <mat-list-item (click)="changeActive(8)" >
+          <span matListItemTitle>Enquiry</span>
           <mat-icon style="color: white" matListItemIcon>queue</mat-icon>
        
-          <mat-menu #destinationsMenu>
+          <mat-menu >
             <button mat-menu-item (click)="chooserDestinations(1)">
               <mat-icon>place</mat-icon>
               <span style="color: black">Enquiries</span>
@@ -226,6 +206,10 @@
           <button *ngIf="adminStatus" mat-menu-item (click)="toggleAdmins(2)">
             <mat-icon>person</mat-icon>
             <span style="color: black">Manage Users</span>
+          </button>
+          <button *ngIf="adminStatus" mat-menu-item (click)="toggleAdmins(2)">
+            <mat-icon>person</mat-icon>
+            <span style="color: black">Add User</span>
           </button>
   
          </mat-menu>
@@ -268,6 +252,7 @@
     <div *ngSwitchCase="3">
      <add-package *ngIf="packageChoosen==1"></add-package>
      <manage-packages *ngIf="packageChoosen==2"></manage-packages>
+     <app-manage-package-category *ngIf="packageChoosen == 3"></app-manage-package-category>
       </div>
 
     <div *ngSwitchCase="6">

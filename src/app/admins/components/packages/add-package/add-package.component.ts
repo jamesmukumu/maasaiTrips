@@ -15,36 +15,72 @@ constructor(private packages:PackagesService,private hotels:HotelsService){}
 images:any[] = [
 {image1:null}
 ]
+way_points:any[] = [
+{
+lat:0,
+long:0
+}
+]
+
 itinerary_comprehensive: any[] = [
     {
       title: '',
       description: '',
-      
-      destination_id: '',
+    destination_id: '',
+      mealPlan:"",
+      accomodation:"",
+      origin:{
+       lat:0,
+       lng:0
+      },
+      target_destination:{
+        lat:0,
+        lng:0
+       },
+  
+
     },
+  
     {
-      title: '',
-      description: '',
-    
+        title: '',
+        description: '',
       destination_id: '',
-    },
-    {
-      title: '',
-      description: '',
-      
-      destination_id: '',
-    },
+        mealPlan:"",
+        accomodation:"",
+        origin:{
+         lat:0,
+         lng:0
+        },
+        target_destination:{
+          lat:0,
+          lng:0
+         },
+   
+  
+      },
   ];
   
   
   
   addDay() {
-    this.itinerary_comprehensive.push({
-      title: '',
-      description: '',
+    this.itinerary_comprehensive.push(
+        {
+            title: '',
+            description: '',
+          destination_id: '',
+            mealPlan:"",
+            accomodation:"",
+            origin:{
+             lat:0,
+             lng:0
+            },
+            target_destination:{
+              lat:0,
+              lng:0
+             },
+       
       
-      destination_id: '',
-    });
+          },);
   }
   
   removeDay() {
@@ -56,6 +92,10 @@ itinerary_comprehensive: any[] = [
   captureDescription(event: any, index: number) {
     const { args } = event;
     this.itinerary_comprehensive[index].description = args[0];
+  }
+  captureMealPlan(event: any, index: number) {
+    const { args } = event;
+    this.itinerary_comprehensive[index].mealPlan = args[0];
   }
    
 onImageSelect(event: any, index: number) {

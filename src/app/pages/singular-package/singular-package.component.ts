@@ -109,7 +109,7 @@ export class SingularPackageComponent implements OnInit {
       this.fetching = true;
       const { data, relatedPackages } = await this.packages.fetchSingularPackages(this.packageSlug);
       this.packageData = data;
-      this.comprehensiveItinerary = JSON.parse(data.packageAbout);
+      this.comprehensiveItinerary = data.packageAbout;
       this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;
 
@@ -143,7 +143,15 @@ export class SingularPackageComponent implements OnInit {
       this.fetchPackage();
     });
   }
+@ViewChild("contactRef", { read: ElementRef }) contactRef!: ElementRef;
 
+
+contact_handler(event:any){
+this.contactRef.nativeElement.scrollIntoView({
+  behavior:"smooth",
+  block:"start"
+  })
+}
   priceFormatter(charge: any) {
     return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }

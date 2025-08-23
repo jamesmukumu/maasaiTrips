@@ -72,7 +72,7 @@ export class HotelsComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.route.paramMap.subscribe((data) => {
       this.hotelId = data.get("hotelId") ?? '';
-      console.log(this.hotelId);
+   
     });
     this.fetchHotelData();
   }

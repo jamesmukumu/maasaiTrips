@@ -1,4 +1,4 @@
-<header></header>
+<header (contactFormEmitter)="contact_handler($event)"></header>
 
 <div
 *ngIf="!fetching" 
@@ -81,7 +81,12 @@
           <p-accordion [activeIndex]="0" *ngFor="let itenerary of comprehensiveItinerary; let i = index">
             <p-accordionTab [header]="'Day ' + (i + 1)+': '+itenerary.title"  >
               <div class="package-overview-html" [innerHTML]="sanitize(itenerary.description)"></div>
-              <div class="galleria">
+              <section>
+                <p>Accomodation:{{ itenerary.accomodation }}</p>
+              </section>
+              Meal Plan:<div class="package-overview-html" [innerHTML]="sanitize(itenerary.mealPlan)"></div>
+
+              <div class="galleria"> 
                 <div class="galleria-thumbnails">
                   <img *ngFor="let img of itenerary.images; let j = index"
                        [src]="img"
@@ -91,6 +96,7 @@
                        alt="Gallery Image {{j}}">
                 </div>
               </div>
+              <app-maps [origin]="itenerary.origin" [destination]="itenerary.target_destination"></app-maps>
             </p-accordionTab>
           </p-accordion>
           
@@ -141,5 +147,5 @@
   <div class="loader"></div>
 </div>
 <p-scrollTop/>
-<app-contact></app-contact>
+<app-contact #contactRef></app-contact>
 <footer></footer> 

@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-section{
-margin-top: 20px;
+.itinerary{
+	
+margin-top: 14rem;;
 }
 section div{
 display: flex;
