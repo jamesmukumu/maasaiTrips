@@ -161,6 +161,9 @@ import { ButtonsComponent } from './components/commoners/buttons/buttons.compone
 import { ManagePackageCategoryComponent } from './admins/components/packages/manage-package-category/manage-package-category.component';
 import { LoaderComponent } from './components/commoners/loader/loader.component';
 import { MapsComponent } from './components/commoners/maps/maps.component';
+import { CreateCustomizedIteneraryComponent } from './admins/components/packages/create-customized-itenerary/create-customized-itenerary.component';
+import { ManageCustomizedPackagesComponent } from './admins/components/packages/manage-customized-packages/manage-customized-packages.component';
+import { CustomizedPackageComponent } from './pages/customized-package/customized-package.component';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -180,7 +183,7 @@ const reducers:ActionReducerMap<any> = {
 
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent, OnboardComponent, PreLoaderComponent, GalleryComponent, DashNavComponent, PlannerComponent, FeaturePatnersComponent, CreateOnboardingsComponent, DestinationOnboardingComponent, PackageOnboardingComponent, HotelOnboardingComponent, FeedbackComponent, FeatureSafarisComponent, TestmonialsComponent, ExplorationsComponent, FooterFormComponent, ButtonsComponent, ManagePackageCategoryComponent, LoaderComponent, MapsComponent ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent, OnboardComponent, PreLoaderComponent, GalleryComponent, DashNavComponent, PlannerComponent, FeaturePatnersComponent, CreateOnboardingsComponent, DestinationOnboardingComponent, PackageOnboardingComponent, HotelOnboardingComponent, FeedbackComponent, FeatureSafarisComponent, TestmonialsComponent, ExplorationsComponent, FooterFormComponent, ButtonsComponent, ManagePackageCategoryComponent, LoaderComponent, MapsComponent, CreateCustomizedIteneraryComponent, ManageCustomizedPackagesComponent, CustomizedPackageComponent ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -244,10 +247,7 @@ MatTooltipModule,
         component:AboutUsComponent,
         path:"about/us"
       }, 
-      {
-      component:OnboardComponent,
-      path:"onboard/:paymentFor/:slug"
-      },
+   
 
     {
       component:HotelsDisplayComponent,
@@ -257,10 +257,7 @@ MatTooltipModule,
       component:SingularBlogComponent,
       path:"blog/:blogSlug"
      },
-     {
-      component:FeedbackComponent,
-      path:"feedback/:feedbackid" 
-     },
+    
      {
       component:SingleHotelComponent,
       path:"accomodation/:hotelSlug"
@@ -270,9 +267,10 @@ MatTooltipModule,
     path:"safaris/:packageSlug"
     },
     {
-      component:ContactComponent,
-      path:"contact"
-    },
+      component:CustomizedPackageComponent,
+      path:"customized/safari/:packageSlug"
+      },
+
     {
       path:"login",
       component:SigninComponent

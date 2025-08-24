@@ -9,14 +9,13 @@ import { MessageService,ConfirmationService } from 'primeng/api';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Store } from '@ngrx/store';
 
-
 @Component({
-  selector: 'manage-packages',
-  templateUrl: './manage-packages.component.html',
-  styleUrl: './manage-packages.component.css',
-  providers: [provideNativeDateAdapter(),MessageService,ConfirmationService],
+  selector: 'app-manage-customized-packages',
+  templateUrl: './manage-customized-packages.component.html',
+  styleUrl: './manage-customized-packages.component.css',
+  providers:[provideNativeDateAdapter(),MessageService,ConfirmationService]
 })
-export class ManagePackagesComponent {
+export class ManageCustomizedPackagesComponent { 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   readonly snack = inject(MatSnackBar);
   constructor(
@@ -1516,7 +1515,4 @@ adjusting = false
       flag: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAONSURBVHja7JddaBxVGIafMz87m91NJ41utsXWoogGWq32ploQRK9KKQUr0Rvjpqm7ikZs6UWTYKtWL6Wg0Ba8MGlEjbUaaYuI4k8LogTqRamKuQlVENOku8nuZn9m5hwvdrqZxPSqu5ubvnAYOJyZ7533e79zviOUUqwkNFYYtwgIQAcs/9lMeEDZAFa99eaRaxemL2M9sbGJ0muM7RpsNwC7f2CAzWfP8VvuCtam9SipoMHFcXnmCoBtAJama+zYuYPCR6P8cv4ioQfvqiYH/k9EBOYEyxNd+u6SdbYVpey5AJYA7lNK/QGgFIwMj6AZP9PVZRGSXoOcZ4P8ExEZ7VxUBUJAd/JZSoUtjH2aBXMeRBFUEajnmAcqNXFqCgRx7L1jGPqPpPYa4Ik6K7AK1N+IyJnOZQko1wHd5Og7RwlPfsuTU+31rYBoFHd6mjvOnl6cgsLscSrT4+ROfIAQsP/APmYTjzL8718Yc3koFFB1GDKfh3I1BUaQQChWoPL7S8x+lSDW04MWNel/7SCHyyVOfH2OnuhtvrkVAoHyrS1821+frykZWBecF55EOQEC7tQUufdP4m2YZHVXnsS782RPH4LJ29HjUQ4fPMBAucKH338DqhpWCD+o8j8ublCyQUgFmsCohPBcd7EJS9/9xNyvr9L24jTevI4uSmSGOmjbdQrrnrsB2Ne3n8/GTt20B0zTxDAMJiYmOmspCD++jfIDFqWZq2RzIVbbFcK9GzHbNlQ3binJeiUymUxdCNi2vZACpRQIga4EcwUXXbhksxDRt6Gh40hJOp0m8eUZXo7EbpqAbhiErDCvBwlorkflh0do374bXRg45SnKF9pwdkp6UiniIyOk7bX12QaEgfLMBQJSSjRN0Lq1DyO2DhToLQ76Q/+Q7E4THx3mFXstSFmfjUAppOMspEBKCaEQ5p3rau4tlhS9h95g/aVhXmhdg1ou+FLnBw+hGx1UPgHPcZcQCMB14Zmnk2y+9xOOjIehcq3Op1ELxaIHHcsQ8FxFb/J5tm76mMG3Q1CQ9e8NhELKgAKe5/nBJXue6yW+ZojBfgvyjesEr/90TQHPcdnTneTkzHkiDz/F8aHGdUMxM0x+Lg+M+VtxxSHVt5cvChfp2P0YQlSbk0ZCqQUFvFQqxeeZcVq2byGXnW1qZyyABHA/EG9yW34VuCT8O0Gr/2wmykBO3LqcrjSB/wYAEiG3c5HbdI4AAAAASUVORK5CYII=',
     },
   ];
-
-
-  
 }

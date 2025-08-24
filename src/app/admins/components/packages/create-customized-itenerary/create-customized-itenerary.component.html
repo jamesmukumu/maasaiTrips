@@ -1,0 +1,426 @@
+<mat-card *ngIf="!fetchingDestinations">
+ 
+
+    <button (click)="addPackage()" class="button-5" style="width:fit-content;" role="button">Add Package Category</button>
+      <form>
+        <div class="infos">
+          <h3>Custom Package Information</h3>
+
+          <mat-form-field>
+            <mat-label>Clients Name</mat-label>
+            <input
+              required
+              type="text"
+              name="clients-name"
+              matInput
+              [(ngModel)]="clientsName"
+            />
+
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Clients Email</mat-label>
+            <input
+              required
+              type="text"
+              name="clients-email"
+              matInput
+              [(ngModel)]="clientsEmail"
+            />
+
+            >
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Clients PhoneNumber</mat-label>
+            <input
+              required
+              type="text"
+              name="clients-phone-number"
+              matInput
+              [(ngModel)]="clientsPhonenumber"
+            />
+
+            
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Package Title</mat-label>
+            <input
+              required
+              type="text"
+              name="package-title"
+              matInput
+              [(ngModel)]="packageTitle"
+            />
+            <mat-hint
+              >Example:4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint
+            >
+          </mat-form-field>
+    
+          <div>
+            <label>Enter Package OverView</label>
+          <jodit-editor (onChange)="captureOverview($event)"></jodit-editor>
+          </div>
+          <mat-form-field>
+            <mat-label>Choose Destination</mat-label>
+            <mat-select required [(value)]="targetDestination">
+              <mat-option
+                *ngFor="let destinaton of destinationsData"
+                [value]="destinaton.id"
+              >
+                {{ destinaton.destinationTitle }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Choose Package Category</mat-label>
+            <mat-select required [(value)]="targetCategory">
+              <mat-option
+                *ngFor="let package of packageCategories"
+                [value]="package.id"
+              >
+                {{ package.title }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Choose Budget Type </mat-label>
+            <mat-select required [(value)]="choosenBudgetType">
+              <mat-option *ngFor="let budget of budgetTypes" [value]="budget">
+                {{ budget }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Choose Mean of Transport</mat-label>
+            <mat-select required [(value)]="choosenMeans">
+              <mat-option *ngFor="let trans of transport" [value]="trans">
+                {{ trans }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Package Inclusives</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter Inclusions">
+              <mat-chip-row *ngFor="let choosenCC of inclusions">
+                {{ choosenCC }}
+                <button matChipRemove (click)="removeInclusions(choosenCC)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+    
+            <input
+              [matChipInputFor]="chipGrid"
+              [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addInclusions($event)"
+              placeholder="Add More Inclusions"
+            />
+            <mat-hint>Example:Airport Transfers,</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Package Exclusions</mat-label>
+            <mat-chip-grid #chipExclusions aria-label="Enter CC Emails">
+              <mat-chip-row *ngFor="let choosenCC of exclusions">
+                {{ choosenCC }}
+                <button matChipRemove (click)="removeExclusions(choosenCC)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+    
+            <input
+              [matChipInputFor]="chipExclusions"
+              [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addExclusions($event)"
+              placeholder="Add More Exclusions"
+            />
+            <mat-hint>Example:Hot Air Balooons</mat-hint>
+          </mat-form-field>
+    
+          <mat-form-field>
+            <mat-label>Package Charge</mat-label>
+            <input
+              required
+              type="number"
+              name="package-charge"
+              matInput
+              [(ngModel)]="packageCharge"
+            />
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Choose Currency for Country</mat-label>
+            <mat-select [(value)]="codeValues">
+              <mat-option
+                *ngFor="let country of countryCodes"
+                [value]="country.code"
+              >
+                {{ country.name }}
+                <img
+                  [src]="formatFlag(country.countryCode)"
+                  width="20"
+                  height="15"
+                  style="margin-right: 8px"
+                />
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+    
+    <div>
+            <label>Enter Package Special Notes</label>
+            <jodit-editor (onChange)="captureSpecialNotes($event)"></jodit-editor>
+          </div>
+    
+          <mat-form-field>
+            <mat-label>Enter a Validity Period Range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                matStartDate
+                placeholder="Start date"
+                (dateChange)="seeStartDate($event)"
+              />
+              <input
+                matEndDate
+                placeholder="End date"
+                (dateChange)="endDateFormat($event)"
+              />
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+          <div>
+            <label>Package Thumbnail</label>
+            <p-fileUpload
+              (onSelect)="chooser($event)"
+              (onUpload)="chooser($event)"
+              name="demo[]"
+              url="https://www.primefaces.org/cdn/api/upload.php"
+              [multiple]="false"
+              accept="image/*"
+              maxFileSize="100000000000"
+            >
+              <ng-template pTemplate="content">
+                <ul></ul>
+              </ng-template>
+            </p-fileUpload>
+          </div>
+    
+          <div class="hotel-photos">
+            <div *ngFor="let dest of images; let i = index">
+              <div>
+                <strong>Images {{ i + 1 }}</strong>
+                <p-fileUpload
+                  name="demo[]"
+                  url="https://www.primefaces.org/cdn/api/upload.php"
+                  [multiple]="false"
+                  accept="image/*"
+                  (onSelect)="chooserFile($event, i)"
+                  maxFileSize="100000000000"
+                >
+                  <ng-template pTemplate="content">
+                    <ul></ul>
+                  </ng-template>
+                </p-fileUpload>
+              </div>
+            </div>
+            <mat-card-actions align="start">
+              <button
+               role="button"
+               class="button-5"
+                (click)="addImage()"
+                [matBadge]="images.length"
+              >
+                Add Another Photo
+              </button>
+              <button role="button"class="button-5"  (click)="popImage()">Remove Photo</button>
+            </mat-card-actions>
+          </div>
+        </div>
+      <section>
+      <h1>Itinerary</h1>
+    
+      <div *ngFor="let itinerary of itinerary_comprehensive; let q = index">
+        <mat-form-field>
+          <mat-label>Day {{ q + 1 }} title</mat-label>
+          <input
+            required
+            type="text"
+            name="package-title-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.title"
+          />
+          <mat-hint>Example: 4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Accomodation for Day {{ q + 1 }}</mat-label>
+          <input
+            required
+            type="text"
+            name="package-accomodation-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.accomodation"
+          />
+    
+        </mat-form-field>
+        <mat-form-field>
+         
+          <mat-label>Choose Destination</mat-label>
+          <mat-select required [(value)]="itinerary.destination_id">
+            <mat-option
+              *ngFor="let destination of destinationsData"
+              [value]="destination.id"
+            >
+              {{ destination.destinationTitle }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <label>Description for day {{ q + 1 }}</label>
+        <jodit-editor
+        name="descp{{ q +1 }}"
+          [(ngModel)]="itinerary.description"
+          (onChange)="captureDescription($event, q)"
+        ></jodit-editor>
+        <label>Meal Plan for day {{ q + 1 }}</label>
+        <jodit-editor
+        name="meal-plan{{ q +1 }}"
+          [(ngModel)]="itinerary.mealPlan"
+          (onChange)="captureMealPlan($event, q)"
+        ></jodit-editor>
+    
+    
+            <mat-form-field>
+          <mat-label>Origin(Latitiude) {{ q + 1 }} </mat-label>
+          <input
+            required
+            type="number"
+            name="package-lat-origin-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.origin.lat"
+          />
+          <mat-hint>Example:1.345</mat-hint>
+        </mat-form-field>
+    
+    
+        <mat-form-field>
+          <mat-label>Origin(Longitude) {{ q + 1 }} </mat-label>
+          <input
+            required
+            type="number"
+            name="package-longitude-origin-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.origin.lng"
+          />
+          <mat-hint>Example:36.677</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field>
+          <mat-label>Target(Latitiude) {{ q + 1 }} </mat-label>
+          <input
+            required
+            type="number"
+            name="package-lat-target-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.target_destination.lat"
+          />
+          <mat-hint>Example:1.345</mat-hint>
+        </mat-form-field>
+    
+        <mat-form-field>
+          <mat-label>Target(Longitude) {{ q + 1 }} </mat-label>
+          <input
+            required
+            type="number"
+            name="package-longitude-target-{{ q }}"
+            matInput
+            [(ngModel)]="itinerary.target_destination.lng"
+          />
+          <mat-hint>Example:36.677</mat-hint>
+        </mat-form-field>
+       
+      </div>
+    
+      <mat-card-actions align="start">
+        <button
+         role="button"
+         class="button-5"
+          (click)="addDay()"
+          [matBadge]="itinerary_comprehensive.length"
+        >
+          Add Day
+        </button>
+        <button role="button"class="button-5"  (click)="removeDay()">Remove day</button>
+      </mat-card-actions>
+    </section>   
+        <button
+        style="margin-top:20px;"
+        *ngIf="!processing"
+       class="button-5"
+        (click)="addPackages()"
+       role="button"
+      >
+        Create Package
+      </button>
+      </form>
+      
+      <p-button
+        *ngIf="processing"
+        loading="processing"
+        [style]="{ 'background-color': 'rgb(252,166,8)' }"
+        label="Saving"
+      ></p-button>
+    </mat-card>
+    
+    <p-dialog
+      header="Add Package Category"
+      [modal]="true"
+      [(visible)]="addPackageCategory"
+    >
+      <form style="display: flex; flex-direction: column">
+        <mat-form-field>
+          <mat-label>Package Category Name</mat-label>
+          <input
+            required
+            [(ngModel)]="newPackageCategory"
+            type="text"
+            required
+            matInput
+            name="package-category-name"
+          />
+          <mat-hint> Example:2 days trips offers </mat-hint>
+        </mat-form-field>
+        <button
+          *ngIf="!savingPackageCategory"
+          (click)="savePackageCategory()"
+          style="
+            background-color: rgb(232, 139, 34);
+            color: white;
+            width: fit-content;
+            margin-top: 20px;
+          "
+          mat-flat-button
+        >
+          Add
+        </button>
+        <p-button
+          [style]="{ 'background-color': 'yellow' }"
+          *ngIf="savingPackageCategory"
+          label="addingPackage"
+          loading="savingPackageCategory"
+        ></p-button>
+      </form>
+    </p-dialog>
+    
+    <div class="spinner" *ngIf="fetchingDestinations">
+      <p-progressSpinner />
+    </div>
+    

@@ -141,6 +141,10 @@ case "Add New Package":
 this.activeIndex = 3
 this.packageChoosen = 1
 break
+case "Custom Package":
+this.activeIndex = 3
+this.packageChoosen = 4
+break
 case 'Manage My Packages':
   this.activeIndex = 3
 this.packageChoosen = 2

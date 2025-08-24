@@ -227,6 +227,10 @@ console.error(err)
           Tree_Name: 'Add New Package',
           identifierName: 'Add New Package',
         },
+        {
+          Tree_Name: 'Custom Package',
+          identifierName: 'Custom Package',
+        },
        
         {
           Tree_Name: 'Manage My Packages',
