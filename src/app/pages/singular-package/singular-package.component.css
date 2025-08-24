@@ -400,16 +400,20 @@ mat-list-item span[matListItemTitle] {
 }
 
 @media (max-width: 768px) {
+  body{
+  overflow-x: hidden;
+  }
   ::ng-deep .p-tabview .p-tabview-panels {
-    width: 100vw !important;   /* make the container full width */
+    width: 100% !important;   /* make the container full width */
     margin: 0 !important;
     padding: 0 !important;
+    overflow: hidden;
   }
 
   ::ng-deep .p-tabview .p-tabview-panel {
-    width: 100vw !important;   /* force each panel full width */
+    width: 100% !important;   /* force each panel full width */
     margin: 0 !important;
-    padding: 0.5rem !important;
+   
   }
   mat-card {
     margin: 1rem;
