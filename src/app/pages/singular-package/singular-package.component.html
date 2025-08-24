@@ -74,8 +74,8 @@
   
 
   <div class="card">
-    <p-tabView>
-      <p-tabPanel header="Overview">
+    <p-tabView class="p-tabView" >
+      <p-tabPanel class="p-tabView"  header="Overview">
        
         <div class="package-overview" #itinerary >
           <p-accordion [activeIndex]="0" *ngFor="let itenerary of comprehensiveItinerary; let i = index">

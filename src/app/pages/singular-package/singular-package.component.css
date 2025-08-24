@@ -400,6 +400,17 @@ mat-list-item span[matListItemTitle] {
 }
 
 @media (max-width: 768px) {
+  ::ng-deep .p-tabview .p-tabview-panels {
+    width: 100vw !important;   /* make the container full width */
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  ::ng-deep .p-tabview .p-tabview-panel {
+    width: 100vw !important;   /* force each panel full width */
+    margin: 0 !important;
+    padding: 0.5rem !important;
+  }
   mat-card {
     margin: 1rem;
     padding: 0.5rem;
@@ -458,5 +469,8 @@ flex-direction: column;
   .social-buttons {
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+  .tabView{
+  min-width: 100vw;
   }
 }
