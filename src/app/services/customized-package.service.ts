@@ -123,7 +123,7 @@ export class CustomizedPackageService {
   async fetchSingularPackages(packageSlug: string) {
     try {
       var resp = await axios.get(
-        `${this.baseUrl}/fetch/singular/customized/package/packageSlug=${packageSlug}`
+        `${this.baseUrl}/fetch/singular/customized/package/?packageSlug=${packageSlug}`
       );
       return resp.data;
     } catch (err) {
