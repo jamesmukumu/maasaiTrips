@@ -12,7 +12,7 @@ sanitize(blogContent:SafeHtml| any){
   return this.sanitizor.bypassSecurityTrustHtml(blogContent)
  }
 formatCreationDay(time:string){
-return new Date(time).toLocaleString()
+return new Date(time).toLocaleDateString()
 }
 goBlog(baseUrl:string){
   window.open(`/blog/${baseUrl}`,'_blank')

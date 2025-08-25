@@ -18,7 +18,7 @@ sanitize(blogContent:SafeHtml| any){
   return this.sanitizor.bypassSecurityTrustHtml(blogContent)
  }
 formatCreationDay(time:string){
-return new Date(time).toLocaleString()
+return new Date(time).toLocaleDateString()
 }
 shareOnTwitter() {
   const url = encodeURIComponent(window.location.href);
