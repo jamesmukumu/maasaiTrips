@@ -87,7 +87,7 @@ export class HotelsDisplayComponent {
     this.findingDestinations = true;
     try {
       var { data } = await this.hotel.fetchHotelsDisplay(
-        `http://localhost:8000/api/fetch/display/hotels`
+        `https://maasai-trips.laravel.cloud/api/fetch/display/hotels`
       );
       this.destinations = data;
       this.hotelCount = data.length;

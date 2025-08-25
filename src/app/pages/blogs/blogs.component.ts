@@ -32,7 +32,7 @@ export class BlogsComponent implements AfterViewInit {
      return this.sanitizor.bypassSecurityTrustHtml(blogContent)
     }
 formatCreationDay(time:string){
-return new Date(time).toLocaleString()
+return new Date(time).toDateString()
 }
 goBlog(baseUrl:string){
 window.open(`/blog/${baseUrl}`,'_blank')
