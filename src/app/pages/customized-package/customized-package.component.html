@@ -135,17 +135,13 @@
     </p-tabView>
   </div>
 
-  <div class="package-main-content">
-  </div>
-<section class="related" *ngIf="relatedPackage.length > 0">
-  <h3>Similar Maasai Mara Packages</h3>
-<feature-safaris [featureSafaris]="relatedPackage" [showOverview]="false"></feature-safaris>
-</section>
+ 
+
 </div>
 
 <div [classList]="fetching ? 'spin':'no-spin'">
   <div class="loader"></div>
 </div>
 <p-scrollTop/>
-<app-contact #contactRef></app-contact>
+
 <footer></footer> 

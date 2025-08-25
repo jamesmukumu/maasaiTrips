@@ -106,6 +106,7 @@ export class CustomizedPackageComponent {
   }
 
   async fetchPackage() {
+    console.log("saving")
     try {
       this.fetching = true;
       const { data, relatedPackages } = await this.customPackage.fetchSingularPackages(this.packageSlug);

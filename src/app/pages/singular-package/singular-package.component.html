@@ -81,9 +81,9 @@
           <p-accordion [activeIndex]="0" *ngFor="let itenerary of comprehensiveItinerary; let i = index">
             <p-accordionTab [header]="'Day ' + (i + 1)+': '+itenerary.title"  >
               <div class="package-overview-html" [innerHTML]="sanitize(itenerary.description)"></div>
-              <section>
+              <!-- <section>
                 <p>Accomodation:{{ itenerary.accomodation }}</p>
-              </section>
+              </section> -->
               Meal Plan:<div class="package-overview-html" [innerHTML]="sanitize(itenerary.mealPlan)"></div>
 
               <div class="galleria"> 
@@ -96,7 +96,7 @@
                        alt="Gallery Image {{j}}">
                 </div>
               </div>
-              <app-maps [origin]="itenerary.origin" [destination]="itenerary.target_destination"></app-maps>
+
             </p-accordionTab>
           </p-accordion>
           
@@ -133,6 +133,7 @@
       </p-tabPanel>
 
     </p-tabView>
+    <app-maps  [origin]="origin" [destination]="dest"></app-maps>
   </div>
 
   <div class="package-main-content">

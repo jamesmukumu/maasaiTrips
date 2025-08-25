@@ -103,13 +103,16 @@ export class SingularPackageComponent implements OnInit {
 
     return chunks;
   }
-
+origin:any
+dest:any
   async fetchPackage() {
     try {
       this.fetching = true;
       const { data, relatedPackages } = await this.packages.fetchSingularPackages(this.packageSlug);
       this.packageData = data;
       this.comprehensiveItinerary = data.packageAbout;
+      this.origin = data.packageAbout[0]['origin']
+      this.dest = data.packageAbout[data.packageAbout.length- 1]['target_destination']
       this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;
 

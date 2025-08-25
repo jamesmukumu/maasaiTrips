@@ -23,6 +23,9 @@ export class CustomizedPackageService {
       }
 
       formData.append('packageTitle', Payload.title);
+      formData.append('clientsEmail', Payload.clientsEmail);
+      formData.append('clientsName', Payload.clientsName);
+      formData.append('clientsPhoneNumber', Payload.clientsPhoneNumber);
       formData.append('packageAbout', JSON.stringify(Payload.about));
       formData.append('packageOverview', Payload.overview);
       formData.append('imagePackage', Payload.image);
