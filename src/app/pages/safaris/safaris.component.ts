@@ -71,10 +71,10 @@ try{
   } = await this.packages.fetchHotPackages();
   
   [vanPackages, landCruiserPackages, airPackages, jeepPackages] =
-    [vanPackages.slice(0, 4),
-     landCruiserPackages.slice(0, 4),
-     airPackages.slice(0, 4),
-     jeepPackages.slice(0, 4)];
+    [vanPackages.slice(0, 3),
+     landCruiserPackages.slice(0, 3),
+     airPackages.slice(0, 3),
+     jeepPackages.slice(0, 3)];
   
 this.airSafariss = airPackages
 this.vanSafaris = vanPackages

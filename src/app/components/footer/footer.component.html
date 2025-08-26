@@ -26,7 +26,7 @@
         <h2>Get to Know Us</h2>
         </li>
         <li routerLink=""><span>About Masaai mara trips</span></li>
-        <li routerLink="contact"><span>Contact us</span></li>
+        <li [routerLink]="['.']" fragment="contact"><span>Contact us</span></li>
       </ul>
     </div>
     <mat-divider style="background-color: white"></mat-divider>
@@ -36,7 +36,7 @@
         <li>
         <h2>Explore more</h2>
         </li>
-        <li><span>Get a free quote</span></li>
+        <li [routerLink]="['.']" fragment="contact" role="button"><span>Get a free quote</span></li>
         <li routerLink="/safaris"><span>Safari Packages</span></li>
         <li><span routerLink="/blogs">Blogs</span></li>
       
