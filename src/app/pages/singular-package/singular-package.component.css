@@ -468,8 +468,9 @@ mat-list-item span[matListItemTitle] {
   .gallery-thumb {
     border-radius: 0;
     width: 100%;   
-    min-height: 200px;     /* instead of 100vw */
-    height: auto;
+  
+    
+  height: 300px;
   }
 
   .m-2, .p-2 {

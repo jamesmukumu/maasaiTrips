@@ -167,7 +167,17 @@ adjusting = false
   addDay(){
   this.packageAbout.push({
   title:"",
-  description:""
+  description:"",
+  mealPlan:"",
+  accomodation:"",
+  origin:{
+   lat:0,
+   lng:0
+  },
+  target_destination:{
+    lat:0,
+    lng:0
+   },
   })
   }
   removeDay(){
@@ -360,6 +370,7 @@ adjusting = false
         packageExclusives: excl,
         specialNotes: this.specialNotes,
       };
+      
       var { message, content } = await this.packages.updatePackage(
         payload,
         this.idSelected

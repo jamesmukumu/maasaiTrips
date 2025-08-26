@@ -333,7 +333,13 @@ component:SafarisComponent
         path:"**",
         component:NotFoundComponent
       },
-    ]),
+    ],{
+      anchorScrolling: 'enabled',      // enables anchor (#id) scrolling
+      scrollPositionRestoration: 'enabled', // restores scroll on navigation
+      scrollOffset: [0, 64]    
+    }
+    
+    ),
     MatExpansionModule,
     MatCardModule
     

@@ -11,7 +11,7 @@ export class MapsComponent implements AfterViewInit, OnChanges {
 
   @Input() origin: google.maps.LatLngLiteral | null = null;
   @Input() destination: google.maps.LatLngLiteral | null = null;
-
+  @Input() wayPoints: any| null = null;
   center: google.maps.LatLngLiteral = { lat: -1.2921, lng: 36.8219 };
 
   private drawRoute() {
@@ -23,10 +23,14 @@ export class MapsComponent implements AfterViewInit, OnChanges {
     const directionsRenderer = new google.maps.DirectionsRenderer();
     directionsRenderer.setMap(this.map.googleMap);
 
+  
+
     directionsService.route(
       {
         origin: this.origin,
         destination: this.destination,
+        waypoints: this.wayPoints,
+        optimizeWaypoints: false, // set true if you want Google to reorder them
         travelMode: google.maps.TravelMode.DRIVING,
       },
       (result, status) => {
@@ -40,7 +44,6 @@ export class MapsComponent implements AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit() {
-  
     setTimeout(() => this.drawRoute(), 500);
   }
 

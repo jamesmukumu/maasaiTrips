@@ -389,33 +389,75 @@
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
           />
-        </div>
-          <div *ngFor="let itnerary of packageAbout;let p = index;">
-          <mat-form-field style="margin-top: 10px; width: 100%">
-            <mat-label>Day {{ p + 1 }} Itinerary Title</mat-label>
-            <input
-              required
-              type="text"
-              name="itinerary-title-{{ p }}"
-              matInput
-              [(ngModel)]="itnerary['title']"
-            />
-          </mat-form-field>
-          <label>Day {{ p +1 }} Itinerary Description</label>
+
+          <label>Day {{ p +1 }} Meal Plan</label>
           <p-editor
-            name="package-about {{ p }}"
-            [(ngModel)]="itnerary['description']"
+            name="package-about-meal {{ p }}"
+            [(ngModel)]="itnerary['mealPlan']"
             (onTextChange)="captureAbout($event)"
             [style]="{ 'min-height': '50vh' }"
-            placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
+            placeholder="Enter a nice meal plan"
           />
+
+
+
+          <mat-form-field>
+            <mat-label>Origin(Latitiude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-lat-origin-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.origin.lat"
+            />
+            <mat-hint>Example:1.345</mat-hint>
+          </mat-form-field>
+      
+      
+          <mat-form-field>
+            <mat-label>Origin(Longitude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-longitude-origin-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.origin.lng"
+            />
+            <mat-hint>Example:36.677</mat-hint>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Target(Latitiude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-lat-target-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.target_destination.lat"
+            />
+            <mat-hint>Example:1.345</mat-hint>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Target(Longitude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-longitude-target-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.target_destination.lng"
+            />
+            <mat-hint>Example:36.677</mat-hint>
+          </mat-form-field>
+         
         </div>
+         
         <mat-card-actions align="start">
           <button
             class="button-5"
             role="button"
             (click)="addDay()"
-            [matBadge]="images.length"
+            
           >
             Add Day
           </button>

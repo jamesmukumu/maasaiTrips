@@ -122,7 +122,7 @@ responsiveOptions = [
       numScroll: 1
   }
 ];
-
+way_points:any[] = []
   async fetchPackage() {
     try {
       this.fetching = true;
@@ -130,6 +130,18 @@ responsiveOptions = [
       this.packageData = data;
       this.comprehensiveItinerary = data.packageAbout;
       this.origin = data.packageAbout[0]['origin']
+      data.packageAbout.slice(1,data.packageAbout.length-1).map((wayPoint:any)=>{
+       this.way_points.push(
+        {
+        location:{
+          lat:wayPoint.origin.lat,
+          lng:wayPoint.origin.lng
+         }
+        }
+       
+       )
+      })
+    
       this.dest = data.packageAbout[data.packageAbout.length- 1]['target_destination']
       this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;

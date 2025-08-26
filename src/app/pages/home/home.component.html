@@ -22,7 +22,7 @@
 
               <h1  class="main-caption">{{ item.title }}</h1>
               
-              <button (click)="view(item.urlPath)"  class="button-5">Book Now</button>
+              <button [routerLink]="['.']" fragment="contact"  role="button"  class="button-5">Book Now</button>
 
             </div>
             

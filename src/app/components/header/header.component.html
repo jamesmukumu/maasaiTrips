@@ -55,7 +55,7 @@
   
     <li><a href="/gallery">Gallery</a></li>
   </ul>
-  <button class="button-5" (click)="contact_us()" role="button">
+  <button class="button-5" (click)="contact_us()" [routerLink]="['.']" fragment="contact" role="button">
     Contact
   </button>
 </nav>
@@ -89,7 +89,7 @@
   
     <mat-list-item (click)="goDest('gallery')">Our Gallery</mat-list-item>
     <mat-list-item>
-      <button class="button-5" role="button" (click)="navigate()">Enquire Now</button>
+      <button class="button-5"  [routerLink]="['.']" fragment="contact"  role="button" >Enquire Now</button>
     </mat-list-item>
   </mat-list>
 </p-sidebar>
