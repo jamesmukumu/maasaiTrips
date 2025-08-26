@@ -191,6 +191,12 @@ text-align: center;
     white-space: normal;
     word-break: break-word;
   }
+  .grid{
+  width: 100%;
+  display: grid;
+  place-content: center;
+  margin-bottom: 1.5rem;
+  }
   .button-5 {
     align-items: center;
     background-clip: padding-box;

@@ -16,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div class="grid">
+      <button role="button" (click)="loadMore()" *ngIf="galleryContent < allContent" class="button-5">Load More</button>
+    </div>
   </div>
 
 <app-loader *ngIf="fetching"></app-loader>
@@ -26,5 +29,5 @@
 
 
 
-   
+<app-contact></app-contact>   
 <footer></footer>

@@ -105,6 +105,24 @@ export class SingularPackageComponent implements OnInit {
   }
 origin:any
 dest:any
+responsiveOptions = [
+  {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1
+  },
+  {
+      breakpoint: '991px',
+      numVisible: 2,
+      numScroll: 1
+  },
+  {
+      breakpoint: '1199px',
+      numVisible: 3,
+      numScroll: 1
+  }
+];
+
   async fetchPackage() {
     try {
       this.fetching = true;

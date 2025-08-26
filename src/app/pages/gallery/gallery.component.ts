@@ -41,11 +41,18 @@ constructor(private gall:GalleryService){}
 galleryContent:any[] = []
 fetching = false
 bgState: string = 'clear';
+itemsShow = 12
+allContent:any
+loadMore(){
+this.itemsShow += 12
+this.galleryContent = this.allContent.splice(0,this.itemsShow)
+}
 @ViewChild('bg') bgRef!: ElementRef;
 ngOnInit(){
 this.fetching = true
 this.gall.fetchGalleria().then((data:any)=>{
-this.galleryContent = data.data
+this.allContent = data.data
+this.galleryContent = data.data.splice(0,this.itemsShow)
 this.fetching = false
 }).catch((err)=>console.error(err))
 

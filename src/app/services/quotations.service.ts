@@ -14,6 +14,7 @@ export interface Quotations {
   childrenCount: number;
   travelDescription: string;
   kidsAges: string;
+ 
 }
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,7 @@ export interface Quotations {
 export class QuotationsService {
   constructor() {}
 
-  async saveQuotation(Quote: Quotations) {
+  async saveQuotation(Quote: any) {
     try {
       var resp = await axios.post(
         'https://maasai-trips.laravel.cloud/api/save/quote',

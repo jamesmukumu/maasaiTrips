@@ -85,17 +85,28 @@
                 <p>Accomodation:{{ itenerary.accomodation }}</p>
               </section> -->
               Meal Plan:<div class="package-overview-html" [innerHTML]="sanitize(itenerary.mealPlan)"></div>
-
-              <div class="galleria"> 
-                <div class="galleria-thumbnails">
-                  <img *ngFor="let img of itenerary.images; let j = index"
-                       [src]="img"
-                       [lightbox]="j"
-                       [gallery]="galleryId"
-                       class="gallery-thumb"
-                       alt="Gallery Image {{j}}">
-                </div>
+              <div class="card">
+                <p-carousel 
+                    [value]="itenerary.images" 
+                    [numVisible]="3" 
+                    [showNavigators]="false"
+                    [numScroll]="3" 
+                    [circular]="true" 
+                    [responsiveOptions]="responsiveOptions" 
+                    autoplayInterval="3000">
+                    <ng-template let-img pTemplate="item">
+                        <div class="m-2 p-2">
+                            <img 
+                                [src]="img" 
+                                alt="Carousel Image" 
+                                class="gallery-thumb"
+                                 />
+                        </div>
+                    </ng-template>
+                </p-carousel>
               </div>
+              
+
 
             </p-accordionTab>
           </p-accordion>

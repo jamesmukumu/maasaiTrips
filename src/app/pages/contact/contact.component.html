@@ -1,79 +1,92 @@
-<div class="safari-bg">
-  <div class="contact-card">
-    <div class="contact-container">
+<div class="container">
+  <div class="booking-card">
+    <div class="contact-info">
+      <h2 class="contact-person">Engage With Us</h2>
+      <div class="divider"></div>
 
-      <!-- Contact Form -->
-      <div class="contact-form">
-        <h2>Send your Enquiry for a Maasai Mara Safari</h2>
-        
-        <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
-          
-          <div class="form-group">
-            <label for="firstName">Name (Required)</label>
-            <input 
-              type="text" 
-              id="firstName" 
-              name="firstName" 
-              ngModel 
-              required 
-              #firstName="ngModel"
-              placeholder="John">
-            <div class="error" *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)">
-              Name is required.
-            </div>
-          </div>
-     
-          <div class="form-group">
-            <label for="email">Email Address (Required)</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              ngModel 
-              required 
-              email
-              #email="ngModel"
-              placeholder="john.doe@example.com">
-            <div class="error" *ngIf="email.invalid && (email.dirty || email.touched)">
-              Please enter a valid email.
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number (Required)</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone" 
-              ngModel 
-              required 
-              pattern="^[0-9\-\+\s\(\)]{7,15}$"
-              #phone="ngModel"
-              placeholder="+1 (234) 567-8900">
-            <div class="error" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
-              Please enter a valid phone number.
-            </div>
-          </div>
-       
-          <div class="form-group">
-            <label for="message">Your Message (Required)</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              ngModel 
-              required 
-              #message="ngModel"
-              rows="5" 
-              placeholder="Please provide details about your Enquiry..."></textarea>
-            <div class="error" *ngIf="message.invalid && (message.dirty || message.touched)">
-              Message is required.
-            </div>
-          </div>
-   
-          <button class="button-5" *ngIf="!saving" type="submit" >Submit</button>
-          <app-buttons *ngIf="saving"></app-buttons>
-        </form>
+      <div class="contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        <div class="contact-content">
+          <h3>Phone</h3>
+          <p>+254705769896</p>
+        </div>
       </div>
+
+      <div class="contact-item">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#E88B22"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <div class="contact-content">
+          <h3>Email</h3>
+          <p>travel&#64;olankasafaris.com</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="booking-form">
+      <h2 class="form-title">Enquiry Form</h2>
+      <div class="divider"></div>
+
+      <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+        
+        <!-- Name -->
+        <div class="form-group">
+          <label class="form-label">NAME *</label>
+          <input type="text" class="form-input" name="firstName" ngModel required #firstName="ngModel">
+          <div *ngIf="firstName.invalid && firstName.touched" class="error">
+            Name is required.
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label">EMAIL *</label>
+          <input type="email" class="form-input" name="email" ngModel required email #email="ngModel">
+          <div *ngIf="email.invalid && email.touched" class="error">
+            Enter a valid email.
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label class="form-label">PHONE *</label>
+          <input type="tel" class="form-input" name="phone" ngModel required #phone="ngModel">
+          <div *ngIf="phone.invalid && phone.touched" class="error">
+            Phone number is required.
+          </div>
+        </div>
+
+        <!-- Contact Preference -->
+        <div class="form-group">
+          <label class="form-label">Contact Preference *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="contact" value="email" ngModel required #contact="ngModel">
+              <span>Email</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="contact" value="phone" ngModel>
+              <span>Phone</span>
+            </label>
+          </div>
+          <div *ngIf="contact.invalid && contact.touched" class="error">
+            Please select a contact preference.
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label class="form-label">MESSAGE</label>
+          <textarea class="form-input" #msg="ngModel" required name="message" ngModel></textarea>
+          <div *ngIf="msg.invalid && msg.touched" class="error">
+            Please fill this message field
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="button-5" >
+          Submit
+        </button>
+        <app-buttons *ngIf="saving"></app-buttons>
+      </form>
     </div>
   </div>
 </div>
