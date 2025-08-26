@@ -18,7 +18,7 @@ sanitize(blogContent:SafeHtml| any){
   return this.sanitizor.bypassSecurityTrustHtml(blogContent)
  }
 formatCreationDay(time:string){
-return new Date(time).toLocaleDateString()
+return new Date(time).toDateString()
 }
 shareOnTwitter() {
   const url = encodeURIComponent(window.location.href);
@@ -51,7 +51,7 @@ this.blogs.fetchSingularBlog(this.blogSlug).then((data)=>{
 var {message,blogData,relevantBlogs} = data
 if(message === 'Blog Fetched'){
 this.blogData = blogData
-this.relevantBlogs = relevantBlogs
+this.relevantBlogs = relevantBlogs.splice(0,3)
 this.titlePage.setTitle(blogData.blogTitle)
 this.findingBlog = false
 }

@@ -16,7 +16,7 @@ contact_us(){
 this.contactFormEmitter.emit("contact")
 }
   goDest(path:string){
-    this.route.navigate([`${path}`])
+    this.route.navigate([`blog/${path}`])
   }
 seeDrawer:boolean = false
 toggle(){
@@ -36,19 +36,19 @@ constructor(private route:Router){}
 featureDestinations = [
   {
     "destinationTitle":"About Maasai Mara",
-    "destinationSlug":"maasai_mara68663ba90ba07"
+    "destinationSlug":"the-pulse-of-africa-be-part-of-the-wildebeest-migration-spectacle"
     },
   {
     "destinationTitle":"Maasai Mara Conservancy",
-    "destinationSlug":"diani687a393329ec1"
+    "destinationSlug":"top-things-to-do-in-masai-mara-a-kenya-safari-wildlife-adventure"
     },
     {
       "destinationTitle":"Weather and Climate",
-      "destinationSlug":"amboseli687d3f7f1d8cb"
+      "destinationSlug":"top-things-to-do-in-masai-mara-a-kenya-safari-wildlife-adventure"
       },
       {
         "destinationTitle":"The Great Migration",
-        "destinationSlug":"tsavo_west_national_park687e3df073803"
+        "destinationSlug":"the-ultimate-hot-air-balloon-safari-experience-in-maasai-mara-kenya"
         },
 
 
