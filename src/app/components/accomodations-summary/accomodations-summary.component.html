@@ -1,0 +1,23 @@
+
+<div class="container">
+    <div class="header">
+        <h1 class="main-title">Accommodation Summary</h1>
+  
+    </div>
+    <div class="table-container">
+        <div class="table-header">
+            <div class="table-header-cell">START DATE</div>
+            <div class="table-header-cell">ACCOMODATION</div>
+            <div class="table-header-cell">DESTINATION</div>
+            <div class="table-header-cell">NIGHTS</div>
+        </div>
+        <div class="table-row" *ngFor="let summary of summaryInformation">
+            <div class="table-cell">{{formatter(summary.Date)}}</div>
+            <div class="table-cell">{{summary.accomodation.hotelName}}</div>
+            <div class="table-cell">{{summary.destination.destinationTitle}}</div>
+            <div class="table-cell">{{summary.nights}}</div>
+        </div> 
+      
+     
+    </div>
+</div>

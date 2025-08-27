@@ -1,0 +1,18 @@
+
+<div class="container">
+<div class="header">
+<h1 class="destination-title">{{ destination.destinationTitle }}</h1>
+
+</div>
+<div class="content-section">
+<div class="description" [innerHtml]=" formatter(destination.destinationDescription)">
+
+</div>
+<div class="image-section">
+<img [src]="destination.destinationThumbnail" class="main-image" [alt]="destination.destinationSlug">
+
+
+</div>
+</div>
+</div>
+

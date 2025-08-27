@@ -31,7 +31,7 @@ export class CustomizedPackageComponent {
     private router: ActivatedRoute,
     private sanitizor: DomSanitizer,
     private packages: PackagesService,
-    private customPackage:CustomizedPackageService,
+    private custom_package:CustomizedPackageService,
     private gallery: Gallery,
     private lightbox: Lightbox
   ) {}
@@ -104,14 +104,51 @@ export class CustomizedPackageComponent {
 
     return chunks;
   }
-
+origin:any
+dest:any
+responsiveOptions = [
+  {
+      breakpoint: '767px',
+      numVisible: 1,
+      numScroll: 1
+  },
+  {
+      breakpoint: '991px',
+      numVisible: 2,
+      numScroll: 1
+  },
+  {
+      breakpoint: '1199px',
+      numVisible: 3,
+      numScroll: 1
+  }
+];
+transportSummary:any[] = []
+accomodationsSummary:any[] = []
+way_points:any[] = []
   async fetchPackage() {
-    console.log("saving")
     try {
       this.fetching = true;
-      const { data, relatedPackages } = await this.customPackage.fetchSingularPackages(this.packageSlug);
+      const { data, relatedPackages } = await this.custom_package.fetchSingularPackages(this.packageSlug);
       this.packageData = data;
+      console.log(this.packageData)
+      this.transportSummary = JSON.parse(this.packageData.transportSummary)
+      this.accomodationsSummary = this.packageData.accomodationSummary
       this.comprehensiveItinerary = data.packageAbout;
+      this.origin = data.packageAbout[0]['origin']
+      data.packageAbout.slice(1,data.packageAbout.length-1).map((wayPoint:any)=>{
+       this.way_points.push(
+        {
+        location:{
+          lat:wayPoint.origin.lat,
+          lng:wayPoint.origin.lng
+         }
+        }
+       
+       )
+      })
+    
+      this.dest = data.packageAbout[data.packageAbout.length- 1]['target_destination']
       this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;
 
@@ -157,4 +194,5 @@ this.contactRef.nativeElement.scrollIntoView({
   priceFormatter(charge: any) {
     return charge.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
 }
