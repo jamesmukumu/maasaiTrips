@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transport Summary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fff;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+.header {
+    margin-bottom: 32px;
+}
+
+.main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    color: #374151;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.sub-title {
+    font-size: 1.25rem;
+    color: #4B5563;
+    font-weight: 400;
+}
+
+.table-container {
+    background-color: #fff;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.table-header-cell {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6B7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 24px 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    color: #4B5563;
+    font-weight: 400;
+}
+
+.location-link {
+    color: #3b82f6;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.location-link:hover {
+    color: #2563eb;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="main-title">Transport Summary</h1>
+        <h2 class="sub-title">Transfers</h2>
+    </div>
+    <div class="table-container">
+        <div class="table-header">
+            <div class="table-header-cell">DATE</div>
+            <div class="table-header-cell">TYPE</div>
+            <div class="table-header-cell">PICK UP</div>
+            <div class="table-header-cell">DROP OFF</div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell">7 Jul 2025</div>
+            <div class="table-cell">Transfer</div>
+            <div class="table-cell"><a href="#" class="location-link">Sirare Border Post</a></div>
+            <div class="table-cell"><a href="#" class="location-link">Serengeti Simba Lodge</a></div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell">9 Jul 2025</div>
+            <div class="table-cell">Transfer</div>
+            <div class="table-cell"><a href="#" class="location-link">Serengeti Simba Lodge</a></div>
+            <div class="table-cell"><a href="#" class="location-link">Kudu Lodge</a></div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell">10 Jul 2025</div>
+            <div class="table-cell">Transfer</div>
+            <div class="table-cell"><a href="#" class="location-link">Kudu Lodge</a></div>
+            <div class="table-cell"><a href="#" class="location-link">Kilimanjaro International Airport [JRO]</a></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

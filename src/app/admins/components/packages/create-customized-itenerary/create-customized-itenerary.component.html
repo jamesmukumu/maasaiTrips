@@ -6,44 +6,7 @@
         <div class="infos">
           <h3>Custom Package Information</h3>
 
-          <mat-form-field>
-            <mat-label>Clients Name</mat-label>
-            <input
-              required
-              type="text"
-              name="clients-name"
-              matInput
-              [(ngModel)]="clientsName"
-            />
-
-            
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Clients Email</mat-label>
-            <input
-              required
-              type="text"
-              name="clients-email"
-              matInput
-              [(ngModel)]="clientsEmail"
-            />
-
-            
-          </mat-form-field>
-
-          <mat-form-field>
-            <mat-label>Clients PhoneNumber</mat-label>
-            <input
-              required
-              type="text"
-              name="clients-phone-number"
-              matInput
-              [(ngModel)]="clientsPhonenumber"
-            />
-
-            
-          </mat-form-field>
+         
           <mat-form-field>
             <mat-label>Package Title</mat-label>
             <input
@@ -57,6 +20,67 @@
               >Example:4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint
             >
           </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>No of Adults:</mat-label>
+            <input
+              required
+              type="number"
+              name="clients-adults"
+              matInput
+              [(ngModel)]="adults"
+            />
+        </mat-form-field>
+
+             <mat-form-field>
+          <mat-label>No of Children:</mat-label>
+          <input
+            required
+            type="number"
+            name="children-count"
+            matInput
+            [(ngModel)]="children"
+          />
+      </mat-form-field>
+        <mat-form-field>
+          <mat-label>Clients Name</mat-label>
+          <input
+            required
+            type="text"
+            name="clients-name"
+            matInput
+            [(ngModel)]="clientsName"
+          />
+
+          
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Clients Email</mat-label>
+          <input
+            required
+            type="text"
+            name="clients-email"
+            matInput
+            [(ngModel)]="clientsEmail"
+          />
+
+          
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Clients PhoneNumber</mat-label>
+          <input
+            required
+            type="text"
+            name="clients-phone-number"
+            matInput
+            [(ngModel)]="clientsPhonenumber"
+          />
+
+          
+        </mat-form-field>
+   
     
           <div>
             <label>Enter Package OverView</label>
@@ -246,6 +270,119 @@
             </mat-card-actions>
           </div>
         </div>
+
+
+        <section>
+          <h1>Accomodation Summary</h1>
+          <div *ngFor="let Accomo of accomodationSummary,let A =index">
+            <mat-form-field>
+              <mat-label>Date for Summary {{ A +1 }}:</mat-label>
+              <input
+              matInput
+              [(ngModel)]="Accomo.Date"
+              [matDatepicker]="picker"
+              placeholder="Select a date"
+             name="Date-acco-{{ A+1 }}"
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+  
+            <mat-form-field>
+            <mat-label>Choose Accomodation {{ A +1 }}:</mat-label>
+              <mat-select required [(value)]="Accomo.accomodation_id">
+                <mat-option
+                  *ngFor="let Accomodation of accomodations_available"
+                  [value]="Accomodation.id"
+                >
+                  {{ Accomodation.hotelName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
+            <mat-form-field>
+         
+              <mat-label>Choose Destination {{ A + 1 }}</mat-label>
+              <mat-select required [(value)]="Accomo.destination_id">
+                <mat-option
+                  *ngFor="let destination of destinationsData"
+                  [value]="destination.id"
+                >
+                  {{ destination.destinationTitle }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+   
+   <mat-form-field>
+    <mat-label>Number of Nights {{ A + 1 }}</mat-label>
+    <input type="text" matInput name="transfer-pick-up" [(ngModel)]="Accomo.nights">
+     </mat-form-field>
+  
+ 
+  
+          </div>
+          <mat-card-actions align="start">
+            <button
+             role="button"
+             class="button-5"
+              (click)="addTransportSummary()"
+              [matBadge]="transport_Summary.length"
+            >
+              Add Summary
+            </button>
+            <button role="button"class="button-5"  (click)="removeTransportSummary()">Remove Summary</button>
+          </mat-card-actions>
+          </section>
+
+
+        <section>
+        <h1>Transport Summary</h1>
+        <div *ngFor="let summary of transport_Summary,let t=index">
+          <mat-form-field>
+            <mat-label>Date for Summary {{ t +1 }}:</mat-label>
+            <input
+            matInput
+            [matDatepicker]="picker"
+            [(ngModel)]="summary.Date"
+            name="Date-Summary-{{ t + 1 }}"
+            placeholder="Select a date"
+          
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+ <mat-form-field>
+<mat-label>Type of Summary {{ t + 1 }}</mat-label>
+<input type="text" matInput name="transfer-type" [(ngModel)]="summary.Type">
+ </mat-form-field>
+
+ 
+ <mat-form-field>
+  <mat-label>Pick Up for Summary {{ t + 1 }}</mat-label>
+  <input type="text" matInput name="transfer-pick-up" [(ngModel)]="summary.Pickup">
+   </mat-form-field>
+
+    
+ <mat-form-field>
+  <mat-label>Drop Off {{ t + 1 }}</mat-label>
+  <input type="text" matInput name="transfer-" [(ngModel)]="summary.DropOff">
+   </mat-form-field>
+
+        </div>
+        <mat-card-actions align="start">
+          <button
+           role="button"
+           class="button-5"
+            (click)="addTransportSummary()"
+            [matBadge]="transport_Summary.length"
+          >
+            Add Summary
+          </button>
+          <button role="button"class="button-5"  (click)="removeTransportSummary()">Remove Summary</button>
+        </mat-card-actions>
+        </section>
       <section>
       <h1>Itinerary</h1>
     
@@ -262,15 +399,16 @@
           <mat-hint>Example: 4 Days Olkinyei Mara Tented Camp Masai Mara Safari</mat-hint>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Accomodation for Day {{ q + 1 }}</mat-label>
-          <input
-            required
-            type="text"
-            name="package-accomodation-{{ q }}"
-            matInput
-            [(ngModel)]="itinerary.accomodation"
-          />
-    
+         
+          <mat-label>Choose Accomodation</mat-label>
+          <mat-select required [(value)]="itinerary.accomodation">
+            <mat-option
+              *ngFor="let Accomodation of accomodations_available"
+              [value]="Accomodation.id"
+            >
+              {{ Accomodation.hotelName }}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field>
          
@@ -284,6 +422,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+       
         <label>Description for day {{ q + 1 }}</label>
         <jodit-editor
         name="descp{{ q +1 }}"
@@ -347,6 +486,20 @@
           <mat-hint>Example:36.677</mat-hint>
         </mat-form-field>
        
+        <mat-form-field appearance="fill">
+          <mat-label>Date for Day {{ q + 1 }}:</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Select a date"
+            name="package-dateTime-{{ q+1 }}"
+            [(ngModel)]="itinerary.dateTime"
+            (dateChange)="seeStartDate($event)"
+          />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        
       </div>
     
       <mat-card-actions align="start">

@@ -13,7 +13,7 @@ import { CustomizedPackageService } from '../../../../services/customized-packag
   providers:[provideNativeDateAdapter()]
 })
 export class CreateCustomizedIteneraryComponent implements OnInit { 
-  constructor(private packages:PackagesService,private hotels:HotelsService,private customizedPackage:CustomizedPackageService){}
+  constructor(private packages:PackagesService,private hotels:HotelsService,private customizedPackage:CustomizedPackageService,private accomodation:HotelsService){}
   images:any[] = [
   {image1:null}
   ]
@@ -26,13 +26,54 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   clientsName:any
   clientsPhonenumber:any
   clientsEmail:any
+
+  accomodationSummary:any[] = [
+  {
+  Date:null,
+  accomodation_id:null,
+  destination_id:null,
+  nights:null
+},
+{
+    Date:null,
+    accomodation_id:null,
+    destination_id:null,
+    nights:null
+  },
+  {
+    Date:null,
+    accomodation_id:null,
+    destination_id:null,
+    nights:null
+  }
+
+
+
+  ]
+  transport_Summary:any[] = [
+{
+Date:null,
+Type:"",
+Pickup:"",
+DropOff:""
+},
+{
+Date:null,
+Type:"",
+ Pickup:"",
+DropOff:""
+}
+
+
+  ]
   itinerary_comprehensive: any[] = [
       {
         title: '',
         description: '',
-      destination_id: '',
+        dateTime:null,
+      destination_id: null,
         mealPlan:"",
-        accomodation:"",
+        accomodation:null,
         origin:{
          lat:0,
          lng:0
@@ -48,9 +89,10 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
       {
           title: '',
           description: '',
-        destination_id: '',
+          dateTime:null,
+        destination_id: null,
           mealPlan:"",
-          accomodation:"",
+          accomodation:null,
           origin:{
            lat:0,
            lng:0
@@ -65,15 +107,27 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
     ];
     
     
+    addTransportSummary(){
+    this.transport_Summary.push({
+    Date:null,
+    Type:"",
+    Pickup:"",
+    DropOff:""
     
+    })
+    }
+    removeTransportSummary(){
+     this.transport_Summary.pop()
+    }
     addDay() {
       this.itinerary_comprehensive.push(
           {
               title: '',
+              dateTime:null,
               description: '',
-            destination_id: '',
+            destination_id: null,
               mealPlan:"",
-              accomodation:"",
+              accomodation:null,
               origin:{
                lat:0,
                lng:0
@@ -105,7 +159,8 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   onImageSelect(event: any, index: number) {
   this.itinerary_comprehensive[index].images.push(...event.files);
   }
-  
+  adults:number = 0
+  children:number = 0
   targetDestination:any
   targetCategory:any
   choosenBudgetType:any
@@ -132,6 +187,17 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
       }
       }
       
+            
+  async fetchAccomodations(){
+    try{
+    var data = await this.accomodation.fetchMyHotels()
+    return data.data
+    }catch(err){
+    console.error(err)
+    }
+    
+    }
+    
   async fetchPackageCatagories(){
   try{
   var data = await this.packages.fetchPackageCategories()
@@ -142,18 +208,21 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   
   }
   
-  
+  accomodations_available:any
   async ngOnInit(){
   try{
   
   this.fetchingDestinations = true
   var data= await Promise.all([
   this.fetchDestinations(),
-  this.fetchPackageCatagories()
+  this.fetchPackageCatagories(),
+  this.fetchAccomodations()
   ])
   this.destinationsData = data[0]
   this.packageCategories = data[1]
-  this.addPackageCategory = true
+  this.accomodations_available = data[2]
+ 
+//   this.addPackageCategory = true
   this.fetchingDestinations = false
   }catch(err){
   this.fetchingDestinations = false
@@ -256,6 +325,10 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   "title":this.packageTitle,
   "about":this.itinerary_comprehensive,
   "overview":this.packageOverview,
+  "adults":this.adults,
+  "children":this.children,
+  "transportSummary":this.transport_Summary,
+  "accomodationSummary":this.accomodationSummary,
   "image":this.packagePhoto,
   "charges":this.packageCharge,
   "startDate":this.startDate,

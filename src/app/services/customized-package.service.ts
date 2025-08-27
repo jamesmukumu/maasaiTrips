@@ -27,7 +27,11 @@ export class CustomizedPackageService {
       formData.append('clientsName', Payload.clientsName);
       formData.append('clientsPhoneNumber', Payload.clientsPhoneNumber);
       formData.append('packageAbout', JSON.stringify(Payload.about));
+      formData.append('transportSummary', JSON.stringify(Payload.transportSummary));
+      formData.append('accomodationSummary', JSON.stringify(Payload.accomodationSummary));
       formData.append('packageOverview', Payload.overview);
+      formData.append('adults', Payload.adults);
+      formData.append('children', Payload.children);
       formData.append('imagePackage', Payload.image);
       formData.append('packageCharge', `${Payload.charges}`);
       formData.append('packageChargeCurrency', Payload.chargeCurrency);
