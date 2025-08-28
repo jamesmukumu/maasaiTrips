@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-
-
 .container {
     max-width: 1152px;
     margin: 0 auto;
@@ -32,6 +30,7 @@
 
 .table-container {
     background-color: #fff;
+    overflow-x: auto; /* Enable horizontal scrolling on small screens */
 }
 
 .table-header {
@@ -48,6 +47,7 @@
     color: #6B7280;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    min-width: 150px; /* Ensure minimum width for columns to prevent excessive shrinking */
 }
 
 .table-row {
@@ -65,6 +65,7 @@
 .table-cell {
     color: #4B5563;
     font-weight: 400;
+    min-width: 150px; /* Ensure minimum width for cells */
 }
 
 .location-link {
@@ -75,4 +76,46 @@
 
 .location-link:hover {
     color: #2563eb;
+}
+
+/* Media query for tablets and smaller (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 32px 16px; /* Reduce padding for better fit */
+    }
+
+    .main-title {
+        font-size: 1.75rem; /* Slightly smaller title */
+    }
+
+    .table-header,
+    .table-row {
+        gap: 16px; /* Reduce gap between columns */
+        padding: 16px 0; /* Adjust row padding */
+    }
+
+    .table-header-cell,
+    .table-cell {
+        font-size: 0.75rem; /* Smaller text for better fit */
+        min-width: 120px; /* Adjust min-width for smaller screens */
+    }
+}
+
+/* Media query for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 24px 8px; /* Further reduce padding */
+    }
+
+    .table-header,
+    .table-row {
+        gap: 8px; /* Even smaller gap */
+        padding: 12px 0;
+    }
+
+    .table-header-cell,
+    .table-cell {
+        font-size: 0.675rem; /* Smaller text */
+        min-width: 100px; /* Smaller min-width to fit narrow screens */
+    }
 }
