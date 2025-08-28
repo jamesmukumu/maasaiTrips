@@ -89,34 +89,17 @@
           <mat-icon>edit</mat-icon>
           <span>Edit</span>
         </button>
-        <button
-          mat-menu-item
-          *ngIf="adminStatus"
-          (click)="adjustStatus(element.id)"
-        >
-          <mat-icon>edit</mat-icon>
-          <span>Adjust Status</span>
+        <button mat-menu-item (click)="popUpdate(element.id, element)">
+          <mat-icon>content_copy</mat-icon>
+          <span>Copy Url</span>
         </button>
+  
         <button mat-menu-item (click)="popDeleteDestination(element.id)">
           <mat-icon style="color: red">delete</mat-icon>
           <span>Delete</span>
         </button>
-        <button
-          mat-menu-item
-          *ngIf="!element.published"
-          (click)="popPublish(element.id)"
-        >
-          <mat-icon style="color: green">publish</mat-icon>
-          <span>Publish Destination</span>
-        </button>
-        <button
-          mat-menu-item
-          *ngIf="element.published"
-          (click)="popUn_Publish(element.id)"
-        >
-          <mat-icon style="color: red">publish</mat-icon>
-          <span>Un-Publish Destination</span>
-        </button>
+    
+    
       </mat-menu>
     </td>
   </ng-container>
@@ -223,6 +206,67 @@
           >
         </mat-form-field>
 
+
+        <mat-form-field>
+          <mat-label>No of Adults:</mat-label>
+          <input
+            required
+            type="number"
+            name="clients-adults"
+            matInput
+            [(ngModel)]="adults"
+          />
+      </mat-form-field>
+
+           <mat-form-field>
+        <mat-label>No of Children:</mat-label>
+        <input
+          required
+          type="number"
+          name="children-count"
+          matInput
+          [(ngModel)]="children"
+        />
+    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Clients Name</mat-label>
+        <input
+          required
+          type="text"
+          name="clients-name"
+          matInput
+          [(ngModel)]="clientsName"
+        />
+
+        
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Clients Email</mat-label>
+        <input
+          required
+          type="text"
+          name="clients-email"
+          matInput
+          [(ngModel)]="clientsEmail"
+        />
+
+        
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Clients PhoneNumber</mat-label>
+        <input
+          required
+          type="text"
+          name="clients-phone-number"
+          matInput
+          [(ngModel)]="clientsPhonenumber"
+        />
+
+        
+      </mat-form-field>
+ 
         <div>
           <label>Enter Package OverView</label>
           <p-editor
@@ -359,27 +403,159 @@
             placeholder="Select a Currency Type"
           />
         </div>
-      <section>
-        <div *ngFor="let itnerary of packageAbout;let p = index;">
-          <mat-form-field style="margin-top: 10px; width: 100%">
-            <mat-label>Day {{ p + 1 }} Itinerary Title</mat-label>
-            <input
-              required
-              type="text"
-              name="itinerary-title-{{ p }}"
+
+
+
+        
+        <section>
+          <h1>Transport Summary</h1>
+          <div *ngFor="let summary of transport_Summary,let t=index">
+            <mat-form-field>
+              <mat-label>Date for Summary {{ t +1 }}:</mat-label>
+              <input
               matInput
-              [(ngModel)]="itnerary['title']"
+              [matDatepicker]="picker"
+              [(ngModel)]="summary.Date"
+              name="Date-Summary-{{ t + 1 }}"
+              placeholder="Select a date"
+            
             />
-          </mat-form-field>
-          <label>Day {{ p +1 }} Itinerary Description</label>
-          <p-editor
-            name="package-about {{ p }}"
-            [(ngModel)]="itnerary['description']"
-            (onTextChange)="captureAbout($event)"
-            [style]="{ 'min-height': '50vh' }"
-            placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
-          />
-        </div>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+  
+   <mat-form-field>
+  <mat-label>Type of Summary {{ t + 1 }}</mat-label>
+  <input type="text" matInput name="transfer-type" [(ngModel)]="summary.Type">
+   </mat-form-field>
+  
+   
+   <mat-form-field>
+    <mat-label>Pick Up for Summary {{ t + 1 }}</mat-label>
+    <input type="text" matInput name="transfer-pick-up" [(ngModel)]="summary.Pickup">
+     </mat-form-field>
+  
+      
+   <mat-form-field>
+    <mat-label>Drop Off {{ t + 1 }}</mat-label>
+    <input type="text" matInput name="transfer-" [(ngModel)]="summary.DropOff">
+     </mat-form-field>
+  
+          </div>
+          <mat-card-actions align="start">
+            <button
+             role="button"
+             class="button-5"
+              (click)="addTransportSummary()"
+              [matBadge]="transport_Summary.length"
+            >
+              Add Summary
+            </button>
+            <button role="button"class="button-5"  (click)="removeTransportSummary()">Remove Summary</button>
+          </mat-card-actions>
+          </section>
+      <section>
+    
+
+
+        <section>
+          <h1>Accomodation Summary</h1>
+          <div *ngFor="let Accomo of accomodationSummary,let A =index">
+            <mat-form-field>
+              <mat-label>Date for Summary {{ A +1 }}:</mat-label>
+              <input
+              matInput
+              [(ngModel)]="Accomo.Date"
+              [matDatepicker]="picker"
+              placeholder="Select a date"
+             name="Date-acco-{{ A+1 }}"
+            />
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+  
+            <!-- <mat-form-field>
+            <mat-label>Choose Accomodation {{ A +1 }}:</mat-label>
+              <mat-select required [(value)]="Accomo.accomodation_id">
+                <mat-option
+                  *ngFor="let Accomodation of accomodations_available"
+                  [value]="Accomodation.id"
+                >
+                  {{ Accomodation.hotelName }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+            <div>
+              <p-dropdown
+                variant="filled"
+                [options]="accomodations_available"
+              
+                [checkmark]="true"
+                optionLabel="hotelName"
+                optionValue="id"
+                [filter]="true"
+                
+                name="accomodation-name-{{ A + 1}}"
+                [showClear]="true"
+                [style]="{ width: '100%' }"
+                placeholder="Choose a Accomodation"
+              />
+            </div>
+
+
+            <!-- <mat-form-field>
+         
+              <mat-label>Choose Destination {{ A + 1 }}</mat-label>
+              <mat-select required [(value)]="Accomo.destination_id">
+                <mat-option
+                  *ngFor="let destination of destinationsData"
+                  [value]="destination.id"
+                >
+                  {{ destination.destinationTitle }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> -->
+
+            <div>
+              <p-dropdown
+                variant="filled"
+                [options]="destinationsData"
+              
+                [checkmark]="true"
+                optionLabel="destinationTitle"
+                optionValue="id"
+                [filter]="true"
+                
+                name="destination-{{ A + 1}}"
+                [showClear]="true"
+                [style]="{ width: '100%' }"
+                placeholder="Choose a Destination"
+              />
+            </div>
+   
+   <mat-form-field>
+    <mat-label>Number of Nights {{ A + 1 }}</mat-label>
+    <input type="text" matInput name="transfer-pick-up" [(ngModel)]="Accomo.nights">
+     </mat-form-field>
+  
+ 
+  
+          </div>
+          <mat-card-actions align="start">
+            <button
+             role="button"
+             class="button-5"
+              (click)="addTransportSummary()"
+              [matBadge]="transport_Summary.length"
+            >
+              Add Summary
+            </button>
+            <button role="button"class="button-5"  (click)="removeTransportSummary()">Remove Summary</button>
+          </mat-card-actions>
+          </section>
+
+
           <div *ngFor="let itnerary of packageAbout;let p = index;">
           <mat-form-field style="margin-top: 10px; width: 100%">
             <mat-label>Day {{ p + 1 }} Itinerary Title</mat-label>
@@ -399,6 +575,62 @@
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter Package About:Example include tables,list of inclusions and exclusions"
           />
+          <label>Day {{ p +1 }} Meal Plan</label>
+          <p-editor
+            name="package-about-meal {{ p }}"
+            [(ngModel)]="itnerary['mealPlan']"
+            (onTextChange)="captureAbout($event)"
+            [style]="{ 'min-height': '50vh' }"
+            placeholder="Enter a nice meal plan"
+          />
+          <mat-form-field>
+            <mat-label>Origin(Latitiude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-lat-origin-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.origin.lat"
+            />
+            <mat-hint>Example:1.345</mat-hint>
+          </mat-form-field>
+      
+      
+          <mat-form-field>
+            <mat-label>Origin(Longitude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-longitude-origin-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.origin.lng"
+            />
+            <mat-hint>Example:36.677</mat-hint>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Target(Latitiude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-lat-target-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.target_destination.lat"
+            />
+            <mat-hint>Example:1.345</mat-hint>
+          </mat-form-field>
+      
+          <mat-form-field>
+            <mat-label>Target(Longitude) {{ p + 1 }} </mat-label>
+            <input
+              required
+              type="number"
+              name="package-longitude-target-{{ p }}"
+              matInput
+              [(ngModel)]="itnerary.target_destination.lng"
+            />
+            <mat-hint>Example:36.677</mat-hint>
+          </mat-form-field>
         </div>
         <mat-card-actions align="start">
           <button
@@ -482,6 +714,9 @@
               </p-fileUpload>
             </div>
           </div>
+
+          
+
           <mat-card-actions align="start">
             <button
               class="button-5"

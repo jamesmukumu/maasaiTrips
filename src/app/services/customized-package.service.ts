@@ -92,24 +92,32 @@ export class CustomizedPackageService {
         }
       };
 
-      appendIfValid('packageTitle', Payload.title);
-      appendIfValid('packageAbout', JSON.stringify(Payload.about));
-      appendIfValid('packageOverview', Payload.overview);
-      appendIfValid('imagePackage', Payload.image);
-      appendIfValid('packageCharge', Payload.charges);
-      appendIfValid('packageChargeCurrency', Payload.chargeCurrency);
-      appendIfValid('startDate', Payload.startDate);
-      appendIfValid('endDate', Payload.endDate);
-      appendIfValid('destinations_id', Payload.destinations_id);
-      appendIfValid('packageSpecialNotes', Payload.specialNotes);
-      appendIfValid('budgetType', Payload.budgetType);
-      appendIfValid('mode_transport', Payload.mode_transport);
-      appendIfValid('package_categories_id', Payload.package_categories_id);
-      appendIfValid('packageInclusives', Payload.packageInclusives);
-      appendIfValid('packageExclusives', Payload.packageExclusives);
+     
+      formData.append('packageTitle', Payload.title);
+      formData.append('clientsEmail', Payload.clientsEmail);
+      formData.append('clientsName', Payload.clientsName);
+      formData.append('clientsPhoneNumber', Payload.clientsPhoneNumber);
+      formData.append('packageAbout', JSON.stringify(Payload.about));
+      formData.append('transportSummary', JSON.stringify(Payload.transportSummary));
+      formData.append('accomodationSummary', JSON.stringify(Payload.accomodationSummary));
+      formData.append('packageOverview', Payload.overview);
+      formData.append('adults', Payload.adults);
+      formData.append('children', Payload.children);
+      formData.append('imagePackage', Payload.image);
+      formData.append('packageCharge', `${Payload.charges}`);
+      formData.append('packageChargeCurrency', Payload.chargeCurrency);
+      formData.append('startDate', Payload.startDate);
+      formData.append('endDate', Payload.endDate);
+      formData.append('destinations_id', `${Payload.destinations_id}`);
+      formData.append('packageSpecialNotes', Payload.specialNotes);
+      formData.append('budgetType', Payload.budgetType);
+      formData.append('mode_transport', Payload.mode_transport);
+      formData.append('package_categories_id', Payload.package_categories_id);
+      formData.append('packageInclusives', Payload.packageInclusives);
+      formData.append('packageExclusives', Payload.packageExclusives);
 
       var resp = await axios.post(
-        `${this.baseUrl}/update/package?id=${id}`,
+        `${this.baseUrl}/update/customized/itenerary?id=${id}`,
         formData,
         {
           headers: {
@@ -134,4 +142,41 @@ export class CustomizedPackageService {
       return err;
     }
   }
+
+
+
+
+  
+  async deletePackage(id: any) {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.delete(`${this.baseUrl}/delete/customized/itenerary`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        params: {
+          id: id,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  
+  async fetchMyPackages() {
+    try {
+      var token = Cookies.get('grant_token');
+      var resp = await axios.get(`${this.baseUrl}/fetch/customized/itenerary`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return resp.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
 }

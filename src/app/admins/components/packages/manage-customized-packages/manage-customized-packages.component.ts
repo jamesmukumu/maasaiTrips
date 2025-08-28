@@ -8,7 +8,8 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { MessageService,ConfirmationService } from 'primeng/api';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { Store } from '@ngrx/store';
-
+import { CustomizedPackageService } from '../../../../services/customized-package.service';
+import {Clipboard} from '@angular/cdk/clipboard';
 @Component({
   selector: 'app-manage-customized-packages',
   templateUrl: './manage-customized-packages.component.html',
@@ -22,13 +23,21 @@ export class ManageCustomizedPackagesComponent {
     private store:Store,
     private hotels: HotelsService,
     private packages: PackagesService,
+    private customized_packages:CustomizedPackageService,
     private msg:MessageService,
+    private clipboard:Clipboard,
+    private accomodation:HotelsService,
     private confirm:ConfirmationService
-  ) {}
+  ) {} 
   adjustStatus(id:any){
     this.idSelected = id
   this.showAdjuststatus = true
   }    
+
+  copyUrl(slug:any){
+  this.clipboard.copy(`https://www.maasaimaratrips.online/customized/safari/${slug}`)
+  this.snack.open("Copied","Success")
+  }
 adminStatus = false
 adjusting = false
   popConfirm(event:any){
@@ -43,7 +52,7 @@ adjusting = false
        this.adjusting = false
         this.snack.open("Adjusted","Success")
         this.showAdjuststatus= false
-        this.fetchMyDestinations()
+        this.fetchMyDestinations() 
       }else if(message == 'Unauthorized function'){
         this.adjusting = false
         this.showAdjuststatus = false
@@ -96,7 +105,7 @@ adjusting = false
     this.publishDestination = false;
     this.processing = true;
     try {
-      var { message } = await this.packages.deletePackage(this.idSelected);
+      var { message } = await this.customized_packages.deletePackage(this.idSelected);
       if (message == 'Deleted') {
         this.snack.open('Deleted 😀', 'Success');
         this.fetchMyDestinations();
@@ -142,10 +151,64 @@ adjusting = false
       console.error(err);
     }
   }
+
+  accomodationSummary:any[] = [
+    {
+    Date:null,
+    accomodation_id:null,
+    destination_id:null,
+    nights:null
+  },
+  {
+      Date:null,
+      accomodation_id:null,
+      destination_id:null,
+      nights:null
+    },
+    {
+      Date:null,
+      accomodation_id:null,
+      destination_id:null,
+      nights:null
+    }
+  
+  
+  
+    ]
+    transport_Summary:any[] = [
+  {
+  Date:null,
+  Type:"",
+  Pickup:"",
+  DropOff:""
+  },
+  {
+  Date:null,
+  Type:"",
+   Pickup:"",
+  DropOff:""
+  }
+  
+  
+    ]
+
+    addTransportSummary(){
+      this.transport_Summary.push({
+      Date:null,
+      Type:"",
+      Pickup:"",
+      DropOff:""
+      
+      })
+      }
+      removeTransportSummary(){
+       this.transport_Summary.pop()
+      }
+    accomodations_available:any
   async fetchMyDestinations() {
     this.processing = true;
     try {
-      var { data, message } = await this.packages.fetchMyPackages();
+      var { data, message } = await this.customized_packages.fetchMyPackages()
       if(data.length == 0){
       this.processing = false
       this.packageDataPresent = false
@@ -169,18 +232,40 @@ adjusting = false
   description:""
   })
   }
-  removeDay(){
-    this.packageAbout.pop()
+
+  async fetchAccomodations(){
+    try{
+    var data = await this.accomodation.fetchMyHotels()
+    return data.data
+    }catch(err){
+    console.error(err)
     }
+    
+    }
+  removeDay(){
+  this.packageAbout.pop()
+  }
+  adults:number = 0
+  children:number = 0
+clientsName:any
+clientsEmail:any
+clientsPhonenumber:any
+
   popUpdate(id: any, element: any) {
-    
-    
+   this.idSelected = id  
     this.packageTitle = element.packageTitle;
     this.idSelected = element.id;
+    this.adults = element.adults 
+    this.children = element.children 
+    this.clientsEmail = element.clientsEmail
+    this.clientsName = element.clientsName
+    this.clientsPhonenumber = element.clientsPhoneNumber
     this.inclusions = JSON.parse(element.packageInclusives);
     this.exclusions = JSON.parse(element.packageExclusives);
     this.packageCharge = element.packageCharge;
     this.packageAbout = JSON.parse(element.packageAbout)
+    this.transport_Summary = JSON.parse(element.transportSummary)
+    this.accomodationSummary = JSON.parse(element.accomodationSummary)
    this.packageOverview = element.packageOverview
    this.specialNotes = element.packageSpecialNotes
    this.someValue = element.packageChargeCurrency
@@ -245,9 +330,11 @@ adjusting = false
       var data = await Promise.all([
         this.fetchDestinations(),
         this.fetchPackageCatagories(),
+        this.fetchAccomodations()
       ]);
       this.destinationsData = data[0];
       this.packageCategories = data[1];
+      this.accomodations_available = data[2]
       this.addPackageCategory = true;
       this.fetchingDestinations = false;
     } catch (err) {
@@ -358,11 +445,20 @@ adjusting = false
         packageInclusives: incl,
         packageExclusives: excl,
         specialNotes: this.specialNotes,
+        adults:this.adults,
+        children:this.children,
+        clientsEmail:this.clientsEmail,
+        clientsPhonenumber:this.clientsPhonenumber,
+        clientsName:this.clientsName,
+        "transportSummary":this.transport_Summary,
+        "accomodationSummary":this.accomodationSummary,
+
+
       };
-      var { message, content } = await this.packages.updatePackage(
+      var { message, content } = await this.customized_packages.updatePackage(
         payload,
         this.idSelected
-      );
+      )
       if (message == 'package Updated') {
         this.processing = false;
         this.updateDestination = false
