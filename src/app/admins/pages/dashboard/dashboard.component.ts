@@ -149,6 +149,10 @@ case 'Manage My Packages':
   this.activeIndex = 3
 this.packageChoosen = 2
 break
+case 'Manage Custom Packages':
+  this.activeIndex = 3
+this.packageChoosen = 5
+break
 case "Edit Profile":
 this.popDialog()
 break

@@ -93,28 +93,28 @@ export class CustomizedPackageService {
       };
 
      
-      formData.append('packageTitle', Payload.title);
-      formData.append('clientsEmail', Payload.clientsEmail);
-      formData.append('clientsName', Payload.clientsName);
-      formData.append('clientsPhoneNumber', Payload.clientsPhoneNumber);
-      formData.append('packageAbout', JSON.stringify(Payload.about));
-      formData.append('transportSummary', JSON.stringify(Payload.transportSummary));
-      formData.append('accomodationSummary', JSON.stringify(Payload.accomodationSummary));
-      formData.append('packageOverview', Payload.overview);
-      formData.append('adults', Payload.adults);
-      formData.append('children', Payload.children);
-      formData.append('imagePackage', Payload.image);
-      formData.append('packageCharge', `${Payload.charges}`);
-      formData.append('packageChargeCurrency', Payload.chargeCurrency);
-      formData.append('startDate', Payload.startDate);
-      formData.append('endDate', Payload.endDate);
-      formData.append('destinations_id', `${Payload.destinations_id}`);
-      formData.append('packageSpecialNotes', Payload.specialNotes);
-      formData.append('budgetType', Payload.budgetType);
-      formData.append('mode_transport', Payload.mode_transport);
-      formData.append('package_categories_id', Payload.package_categories_id);
-      formData.append('packageInclusives', Payload.packageInclusives);
-      formData.append('packageExclusives', Payload.packageExclusives);
+      appendIfValid('packageTitle', Payload.title);
+      appendIfValid('clientsEmail', Payload.clientsEmail);
+      appendIfValid('clientsName', Payload.clientsName);
+      appendIfValid('clientsPhoneNumber', Payload.clientsPhoneNumber);
+      appendIfValid('packageAbout', JSON.stringify(Payload.about));
+      appendIfValid('transportSummary', JSON.stringify(Payload.transportSummary));
+      appendIfValid('accomodationSummary', JSON.stringify(Payload.accomodationSummary));
+      appendIfValid('packageOverview', Payload.overview);
+      appendIfValid('adults', Payload.adults);
+      appendIfValid('children', Payload.children);
+      appendIfValid('imagePackage', Payload.image);
+      appendIfValid('packageCharge', `${Payload.charges}`);
+      appendIfValid('packageChargeCurrency', Payload.chargeCurrency);
+      appendIfValid('startDate', Payload.startDate);
+      appendIfValid('endDate', Payload.endDate);
+      appendIfValid('destinations_id', `${Payload.destinations_id}`);
+      appendIfValid('packageSpecialNotes', Payload.specialNotes);
+      appendIfValid('budgetType', Payload.budgetType);
+      appendIfValid('mode_transport', Payload.mode_transport);
+      appendIfValid('package_categories_id', Payload.package_categories_id);
+      appendIfValid('packageInclusives', Payload.packageInclusives);
+      appendIfValid('packageExclusives', Payload.packageExclusives);
 
       var resp = await axios.post(
         `${this.baseUrl}/update/customized/itenerary?id=${id}`,

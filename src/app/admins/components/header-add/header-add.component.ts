@@ -236,6 +236,12 @@ console.error(err)
           Tree_Name: 'Manage My Packages',
           identifierName: 'Manage My Packages',
         },
+
+        {
+          Tree_Name: 'Manage Custom Packages',
+          identifierName: 'Manage Custom Packages',
+        },
+
       ],
     },
   ];
