@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate, AnimationEvent } from '@angular/animations';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-explorations',
   templateUrl: './explorations.component.html',
@@ -15,6 +15,10 @@ import { trigger, state, style, transition, animate, AnimationEvent } from '@ang
   ]
 })
 export class ExplorationsComponent {
+
+  goSafaris(){
+  this.router.navigate(["/safaris"])
+  }
   block_quotes = [
     {
       creator: "Safari Enthusiast",
@@ -33,7 +37,7 @@ export class ExplorationsComponent {
   currentIndex = 0;
   state: 'visible' | 'hidden' = 'visible';
 
-  constructor() {
+  constructor(private router:Router) {
     this.startRotation();
   }
 
