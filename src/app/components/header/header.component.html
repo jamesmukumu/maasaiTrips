@@ -67,21 +67,10 @@
     </mat-list-item>
  
    
-    <mat-list-item (click)="toggleAccommodations()">
-      Maasai Mara
-      <mat-icon matListItemIcon class="ml-2">
-        {{ showAccommodations ? 'expand_less' : 'expand_more' }}
-      </mat-icon>
-    </mat-list-item>
-    
-    <div *ngIf="showAccommodations" class="pl-4">
-      <ng-container *ngFor="let node of featureDestinations">
-        <p style="color: black" (click)="goDest(node.destinationSlug)">
-          {{ node.destinationTitle }}
-        </p>
-      </ng-container>
-    </div>
-    
+   
+    <mat-list-item (click)="goDest('blogs')">
+      <span matListItemTitle>Maasai Mara</span>
+    </mat-list-item> 
     <mat-list-item (click)="accomodations()">
       <span matListItemTitle>Accomodations</span>
     </mat-list-item>   
