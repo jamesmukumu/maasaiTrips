@@ -147,8 +147,12 @@
     <app-maps  [origin]="origin" [destination]="dest" [wayPoints]="way_points"></app-maps>
   </div>
 
-  <div class="package-main-content">
-  </div>
+  <div class="book-safari-web">
+    <button class="button-5" role="button" (click)="book()">Book Safari</button>
+   </div>
+   <div class="book-safari">
+    <button class="button-5" role="button" (click)="book()">Book Safari</button>
+   </div> 
 <section class="related" *ngIf="relatedPackage.length > 0">
   <h3>Similar Maasai Mara Packages</h3>
 <feature-safaris [featureSafaris]="relatedPackage" [showOverview]="false"></feature-safaris>

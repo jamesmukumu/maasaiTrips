@@ -6,7 +6,7 @@
   <ul class="nav-links">
     <li (click)="home()"><a href="/">Home</a></li>
     <li class="dropdown">
-      <a href="/blog">Maasai Mara</a>
+      <a href="/blogs">Maasai Mara</a>
       <ul class="dropdown-menu">
         <li *ngFor="let dest of featureDestinations">
           <a target="_blank" [attr.href]="'blogs/' + dest.destinationTitle + '/' + dest.destinationSlug">

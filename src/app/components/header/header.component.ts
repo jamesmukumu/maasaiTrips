@@ -16,7 +16,7 @@ contact_us(){
 this.contactFormEmitter.emit("contact")
 }
   goDest(path:string){
-    this.route.navigate([`blog/${path}`])
+    this.route.navigate([`/${path}`])
   }
 seeDrawer:boolean = false
 toggle(){

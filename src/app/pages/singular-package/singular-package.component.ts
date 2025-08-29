@@ -16,7 +16,14 @@ export class SingularPackageComponent implements OnInit {
   @ViewChild("exclusions") exclusionsRef!: ElementRef;
   @ViewChild("itinerary") itineraryRef!: ElementRef;
   @ViewChild("overView") overViewRef!: ElementRef;
+  
 
+  book(){
+  this.contactRef.nativeElement.scrollIntoView({
+    behavior:"smooth",
+  block:"start"
+  })
+  }
   fetching = false;
   comprehensiveItinerary: any;
   packageData: any;

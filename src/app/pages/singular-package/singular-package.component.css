@@ -138,7 +138,10 @@ body {
   transform: scale(1.1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
+.book-safari-web{
+display: grid;
+place-content: center;
+}
 .social-button svg {
   width: 20px;
   height: 20px;
@@ -171,7 +174,10 @@ body {
   vertical-align: baseline;
   width: auto;
 }
+.book-safari{
+  display: none;
 
+}
 .button-5:hover,
 .button-5:focus {
   background-color: #e88b22;
@@ -402,6 +408,22 @@ mat-list-item span[matListItemTitle] {
 }
 
 @media (max-width: 768px) {
+  .book-safari-web{
+    display: hidden;
+  }
+  .book-safari{
+    
+    display: flex;
+    justify-content: center;
+    position: fixed;   /* Stick to viewport */
+    bottom: 0;         /* Push it to the bottom */
+    left: 0;
+    width: 100%;       /* Full width */
+    background: #fff;  /* Give it a background so it stands out */
+    padding: 0.5rem;   /* Some spacing */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* subtle shadow */
+    z-index: 999; 
+  }
   body{
   overflow-x: hidden;
   }
