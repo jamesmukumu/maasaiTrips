@@ -1,17 +1,5 @@
 <mat-card>
-    <p-fileUpload
-    class="upload"
-    name="demo[]"
-    url="https://www.primefaces.org/cdn/api/upload.php"
-    mode="basic"
-    accept=".csv"
-    (onUpload)="uploadCSV()"
-    (onSelect)="captureEmailTemplateCSV($event)"
-    chooseLabel="Choose Email-Templates CSV file"
-    [style]="{ 'background-color': 'green' }"
-    maxFileSize="1000000"
-  >
-  </p-fileUpload>
+ 
     <h1>Create new Email</h1>
     <form #createEmailFrom="ngForm">
     <mat-form-field >
@@ -54,6 +42,7 @@
     <mat-card-actions>
     <button mat-flat-button *ngIf="!processingRequest && createEmailFrom.valid" (click)="savingTemplate()">Create</button>
     <p-button disabled *ngIf="createEmailFrom.invalid"  [raised]="true" severity="warning">Save Mail</p-button>
+    <p-button disabled *ngIf="createEmailFrom.valid && processingRequest"  [raised]="true" loading severity="warning">Saving</p-button>
     
 
 

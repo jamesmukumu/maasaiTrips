@@ -64,3 +64,9 @@ margin-top: 10px;
 form{
 width: 90%;
 }
+
+@media(max-width:768px){
+  form{
+  width:100%;
+  }
+}
