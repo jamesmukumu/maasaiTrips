@@ -8,7 +8,7 @@
     Discover a curated selection of premium accommodations that cater to every taste and budget  
 </p>
   <mat-card  *ngIf="!findingDestinations" >
-  <div  *ngFor="let dest of destinations">
+  <div  *ngFor="let dest of destinations" (click)="goDestinations(dest.hotelSlug,dest.hotelName)" >
       <img (click)="goDestinations(dest.hotelSlug,dest.hotelName)" [src]="dest.hotelThumbnail" alt="" />
     
     <h4>{{ dest.hotelName }}</h4>

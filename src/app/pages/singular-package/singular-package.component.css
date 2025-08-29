@@ -290,6 +290,9 @@ place-content: center;
   word-break: break-word;
   white-space: normal;
 }
+.contact-section {
+  margin-top: 20px;
+}
 
 .package-overview-html img,
 .package-overview-html iframe {

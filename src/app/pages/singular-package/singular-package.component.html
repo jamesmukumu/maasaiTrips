@@ -144,7 +144,7 @@
       </p-tabPanel>
 
     </p-tabView>
-    <app-maps  [origin]="origin" [destination]="dest" [wayPoints]="way_points"></app-maps>
+    <app-maps  class="contact-section container" [origin]="origin" [destination]="dest" [wayPoints]="way_points"></app-maps>
   </div>
 
   <div class="book-safari-web">
@@ -163,5 +163,8 @@
   <div class="loader"></div>
 </div>
 <p-scrollTop/>
-<app-contact #contactRef></app-contact>
+<section class="contact-section container" >
+  <app-contact #contactRef></app-contact>
+</section>
+
 <footer></footer> 

@@ -1,5 +1,5 @@
 <h1>Blogs We think You will also Like.</h1>
-<div class="container"  *ngFor="let blogs of relatedBlogs">
+<div class="container"  *ngFor="let blogs of relatedBlogs" (click)="goBlog(blogs.blogSlug)">
     <div> 
      <img [src]="blogs.blogThumbnail" [alt]="blogs.blogTitle">
      </div>
@@ -7,6 +7,6 @@
          <h1>{{blogs.blogTitle}}</h1>
         
        <!--  -->
-         <button class="button-5" role="button" (click)="goBlog(blogs.blogSlug)">Read Blog</button>
+         <button class="button-5" role="button" (click)="goBlog(blogs.blogSlug)" >Read Blog</button>
          </div>
         </div>

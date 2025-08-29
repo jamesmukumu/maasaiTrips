@@ -15,7 +15,7 @@
         <div class="divider"></div>
       </div> -->
       
-       <div class="container"  *ngFor="let blogs of blogData">
+       <div class="container"  *ngFor="let blogs of blogData" (click)="goBlog(blogs.blogSlug)">
    <div> 
     <img [src]="blogs.blogThumbnail" alt="">
     </div>

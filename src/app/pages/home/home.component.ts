@@ -91,55 +91,43 @@ this.contactRef.nativeElement.scrollIntoView({
   })
 }
 homeImages = [
+  {
+    itemImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
+    thumbnailImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
+    alt: 'Luxury tent interior at Entim Private Camp, Maasai Mara',
+    subtitle: "JEEP SAFARIS",
+    title: '3-DAY MASAI MARA GROUP JOINING SAFARI ON 4X4 LANDCRUISER JEEP',
+    urlPath: "safaris/3_days_group_joining_maasai_mara"
+  },
 
+  {
+    itemImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
+    thumbnailImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
+    alt: 'Sundowner experience at Little Governors Camp, Maasai Mara',
+    subtitle: "SUNDOWNER EXPERIENCE",
+    title: '5-DAY MAASAI MARA LUXURY SAFARI WITH SUNDOWNERS',
+    urlPath: "safaris/5_days_maasai_mara_luxury_safari"
+  },
 
-{
-  itemImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
-  thumbnailImageSrc: '../../../assets/front_offers/tent-interior-entim-private-camp-masaimara.jpeg',
-  alt: 'Description for Image 1',
-  subtitle:"Jeep Safaris".toUpperCase(),
-  title: '3-Day Masai Group Joining Safari on 4x4 Landcruiser Jeep'.toUpperCase(),
-  urlPath:"safaris/3_days_4_nights_retreat_maasai_mara"
-},
+  {
+    itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
+    thumbnailImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
+    alt: 'Outdoor activities at Little Governors Camp, Maasai Mara',
+    subtitle: "WILDLIFE ENCOUNTERS",
+    title: '4-DAY MAASAI MARA BIG 5 WILDLIFE SAFARI',
+    urlPath: "safaris/4_days_maasai_mara_big_five_safari"
+  },
 
-{
-  itemImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
-  thumbnailImageSrc: '../../../assets/front_offers/sundowner-little-governors-camp.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Mt Kenya/Abedare Safari".toUpperCase(),
-  title: '5-Day Aberdare National Park and Nyeri Safari Itinerary'.toUpperCase(),
-  urlPath:"safaris/5_day_aberdare_national_park_and_nyeri_safari_itinerary"
-},
-{
-  itemImageSrc: '../../../assets/front_offers/maasai-village-culture.jpg',
-  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Abedare/Sambura Gateaway".toUpperCase(),
-  title: '4-Day Aberdare & Samburu Safari Escape'.toUpperCase(),
-  urlPath:"safaris/4_day_aberdare_samburu_safari_escape"
-},
-{
-  itemImageSrc: '../../../assets/front_offers/outdoor-activities-at-little-governors-camp.jpg',
-  thumbnailImageSrc: 'http://localhost:4200/assets/encounters.jpg',
-  alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '5-Day Nairobi, Tsavo East, Tsavo West & Amboseli Safari'.toUpperCase(),
-  urlPath:"safaris/5_day_nairobi_tsavo_east_tsavo_west_amboseli_safari"
-},
-{
-  itemImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
-  thumbnailImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
-  alt: 'Description for Image 1',
-  subtitle:"Turkana".toUpperCase(),
-  title: '4 Days Maasai Mara Honeymoon/Anniversary Package'.toUpperCase(),
-  urlPath:"safaris/4_days_maasai_mara_honeymoonanniversary_package"
-},
+  {
+    itemImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
+    thumbnailImageSrc: '../../../assets/front_offers/male-lion-entim-main-camp.jpeg',
+    alt: 'Male lion spotted near Entim Main Camp, Maasai Mara',
+    subtitle: "ROMANTIC GETAWAY",
+    title: '4-DAY MAASAI MARA HONEYMOON / ANNIVERSARY PACKAGE',
+    urlPath: "safaris/4_days_maasai_mara_honeymoon_package"
+  }
+];
 
-
-
-
-
-]
 responsiveOptions: any[] = [
   {
       breakpoint: '1024px',

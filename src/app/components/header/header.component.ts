@@ -42,10 +42,7 @@ featureDestinations = [
     "destinationTitle":"Maasai Mara Conservancy",
     "destinationSlug":"top-things-to-do-in-masai-mara-a-kenya-safari-wildlife-adventure"
     },
-    {
-      "destinationTitle":"Weather and Climate",
-      "destinationSlug":"top-things-to-do-in-masai-mara-a-kenya-safari-wildlife-adventure"
-      },
+  
       {
         "destinationTitle":"The Great Migration",
         "destinationSlug":"the-ultimate-hot-air-balloon-safari-experience-in-maasai-mara-kenya"
@@ -61,20 +58,18 @@ window.open(urlPath,"_blank")
 
 
 featureSafaris = [
-{
-safariTitle:"5-Day Aberdare National Park and Nyeri Safari Itinerary".toLowerCase(),
-safariSlug:"5_day_aberdare_national_park_and_nyeri_safari_itinerary"
-},
-{
-safariTitle:"4 Days Maasai Mara Honeymoon/Anniversary Package".toLowerCase(),
-safariSlug:"4_days_maasai_mara_honeymoonanniversary_package"
-},
-{
-safariTitle:"3 Days 4 Nights Retreat Maasai Mara".toLowerCase(),
-safariSlug:"3_days_4_nights_retreat_maasai_mara"
-}
-
-
+  {
+    safariTitle: "5-Day Ultimate Maasai Mara Safari Adventure".toLowerCase(),
+    safariSlug: "5_day_ultimate_maasai_mara_safari_adventure"
+  },
+  {
+    safariTitle: "4-Day Maasai Mara Honeymoon & Anniversary Escape".toLowerCase(),
+    safariSlug: "4_day_maasai_mara_honeymoon_anniversary_escape"
+  },
+  {
+    safariTitle: "3-Night Maasai Mara Wilderness Retreat".toLowerCase(),
+    safariSlug: "3_night_maasai_mara_wilderness_retreat"
+  }
 ]
 
   // control dropdown visibility

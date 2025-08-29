@@ -87,6 +87,7 @@ place-content: center;
 .container {
     display: flex;
     flex-direction: row;
+    cursor: pointer;
     align-items: center;
     justify-content: center;
     gap: 2rem;

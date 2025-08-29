@@ -1,6 +1,6 @@
 <section class="container">
     <div class="card-grid">
-      <div *ngFor="let off of featureSafaris" class="card">
+      <div *ngFor="let off of featureSafaris" class="card" (click)="seeSafari(off.packageSlug)">
         <img
           [src]="off.packageImage"
           alt="{{off.offerName}}"
