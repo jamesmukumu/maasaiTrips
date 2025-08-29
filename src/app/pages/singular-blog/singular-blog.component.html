@@ -10,8 +10,7 @@
     </div>
 
     <div class="blog-meta">
-      <span>Author: <b>{{ blogData.creator_blog.userName }}</b></span>
-      <span>Posted on: <b>{{ formatCreationDay(blogData.created_at) }}</b></span>
+
       <div [innerHTML]="sanitize(blogData.blogContent)"></div>
     </div>
 

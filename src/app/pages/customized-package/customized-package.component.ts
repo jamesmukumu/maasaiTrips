@@ -131,7 +131,7 @@ way_points:any[] = []
       this.fetching = true;
       const { data, relatedPackages } = await this.custom_package.fetchSingularPackages(this.packageSlug);
       this.packageData = data;
-      console.log(this.packageData)
+     
       this.transportSummary = JSON.parse(this.packageData.transportSummary)
       this.accomodationsSummary = this.packageData.accomodationSummary
       this.comprehensiveItinerary = data.packageAbout;

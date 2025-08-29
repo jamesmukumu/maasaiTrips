@@ -165,9 +165,14 @@
     .content-section {
       flex-direction: column;
     }
+    .image-section {
+      margin-left: -16px; 
+      margin-right: -16px;
+    }
     .main-image{
       height: 200px;
       border-radius: 0;
+      width: 100%;
     }
     .container {
       padding: 16px;
