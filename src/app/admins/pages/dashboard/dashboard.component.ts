@@ -61,6 +61,7 @@ async popDialog(){
 triggerChoosen(event:any){
 
 var {activeNode,Name} = event
+
 if(Name == 'Home'){
 this.activeIndex = 0
 }else if(Name == 'Account'){
@@ -72,6 +73,9 @@ this.activeIndex = 0
   this.adminChoosen = 2
 }else if(Name === "Onboardings"){
 this.activeIndex = 10
+}else if(Name === "Enquiries"){
+  this.activeIndex = 8
+
 }
 switch(activeNode){
 case "Create Email":
@@ -89,6 +93,14 @@ case "Send Bulk":
   case "Create Newsletter":
     this.activeIndex = 1
   this.emailChoosen = 4
+  break
+  case "Add Blog":
+    this.activeIndex = 7
+  this.choosenBlog = 1
+break
+  case "Manage Blogs":
+    this.activeIndex = 7
+  this.choosenBlog = 2
   break
   case "Show queue":
   this.activeIndex = 1

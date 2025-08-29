@@ -82,7 +82,7 @@
         </div>
 
         <!-- Submit -->
-        <button type="submit" class="button-5" >
+        <button type="submit" class="button-5"  *ngIf="!saving" >
           Submit
         </button>
         <app-buttons *ngIf="saving"></app-buttons>

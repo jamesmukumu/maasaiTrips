@@ -269,6 +269,24 @@ console.error(err)
       ],
     },
   ];
+  blogsCategories: MainCategory[] = [
+    {
+      Tree_Name: 'Blogs',
+      identifierName: 'Blogs',
+      Tree_Children: [
+        {
+          Tree_Name: 'Add Blog',
+          identifierName: 'Add Blog',
+        },
+        {
+          Tree_Name: 'Manage Blogs',
+          identifierName: 'Manage Blogs',
+        },
+    
+     
+      ],
+    },
+  ];
   categories: MainCategory[] = [
     {
       Tree_Name: 'Emails',
@@ -324,6 +342,7 @@ console.error(err)
     this.dataSourceAccounts.data = this.accountsCategories
     this.dataSourceDestinations.data = this.destinationsCategories
     this.dataSourceOnboardings.data = this.onboardingsCategories
+    this.dataSourceBlogs.data = this.blogsCategories
   }
   hasChild = (_: number, node: FlatNode) => node.expandable;
 

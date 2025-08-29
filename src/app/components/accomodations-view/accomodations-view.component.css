@@ -165,7 +165,10 @@
     .content-section {
       flex-direction: column;
     }
-    
+    .main-image{
+      height: 200px;
+      border-radius: 0;
+    }
     .container {
       padding: 16px;
     }
