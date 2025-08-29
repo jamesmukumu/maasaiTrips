@@ -145,11 +145,12 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
       };
       var resp = await this.mailer.sendBulks(payload);
       var { message } = resp;
-      if (message == 'Sent') {
+      if (message == 'Emails propagated') {
         this.msg.add({
           severity: 'success',
           detail: 'Emails Propagated',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       } else {
@@ -157,6 +158,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       }
@@ -202,6 +204,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'success',
           detail: 'Emails Propagated',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       } else {
@@ -209,6 +212,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       }
@@ -235,6 +239,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'success 😁',
           detail: 'Emails Propagated',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       } else {
@@ -242,6 +247,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
+          sticky:true
         });
         this.sendingMails = false;
       }
