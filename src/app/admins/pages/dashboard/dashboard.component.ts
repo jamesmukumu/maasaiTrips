@@ -58,6 +58,9 @@ async popDialog(){
   toggleAdmins(idx:number){
  this.adminChoosen = idx
   }
+  addUser(){
+    this.router.navigate(['4a2b67e4-6341-53c3-a2e4-f8188e65c12d/register'])
+  }
 triggerChoosen(event:any){
 
 var {activeNode,Name} = event

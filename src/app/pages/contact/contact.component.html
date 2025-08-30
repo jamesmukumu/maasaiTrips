@@ -104,7 +104,7 @@
         <div class="form-group consent-group">
           <label class="checkbox-label">
             <input type="checkbox" name="consent" ngModel required #consent="ngModel">
-            <span>I Hereby agree that this data will be stored and processed for the purposes of establishing contact *</span>
+            <span> I Hereby agree that this data will be stored and processed for the purposes of establishing contact *</span>
           </label>
           <div *ngIf="consent.invalid && consent.touched" class="error">
             You must agree before submitting.

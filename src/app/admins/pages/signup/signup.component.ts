@@ -72,16 +72,6 @@ this.seePassword = !this.seePassword
 
 
 ngOnInit(){
-var uniqueID  = uuidv5("http://localhost:4200/register",uuidv5.URL)
-
-
-this.activeRoute.paramMap.subscribe((data)=>{
-if(uniqueID != data.get('passkey')){
-this.router.navigate(["/"])
-}
-})
-
-
 }
 
 

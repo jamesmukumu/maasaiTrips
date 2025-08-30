@@ -282,8 +282,9 @@ MatTooltipModule,
       },
         
       {
-        path:"register",
-        component:SignupComponent
+        path:"4a2b67e4-6341-53c3-a2e4-f8188e65c12d/register",
+        component:SignupComponent,
+        canActivate:[authGuardGuard]
       },
       {
       component:VerifyEmailComponent,
