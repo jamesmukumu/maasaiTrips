@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 export class OnboardingsService {
   constructor() {}
-  baseUrl = `https://maasai-trips.laravel.cloud//api`;
+  baseUrl = `https://maasai-trips.laravel.cloud/api`;
 
   async saveOnboarding(Payload: any) {
     try {

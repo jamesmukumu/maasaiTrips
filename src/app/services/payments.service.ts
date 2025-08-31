@@ -6,7 +6,7 @@ import Cookies from 'js-cookie';
   providedIn: 'root',
 })
 export class PaymentsService {
-  baseUrl = 'https://maasai-trips.laravel.cloud//api';
+  baseUrl = 'https://maasai-trips.laravel.cloud/api';
   async initializePayment(load: any, id: any) {
     try {
       let payload = {
