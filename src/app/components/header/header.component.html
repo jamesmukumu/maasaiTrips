@@ -9,7 +9,7 @@
       <a href="/blogs">Maasai Mara</a>
       <ul class="dropdown-menu">
         <li *ngFor="let dest of featureDestinations">
-          <a target="_blank" [attr.href]="'blogs/'+ dest.destinationSlug">
+          <a target="_blank" [attr.href]="'blog/'+ dest.destinationSlug">
             {{ dest.destinationTitle }}
           </a>
         </li>
