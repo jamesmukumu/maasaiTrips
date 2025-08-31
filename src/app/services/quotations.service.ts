@@ -14,7 +14,6 @@ export interface Quotations {
   childrenCount: number;
   travelDescription: string;
   kidsAges: string;
- 
 }
 @Injectable({
   providedIn: 'root',
@@ -25,7 +24,7 @@ export class QuotationsService {
   async saveQuotation(Quote: any) {
     try {
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/quote',
+        'https://maasai-trips.laravel.cloud//api/save/quote',
         Quote
       );
       return resp.data;
@@ -37,7 +36,7 @@ export class QuotationsService {
   async updateEnquiry(Payload: Quotations) {
     try {
       var resp = await axios.put(
-        'https://maasai-trips.laravel.cloud/api/update/enquiry',
+        'https://maasai-trips.laravel.cloud//api/update/enquiry',
         Payload
       );
       return resp.data;
@@ -49,7 +48,7 @@ export class QuotationsService {
   async deleteEnquiry(email: string) {
     try {
       var resp = await axios.delete(
-        'https://maasai-trips.laravel.cloud/api/delete/enquiry',
+        'https://maasai-trips.laravel.cloud//api/delete/enquiry',
         {
           params: {
             email: email,
@@ -67,7 +66,7 @@ export class QuotationsService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'https://maasai-trips.laravel.cloud/api/fetch/enquiries',
+        'https://maasai-trips.laravel.cloud//api/fetch/enquiries',
         {
           headers: {
             Authorization: `Bearer ${token}`,

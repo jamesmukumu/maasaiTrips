@@ -16,7 +16,7 @@ export interface Promotional {
   providedIn: 'root',
 })
 export class NewslettersService {
-  baseUrl = 'https://maasai-trips.laravel.cloud/api';
+  baseUrl = 'https://maasai-trips.laravel.cloud//api';
 
   constructor() {}
   async saveNewsLetter(promotion: Promotional) {
@@ -143,7 +143,7 @@ export class NewslettersService {
       formData.append('destinations', dest);
 
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/propagate/promotional/newsletters',
+        'https://maasai-trips.laravel.cloud//api/propagate/promotional/newsletters',
         formData,
         {
           headers: {

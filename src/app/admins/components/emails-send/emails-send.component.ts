@@ -28,7 +28,7 @@ export class EmailsSendComponent implements OnInit {
   fetchEmails() {
     this.fetchingEmails = true;
     this.mailer
-      .fetchBulks('https://maasai-trips.laravel.cloud/api/fetch/bulk/emails')
+      .fetchBulks('https://maasai-trips.laravel.cloud//api/fetch/bulk/emails')
       .then((data: any) => {
         this.bulkEmails = data.data;
         this.fetchingEmails = false;

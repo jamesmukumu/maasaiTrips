@@ -43,16 +43,15 @@ import { addEnquiry } from '../../redux/actions/enquiry.action';
 export class HotelsDisplayComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('bg') bgRef!: ElementRef;
-  @ViewChild("contactRef") contactRef!:ElementRef
+  @ViewChild('contactRef') contactRef!: ElementRef;
   readonly dialog = inject(MatDialog);
 
-
-  contact_handler(event:any){
+  contact_handler(event: any) {
     this.contactRef.nativeElement.scrollIntoView({
-      behavior:"smooth",
-      block:"start"
-      })
-    }
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
 
   bgState: string = 'clear';
   destinations: any;
@@ -73,7 +72,6 @@ export class HotelsDisplayComponent {
     window.open(`/accomodation/${id}`, '_blank');
   }
   capturePage(event: any) {
-  
     var { length, pageSize } = event;
 
     this.activePage = pageSize;
@@ -87,7 +85,7 @@ export class HotelsDisplayComponent {
     this.findingDestinations = true;
     try {
       var { data } = await this.hotel.fetchHotelsDisplay(
-        `https://maasai-trips.laravel.cloud/api/fetch/display/hotels`
+        `https://maasai-trips.laravel.cloud//api/fetch/display/hotels`
       );
       this.destinations = data;
       this.hotelCount = data.length;

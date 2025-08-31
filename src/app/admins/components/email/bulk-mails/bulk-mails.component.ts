@@ -150,7 +150,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'success',
           detail: 'Emails Propagated',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       } else {
@@ -158,7 +158,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       }
@@ -204,7 +204,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'success',
           detail: 'Emails Propagated',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       } else {
@@ -212,7 +212,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       }
@@ -239,7 +239,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'success 😁',
           detail: 'Emails Propagated',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       } else {
@@ -247,7 +247,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
           severity: 'error',
           detail: 'Error sending mail',
           life: 10000,
-          sticky:true
+          sticky: true,
         });
         this.sendingMails = false;
       }
@@ -271,7 +271,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   fetchBulkMails() {
     this.processingTable = true;
     this.mailer
-      .fetchBulks('https://maasai-trips.laravel.cloud/api/fetch/bulk/emails')
+      .fetchBulks('https://maasai-trips.laravel.cloud//api/fetch/bulk/emails')
       .then((dataa) => {
         var {
           message,
