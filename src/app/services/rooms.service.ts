@@ -21,7 +21,7 @@ export interface Room {
   providedIn: 'root',
 })
 export class RoomsService {
-  baseUrl = 'https://maasai-trips.laravel.cloud/api';
+  baseUrl = 'https://admin.masaimaratrips.com/api';
   constructor() {}
 
   async fetchHotels() {

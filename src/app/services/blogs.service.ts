@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
   providedIn: 'root',
 })
 export class BlogsService {
-  baseUrl = 'https://maasai-trips.laravel.cloud/api';
+  baseUrl = 'https://admin.masaimaratrips.com/api';
   constructor() {}
 
   async createBlogCategory(blogCategory: any) {

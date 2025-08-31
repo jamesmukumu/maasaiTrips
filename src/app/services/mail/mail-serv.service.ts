@@ -42,7 +42,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/sync/bulks',
+        'https://admin.masaimaratrips.com/api/sync/bulks',
         {},
         {
           headers: {
@@ -60,7 +60,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/news/letter',
+        'https://admin.masaimaratrips.com/api/save/news/letter',
         payload,
         {
           headers: {
@@ -78,7 +78,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        'https://maasai-trips.laravel.cloud/api/update/news/letter',
+        'https://admin.masaimaratrips.com/api/update/news/letter',
         mailer,
         {
           headers: {
@@ -99,7 +99,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        'https://maasai-trips.laravel.cloud/api/update/mail/template',
+        'https://admin.masaimaratrips.com/api/update/mail/template',
         mailer,
         {
           headers: {
@@ -122,7 +122,7 @@ export class MailServService {
       var formData = new FormData();
       formData.append('imageCld', file);
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/to/cloud',
+        'https://admin.masaimaratrips.com/api/save/to/cloud',
         formData,
         {
           headers: {
@@ -141,7 +141,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'https://maasai-trips.laravel.cloud/api/fetch/my/alert/news/alerts',
+        'https://admin.masaimaratrips.com/api/fetch/my/alert/news/alerts',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -162,7 +162,7 @@ export class MailServService {
         '<img src="$2" alt="$3" />'
       );
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/live/preview',
+        'https://admin.masaimaratrips.com/api/live/preview',
         {
           content: refinedBody,
         },
@@ -183,7 +183,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.delete(
-        'https://maasai-trips.laravel.cloud/api/delete/bulks',
+        'https://admin.masaimaratrips.com/api/delete/bulks',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -203,7 +203,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.patch(
-        'https://maasai-trips.laravel.cloud/api/update/bulk/users',
+        'https://admin.masaimaratrips.com/api/update/bulk/users',
         bulk,
         {
           headers: {
@@ -224,7 +224,7 @@ export class MailServService {
     var token = Cookies.get('grant_token');
     try {
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/email/bulk',
+        'https://admin.masaimaratrips.com/api/save/email/bulk',
         Payload,
         {
           headers: {
@@ -244,7 +244,7 @@ export class MailServService {
       var formData = new FormData();
       formData.append('bulk_csv', csvFile);
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/bulk/from/csv',
+        'https://admin.masaimaratrips.com/api/save/bulk/from/csv',
         formData,
         {
           headers: {
@@ -261,7 +261,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.delete(
-        'https://maasai-trips.laravel.cloud/api/delete/news/letter',
+        'https://admin.masaimaratrips.com/api/delete/news/letter',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -280,7 +280,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.delete(
-        'https://maasai-trips.laravel.cloud/api/delete/email/template',
+        'https://admin.masaimaratrips.com/api/delete/email/template',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -300,7 +300,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.get(
-        'https://maasai-trips.laravel.cloud/api/fetch/email/templates',
+        'https://admin.masaimaratrips.com/api/fetch/email/templates',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -317,7 +317,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.get(
-        'https://maasai-trips.laravel.cloud/api/fetch/mail/status',
+        'https://admin.masaimaratrips.com/api/fetch/mail/status',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -338,7 +338,7 @@ export class MailServService {
       formData.append('destinations', dest);
 
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/send/alerts/newsletter',
+        'https://admin.masaimaratrips.com/api/send/alerts/newsletter',
         formData,
         {
           headers: {
@@ -366,7 +366,7 @@ export class MailServService {
         }
       }
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/send/bulk/mails',
+        'https://admin.masaimaratrips.com/api/send/bulk/mails',
         formData,
         {
           headers: {
@@ -412,7 +412,7 @@ export class MailServService {
       formData.append('ccs', Mail.ccs ?? '');
 
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/send/email',
+        'https://admin.masaimaratrips.com/api/send/email',
         formData,
         {
           headers: {
@@ -431,7 +431,7 @@ export class MailServService {
     try {
       var token = Cookies.get('grant_token') ?? '';
       var resp = await axios.post(
-        'https://maasai-trips.laravel.cloud/api/save/email/template',
+        'https://admin.masaimaratrips.com/api/save/email/template',
         Temp,
         {
           headers: {
@@ -451,7 +451,7 @@ export class MailServService {
       formData.append('mails_csv', csvFile);
       let token = Cookies.get('grant_token');
       var response = await axios.post(
-        `https://maasai-trips.laravel.cloud/api/save/mail/templates/csv`,
+        `https://admin.masaimaratrips.com/api/save/mail/templates/csv`,
         formData,
         {
           headers: {

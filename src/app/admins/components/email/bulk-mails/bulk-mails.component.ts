@@ -271,7 +271,7 @@ export class BulkMailsComponent implements OnInit, AfterViewInit {
   fetchBulkMails() {
     this.processingTable = true;
     this.mailer
-      .fetchBulks('https://maasai-trips.laravel.cloud/api/fetch/bulk/emails')
+      .fetchBulks('https://admin.masaimaratrips.com/api/fetch/bulk/emails')
       .then((dataa) => {
         var {
           message,

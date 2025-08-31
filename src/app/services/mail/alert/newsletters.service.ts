@@ -22,7 +22,7 @@ export interface alertNewsLetters {
   providedIn: 'root',
 })
 export class NewslettersService {
-  baseUrl = 'https://maasai-trips.laravel.cloud/api';
+  baseUrl = 'https://admin.masaimaratrips.com/api';
   constructor() {}
 
   async saveAlertsTemplate(AlertNewsLetter: alertNewsLetters) {
