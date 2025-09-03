@@ -17,6 +17,12 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   images:any[] = [
   {image1:null}
   ]
+  getCoordinates(event:any,index:any){
+ 
+    this.itinerary_comprehensive[index]['origin'].lng = event.lng
+    this.itinerary_comprehensive[index]['origin'].lat = event.lat
+   
+     }
   way_points:any[] = [
   {  
   lat:0,
@@ -28,12 +34,7 @@ export class CreateCustomizedIteneraryComponent implements OnInit {
   clientsEmail:any
 
   accomodationSummary:any[] = [
-  {
-  Date:null,
-  accomodation_id:null,
-  destination_id:null,
-  nights:null
-},
+
 {
     Date:null,
     accomodation_id:null,
@@ -78,10 +79,7 @@ DropOff:""
          lat:0,
          lng:0
         },
-        target_destination:{
-          lat:0,
-          lng:0
-         },
+      
     
   
       },
@@ -97,12 +95,7 @@ DropOff:""
            lat:0,
            lng:0
           },
-          target_destination:{
-            lat:0,
-            lng:0
-           },
      
-    
         },
     ];
     
@@ -132,10 +125,7 @@ DropOff:""
                lat:0,
                lng:0
               },
-              target_destination:{
-                lat:0,
-                lng:0
-               },
+            
          
         
             },);
@@ -252,8 +242,18 @@ DropOff:""
       
   
   
+  addAccomodationSummary(){
+    this.accomodationSummary.push(  {
+        Date:null,
+        accomodation_id:null,
+        destination_id:null,
+        nights:null
+      })
+  }
   
-  
+  popAccomodationSummary(){
+this.accomodationSummary.pop()
+  }
   
   
   readonly snack = inject(MatSnackBar)

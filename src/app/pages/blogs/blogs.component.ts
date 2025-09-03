@@ -35,7 +35,7 @@ formatCreationDay(time:string){
 return new Date(time).toDateString()
 }
 goBlog(baseUrl:string){
-window.open(`/blog/${baseUrl}`,'_blank')
+window.open(`/${baseUrl}`,'_blank')
 }
   bgBounce(){
     var observer = new IntersectionObserver((entries)=>{

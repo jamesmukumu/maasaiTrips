@@ -1,0 +1,20 @@
+<div class="card">
+    <p-carousel 
+        [value]="imgs" 
+        [numVisible]="3" 
+        [showNavigators]="false"
+        [numScroll]="3" 
+        [circular]="true" 
+        [responsiveOptions]="responsiveOptions" 
+        autoplayInterval="3000">
+        <ng-template let-img pTemplate="item">
+            <div class="m-2 p-2">
+                <img 
+                    [src]="img" 
+                    alt="Carousel Image" 
+                    class="gallery-thumb"
+                     />
+            </div>
+        </ng-template>
+    </p-carousel>
+  </div>

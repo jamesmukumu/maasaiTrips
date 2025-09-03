@@ -174,10 +174,7 @@ adjusting = false
    lat:0,
    lng:0
   },
-  target_destination:{
-    lat:0,
-    lng:0
-   },
+  
   })
   }
   removeDay(){
@@ -296,6 +293,14 @@ adjusting = false
   packageCharge = 0;
   packagePhoto: any;
   addPackageCategory = false;
+
+  
+  getCoordinates(event:any,index:any){
+ 
+    this.packageAbout[index]['origin'].lng = event.lng
+    this.packageAbout[index]['origin'].lat = event.lat
+   
+     }
   captureOverview(event: any) {
     var { htmlValue } = event;
     this.packageOverview = htmlValue;

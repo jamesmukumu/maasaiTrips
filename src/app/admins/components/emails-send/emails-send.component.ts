@@ -28,7 +28,7 @@ export class EmailsSendComponent implements OnInit {
   fetchEmails() {
     this.fetchingEmails = true;
     this.mailer
-      .fetchBulks('https://admin.masaimaratrips.com/api/fetch/bulk/emails')
+      .fetchBulks('https://maasai-trips.laravel.cloud/api/fetch/bulk/emails')
       .then((data: any) => {
         this.bulkEmails = data.data;
         this.fetchingEmails = false;
@@ -44,7 +44,7 @@ export class EmailsSendComponent implements OnInit {
     this.attachments = currentFiles;
   }
   captureMessage(event: any) {
-    var { htmlValue } = event;
+    let htmlValue = event.args[1];
     this.message = htmlValue;
   }
   sendingEmail() {

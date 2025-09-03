@@ -25,7 +25,7 @@ export interface Hotel {
 })
 export class HotelsService {
   constructor() {}
-  baseUrl = 'https://admin.masaimaratrips.com/api';
+  baseUrl = 'https://maasai-trips.laravel.cloud/api';
 
   async saveHotel(hotel: any) {
     try {
@@ -206,7 +206,7 @@ export class HotelsService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.put(
-        `https://admin.masaimaratrips.com/api/unpublish/hotel`,
+        `https://maasai-trips.laravel.cloud/api/unpublish/hotel`,
         {},
         {
           headers: {
@@ -465,7 +465,7 @@ export class HotelsService {
       let formData = new FormData();
       formData.append('hotels_csv', hotelCSV);
       var response = await axios.post(
-        'https://admin.masaimaratrips.com/api/save/hotels/csv',
+        'https://maasai-trips.laravel.cloud/api/save/hotels/csv',
         formData,
         {
           headers: {
@@ -485,7 +485,7 @@ export class HotelsService {
       let formData = new FormData();
       formData.append('destinations_csv', destinationsCSV);
       var response = await axios.post(
-        'https://admin.masaimaratrips.com/api/save/destinations/from/csv',
+        'https://maasai-trips.laravel.cloud/api/save/destinations/from/csv',
         formData,
         {
           headers: {

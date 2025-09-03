@@ -2,10 +2,28 @@
 <div [classList]="fetchingDestination ? 'spin' : 'no-spin'">
   <div class="loader"></div>
 </div>
-<div class="safaris" *ngIf="!fetchingDestination"  [@bounceRight]="bgState" #bg>
-  <h1>{{destinationData.hotelName}}</h1>
-
+<div
+  class="safaris"
+  *ngIf="!fetchingDestination"
+  [@bounceRight]="bgState"
+  #bg
+  [ngStyle]="{
+    'background-image': 'url(' +destinationData.hotelThumbnail+')',
+    'background-position': 'center',
+    'overflow': 'hidden',
+    'background-repeat': 'no-repeat',
+    'min-height': '100vh',
+    'width': '100%',
+    'display': 'flex',
+    'flex-direction': 'column',
+    'justify-content': 'center',
+    'align-items': 'center',
+    'background-size': 'cover'
+  }"
+>
+  <h1>{{ destinationData.hotelName }}</h1>
 </div>
+
 <mat-card class="container">
   <h1>{{ destinationData.hotelName }}</h1>
   <div *ngIf="!fetchingDestination" class="content-column">
@@ -13,24 +31,30 @@
 
     <div class="description-wrapper">
       <mat-card-content
-        style="margin-top: 20px"
+        style="margin-top: 00px"
         [innerHTML]="destinationDescription"
       ></mat-card-content>
       <mat-card-content
-        style="margin-top: 20px"
+        style="margin-top: 0px"
         class="truncate-text"
         [innerHTML]="destinationAbout"
       ></mat-card-content>
-      <mat-card-content
-        style="margin-top: 20px"
+      <!-- <mat-card-content
+        style="margin-top: 10px"
         class="truncate-text"
         [innerHTML]="hotelMetaDescription"
-      ></mat-card-content>
+      ></mat-card-content> -->
 
      
       
     </div>
-
+<app-accomodations-gallery [imgs]="destinationPhoto"></app-accomodations-gallery>
+<div class="book-safari-web">
+  <button class="button-5" role="button" (click)="book()">Book This Hotel</button>
+ </div>
+ <div class="book-safari">
+  <button class="button-5" role="button" (click)="book()">Book This Hotel</button>
+ </div> 
     <div class="map-wrapper">
     
       <google-map
@@ -63,5 +87,5 @@
 </mat-card>
 
 
-<app-contact id="contact"></app-contact>
+<app-contact id="contact" #contactRef></app-contact>
 <footer></footer>

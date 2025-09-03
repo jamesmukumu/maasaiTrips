@@ -181,6 +181,10 @@ mat-card-content {
   white-space: normal;
   word-break: break-word;
 }
+mat-card div button {
+  display: block;
+  margin: 10px auto 0 auto; /* auto left-right centers */
+}
 .button-5 {
   align-items: center;
   background-clip: padding-box;

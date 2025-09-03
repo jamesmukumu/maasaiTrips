@@ -9,7 +9,10 @@ import { Hotel,HotelsService } from '../../../../services/hotels.service';
 })
 export class EditHotelsComponent {
   constructor(private hotels:HotelsService){}
-
+  receiveCoordinates(coordinates:any){
+    this.hotelLatitude = coordinates.lat
+    this.hotelLongitude = coordinates.lng
+    }
   hotelName:string = ''
   hotelDescription = ''
   hotelMetaDescription = ''

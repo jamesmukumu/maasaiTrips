@@ -61,12 +61,12 @@
                   <mat-icon (click)="saveInfo(element)" style="cursor: pointer;"  matTooltip="Edit Inquiry">edit</mat-icon>
                   <span>Edit</span>
                 </button>
-                <button mat-menu-item *ngIf="!element.quotationAddressed">
+                <button mat-menu-item *ngIf="!element.quotationAddressed" (click)="toggleEnquiry(element,true)" >
                   <mat-icon style="cursor: pointer;color: green;"  matTooltip="Edit Status">edit</mat-icon>
                   <span>Mark Addressed</span>
                 </button>
-
-                <button mat-menu-item *ngIf="element.quotationAddressed">
+ 
+                <button mat-menu-item *ngIf="element.quotationAddressed" (click)="toggleEnquiry(element,false)">
                   <mat-icon style="cursor: pointer;color: red;"  matTooltip="Edit Status">edit</mat-icon>
                   <span>Mark Un-Addressed</span>
                 </button>

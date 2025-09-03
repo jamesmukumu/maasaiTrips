@@ -4,7 +4,7 @@ import axios from 'axios';
   providedIn: 'root',
 })
 export class GalleryService {
-  baseUrl = 'https://admin.masaimaratrips.com/api';
+  baseUrl = 'https://maasai-trips.laravel.cloud/api';
   constructor() {}
 
   async fetchGalleria() {

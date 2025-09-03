@@ -5,7 +5,7 @@ import Cookies from 'js-cookie';
   providedIn: 'root',
 })
 export class PackagesService {
-  baseUrl: string = 'https://admin.masaimaratrips.com/api';
+  baseUrl: string = 'https://maasai-trips.laravel.cloud/api';
   constructor() {}
 
   async addPackage(Payload: any) {

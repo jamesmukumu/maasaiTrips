@@ -15,6 +15,6 @@ formatCreationDay(time:string){
 return new Date(time).toLocaleDateString()
 }
 goBlog(baseUrl:string){
-  window.open(`/blog/${baseUrl}`,'_blank')
+  window.open(`/${baseUrl}`,'_blank')
   }
 }

@@ -63,6 +63,9 @@
     background-color: #EF4444;
   }
   
+  .room-enquiries{
+    background-color: purple;
+  }
   .booking-pending-card, .claim-pending-card {
     background-color: #F59E0B;
   }

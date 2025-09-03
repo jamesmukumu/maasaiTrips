@@ -412,7 +412,7 @@ mat-list-item span[matListItemTitle] {
 
 @media (max-width: 768px) {
   .book-safari-web{
-    display: hidden;
+    display: none;
   }
   .book-safari{
     

@@ -169,6 +169,9 @@ import { TransPortSummaryComponent } from './components/trans-port-summary/trans
 import { AccomodationsSummaryComponent } from './components/accomodations-summary/accomodations-summary.component';
 import { DestinationViewComponent } from './components/destination-view/destination-view.component';
 import { AccomodationsViewComponent } from './components/accomodations-view/accomodations-view.component';
+import { MapPickerComponent } from './components/map-picker/map-picker.component';
+import { MapPickerPackagesComponent } from './components/map-picker-packages/map-picker-packages.component';
+import { AccomodationsGalleryComponent } from './components/accomodations-gallery/accomodations-gallery.component';
 const reducers:ActionReducerMap<any> = {
   enquiry:enquiryReducer,
   bulks:bulkReducer,
@@ -188,7 +191,7 @@ const reducers:ActionReducerMap<any> = {
 
   const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
-  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent, OnboardComponent, PreLoaderComponent, GalleryComponent, DashNavComponent, PlannerComponent, FeaturePatnersComponent, CreateOnboardingsComponent, DestinationOnboardingComponent, PackageOnboardingComponent, HotelOnboardingComponent, FeedbackComponent, FeatureSafarisComponent, TestmonialsComponent, ExplorationsComponent, FooterFormComponent, ButtonsComponent, ManagePackageCategoryComponent, LoaderComponent, MapsComponent, CreateCustomizedIteneraryComponent, ManageCustomizedPackagesComponent, CustomizedPackageComponent, CarouselComponent, TransPortSummaryComponent, AccomodationsSummaryComponent, DestinationViewComponent, AccomodationsViewComponent ],
+  declarations: [AppComponent,HeaderComponent, HomeComponent, OverviewComponent, FrequentQuestComponent, FooterComponent, SafarisComponent, QuotationsComponent, AccomodationsComponent, HotelsComponent, PatnersComponent, EnquiriesComponent, EditEnquiryComponent, DeleteInquiryComponent, SignupComponent, SigninComponent, HeaderAddComponent, NotFoundComponent, VerifyEmailComponent, ResetPasswordComponent, RequestResetComponent, DashboardComponent, EmailsSendComponent, NewEmailComponent, BulkMailsComponent, NewBulkAddComponent, UpdateBulkComponent, DeleteBulkComponent, NewsLetterComponent, QueueComponent, ManageMailsComponent, ManageNewslettersComponent, PreviewComponent, AlertNewsComponent, PromotionalnewslettersComponent, PreviewAllComponent, UpdateAlertNewsLettersComponent, ManagePromotionalsComponent, AdminProfileComponent, CreateHotelsComponent, ManageHotelsComponent, CreateRoomComponent, ManageRoomComponent, DestinationsComponent, SingleDestinationComponent, AddDestinationsComponent, ManageDestinationsComponent, RelatedHotelsComponent, HotelsDisplayComponent, SingleHotelComponent, RoomsComponent, AddPackageComponent, ManagePackagesComponent, PackagesComponent, SingularPackageComponent, RelatedPackagesComponent, EditHotelsComponent, RequestquoteComponent, ManageadminsComponent, ContactComponent, EmptyDataComponent, CreateBlogsComponent, ManageBlogsComponent, AddBlogCategoryComponent, BlogsComponent, SingularBlogComponent, RelatedBlogsComponent, AboutUsComponent, TeamComponent, OnboardComponent, PreLoaderComponent, GalleryComponent, DashNavComponent, PlannerComponent, FeaturePatnersComponent, CreateOnboardingsComponent, DestinationOnboardingComponent, PackageOnboardingComponent, HotelOnboardingComponent, FeedbackComponent, FeatureSafarisComponent, TestmonialsComponent, ExplorationsComponent, FooterFormComponent, ButtonsComponent, ManagePackageCategoryComponent, LoaderComponent, MapsComponent, CreateCustomizedIteneraryComponent, ManageCustomizedPackagesComponent, CustomizedPackageComponent, CarouselComponent, TransPortSummaryComponent, AccomodationsSummaryComponent, DestinationViewComponent, AccomodationsViewComponent, MapPickerComponent, MapPickerPackagesComponent, AccomodationsGalleryComponent ],
   imports: [
     BrowserModule,  
     AppRoutingModule,
@@ -249,96 +252,79 @@ MatTooltipModule,
  MatInputModule,
     RouterModule.forRoot([
       {
-        component:AboutUsComponent,
-        path:"about/us"
-      }, 
-   
-
-    {
-      component:HotelsDisplayComponent,
-      path:"accomodations"
-     },
-     {
-      component:SingularBlogComponent,
-      path:"blog/:blogSlug"
-     },
-    
-     {
-      component:SingleHotelComponent,
-      path:"accomodation/:hotelSlug"
-    }, 
-    {
-    component:SingularPackageComponent,
-    path:"safaris/:packageSlug"
-    },
-    {
-      component:CustomizedPackageComponent,
-      path:"customized/safari/:packageSlug"
-      },
-
-    {
-      path:"login",
-      component:SigninComponent
-      },
-        
-      {
-        path:"4a2b67e4-6341-53c3-a2e4-f8188e65c12d/register",
-        component:SignupComponent,
-        canActivate:[authGuardGuard]
+        path: "about/us",
+        component: AboutUsComponent
       },
       {
-      component:VerifyEmailComponent,
-      path:"verify/email/:token"
+        path: "accomodations",
+        component: HotelsDisplayComponent
       },
       {
-        component:SingleDestinationComponent,
-        path:"destinations/:destinationTitle/:destinationsid"
-      },  
-      {
-        component:PreviewAllComponent,
-        path:"preview"
+        path: "accomodation/:hotelSlug",
+        component: SingleHotelComponent
       },
       {
-component:DashboardComponent,
-path:"dashboard",
-canActivate:[authGuardGuard]
-      }, 
+        path: "safaris",
+        component: SafarisComponent
+      },
       {
-      component:DestinationsComponent,
-      path:"destinations",
-      resolve:{
-      destinations:destinationsResolver
+        path: "safaris/:packageSlug",
+        component: SingularPackageComponent
+      },
+      {
+        path: "customized/safari/:packageSlug",
+        component: CustomizedPackageComponent
+      },
+      {
+        path: "blogs",
+        component: BlogsComponent
+      },
+      {
+        path: "gallery",
+        component: GalleryComponent
+      },
+      {
+        path: "login",
+        component: SigninComponent
+      },
+      {
+        path: "4a2b67e4-6341-53c3-a2e4-f8188e65c12d/register",
+        component: SignupComponent,
+        canActivate: [authGuardGuard]
+      },
+      {
+        path: "verify/email/:token",
+        component: VerifyEmailComponent
+      },
+      {
+        path: "preview",
+        component: PreviewAllComponent
+      },
+      {
+        path: "dashboard",
+        component: DashboardComponent,
+        canActivate: [authGuardGuard]
+      },
+      {
+        path: "reset/password/:token",
+        component: ResetPasswordComponent
+      },
+      {
+        path: "",
+        component: HomeComponent,
+        resolve: {
+          packages: packagesResolver
+        }
+      },
+      {
+        path: ":blogSlug",
+        component: SingularBlogComponent
+      },
+      {
+        path: "**",
+        component: NotFoundComponent
       }
-      },
-
-      {
-      component:ResetPasswordComponent,
-      path:"reset/password/:token"
-      },
-      {
-      component:HomeComponent,
-      path:"",
-      resolve:{
-        packages:packagesResolver
-      }
-      },
-     {
-      path:"safaris",
-component:SafarisComponent
-      },
-      {
-      path:"blogs",
-      component:BlogsComponent
-      },
-      {
-        path:"gallery",
-        component:GalleryComponent
-      },
     
-      {
-        path:"**",
-        component:NotFoundComponent
-      },
     ],{
       anchorScrolling: 'enabled',      
       scrollPositionRestoration: 'enabled', 

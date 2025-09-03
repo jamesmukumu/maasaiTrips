@@ -190,13 +190,16 @@ this.checkExplores()
 
 }
 package_data:any
-
+fethcing = false
 async ngOnInit(){
 this.titlePage.setTitle("Maasai Mara Trips")
 let data_dummy = this.router.snapshot.data['packages']
 
 this.package_data = [...data_dummy.airPackages,...data_dummy.jeepPackages,...data_dummy.vanPackages,...data_dummy.landCruiserPackages]
-this.package_data.length = 6
+if(this.package_data.length > 6){
+ this.package_data.length = 6
+}
+
 }
 
 }

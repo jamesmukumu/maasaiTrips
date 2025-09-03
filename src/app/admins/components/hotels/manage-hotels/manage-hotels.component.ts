@@ -20,6 +20,11 @@ readonly dialog = inject(MatDialog)
   grant_all_functions = false
   popEditor = false;
   hotelNameDelete = '';
+
+  receiveCoordinates(coordinates:any){
+    this.latitude = coordinates.lat
+    this.longitude = coordinates.lng
+    }
   idSelected: number = 0;
   latitude:any
   longitude:any

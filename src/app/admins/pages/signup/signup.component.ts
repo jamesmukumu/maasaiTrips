@@ -47,6 +47,10 @@ case "Duplicacy Detected":
 this.processingRequest = false
 this.msg.add({life:10000,severity:"error","detail":"Email or phone Number already in use",summary:"Duplicacy detected"})
 break;
+default:
+this.processingRequest = false
+this.msg.add({life:10000,severity:"error","detail":message,summary:"Something went wrong"})
+
 }
 
 

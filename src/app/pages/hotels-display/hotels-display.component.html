@@ -13,9 +13,9 @@
     
     <h4>{{ dest.hotelName }}</h4>
      
-      <mat-card-content [innerHTML]="sanitize(dest.hotelDescription)"></mat-card-content>
+      <!-- <mat-card-content [innerHTML]="sanitize(dest.hotelDescription)"></mat-card-content> -->
     
-    <button class="button-5" (click)="requestQuote(dest.hotelName)" role="button">Request Quote</button>
+    <button class="button-5" (click)="requestQuote(dest.hotelName)" role="button">Book Now</button>
     </div>
   </mat-card>
   <div [classList]="findingDestinations ? 'spin':'no-spin'">

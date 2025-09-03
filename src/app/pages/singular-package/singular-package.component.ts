@@ -4,7 +4,7 @@ import { PackagesService } from '../../services/packages.service';
 import { DomSanitizer, SafeHtml, Title } from '@angular/platform-browser';
 import { Gallery, GalleryItem, ImageItem } from 'ng-gallery';
 import { Lightbox } from 'ng-gallery/lightbox';
-
+import { Meta } from '@angular/platform-browser';
 @Component({
   selector: 'singular-package',
   templateUrl: './singular-package.component.html',
@@ -39,7 +39,8 @@ export class SingularPackageComponent implements OnInit {
     private sanitizor: DomSanitizer,
     private packages: PackagesService,
     private gallery: Gallery,
-    private lightbox: Lightbox
+    private lightbox: Lightbox,
+    private meta:Meta
   ) {}
 
   goOverview() {
@@ -138,6 +139,7 @@ way_points:any[] = []
       this.comprehensiveItinerary = data.packageAbout;
       this.origin = data.packageAbout[0]['origin']
       data.packageAbout.slice(1,data.packageAbout.length-1).map((wayPoint:any)=>{
+       
        this.way_points.push(
         {
         location:{
@@ -149,7 +151,7 @@ way_points:any[] = []
        )
       })
     
-      this.dest = data.packageAbout[data.packageAbout.length- 1]['target_destination']
+      this.dest = data.packageAbout[data.packageAbout.length- 1]['origin']
       this.imagesPackage = JSON.parse(data.packageImages);
       this.relatedPackage = relatedPackages;
 
@@ -165,7 +167,11 @@ way_points:any[] = []
       this.fetching = false;
       this.loadGalleryImages();
       this.titlePage.setTitle(`${this.packageData.packageTitle} | Maasai Mara Trips`);
-    } catch (err) {
+ this.meta.addTag({
+name:this.packageData.packageTitle,
+content:this.packageData.packageTitle
+ })      
+} catch (err) {
       console.error(err);
       this.fetching = false;
     }

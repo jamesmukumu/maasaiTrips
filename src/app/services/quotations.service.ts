@@ -24,7 +24,7 @@ export class QuotationsService {
   async saveQuotation(Quote: any) {
     try {
       var resp = await axios.post(
-        'https://admin.masaimaratrips.com/api/save/quote',
+        'https://maasai-trips.laravel.cloud/api/save/quote',
         Quote
       );
       return resp.data;
@@ -36,7 +36,7 @@ export class QuotationsService {
   async updateEnquiry(Payload: Quotations) {
     try {
       var resp = await axios.put(
-        'https://admin.masaimaratrips.com/api/update/enquiry',
+        'https://maasai-trips.laravel.cloud/api/update/enquiry',
         Payload
       );
       return resp.data;
@@ -48,7 +48,7 @@ export class QuotationsService {
   async deleteEnquiry(email: string) {
     try {
       var resp = await axios.delete(
-        'https://admin.masaimaratrips.com/api/delete/enquiry',
+        'https://maasai-trips.laravel.cloud/api/delete/enquiry',
         {
           params: {
             email: email,
@@ -66,7 +66,7 @@ export class QuotationsService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'https://admin.masaimaratrips.com/api/fetch/enquiries',
+        'https://maasai-trips.laravel.cloud/api/fetch/enquiries',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -76,6 +76,27 @@ export class QuotationsService {
       return resp.data;
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  async markEnquiry(id: any, status: any) {
+    try {
+      let token = Cookies.get('grant_token');
+      let response = await axios.post(
+        `https://maasai-trips.laravel.cloud/api/toggle/enquiry/${status}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: `${id}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
     }
   }
 }

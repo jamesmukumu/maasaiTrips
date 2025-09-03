@@ -36,6 +36,13 @@ var elementString = JSON.stringify(element)
 this.store.dispatch(editEnquiryAction({editValue:elementString}))
 this.editor()
 }
+toggleEnquiry(element:any,state:any){
+this.quotations.markEnquiry(element.id,state).then((data:any)=>{
+  if(data.message == "Enquiry Status updated"){
+   this.fetchingEnquiryData()
+  }
+}).catch((err)=>console.error(err))
+}
 editor(){
 this.dialog.open(EditEnquiryComponent,{
  
@@ -54,7 +61,7 @@ this.processingFetchRequest = true
 this.quotations.fetchQuotations().then((dataa)=>{
 var {data} = dataa
 
-if( data.message == 'No Active Enquiries'){
+if( data == 'No Active Enquiries'){
 this.processingFetchRequest = false
 this.dataPresent = false
 

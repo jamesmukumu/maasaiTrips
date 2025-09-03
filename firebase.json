@@ -1,0 +1,19 @@
+{
+  "hosting": {
+    "public": "dist/maasai-trips/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "predeploy": [
+      "npm run build"
+    ]
+  }
+}

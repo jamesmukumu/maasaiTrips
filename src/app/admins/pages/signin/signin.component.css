@@ -3,6 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+mat-form-field{
+margin-top: 20px;
+}
 .button-5 {
   align-items: center;
   background-clip: padding-box;

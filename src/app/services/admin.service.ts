@@ -14,11 +14,31 @@ export interface Register {
 export class AdminService {
   constructor() {}
 
+  async deleteAdmin(id: any) {
+    try {
+      let token = Cookies.get('grant_token');
+      let response = await axios.delete(
+        'https://maasai-trips.laravel.cloud/api/delete/admin',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          params: {
+            id: id,
+          },
+        }
+      );
+      return response.data;
+    } catch (err) {
+      return err;
+    }
+  }
+
   async findAllUsers() {
     try {
       var token = Cookies.get('grant_token');
       var response = await axios.get(
-        'https://admin.masaimaratrips.com/api/see/all/users',
+        'https://maasai-trips.laravel.cloud/api/see/all/users',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -35,7 +55,7 @@ export class AdminService {
     try {
       let token = Cookies.get('grant_token');
       var resp = await axios.post(
-        'https://admin.masaimaratrips.com/api/update/admin',
+        'https://maasai-trips.laravel.cloud/api/update/admin',
         Reg,
         {
           headers: {
@@ -56,7 +76,7 @@ export class AdminService {
   async Register(Reg: Register) {
     try {
       var resp = await axios.post(
-        'https://admin.masaimaratrips.com/api/register/user',
+        'https://maasai-trips.laravel.cloud/api/register/user',
         Reg
       );
       return resp.data;
@@ -68,7 +88,7 @@ export class AdminService {
   async verifyEmail(tokenString: string) {
     try {
       var resp = await axios.put(
-        'https://admin.masaimaratrips.com/api/verify/email',
+        'https://maasai-trips.laravel.cloud/api/verify/email',
         {},
         {
           headers: {
@@ -84,7 +104,7 @@ export class AdminService {
   async completeReset(Token: string, password: string, completePass: string) {
     try {
       var resp = await axios.put(
-        'https://admin.masaimaratrips.com/api/reset/password',
+        'https://maasai-trips.laravel.cloud/api/reset/password',
         {
           password: password,
           confirmPassword: completePass,
@@ -103,7 +123,7 @@ export class AdminService {
   async requestResets(Email: string) {
     try {
       var resp = await axios.post(
-        'https://admin.masaimaratrips.com/api/request/reset',
+        'https://maasai-trips.laravel.cloud/api/request/reset',
         {
           Email: Email,
         }
@@ -116,7 +136,7 @@ export class AdminService {
   async login(credential: string, password: string) {
     try {
       var resp = await axios.post(
-        'https://admin.masaimaratrips.com/api/login/user',
+        'https://maasai-trips.laravel.cloud/api/login/user',
         {
           credential: credential,
           password: password,
@@ -137,7 +157,7 @@ export class AdminService {
     try {
       var token = Cookies.get('grant_token');
       var resp = await axios.get(
-        'https://admin.masaimaratrips.com/api/fetch/user/profile',
+        'https://maasai-trips.laravel.cloud/api/fetch/user/profile',
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -153,8 +173,8 @@ export class AdminService {
   async un_makeSuperUser(id: any) {
     try {
       var token = Cookies.get('grant_token');
-      var response = await axios.put(
-        'https://admin.masaimaratrips.com/api/unmake/super/user',
+      var response = await axios.post(
+        'https://maasai-trips.laravel.cloud/api/unmake/super/user',
         {},
         {
           params: {
@@ -174,8 +194,8 @@ export class AdminService {
   async makeSuperUser(id: any) {
     try {
       var token = Cookies.get('grant_token');
-      var response = await axios.put(
-        'https://admin.masaimaratrips.com/api/make/super/user',
+      var response = await axios.post(
+        'https://maasai-trips.laravel.cloud/api/make/super/user',
         {},
         {
           params: {
@@ -195,7 +215,7 @@ export class AdminService {
   async fetchStats() {
     try {
       let response = await axios.get(
-        'https://admin.masaimaratrips.com/api/fetch/nav/stats',
+        'https://maasai-trips.laravel.cloud/api/fetch/nav/stats',
         {
           headers: {
             Authorization: `Bearer ${Cookies.get('grant_token')}`,

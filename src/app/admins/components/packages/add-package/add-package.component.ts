@@ -33,10 +33,7 @@ itinerary_comprehensive: any[] = [
        lat:0,
        lng:0
       },
-      target_destination:{
-        lat:0,
-        lng:0
-       },
+    
   
 
     },
@@ -51,17 +48,23 @@ itinerary_comprehensive: any[] = [
          lat:0,
          lng:0
         },
-        target_destination:{
-          lat:0,
-          lng:0
-         },
+      
    
   
       },
   ];
   
   
-  
+
+
+  getCoordinates(event:any,index:any){
+ 
+ this.itinerary_comprehensive[index]['origin'].lng = event.lng
+ this.itinerary_comprehensive[index]['origin'].lat = event.lat
+
+  }
+
+
   addDay() {
     this.itinerary_comprehensive.push(
         {
@@ -74,10 +77,7 @@ itinerary_comprehensive: any[] = [
              lat:0,
              lng:0
             },
-            target_destination:{
-              lat:0,
-              lng:0
-             },
+        
        
       
           },);

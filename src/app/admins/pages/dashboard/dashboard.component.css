@@ -69,12 +69,12 @@ span {
 header-add {
   width: max-content;
 }
-mat-list mat-list-item:hover {
-  color: transparent !important;
+mat-list mat-list-item span,
+mat-list mat-list-item mat-icon {
+  color: white !important;
 }
-span:hover{
-color: white;
-}
+
+
 @media (max-width: 768px) {
   .main mat-card {
     display: none;

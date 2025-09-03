@@ -398,7 +398,9 @@
             [style]="{ 'min-height': '50vh' }"
             placeholder="Enter a nice meal plan"
           />
-
+          <section>
+            <app-map-picker (coords)="getCoordinates($event,p)"></app-map-picker>
+           </section>
 
 
           <mat-form-field>
@@ -426,29 +428,9 @@
             <mat-hint>Example:36.677</mat-hint>
           </mat-form-field>
       
-          <mat-form-field>
-            <mat-label>Target(Latitiude) {{ p + 1 }} </mat-label>
-            <input
-              required
-              type="number"
-              name="package-lat-target-{{ p }}"
-              matInput
-              [(ngModel)]="itnerary.target_destination.lat"
-            />
-            <mat-hint>Example:1.345</mat-hint>
-          </mat-form-field>
+          
       
-          <mat-form-field>
-            <mat-label>Target(Longitude) {{ p + 1 }} </mat-label>
-            <input
-              required
-              type="number"
-              name="package-longitude-target-{{ p }}"
-              matInput
-              [(ngModel)]="itnerary.target_destination.lng"
-            />
-            <mat-hint>Example:36.677</mat-hint>
-          </mat-form-field>
+     
          
         </div>
          

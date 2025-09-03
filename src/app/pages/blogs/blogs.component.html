@@ -17,7 +17,7 @@
       
        <div class="container"  *ngFor="let blogs of blogData" (click)="goBlog(blogs.blogSlug)">
    <div> 
-    <img [src]="blogs.blogThumbnail" alt="">
+    <img [src]="blogs.blogThumbnail" [alt]="blogData.blogTitle">
     </div>
     <div class="blog-meta">
         <h1>{{blogs.blogTitle}}</h1>

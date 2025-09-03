@@ -18,6 +18,7 @@ readonly dialog = inject(MatDialog)
 constructor(private store:Store,private enquiry:QuotationsService){}
 firstName:string = ""
 secondName:string = ""
+contactPreference:any
 kidsAges:string = ''
 email:string = ""
 phoneNumber:string = ""
@@ -86,6 +87,7 @@ this.childrenCount = unmarhsalledEnquiry.childrenCount
 this.kidsAges = unmarhsalledEnquiry.kidsAges
 this.startDate = unmarhsalledEnquiry.startStayDate
 this.endDate = unmarhsalledEnquiry.endStayDate
+this.contactPreference = unmarhsalledEnquiry.contactPreference
 })
 }
 

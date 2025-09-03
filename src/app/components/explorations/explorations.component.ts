@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class ExplorationsComponent {
 
   goSafaris(){
-  this.router.navigate(["/safaris"])
+  this.router.navigate(["/accomodations"])
   }
   block_quotes = [
     {

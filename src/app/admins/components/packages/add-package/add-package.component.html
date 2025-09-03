@@ -258,12 +258,15 @@
       (onChange)="captureMealPlan($event, q)"
     ></jodit-editor>
 
-
+         <section>
+          <app-map-picker (coords)="getCoordinates($event,q)"></app-map-picker>
+         </section>
         <mat-form-field>
-      <mat-label>Origin(Latitiude) {{ q + 1 }} </mat-label>
+      <mat-label>Latitiude {{ q + 1 }} </mat-label> 
       <input
         required
         type="number"
+        readonly
         name="package-lat-origin-{{ q }}"
         matInput
         [(ngModel)]="itinerary.origin.lat"
@@ -273,10 +276,11 @@
 
 
     <mat-form-field>
-      <mat-label>Origin(Longitude) {{ q + 1 }} </mat-label>
+      <mat-label>Longitude {{ q + 1 }} </mat-label>
       <input
         required
         type="number"
+        readonly
         name="package-longitude-origin-{{ q }}"
         matInput
         [(ngModel)]="itinerary.origin.lng"
@@ -284,29 +288,9 @@
       <mat-hint>Example:36.677</mat-hint>
     </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Target(Latitiude) {{ q + 1 }} </mat-label>
-      <input
-        required
-        type="number"
-        name="package-lat-target-{{ q }}"
-        matInput
-        [(ngModel)]="itinerary.target_destination.lat"
-      />
-      <mat-hint>Example:1.345</mat-hint>
-    </mat-form-field>
+   
 
-    <mat-form-field>
-      <mat-label>Target(Longitude) {{ q + 1 }} </mat-label>
-      <input
-        required
-        type="number"
-        name="package-longitude-target-{{ q }}"
-        matInput
-        [(ngModel)]="itinerary.target_destination.lng"
-      />
-      <mat-hint>Example:36.677</mat-hint>
-    </mat-form-field>
+ 
    
   </div>
 

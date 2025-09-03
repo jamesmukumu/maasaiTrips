@@ -88,16 +88,29 @@ this.message.add({
 })
 })
 }
-bindDropDown(event:any){
-console.log(event)
-}
+// bindDropDown(event:any){
+// console.log(event)
+// }
 
 popAdminDelete(element:any){
   
   this.deleteUser = true
   this.fullname = element.userName
   this.email = element.Email
+  this.userIdSelected = element.id
   this.emailVerificationStatus = element.emailVerified
+  }
+
+  confirmDeletion(){
+    
+    this.admin.deleteAdmin(this.userIdSelected).then((data:any)=>{
+     if(data.message === "Deleted Successfully"){
+      this.message.add({severity:"success",detail:"Admin Deleted",sticky:true})
+      this.fetchAdmins()
+     }
+    }).catch((err:any)=>{
+      console.error(err)
+    })
   }
 formater(dateTime:any){
 return new Date(dateTime).toDateString()

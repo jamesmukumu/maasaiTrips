@@ -87,21 +87,20 @@ this.contactRef.nativeElement.scrollIntoView({
 generateMaxOccupancy(count:number){
 return new Array(count)
 }
-
+book(){
+  this.contactRef.nativeElement.scrollIntoView({
+    behavior:"smooth",
+  block:"start"
+  })
+  }
   async fetchDestinations(){
   this.fetchingDestination = true
   try{
   var {data,message,rooms} = await this.hotel.fetchSingularHotel(this.destinationsID)
   if(message === 'Hotel Fetched'){
     this.destinationData = data
-    let parsed_images = JSON.parse(data.imagesHotel)
-    this.destinationPhoto = parsed_images.map((photo:string)=>{
-   
-return {
-  src:photo,
-  thumb:photo
-}
-    })
+    this.destinationPhoto = JSON.parse(data.imagesHotel)
+
     this.destinationDescription = this.sanitizer.bypassSecurityTrustHtml(data.locationDescription)
     this.destinationAbout = this.sanitizer.bypassSecurityTrustHtml(data.hotelDescription)
     this.hotelMetaDescription = this.sanitizer.bypassSecurityTrustHtml(data.hotelMetaDescription)

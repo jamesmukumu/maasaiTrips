@@ -1,4 +1,4 @@
-<h1>Blogs We think You will also Like.</h1>
+<h1>Recommended Reads</h1>
 <div class="container"  *ngFor="let blogs of relatedBlogs" (click)="goBlog(blogs.blogSlug)">
     <div> 
      <img [src]="blogs.blogThumbnail" [alt]="blogs.blogTitle">
